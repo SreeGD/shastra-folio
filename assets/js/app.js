@@ -114,6 +114,250 @@
     }
 
     // -------------------------------------------------------------------------
+    // Flashcards page — runs only on /study/flashcards/.
+    // Loads assets/data/flashcards.json; deck = whole Gītā | bookmarks |
+    // selected chapter. Tap or Space flips; ← → step; Shuffle re-orders.
+    // -------------------------------------------------------------------------
+    function wireFlashcards() {
+        var card = document.getElementById("fc-fc-card");
+        if (!card) return;
+        var deckSel = document.getElementById("fc-fc-deck");
+        var chapWrap = document.querySelector(".fc-deck-chapter-wrap");
+        var chapSel = document.getElementById("fc-fc-chapter");
+        var shuffleBtn = document.getElementById("fc-fc-shuffle");
+        var restartBtn = document.getElementById("fc-fc-restart");
+        var prevBtn = document.getElementById("fc-fc-prev");
+        var nextBtn = document.getElementById("fc-fc-next");
+        var progressEl = document.getElementById("fc-fc-progress");
+        var emptyEl = document.getElementById("fc-fc-empty");
+        var fullVerseLink = document.getElementById("fc-fc-fullverse");
+
+        var refFront = card.querySelector(".fc-card-front .fc-card-ref");
+        var refBack = card.querySelector(".fc-card-back .fc-card-ref");
+        var devEl = card.querySelector(".fc-card-devanagari");
+        var iastEl = card.querySelector(".fc-card-iast");
+        var transEl = card.querySelector(".fc-card-translation");
+
+        var allCards = null;
+        var deck = [];
+        var idx = 0;
+        var flipped = false;
+
+        function applyChapterVisibility() {
+            if (!chapWrap) return;
+            chapWrap.hidden = deckSel.value !== "chapter";
+        }
+        function readBookmarks() {
+            try { return JSON.parse(localStorage.getItem("fc-bookmarks") || "{}") || {}; }
+            catch (e) { return {}; }
+        }
+        function buildDeck() {
+            if (!allCards) return [];
+            var kind = deckSel ? deckSel.value : "all";
+            if (kind === "bookmarks") {
+                var bm = readBookmarks();
+                return allCards.filter(function (v) {
+                    return bm["bg-" + v.chapter + "-" + v.label];
+                });
+            }
+            if (kind === "chapter" && chapSel) {
+                var ch = parseInt(chapSel.value, 10);
+                return allCards.filter(function (v) { return v.chapter === ch; });
+            }
+            return allCards.slice();
+        }
+        function shuffleDeck(arr) {
+            for (var i = arr.length - 1; i > 0; i--) {
+                var j = Math.floor(Math.random() * (i + 1));
+                var t = arr[i]; arr[i] = arr[j]; arr[j] = t;
+            }
+        }
+
+        function render() {
+            if (!deck.length) {
+                card.style.display = "none";
+                if (emptyEl) emptyEl.hidden = false;
+                if (progressEl) progressEl.textContent = "0 / 0";
+                return;
+            }
+            if (emptyEl) emptyEl.hidden = true;
+            card.style.display = "";
+            var v = deck[idx];
+            if (refFront) refFront.textContent = v.ref;
+            if (refBack) refBack.textContent = v.ref;
+            if (devEl) devEl.textContent = v.devanagari || "—";
+            if (iastEl) iastEl.textContent = v.transliteration || "";
+            if (transEl) transEl.textContent = v.translation || "";
+            if (fullVerseLink) fullVerseLink.href = toRoot + v.url;
+            card.classList.toggle("flipped", flipped);
+            if (progressEl) progressEl.textContent = (idx + 1) + " / " + deck.length;
+        }
+
+        function flip() { flipped = !flipped; render(); }
+        function next() { if (idx < deck.length - 1) { idx++; flipped = false; render(); } }
+        function prev() { if (idx > 0) { idx--; flipped = false; render(); } }
+        function restart() { idx = 0; flipped = false; render(); }
+        function changeDeck() {
+            applyChapterVisibility();
+            deck = buildDeck();
+            idx = 0; flipped = false;
+            render();
+        }
+
+        if (deckSel) deckSel.addEventListener("change", changeDeck);
+        if (chapSel) chapSel.addEventListener("change", changeDeck);
+        if (shuffleBtn) shuffleBtn.addEventListener("click", function () {
+            shuffleDeck(deck); idx = 0; flipped = false; render();
+        });
+        if (restartBtn) restartBtn.addEventListener("click", restart);
+        if (prevBtn) prevBtn.addEventListener("click", prev);
+        if (nextBtn) nextBtn.addEventListener("click", next);
+        card.addEventListener("click", flip);
+        card.addEventListener("keydown", function (e) {
+            if (e.key === " " || e.key === "Enter") { e.preventDefault(); flip(); }
+        });
+        document.addEventListener("keydown", function (e) {
+            var t = e.target;
+            if (t && (t.tagName === "INPUT" || t.tagName === "TEXTAREA"
+                      || t.tagName === "SELECT" || t.isContentEditable)) return;
+            if (e.key === " ") { e.preventDefault(); flip(); }
+            else if (e.key === "ArrowRight") { e.preventDefault(); next(); }
+            else if (e.key === "ArrowLeft") { e.preventDefault(); prev(); }
+        });
+
+        fetch(toRoot + "assets/data/flashcards.json")
+            .then(function (r) { return r.json(); })
+            .then(function (data) { allCards = data; changeDeck(); })
+            .catch(function (e) {
+                console.warn("[fc] flashcards load failed:", e);
+                if (emptyEl) {
+                    emptyEl.hidden = false;
+                    emptyEl.innerHTML = "<p>Failed to load flashcards.</p>";
+                }
+            });
+    }
+
+    // -------------------------------------------------------------------------
+    // Reading progress + streak
+    //   - A verse counts as read once it's been visible (≥50% in viewport) for
+    //     3 seconds, on any page that contains the article block.
+    //   - Daily streak tracks consecutive calendar days with at least one read.
+    // -------------------------------------------------------------------------
+    var READ_KEY = "fc-read-log";
+    var STREAK_KEY = "fc-streak";
+    var READ_DWELL_MS = 3000;
+
+    function loadReadLog() {
+        try { return JSON.parse(localStorage.getItem(READ_KEY) || "{}") || {}; }
+        catch (e) { return {}; }
+    }
+    function saveReadLog(d) {
+        try { localStorage.setItem(READ_KEY, JSON.stringify(d)); } catch (e) {}
+    }
+    function loadStreak() {
+        try { return JSON.parse(localStorage.getItem(STREAK_KEY) || "{}") || {}; }
+        catch (e) { return {}; }
+    }
+    function saveStreak(d) {
+        try { localStorage.setItem(STREAK_KEY, JSON.stringify(d)); } catch (e) {}
+    }
+    function todayStamp() {
+        var d = new Date();
+        var pad = function (n) { return n < 10 ? "0" + n : "" + n; };
+        return d.getFullYear() + "-" + pad(d.getMonth() + 1) + "-" + pad(d.getDate());
+    }
+    function daysBetween(a, b) {
+        var pa = a.split("-").map(Number);
+        var pb = b.split("-").map(Number);
+        var da = Date.UTC(pa[0], pa[1] - 1, pa[2]);
+        var db = Date.UTC(pb[0], pb[1] - 1, pb[2]);
+        return Math.round((db - da) / 86400000);
+    }
+
+    function bumpStreak() {
+        var st = loadStreak();
+        var today = todayStamp();
+        if (st.last === today) return st;
+        if (!st.last) {
+            st.count = 1;
+        } else {
+            var gap = daysBetween(st.last, today);
+            if (gap === 1) st.count = (st.count || 0) + 1;
+            else if (gap > 1) st.count = 1;
+            // gap === 0 shouldn't happen due to early return; gap < 0 (clock drift) → keep.
+        }
+        st.last = today;
+        if ((st.best || 0) < (st.count || 0)) st.best = st.count;
+        saveStreak(st);
+        return st;
+    }
+
+    function renderProgress() {
+        var section = document.getElementById("fc-progress-section");
+        if (!section) return;
+        var log = loadReadLog();
+        var n = Object.keys(log).length;
+        var total = 657; // total BG verse pages (fixed by build); see verses.json count
+        var numEl = document.getElementById("fc-progress-num");
+        var totEl = document.getElementById("fc-progress-total");
+        var barEl = document.getElementById("fc-progress-bar-fill");
+        var stEl = document.getElementById("fc-streak");
+        if (numEl) numEl.textContent = String(n);
+        if (totEl) totEl.textContent = String(total);
+        if (barEl) barEl.style.width = Math.min(100, (n / total) * 100).toFixed(2) + "%";
+        var st = loadStreak();
+        if (stEl) {
+            var today = todayStamp();
+            var active = (st.last === today) || (st.last && daysBetween(st.last, today) === 1);
+            stEl.textContent = (active ? "🔥 " : "🕯 ") + (st.count || 0) + "-day streak";
+            stEl.title = st.best ? ("Best: " + st.best + " days") : "";
+        }
+    }
+
+    function markVerseRead(verseId) {
+        if (!verseId) return;
+        var log = loadReadLog();
+        if (log[verseId]) return; // already counted
+        log[verseId] = Date.now();
+        saveReadLog(log);
+        bumpStreak();
+        renderProgress();
+    }
+
+    function wireReadingProgress() {
+        renderProgress();
+        var resetBtn = document.getElementById("fc-progress-reset");
+        if (resetBtn) resetBtn.addEventListener("click", function () {
+            if (confirm("Reset your reading progress and streak? This can't be undone.")) {
+                try { localStorage.removeItem(READ_KEY); localStorage.removeItem(STREAK_KEY); } catch (e) {}
+                renderProgress();
+            }
+        });
+
+        var blocks = document.querySelectorAll("article.fc-verse-block[id^='bg-']");
+        if (!blocks.length) return;
+        // Track verses currently in view + dwell timers
+        var timers = {};
+        var io = new IntersectionObserver(function (entries) {
+            entries.forEach(function (e) {
+                var id = e.target.id;
+                if (!id) return;
+                if (e.isIntersecting && e.intersectionRatio >= 0.5) {
+                    if (!timers[id]) {
+                        timers[id] = setTimeout(function () {
+                            markVerseRead(id);
+                            timers[id] = null;
+                        }, READ_DWELL_MS);
+                    }
+                } else {
+                    if (timers[id]) { clearTimeout(timers[id]); timers[id] = null; }
+                }
+            });
+        }, { threshold: [0, 0.5, 1] });
+        blocks.forEach(function (b) { io.observe(b); });
+    }
+
+    // -------------------------------------------------------------------------
     // Bookmarks: star button on each verse block. Persist a flat map keyed by
     // the verse anchor id (e.g., "bg-1-23") with label + chapter + vlabel so we
     // can rebuild the sidebar list without re-parsing.
@@ -1630,4 +1874,6 @@
     wireVerseOfDay();
     wireShortcutsModal();
     wireServiceWorker();
+    wireReadingProgress();
+    wireFlashcards();
 })();
