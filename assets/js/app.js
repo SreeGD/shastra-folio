@@ -588,6 +588,365 @@
     }
 
     // -------------------------------------------------------------------------
+    // Mobile sidebar drawers — header ⚙ / 📚 buttons open the left/right
+    // sidebars as overlays; backdrop click or Esc dismisses.
+    // -------------------------------------------------------------------------
+    function wireMobileDrawers() {
+        var body = document.body;
+        function close() {
+            body.removeAttribute("data-overlay-left");
+            body.removeAttribute("data-overlay-right");
+        }
+        document.querySelectorAll(".fc-mobile-trigger[data-overlay]").forEach(function (t) {
+            t.addEventListener("click", function () {
+                var side = t.dataset.overlay;
+                var attr = "data-overlay-" + side;
+                var open = body.getAttribute(attr);
+                close();
+                if (!open) body.setAttribute(attr, "1");
+            });
+        });
+        var backdrop = document.querySelector(".fc-overlay-backdrop");
+        if (backdrop) backdrop.addEventListener("click", close);
+        document.addEventListener("keydown", function (e) {
+            if (e.key === "Escape" &&
+                (body.getAttribute("data-overlay-left") || body.getAttribute("data-overlay-right"))) {
+                close();
+            }
+        });
+        // Close after navigating within a drawer (clicking a link)
+        document.querySelectorAll(".fc-left-sidebar a, .fc-sidebar a").forEach(function (a) {
+            a.addEventListener("click", function () {
+                if (window.matchMedia("(max-width: 1100px)").matches) close();
+            });
+        });
+    }
+
+    // -------------------------------------------------------------------------
+    // Personal-guidance age filter (All / Youth / Householder / Senior).
+    // One global state; all age-filter button groups stay in sync.
+    // -------------------------------------------------------------------------
+    function wireAgeFilter() {
+        var groups = document.querySelectorAll(".fc-pg-age-filter");
+        if (!groups.length) return;
+        var key = (S.PG_FILTER_KEY) || "fc-pg-filter";
+        var current = (S.pgFilter) || "all";
+        function render() {
+            groups.forEach(function (g) {
+                g.querySelectorAll("button[data-pg-age]").forEach(function (b) {
+                    b.classList.toggle("active", b.dataset.pgAge === current);
+                });
+            });
+            html.setAttribute("data-pg-filter", current);
+        }
+        render();
+        document.addEventListener("click", function (e) {
+            var b = e.target.closest(".fc-pg-age-filter button[data-pg-age]");
+            if (!b) return;
+            current = b.dataset.pgAge;
+            try { localStorage.setItem(key, current); } catch (err) {}
+            render();
+        });
+    }
+
+    // -------------------------------------------------------------------------
+    // Presentation mode — fullscreen, one verse at a time. Session-only.
+    // F to toggle, ← / → to advance (on chapter pages: between verse anchors;
+    // on verse pages: prev/next page navigation). Esc exits.
+    // -------------------------------------------------------------------------
+    function wirePresentation() {
+        var body = document.body;
+        var btn = document.getElementById("fc-presentation-toggle");
+        var blocks = Array.prototype.slice.call(document.querySelectorAll("article.fc-verse-block"));
+        var isChapter = blocks.length > 1;
+        var currentIdx = 0;
+
+        function updateCounter() {
+            if (!isChapter) {
+                body.setAttribute("data-presentation-counter", "");
+                return;
+            }
+            body.setAttribute(
+                "data-presentation-counter",
+                (currentIdx + 1) + " / " + blocks.length
+            );
+        }
+
+        function showCurrent() {
+            blocks.forEach(function (b, i) {
+                b.classList.toggle("fc-presentation-current", i === currentIdx);
+            });
+            updateCounter();
+            window.scrollTo({ top: 0, behavior: "auto" });
+        }
+
+        function findNearestVerseIdx() {
+            // Locate the verse closest to the current scroll position so
+            // entering presentation lands on what the reader was just looking at.
+            if (!blocks.length) return 0;
+            var y = window.scrollY + 180;
+            var best = 0;
+            for (var i = 0; i < blocks.length; i++) {
+                if (blocks[i].offsetTop <= y) best = i;
+                else break;
+            }
+            return best;
+        }
+
+        function enter() {
+            if (isChapter) currentIdx = findNearestVerseIdx();
+            body.classList.add("presentation");
+            if (isChapter) showCurrent();
+            else updateCounter();
+            if (btn) btn.classList.add("active");
+        }
+        function exit() {
+            body.classList.remove("presentation");
+            blocks.forEach(function (b) { b.classList.remove("fc-presentation-current"); });
+            body.removeAttribute("data-presentation-counter");
+            if (btn) btn.classList.remove("active");
+        }
+        function toggle() {
+            if (body.classList.contains("presentation")) exit();
+            else enter();
+        }
+        function go(delta) {
+            if (!body.classList.contains("presentation")) return;
+            if (isChapter) {
+                var n = currentIdx + delta;
+                if (n < 0) n = 0;
+                if (n >= blocks.length) n = blocks.length - 1;
+                if (n !== currentIdx) { currentIdx = n; showCurrent(); }
+            } else {
+                var link = document.querySelector(
+                    ".fc-prevnext a." + (delta > 0 ? "next" : "prev")
+                );
+                if (link) window.location.href = link.href;
+            }
+        }
+
+        if (btn) btn.addEventListener("click", toggle);
+        document.addEventListener("keydown", function (e) {
+            // Don't intercept while typing
+            var t = e.target;
+            if (t && (t.tagName === "INPUT" || t.tagName === "TEXTAREA" || t.isContentEditable)) return;
+            if ((e.key === "f" || e.key === "F") && !e.ctrlKey && !e.metaKey && !e.altKey) {
+                e.preventDefault();
+                toggle();
+                return;
+            }
+            if (!body.classList.contains("presentation")) return;
+            if (e.key === "Escape") { e.preventDefault(); exit(); }
+            else if (e.key === "ArrowRight" || e.key === "PageDown" || e.key === " ") {
+                e.preventDefault(); go(1);
+            } else if (e.key === "ArrowLeft" || e.key === "PageUp") {
+                e.preventDefault(); go(-1);
+            }
+        });
+    }
+
+    // -------------------------------------------------------------------------
+    // Read-aloud (Web Speech API): inject ▶ buttons next to Translation and
+    // commentary section labels. Click to speak, click again to stop. Only
+    // one utterance plays at a time.
+    // -------------------------------------------------------------------------
+    function wireReadout() {
+        var synth = window.speechSynthesis;
+        if (!synth) return;
+        var currentBtn = null;
+
+        function makeBtn() {
+            var b = document.createElement("button");
+            b.type = "button";
+            b.className = "fc-readout-btn";
+            b.textContent = "▶";
+            b.setAttribute("aria-label", "Read aloud");
+            return b;
+        }
+
+        function stopSpeaking() {
+            synth.cancel();
+            if (currentBtn) {
+                currentBtn.classList.remove("playing");
+                currentBtn.textContent = "▶";
+                currentBtn = null;
+            }
+        }
+
+        function speak(text, btn) {
+            var wasCurrent = currentBtn === btn;
+            stopSpeaking();
+            if (wasCurrent) return; // toggle off
+            if (!text || !text.trim()) return;
+            // Chunk long passages so utterance start latency stays small and
+            // we don't hit per-utterance length caps in some engines.
+            var chunks = text.match(/[^.!?]+[.!?]+\s*|.+/g) || [text];
+            var idx = 0;
+            function speakChunk() {
+                if (idx >= chunks.length) {
+                    btn.classList.remove("playing");
+                    btn.textContent = "▶";
+                    if (currentBtn === btn) currentBtn = null;
+                    return;
+                }
+                var u = new SpeechSynthesisUtterance(chunks[idx++]);
+                u.lang = "en-US";
+                u.rate = 1.0;
+                u.pitch = 1.0;
+                u.onend = speakChunk;
+                u.onerror = function () {
+                    btn.classList.remove("playing");
+                    btn.textContent = "▶";
+                    currentBtn = null;
+                };
+                synth.speak(u);
+            }
+            btn.classList.add("playing");
+            btn.textContent = "■";
+            currentBtn = btn;
+            speakChunk();
+        }
+
+        // Translation: button at top-right of the call-out block.
+        document.querySelectorAll(".fc-translation").forEach(function (t) {
+            // Skip if a button is already there (defensive)
+            if (t.querySelector(".fc-readout-btn")) return;
+            var btn = makeBtn();
+            t.appendChild(btn);
+            btn.addEventListener("click", function (e) {
+                e.stopPropagation();
+                // The text of the translation block is just the verse text;
+                // ::before adds the "Translation" label visually but isn't in DOM.
+                speak(t.textContent.trim(), btn);
+            });
+        });
+
+        // Section-labelled blocks: button appended inside the label.
+        var SECTIONS_TO_READ = ["purport", "gaudiya", "classical", "personal_guidance"];
+        SECTIONS_TO_READ.forEach(function (sec) {
+            document.querySelectorAll('section[data-sec="' + sec + '"]').forEach(function (s) {
+                var label = s.querySelector(".fc-section-label");
+                if (!label || label.querySelector(".fc-readout-btn")) return;
+                var btn = makeBtn();
+                label.appendChild(btn);
+                btn.addEventListener("click", function (e) {
+                    e.stopPropagation(); // don't trigger section collapse
+                    // Concatenate the meaningful text — skip the label itself.
+                    var parts = [];
+                    s.querySelectorAll(
+                        ".cr-purport-body, .cr-acarya-trans, .cr-acarya-purp, " +
+                        ".fc-pg-essence, .fc-pg-list, .cr-acarya-name"
+                    ).forEach(function (el) {
+                        var t = el.textContent.trim();
+                        if (t) parts.push(t);
+                    });
+                    speak(parts.join(". "), btn);
+                });
+            });
+        });
+
+        // Stop on page-leave / pen-mode change (pen overlay may capture pointers)
+        window.addEventListener("beforeunload", stopSpeaking);
+    }
+
+    // -------------------------------------------------------------------------
+    // Search within chapter — live-filter verse blocks by text match.
+    // -------------------------------------------------------------------------
+    function wireChapterSearch() {
+        var input = document.getElementById("fc-search");
+        if (!input) return;
+        var blocks = Array.prototype.slice.call(document.querySelectorAll("article.fc-verse-block"));
+        var dividers = Array.prototype.slice.call(document.querySelectorAll(".fc-verse-divider"));
+        var pillByVerse = {};
+        document.querySelectorAll(".fc-jump-pill[href^='#bg-']").forEach(function (p) {
+            pillByVerse[p.getAttribute("href").slice(1)] = p;
+        });
+        var currentEl = document.getElementById("fc-ribbon-current");
+        var body = document.body;
+        // Pre-compute lowercase text per block so filter() stays fast on /bg/18/ (78 verses).
+        var blockText = blocks.map(function (b) { return b.textContent.toLowerCase(); });
+
+        function filter() {
+            var q = input.value.trim().toLowerCase();
+            body.dataset.searching = q ? "1" : "";
+            var matches = 0;
+            blocks.forEach(function (b, i) {
+                var hit = !q || blockText[i].indexOf(q) !== -1;
+                b.classList.toggle("fc-hidden-by-search", !hit);
+                var pill = pillByVerse[b.id];
+                if (pill) pill.classList.toggle("fc-search-dim", !hit && !!q);
+                if (hit) matches++;
+            });
+            // Hide the dividers between hidden verses
+            dividers.forEach(function (d) {
+                var prev = d.previousElementSibling;
+                var hidePrev = prev && prev.classList.contains("fc-hidden-by-search");
+                d.classList.toggle("fc-hidden-by-search", hidePrev);
+            });
+            if (currentEl) currentEl.textContent = q ? (matches + " / " + blocks.length) : "";
+        }
+
+        input.addEventListener("input", filter);
+        input.addEventListener("keydown", function (e) {
+            if (e.key === "Escape") {
+                input.value = "";
+                filter();
+                input.blur();
+            }
+        });
+    }
+
+    // -------------------------------------------------------------------------
+    // Sticky chapter ribbon — track which verse is in view, highlight its pill,
+    // and update the ribbon's "Current" label. No-op on non-chapter pages.
+    // -------------------------------------------------------------------------
+    function wireRibbon() {
+        var ribbon = document.querySelector(".fc-ribbon");
+        if (!ribbon) return;
+        var strip = ribbon.querySelector(".fc-jump-strip");
+        var currentEl = document.getElementById("fc-ribbon-current");
+        var pillByVerse = {};
+        ribbon.querySelectorAll(".fc-jump-pill[href^='#bg-']").forEach(function (p) {
+            pillByVerse[p.getAttribute("href").slice(1)] = p;
+        });
+        if (!Object.keys(pillByVerse).length) return;
+
+        function setActive(id) {
+            Object.keys(pillByVerse).forEach(function (k) {
+                pillByVerse[k].classList.toggle("active", k === id);
+            });
+            // Don't overwrite the ribbon caption while the search input is active.
+            if (currentEl && !document.body.dataset.searching) {
+                var m = id.match(/^bg-(\d+)-(.+)$/);
+                currentEl.textContent = m ? ("BG " + m[1] + "." + m[2]) : "";
+            }
+            // Scroll the active pill into view inside the horizontal strip
+            var pill = pillByVerse[id];
+            if (pill && strip) {
+                var pillRect = pill.getBoundingClientRect();
+                var stripRect = strip.getBoundingClientRect();
+                if (pillRect.left < stripRect.left + 20 || pillRect.right > stripRect.right - 20) {
+                    pill.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
+                }
+            }
+        }
+
+        // Track the most-recently-entered verse near the top of the viewport.
+        var activeId = null;
+        var io = new IntersectionObserver(function (entries) {
+            entries.forEach(function (e) {
+                if (e.isIntersecting) {
+                    activeId = e.target.id;
+                    setActive(activeId);
+                }
+            });
+        }, { rootMargin: "-15% 0px -75% 0px", threshold: 0 });
+        document.querySelectorAll("article.fc-verse-block").forEach(function (v) {
+            io.observe(v);
+        });
+    }
+
+    // -------------------------------------------------------------------------
     // Boot
     // -------------------------------------------------------------------------
     wireReading();
@@ -597,4 +956,10 @@
     wireBookmarks();
     wireHighlights();
     wirePen();
+    wireRibbon();
+    wireChapterSearch();
+    wireReadout();
+    wireAgeFilter();
+    wireMobileDrawers();
+    wirePresentation();
 })();

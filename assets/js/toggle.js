@@ -52,11 +52,19 @@
     html.setAttribute("data-font", getR("font"));
     html.setAttribute("data-size", getR("size"));
 
+    // Personal-guidance age filter (all/youth/householder/senior)
+    var PG_FILTER_KEY = "fc-pg-filter";
+    var pgFilter = "all";
+    try { pgFilter = localStorage.getItem(PG_FILTER_KEY) || "all"; } catch (e) {}
+    html.setAttribute("data-pg-filter", pgFilter);
+
     // Expose state + helpers for app.js
     window.FC_STATE = {
         READ_KEY: READ_KEY,
         READ_DEFAULTS: DEFAULTS,
         reading: reading,
+        PG_FILTER_KEY: PG_FILTER_KEY,
+        pgFilter: pgFilter,
         SECTIONS: SECTIONS,
         DEFAULT_HIDDEN: DEFAULT_HIDDEN,
         HIDDEN_KEY: HIDDEN_KEY,

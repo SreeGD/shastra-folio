@@ -10,13 +10,15 @@
 </head>
 <body class="has-sidebar">
 <header class="fc-site-header">
+    <button type="button" class="fc-mobile-trigger fc-mobile-trigger-left" data-overlay="left" aria-label="Open settings drawer">⚙</button>
     <a class="fc-brand" href="../../">FolioCorpus<span class="fc-sub">Bhagavad-gītā</span></a>
     <nav class="fc-site-nav">
         <a href="../../">Home</a>
         <a href="../../bg/">Bhagavad-gītā</a>
     </nav>
+    <button type="button" class="fc-mobile-trigger fc-mobile-trigger-right" data-overlay="right" aria-label="Open chapter index drawer">📚</button>
 </header>
-<div class="fc-layout">
+<div class="fc-overlay-backdrop" aria-hidden="true"></div><div class="fc-layout">
 <aside class="fc-left-sidebar" aria-label="Display and tools">
     <button class="fc-sb-collapse" type="button" data-sb="left" title="Collapse left sidebar" aria-label="Collapse"></button>
 
@@ -69,6 +71,7 @@
         <div class="fc-sb-section">
             <div class="fc-sb-title">Tools</div>
             <div class="fc-sb-tools">
+                <button type="button" id="fc-presentation-toggle" class="fc-tool-btn"><span>🖥 Presentation</span><kbd class="fc-kbd">F</kbd></button>
                 <button type="button" id="fc-pen-toggle" class="fc-tool-btn"><span>✏️ Pen mode</span><kbd class="fc-kbd">P</kbd></button>
                 <div id="fc-pen-palette" class="fc-pen-palette" hidden>
                     <span class="fc-pen-swatch active" data-pen-color="#E53935" style="background:#E53935" title="Red"></span>
@@ -98,49 +101,54 @@
     <span>Chapter 1</span>
 </nav>
 
-<h1 class="fc-verse-heading">Chapter 1</h1>
-<p style="color:#8B7D6B; font-size:0.95rem; margin:0 0 0.6rem;">46 verses</p>
-
-<div class="fc-jump-strip" aria-label="Jump to verse">
-    <a class="fc-jump-pill" href="#bg-1-1">1</a>
-    <a class="fc-jump-pill" href="#bg-1-2">2</a>
-    <a class="fc-jump-pill" href="#bg-1-3">3</a>
-    <a class="fc-jump-pill" href="#bg-1-4">4</a>
-    <a class="fc-jump-pill" href="#bg-1-5">5</a>
-    <a class="fc-jump-pill" href="#bg-1-6">6</a>
-    <a class="fc-jump-pill" href="#bg-1-7">7</a>
-    <a class="fc-jump-pill" href="#bg-1-8">8</a>
-    <a class="fc-jump-pill" href="#bg-1-9">9</a>
-    <a class="fc-jump-pill" href="#bg-1-10">10</a>
-    <a class="fc-jump-pill" href="#bg-1-11">11</a>
-    <a class="fc-jump-pill" href="#bg-1-12">12</a>
-    <a class="fc-jump-pill" href="#bg-1-13">13</a>
-    <a class="fc-jump-pill" href="#bg-1-14">14</a>
-    <a class="fc-jump-pill" href="#bg-1-15">15</a>
-    <a class="fc-jump-pill" href="#bg-1-16-18">16-18</a>
-    <a class="fc-jump-pill" href="#bg-1-19">19</a>
-    <a class="fc-jump-pill" href="#bg-1-20">20</a>
-    <a class="fc-jump-pill" href="#bg-1-21-22">21-22</a>
-    <a class="fc-jump-pill" href="#bg-1-23">23</a>
-    <a class="fc-jump-pill" href="#bg-1-24">24</a>
-    <a class="fc-jump-pill" href="#bg-1-25">25</a>
-    <a class="fc-jump-pill" href="#bg-1-26">26</a>
-    <a class="fc-jump-pill" href="#bg-1-27">27</a>
-    <a class="fc-jump-pill" href="#bg-1-28">28</a>
-    <a class="fc-jump-pill" href="#bg-1-29">29</a>
-    <a class="fc-jump-pill" href="#bg-1-30">30</a>
-    <a class="fc-jump-pill" href="#bg-1-31">31</a>
-    <a class="fc-jump-pill" href="#bg-1-32-35">32-35</a>
-    <a class="fc-jump-pill" href="#bg-1-36">36</a>
-    <a class="fc-jump-pill" href="#bg-1-37-38">37-38</a>
-    <a class="fc-jump-pill" href="#bg-1-39">39</a>
-    <a class="fc-jump-pill" href="#bg-1-40">40</a>
-    <a class="fc-jump-pill" href="#bg-1-41">41</a>
-    <a class="fc-jump-pill" href="#bg-1-42">42</a>
-    <a class="fc-jump-pill" href="#bg-1-43">43</a>
-    <a class="fc-jump-pill" href="#bg-1-44">44</a>
-    <a class="fc-jump-pill" href="#bg-1-45">45</a>
-    <a class="fc-jump-pill" href="#bg-1-46">46</a>
+<div class="fc-ribbon">
+    <div class="fc-ribbon-row">
+        <h1 class="fc-verse-heading">Chapter 1</h1>
+        <span class="fc-ribbon-meta">46 verses</span>
+        <input type="search" class="fc-search" id="fc-search" placeholder="🔍 Search in this chapter" aria-label="Search verses in this chapter">
+        <span class="fc-ribbon-current" id="fc-ribbon-current" aria-live="polite"></span>
+    </div>
+    <div class="fc-jump-strip" aria-label="Jump to verse">
+        <a class="fc-jump-pill" href="#bg-1-1">1</a>
+        <a class="fc-jump-pill" href="#bg-1-2">2</a>
+        <a class="fc-jump-pill" href="#bg-1-3">3</a>
+        <a class="fc-jump-pill" href="#bg-1-4">4</a>
+        <a class="fc-jump-pill" href="#bg-1-5">5</a>
+        <a class="fc-jump-pill" href="#bg-1-6">6</a>
+        <a class="fc-jump-pill" href="#bg-1-7">7</a>
+        <a class="fc-jump-pill" href="#bg-1-8">8</a>
+        <a class="fc-jump-pill" href="#bg-1-9">9</a>
+        <a class="fc-jump-pill" href="#bg-1-10">10</a>
+        <a class="fc-jump-pill" href="#bg-1-11">11</a>
+        <a class="fc-jump-pill" href="#bg-1-12">12</a>
+        <a class="fc-jump-pill" href="#bg-1-13">13</a>
+        <a class="fc-jump-pill" href="#bg-1-14">14</a>
+        <a class="fc-jump-pill" href="#bg-1-15">15</a>
+        <a class="fc-jump-pill" href="#bg-1-16-18">16-18</a>
+        <a class="fc-jump-pill" href="#bg-1-19">19</a>
+        <a class="fc-jump-pill" href="#bg-1-20">20</a>
+        <a class="fc-jump-pill" href="#bg-1-21-22">21-22</a>
+        <a class="fc-jump-pill" href="#bg-1-23">23</a>
+        <a class="fc-jump-pill" href="#bg-1-24">24</a>
+        <a class="fc-jump-pill" href="#bg-1-25">25</a>
+        <a class="fc-jump-pill" href="#bg-1-26">26</a>
+        <a class="fc-jump-pill" href="#bg-1-27">27</a>
+        <a class="fc-jump-pill" href="#bg-1-28">28</a>
+        <a class="fc-jump-pill" href="#bg-1-29">29</a>
+        <a class="fc-jump-pill" href="#bg-1-30">30</a>
+        <a class="fc-jump-pill" href="#bg-1-31">31</a>
+        <a class="fc-jump-pill" href="#bg-1-32-35">32-35</a>
+        <a class="fc-jump-pill" href="#bg-1-36">36</a>
+        <a class="fc-jump-pill" href="#bg-1-37-38">37-38</a>
+        <a class="fc-jump-pill" href="#bg-1-39">39</a>
+        <a class="fc-jump-pill" href="#bg-1-40">40</a>
+        <a class="fc-jump-pill" href="#bg-1-41">41</a>
+        <a class="fc-jump-pill" href="#bg-1-42">42</a>
+        <a class="fc-jump-pill" href="#bg-1-43">43</a>
+        <a class="fc-jump-pill" href="#bg-1-44">44</a>
+        <a class="fc-jump-pill" href="#bg-1-45">45</a>
+        <a class="fc-jump-pill" href="#bg-1-46">46</a>
+    </div>
 </div>
 
 <article class="fc-verse-block" id="bg-1-1">
@@ -602,16 +610,24 @@ together eager for battle on the holy plain of Kurukshetra, O Sanjaya.</div>
         <div class="fc-pg-sub">Reflection Questions</div>
         <ul class="fc-pg-list"><li>Where in my life am I behaving like Dhṛtarāṣṭra — protecting &#39;my&#39; side instead of dharma?</li><li>What anxieties about outcomes reveal where I am still materially attached?</li></ul>
 
-        <div class="fc-pg-sub">For Each Age Group</div>
-            <div class="fc-pg-age">
+        <div class="fc-pg-age-header">
+            <div class="fc-pg-sub">For Each Age Group</div>
+            <div class="fc-pg-age-filter" role="group" aria-label="Show guidance for">
+                <button type="button" data-pg-age="all">All</button>
+                <button type="button" data-pg-age="youth">Youth</button>
+                <button type="button" data-pg-age="householder">Householder</button>
+                <button type="button" data-pg-age="senior">Senior</button>
+            </div>
+        </div>
+            <div class="fc-pg-age fc-pg-age-youth">
                 <div class="fc-pg-age-label">youth</div>
                     <ul class="fc-pg-list"><li>When you cheer for your team, school, or fandom, notice if you secretly feel superior to outsiders — Kṛṣṇa sees every soul equally.</li><li>Don&#39;t let popularity decide who you spend time with; value spiritual qualities over social cliques.</li><li>When parents or teachers correct you, ask: am I defending dharma, or just my pride?</li></ul>
             </div>
-            <div class="fc-pg-age">
+            <div class="fc-pg-age fc-pg-age-householder">
                 <div class="fc-pg-age-label">householder</div>
                     <ul class="fc-pg-list"><li>Examine your protectiveness over family — is it nurturing souls toward Kṛṣṇa, or just preserving &#39;my&#39; tribe?</li><li>Welcome devotees from outside your immediate circle into the home; treat all as Kṛṣṇa&#39;s children.</li><li>When making financial or career decisions affecting family, ask: am I serving dharma, or my comfort?</li></ul>
             </div>
-            <div class="fc-pg-age">
+            <div class="fc-pg-age fc-pg-age-senior">
                 <div class="fc-pg-age-label">senior</div>
                     <ul class="fc-pg-list"><li>As you reflect on a lifetime&#39;s accumulations, recognize what was truly &#39;yours&#39; versus what was Kṛṣṇa&#39;s gift on temporary loan.</li><li>Speak about devotees and family with appreciation, not territorial pride.</li><li>Use accumulated experience to guide others toward Kṛṣṇa, not toward worldly success markers.</li></ul>
             </div>
@@ -985,16 +1001,24 @@ King Duryodhana then approached his teacher (Drona) and spoke these words.</div>
         <div class="fc-pg-sub">Reflection Questions</div>
         <ul class="fc-pg-list"><li>Have I approached a teacher or mentor recently with a hidden agenda?</li><li>Where does duplicity show up inside my outwardly respectful interactions?</li></ul>
 
-        <div class="fc-pg-sub">For Each Age Group</div>
-            <div class="fc-pg-age">
+        <div class="fc-pg-age-header">
+            <div class="fc-pg-sub">For Each Age Group</div>
+            <div class="fc-pg-age-filter" role="group" aria-label="Show guidance for">
+                <button type="button" data-pg-age="all">All</button>
+                <button type="button" data-pg-age="youth">Youth</button>
+                <button type="button" data-pg-age="householder">Householder</button>
+                <button type="button" data-pg-age="senior">Senior</button>
+            </div>
+        </div>
+            <div class="fc-pg-age fc-pg-age-youth">
                 <div class="fc-pg-age-label">youth</div>
                     <ul class="fc-pg-list"><li>When you ask a teacher for help, check your motive — are you actually wanting to learn, or fishing for the answer you already prefer?</li><li>Notice when &#39;asking advice&#39; is really &#39;asking permission&#39; for what you&#39;ve already decided.</li><li>Practice asking sincere questions whose answer you genuinely don&#39;t already know.</li></ul>
             </div>
-            <div class="fc-pg-age">
+            <div class="fc-pg-age fc-pg-age-householder">
                 <div class="fc-pg-age-label">householder</div>
                     <ul class="fc-pg-list"><li>When consulting elders about a decision, present the full picture — not only the parts that flatter your preferred choice.</li><li>Notice when family meetings have become political maneuvers in the language of consensus.</li><li>Bring genuine doubts to your spiritual mentor, not curated versions designed to extract approval.</li></ul>
             </div>
-            <div class="fc-pg-age">
+            <div class="fc-pg-age fc-pg-age-senior">
                 <div class="fc-pg-age-label">senior</div>
                     <ul class="fc-pg-list"><li>When younger relatives come to you for guidance, listen for whether the question is sincere inquiry or strategic positioning.</li><li>Honor an honest doubt more highly than a rehearsed presentation.</li><li>Model what genuine inquiry looks like — including, sometimes, your own willingness to admit you don&#39;t know.</li></ul>
             </div>
