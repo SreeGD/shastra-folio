@@ -890,6 +890,78 @@ html[data-theme="dark"] .fc-search:focus { border-color: #c84a64; box-shadow: 0 
 .fc-jump-pill.fc-search-dim { opacity: 0.28; }
 .fc-verse-divider.fc-hidden-by-search { display: none !important; }
 
+/* Inline match highlight (CSS Custom Highlight API). Falls back silently
+   to no highlight on browsers that don't support it; search still works. */
+::highlight(fc-search) {
+    background-color: rgba(252, 239, 161, 0.75);
+    color: inherit;
+}
+html[data-theme="dark"] ::highlight(fc-search) {
+    background-color: rgba(212, 160, 96, 0.45);
+}
+
+/* Cross-chapter search results */
+.fc-search-global {
+    background: white;
+    border: 1px solid #D4C4A8;
+    border-radius: 6px;
+    margin: 0.45rem 0 0;
+    padding: 0.4rem 0.6rem 0.5rem;
+    max-height: 360px;
+    overflow-y: auto;
+}
+.fc-search-global-header {
+    font-family: 'Lora', Georgia, serif;
+    font-size: 0.82rem;
+    color: #6B5025;
+    padding: 0.25rem 0.15rem;
+    border-bottom: 1px solid #DCD0B0;
+    margin-bottom: 0.35rem;
+}
+.fc-search-global-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.fc-search-global-list li {
+    border-bottom: 1px solid #f0e8d2;
+}
+.fc-search-global-list li:last-child { border-bottom: none; }
+.fc-search-global-list a {
+    color: #3a2f1a;
+    text-decoration: none;
+    display: block;
+    padding: 0.45rem 0.3rem;
+    border-radius: 3px;
+}
+.fc-search-global-list a:hover { background: #FBF1F1; }
+.fc-search-ref {
+    color: var(--fc-maroon);
+    font-weight: 700;
+    font-family: 'Lora', Georgia, serif;
+    font-size: 0.9rem;
+    margin-bottom: 0.15rem;
+}
+.fc-search-preview {
+    color: #5a4a2a;
+    font-size: 0.88rem;
+    line-height: 1.5;
+}
+.fc-search-preview mark {
+    background: #FCEFA1;
+    color: inherit;
+    padding: 0 1px;
+    border-radius: 2px;
+}
+html[data-theme="dark"] .fc-search-global { background: #211a13; border-color: #3a3128; }
+html[data-theme="dark"] .fc-search-global-header { color: #d4a060; border-bottom-color: #3a3128; }
+html[data-theme="dark"] .fc-search-global-list li { border-bottom-color: #3a3128; }
+html[data-theme="dark"] .fc-search-global-list a { color: #e6d6b8; }
+html[data-theme="dark"] .fc-search-global-list a:hover { background: #2a2218; }
+html[data-theme="dark"] .fc-search-ref { color: #f0a8b8; }
+html[data-theme="dark"] .fc-search-preview { color: #d4b78a; }
+html[data-theme="dark"] .fc-search-preview mark { background: #5a4419; color: #f0e0c0; }
+
 .fc-jump-strip {
     display: flex;
     gap: 0.3rem 0.35rem;
@@ -1027,7 +1099,9 @@ html[data-right-collapsed="1"] .fc-sidebar { padding: 0.6rem 0.3rem; border-left
     display: flex;
     align-items: baseline;
     gap: 0.4rem;
+    user-select: none;
 }
+.fc-sb-sub { user-select: none; }
 .fc-sb-count {
     background: var(--fc-gold);
     color: white;

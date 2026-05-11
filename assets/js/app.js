@@ -1374,7 +1374,12 @@
     }
 
     // -------------------------------------------------------------------------
-    // Search within chapter — live-filter verse blocks by text match.
+    // Search within chapter + cross-chapter fallback. Features:
+    //   - diacritic-insensitive matching (Krishna finds Kṛṣṇa)
+    //   - inline highlight via CSS Custom Highlight API (graceful fallback)
+    //   - "/" keyboard shortcut focuses the input
+    //   - Esc clears and blurs
+    //   - cross-chapter results panel from assets/data/search.json (lazy fetch)
     // -------------------------------------------------------------------------
     function wireChapterSearch() {
         var input = document.getElementById("fc-search");
@@ -1386,37 +1391,170 @@
             pillByVerse[p.getAttribute("href").slice(1)] = p;
         });
         var currentEl = document.getElementById("fc-ribbon-current");
+        var globalPanel = document.getElementById("fc-search-global");
+        var globalList = document.getElementById("fc-search-global-list");
+        var globalHeader = document.getElementById("fc-search-global-header");
         var body = document.body;
-        // Pre-compute lowercase text per block so filter() stays fast on /bg/18/ (78 verses).
-        var blockText = blocks.map(function (b) { return b.textContent.toLowerCase(); });
 
-        function filter() {
-            var q = input.value.trim().toLowerCase();
+        function normalize(s) {
+            // NFD-decompose, drop combining diacritical marks (U+0300–U+036F), lowercase.
+            return String(s).normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
+        }
+        function escapeHtmlFor(s) {
+            return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#39;");
+        }
+        function escapeRegex(s) { return s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"); }
+
+        // Pre-compute normalised text per block so refilter stays fast.
+        var blockNorm = blocks.map(function (b) { return normalize(b.textContent); });
+
+        // Current chapter (derived from any verse-block id).
+        var currentChapter = null;
+        for (var bi = 0; bi < blocks.length; bi++) {
+            var mm = blocks[bi].id.match(/^bg-(\d+)-/);
+            if (mm) { currentChapter = parseInt(mm[1], 10); break; }
+        }
+
+        // Cross-chapter index — fetched on first non-trivial query.
+        var globalIndex = null;
+        var globalLoading = false;
+        function ensureGlobalIndex() {
+            if (globalIndex || globalLoading) return Promise.resolve(globalIndex);
+            globalLoading = true;
+            return fetch(toRoot + "assets/data/search.json")
+                .then(function (r) { return r.json(); })
+                .then(function (idx) {
+                    globalIndex = idx.map(function (v) {
+                        v._n = normalize(v.translation + " " + (v.purport || ""));
+                        return v;
+                    });
+                    return globalIndex;
+                })
+                .catch(function (e) {
+                    console.warn("[fc] search index load failed:", e);
+                    globalLoading = false;
+                    return null;
+                });
+        }
+
+        // Inline match highlight via CSS Custom Highlight API.
+        var hasHighlightAPI = !!(window.CSS && window.CSS.highlights && window.Highlight && typeof Range !== "undefined");
+        function clearHighlight() {
+            if (hasHighlightAPI) { try { CSS.highlights.delete("fc-search"); } catch (e) {} }
+        }
+        function highlightOnPage(needle) {
+            if (!hasHighlightAPI) return;
+            if (!needle) { clearHighlight(); return; }
+            var nLower = needle.toLowerCase();
+            var hl = new Highlight();
+            blocks.forEach(function (b) {
+                if (b.classList.contains("fc-hidden-by-search")) return;
+                var walker = document.createTreeWalker(b, NodeFilter.SHOW_TEXT, null);
+                var node;
+                while ((node = walker.nextNode())) {
+                    // Skip text inside note textareas / readout buttons / segmented controls.
+                    var p = node.parentElement;
+                    if (!p) continue;
+                    if (p.closest(".fc-note-block, .fc-readout-btn, .fc-pg-age-filter, .fc-bookmark-btn, .fc-verse-permalink")) continue;
+                    var lower = node.textContent.toLowerCase();
+                    var idx = lower.indexOf(nLower);
+                    while (idx !== -1) {
+                        var r = new Range();
+                        r.setStart(node, idx);
+                        r.setEnd(node, idx + needle.length);
+                        hl.add(r);
+                        idx = lower.indexOf(nLower, idx + needle.length);
+                    }
+                }
+            });
+            try { CSS.highlights.set("fc-search", hl); } catch (e) {}
+        }
+
+        function renderGlobal(q, qNorm) {
+            if (!globalPanel || !globalIndex) return;
+            if (q.length < 2) { globalPanel.setAttribute("hidden", ""); return; }
+            var matches = [];
+            for (var k = 0; k < globalIndex.length; k++) {
+                var entry = globalIndex[k];
+                if (currentChapter != null && entry.chapter === currentChapter) continue;
+                if (entry._n.indexOf(qNorm) !== -1) {
+                    matches.push(entry);
+                    if (matches.length >= 20) break;
+                }
+            }
+            if (!matches.length) { globalPanel.setAttribute("hidden", ""); return; }
+            globalHeader.textContent = "Also found in " + matches.length + " other verse" +
+                (matches.length === 1 ? "" : "s") + " across the Gītā" +
+                (matches.length >= 20 ? " (first 20 shown)" : "");
+            var qSafeRe = new RegExp("(" + escapeRegex(q) + ")", "ig");
+            globalList.innerHTML = matches.map(function (e) {
+                var src = e.translation + (e.purport ? " — " + e.purport : "");
+                var srcNorm = normalize(src);
+                var idx = srcNorm.indexOf(qNorm);
+                var preview;
+                if (idx === -1) {
+                    preview = src.slice(0, 160);
+                } else {
+                    var start = Math.max(0, idx - 40);
+                    var end = Math.min(src.length, idx + qNorm.length + 100);
+                    preview = (start > 0 ? "…" : "") + src.slice(start, end) + (end < src.length ? "…" : "");
+                }
+                var safePreview = escapeHtmlFor(preview);
+                // Bold matches in preview (best-effort exact-substring; diacritic mismatches stay un-marked).
+                safePreview = safePreview.replace(qSafeRe, "<mark>$1</mark>");
+                return '<li><a href="' + toRoot + e.url + '">' +
+                    '<div class="fc-search-ref">' + escapeHtmlFor(e.ref) + '</div>' +
+                    '<div class="fc-search-preview">' + safePreview + '</div></a></li>';
+            }).join("");
+            globalPanel.removeAttribute("hidden");
+        }
+
+        function refilter() {
+            var q = input.value.trim();
+            var qNorm = normalize(q);
             body.dataset.searching = q ? "1" : "";
+
             var matches = 0;
             blocks.forEach(function (b, i) {
-                var hit = !q || blockText[i].indexOf(q) !== -1;
+                var hit = !q || blockNorm[i].indexOf(qNorm) !== -1;
                 b.classList.toggle("fc-hidden-by-search", !hit);
                 var pill = pillByVerse[b.id];
                 if (pill) pill.classList.toggle("fc-search-dim", !hit && !!q);
                 if (hit) matches++;
             });
-            // Hide the dividers between hidden verses
             dividers.forEach(function (d) {
                 var prev = d.previousElementSibling;
                 var hidePrev = prev && prev.classList.contains("fc-hidden-by-search");
                 d.classList.toggle("fc-hidden-by-search", hidePrev);
             });
             if (currentEl) currentEl.textContent = q ? (matches + " / " + blocks.length) : "";
+            highlightOnPage(q);
+
+            if (q.length >= 2 && globalPanel) {
+                ensureGlobalIndex().then(function () { renderGlobal(q, qNorm); });
+            } else if (globalPanel) {
+                globalPanel.setAttribute("hidden", "");
+            }
         }
 
-        input.addEventListener("input", filter);
+        input.addEventListener("input", refilter);
         input.addEventListener("keydown", function (e) {
             if (e.key === "Escape") {
                 input.value = "";
-                filter();
+                refilter();
                 input.blur();
             }
+        });
+
+        // "/" focuses the search input from anywhere (when not typing in a field).
+        document.addEventListener("keydown", function (e) {
+            if (e.key !== "/" || e.ctrlKey || e.metaKey || e.altKey || e.shiftKey) return;
+            var t = e.target;
+            if (t && (t.tagName === "INPUT" || t.tagName === "TEXTAREA" || t.isContentEditable)) return;
+            e.preventDefault();
+            input.focus();
+            input.select();
         });
     }
 
