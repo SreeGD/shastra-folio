@@ -1247,6 +1247,237 @@
     }
 
     // -------------------------------------------------------------------------
+    // Margin notes modal — opens from the Tools panel and shows the user's
+    // bookmarks / notes / highlights, scoped to the current chapter when
+    // available (else all). Pure read view, lets the user click through to
+    // any annotation's verse.
+    // -------------------------------------------------------------------------
+    function wireNotesModal() {
+        var openBtn = document.getElementById("fc-notes-modal-open");
+        var modal = document.getElementById("fc-notes-modal");
+        if (!openBtn || !modal) return;
+        var body = document.body;
+        var scopeEl = document.getElementById("fc-notes-modal-scope");
+        var bodyEl = document.getElementById("fc-notes-modal-body");
+        var tabs = modal.querySelectorAll(".fc-notes-tab[data-tab]");
+        var current = "bookmarks";
+
+        function escapeHtmlN(s) {
+            return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#39;");
+        }
+        function currentChapter() {
+            var c = body.dataset.chapter;
+            return c ? parseInt(c, 10) : null;
+        }
+        function loadJSON(key) {
+            try { return JSON.parse(localStorage.getItem(key) || "{}") || {}; }
+            catch (e) { return {}; }
+        }
+
+        function getBookmarks() {
+            var ch = currentChapter();
+            var all = loadJSON("fc-bookmarks");
+            return Object.keys(all)
+                .map(function (id) { return Object.assign({ _id: id }, all[id]); })
+                .filter(function (b) { return ch == null || b.chapter === ch; })
+                .sort(function (a, b) { return (a.ts || 0) - (b.ts || 0); });
+        }
+        function getNotes() {
+            var ch = currentChapter();
+            var all = loadJSON("fc-notes");
+            return Object.keys(all)
+                .map(function (id) { return Object.assign({ _id: id }, all[id]); })
+                .filter(function (n) { return n.text && (ch == null || n.chapter === ch); })
+                .sort(function (a, b) { return (a.updatedAt || 0) - (b.updatedAt || 0); });
+        }
+        function getHighlights() {
+            // Highlights are keyed by URL path. Match the current page first,
+            // fall back to scanning all pages for this chapter when there isn't one.
+            var ch = currentChapter();
+            var all = loadJSON("fc-highlights");
+            var entries = [];
+            Object.keys(all).forEach(function (path) {
+                var inChapter = !ch || path.indexOf("/bg/" + ch + "/") !== -1;
+                if (!inChapter) return;
+                (all[path] || []).forEach(function (h) {
+                    entries.push({ path: path, text: h.text, color: h.color });
+                });
+            });
+            return entries;
+        }
+
+        function renderBookmarks() {
+            var bms = getBookmarks();
+            updateCount("bookmarks", bms.length);
+            if (!bms.length) { bodyEl.innerHTML = empty("bookmarks"); return; }
+            bodyEl.innerHTML = bms.map(function (b) {
+                var url = toRoot + "bg/" + b.chapter + "/" + b.vlabel + "/";
+                return '<div class="fc-notes-item">' +
+                    '<a class="fc-notes-ref" href="' + url + '">☆ ' + escapeHtmlN(b.label || b._id) + "</a>" +
+                "</div>";
+            }).join("");
+        }
+        function renderNotes() {
+            var notes = getNotes();
+            updateCount("notes", notes.length);
+            if (!notes.length) { bodyEl.innerHTML = empty("notes"); return; }
+            bodyEl.innerHTML = notes.map(function (n) {
+                var url = toRoot + "bg/" + n.chapter + "/" + n.vlabel + "/";
+                return '<div class="fc-notes-item">' +
+                    '<a class="fc-notes-ref" href="' + url + '">📝 ' + escapeHtmlN(n.label || n._id) + "</a>" +
+                    '<div class="fc-notes-item-text">' + escapeHtmlN(n.text) + "</div>" +
+                "</div>";
+            }).join("");
+        }
+        function renderHighlights() {
+            var hls = getHighlights();
+            updateCount("highlights", hls.length);
+            if (!hls.length) { bodyEl.innerHTML = empty("highlights"); return; }
+            bodyEl.innerHTML = hls.map(function (h) {
+                var pathLabel = h.path.replace(/^.*\/bg\//, "BG ").replace(/\/$/, "").replace(/\//g, ".");
+                return '<div class="fc-notes-item">' +
+                    '<a class="fc-notes-ref" href="' + h.path + '">' + escapeHtmlN(pathLabel) + "</a>" +
+                    '<div class="fc-notes-item-text"><span class="fc-notes-item-hl">' +
+                        escapeHtmlN(h.text) +
+                    "</span></div>" +
+                "</div>";
+            }).join("");
+        }
+        function empty(kind) {
+            return '<p class="fc-notes-modal-empty">No ' + kind + " yet" +
+                (currentChapter() ? " in this chapter" : "") + ".</p>";
+        }
+        function updateCount(kind, n) {
+            var el = modal.querySelector('.fc-notes-tab-count[data-count="' + kind + '"]');
+            if (el) el.textContent = String(n);
+        }
+        function setTab(name) {
+            current = name;
+            tabs.forEach(function (t) {
+                t.classList.toggle("active", t.dataset.tab === name);
+            });
+            if (name === "notes") renderNotes();
+            else if (name === "highlights") renderHighlights();
+            else renderBookmarks();
+        }
+
+        function open() {
+            modal.removeAttribute("hidden");
+            body.dataset.notesModal = "1";
+            if (scopeEl) {
+                var ch = currentChapter();
+                scopeEl.textContent = ch
+                    ? "Scoped to Chapter " + ch + ". Switch chapters to see annotations elsewhere."
+                    : "All annotations across the Gītā.";
+            }
+            // Refresh counts then render the current tab
+            updateCount("bookmarks", getBookmarks().length);
+            updateCount("notes", getNotes().length);
+            updateCount("highlights", getHighlights().length);
+            setTab(current);
+        }
+        function close() {
+            modal.setAttribute("hidden", "");
+            delete body.dataset.notesModal;
+        }
+
+        openBtn.addEventListener("click", open);
+        modal.querySelector(".fc-notes-modal-backdrop").addEventListener("click", close);
+        document.getElementById("fc-notes-modal-close").addEventListener("click", close);
+        tabs.forEach(function (t) {
+            t.addEventListener("click", function () { setTab(t.dataset.tab); });
+        });
+        document.addEventListener("keydown", function (e) {
+            if (e.key === "Escape" && body.dataset.notesModal === "1") {
+                e.preventDefault();
+                close();
+            }
+        });
+    }
+
+    // -------------------------------------------------------------------------
+    // Word-for-word index page — fetch words.json, render as collapsible list,
+    // wire diacritic-insensitive filter input.
+    // -------------------------------------------------------------------------
+    function wireWordsIndex() {
+        var listEl = document.getElementById("fc-words-list");
+        if (!listEl) return;
+        var searchEl = document.getElementById("fc-words-search");
+        var metaEl = document.getElementById("fc-words-meta");
+        var allWords = null;
+        var visible = [];
+
+        function normalize(s) {
+            return String(s).normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
+        }
+        function escapeHtml(s) {
+            return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#39;");
+        }
+
+        function renderEntry(w) {
+            var verses = w.verses.map(function (v) {
+                return '<li><a href="' + toRoot + v.url + '">' + escapeHtml(v.ref) + '</a>' +
+                    '<span class="fc-word-verse-gloss">— ' + escapeHtml(v.gloss) + '</span></li>';
+            }).join("");
+            var otherGlosses = w.glosses.slice(1).map(escapeHtml).join(" · ");
+            return '<details class="fc-word-entry" id="' + escapeHtml(w.slug) + '">' +
+                '<summary class="fc-word-summary">' +
+                    '<span class="fc-word-iast">' + escapeHtml(w.iast) + '</span>' +
+                    '<span class="fc-word-gloss">' + escapeHtml(w.glosses[0] || "") + '</span>' +
+                    '<span class="fc-word-count">' + w.verses.length + " ×</span>" +
+                '</summary>' +
+                '<div class="fc-word-detail">' +
+                    (otherGlosses ? '<div class="fc-word-other-glosses">also: ' + otherGlosses + '</div>' : "") +
+                    '<ul class="fc-word-verses">' + verses + "</ul>" +
+                '</div>' +
+            '</details>';
+        }
+
+        function applyFilter() {
+            var q = (searchEl ? searchEl.value : "").trim();
+            var qn = normalize(q);
+            visible = qn
+                ? allWords.filter(function (w) { return w.slug.indexOf(qn) !== -1; })
+                : allWords;
+            if (metaEl) {
+                metaEl.textContent = qn
+                    ? visible.length + " of " + allWords.length + " terms match \"" + q + "\""
+                    : allWords.length + " unique terms across the Gītā";
+            }
+            // Render in chunks so the initial paint is fast (the full list is ~3k entries).
+            var slice = visible.slice(0, 400);
+            listEl.innerHTML = slice.map(renderEntry).join("") +
+                (visible.length > 400
+                    ? '<p style="color:#8B7D6B; padding:0.8rem 0;">Showing the first 400 — refine the filter to see more.</p>'
+                    : "");
+            // After paint, jump to anchor if the URL has one
+            if (location.hash && location.hash.length > 1) {
+                var target = document.getElementById(location.hash.slice(1));
+                if (target) {
+                    target.open = true;
+                    setTimeout(function () {
+                        target.scrollIntoView({ behavior: "smooth", block: "center" });
+                    }, 80);
+                }
+            }
+        }
+
+        fetch(toRoot + "assets/data/words.json")
+            .then(function (r) { return r.json(); })
+            .then(function (data) {
+                allWords = data;
+                applyFilter();
+                if (searchEl) searchEl.addEventListener("input", applyFilter);
+            })
+            .catch(function (err) {
+                console.warn("[fc] words.json load failed:", err);
+                listEl.innerHTML = '<p style="color:#8B7D6B;">Failed to load vocabulary.</p>';
+            });
+    }
+
+    // -------------------------------------------------------------------------
     // Reading-path banner: when arriving via /paths/{slug}/ → verse, show a
     // small banner above the verse with step N of M + prev/next within the path.
     // -------------------------------------------------------------------------
@@ -2448,4 +2679,6 @@
     wirePermalinkHighlight();
     wireCompare();
     wirePathBanner();
+    wireWordsIndex();
+    wireNotesModal();
 })();
