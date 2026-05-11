@@ -67,12 +67,13 @@
 
     // Reading preferences (theme / font / size). Apply early to avoid flicker.
     var READ_KEY = "fc-reading";
-    var DEFAULTS = { theme: "light", font: "serif", size: "normal" };
+    var DEFAULTS = { theme: "light", font: "serif", size: "normal", layout: "single" };
     var reading = load(READ_KEY);
     function getR(k) { return reading[k] || DEFAULTS[k]; }
     html.setAttribute("data-theme", getR("theme"));
     html.setAttribute("data-font", getR("font"));
     html.setAttribute("data-size", getR("size"));
+    html.setAttribute("data-layout", getR("layout"));
 
     // Personal-guidance age filter (all/youth/householder/senior)
     var PG_FILTER_KEY = "fc-pg-filter";

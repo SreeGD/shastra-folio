@@ -1199,6 +1199,204 @@
     }
 
     // -------------------------------------------------------------------------
+    // Permalink highlight: ?h=phrase pre-highlights matching text on load.
+    // Uses CSS Custom Highlight API; scrolls to the first match.
+    // -------------------------------------------------------------------------
+    function wirePermalinkHighlight() {
+        if (!(window.CSS && CSS.highlights && window.Highlight && typeof Range !== "undefined")) return;
+        var params = new URLSearchParams(location.search);
+        var raw = params.get("h");
+        if (!raw) return;
+        var needle = raw.trim();
+        if (!needle) return;
+        var main = document.querySelector("main");
+        if (!main) return;
+        var lower = needle.toLowerCase();
+        var hl = new Highlight();
+        var firstRange = null;
+        var walker = document.createTreeWalker(main, NodeFilter.SHOW_TEXT, null);
+        var node;
+        while ((node = walker.nextNode())) {
+            var p = node.parentElement;
+            if (!p) continue;
+            if (p.closest(".fc-note-block, .fc-readout-btn, .fc-pg-age-filter, " +
+                          ".fc-bookmark-btn, .fc-verse-permalink, .fc-share-btn, " +
+                          ".fc-ribbon, .fc-section-label")) continue;
+            var t = node.textContent.toLowerCase();
+            var idx = t.indexOf(lower);
+            while (idx !== -1) {
+                var r = new Range();
+                r.setStart(node, idx);
+                r.setEnd(node, idx + needle.length);
+                hl.add(r);
+                if (!firstRange) firstRange = r;
+                idx = t.indexOf(lower, idx + needle.length);
+            }
+        }
+        try { CSS.highlights.set("fc-search", hl); } catch (e) { return; }
+        if (firstRange) {
+            // Scroll the first match into view.
+            try {
+                var rect = firstRange.getBoundingClientRect();
+                window.scrollTo({
+                    top: window.scrollY + rect.top - 160,
+                    behavior: "smooth",
+                });
+            } catch (e) {}
+        }
+    }
+
+    // -------------------------------------------------------------------------
+    // Reading-path banner: when arriving via /paths/{slug}/ → verse, show a
+    // small banner above the verse with step N of M + prev/next within the path.
+    // -------------------------------------------------------------------------
+    function wirePathBanner() {
+        var params = new URLSearchParams(location.search);
+        var slug = params.get("path");
+        var step = parseInt(params.get("step") || "0", 10);
+        if (!slug || step < 1) return;
+        // Only render on verse pages — has-sidebar pages where breadcrumbs exist.
+        var breadcrumbs = document.querySelector("main .fc-breadcrumbs");
+        if (!breadcrumbs) return;
+
+        fetch(toRoot + "assets/data/paths.json")
+            .then(function (r) { return r.json(); })
+            .then(function (paths) {
+                var path = null;
+                for (var i = 0; i < paths.length; i++) {
+                    if (paths[i].slug === slug) { path = paths[i]; break; }
+                }
+                if (!path || !path.verses || !path.verses.length) return;
+                var idx = step - 1;
+                if (idx < 0 || idx >= path.verses.length) return;
+                var prev = idx > 0 ? path.verses[idx - 1] : null;
+                var next = idx < path.verses.length - 1 ? path.verses[idx + 1] : null;
+
+                var banner = document.createElement("div");
+                banner.className = "fc-path-banner";
+                var left = '<div class="fc-path-banner-left">' +
+                    '<a href="' + toRoot + "paths/" + path.slug + '/">' + escapeBanner(path.name) + '</a>' +
+                    '<span class="fc-path-banner-step">step ' + (idx + 1) + ' of ' + path.verses.length + '</span>' +
+                    '</div>';
+                var right = '<div class="fc-path-banner-right">';
+                if (prev) {
+                    right += '<a href="' + toRoot + prev.url + '?path=' + path.slug + '&step=' + idx + '">← ' + escapeBanner(prev.ref) + '</a>';
+                }
+                if (next) {
+                    right += '<a href="' + toRoot + next.url + '?path=' + path.slug + '&step=' + (idx + 2) + '">' + escapeBanner(next.ref) + ' →</a>';
+                } else {
+                    right += '<span class="fc-path-done">Path complete ✓</span>';
+                }
+                right += "</div>";
+                banner.innerHTML = left + right;
+                breadcrumbs.parentNode.insertBefore(banner, breadcrumbs.nextSibling);
+            })
+            .catch(function (e) { console.warn("[fc] path banner load failed:", e); });
+    }
+    function escapeBanner(s) {
+        return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+    }
+
+    // -------------------------------------------------------------------------
+    // Compare two verses — runs only on /compare/. Loads search.json (full
+    // translation + Purport excerpt), populates two verse pickers grouped by
+    // chapter, renders side-by-side. URL ?a= / ?b= sync.
+    // -------------------------------------------------------------------------
+    function wireCompare() {
+        var sideA = document.getElementById("fc-compare-side-a");
+        if (!sideA) return;
+        var sideB = document.getElementById("fc-compare-side-b");
+        var selA = document.getElementById("fc-compare-a");
+        var selB = document.getElementById("fc-compare-b");
+        var swapBtn = document.getElementById("fc-compare-swap");
+
+        function escapeHtmlC(s) {
+            return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#39;");
+        }
+        function vKey(v) { return "bg-" + v.chapter + "-" + v.label; }
+
+        function populate(sel, data) {
+            var byChapter = {};
+            data.forEach(function (v) {
+                (byChapter[v.chapter] = byChapter[v.chapter] || []).push(v);
+            });
+            var html = "";
+            Object.keys(byChapter).map(Number).sort(function (a, b) { return a - b; })
+                .forEach(function (ch) {
+                    html += '<optgroup label="Chapter ' + ch + '">';
+                    byChapter[ch].forEach(function (v) {
+                        html += '<option value="' + vKey(v) + '">' +
+                            escapeHtmlC(v.ref) + '</option>';
+                    });
+                    html += "</optgroup>";
+                });
+            sel.innerHTML = html;
+        }
+
+        function findVerse(key, data) {
+            for (var i = 0; i < data.length; i++) {
+                if (vKey(data[i]) === key) return data[i];
+            }
+            return null;
+        }
+
+        function renderSide(el, v) {
+            if (!v) {
+                el.innerHTML = '<p style="color:#8B7D6B;">Select a verse…</p>';
+                return;
+            }
+            el.innerHTML =
+                '<h2 class="fc-compare-ref">' + escapeHtmlC(v.ref) + "</h2>" +
+                '<div class="fc-compare-translation">' + escapeHtmlC(v.translation || "") + "</div>" +
+                (v.purport
+                    ? '<div class="fc-compare-purport-label">Purport excerpt</div>' +
+                      '<div class="fc-compare-purport">' + escapeHtmlC(v.purport) + "</div>"
+                    : "") +
+                '<a class="fc-compare-link" href="' + toRoot + v.url + '">Open full verse →</a>';
+        }
+
+        function update(data, pushUrl) {
+            var a = findVerse(selA.value, data);
+            var b = findVerse(selB.value, data);
+            renderSide(sideA, a);
+            renderSide(sideB, b);
+            if (pushUrl) {
+                var p = new URLSearchParams();
+                if (a) p.set("a", selA.value);
+                if (b) p.set("b", selB.value);
+                history.replaceState(null, "", location.pathname + "?" + p.toString());
+            }
+        }
+
+        fetch(toRoot + "assets/data/search.json")
+            .then(function (r) { return r.json(); })
+            .then(function (data) {
+                populate(selA, data);
+                populate(selB, data);
+                var params = new URLSearchParams(location.search);
+                var a = params.get("a") || "bg-2-47";
+                var b = params.get("b") || "bg-18-66";
+                if (selA.querySelector('[value="' + a + '"]')) selA.value = a;
+                if (selB.querySelector('[value="' + b + '"]')) selB.value = b;
+                update(data, false);
+
+                selA.addEventListener("change", function () { update(data, true); });
+                selB.addEventListener("change", function () { update(data, true); });
+                swapBtn.addEventListener("click", function () {
+                    var t = selA.value; selA.value = selB.value; selB.value = t;
+                    update(data, true);
+                });
+            })
+            .catch(function (e) {
+                console.warn("[fc] compare load failed:", e);
+                sideA.innerHTML = '<p style="color:#8B7D6B;">Failed to load verse index.</p>';
+                sideB.innerHTML = "";
+            });
+    }
+
+    // -------------------------------------------------------------------------
     // Random verse — header button fetches the verse index and navigates.
     // -------------------------------------------------------------------------
     function wireRandomVerse() {
@@ -1501,6 +1699,19 @@
         var refEl = card.querySelector(".fc-votd-ref");
         var textEl = card.querySelector(".fc-votd-text");
         var linkEl = card.querySelector(".fc-votd-link");
+        var reflectBlock = document.getElementById("fc-votd-reflect");
+        var reflectQ = document.getElementById("fc-votd-reflect-q");
+        var reflectA = document.getElementById("fc-votd-reflect-answer");
+        var reflectStatus = document.getElementById("fc-votd-reflect-status");
+
+        function loadNotesMap() {
+            try { return JSON.parse(localStorage.getItem("fc-notes") || "{}") || {}; }
+            catch (e) { return {}; }
+        }
+        function saveNotesMap(d) {
+            try { localStorage.setItem("fc-notes", JSON.stringify(d)); } catch (e) {}
+        }
+
         var url = toRoot + "assets/data/verses.json";
         fetch(url).then(function (r) {
             if (!r.ok) throw new Error("HTTP " + r.status);
@@ -1516,6 +1727,49 @@
             if (textEl) textEl.textContent = v.snippet || "";
             if (linkEl) linkEl.href = toRoot + v.url;
             card.removeAttribute("hidden");
+
+            // Daily reflection prompt — bound to the same note storage as the verse page.
+            if (v.reflection && reflectBlock && reflectQ && reflectA) {
+                reflectQ.textContent = v.reflection;
+                var noteId = "bg-" + v.chapter + "-" + v.label;
+                var notes = loadNotesMap();
+                var existing = notes[noteId];
+                if (existing && existing.text) reflectA.value = existing.text;
+                reflectBlock.removeAttribute("hidden");
+
+                var t = null;
+                function persist() {
+                    clearTimeout(t);
+                    t = setTimeout(function () {
+                        var d = loadNotesMap();
+                        var txt = reflectA.value;
+                        if (txt && txt.trim()) {
+                            d[noteId] = {
+                                text: txt,
+                                label: v.ref,
+                                chapter: v.chapter,
+                                vlabel: v.label,
+                                updatedAt: Date.now(),
+                            };
+                        } else {
+                            delete d[noteId];
+                        }
+                        saveNotesMap(d);
+                        if (reflectStatus) {
+                            reflectStatus.textContent = txt && txt.trim()
+                                ? "Saved to your notes for " + v.ref
+                                : "";
+                            setTimeout(function () {
+                                if (reflectStatus && reflectStatus.textContent.indexOf("Saved") === 0) {
+                                    reflectStatus.textContent = "";
+                                }
+                            }, 1800);
+                        }
+                    }, 220);
+                }
+                reflectA.addEventListener("input", persist);
+                reflectA.addEventListener("blur", persist);
+            }
         }).catch(function (err) {
             console.warn("[fc] verse-of-day failed:", err);
             card.setAttribute("hidden", "");
@@ -2191,4 +2445,7 @@
     wireFlashcards();
     wireRandomVerse();
     wireShareImage();
+    wirePermalinkHighlight();
+    wireCompare();
+    wirePathBanner();
 })();

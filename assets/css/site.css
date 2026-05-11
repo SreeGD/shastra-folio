@@ -733,6 +733,191 @@ html[data-pg-filter="senior"] .fc-pg-age:not(.fc-pg-age-senior) {
 html[data-theme="dark"] .fc-explore-link { background: #211a13; border-color: #3a3128; color: #d4a060; }
 html[data-theme="dark"] .fc-explore-link:hover { background: #2a2218; color: #f0a8b8; }
 
+/* ───────── Reading paths ───────── */
+.fc-paths-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+    margin: 1rem 0 2rem;
+}
+.fc-path-card {
+    background: #FCFAF0;
+    border: 1px solid #E8DCC8;
+    border-left: 4px solid var(--fc-gold);
+    border-radius: 6px;
+    padding: 0.9rem 1.1rem;
+    text-decoration: none;
+    color: #3a2f1a;
+    transition: transform 0.12s, box-shadow 0.12s;
+}
+.fc-path-card:hover { transform: translateY(-1px); box-shadow: 0 3px 12px rgba(107,29,42,0.10); }
+.fc-path-card-name {
+    font-family: 'Lora', Georgia, serif;
+    color: var(--fc-maroon);
+    font-weight: 700;
+    font-size: 1.05rem;
+    margin-bottom: 0.3rem;
+}
+.fc-path-card-desc {
+    color: #5a4a2a;
+    font-size: 0.93rem;
+    line-height: 1.55;
+    margin-bottom: 0.4rem;
+}
+.fc-path-card-meta {
+    color: #8B7D6B;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+
+.fc-path-verse-list {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0 2rem;
+}
+.fc-path-verse-list li { border-bottom: 1px solid #E8DCC8; }
+.fc-path-verse-list li:last-child { border-bottom: none; }
+.fc-path-verse-list a {
+    display: grid;
+    grid-template-columns: 2.5rem 5rem 1fr;
+    gap: 0.7rem;
+    align-items: baseline;
+    padding: 0.55rem 0.4rem;
+    color: #3a2f1a;
+    text-decoration: none;
+}
+.fc-path-verse-list a:hover { background: #FBF1F1; }
+.fc-path-step {
+    color: #B8A878;
+    font-size: 0.82rem;
+    text-align: center;
+    font-family: 'Lora', Georgia, serif;
+}
+.fc-path-ref {
+    color: var(--fc-maroon);
+    font-weight: 700;
+    font-family: 'Lora', Georgia, serif;
+}
+.fc-path-snippet { color: #5a4a2a; font-size: 0.92rem; }
+
+/* Banner shown on verse pages when navigating via a path */
+.fc-path-banner {
+    background: linear-gradient(135deg, #FBF1F1 0%, #FCFAF0 100%);
+    border: 1px solid #E8DCB8;
+    border-left: 4px solid var(--fc-maroon);
+    border-radius: 6px;
+    padding: 0.55rem 0.9rem;
+    margin: 0.4rem 0 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+    font-family: 'Lora', Georgia, serif;
+    font-size: 0.92rem;
+}
+.fc-path-banner a { color: var(--fc-maroon); text-decoration: none; }
+.fc-path-banner a:hover { text-decoration: underline; }
+.fc-path-banner-step { color: #8B7D6B; font-size: 0.84rem; margin-left: 0.4rem; }
+.fc-path-banner-right { display: flex; gap: 0.9rem; }
+.fc-path-banner-right .fc-path-done { color: #6B5025; font-style: italic; }
+html[data-theme="dark"] .fc-path-card { background: #211a13; border-color: #3a3128; border-left-color: #d4a040; color: #e6d6b8; }
+html[data-theme="dark"] .fc-path-card-name { color: #f0a8b8; }
+html[data-theme="dark"] .fc-path-card-desc { color: #d4b78a; }
+html[data-theme="dark"] .fc-path-card-meta { color: #a8946a; }
+html[data-theme="dark"] .fc-path-verse-list li { border-bottom-color: #3a3128; }
+html[data-theme="dark"] .fc-path-verse-list a { color: #e6d6b8; }
+html[data-theme="dark"] .fc-path-verse-list a:hover { background: #2a2218; }
+html[data-theme="dark"] .fc-path-ref { color: #f0a8b8; }
+html[data-theme="dark"] .fc-path-snippet { color: #d4b78a; }
+html[data-theme="dark"] .fc-path-banner { background: linear-gradient(135deg, #2a181b, #211a13); border-color: #3a3128; border-left-color: #c84a64; }
+html[data-theme="dark"] .fc-path-banner a { color: #f0a8b8; }
+html[data-theme="dark"] .fc-path-banner-step { color: #a8946a; }
+
+/* ───────── Compare two verses ───────── */
+.fc-compare-row {
+    display: flex;
+    gap: 0.6rem;
+    margin: 1rem 0 0.4rem;
+    align-items: center;
+    flex-wrap: wrap;
+    color: #6B5025;
+    font-family: 'Lora', Georgia, serif;
+}
+.fc-compare-select {
+    background: white;
+    border: 1px solid #D4C4A8;
+    border-radius: 4px;
+    padding: 0.3rem 0.5rem;
+    font-family: 'Lora', Georgia, serif;
+    color: #3a2f1a;
+    min-width: 9rem;
+}
+.fc-compare-vs { color: #8B7D6B; font-style: italic; }
+.fc-compare-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 1.2rem;
+    margin: 1rem 0 2rem;
+}
+@media (max-width: 800px) {
+    .fc-compare-grid { grid-template-columns: 1fr; }
+}
+.fc-compare-side {
+    background: #FCFAF0;
+    border: 1px solid #E8DCC8;
+    border-left: 4px solid var(--fc-gold);
+    border-radius: 6px;
+    padding: 1rem 1.2rem;
+}
+.fc-compare-ref {
+    font-family: 'Lora', Georgia, serif;
+    color: var(--fc-maroon);
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin: 0 0 0.6rem;
+    letter-spacing: 0.02em;
+}
+.fc-compare-translation {
+    font-family: 'Lora', Georgia, serif;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: #3a2f1a;
+    margin-bottom: 0.8rem;
+}
+.fc-compare-purport-label {
+    font-family: 'Lora', Georgia, serif;
+    font-size: 0.74rem;
+    color: #6B5025;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 700;
+    margin: 0.5rem 0 0.3rem;
+}
+.fc-compare-purport {
+    font-family: 'Lora', Georgia, serif;
+    font-size: 0.92rem;
+    line-height: 1.6;
+    color: #5a4a2a;
+}
+.fc-compare-link {
+    display: inline-block;
+    margin-top: 0.8rem;
+    color: #6B5025;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+.fc-compare-link:hover { color: var(--fc-maroon); text-decoration: underline; }
+html[data-theme="dark"] .fc-compare-select { background: #211a13; border-color: #3a3128; color: #e6d6b8; }
+html[data-theme="dark"] .fc-compare-side { background: #211a13; border-color: #3a3128; border-left-color: #d4a040; }
+html[data-theme="dark"] .fc-compare-ref { color: #f0a8b8; }
+html[data-theme="dark"] .fc-compare-translation { color: #e6d6b8; }
+html[data-theme="dark"] .fc-compare-purport-label { color: #d4a060; }
+html[data-theme="dark"] .fc-compare-purport { color: #d4b78a; }
+html[data-theme="dark"] .fc-compare-link { color: #d4a060; }
+html[data-theme="dark"] .fc-compare-link:hover { color: #f0a8b8; }
+
 /* ───────── Flashcards ───────── */
 .fc-deck-controls {
     display: flex;
@@ -1059,6 +1244,61 @@ html[data-theme="dark"] .fc-votd-card { background: #2a2218; border-left-color: 
 html[data-theme="dark"] .fc-votd-ref { color: #f0a8b8; }
 html[data-theme="dark"] .fc-votd-text { color: #e6d6b8; }
 html[data-theme="dark"] .fc-votd-link { color: #d4a060; }
+
+.fc-votd-reflect {
+    max-width: 700px;
+    margin: 1.2rem auto 0;
+    padding: 1rem 1.2rem;
+    background: #FCF8E8;
+    border: 1px solid #E8DCB8;
+    border-left: 4px solid var(--fc-maroon);
+    border-radius: 6px;
+}
+.fc-votd-reflect-label {
+    font-family: 'Lora', Georgia, serif;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--fc-maroon);
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+.fc-votd-reflect-q {
+    font-family: 'Lora', Georgia, serif;
+    font-size: 1.02rem;
+    line-height: 1.55;
+    color: #3a2f1a;
+    font-style: italic;
+    margin-bottom: 0.55rem;
+}
+.fc-votd-reflect-answer {
+    width: 100%;
+    background: white;
+    border: 1px solid #D4C4A8;
+    border-radius: 4px;
+    padding: 0.6rem 0.8rem;
+    font-family: 'Lora', Georgia, serif;
+    font-size: 0.98rem;
+    line-height: 1.55;
+    color: #3a2f1a;
+    resize: vertical;
+    min-height: 80px;
+    box-sizing: border-box;
+}
+.fc-votd-reflect-answer:focus { outline: none; border-color: var(--fc-maroon); box-shadow: 0 0 0 2px rgba(107, 29, 42, 0.12); }
+.fc-votd-reflect-status {
+    margin-top: 0.4rem;
+    font-size: 0.78rem;
+    font-style: italic;
+    color: #8B7D6B;
+    min-height: 1rem;
+}
+html[data-theme="dark"] .fc-votd-reflect { background: #2a181b; border-color: #3a3128; border-left-color: #c84a64; }
+html[data-theme="dark"] .fc-votd-reflect-label { color: #f0a8b8; }
+html[data-theme="dark"] .fc-votd-reflect-q { color: #e6d6b8; }
+html[data-theme="dark"] .fc-votd-reflect-answer { background: #1a1612; border-color: #3a3128; color: #e6d6b8; }
+html[data-theme="dark"] .fc-votd-reflect-answer:focus { border-color: #c84a64; box-shadow: 0 0 0 2px rgba(200, 74, 100, 0.2); }
+html[data-theme="dark"] .fc-votd-reflect-status { color: #d4a060; }
 
 /* ───────── 404 page ───────── */
 .fc-404 {
@@ -2276,6 +2516,36 @@ body.pen-active .fc-pen-fab::after {
     font-size: 0.8rem;
     margin-top: 0.18rem;
     line-height: 1.4;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   Layout — single-column (default) vs side-by-side (Sanskrit / English)
+   ═══════════════════════════════════════════════════════════════ */
+html[data-layout="side"] .fc-verse-block {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    column-gap: 1.6rem;
+    align-items: start;
+}
+html[data-layout="side"] .fc-verse-block > .fc-verse-block-header { grid-column: 1 / -1; }
+html[data-layout="side"] .fc-verse-block > [data-sec="devanagari"],
+html[data-layout="side"] .fc-verse-block > [data-sec="iast"],
+html[data-layout="side"] .fc-verse-block > [data-sec="synonyms"],
+html[data-layout="side"] .fc-verse-block > [data-sec="blended"] { grid-column: 1; }
+html[data-layout="side"] .fc-verse-block > [data-sec="translation"],
+html[data-layout="side"] .fc-verse-block > [data-sec="purport"],
+html[data-layout="side"] .fc-verse-block > [data-sec="gaudiya"],
+html[data-layout="side"] .fc-verse-block > [data-sec="classical"],
+html[data-layout="side"] .fc-verse-block > [data-sec="personal_guidance"],
+html[data-layout="side"] .fc-verse-block > [data-sec="related"],
+html[data-layout="side"] .fc-verse-block > [data-sec="lectures"],
+html[data-layout="side"] .fc-verse-block > .fc-note-block,
+html[data-layout="side"] .fc-verse-block > .fc-source-link { grid-column: 2; }
+@media (max-width: 1000px) {
+    html[data-layout="side"] .fc-verse-block {
+        grid-template-columns: 1fr;
+    }
+    html[data-layout="side"] .fc-verse-block > * { grid-column: 1 !important; }
 }
 
 /* ═══════════════════════════════════════════════════════════════
