@@ -1,0 +1,1486 @@
+/* ============================================================
+   FolioCorpus — Bhagavad-gītā static site
+   Adapted from prototype/app.py CUSTOM_CSS; Streamlit-only
+   selectors removed; site-chrome (header/breadcrumbs/nav) added.
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Lora:ital,wght@0,400;0,600;1,400&family=Noto+Sans+Devanagari:wght@400;600&family=Noto+Serif:ital,wght@0,400;0,600;1,400&display=swap');
+
+:root {
+    --fc-gold: #B8860B;
+    --fc-maroon: #6B1D2A;
+    --fc-cream: #FFF8F0;
+    --fc-warm-gray: #5C5347;
+    --fc-light-tan: #F5EDE0;
+    --fc-accent: #C47D2B;
+    --fc-text: #3B2F20;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+    margin: 0;
+    padding: 0;
+    background-color: #FAF6E8;
+    color: var(--fc-text);
+    font-family: 'Lora', Georgia, serif;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--fc-maroon); }
+a:hover { color: var(--fc-accent); }
+
+hr { border: none; border-top: 1px solid #DCD0B0; margin: 1.4rem 0; }
+
+/* ───────── Site chrome: header / nav / footer ───────── */
+.fc-site-header {
+    background: linear-gradient(135deg, #6B1D2A 0%, #8B3A4A 50%, #B8860B 100%);
+    padding: 1.1rem 2rem;
+    color: var(--fc-cream);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+}
+.fc-site-header .fc-brand {
+    font-family: 'Lora', Georgia, serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #FFF8F0;
+    text-decoration: none;
+    letter-spacing: 0.04em;
+}
+.fc-site-header .fc-brand span.fc-sub {
+    font-weight: 400;
+    font-size: 0.9rem;
+    font-style: italic;
+    color: #F5DEB3;
+    margin-left: 0.6rem;
+}
+.fc-site-nav a {
+    color: #F5DEB3;
+    text-decoration: none;
+    margin-left: 1.2rem;
+    font-size: 0.95rem;
+}
+.fc-site-nav a:hover { color: #FFF; text-decoration: underline; }
+
+.fc-container {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 1.8rem 1.6rem 3rem;
+    min-width: 0; /* allow grid items with wide content to shrink */
+}
+
+/* Three-column layout when sidebars are present (chapter + verse pages).
+   Landing/BG home/404 stay single-column. Columns shrink to a thin "rail"
+   when the user collapses a sidebar via its collapse toggle. */
+.fc-layout {
+    display: block;
+}
+:root {
+    --fc-left-col: 260px;
+    --fc-right-col: 260px;
+    --fc-rail: 34px;
+}
+html[data-left-collapsed="1"] { --fc-left-col: var(--fc-rail); }
+html[data-right-collapsed="1"] { --fc-right-col: var(--fc-rail); }
+
+body.has-sidebar .fc-layout {
+    display: grid;
+    grid-template-columns: var(--fc-left-col) minmax(0, 1fr) var(--fc-right-col);
+    gap: 0;
+    max-width: none;
+    margin: 0;
+    padding: 0;
+}
+/* On chapter/verse pages, the middle column fills available width.
+   Inner content is centred within the column and capped for comfortable
+   line length, so very wide monitors don't produce 200-char lines. */
+body.has-sidebar .fc-container {
+    margin: 0 auto;
+    max-width: 1080px;
+    padding: 1.6rem 1.8rem 3rem;
+    width: 100%;
+}
+@media (max-width: 1100px) {
+    body.has-sidebar .fc-layout {
+        grid-template-columns: minmax(0, 1fr) var(--fc-right-col);
+    }
+    .fc-left-sidebar { display: none; }
+}
+@media (max-width: 820px) {
+    body.has-sidebar .fc-layout {
+        grid-template-columns: 1fr;
+    }
+    .fc-sidebar { display: none; }
+}
+
+.fc-site-footer {
+    border-top: 1px solid #DCD0B0;
+    padding: 1.4rem 1.6rem;
+    text-align: center;
+    color: #8B7D6B;
+    font-size: 0.85rem;
+    margin-top: 2rem;
+}
+.fc-site-footer a { color: #6B5025; }
+
+/* ───────── Breadcrumbs ───────── */
+.fc-breadcrumbs {
+    font-family: 'Lora', Georgia, serif;
+    font-size: 0.88rem;
+    color: #8B7D6B;
+    margin: 0 0 0.4rem;
+}
+.fc-breadcrumbs a {
+    color: #6B5025;
+    text-decoration: none;
+}
+.fc-breadcrumbs a:hover { text-decoration: underline; }
+.fc-breadcrumbs .sep { margin: 0 0.45rem; color: #C8B47A; }
+
+/* ───────── Verse heading ───────── */
+.fc-verse-heading {
+    font-family: 'Lora', Georgia, serif;
+    color: #6B1D2A;
+    font-size: 1.4rem;
+    margin: 0.4rem 0 1.1rem;
+    letter-spacing: 0.02em;
+}
+
+/* Page section divider */
+.fc-section {
+    margin: 1.3rem 0;
+}
+.fc-section-label {
+    font-family: 'Lora', Georgia, serif;
+    font-weight: 700;
+    color: #6B5025;
+    font-size: 0.92rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin: 1.0rem 0 0.45rem;
+    border-bottom: 2px solid #C8B47A;
+    padding-bottom: 0.22rem;
+    width: fit-content;
+}
+
+/* ───────── Devanagari & IAST (verse text) ───────── */
+.cr-devanagari {
+    font-family: 'Noto Sans Devanagari', 'Sanskrit 2003', serif;
+    font-size: 1.32rem;
+    line-height: 1.95;
+    text-align: center;
+    color: #3a2f1a;
+    margin: 0.7rem auto;
+    max-width: 60ch;
+    white-space: pre-line;
+}
+
+.cr-iast {
+    font-family: 'Noto Serif', 'Charis SIL', Georgia, serif;
+    font-style: italic;
+    font-size: 1.05rem;
+    text-align: center;
+    line-height: 1.8;
+    color: #5a4a2a;
+    margin: 0.25rem auto 0.85rem;
+    max-width: 56ch;
+    letter-spacing: 0.01em;
+    white-space: pre-line;
+}
+
+/* IAST block: one verse-line at a time, with an optional English reading guide
+   interleaved below each line. Toggle controls `data-sec="pronunciation"`. */
+.cr-iast-block {
+    text-align: center;
+    margin: 0.25rem auto 0.85rem;
+    max-width: 60ch;
+    line-height: 1.75;
+}
+.cr-iast-line {
+    font-family: 'Noto Serif', 'Charis SIL', Georgia, serif;
+    font-style: italic;
+    font-size: 1.05rem;
+    color: #5a4a2a;
+    letter-spacing: 0.01em;
+}
+.cr-pron-line {
+    font-family: 'Lora', Georgia, serif;
+    font-style: normal;
+    font-size: 0.82rem;
+    color: #A89B82;
+    letter-spacing: 0.02em;
+    margin-bottom: 0.18rem;
+}
+
+/* ───────── Word-to-word synonyms ───────── */
+.cr-synonyms-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 0.9rem;
+    line-height: 1.85;
+    margin: 0.3rem 0 0.6rem;
+}
+.cr-syn-item {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.35rem;
+    padding: 0.05rem 0.4rem 0.05rem 0;
+    border-right: 1px solid #DCD0B0;
+}
+.cr-syn-item:last-child { border-right: none; }
+.cr-syn-iast {
+    font-family: 'Noto Serif', Georgia, serif;
+    font-style: italic;
+    font-weight: 600;
+    color: #6B1D2A;
+    font-size: 1.0rem;
+}
+.cr-syn-sep { color: #B8A878; font-weight: 300; }
+.cr-syn-en {
+    font-family: 'Lora', Georgia, serif;
+    color: #3a2f1a;
+    font-size: 0.95rem;
+}
+
+/* ───────── Blended reading (Sanskrit + English inline) ───────── */
+.cr-blend-details {
+    margin: 0.4rem 0 0.9rem;
+}
+.cr-blend-details > summary {
+    font-family: 'Lora', Georgia, serif;
+    font-weight: 700;
+    color: #6B5025;
+    font-size: 0.9rem;
+    letter-spacing: 0.06em;
+    cursor: pointer;
+    padding: 0.3rem 0.4rem;
+    text-transform: uppercase;
+}
+.cr-blend-grid {
+    background: #FCF8E8;
+    border-left: 4px solid #C8B47A;
+    border-radius: 4px;
+    padding: 0.9rem 1.2rem;
+    margin-top: 0.4rem;
+}
+.cr-blend-block {
+    padding: 0.7rem 0;
+    border-bottom: 1px dashed rgba(200, 180, 122, 0.45);
+}
+.cr-blend-block:last-child { border-bottom: none; }
+.cr-blend-iast-line {
+    font-family: 'Noto Serif', Georgia, serif;
+    font-style: italic;
+    font-weight: 600;
+    color: #6B1D2A;
+    font-size: 1.14rem;
+    text-align: center;
+    line-height: 1.7;
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.015em;
+}
+.cr-blend-line {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 1.0rem;
+    padding: 0.2rem 0;
+    justify-content: center;
+}
+.cr-blend-pair {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0.15rem 0.35rem;
+    border-radius: 3px;
+    transition: background 0.12s;
+    line-height: 1.3;
+}
+.cr-blend-pair:hover { background: #FAE07A; }
+.cr-blend-pair .cr-blend-iast {
+    font-family: 'Noto Serif', Georgia, serif;
+    font-style: italic;
+    font-weight: 600;
+    color: #6B1D2A;
+    font-size: 1.05rem;
+    line-height: 1.4;
+    white-space: nowrap;
+}
+.cr-blend-pair .cr-blend-en {
+    color: #5a4a2a;
+    font-size: 0.82rem;
+    line-height: 1.3;
+    margin-top: 0.05rem;
+    white-space: nowrap;
+    font-family: 'Lora', Georgia, serif;
+    letter-spacing: 0.005em;
+}
+
+/* ───────── Translation call-out ───────── */
+.fc-translation {
+    background: #FCF8E8;
+    border-left: 4px solid var(--fc-gold);
+    border-radius: 3px;
+    padding: 0.9rem 1.2rem;
+    margin: 0.6rem 0 1rem;
+    font-family: 'Lora', Georgia, serif;
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: #3a2f1a;
+    font-weight: 500;
+}
+.fc-translation::before {
+    content: "Translation";
+    display: block;
+    font-size: 0.78rem;
+    letter-spacing: 0.14em;
+    color: #6B5025;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 0.35rem;
+}
+
+/* ───────── Purport ───────── */
+.cr-purport-body {
+    font-family: 'Lora', Georgia, serif;
+    font-size: 1.04rem;
+    line-height: 1.78;
+    color: #3a2f1a;
+}
+.cr-purport-body p {
+    margin: 0 0 0.85rem;
+}
+.cr-purport-body p:last-child { margin-bottom: 0; }
+.cr-purport-attrib {
+    font-style: italic;
+    font-size: 0.85rem;
+    color: #8B7D6B;
+    margin-top: 0.4rem;
+}
+
+/* ───────── Ācārya cards (Gauḍīya & classical) ───────── */
+.cr-acarya-card {
+    border-radius: 5px;
+    padding: 0.7rem 1rem;
+    margin: 0.55rem 0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    background: #FCFAF0;
+}
+.cr-acarya-card.gaudiya {
+    border-left: 5px solid #6B1D2A;
+    background: #FBF1F1;
+}
+.cr-acarya-card.classical {
+    border-left: 5px solid #B8860B;
+    background: #FBF6E4;
+}
+.cr-acarya-name {
+    font-family: 'Lora', Georgia, serif;
+    font-weight: 700;
+    font-size: 1.12rem;
+    margin-bottom: 0.45rem;
+    padding-bottom: 0.25rem;
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+}
+.cr-acarya-card.gaudiya .cr-acarya-name { color: #6B1D2A; }
+.cr-acarya-card.classical .cr-acarya-name { color: #6B5025; }
+.cr-samp-badge {
+    color: white;
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    padding: 2px 8px;
+    border-radius: 10px;
+    text-transform: uppercase;
+}
+.cr-acarya-card.gaudiya .cr-samp-badge { background: #6B1D2A; }
+.cr-acarya-card.classical .cr-samp-badge { background: #B8860B; }
+.cr-acarya-label {
+    font-family: 'Lora', Georgia, serif;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: #6B5025;
+    margin: 0.55rem 0 0.25rem;
+    font-weight: 600;
+}
+.cr-acarya-trans {
+    background: rgba(255,255,255,0.55);
+    border-left: 3px solid #C8B47A;
+    padding: 0.6rem 1rem;
+    margin: 0.2rem 0 0.5rem;
+    color: #3a2f1a;
+    font-style: italic;
+    font-size: 1.08rem;
+    line-height: 1.7;
+    border-radius: 2px;
+}
+.cr-acarya-card.gaudiya .cr-acarya-trans { border-left-color: #6B1D2A; }
+.cr-acarya-card.classical .cr-acarya-trans { border-left-color: #B8860B; }
+.cr-acarya-purp {
+    font-family: 'Lora', Georgia, serif;
+    font-size: 1.0rem;
+    line-height: 1.72;
+    color: #3a2f1a;
+}
+.cr-acarya-purp p { margin: 0.45rem 0; }
+
+/* ───────── Personal Guidance ───────── */
+.fc-pg-essence {
+    font-family: 'Lora', Georgia, serif;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: #3a2f1a;
+    background: #FCF8E8;
+    border-left: 3px solid #C8B47A;
+    padding: 0.7rem 1rem;
+    border-radius: 2px;
+    margin: 0.4rem 0 0.9rem;
+}
+.fc-pg-sub {
+    font-family: 'Lora', Georgia, serif;
+    font-weight: 700;
+    color: #6B5025;
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin: 0.9rem 0 0.35rem;
+}
+.fc-pg-list {
+    margin: 0.2rem 0 0.5rem 1.1rem;
+    padding: 0;
+}
+.fc-pg-list li {
+    margin: 0.25rem 0;
+    line-height: 1.6;
+    color: #3a2f1a;
+}
+.fc-pg-age {
+    background: #FBF6E4;
+    border: 1px solid #E8DCB8;
+    border-radius: 4px;
+    padding: 0.7rem 1rem;
+    margin: 0.5rem 0;
+}
+.fc-pg-age-label {
+    font-family: 'Lora', Georgia, serif;
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: #6B1D2A;
+    margin-bottom: 0.3rem;
+    text-transform: capitalize;
+}
+
+/* ───────── Prev / Next nav ───────── */
+.fc-prevnext {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    gap: 0.8rem;
+    margin: 2.2rem 0 0.6rem;
+    border-top: 1px solid #DCD0B0;
+    padding-top: 1rem;
+}
+.fc-prevnext a {
+    flex: 1;
+    background: #F0E8D2;
+    border: 1px solid #D4C4A8;
+    border-radius: 6px;
+    padding: 0.7rem 1rem;
+    text-decoration: none;
+    color: #6B5025;
+    transition: background 0.12s;
+    font-family: 'Lora', Georgia, serif;
+    line-height: 1.4;
+}
+.fc-prevnext a:hover { background: #E8DCB8; color: #3a2f1a; }
+.fc-prevnext a.next { text-align: right; }
+.fc-prevnext a span.dir {
+    display: block;
+    font-size: 0.74rem;
+    letter-spacing: 0.12em;
+    color: #8B7D6B;
+    text-transform: uppercase;
+    margin-bottom: 0.18rem;
+}
+.fc-prevnext a span.label {
+    font-weight: 600;
+    color: #6B1D2A;
+    font-size: 1rem;
+}
+.fc-prevnext .placeholder {
+    flex: 1;
+    visibility: hidden;
+}
+
+/* ───────── Chapter cards (BG home & landing) ───────── */
+.fc-card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 0.9rem;
+    margin: 1.2rem 0;
+}
+.fc-chapter-card {
+    background: #FCFAF0;
+    border: 1px solid #E8DCC8;
+    border-left: 4px solid var(--fc-gold);
+    border-radius: 6px;
+    padding: 0.9rem 1rem;
+    text-decoration: none;
+    color: #3a2f1a;
+    transition: transform 0.12s, box-shadow 0.12s;
+    display: block;
+}
+.fc-chapter-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 14px rgba(107,29,42,0.10);
+}
+.fc-chapter-card .ch-num {
+    font-family: 'Lora', Georgia, serif;
+    color: #6B1D2A;
+    font-weight: 700;
+    font-size: 1.05rem;
+    margin: 0;
+}
+.fc-chapter-card .ch-title {
+    color: #3a2f1a;
+    font-size: 0.92rem;
+    margin: 0.25rem 0 0;
+    line-height: 1.35;
+}
+.fc-chapter-card .ch-meta {
+    color: #8B7D6B;
+    font-size: 0.78rem;
+    margin-top: 0.4rem;
+}
+
+/* ───────── Chapter index (verse list) ───────── */
+.fc-verse-list {
+    list-style: none;
+    margin: 1rem 0 0;
+    padding: 0;
+}
+.fc-verse-list li {
+    border-bottom: 1px solid #E8DCC8;
+    margin: 0;
+}
+.fc-verse-list li:last-child { border-bottom: none; }
+.fc-verse-list a {
+    display: block;
+    padding: 0.7rem 0.4rem;
+    color: #3a2f1a;
+    text-decoration: none;
+    transition: background 0.1s;
+}
+.fc-verse-list a:hover {
+    background: #FBF1F1;
+}
+.fc-verse-list .vlabel {
+    color: #6B1D2A;
+    font-weight: 700;
+    font-family: 'Lora', Georgia, serif;
+    margin-right: 0.6rem;
+    display: inline-block;
+    min-width: 4ch;
+}
+.fc-verse-list .vpreview {
+    color: #5a4a2a;
+    font-size: 0.95rem;
+}
+
+/* ───────── Vedabase outbound link (subtle) ───────── */
+.fc-source-link {
+    font-size: 0.82rem;
+    color: #8B7D6B;
+    margin-top: 1.4rem;
+    text-align: right;
+}
+.fc-source-link a { color: #6B5025; }
+
+/* ───────── Landing page ───────── */
+.fc-hero {
+    text-align: center;
+    margin: 1.5rem 0 2rem;
+}
+.fc-hero h1 {
+    font-family: 'Lora', Georgia, serif;
+    color: #6B1D2A;
+    font-size: 2.1rem;
+    margin: 0 0 0.5rem;
+    letter-spacing: 0.03em;
+}
+.fc-hero p {
+    color: #5a4a2a;
+    font-size: 1.05rem;
+    max-width: 60ch;
+    margin: 0 auto;
+    line-height: 1.7;
+}
+
+/* ───────── 404 page ───────── */
+.fc-404 {
+    text-align: center;
+    margin: 4rem auto;
+    color: #6B5025;
+}
+.fc-404 h1 {
+    font-size: 3rem;
+    color: #6B1D2A;
+    margin: 0 0 0.5rem;
+}
+
+/* ───────── Section-toggle hide rules (driven by toggle.js + localStorage) ───────── */
+html[data-hide-devanagari="1"] [data-sec="devanagari"],
+html[data-hide-iast="1"] [data-sec="iast"],
+html[data-hide-pronunciation="1"] [data-sec="pronunciation"],
+html[data-hide-synonyms="1"] [data-sec="synonyms"],
+html[data-hide-blended="1"] [data-sec="blended"],
+html[data-hide-purport="1"] [data-sec="purport"],
+html[data-hide-gaudiya="1"] [data-sec="gaudiya"],
+html[data-hide-classical="1"] [data-sec="classical"],
+html[data-hide-personal_guidance="1"] [data-sec="personal_guidance"],
+html[data-hide-related="1"] [data-sec="related"],
+html[data-hide-lectures="1"] [data-sec="lectures"] {
+    display: none !important;
+}
+
+/* ───────── Toggle panel (Display options) ───────── */
+.fc-toggle-panel {
+    background: #FBF6E4;
+    border: 1px solid #E8DCB8;
+    border-radius: 6px;
+    padding: 0.5rem 0.9rem;
+    margin: 0.6rem 0 1.2rem;
+}
+.fc-toggle-panel > summary {
+    cursor: pointer;
+    list-style: none;
+    font-family: 'Lora', Georgia, serif;
+    font-size: 0.92rem;
+    color: #6B5025;
+    font-weight: 600;
+    user-select: none;
+    padding: 0.15rem 0;
+}
+.fc-toggle-panel > summary::-webkit-details-marker { display: none; }
+.fc-toggle-panel > summary::after {
+    content: " ▾";
+    font-size: 0.75rem;
+    color: #8B7D6B;
+}
+.fc-toggle-panel[open] > summary::after { content: " ▴"; }
+.fc-toggle-icon {
+    display: inline-block;
+    margin-right: 0.35rem;
+    opacity: 0.8;
+}
+.fc-toggle-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 0.35rem 1rem;
+    margin-top: 0.7rem;
+    padding-top: 0.55rem;
+    border-top: 1px dashed #E8DCB8;
+}
+.fc-toggle-grid label {
+    font-family: 'Lora', Georgia, serif;
+    font-size: 0.92rem;
+    color: #3a2f1a;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    user-select: none;
+}
+.fc-toggle-grid input[type="checkbox"] {
+    accent-color: var(--fc-maroon);
+    width: 1rem;
+    height: 1rem;
+    cursor: pointer;
+}
+
+/* ───────── Chapter view: verse blocks + jump strip + dividers ───────── */
+.fc-jump-strip {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem 0.35rem;
+    margin: 0.6rem 0 0.4rem;
+}
+.fc-jump-pill {
+    display: inline-block;
+    background: #F0E8D2;
+    border: 1px solid #D4C4A8;
+    border-radius: 12px;
+    padding: 0.1rem 0.55rem;
+    font-size: 0.82rem;
+    color: #6B5025 !important;
+    text-decoration: none !important;
+    line-height: 1.6;
+    transition: background 0.12s;
+    font-family: 'Lora', Georgia, serif;
+}
+.fc-jump-pill:hover { background: #E8DCB8; color: #3a2f1a !important; }
+
+.fc-verse-block {
+    scroll-margin-top: 1.5rem;
+    padding: 0.4rem 0 0.8rem;
+}
+.fc-verse-block-header {
+    display: flex;
+    align-items: baseline;
+    gap: 0.6rem;
+    margin: 0.4rem 0 0.8rem;
+}
+.fc-verse-block-label {
+    font-family: 'Lora', Georgia, serif;
+    color: #6B1D2A;
+    font-size: 1.25rem;
+    margin: 0;
+    letter-spacing: 0.02em;
+}
+.fc-verse-permalink {
+    font-size: 0.95rem;
+    color: #8B7D6B;
+    text-decoration: none;
+    padding: 0 0.3rem;
+    border-radius: 3px;
+    transition: background 0.12s, color 0.12s;
+}
+.fc-verse-permalink:hover {
+    background: #F0E8D2;
+    color: #6B1D2A;
+}
+.fc-verse-divider {
+    border: none;
+    border-top: 1px dashed #DCD0B0;
+    margin: 1.6rem 0;
+}
+
+.fc-back-to-chapter {
+    font-family: 'Lora', Georgia, serif;
+    color: #6B5025;
+    text-decoration: none;
+    font-size: 0.92rem;
+}
+.fc-back-to-chapter:hover {
+    color: var(--fc-maroon);
+    text-decoration: underline;
+}
+
+/* ───────── Left sidebar (display options, tools, bookmarks) ───────── */
+.fc-left-sidebar {
+    position: sticky;
+    top: 0;
+    align-self: start;
+    max-height: 100vh;
+    overflow-y: auto;
+    border-right: 1px solid #E8DCC8;
+    padding: 1rem 0.5rem 2rem 0.4rem;
+    font-family: 'Lora', Georgia, serif;
+    scrollbar-width: thin;
+    scrollbar-color: #C8B47A transparent;
+}
+.fc-left-sidebar::-webkit-scrollbar { width: 8px; }
+.fc-left-sidebar::-webkit-scrollbar-thumb { background: #C8B47A; border-radius: 4px; }
+
+.fc-sb-collapse {
+    background: #F0E8D2;
+    border: 1px solid #D4C4A8;
+    color: #6B5025;
+    width: 26px;
+    height: 26px;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0.6rem;
+    transition: background 0.12s;
+}
+.fc-sb-collapse:hover { background: #E8DCB8; }
+.fc-left-sidebar .fc-sb-collapse::before { content: "‹"; font-size: 1rem; line-height: 1; }
+.fc-sidebar .fc-sb-collapse::before { content: "›"; font-size: 1rem; line-height: 1; }
+html[data-left-collapsed="1"] .fc-left-sidebar .fc-sb-collapse::before { content: "›"; }
+html[data-right-collapsed="1"] .fc-sidebar .fc-sb-collapse::before { content: "‹"; }
+html[data-left-collapsed="1"] .fc-left-sidebar .fc-sb-body,
+html[data-right-collapsed="1"] .fc-sidebar .fc-sb-body { display: none; }
+html[data-left-collapsed="1"] .fc-left-sidebar { padding: 0.6rem 0.3rem; border-right-color: transparent; }
+html[data-right-collapsed="1"] .fc-sidebar { padding: 0.6rem 0.3rem; border-left-color: transparent; }
+
+.fc-sb-section {
+    margin-bottom: 1.2rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 1px dashed #DCD0B0;
+}
+.fc-sb-section:last-child { border-bottom: none; }
+.fc-sb-title {
+    font-family: 'Lora', Georgia, serif;
+    font-weight: 700;
+    color: #6B1D2A;
+    font-size: 0.8rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin: 0 0 0.5rem;
+    display: flex;
+    align-items: baseline;
+    gap: 0.4rem;
+}
+.fc-sb-count {
+    background: var(--fc-gold);
+    color: white;
+    border-radius: 10px;
+    padding: 0 0.45rem;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0;
+}
+.fc-sb-sub {
+    font-family: 'Lora', Georgia, serif;
+    font-size: 0.74rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #8B7D6B;
+    margin: 0.55rem 0 0.3rem;
+    font-weight: 600;
+}
+.fc-segmented {
+    display: flex;
+    gap: 0;
+    margin-bottom: 0.5rem;
+    border: 1px solid #D4C4A8;
+    border-radius: 5px;
+    overflow: hidden;
+    background: #FBF6E4;
+}
+.fc-segmented button {
+    flex: 1;
+    background: transparent;
+    border: none;
+    border-right: 1px solid #DCD0B0;
+    color: #6B5025;
+    padding: 0.35rem 0.4rem;
+    font-size: 0.82rem;
+    font-family: 'Lora', Georgia, serif;
+    cursor: pointer;
+    transition: background 0.12s, color 0.12s;
+    white-space: nowrap;
+}
+.fc-segmented button:last-child { border-right: none; }
+.fc-segmented button:hover { background: #F0E8D2; }
+.fc-segmented button.active {
+    background: var(--fc-maroon);
+    color: #FFF8F0;
+    font-weight: 600;
+}
+
+.fc-sb-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    font-size: 0.86rem;
+    color: #3a2f1a;
+}
+.fc-sb-grid label {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    cursor: pointer;
+    user-select: none;
+}
+.fc-sb-grid input[type="checkbox"] {
+    accent-color: var(--fc-maroon);
+    width: 0.95rem;
+    height: 0.95rem;
+    cursor: pointer;
+}
+.fc-sb-actions {
+    display: flex;
+    gap: 0.4rem;
+    margin-top: 0.6rem;
+}
+.fc-sb-actions button {
+    flex: 1;
+    background: #FBF6E4;
+    border: 1px solid #D4C4A8;
+    color: #6B5025;
+    padding: 0.3rem 0.4rem;
+    border-radius: 4px;
+    font-size: 0.78rem;
+    cursor: pointer;
+    font-family: 'Lora', Georgia, serif;
+    transition: background 0.12s;
+}
+.fc-sb-actions button:hover { background: #F0E8D2; }
+
+.fc-sb-tools {
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+}
+.fc-tool-btn {
+    background: #FBF6E4;
+    border: 1px solid #D4C4A8;
+    color: #6B5025;
+    padding: 0.4rem 0.6rem;
+    border-radius: 5px;
+    font-size: 0.86rem;
+    cursor: pointer;
+    text-align: left;
+    font-family: 'Lora', Georgia, serif;
+    transition: background 0.12s, border-color 0.12s, color 0.12s;
+}
+.fc-tool-btn:hover { background: #F0E8D2; border-color: #8B6F2D; }
+.fc-tool-btn.active {
+    background: #6B5025;
+    color: #FAF6E8;
+    border-color: #6B5025;
+}
+.fc-tool-btn-tiny {
+    background: white;
+    border: 1px solid #C8B47A;
+    color: #6B5025;
+    padding: 0.15rem 0.5rem;
+    border-radius: 3px;
+    font-size: 0.74rem;
+    cursor: pointer;
+    margin-left: auto;
+}
+.fc-pen-palette {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.3rem 0.4rem;
+    background: #FBF6E4;
+    border: 1px solid #D4C4A8;
+    border-radius: 5px;
+}
+.fc-pen-swatch {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    border: 2px solid #ccc;
+    cursor: pointer;
+    transition: transform 0.1s, border-color 0.12s;
+}
+.fc-pen-swatch:hover { transform: scale(1.12); }
+.fc-pen-swatch.active {
+    border-color: #3a2f1a;
+    box-shadow: 0 0 0 2px white, 0 0 0 4px #3a2f1a;
+}
+
+/* ───────── Bookmark star + list ───────── */
+.fc-bookmark-btn {
+    background: none;
+    border: none;
+    color: #C8B47A;
+    cursor: pointer;
+    font-size: 1.05rem;
+    padding: 0 0.3rem;
+    line-height: 1;
+    transition: color 0.12s, transform 0.12s;
+}
+.fc-bookmark-btn:hover { color: var(--fc-maroon); transform: scale(1.15); }
+.fc-bookmark-btn.active { color: var(--fc-gold); }
+.fc-bookmark-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.fc-bookmark-list li {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.2rem 0;
+}
+.fc-bookmark-list a {
+    color: #6B5025;
+    text-decoration: none;
+    font-size: 0.88rem;
+    flex: 1;
+}
+.fc-bookmark-list a:hover { color: var(--fc-maroon); text-decoration: underline; }
+.fc-bm-remove {
+    background: none;
+    border: none;
+    color: #B8A878;
+    cursor: pointer;
+    font-size: 0.95rem;
+    padding: 0 0.2rem;
+    line-height: 1;
+}
+.fc-bm-remove:hover { color: var(--fc-maroon); }
+.fc-sb-empty {
+    color: #8B7D6B;
+    font-size: 0.84rem;
+    font-style: italic;
+    padding: 0.3rem 0;
+}
+
+/* ───────── Per-section expand/collapse ───────── */
+.fc-section-label {
+    cursor: pointer;
+    user-select: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+}
+.fc-section-label::before {
+    content: "▾";
+    font-size: 0.72rem;
+    color: #B8A878;
+    transition: transform 0.15s;
+    display: inline-block;
+}
+/* Hidden via collapse: rule emitted per-section based on html[data-collapsed-{name}] */
+html[data-collapsed-synonyms="1"] section[data-sec="synonyms"] > :not(.fc-section-label),
+html[data-collapsed-purport="1"] section[data-sec="purport"] > :not(.fc-section-label),
+html[data-collapsed-gaudiya="1"] section[data-sec="gaudiya"] > :not(.fc-section-label),
+html[data-collapsed-classical="1"] section[data-sec="classical"] > :not(.fc-section-label),
+html[data-collapsed-personal_guidance="1"] section[data-sec="personal_guidance"] > :not(.fc-section-label),
+html[data-collapsed-related="1"] section[data-sec="related"] > :not(.fc-section-label),
+html[data-collapsed-lectures="1"] section[data-sec="lectures"] > :not(.fc-section-label) {
+    display: none !important;
+}
+html[data-collapsed-synonyms="1"] section[data-sec="synonyms"] > .fc-section-label::before,
+html[data-collapsed-purport="1"] section[data-sec="purport"] > .fc-section-label::before,
+html[data-collapsed-gaudiya="1"] section[data-sec="gaudiya"] > .fc-section-label::before,
+html[data-collapsed-classical="1"] section[data-sec="classical"] > .fc-section-label::before,
+html[data-collapsed-personal_guidance="1"] section[data-sec="personal_guidance"] > .fc-section-label::before,
+html[data-collapsed-related="1"] section[data-sec="related"] > .fc-section-label::before,
+html[data-collapsed-lectures="1"] section[data-sec="lectures"] > .fc-section-label::before {
+    transform: rotate(-90deg);
+}
+
+/* ───────── Text highlights (6-color) ───────── */
+.cr-highlight {
+    border-radius: 2px;
+    padding: 0 1px;
+    cursor: pointer;
+    transition: filter 0.15s;
+}
+.cr-highlight:hover { filter: brightness(0.95); }
+.cr-highlight-yellow { background-color: #FCEFA1; }
+.cr-highlight-green  { background-color: #C8E6C9; }
+.cr-highlight-blue   { background-color: #BBDEFB; }
+.cr-highlight-pink   { background-color: #F8BBD0; }
+.cr-highlight-orange { background-color: #FFCC80; }
+.cr-highlight-purple { background-color: #D1C4E9; }
+
+/* Floating highlight pill */
+#fc-hl-pill {
+    position: absolute;
+    background: white;
+    border: 1px solid #C8B47A;
+    border-radius: 18px;
+    padding: 5px 7px;
+    box-shadow: 0 3px 14px rgba(0,0,0,0.18);
+    z-index: 99999;
+    display: none;
+    gap: 3px;
+    align-items: center;
+    font-size: 14px;
+    user-select: none;
+}
+#fc-hl-pill .hl-btn {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: inline-block;
+    transition: transform 0.1s;
+}
+#fc-hl-pill .hl-btn:hover { transform: scale(1.18); }
+#fc-hl-pill .hl-yellow { background: #FCEFA1; }
+#fc-hl-pill .hl-green  { background: #C8E6C9; }
+#fc-hl-pill .hl-blue   { background: #BBDEFB; }
+#fc-hl-pill .hl-pink   { background: #F8BBD0; }
+#fc-hl-pill .hl-orange { background: #FFCC80; }
+#fc-hl-pill .hl-purple { background: #D1C4E9; }
+#fc-hl-pill .hl-cancel {
+    background: transparent;
+    border: 1px solid #DCD0B0;
+    color: #8B7D6B;
+    font-size: 12px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#fc-hl-eraser {
+    position: absolute;
+    background: white;
+    border: 1px solid #D4C4A8;
+    border-radius: 14px;
+    padding: 3px 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    z-index: 99999;
+    display: none;
+    font-size: 12px;
+    cursor: pointer;
+    user-select: none;
+    color: #6B1D2A;
+    font-family: 'Lora', Georgia, serif;
+}
+#fc-hl-eraser:hover { background: #FBF1F1; }
+
+/* ───────── Pen tool overlay ───────── */
+#fc-pen-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 99990;
+    display: none;
+    touch-action: none;
+}
+body.pen-active #fc-pen-canvas {
+    display: block;
+    pointer-events: auto;
+    cursor: crosshair;
+}
+body.pen-active { user-select: none; }
+
+/* Floating pen toggle (FAB) — always visible bottom-right, quick on/off. */
+.fc-pen-fab {
+    position: fixed;
+    bottom: 22px;
+    right: 22px;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    border: 1px solid #C8B47A;
+    background: white;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.18);
+    cursor: pointer;
+    font-size: 1.35rem;
+    z-index: 99992;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.15s, transform 0.1s, border-color 0.15s, box-shadow 0.15s;
+    user-select: none;
+}
+.fc-pen-fab:hover { transform: scale(1.06); border-color: #8B6F2D; }
+body.pen-active .fc-pen-fab {
+    background: #6B5025;
+    color: white;
+    border-color: #6B5025;
+    box-shadow: 0 4px 20px rgba(107, 80, 37, 0.45), 0 0 0 4px rgba(107, 80, 37, 0.15);
+}
+body.pen-active .fc-pen-fab::after {
+    content: "";
+    position: absolute;
+    bottom: 6px;
+    right: 6px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #FF5252;
+    box-shadow: 0 0 0 2px white;
+}
+
+/* "P" shortcut hint inside pen-mode button */
+.fc-kbd {
+    background: white;
+    border: 1px solid #D4C4A8;
+    border-bottom-width: 2px;
+    border-radius: 3px;
+    padding: 0 0.35rem;
+    font-family: monospace;
+    font-size: 0.75rem;
+    color: #6B5025;
+    margin-left: auto;
+}
+#fc-pen-toggle.active .fc-kbd { background: #5a4419; color: #FAF6E8; border-color: #4a3712; }
+#fc-pen-toggle {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* ───────── Right-side tree navigation ───────── */
+.fc-sidebar {
+    border-left: 1px solid #E8DCC8;
+    padding: 1.5rem 0.6rem 2rem 1rem;
+    font-family: 'Lora', Georgia, serif;
+    position: sticky;
+    top: 0;
+    align-self: start;
+    max-height: 100vh;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #C8B47A transparent;
+}
+.fc-sidebar::-webkit-scrollbar { width: 8px; }
+.fc-sidebar::-webkit-scrollbar-thumb { background: #C8B47A; border-radius: 4px; }
+@media (max-width: 900px) {
+    .fc-sidebar {
+        position: static;
+        max-height: none;
+        border-left: none;
+        border-top: 1px solid #E8DCC8;
+        margin: 1.4rem 0.6rem 0;
+        padding: 1rem 0.4rem 2rem;
+    }
+}
+.fc-tree-title {
+    font-family: 'Lora', Georgia, serif;
+    font-weight: 700;
+    color: #6B1D2A;
+    font-size: 0.92rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin: 0 0 0.6rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 1px solid #DCD0B0;
+}
+.fc-tree-chapter {
+    margin: 0;
+}
+.fc-tree-chapter > summary {
+    list-style: none;
+    cursor: pointer;
+    padding: 0.32rem 0.4rem;
+    border-radius: 4px;
+    color: #6B5025;
+    font-weight: 600;
+    font-size: 0.93rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.4rem;
+    user-select: none;
+    transition: background 0.1s;
+}
+.fc-tree-chapter > summary:hover { background: #FBF1F1; color: var(--fc-maroon); }
+.fc-tree-chapter > summary::-webkit-details-marker { display: none; }
+.fc-tree-chapter > summary::before {
+    content: "▸";
+    font-size: 0.72rem;
+    color: #B8A878;
+    margin-right: 0.3rem;
+    transition: transform 0.15s;
+    display: inline-block;
+}
+.fc-tree-chapter[open] > summary::before { transform: rotate(90deg); }
+.fc-tree-ch-num { flex: 1; }
+.fc-tree-ch-meta {
+    color: #A89B82;
+    font-size: 0.78rem;
+    font-weight: 500;
+}
+.fc-tree-verses {
+    list-style: none;
+    margin: 0.2rem 0 0.5rem 0.6rem;
+    padding: 0 0 0 0.4rem;
+    border-left: 1px solid #ECDFC4;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(2.4rem, 1fr));
+    gap: 0.15rem;
+}
+.fc-tree-verses li { margin: 0; }
+.fc-tree-verses a {
+    display: block;
+    text-align: center;
+    padding: 0.2rem 0.3rem;
+    border-radius: 3px;
+    text-decoration: none;
+    color: #5a4a2a;
+    font-size: 0.82rem;
+    line-height: 1.3;
+    transition: background 0.1s;
+}
+.fc-tree-verses a:hover { background: #F0E8D2; color: #3a2f1a; }
+.fc-tree-verses a.active {
+    background: var(--fc-maroon);
+    color: #FFF8F0;
+    font-weight: 700;
+}
+
+/* ───────── Related lectures list ───────── */
+.fc-lecture-list {
+    list-style: none;
+    margin: 0.3rem 0;
+    padding: 0;
+}
+.fc-lecture-item {
+    background: #FCFAF0;
+    border-left: 3px solid #C8B47A;
+    padding: 0.55rem 0.85rem;
+    margin: 0.4rem 0;
+    border-radius: 3px;
+}
+.fc-lecture-title {
+    font-family: 'Lora', Georgia, serif;
+    color: #6B1D2A;
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 0.97rem;
+    line-height: 1.4;
+}
+.fc-lecture-title:hover { text-decoration: underline; }
+.fc-lecture-meta {
+    color: #8B7D6B;
+    font-size: 0.8rem;
+    margin-top: 0.18rem;
+    line-height: 1.4;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   Reading preferences — theme, font, size
+   ═══════════════════════════════════════════════════════════════ */
+
+/* Size: scales the rem-based UI (everything that uses rem grows/shrinks). */
+html[data-size="small"]  { font-size: 15px; }
+html[data-size="normal"] { font-size: 16px; }
+html[data-size="large"]  { font-size: 18px; }
+html[data-size="xl"]     { font-size: 20px; }
+
+/* Font: applies to body prose. Devanāgarī always uses Noto Sans Devanagari. */
+html[data-font="sans"] body,
+html[data-font="sans"] .fc-container,
+html[data-font="sans"] .cr-purport-body,
+html[data-font="sans"] .fc-translation,
+html[data-font="sans"] .cr-acarya-purp,
+html[data-font="sans"] .cr-acarya-purp p,
+html[data-font="sans"] .fc-pg-essence,
+html[data-font="sans"] .fc-pg-list,
+html[data-font="sans"] .cr-synonyms-grid .cr-syn-en {
+    font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", system-ui, sans-serif !important;
+}
+html[data-font="dyslexic"] body,
+html[data-font="dyslexic"] .fc-container,
+html[data-font="dyslexic"] .cr-purport-body,
+html[data-font="dyslexic"] .fc-translation,
+html[data-font="dyslexic"] .cr-acarya-purp,
+html[data-font="dyslexic"] .cr-acarya-purp p,
+html[data-font="dyslexic"] .fc-pg-essence,
+html[data-font="dyslexic"] .fc-pg-list,
+html[data-font="dyslexic"] .cr-synonyms-grid .cr-syn-en {
+    font-family: "Atkinson Hyperlegible", system-ui, sans-serif !important;
+}
+
+/* Theme: Sepia */
+html[data-theme="sepia"] body { background: #F4E4C5; color: #3a2a14; }
+html[data-theme="sepia"] .fc-verse-block-label { color: #6B1D2A; }
+
+/* Theme: Cream (slight warmer) */
+html[data-theme="cream"] body { background: #FAF1DD; color: #3a2f1a; }
+
+/* Theme: Light (default — explicit so toggling back works cleanly) */
+html[data-theme="light"] body { background: #FAF6E8; color: #3b2f20; }
+
+/* Theme: Dark */
+html[data-theme="dark"] body { background: #1a1612; color: #d8c8a8; }
+html[data-theme="dark"] .fc-container,
+html[data-theme="dark"] .fc-verse-block,
+html[data-theme="dark"] .cr-purport-body,
+html[data-theme="dark"] .cr-purport-body p,
+html[data-theme="dark"] .cr-acarya-purp,
+html[data-theme="dark"] .cr-acarya-purp p,
+html[data-theme="dark"] .fc-pg-essence,
+html[data-theme="dark"] .fc-pg-list li,
+html[data-theme="dark"] .cr-syn-en {
+    color: #e6d6b8;
+}
+html[data-theme="dark"] .cr-devanagari { color: #f0e0c0; }
+html[data-theme="dark"] .cr-iast,
+html[data-theme="dark"] .cr-iast-line { color: #d4b78a; }
+html[data-theme="dark"] .cr-syn-iast { color: #f0b896; }
+html[data-theme="dark"] .fc-translation,
+html[data-theme="dark"] .fc-pg-essence,
+html[data-theme="dark"] .cr-blend-grid { background: #2a2218; border-left-color: #8B6F2D; color: #f0e0c0; }
+html[data-theme="dark"] .fc-translation::before { color: #c89858; }
+html[data-theme="dark"] .cr-blend-iast-line,
+html[data-theme="dark"] .cr-blend-pair .cr-blend-iast { color: #f0b896; }
+html[data-theme="dark"] .cr-blend-pair .cr-blend-en { color: #d4b78a; }
+html[data-theme="dark"] .cr-blend-pair:hover { background: #3a2a14; }
+html[data-theme="dark"] .cr-acarya-card { background: #211a13; box-shadow: none; }
+html[data-theme="dark"] .cr-acarya-card.gaudiya { background: #2a181b; border-left-color: #c84a64; }
+html[data-theme="dark"] .cr-acarya-card.classical { background: #2a2310; border-left-color: #d4a040; }
+html[data-theme="dark"] .cr-acarya-card.gaudiya .cr-acarya-name { color: #f0a8b8; }
+html[data-theme="dark"] .cr-acarya-card.classical .cr-acarya-name { color: #f0c878; }
+html[data-theme="dark"] .cr-acarya-trans { background: rgba(255,255,255,0.04); color: #e6d6b8; }
+html[data-theme="dark"] .cr-acarya-label { color: #c89858; }
+html[data-theme="dark"] .fc-pg-age { background: #1f1812; border-color: #3a3128; }
+html[data-theme="dark"] .fc-pg-age-label,
+html[data-theme="dark"] .fc-pg-sub { color: #d4a060; }
+html[data-theme="dark"] .fc-left-sidebar,
+html[data-theme="dark"] .fc-sidebar { border-color: #3a3128; }
+html[data-theme="dark"] .fc-sb-title { color: #f0a8b8; }
+html[data-theme="dark"] .fc-tree-title { color: #f0a8b8; border-bottom-color: #3a3128; }
+html[data-theme="dark"] .fc-tree-chapter > summary { color: #d4a060; }
+html[data-theme="dark"] .fc-tree-chapter > summary:hover { background: #2a2218; color: #f0a8b8; }
+html[data-theme="dark"] .fc-tree-verses { border-left-color: #3a3128; }
+html[data-theme="dark"] .fc-tree-verses a { color: #d4b78a; }
+html[data-theme="dark"] .fc-tree-verses a:hover { background: #3a3128; color: #f0e0c0; }
+html[data-theme="dark"] .fc-tree-verses a.active { background: #c84a64; color: #1a1612; }
+html[data-theme="dark"] .fc-breadcrumbs { color: #c89858; }
+html[data-theme="dark"] .fc-breadcrumbs a { color: #d4a060; }
+html[data-theme="dark"] .fc-breadcrumbs .sep { color: #6a5a3a; }
+html[data-theme="dark"] .fc-section-label { color: #d4a060; border-bottom-color: #5a4419; }
+html[data-theme="dark"] .fc-verse-block-label { color: #f0a8b8; }
+html[data-theme="dark"] .cr-purport-attrib { color: #a8946a; }
+html[data-theme="dark"] hr,
+html[data-theme="dark"] .fc-verse-divider { border-color: #3a3128; }
+html[data-theme="dark"] .fc-prevnext a { background: #211a13; border-color: #3a3128; color: #d4a060; }
+html[data-theme="dark"] .fc-prevnext a:hover { background: #2a2218; color: #f0e0c0; }
+html[data-theme="dark"] .fc-prevnext a span.label { color: #f0a8b8; }
+html[data-theme="dark"] .fc-jump-pill { background: #211a13; border-color: #3a3128; color: #d4a060 !important; }
+html[data-theme="dark"] .fc-jump-pill:hover { background: #3a3128; color: #f0e0c0 !important; }
+html[data-theme="dark"] .fc-chapter-card { background: #211a13; color: #e6d6b8; border-color: #3a3128; border-left-color: #d4a040; }
+html[data-theme="dark"] .fc-chapter-card .ch-num { color: #f0a8b8; }
+html[data-theme="dark"] .fc-chapter-card .ch-title { color: #d4b78a; }
+html[data-theme="dark"] .fc-chapter-card .ch-meta { color: #a8946a; }
+html[data-theme="dark"] .fc-sb-section { border-bottom-color: #3a3128; }
+html[data-theme="dark"] .fc-segmented { background: #211a13; border-color: #3a3128; }
+html[data-theme="dark"] .fc-segmented button { color: #d4a060; border-right-color: #3a3128; }
+html[data-theme="dark"] .fc-segmented button:hover { background: #2a2218; }
+html[data-theme="dark"] .fc-segmented button.active { background: #c84a64; color: #1a1612; }
+html[data-theme="dark"] .fc-tool-btn { background: #211a13; border-color: #3a3128; color: #d4a060; }
+html[data-theme="dark"] .fc-tool-btn:hover { background: #2a2218; color: #f0e0c0; }
+html[data-theme="dark"] .fc-tool-btn.active { background: #d4a060; color: #1a1612; border-color: #d4a060; }
+html[data-theme="dark"] .fc-sb-actions button { background: #211a13; border-color: #3a3128; color: #d4a060; }
+html[data-theme="dark"] .fc-sb-actions button:hover { background: #2a2218; }
+html[data-theme="dark"] .fc-sb-collapse { background: #211a13; border-color: #3a3128; color: #d4a060; }
+html[data-theme="dark"] .fc-sb-collapse:hover { background: #2a2218; }
+html[data-theme="dark"] .fc-bookmark-list a { color: #d4a060; }
+html[data-theme="dark"] .fc-bookmark-list a:hover { color: #f0a8b8; }
+html[data-theme="dark"] .fc-bookmark-btn { color: #5a4419; }
+html[data-theme="dark"] .fc-bookmark-btn.active { color: #f0c878; }
+html[data-theme="dark"] .fc-pen-fab { background: #2a2218; color: #d4a060; border-color: #4a4128; }
+html[data-theme="dark"] .fc-pen-fab:hover { border-color: #d4a060; }
+html[data-theme="dark"] .fc-sb-empty { color: #a8946a; }
+html[data-theme="dark"] .fc-kbd { background: #2a2218; border-color: #4a4128; color: #d4a060; }
+html[data-theme="dark"] .cr-pron-line { color: #8a7a5a; }
+html[data-theme="dark"] .fc-source-link a { color: #d4a060; }
+html[data-theme="dark"] .fc-lecture-item { background: #211a13; border-left-color: #d4a040; }
+html[data-theme="dark"] .fc-lecture-title { color: #f0a8b8; }
+html[data-theme="dark"] .fc-lecture-meta { color: #a8946a; }
+html[data-theme="dark"] .cr-related-pv { background: #d4a040; color: #1a1612; }
+html[data-theme="dark"] .cr-value-pill { background: #1f3144; border-color: #2a4258; color: #b8d8f0; }
+html[data-theme="dark"] .cr-verse-link { background: #2a2010; border-color: #4a3812; color: #e8c39a !important; }
+html[data-theme="dark"] .cr-verse-link:hover { background: #3a2a12; color: #f0c878 !important; }
+html[data-theme="dark"] .fc-site-footer { color: #8a7a5a; border-color: #3a3128; }
+
+/* ───────── Responsive ───────── */
+@media (max-width: 640px) {
+    .fc-container { padding: 1.2rem 1rem 2rem; }
+    .fc-site-header { padding: 0.9rem 1rem; flex-direction: column; align-items: flex-start; }
+    .fc-site-nav a { margin-left: 0; margin-right: 1rem; }
+    .cr-devanagari { font-size: 1.18rem; }
+    .cr-iast { font-size: 0.98rem; }
+    .fc-prevnext { flex-direction: column; }
+    .fc-prevnext a.next { text-align: left; }
+}
