@@ -664,6 +664,259 @@
     }
 
     // -------------------------------------------------------------------------
+    // Per-verse notes — textarea in each verse block, saved per-verse in
+    // localStorage. Sidebar list mirrors bookmarks.
+    // -------------------------------------------------------------------------
+    var NOTES_KEY = "fc-notes";
+    function loadNotes() { return load(NOTES_KEY); }
+    function saveNotes(d) { save(NOTES_KEY, d); }
+
+    function escapeHtml(s) {
+        return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#39;");
+    }
+
+    function renderNotesSidebar() {
+        var list = document.getElementById("fc-notes-list");
+        var count = document.getElementById("fc-notes-count");
+        if (!list || !count) return;
+        var data = loadNotes();
+        var entries = Object.keys(data).filter(function (k) {
+            return data[k] && data[k].text && data[k].text.trim();
+        });
+        entries.sort(function (a, b) { return (data[a].updatedAt || 0) - (data[b].updatedAt || 0); });
+        count.textContent = String(entries.length);
+        if (!entries.length) {
+            list.innerHTML = '<li class="fc-sb-empty">No notes yet — open any verse and write in the 📝 block.</li>';
+            return;
+        }
+        list.innerHTML = entries.map(function (id) {
+            var n = data[id];
+            var url = toRoot + "bg/" + n.chapter + "/" + n.vlabel + "/";
+            var preview = (n.text.split("\n")[0] || "").trim();
+            if (preview.length > 56) preview = preview.slice(0, 53) + "…";
+            return '<li><a href="' + url + '">' + escapeHtml(n.label) +
+                ' — <span style="color:#8B7D6B; font-style:italic;">' + escapeHtml(preview) + '</span></a>' +
+                ' <button type="button" class="fc-bm-remove" data-note-remove="' + id +
+                '" title="Delete note">×</button></li>';
+        }).join("");
+    }
+
+    function wireNotes() {
+        // Hydrate textareas + wire save-on-input
+        document.querySelectorAll(".fc-note-block[data-note-verse]").forEach(function (b) {
+            var id = b.dataset.noteVerse;
+            var ta = b.querySelector(".fc-note-textarea");
+            var status = b.querySelector(".fc-note-status");
+            var del = b.querySelector(".fc-note-delete");
+            if (!ta) return;
+            var data = loadNotes();
+            var entry = data[id];
+            if (entry && entry.text) {
+                ta.value = entry.text;
+                b.classList.add("has-content");
+                b.setAttribute("open", "");
+            }
+            var t = null;
+            function persist() {
+                clearTimeout(t);
+                t = setTimeout(function () {
+                    var d = loadNotes();
+                    var v = ta.value;
+                    if (v && v.trim()) {
+                        d[id] = {
+                            text: v,
+                            label: b.dataset.noteLabel || id,
+                            chapter: parseInt(b.dataset.noteChapter || "0", 10),
+                            vlabel: b.dataset.noteVlabel || "",
+                            updatedAt: Date.now(),
+                        };
+                        b.classList.add("has-content");
+                    } else {
+                        delete d[id];
+                        b.classList.remove("has-content");
+                    }
+                    saveNotes(d);
+                    if (status) {
+                        status.textContent = v && v.trim() ? "Saved" : "";
+                        setTimeout(function () {
+                            if (status.textContent === "Saved") status.textContent = "";
+                        }, 1400);
+                    }
+                    renderNotesSidebar();
+                }, 220);
+            }
+            ta.addEventListener("input", persist);
+            ta.addEventListener("blur", persist);
+            if (del) del.addEventListener("click", function () {
+                ta.value = "";
+                persist();
+            });
+        });
+
+        // Sidebar remove buttons
+        document.addEventListener("click", function (e) {
+            var rm = e.target.closest("[data-note-remove]");
+            if (!rm) return;
+            var id = rm.dataset.noteRemove;
+            var d = loadNotes();
+            delete d[id];
+            saveNotes(d);
+            var block = document.querySelector('.fc-note-block[data-note-verse="' + id + '"]');
+            if (block) {
+                var ta = block.querySelector(".fc-note-textarea");
+                if (ta) ta.value = "";
+                block.classList.remove("has-content");
+            }
+            renderNotesSidebar();
+        });
+
+        renderNotesSidebar();
+    }
+
+    // -------------------------------------------------------------------------
+    // Export — Markdown (human-readable) and JSON (machine-readable backup).
+    // -------------------------------------------------------------------------
+    function wireExport() {
+        var mdBtn = document.getElementById("fc-export-md");
+        var jsonBtn = document.getElementById("fc-export-json");
+        if (!mdBtn && !jsonBtn) return;
+
+        function absUrl(rel) {
+            try { return new URL(toRoot + rel, location.href).href; }
+            catch (e) { return rel; }
+        }
+        function pageOriginUrl(path) {
+            try { return new URL(path, location.href).href; }
+            catch (e) { return path; }
+        }
+        function download(filename, content, mime) {
+            var blob = new Blob([content], { type: mime });
+            var url = URL.createObjectURL(blob);
+            var a = document.createElement("a");
+            a.href = url;
+            a.download = filename;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            setTimeout(function () { URL.revokeObjectURL(url); }, 1500);
+        }
+        function snapshot() {
+            return {
+                exportedAt: new Date().toISOString(),
+                site: "FolioCorpus · Bhagavad-gītā (shastra-folio)",
+                bookmarks: load("fc-bookmarks"),
+                highlights: load("fc-highlights"),
+                notes: loadNotes(),
+            };
+        }
+        function buildMarkdown(data) {
+            var COLOR_EMOJI = { yellow:"🟡", green:"🟢", blue:"🔵", pink:"🩷", orange:"🟠", purple:"🟣" };
+            var out = [];
+            out.push("# My FolioCorpus notes");
+            out.push("");
+            out.push("Exported " + new Date().toLocaleString());
+            out.push("");
+
+            var bmIds = Object.keys(data.bookmarks || {});
+            if (bmIds.length) {
+                out.push("## Bookmarks (" + bmIds.length + ")");
+                out.push("");
+                bmIds.sort(function (a, b) { return (data.bookmarks[a].ts || 0) - (data.bookmarks[b].ts || 0); });
+                bmIds.forEach(function (id) {
+                    var b = data.bookmarks[id];
+                    out.push("- [" + b.label + "](" + absUrl("bg/" + b.chapter + "/" + b.vlabel + "/") + ")");
+                });
+                out.push("");
+            }
+
+            var hlPages = Object.keys(data.highlights || {}).filter(function (p) {
+                return (data.highlights[p] || []).length;
+            });
+            if (hlPages.length) {
+                out.push("## Highlights");
+                out.push("");
+                hlPages.sort();
+                hlPages.forEach(function (pg) {
+                    var list = data.highlights[pg] || [];
+                    out.push("### " + pg);
+                    list.forEach(function (h) {
+                        var e = COLOR_EMOJI[h.color] || "•";
+                        out.push("- " + e + " " + (h.text || "").replace(/\n+/g, " "));
+                    });
+                    out.push("");
+                });
+            }
+
+            var noteIds = Object.keys(data.notes || {}).filter(function (k) {
+                return data.notes[k] && data.notes[k].text && data.notes[k].text.trim();
+            });
+            if (noteIds.length) {
+                out.push("## Notes (" + noteIds.length + ")");
+                out.push("");
+                noteIds.sort(function (a, b) { return (data.notes[a].updatedAt || 0) - (data.notes[b].updatedAt || 0); });
+                noteIds.forEach(function (id) {
+                    var n = data.notes[id];
+                    out.push("### [" + n.label + "](" + absUrl("bg/" + n.chapter + "/" + n.vlabel + "/") + ")");
+                    out.push("");
+                    n.text.split("\n").forEach(function (l) { out.push("> " + l); });
+                    out.push("");
+                });
+            }
+
+            if (out.length <= 4) {
+                out.push("_No bookmarks, highlights, or notes yet._");
+            }
+            return out.join("\n");
+        }
+
+        function ts() {
+            var d = new Date();
+            var pad = function (n) { return n < 10 ? "0" + n : "" + n; };
+            return d.getFullYear() + pad(d.getMonth() + 1) + pad(d.getDate()) +
+                "-" + pad(d.getHours()) + pad(d.getMinutes());
+        }
+        if (mdBtn) mdBtn.addEventListener("click", function () {
+            var data = snapshot();
+            download("foliocorpus-" + ts() + ".md", buildMarkdown(data), "text/markdown;charset=utf-8");
+        });
+        if (jsonBtn) jsonBtn.addEventListener("click", function () {
+            var data = snapshot();
+            download("foliocorpus-" + ts() + ".json", JSON.stringify(data, null, 2), "application/json");
+        });
+    }
+
+    // -------------------------------------------------------------------------
+    // Verse of the day — landing-page card; reads docs/assets/data/verses.json
+    // -------------------------------------------------------------------------
+    function wireVerseOfDay() {
+        var card = document.getElementById("fc-votd");
+        if (!card) return;
+        var refEl = card.querySelector(".fc-votd-ref");
+        var textEl = card.querySelector(".fc-votd-text");
+        var linkEl = card.querySelector(".fc-votd-link");
+        var url = toRoot + "assets/data/verses.json";
+        fetch(url).then(function (r) {
+            if (!r.ok) throw new Error("HTTP " + r.status);
+            return r.json();
+        }).then(function (verses) {
+            if (!Array.isArray(verses) || !verses.length) throw new Error("empty index");
+            var today = new Date();
+            var start = new Date(today.getFullYear(), 0, 0);
+            var doy = Math.floor((today - start) / 86400000);
+            var idx = ((doy - 1) % verses.length + verses.length) % verses.length;
+            var v = verses[idx];
+            if (refEl) refEl.textContent = v.ref;
+            if (textEl) textEl.textContent = v.snippet || "";
+            if (linkEl) linkEl.href = toRoot + v.url;
+            card.removeAttribute("hidden");
+        }).catch(function (err) {
+            console.warn("[fc] verse-of-day failed:", err);
+            card.setAttribute("hidden", "");
+        });
+    }
+
+    // -------------------------------------------------------------------------
     // Presentation mode — fullscreen, one verse at a time. Session-only.
     // F to toggle, ← / → to advance (on chapter pages: between verse anchors;
     // on verse pages: prev/next page navigation). Esc exits.
@@ -760,6 +1013,77 @@
     }
 
     // -------------------------------------------------------------------------
+    // TTS voice + rate controls — populate Voice <select> from speechSynthesis
+    // and a Rate slider. Preferences persist in localStorage and are applied by
+    // wireReadout() when speaking.
+    // -------------------------------------------------------------------------
+    var TTS_KEY = "fc-tts-prefs";
+    function loadTtsPrefs() {
+        try { return JSON.parse(localStorage.getItem(TTS_KEY) || "{}") || {}; }
+        catch (e) { return {}; }
+    }
+    function saveTtsPrefs(p) {
+        try { localStorage.setItem(TTS_KEY, JSON.stringify(p)); } catch (e) {}
+    }
+
+    function wireTtsControls() {
+        var synth = window.speechSynthesis;
+        var container = document.getElementById("fc-tts-controls");
+        if (!synth || !container) return;
+        var select = container.querySelector("#fc-tts-voice");
+        var rate = container.querySelector("#fc-tts-rate");
+        var rateVal = container.querySelector(".fc-tts-rate-val");
+        if (!select || !rate) return;
+        container.hidden = false;
+        var prefs = loadTtsPrefs();
+
+        function populate() {
+            var voices = synth.getVoices();
+            if (!voices || !voices.length) return;
+            var prev = select.value;
+            select.innerHTML = "";
+            voices.slice().sort(function (a, b) {
+                var ae = /^en/i.test(a.lang) ? 0 : 1;
+                var be = /^en/i.test(b.lang) ? 0 : 1;
+                if (ae !== be) return ae - be;
+                return a.name.localeCompare(b.name);
+            }).forEach(function (v) {
+                var o = document.createElement("option");
+                o.value = v.name;
+                o.textContent = v.name + " (" + v.lang + ")";
+                select.appendChild(o);
+            });
+            if (prefs.voice && voices.some(function (v) { return v.name === prefs.voice; })) {
+                select.value = prefs.voice;
+            } else if (prev) {
+                select.value = prev;
+            }
+            window.FC_TTS_VOICES = voices;
+        }
+        populate();
+        if (typeof synth.addEventListener === "function") {
+            synth.addEventListener("voiceschanged", populate);
+        }
+
+        select.addEventListener("change", function () {
+            prefs.voice = select.value;
+            saveTtsPrefs(prefs);
+            window.FC_TTS_PREFS = prefs;
+        });
+        rate.value = prefs.rate || 1.0;
+        if (rateVal) rateVal.textContent = parseFloat(rate.value).toFixed(1) + "×";
+        rate.addEventListener("input", function () {
+            var v = parseFloat(rate.value);
+            prefs.rate = v;
+            saveTtsPrefs(prefs);
+            if (rateVal) rateVal.textContent = v.toFixed(1) + "×";
+            window.FC_TTS_PREFS = prefs;
+        });
+
+        window.FC_TTS_PREFS = prefs;
+    }
+
+    // -------------------------------------------------------------------------
     // Read-aloud (Web Speech API): inject ▶ buttons next to Translation and
     // commentary section labels. Click to speak, click again to stop. Only
     // one utterance plays at a time.
@@ -809,9 +1133,18 @@
 
             var u = new SpeechSynthesisUtterance(text);
             u.lang = "en-US";
-            u.rate = 1.0;
+            var prefs = window.FC_TTS_PREFS || loadTtsPrefs();
+            u.rate = prefs.rate || 1.0;
             u.pitch = 1.0;
             u.volume = 1.0;
+            if (prefs.voice && window.FC_TTS_VOICES) {
+                for (var i = 0; i < window.FC_TTS_VOICES.length; i++) {
+                    if (window.FC_TTS_VOICES[i].name === prefs.voice) {
+                        u.voice = window.FC_TTS_VOICES[i];
+                        break;
+                    }
+                }
+            }
             u.onstart = function () {
                 btn.classList.add("playing");
                 btn.textContent = "■";
@@ -990,8 +1323,12 @@
     wirePen();
     wireRibbon();
     wireChapterSearch();
+    wireTtsControls();
     wireReadout();
     wireAgeFilter();
     wireMobileDrawers();
     wirePresentation();
+    wireNotes();
+    wireExport();
+    wireVerseOfDay();
 })();
