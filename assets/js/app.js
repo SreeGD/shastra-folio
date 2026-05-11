@@ -42,20 +42,34 @@
     // Per-section expand/collapse (click section label or its chevron).
     // Stored per-section name in localStorage; applies across pages.
     // -------------------------------------------------------------------------
-    function setSectionCollapsed(secName, collapsed) {
-        if (collapsed) {
-            S.collapsed[secName] = 1;
+    function setSectionCollapsed(secName, wantCollapsed) {
+        var isDefault = !!(S.DEFAULT_COLLAPSED && S.DEFAULT_COLLAPSED[secName]);
+        if (wantCollapsed) {
+            // Matches the default? Drop the explicit override so we follow the
+            // default in future. Otherwise persist an explicit "1".
+            if (isDefault) delete S.collapsed[secName];
+            else S.collapsed[secName] = 1;
             html.setAttribute("data-collapsed-" + secName, "1");
         } else {
-            delete S.collapsed[secName];
+            // Override default-collapsed sections with explicit "expanded".
+            if (isDefault) S.collapsed[secName] = 0;
+            else delete S.collapsed[secName];
             html.removeAttribute("data-collapsed-" + secName);
         }
         save(S.COLLAPSED_KEY, S.collapsed);
     }
 
+    function isCollapsedNow(secName) {
+        return typeof S.isSectionCollapsed === "function"
+            ? S.isSectionCollapsed(secName)
+            : !!S.collapsed[secName];
+    }
+
     function wireSectionCollapse() {
         // Section labels become click targets for collapse/expand.
         document.addEventListener("click", function (e) {
+            // Ignore clicks on inner controls (read-aloud button, etc.).
+            if (e.target.closest(".fc-readout-btn")) return;
             var label = e.target.closest(".fc-section-label");
             if (!label) return;
             var sec = label.closest("[data-sec]");
@@ -63,7 +77,7 @@
             var name = sec.dataset.sec;
             if (!name) return;
             e.preventDefault();
-            setSectionCollapsed(name, !S.collapsed[name]);
+            setSectionCollapsed(name, !isCollapsedNow(name));
         });
 
         // Expand all / Collapse all buttons in the Display panel.
@@ -753,6 +767,12 @@
     function wireReadout() {
         var synth = window.speechSynthesis;
         if (!synth) return;
+        // Warm-up: getVoices() is async on Chrome/Safari; this kicks off voice load
+        // so the first speak() call doesn't fall into a silent state.
+        try { synth.getVoices(); } catch (e) {}
+        if (typeof synth.addEventListener === "function") {
+            synth.addEventListener("voiceschanged", function () { try { synth.getVoices(); } catch (e) {} });
+        }
         var currentBtn = null;
 
         function makeBtn() {
@@ -764,47 +784,59 @@
             return b;
         }
 
-        function stopSpeaking() {
-            synth.cancel();
-            if (currentBtn) {
-                currentBtn.classList.remove("playing");
-                currentBtn.textContent = "▶";
-                currentBtn = null;
-            }
+        function resetBtn(b) {
+            if (!b) return;
+            b.classList.remove("playing");
+            b.textContent = "▶";
         }
 
         function speak(text, btn) {
-            var wasCurrent = currentBtn === btn;
-            stopSpeaking();
-            if (wasCurrent) return; // toggle off
-            if (!text || !text.trim()) return;
-            // Chunk long passages so utterance start latency stays small and
-            // we don't hit per-utterance length caps in some engines.
-            var chunks = text.match(/[^.!?]+[.!?]+\s*|.+/g) || [text];
-            var idx = 0;
-            function speakChunk() {
-                if (idx >= chunks.length) {
-                    btn.classList.remove("playing");
-                    btn.textContent = "▶";
-                    if (currentBtn === btn) currentBtn = null;
-                    return;
-                }
-                var u = new SpeechSynthesisUtterance(chunks[idx++]);
-                u.lang = "en-US";
-                u.rate = 1.0;
-                u.pitch = 1.0;
-                u.onend = speakChunk;
-                u.onerror = function () {
-                    btn.classList.remove("playing");
-                    btn.textContent = "▶";
-                    currentBtn = null;
-                };
-                synth.speak(u);
+            // Toggle off: same button clicked while playing → stop.
+            if (currentBtn === btn) {
+                synth.cancel();
+                resetBtn(btn);
+                currentBtn = null;
+                return;
             }
+            // Different section: stop the previous utterance first.
+            if (currentBtn) {
+                synth.cancel();
+                resetBtn(currentBtn);
+                currentBtn = null;
+            }
+            text = (text || "").replace(/\s+/g, " ").trim();
+            if (!text) return;
+
+            var u = new SpeechSynthesisUtterance(text);
+            u.lang = "en-US";
+            u.rate = 1.0;
+            u.pitch = 1.0;
+            u.volume = 1.0;
+            u.onstart = function () {
+                btn.classList.add("playing");
+                btn.textContent = "■";
+            };
+            u.onend = function () {
+                resetBtn(btn);
+                if (currentBtn === btn) currentBtn = null;
+            };
+            u.onerror = function (e) {
+                console.warn("[fc] TTS error:", e && (e.error || e.message || e));
+                resetBtn(btn);
+                if (currentBtn === btn) currentBtn = null;
+            };
+            currentBtn = btn;
+            // Mark as playing immediately for responsive UI (some engines never fire onstart).
             btn.classList.add("playing");
             btn.textContent = "■";
-            currentBtn = btn;
-            speakChunk();
+            synth.speak(u);
+            // Chrome quirk: paused state after cancel may persist; resume to actually start.
+            if (synth.paused) try { synth.resume(); } catch (e) {}
+        }
+
+        function stopSpeaking() {
+            try { synth.cancel(); } catch (e) {}
+            if (currentBtn) { resetBtn(currentBtn); currentBtn = null; }
         }
 
         // Translation: button at top-right of the call-out block.

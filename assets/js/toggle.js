@@ -34,10 +34,32 @@
         if (isHidden(SECTIONS[i])) html.setAttribute("data-hide-" + SECTIONS[i], "1");
     }
 
-    // Per-section collapse (per page-section)
-    for (var k in collapsed) {
-        if (collapsed[k]) html.setAttribute("data-collapsed-" + k, "1");
+    // Per-section collapse (per page-section). All "supporting" sections start
+    // collapsed by default so a fresh reader sees just the verse (Devanāgarī +
+    // IAST + Translation). User toggles persist as explicit overrides.
+    // blended reading already starts collapsed via its native <details>, so
+    // we don't need a default override for it here.
+    var DEFAULT_COLLAPSED = {
+        synonyms: true,
+        purport: true,
+        gaudiya: true,
+        classical: true,
+        personal_guidance: true,
+        related: true,
+        lectures: true,
+    };
+    function isSectionCollapsed(s) {
+        return Object.prototype.hasOwnProperty.call(collapsed, s)
+            ? !!collapsed[s]
+            : !!DEFAULT_COLLAPSED[s];
     }
+    Object.keys(DEFAULT_COLLAPSED).forEach(function (s) {
+        if (isSectionCollapsed(s)) html.setAttribute("data-collapsed-" + s, "1");
+    });
+    // Honour any explicit user overrides that aren't in the defaults list.
+    Object.keys(collapsed).forEach(function (s) {
+        if (collapsed[s]) html.setAttribute("data-collapsed-" + s, "1");
+    });
 
     // Sidebar collapse (left/right)
     if (sidebars.left) html.setAttribute("data-left-collapsed", "1");
@@ -65,6 +87,8 @@
         reading: reading,
         PG_FILTER_KEY: PG_FILTER_KEY,
         pgFilter: pgFilter,
+        DEFAULT_COLLAPSED: DEFAULT_COLLAPSED,
+        isSectionCollapsed: isSectionCollapsed,
         SECTIONS: SECTIONS,
         DEFAULT_HIDDEN: DEFAULT_HIDDEN,
         HIDDEN_KEY: HIDDEN_KEY,
