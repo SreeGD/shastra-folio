@@ -20,6 +20,7 @@
     <nav class="fc-site-nav">
         <a href="../../../">Home</a>
         <a href="../../../bg/">Bhagavad-gītā</a>
+        <button type="button" id="fc-random-verse" class="fc-nav-btn" title="Jump to a random verse">🎲 Random</button>
     </nav>
     <button type="button" class="fc-mobile-trigger fc-mobile-trigger-right" data-overlay="right" aria-label="Open chapter index drawer">📚</button>
 </header>
@@ -161,17 +162,18 @@
     <header class="fc-verse-block-header">
         <h2 class="fc-verse-block-label">Bhagavad-gītā 13.8-12</h2>
         <button type="button" class="fc-bookmark-btn" data-bookmark-id="bg-13-8-12" data-bookmark-label="BG 13.8-12" data-bookmark-chapter="13" data-bookmark-vlabel="8-12" aria-label="Bookmark this verse" title="Bookmark this verse">☆</button>
+        <button type="button" class="fc-share-btn" data-share-id="bg-13-8-12" data-share-ref="BG 13.8-12" aria-label="Share as image" title="Share as image">📷</button>
     </header>
 
-    <div class="cr-devanagari" data-sec="devanagari">अमानित्वमदम्भित्वमहिंसा क्षान्तिरार्जवम् ।
-आचार्योपासनं शौचं स्थैर्यमात्मविनिग्रह: ॥ ८ ॥
+    <div class="cr-devanagari" data-sec="devanagari"><span class="fc-hover-word" data-iast="amānitvam" data-en="humility">अमानित्वमदम्भित्वमहिंसा</span> <span class="fc-hover-word" data-iast="adambhitvam" data-en="pridelessness">क्षान्तिरार्जवम्</span> ।
+<span class="fc-hover-word" data-iast="ahiṁsā" data-en="nonviolence">आचार्योपासनं</span> <span class="fc-hover-word" data-iast="kṣāntir" data-en="tolerance">शौचं</span> <span class="fc-hover-word" data-iast="ārjavam" data-en="simplicity">स्थैर्यमात्मविनिग्रह:</span> ॥ ८ ॥
 इन्द्रियार्थेषु वैराग्यमनहङ्कार एव च ।
 जन्ममृत्युजराव्याधिदु:खदोषानुदर्शनम् ॥ ९ ॥
-असक्तिरनभिष्वङ्ग: पुत्रदारगृहादिषु ।
-नित्यं च समचित्तत्वमिष्टानिष्टोपपत्तिषु ॥ १० ॥
+<span class="fc-hover-word" data-iast="indriyārtheṣu">असक्तिरनभिष्वङ्ग:</span> <span class="fc-hover-word" data-iast="vairāgyam" data-en="renunciation">पुत्रदारगृहादिषु</span> ।
+<span class="fc-hover-word" data-iast="anahaṅkāra" data-en="being without false egoism">नित्यं</span> <span class="fc-hover-word" data-iast="eva" data-en="certainly">च</span> <span class="fc-hover-word" data-iast="ca">समचित्तत्वमिष्टानिष्टोपपत्तिषु</span> ॥ १० ॥
 मयि चानन्ययोगेन भक्तिरव्यभिचारिणी ।
-विविक्तदेशसेवित्वमरतिर्जनसंसदि ॥ ११ ॥
-अध्यात्मज्ञाननित्यत्वं तत्त्वज्ञानार्थदर्शनम् ।
+<span class="fc-hover-word" data-iast="duḥkha-doṣānudarśanam" data-en="of the distress">विविक्तदेशसेवित्वमरतिर्जनसंसदि</span> ॥ ११ ॥
+<span class="fc-hover-word" data-iast="asaktir" data-en="being without attachment">अध्यात्मज्ञाननित्यत्वं</span> <span class="fc-hover-word" data-iast="anabhiṣvaṅgaḥ" data-en="being without association">तत्त्वज्ञानार्थदर्शनम्</span> ।
 एतज्ज्ञानमिति प्रोक्तमज्ञानं यदतोऽन्यथा ॥ १२ ॥</div>
     <div class="cr-iast-block" data-sec="iast">
         <div class="cr-iast-line">amānitvam adambhitvam</div>
@@ -3383,6 +3385,19 @@ Further,</div>
     <p>Static site built from <a href="https://github.com/SreeGD/foliocorpus">foliocorpus</a>.</p>
 </footer>
 <button type="button" id="fc-pen-fab" class="fc-pen-fab" aria-label="Toggle pen mode (press P)" title="Toggle pen mode  (P)">✏️</button>
+<div id="fc-share-modal" class="fc-share-modal" hidden role="dialog" aria-modal="true" aria-labelledby="fc-share-title">
+    <div class="fc-share-backdrop"></div>
+    <div class="fc-share-content">
+        <h2 id="fc-share-title">Share verse</h2>
+        <canvas class="fc-share-canvas" width="1080" height="1080"></canvas>
+        <div class="fc-share-actions">
+            <button type="button" class="fc-tool-btn fc-share-download">⬇ Download PNG</button>
+            <button type="button" class="fc-tool-btn fc-share-copy">📋 Copy to clipboard</button>
+            <button type="button" class="fc-tool-btn fc-share-close">Close (Esc)</button>
+        </div>
+        <div class="fc-share-status" aria-live="polite"></div>
+    </div>
+</div>
 <div id="fc-shortcuts-modal" class="fc-shortcuts-modal" aria-hidden="true" role="dialog" aria-labelledby="fc-shortcuts-title">
     <div class="fc-shortcuts-backdrop"></div>
     <div class="fc-shortcuts-content">

@@ -66,6 +66,19 @@ hr { border: none; border-top: 1px solid #DCD0B0; margin: 1.4rem 0; }
     font-size: 0.95rem;
 }
 .fc-site-nav a:hover { color: #FFF; text-decoration: underline; }
+.fc-nav-btn {
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #F5DEB3;
+    padding: 0.3rem 0.7rem;
+    border-radius: 14px;
+    cursor: pointer;
+    margin-left: 1rem;
+    font-family: 'Lora', Georgia, serif;
+    font-size: 0.92rem;
+    transition: background 0.12s, color 0.12s;
+}
+.fc-nav-btn:hover { background: rgba(255, 255, 255, 0.25); color: #FFF; }
 
 /* Mobile-only trigger buttons in the site header that open the sidebars as drawers. */
 .fc-mobile-trigger {
@@ -234,6 +247,51 @@ body.has-sidebar .fc-container {
     max-width: 60ch;
     white-space: pre-line;
 }
+
+/* Word-level hover tooltips on Devanāgarī (built by the generator when
+   Devanāgarī word count matches IAST). Faint dotted underline hints that
+   the word is interactive; hover reveals IAST + English gloss. */
+.fc-hover-word {
+    position: relative;
+    cursor: help;
+    border-bottom: 1px dotted rgba(184, 134, 11, 0.32);
+    transition: background 0.12s, border-color 0.12s;
+}
+.fc-hover-word:hover {
+    background: rgba(252, 239, 161, 0.4);
+    border-bottom-color: rgba(184, 134, 11, 0.75);
+    z-index: 10;
+}
+.fc-hover-word::after {
+    content: attr(data-iast);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translate(-50%, -8px);
+    background: rgba(58, 47, 26, 0.97);
+    color: #FAF6E8;
+    padding: 0.4rem 0.75rem;
+    border-radius: 6px;
+    font-family: 'Lora', Georgia, serif;
+    font-size: 0.86rem;
+    font-style: italic;
+    line-height: 1.4;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.15s;
+    z-index: 999;
+    white-space: normal;
+    max-width: 280px;
+    width: max-content;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.18);
+}
+.fc-hover-word[data-en]::after {
+    content: attr(data-iast) " — " attr(data-en);
+}
+.fc-hover-word:hover::after { opacity: 1; }
+html[data-theme="dark"] .fc-hover-word { border-bottom-color: rgba(212, 160, 96, 0.4); }
+html[data-theme="dark"] .fc-hover-word:hover { background: rgba(212, 160, 96, 0.2); border-bottom-color: rgba(212, 160, 96, 0.9); }
+html[data-theme="dark"] .fc-hover-word::after { background: rgba(232, 200, 168, 0.97); color: #1a1612; }
 
 .cr-iast {
     font-family: 'Noto Serif', 'Charis SIL', Georgia, serif;
@@ -807,6 +865,33 @@ html[data-theme="dark"] .fc-card .fc-card-link { color: #d4a060; }
 html[data-theme="dark"] .fc-card .fc-card-link:hover { color: #f0a8b8; }
 html[data-theme="dark"] .fc-fc-empty { background: #211a13; border-color: #3a3128; color: #d4a060; }
 html[data-theme="dark"] .fc-fc-progress { color: #d4a060; }
+
+/* Cloze flashcard styling */
+.fc-cloze-answer {
+    color: var(--fc-maroon);
+    font-family: 'Lora', Georgia, serif;
+    font-size: 0.92rem;
+    background: #FBF1F1;
+    border-left: 3px solid var(--fc-maroon);
+    padding: 0.45rem 0.8rem;
+    border-radius: 4px;
+    margin-bottom: 0.7rem;
+    text-align: left;
+}
+.fc-cloze-answer strong {
+    font-family: 'Noto Serif', Georgia, serif;
+    font-style: italic;
+    font-size: 1rem;
+}
+.fc-cloze-revealed {
+    background: #FCEFA1;
+    color: #6B1D2A;
+    padding: 0 3px;
+    border-radius: 2px;
+    font-weight: 600;
+}
+html[data-theme="dark"] .fc-cloze-answer { background: #2a181b; border-left-color: #c84a64; color: #f0a8b8; }
+html[data-theme="dark"] .fc-cloze-revealed { background: #5a4419; color: #f0e0c0; }
 
 /* ───────── Theme browser ───────── */
 .fc-themes-grid {
@@ -1553,6 +1638,65 @@ html[data-theme="dark"] .fc-note-textarea:focus { border-color: #c84a64; box-sha
 html[data-theme="dark"] .fc-note-delete { color: #e89868; border-color: #3a3128; }
 html[data-theme="dark"] .fc-note-delete:hover { background: #2a2218; }
 
+/* ───────── Share-as-image modal ───────── */
+.fc-share-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 99998;
+}
+.fc-share-modal[hidden] { display: none; }
+.fc-share-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+}
+.fc-share-content {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    background: #FAF6E8;
+    border-radius: 12px;
+    padding: 1.4rem 1.6rem;
+    max-width: 580px;
+    width: 92vw;
+    max-height: 92vh;
+    overflow-y: auto;
+    box-shadow: 0 24px 70px rgba(0,0,0,0.45);
+    font-family: 'Lora', Georgia, serif;
+    color: #3a2f1a;
+}
+.fc-share-content h2 {
+    margin: 0 0 0.8rem;
+    color: var(--fc-maroon);
+    font-size: 1.15rem;
+}
+.fc-share-canvas {
+    display: block;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    height: auto;
+    background: #FAF6E8;
+    border: 1px solid #D4C4A8;
+    border-radius: 6px;
+    margin-bottom: 0.85rem;
+}
+.fc-share-actions {
+    display: flex;
+    gap: 0.45rem;
+    flex-wrap: wrap;
+}
+.fc-share-actions .fc-tool-btn { flex: 1 1 auto; text-align: center; }
+.fc-share-status {
+    margin-top: 0.5rem;
+    color: #6B5025;
+    font-size: 0.85rem;
+    min-height: 1.2rem;
+}
+html[data-theme="dark"] .fc-share-content { background: #1a1612; color: #e6d6b8; }
+html[data-theme="dark"] .fc-share-content h2 { color: #f0a8b8; }
+html[data-theme="dark"] .fc-share-canvas { background: #1a1612; border-color: #3a3128; }
+html[data-theme="dark"] .fc-share-status { color: #d4a060; }
+
 /* ───────── Keyboard shortcuts modal ───────── */
 .fc-shortcuts-modal {
     display: none;
@@ -1745,6 +1889,18 @@ html[data-theme="dark"] .fc-progress-reset { border-color: #3a3128; color: #d4a0
     line-height: 1;
     transition: color 0.12s, transform 0.12s;
 }
+.fc-share-btn {
+    background: none;
+    border: none;
+    color: #8B7D6B;
+    cursor: pointer;
+    font-size: 0.95rem;
+    padding: 0 0.3rem;
+    line-height: 1;
+    transition: color 0.12s, transform 0.12s, filter 0.12s;
+    opacity: 0.65;
+}
+.fc-share-btn:hover { color: var(--fc-maroon); transform: scale(1.15); opacity: 1; }
 .fc-bookmark-btn:hover { color: var(--fc-maroon); transform: scale(1.15); }
 .fc-bookmark-btn.active { color: var(--fc-gold); }
 .fc-bookmark-list {

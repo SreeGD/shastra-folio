@@ -20,6 +20,7 @@
     <nav class="fc-site-nav">
         <a href="../../../">Home</a>
         <a href="../../../bg/">Bhagavad-gītā</a>
+        <button type="button" id="fc-random-verse" class="fc-nav-btn" title="Jump to a random verse">🎲 Random</button>
     </nav>
     <button type="button" class="fc-mobile-trigger fc-mobile-trigger-right" data-overlay="right" aria-label="Open chapter index drawer">📚</button>
 </header>
@@ -161,12 +162,13 @@
     <header class="fc-verse-block-header">
         <h2 class="fc-verse-block-label">Bhagavad-gītā 11.29</h2>
         <button type="button" class="fc-bookmark-btn" data-bookmark-id="bg-11-29" data-bookmark-label="BG 11.29" data-bookmark-chapter="11" data-bookmark-vlabel="29" aria-label="Bookmark this verse" title="Bookmark this verse">☆</button>
+        <button type="button" class="fc-share-btn" data-share-id="bg-11-29" data-share-ref="BG 11.29" aria-label="Share as image" title="Share as image">📷</button>
     </header>
 
-    <div class="cr-devanagari" data-sec="devanagari">यथा प्रदीप्‍तं ज्‍वलनं पतङ्गा
-विशन्ति नाशाय समृद्धवेगा: ।
-तथैव नाशाय विशन्ति लोका-
-स्तवापि वक्‍त्राणि समृद्धवेगा: ॥ २९ ॥</div>
+    <div class="cr-devanagari" data-sec="devanagari"><span class="fc-hover-word" data-iast="yathā" data-en="as">यथा</span> <span class="fc-hover-word" data-iast="pradīptaṁ" data-en="blazing">प्रदीप्‍तं</span> <span class="fc-hover-word" data-iast="jvalanaṁ" data-en="a fire">ज्‍वलनं</span> <span class="fc-hover-word" data-iast="pataṅgā" data-en="moths">पतङ्गा</span>
+<span class="fc-hover-word" data-iast="viśanti" data-en="enter">विशन्ति</span> <span class="fc-hover-word" data-iast="nāśāya" data-en="for destruction">नाशाय</span> <span class="fc-hover-word" data-iast="samṛddha-vegāḥ" data-en="with full">समृद्धवेगा:</span> ।
+<span class="fc-hover-word" data-iast="tathaiva" data-en="similarly">तथैव</span> <span class="fc-hover-word" data-iast="nāśāya" data-en="for destruction">नाशाय</span> <span class="fc-hover-word" data-iast="viśanti" data-en="are entering">विशन्ति</span> <span class="fc-hover-word" data-iast="lokās" data-en="all people">लोका-</span>
+<span class="fc-hover-word" data-iast="tavāpi" data-en="Your">स्तवापि</span> <span class="fc-hover-word" data-iast="vaktrāṇi" data-en="mouths">वक्‍त्राणि</span> <span class="fc-hover-word" data-iast="samṛddha-vegāḥ" data-en="with full speed .">समृद्धवेगा:</span> ॥ २९ ॥</div>
     <div class="cr-iast-block" data-sec="iast">
         <div class="cr-iast-line">yathā pradīptaṁ jvalanaṁ pataṅgā</div>
 <div class="cr-pron-line" data-sec="pronunciation">[yathaa pradeeptam jvalanam patangaa]</div>        <div class="cr-iast-line">viśanti nāśāya samṛddha-vegāḥ</div>
@@ -2612,6 +2614,19 @@ You, again-</div>
     <p>Static site built from <a href="https://github.com/SreeGD/foliocorpus">foliocorpus</a>.</p>
 </footer>
 <button type="button" id="fc-pen-fab" class="fc-pen-fab" aria-label="Toggle pen mode (press P)" title="Toggle pen mode  (P)">✏️</button>
+<div id="fc-share-modal" class="fc-share-modal" hidden role="dialog" aria-modal="true" aria-labelledby="fc-share-title">
+    <div class="fc-share-backdrop"></div>
+    <div class="fc-share-content">
+        <h2 id="fc-share-title">Share verse</h2>
+        <canvas class="fc-share-canvas" width="1080" height="1080"></canvas>
+        <div class="fc-share-actions">
+            <button type="button" class="fc-tool-btn fc-share-download">⬇ Download PNG</button>
+            <button type="button" class="fc-tool-btn fc-share-copy">📋 Copy to clipboard</button>
+            <button type="button" class="fc-tool-btn fc-share-close">Close (Esc)</button>
+        </div>
+        <div class="fc-share-status" aria-live="polite"></div>
+    </div>
+</div>
 <div id="fc-shortcuts-modal" class="fc-shortcuts-modal" aria-hidden="true" role="dialog" aria-labelledby="fc-shortcuts-title">
     <div class="fc-shortcuts-backdrop"></div>
     <div class="fc-shortcuts-content">

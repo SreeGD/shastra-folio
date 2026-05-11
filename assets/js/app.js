@@ -124,6 +124,7 @@
         var deckSel = document.getElementById("fc-fc-deck");
         var chapWrap = document.querySelector(".fc-deck-chapter-wrap");
         var chapSel = document.getElementById("fc-fc-chapter");
+        var modeSel = document.getElementById("fc-fc-mode");
         var shuffleBtn = document.getElementById("fc-fc-shuffle");
         var restartBtn = document.getElementById("fc-fc-restart");
         var prevBtn = document.getElementById("fc-fc-prev");
@@ -137,11 +138,33 @@
         var devEl = card.querySelector(".fc-card-devanagari");
         var iastEl = card.querySelector(".fc-card-iast");
         var transEl = card.querySelector(".fc-card-translation");
+        var hintEl = card.querySelector(".fc-card-front .fc-card-hint");
 
         var allCards = null;
         var deck = [];
+        var clozeForCard = [];  // hidden word index per deck position
         var idx = 0;
         var flipped = false;
+
+        function escapeHtmlCard(s) {
+            return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#39;");
+        }
+        function regenerateClozeIndices() {
+            clozeForCard = deck.map(function (v) {
+                var words = (v.transliteration || "").split(/\s+/).filter(Boolean);
+                if (!words.length) return -1;
+                // Prefer words longer than 2 letters (skip "ca", "na", "tu", etc.).
+                var candidates = [];
+                for (var i = 0; i < words.length; i++) {
+                    if (words[i].replace(/[.,;:!?'’\-]/g, "").length > 2) candidates.push(i);
+                }
+                if (!candidates.length) {
+                    candidates = words.map(function (_, i) { return i; });
+                }
+                return candidates[Math.floor(Math.random() * candidates.length)];
+            });
+        }
 
         function applyChapterVisibility() {
             if (!chapWrap) return;
@@ -183,12 +206,47 @@
             if (emptyEl) emptyEl.hidden = true;
             card.style.display = "";
             var v = deck[idx];
+            var mode = modeSel ? modeSel.value : "translation";
+
             if (refFront) refFront.textContent = v.ref;
             if (refBack) refBack.textContent = v.ref;
-            if (devEl) devEl.textContent = v.devanagari || "—";
-            if (iastEl) iastEl.textContent = v.transliteration || "";
-            if (transEl) transEl.textContent = v.translation || "";
             if (fullVerseLink) fullVerseLink.href = toRoot + v.url;
+
+            if (mode === "cloze") {
+                var words = (v.transliteration || "").split(/\s+/).filter(Boolean);
+                var hiddenIdx = clozeForCard[idx];
+                if (hiddenIdx === undefined || hiddenIdx < 0 || hiddenIdx >= words.length) {
+                    hiddenIdx = 0;
+                }
+                var hiddenWord = words[hiddenIdx] || "";
+                // Front: Devanāgarī + IAST with one word blanked
+                if (devEl) devEl.textContent = v.devanagari || "—";
+                if (iastEl) {
+                    var blanked = words.slice();
+                    blanked[hiddenIdx] = "____";
+                    iastEl.textContent = blanked.join(" ");
+                }
+                if (hintEl) hintEl.textContent = "Recall the missing IAST word — Tap or Space to reveal";
+                // Back: highlighted IAST + Translation
+                if (transEl) {
+                    var highlighted = words.map(function (w, i) {
+                        var safe = escapeHtmlCard(w);
+                        return i === hiddenIdx ? '<span class="fc-cloze-revealed">' + safe + '</span>' : safe;
+                    }).join(" ");
+                    transEl.innerHTML =
+                        '<div class="fc-cloze-answer">Missing word: <strong>' +
+                            escapeHtmlCard(hiddenWord) + '</strong></div>' +
+                        '<div style="font-style:italic; font-family:\'Noto Serif\',Georgia,serif; color:#5a4a2a; margin-bottom:0.8rem;">' +
+                            highlighted + '</div>' +
+                        '<div>' + escapeHtmlCard(v.translation || "") + '</div>';
+                }
+            } else {
+                if (devEl) devEl.textContent = v.devanagari || "—";
+                if (iastEl) iastEl.textContent = v.transliteration || "";
+                if (transEl) transEl.textContent = v.translation || "";
+                if (hintEl) hintEl.textContent = "Tap or press Space to reveal the translation";
+            }
+
             card.classList.toggle("flipped", flipped);
             if (progressEl) progressEl.textContent = (idx + 1) + " / " + deck.length;
         }
@@ -200,16 +258,27 @@
         function changeDeck() {
             applyChapterVisibility();
             deck = buildDeck();
+            regenerateClozeIndices();
             idx = 0; flipped = false;
             render();
         }
 
         if (deckSel) deckSel.addEventListener("change", changeDeck);
         if (chapSel) chapSel.addEventListener("change", changeDeck);
-        if (shuffleBtn) shuffleBtn.addEventListener("click", function () {
-            shuffleDeck(deck); idx = 0; flipped = false; render();
+        if (modeSel) modeSel.addEventListener("change", function () {
+            regenerateClozeIndices();
+            flipped = false;
+            render();
         });
-        if (restartBtn) restartBtn.addEventListener("click", restart);
+        if (shuffleBtn) shuffleBtn.addEventListener("click", function () {
+            shuffleDeck(deck);
+            regenerateClozeIndices();
+            idx = 0; flipped = false; render();
+        });
+        if (restartBtn) restartBtn.addEventListener("click", function () {
+            regenerateClozeIndices();
+            restart();
+        });
         if (prevBtn) prevBtn.addEventListener("click", prev);
         if (nextBtn) nextBtn.addEventListener("click", next);
         card.addEventListener("click", flip);
@@ -904,6 +973,250 @@
             current = b.dataset.pgAge;
             try { localStorage.setItem(key, current); } catch (err) {}
             render();
+        });
+    }
+
+    // -------------------------------------------------------------------------
+    // Share-as-image — render a verse to a 1080×1080 PNG via Canvas, with a
+    // Download and Copy-to-clipboard action. Fonts are awaited via the FontFace
+    // API so Devanāgarī and Lora render correctly the first time.
+    // -------------------------------------------------------------------------
+    function wireShareImage() {
+        var modal = document.getElementById("fc-share-modal");
+        if (!modal) return;
+        var canvas = modal.querySelector(".fc-share-canvas");
+        var downloadBtn = modal.querySelector(".fc-share-download");
+        var copyBtn = modal.querySelector(".fc-share-copy");
+        var closeBtn = modal.querySelector(".fc-share-close");
+        var backdrop = modal.querySelector(".fc-share-backdrop");
+        var status = modal.querySelector(".fc-share-status");
+        var currentRef = "";
+
+        function open() {
+            modal.removeAttribute("hidden");
+            document.body.dataset.shareOpen = "1";
+        }
+        function close() {
+            modal.setAttribute("hidden", "");
+            delete document.body.dataset.shareOpen;
+            if (status) status.textContent = "";
+        }
+
+        function gatherVerse(verseBlockId, ref) {
+            var block = document.getElementById(verseBlockId);
+            if (!block) return null;
+            var dev = block.querySelector(".cr-devanagari");
+            var devText = dev ? dev.textContent.trim() : "";
+            var iastLines = [];
+            block.querySelectorAll(".cr-iast-line").forEach(function (el) {
+                var t = el.textContent.trim();
+                if (t) iastLines.push(t);
+            });
+            if (!iastLines.length) {
+                var iast = block.querySelector(".cr-iast");
+                if (iast) iastLines = iast.textContent.trim().split(/\n+/).filter(Boolean);
+            }
+            var translation = "";
+            var trans = block.querySelector(".fc-translation");
+            if (trans) {
+                var clone = trans.cloneNode(true);
+                clone.querySelectorAll(".fc-readout-btn").forEach(function (b) { b.remove(); });
+                translation = clone.textContent.trim();
+            }
+            return { ref: ref, devanagari: devText, iast: iastLines, translation: translation };
+        }
+
+        function wrapText(ctx, text, maxWidth) {
+            var paragraphs = text.split(/\n+/);
+            var out = [];
+            for (var p = 0; p < paragraphs.length; p++) {
+                var words = paragraphs[p].split(/\s+/);
+                var cur = "";
+                for (var i = 0; i < words.length; i++) {
+                    var test = cur ? cur + " " + words[i] : words[i];
+                    if (ctx.measureText(test).width > maxWidth && cur) {
+                        out.push(cur);
+                        cur = words[i];
+                    } else {
+                        cur = test;
+                    }
+                }
+                if (cur) out.push(cur);
+            }
+            return out;
+        }
+
+        function fitFontSize(ctx, text, fontFamily, maxFontSize, minFontSize, maxWidth, maxLines, lineHeightRatio) {
+            // Try progressively smaller font until the text fits in maxLines lines.
+            for (var size = maxFontSize; size >= minFontSize; size -= 2) {
+                ctx.font = size + 'px ' + fontFamily;
+                var lines = wrapText(ctx, text, maxWidth);
+                if (lines.length <= maxLines) {
+                    return { size: size, lines: lines };
+                }
+            }
+            ctx.font = minFontSize + "px " + fontFamily;
+            return { size: minFontSize, lines: wrapText(ctx, text, maxWidth) };
+        }
+
+        function renderToCanvas(verse) {
+            var ctx = canvas.getContext("2d");
+            canvas.width = 1080; canvas.height = 1080;
+            // Background
+            ctx.fillStyle = "#FAF6E8";
+            ctx.fillRect(0, 0, 1080, 1080);
+            // Top gradient stripe
+            var grad = ctx.createLinearGradient(0, 0, 1080, 0);
+            grad.addColorStop(0, "#6B1D2A");
+            grad.addColorStop(0.5, "#8B3A4A");
+            grad.addColorStop(1, "#B8860B");
+            ctx.fillStyle = grad;
+            ctx.fillRect(0, 0, 1080, 10);
+            // Bottom gradient stripe (mirrored)
+            ctx.fillRect(0, 1070, 1080, 10);
+
+            ctx.textAlign = "center";
+            ctx.textBaseline = "alphabetic";
+
+            // Reference
+            ctx.fillStyle = "#6B1D2A";
+            ctx.font = "italic bold 46px Lora, Georgia, serif";
+            ctx.fillText(verse.ref, 540, 95);
+
+            var y = 175;
+
+            // Devanāgarī (centered, multi-line)
+            ctx.fillStyle = "#3a2f1a";
+            var devLines = (verse.devanagari || "").split(/\n+/).filter(Boolean);
+            if (devLines.length) {
+                var devSize = devLines.length > 4 ? 34 : 40;
+                ctx.font = devSize + 'px "Noto Sans Devanagari", serif';
+                for (var i = 0; i < devLines.length; i++) {
+                    ctx.fillText(devLines[i], 540, y);
+                    y += Math.round(devSize * 1.6);
+                }
+                y += 18;
+            }
+
+            // IAST
+            ctx.fillStyle = "#5a4a2a";
+            if (verse.iast && verse.iast.length) {
+                ctx.font = 'italic 30px "Noto Serif", Georgia, serif';
+                for (var j = 0; j < verse.iast.length; j++) {
+                    ctx.fillText(verse.iast[j], 540, y);
+                    y += 44;
+                }
+                y += 25;
+            }
+
+            // Translation (auto-fit)
+            if (verse.translation) {
+                var remaining = 1010 - y;          // leave space for footer
+                var maxLines = Math.max(2, Math.floor(remaining / 40));
+                ctx.fillStyle = "#3a2f1a";
+                var fit = fitFontSize(ctx, verse.translation, "Lora, Georgia, serif", 30, 18, 940, maxLines, 1.4);
+                ctx.font = fit.size + "px Lora, Georgia, serif";
+                var lh = Math.round(fit.size * 1.5);
+                for (var k = 0; k < fit.lines.length; k++) {
+                    ctx.fillText(fit.lines[k], 540, y);
+                    y += lh;
+                }
+            }
+
+            // Footer
+            ctx.fillStyle = "#8B7D6B";
+            ctx.font = "20px Lora, Georgia, serif";
+            ctx.fillText("FolioCorpus · " + location.host + "/shastra-folio", 540, 1045);
+        }
+
+        function openFor(btn) {
+            var ref = btn.dataset.shareRef;
+            var id = btn.dataset.shareId;
+            currentRef = ref;
+            modal.dataset.ref = ref;
+            var verse = gatherVerse(id, ref);
+            if (!verse) return;
+
+            open();
+            if (status) status.textContent = "Rendering…";
+            var doRender = function () {
+                renderToCanvas(verse);
+                if (status) status.textContent = "Ready — Download or Copy to share.";
+            };
+            // Wait for fonts so Devanāgarī + Lora render correctly the first time.
+            if (document.fonts && document.fonts.ready) {
+                document.fonts.ready.then(doRender);
+            } else {
+                doRender();
+            }
+        }
+
+        document.addEventListener("click", function (e) {
+            var btn = e.target.closest(".fc-share-btn[data-share-id]");
+            if (btn) { e.preventDefault(); openFor(btn); return; }
+        });
+        if (closeBtn) closeBtn.addEventListener("click", close);
+        if (backdrop) backdrop.addEventListener("click", close);
+        document.addEventListener("keydown", function (e) {
+            if (e.key === "Escape" && document.body.dataset.shareOpen === "1") {
+                e.preventDefault();
+                close();
+            }
+        });
+
+        if (downloadBtn) downloadBtn.addEventListener("click", function () {
+            canvas.toBlob(function (blob) {
+                if (!blob) return;
+                var url = URL.createObjectURL(blob);
+                var a = document.createElement("a");
+                a.href = url;
+                a.download = "foliocorpus-" + (currentRef || "verse").replace(/[^A-Za-z0-9.-]/g, "_") + ".png";
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                setTimeout(function () { URL.revokeObjectURL(url); }, 1500);
+                if (status) status.textContent = "Downloaded.";
+            }, "image/png");
+        });
+
+        if (copyBtn) {
+            if (!(navigator.clipboard && navigator.clipboard.write && window.ClipboardItem)) {
+                copyBtn.hidden = true;
+            } else {
+                copyBtn.addEventListener("click", function () {
+                    canvas.toBlob(function (blob) {
+                        if (!blob) return;
+                        var item = new ClipboardItem({ "image/png": blob });
+                        navigator.clipboard.write([item]).then(function () {
+                            if (status) status.textContent = "Copied to clipboard.";
+                        }).catch(function (err) {
+                            if (status) status.textContent = "Copy failed: " + (err.message || err);
+                        });
+                    }, "image/png");
+                });
+            }
+        }
+    }
+
+    // -------------------------------------------------------------------------
+    // Random verse — header button fetches the verse index and navigates.
+    // -------------------------------------------------------------------------
+    function wireRandomVerse() {
+        var btn = document.getElementById("fc-random-verse");
+        if (!btn) return;
+        var cached = null;
+        btn.addEventListener("click", function () {
+            btn.disabled = true;
+            (cached ? Promise.resolve(cached) :
+                fetch(toRoot + "assets/data/verses.json").then(function (r) { return r.json(); })
+                    .then(function (v) { cached = v; return v; })
+            ).then(function (verses) {
+                var v = verses[Math.floor(Math.random() * verses.length)];
+                location.href = toRoot + v.url;
+            }).catch(function (e) {
+                console.warn("[fc] random verse failed:", e);
+                btn.disabled = false;
+            });
         });
     }
 
@@ -1876,4 +2189,6 @@
     wireServiceWorker();
     wireReadingProgress();
     wireFlashcards();
+    wireRandomVerse();
+    wireShareImage();
 })();
