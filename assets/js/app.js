@@ -1088,6 +1088,66 @@
     // commentary section labels. Click to speak, click again to stop. Only
     // one utterance plays at a time.
     // -------------------------------------------------------------------------
+    // ─────────────────────────────────────────────────────────────────────
+    // TTS text cleanup: IAST diacritics → English-reader phonetic so voices
+    // don't mangle Sanskrit names; strip badge / button text; normalise
+    // quotes, dashes, whitespace, and bullet markers that some engines vocalise.
+    // ─────────────────────────────────────────────────────────────────────
+    var IAST_PAIRS = [
+        ["ṝ", "ree"], ["ṛ", "ri"], ["ḹ", "lree"], ["ḷ", "lri"],
+        ["ā", "aa"], ["ī", "ee"], ["ū", "oo"],
+        ["ṣ", "sh"], ["ś", "sh"],
+        ["ñ", "n"], ["ṅ", "n"],
+        ["ṭ", "t"], ["ḍ", "d"], ["ṇ", "n"],
+        ["ṁ", "m"], ["ḥ", "h"],
+    ];
+    function iastToPhonetic(text) {
+        var out = text;
+        for (var i = 0; i < IAST_PAIRS.length; i++) {
+            var src = IAST_PAIRS[i][0], dst = IAST_PAIRS[i][1];
+            out = out.split(src).join(dst);
+            var SRC = src.toUpperCase();
+            var DST = dst.charAt(0).toUpperCase() + dst.slice(1);
+            out = out.split(SRC).join(DST);
+        }
+        // 'c' (palatal) → 'ch'; don't touch 'ch'.
+        out = out.replace(/c(?!h)/g, "ch").replace(/C(?!h)/g, "Ch");
+        return out;
+    }
+    function cleanForSpeech(text) {
+        if (!text) return "";
+        var t = text
+            .replace(/‘|’/g, "'")
+            .replace(/“|”/g, '"')
+            .replace(/[—–]/g, " — ")              // em/en dash → spoken as a pause
+            .replace(/[•·●▪►▶▸]/g, " ")           // bullets / markers
+            .replace(/\s*\n\s*/g, ". ")           // newlines act as sentence breaks
+            .replace(/\s+/g, " ")
+            .replace(/\.{2,}/g, ".")
+            .replace(/\s*\.\s*\./g, ". ");        // collapse stacked periods
+        t = iastToPhonetic(t);
+        return t.trim();
+    }
+    function extractTextForSpeech(rootEl) {
+        // Clone so we can strip UI bits without affecting the live DOM.
+        var clone = rootEl.cloneNode(true);
+        clone.querySelectorAll(
+            ".fc-section-label, .cr-samp-badge, .fc-readout-btn, " +
+            ".cr-acarya-label, .fc-pg-age-filter, .fc-source-link, .fc-note-block"
+        ).forEach(function (el) { el.remove(); });
+        // Add a sentence break after each list item so the engine pauses.
+        clone.querySelectorAll("li").forEach(function (li) {
+            var t = (li.textContent || "").trim();
+            if (t && !/[.!?]$/.test(t)) li.textContent = t + ".";
+        });
+        // Acarya names should be followed by a pause before their translation.
+        clone.querySelectorAll(".cr-acarya-name").forEach(function (n) {
+            var t = (n.textContent || "").trim();
+            if (t && !/[.!?]$/.test(t)) n.textContent = t + ".";
+        });
+        return clone.textContent || "";
+    }
+
     function wireReadout() {
         var synth = window.speechSynthesis;
         if (!synth) return;
@@ -1174,15 +1234,12 @@
 
         // Translation: button at top-right of the call-out block.
         document.querySelectorAll(".fc-translation").forEach(function (t) {
-            // Skip if a button is already there (defensive)
             if (t.querySelector(".fc-readout-btn")) return;
             var btn = makeBtn();
             t.appendChild(btn);
             btn.addEventListener("click", function (e) {
                 e.stopPropagation();
-                // The text of the translation block is just the verse text;
-                // ::before adds the "Translation" label visually but isn't in DOM.
-                speak(t.textContent.trim(), btn);
+                speak(cleanForSpeech(extractTextForSpeech(t)), btn);
             });
         });
 
@@ -1196,16 +1253,7 @@
                 label.appendChild(btn);
                 btn.addEventListener("click", function (e) {
                     e.stopPropagation(); // don't trigger section collapse
-                    // Concatenate the meaningful text — skip the label itself.
-                    var parts = [];
-                    s.querySelectorAll(
-                        ".cr-purport-body, .cr-acarya-trans, .cr-acarya-purp, " +
-                        ".fc-pg-essence, .fc-pg-list, .cr-acarya-name"
-                    ).forEach(function (el) {
-                        var t = el.textContent.trim();
-                        if (t) parts.push(t);
-                    });
-                    speak(parts.join(". "), btn);
+                    speak(cleanForSpeech(extractTextForSpeech(s)), btn);
                 });
             });
         });
