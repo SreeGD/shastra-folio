@@ -1026,6 +1026,24 @@
         try { localStorage.setItem(TTS_KEY, JSON.stringify(p)); } catch (e) {}
     }
 
+    // Pick the best available Samantha (macOS English voice) — Premium >
+    // Enhanced > regular. Returns null on Windows/Linux/Android where she
+    // isn't installed.
+    function findPreferredVoice(voices) {
+        if (!voices || !voices.length) return null;
+        var orders = [
+            /^Samantha.*Premium/i,
+            /^Samantha.*Enhanced/i,
+            /^Samantha\b/i,
+        ];
+        for (var i = 0; i < orders.length; i++) {
+            for (var j = 0; j < voices.length; j++) {
+                if (orders[i].test(voices[j].name)) return voices[j];
+            }
+        }
+        return null;
+    }
+
     function wireTtsControls() {
         var synth = window.speechSynthesis;
         var container = document.getElementById("fc-tts-controls");
@@ -1053,12 +1071,28 @@
                 o.textContent = v.name + " (" + v.lang + ")";
                 select.appendChild(o);
             });
+            // Resolve which voice to select:
+            //   1. Explicit user pref (if still installed)
+            //   2. Samantha if available — preferred default on macOS
+            //   3. Previously-shown value (during voiceschanged repopulates)
             if (prefs.voice && voices.some(function (v) { return v.name === prefs.voice; })) {
                 select.value = prefs.voice;
-            } else if (prev) {
-                select.value = prev;
+            } else {
+                var preferred = findPreferredVoice(voices);
+                if (preferred) {
+                    select.value = preferred.name;
+                    if (!prefs.voice) {
+                        // First-time visit on a Mac: bake Samantha in so future
+                        // pages stop falling back to the browser default.
+                        prefs.voice = preferred.name;
+                        saveTtsPrefs(prefs);
+                    }
+                } else if (prev) {
+                    select.value = prev;
+                }
             }
             window.FC_TTS_VOICES = voices;
+            window.FC_TTS_PREFS = prefs;
         }
         populate();
         if (typeof synth.addEventListener === "function") {
@@ -1197,14 +1231,17 @@
             u.rate = prefs.rate || 1.0;
             u.pitch = 1.0;
             u.volume = 1.0;
-            if (prefs.voice && window.FC_TTS_VOICES) {
-                for (var i = 0; i < window.FC_TTS_VOICES.length; i++) {
-                    if (window.FC_TTS_VOICES[i].name === prefs.voice) {
-                        u.voice = window.FC_TTS_VOICES[i];
-                        break;
-                    }
+            // Voice lookup: explicit pref → Samantha fallback → browser default.
+            var voices = window.FC_TTS_VOICES;
+            if (!voices) { try { voices = synth.getVoices(); window.FC_TTS_VOICES = voices; } catch (e) {} }
+            var chosen = null;
+            if (prefs.voice && voices) {
+                for (var i = 0; i < voices.length; i++) {
+                    if (voices[i].name === prefs.voice) { chosen = voices[i]; break; }
                 }
             }
+            if (!chosen && voices) chosen = findPreferredVoice(voices);
+            if (chosen) u.voice = chosen;
             u.onstart = function () {
                 btn.classList.add("playing");
                 btn.textContent = "■";
