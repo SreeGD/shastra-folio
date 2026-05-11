@@ -2052,10 +2052,16 @@
         }
 
         function enter() {
-            if (isChapter) currentIdx = findNearestVerseIdx();
             body.classList.add("presentation");
-            if (isChapter) showCurrent();
-            else updateCounter();
+            if (isChapter) {
+                currentIdx = findNearestVerseIdx();
+                showCurrent();
+            } else {
+                // Single-verse page: the only block must be marked current,
+                // otherwise the "hide non-current blocks" CSS blanks the page.
+                if (blocks.length) blocks[0].classList.add("fc-presentation-current");
+                updateCounter();
+            }
             if (btn) btn.classList.add("active");
         }
         function exit() {
