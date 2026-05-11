@@ -3,7 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#6B1D2A">
     <title>BG 18.2 — FolioCorpus</title>
+    <link rel="manifest" href="../../../manifest.webmanifest">
+    <link rel="icon" href="../../../assets/icons/icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="../../../assets/icons/icon.svg">
     <link rel="stylesheet" href="../../../assets/css/site.css">
     <script>window.FC_TO_ROOT = "../../../";</script>
     <script src="../../../assets/js/toggle.js"></script>
@@ -87,11 +91,19 @@
         </div>
 
         <div class="fc-sb-section" id="fc-tts-controls" hidden>
-            <div class="fc-sb-title">Read-aloud</div>
-            <div class="fc-sb-sub">Voice</div>
-            <select id="fc-tts-voice" class="fc-tts-select" aria-label="TTS voice"></select>
-            <div class="fc-sb-sub">Rate <span class="fc-tts-rate-val">1.0×</span></div>
-            <input type="range" id="fc-tts-rate" min="0.5" max="2" step="0.1" value="1" class="fc-tts-rate" aria-label="Reading rate">
+            <div class="fc-sb-title">
+                Read-aloud
+                <label class="fc-tts-master">
+                    <input type="checkbox" id="fc-tts-enabled" checked>
+                    <span class="fc-tts-master-label">On</span>
+                </label>
+            </div>
+            <div class="fc-tts-inner">
+                <div class="fc-sb-sub">Voice</div>
+                <select id="fc-tts-voice" class="fc-tts-select" aria-label="TTS voice"></select>
+                <div class="fc-sb-sub">Rate <span class="fc-tts-rate-val">1.0×</span></div>
+                <input type="range" id="fc-tts-rate" min="0.5" max="2" step="0.1" value="1" class="fc-tts-rate" aria-label="Reading rate">
+            </div>
         </div>
 
         <div class="fc-sb-section">
@@ -2637,6 +2649,21 @@ Likewise, the decisive teaching is about Tyaga alone in the statement:  &#39;Hea
     <p>Static site built from <a href="https://github.com/SreeGD/foliocorpus">foliocorpus</a>.</p>
 </footer>
 <button type="button" id="fc-pen-fab" class="fc-pen-fab" aria-label="Toggle pen mode (press P)" title="Toggle pen mode  (P)">✏️</button>
+<div id="fc-shortcuts-modal" class="fc-shortcuts-modal" aria-hidden="true" role="dialog" aria-labelledby="fc-shortcuts-title">
+    <div class="fc-shortcuts-backdrop"></div>
+    <div class="fc-shortcuts-content">
+        <h2 id="fc-shortcuts-title">Keyboard shortcuts</h2>
+        <dl class="fc-shortcuts-list">
+            <dt><kbd>F</kbd></dt><dd>Toggle presentation mode</dd>
+            <dt><kbd>P</kbd></dt><dd>Toggle pen mode</dd>
+            <dt><kbd>?</kbd></dt><dd>Show / hide this help</dd>
+            <dt><kbd>Esc</kbd></dt><dd>Exit pen / presentation / drawer / this help</dd>
+            <dt><kbd>←</kbd> <kbd>→</kbd></dt><dd>Prev / next verse (in presentation)</dd>
+            <dt><kbd>Space</kbd></dt><dd>Next verse (in presentation)</dd>
+        </dl>
+        <button type="button" id="fc-shortcuts-close" class="fc-tool-btn">Close (Esc)</button>
+    </div>
+</div>
 <script src="../../../assets/js/app.js" defer></script>
 </body>
 </html>

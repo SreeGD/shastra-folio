@@ -80,6 +80,12 @@
     try { pgFilter = localStorage.getItem(PG_FILTER_KEY) || "all"; } catch (e) {}
     html.setAttribute("data-pg-filter", pgFilter);
 
+    // Read-aloud master toggle — default ON.
+    var TTS_PREFS_KEY = "fc-tts-prefs";
+    var ttsPrefs = {};
+    try { ttsPrefs = JSON.parse(localStorage.getItem(TTS_PREFS_KEY) || "{}") || {}; } catch (e) {}
+    if (ttsPrefs.enabled === false) html.setAttribute("data-tts-off", "1");
+
     // Expose state + helpers for app.js
     window.FC_STATE = {
         READ_KEY: READ_KEY,

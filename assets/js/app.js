@@ -664,6 +664,55 @@
     }
 
     // -------------------------------------------------------------------------
+    // Service worker — registered on production hosts so the site works
+    // offline after the first visit. Skipped on localhost/127.0.0.1 to avoid
+    // stale-cache surprises during local development.
+    // -------------------------------------------------------------------------
+    function wireServiceWorker() {
+        if (!("serviceWorker" in navigator)) return;
+        var host = location.hostname;
+        if (host === "localhost" || host === "127.0.0.1" || host === "0.0.0.0") return;
+        var swUrl = toRoot + "sw.js";
+        window.addEventListener("load", function () {
+            navigator.serviceWorker.register(swUrl).catch(function (err) {
+                console.warn("[fc] SW registration failed:", err);
+            });
+        });
+    }
+
+    // -------------------------------------------------------------------------
+    // Shortcuts help modal — '?' to toggle, Esc / backdrop / close-button to dismiss.
+    // -------------------------------------------------------------------------
+    function wireShortcutsModal() {
+        var body = document.body;
+        var modal = document.getElementById("fc-shortcuts-modal");
+        if (!modal) return;
+        function show() { body.setAttribute("data-shortcuts", "1"); }
+        function hide() { body.removeAttribute("data-shortcuts"); }
+        function toggle() { (body.getAttribute("data-shortcuts") === "1" ? hide : show)(); }
+
+        document.addEventListener("keydown", function (e) {
+            // Accept both '?' (US layout) and '/' with shift on some keyboards.
+            if ((e.key === "?" || (e.key === "/" && e.shiftKey))
+                && !e.ctrlKey && !e.metaKey && !e.altKey) {
+                var t = e.target;
+                if (t && (t.tagName === "INPUT" || t.tagName === "TEXTAREA" || t.isContentEditable)) return;
+                e.preventDefault();
+                toggle();
+                return;
+            }
+            if (e.key === "Escape" && body.getAttribute("data-shortcuts") === "1") {
+                e.preventDefault();
+                hide();
+            }
+        });
+        var closeBtn = document.getElementById("fc-shortcuts-close");
+        if (closeBtn) closeBtn.addEventListener("click", hide);
+        var backdrop = modal.querySelector(".fc-shortcuts-backdrop");
+        if (backdrop) backdrop.addEventListener("click", hide);
+    }
+
+    // -------------------------------------------------------------------------
     // Per-verse notes — textarea in each verse block, saved per-verse in
     // localStorage. Sidebar list mirrors bookmarks.
     // -------------------------------------------------------------------------
@@ -1051,9 +1100,31 @@
         var select = container.querySelector("#fc-tts-voice");
         var rate = container.querySelector("#fc-tts-rate");
         var rateVal = container.querySelector(".fc-tts-rate-val");
+        var enabled = container.querySelector("#fc-tts-enabled");
+        var enabledLabel = container.querySelector(".fc-tts-master-label");
         if (!select || !rate) return;
         container.hidden = false;
         var prefs = loadTtsPrefs();
+
+        // Master on/off — controls visibility of ▶ buttons + voice/rate UI.
+        function applyEnabled(on) {
+            if (on) html.removeAttribute("data-tts-off");
+            else html.setAttribute("data-tts-off", "1");
+            if (enabledLabel) enabledLabel.textContent = on ? "On" : "Off";
+            if (!on) {
+                try { synth.cancel(); } catch (e) {}
+            }
+        }
+        if (enabled) {
+            enabled.checked = prefs.enabled !== false;
+            applyEnabled(enabled.checked);
+            enabled.addEventListener("change", function () {
+                prefs.enabled = enabled.checked;
+                saveTtsPrefs(prefs);
+                window.FC_TTS_PREFS = prefs;
+                applyEnabled(enabled.checked);
+            });
+        }
 
         function populate() {
             var voices = synth.getVoices();
@@ -1209,6 +1280,9 @@
         }
 
         function speak(text, btn) {
+            // Master switch off — no-op.
+            var prefs = window.FC_TTS_PREFS || loadTtsPrefs();
+            if (prefs.enabled === false) return;
             // Toggle off: same button clicked while playing → stop.
             if (currentBtn === btn) {
                 synth.cancel();
@@ -1416,4 +1490,6 @@
     wireNotes();
     wireExport();
     wireVerseOfDay();
+    wireShortcutsModal();
+    wireServiceWorker();
 })();

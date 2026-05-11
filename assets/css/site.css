@@ -1255,6 +1255,101 @@ html[data-theme="dark"] .fc-note-textarea:focus { border-color: #c84a64; box-sha
 html[data-theme="dark"] .fc-note-delete { color: #e89868; border-color: #3a3128; }
 html[data-theme="dark"] .fc-note-delete:hover { background: #2a2218; }
 
+/* ───────── Keyboard shortcuts modal ───────── */
+.fc-shortcuts-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 99997;
+}
+body[data-shortcuts="1"] .fc-shortcuts-modal { display: block; }
+.fc-shortcuts-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.55);
+}
+.fc-shortcuts-content {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    background: #FAF6E8;
+    border-radius: 12px;
+    padding: 1.6rem 2rem;
+    max-width: 480px;
+    width: 92vw;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.45);
+    font-family: 'Lora', Georgia, serif;
+    color: #3a2f1a;
+}
+.fc-shortcuts-content h2 {
+    margin: 0 0 1.1rem;
+    color: var(--fc-maroon);
+    font-size: 1.2rem;
+    letter-spacing: 0.02em;
+}
+.fc-shortcuts-list {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    column-gap: 1.3rem;
+    row-gap: 0.55rem;
+    margin: 0 0 1.4rem;
+}
+.fc-shortcuts-list dt {
+    margin: 0;
+    white-space: nowrap;
+}
+.fc-shortcuts-list dd {
+    margin: 0;
+    color: #3a2f1a;
+    line-height: 1.5;
+}
+.fc-shortcuts-list kbd {
+    background: white;
+    border: 1px solid #D4C4A8;
+    border-bottom-width: 2px;
+    border-radius: 4px;
+    padding: 0.1rem 0.55rem;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 0.85rem;
+    color: #6B5025;
+    margin-right: 0.2rem;
+    display: inline-block;
+}
+#fc-shortcuts-close { width: 100%; text-align: center; }
+html[data-theme="dark"] .fc-shortcuts-content { background: #1a1612; color: #e6d6b8; }
+html[data-theme="dark"] .fc-shortcuts-content h2 { color: #f0a8b8; }
+html[data-theme="dark"] .fc-shortcuts-list dd { color: #e6d6b8; }
+html[data-theme="dark"] .fc-shortcuts-list kbd { background: #2a2218; border-color: #3a3128; color: #d4a060; }
+
+/* ───────── TTS master toggle ───────── */
+#fc-tts-controls .fc-sb-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.4rem;
+}
+.fc-tts-master {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    cursor: pointer;
+    user-select: none;
+    font-size: 0.78rem;
+    color: #6B5025;
+    text-transform: none;
+    letter-spacing: 0;
+    font-weight: 600;
+}
+.fc-tts-master input[type="checkbox"] {
+    accent-color: var(--fc-maroon);
+    width: 0.95rem;
+    height: 0.95rem;
+    cursor: pointer;
+}
+/* When TTS master is off, hide read-aloud buttons + dim the inner controls. */
+html[data-tts-off="1"] .fc-readout-btn { display: none !important; }
+html[data-tts-off="1"] #fc-tts-controls .fc-tts-inner { display: none; }
+
 /* ───────── TTS voice + rate ───────── */
 .fc-tts-select {
     width: 100%;
@@ -1881,6 +1976,82 @@ body.presentation::before {
     font-size: 0.85rem;
     z-index: 99996;
     pointer-events: none;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   Print stylesheet — clean, classical, B/W-friendly.
+   ═══════════════════════════════════════════════════════════════ */
+@media print {
+    html { font-size: 12pt; }
+    body { background: white !important; color: #111 !important; }
+
+    /* Hide all chrome / interactive elements. */
+    .fc-site-header,
+    .fc-site-footer,
+    .fc-left-sidebar,
+    .fc-sidebar,
+    .fc-ribbon,
+    .fc-prevnext,
+    .fc-source-link,
+    .fc-breadcrumbs,
+    .fc-back-to-chapter,
+    .fc-overlay-backdrop,
+    .fc-mobile-trigger,
+    .fc-pen-fab,
+    .fc-shortcuts-modal,
+    .fc-readout-btn,
+    .fc-bookmark-btn,
+    .fc-verse-permalink,
+    .fc-note-block,
+    .fc-pg-age-filter,
+    .cr-samp-badge,
+    .cr-blend-details,
+    #fc-pen-canvas {
+        display: none !important;
+    }
+
+    /* Layout: single column, full width. */
+    .fc-layout { display: block !important; grid-template-columns: none !important; }
+    .fc-container { max-width: none !important; margin: 0 !important; padding: 0 !important; }
+    body.has-sidebar .fc-container { padding: 0 !important; }
+
+    /* Force every collapsed section back to visible for printing. */
+    [data-sec] > :not(.fc-section-label) { display: revert !important; }
+    [data-hide-pronunciation="1"] [data-sec="pronunciation"],
+    [data-hide-blended="1"] [data-sec="blended"] { display: none !important; }
+
+    /* Typography. */
+    .fc-verse-block { page-break-after: always; break-after: page; padding: 0; }
+    .fc-verse-block:last-of-type { page-break-after: auto; break-after: auto; }
+    .fc-verse-block-label { color: #111 !important; font-size: 14pt; border-bottom: 1px solid #ccc; padding-bottom: 0.2rem; }
+    .cr-devanagari { color: #111 !important; font-size: 13pt; }
+    .cr-iast, .cr-iast-line { color: #333 !important; font-style: italic; font-size: 11pt; }
+    .cr-syn-iast { color: #111 !important; font-style: italic; }
+    .cr-syn-en { color: #333 !important; }
+    .fc-translation {
+        background: #f7f1e1 !important;
+        border-left: 3pt solid #888 !important;
+        color: #111 !important;
+        padding: 0.6rem 1rem !important;
+    }
+    .fc-translation::before { color: #555 !important; font-size: 9pt; }
+    .cr-purport-body, .cr-purport-body p { color: #111 !important; font-size: 11pt; line-height: 1.5; }
+    .cr-purport-attrib { color: #555 !important; font-size: 9pt; font-style: italic; }
+    .cr-acarya-card { border: 1px solid #ccc !important; border-left: 3pt solid #888 !important; box-shadow: none !important; background: white !important; page-break-inside: avoid; break-inside: avoid; }
+    .cr-acarya-name { color: #111 !important; border-bottom: 1px solid #ccc !important; }
+    .cr-acarya-trans { background: #f9f5e8 !important; color: #111 !important; font-size: 11pt !important; }
+    .cr-acarya-purp p { color: #111 !important; font-size: 10.5pt !important; }
+    .cr-acarya-label { color: #555 !important; font-size: 8.5pt; }
+    .fc-section-label { color: #111 !important; border-bottom-color: #888 !important; }
+    .fc-section-label::before { display: none !important; }
+
+    a, a:visited { color: #111 !important; text-decoration: underline; }
+
+    /* Avoid awkward page breaks inside short sections. */
+    .fc-section, .fc-pg-essence, .fc-pg-age {
+        page-break-inside: avoid;
+        break-inside: avoid;
+    }
 }
 
 /* ───────── Responsive ───────── */
