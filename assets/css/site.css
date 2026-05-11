@@ -4,7 +4,7 @@
    selectors removed; site-chrome (header/breadcrumbs/nav) added.
    ============================================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Lora:ital,wght@0,400;0,600;1,400&family=Noto+Sans+Devanagari:wght@400;600&family=Noto+Serif:ital,wght@0,400;0,600;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Lora:ital,wght@0,400;0,600;1,400&family=Noto+Sans+Devanagari:wght@400;600&family=Noto+Sans+Telugu:wght@400;600&family=Noto+Serif:ital,wght@0,400;0,600;1,400&display=swap');
 
 :root {
     --fc-gold: #B8860B;
@@ -79,6 +79,30 @@ hr { border: none; border-top: 1px solid #DCD0B0; margin: 1.4rem 0; }
     transition: background 0.12s, color 0.12s;
 }
 .fc-nav-btn:hover { background: rgba(255, 255, 255, 0.25); color: #FFF; }
+
+/* Language / script switcher in the site header */
+.fc-lang-switch {
+    display: inline-flex;
+    gap: 0;
+    margin-left: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 14px;
+    overflow: hidden;
+}
+.fc-lang-switch a {
+    color: #F5DEB3;
+    padding: 0.18rem 0.7rem;
+    font-size: 0.88rem;
+    text-decoration: none;
+    transition: background 0.12s, color 0.12s;
+    font-family: 'Lora', 'Noto Sans Telugu', Georgia, serif;
+}
+.fc-lang-switch a:hover { color: #FFF; background: rgba(255,255,255,0.18); }
+.fc-lang-switch a.active {
+    background: rgba(255,255,255,0.22);
+    color: #FFF;
+    cursor: default;
+}
 
 /* Mobile-only trigger buttons in the site header that open the sidebars as drawers. */
 .fc-mobile-trigger {
@@ -247,6 +271,13 @@ body.has-sidebar .fc-container {
     max-width: 60ch;
     white-space: pre-line;
 }
+/* Telugu lipi rendering when the Telugu edition is active. */
+.cr-devanagari.cr-telugu {
+    font-family: 'Noto Sans Telugu', 'Mallanna', 'Pothana2000', 'Lohit Telugu', serif;
+    font-size: 1.36rem;
+    line-height: 2.0;
+}
+html[data-theme="dark"] .cr-devanagari.cr-telugu { color: #f0e0c0; }
 
 /* Word-level hover tooltips on Devanāgarī (built by the generator when
    Devanāgarī word count matches IAST). Faint dotted underline hints that
