@@ -180,11 +180,32 @@
             if (kind === "bookmarks") {
                 var bm = readBookmarks();
                 return allCards.filter(function (v) {
-                    return bm["bg-" + v.chapter + "-" + v.label];
+                    // Each card now carries its own anchor id (works for BG + SB).
+                    return bm[v.id || ("bg-" + v.chapter + "-" + v.label)];
                 });
             }
+            if (kind === "bg") {
+                return allCards.filter(function (v) { return v.work === "BG"; });
+            }
+            if (kind === "sb") {
+                return allCards.filter(function (v) { return v.work === "SB"; });
+            }
             if (kind === "chapter" && chapSel) {
-                var ch = parseInt(chapSel.value, 10);
+                var selVal = chapSel.value;
+                // Chapter selector value can be "bg:1" / "sb:10:1" / plain "1" (legacy)
+                if (selVal.indexOf("bg:") === 0) {
+                    var bch = parseInt(selVal.slice(3), 10);
+                    return allCards.filter(function (v) { return v.work === "BG" && v.chapter === bch; });
+                }
+                if (selVal.indexOf("sb:") === 0) {
+                    var parts = selVal.slice(3).split(":");
+                    var sca = parseInt(parts[0], 10);
+                    var sch = parseInt(parts[1], 10);
+                    return allCards.filter(function (v) {
+                        return v.work === "SB" && v.canto === sca && v.chapter === sch;
+                    });
+                }
+                var ch = parseInt(selVal, 10);
                 return allCards.filter(function (v) { return v.chapter === ch; });
             }
             return allCards.slice();
@@ -361,12 +382,22 @@
         return st;
     }
 
+    // Cached total verse count (populated by verses.json or other index fetches).
+    var _cachedTotal = null;
+    function setCachedTotal(n) {
+        if (typeof n === "number" && n > 0) {
+            _cachedTotal = n;
+            renderProgress();
+        }
+    }
+
     function renderProgress() {
         var section = document.getElementById("fc-progress-section");
         if (!section) return;
         var log = loadReadLog();
         var n = Object.keys(log).length;
-        var total = 657; // total BG verse pages (fixed by build); see verses.json count
+        // Total: prefer cached count from verses.json; fall back to BG+SB sum.
+        var total = _cachedTotal || 4229;
         var numEl = document.getElementById("fc-progress-num");
         var totEl = document.getElementById("fc-progress-total");
         var barEl = document.getElementById("fc-progress-bar-fill");
@@ -1546,23 +1577,52 @@
             return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;")
                 .replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#39;");
         }
-        function vKey(v) { return "bg-" + v.chapter + "-" + v.label; }
+        function vKey(v) {
+            // Prefer the precomputed anchor id (works for BG + SB); fall back to legacy BG-style key.
+            return v.id || ("bg-" + v.chapter + "-" + v.label);
+        }
 
         function populate(sel, data) {
-            var byChapter = {};
+            // Group: BG chapters, then SB canto.chapter
+            var bg = {};        // chapter → verses
+            var sb = {};        // "canto.chapter" → verses
             data.forEach(function (v) {
-                (byChapter[v.chapter] = byChapter[v.chapter] || []).push(v);
+                if (v.work === "SB") {
+                    var k = v.canto + "." + v.chapter;
+                    (sb[k] = sb[k] || []).push(v);
+                } else {
+                    (bg[v.chapter] = bg[v.chapter] || []).push(v);
+                }
             });
             var html = "";
-            Object.keys(byChapter).map(Number).sort(function (a, b) { return a - b; })
-                .forEach(function (ch) {
-                    html += '<optgroup label="Chapter ' + ch + '">';
-                    byChapter[ch].forEach(function (v) {
+            // Bhagavad-gītā
+            var bgKeys = Object.keys(bg).map(Number).sort(function (a, b) { return a - b; });
+            if (bgKeys.length) {
+                html += '<optgroup label="Bhagavad-gītā">';
+                bgKeys.forEach(function (ch) {
+                    bg[ch].forEach(function (v) {
                         html += '<option value="' + vKey(v) + '">' +
                             escapeHtmlC(v.ref) + '</option>';
                     });
-                    html += "</optgroup>";
                 });
+                html += "</optgroup>";
+            }
+            // Śrīmad-Bhāgavatam, grouped by canto.chapter
+            var sbKeys = Object.keys(sb).sort(function (a, b) {
+                var pa = a.split(".").map(Number);
+                var pb = b.split(".").map(Number);
+                return (pa[0] - pb[0]) || (pa[1] - pb[1]);
+            });
+            if (sbKeys.length) {
+                html += '<optgroup label="Śrīmad-Bhāgavatam">';
+                sbKeys.forEach(function (k) {
+                    sb[k].forEach(function (v) {
+                        html += '<option value="' + vKey(v) + '">' +
+                            escapeHtmlC(v.ref) + '</option>';
+                    });
+                });
+                html += "</optgroup>";
+            }
             sel.innerHTML = html;
         }
 
@@ -1638,7 +1698,7 @@
             btn.disabled = true;
             (cached ? Promise.resolve(cached) :
                 fetch(toRoot + "assets/data/verses.json").then(function (r) { return r.json(); })
-                    .then(function (v) { cached = v; return v; })
+                    .then(function (v) { cached = v; setCachedTotal(v.length); return v; })
             ).then(function (verses) {
                 var v = verses[Math.floor(Math.random() * verses.length)];
                 location.href = toRoot + v.url;
@@ -1949,6 +2009,7 @@
             return r.json();
         }).then(function (verses) {
             if (!Array.isArray(verses) || !verses.length) throw new Error("empty index");
+            setCachedTotal(verses.length);
             var today = new Date();
             var start = new Date(today.getFullYear(), 0, 0);
             var doy = Math.floor((today - start) / 86400000);
