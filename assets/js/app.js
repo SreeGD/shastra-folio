@@ -2079,6 +2079,21 @@
         var blocks = Array.prototype.slice.call(document.querySelectorAll("article.fc-verse-block"));
         var isChapter = blocks.length > 1;
         var currentIdx = 0;
+        // Session flag: lets presentation mode survive verse-to-verse navigation
+        // (single-verse pages call window.location.href to advance, which wipes
+        // the body.classList state). sessionStorage clears when the tab closes,
+        // so this doesn't leak presentation mode across browser sessions.
+        var SESSION_KEY = "fc-presentation";
+        function setSessionFlag(on) {
+            try {
+                if (on) sessionStorage.setItem(SESSION_KEY, "1");
+                else sessionStorage.removeItem(SESSION_KEY);
+            } catch (e) {}
+        }
+        function getSessionFlag() {
+            try { return sessionStorage.getItem(SESSION_KEY) === "1"; }
+            catch (e) { return false; }
+        }
 
         function updateCounter() {
             if (!isChapter) {
@@ -2124,12 +2139,18 @@
                 updateCounter();
             }
             if (btn) btn.classList.add("active");
+            setSessionFlag(true);
+            // Drop the toggle.js preload style — body.presentation now applies
+            // the full set of presentation rules.
+            var preload = document.getElementById("fc-presentation-preload");
+            if (preload) preload.remove();
         }
         function exit() {
             body.classList.remove("presentation");
             blocks.forEach(function (b) { b.classList.remove("fc-presentation-current"); });
             body.removeAttribute("data-presentation-counter");
             if (btn) btn.classList.remove("active");
+            setSessionFlag(false);
         }
         function toggle() {
             if (body.classList.contains("presentation")) exit();
@@ -2168,6 +2189,12 @@
                 e.preventDefault(); go(-1);
             }
         });
+
+        // Auto-restore presentation mode after a verse-to-verse navigation.
+        // The flag is set on enter() and cleared on exit() / Esc; if it's still
+        // set here, the previous page advanced via window.location.href and we
+        // should pick up where the user left off.
+        if (getSessionFlag()) enter();
     }
 
     // -------------------------------------------------------------------------
