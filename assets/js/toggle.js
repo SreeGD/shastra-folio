@@ -48,6 +48,9 @@
         personal_guidance: true,
         related: true,
         lectures: true,
+        analogy: true,
+        "stories-full": true,
+        important_words: true,
     };
     function isSectionCollapsed(s) {
         return Object.prototype.hasOwnProperty.call(collapsed, s)
