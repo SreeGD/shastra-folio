@@ -7,9 +7,14 @@
         "devanagari", "iast", "pronunciation", "synonyms", "blended",
         "purport", "gaudiya", "classical", "personal_guidance",
         "related", "lectures",
-        "analogy", "stories-full", "important_words",
+        "analogy", "stories-full", "important_words", "note",
     ];
-    var DEFAULT_HIDDEN = { pronunciation: true };
+    var DEFAULT_HIDDEN = {
+        pronunciation: true,
+        analogy: true,
+        "stories-full": true,
+        important_words: true,
+    };
     var HIDDEN_KEY = "fc-sections-hidden";
     var COLLAPSED_KEY = "fc-sections-collapsed";
     var SIDEBAR_KEY = "fc-sidebars";
