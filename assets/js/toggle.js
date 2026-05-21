@@ -7,9 +7,14 @@
         "devanagari", "iast", "pronunciation", "synonyms", "blended",
         "purport", "gaudiya", "classical", "personal_guidance",
         "related", "lectures",
-        "analogy", "stories-full", "important_words",
+        "analogy", "stories-full", "important_words", "note",
     ];
-    var DEFAULT_HIDDEN = { pronunciation: true };
+    var DEFAULT_HIDDEN = {
+        pronunciation: true,
+        analogy: true,
+        "stories-full": true,
+        important_words: true,
+    };
     var HIDDEN_KEY = "fc-sections-hidden";
     var COLLAPSED_KEY = "fc-sections-collapsed";
     var SIDEBAR_KEY = "fc-sidebars";
@@ -48,6 +53,9 @@
         personal_guidance: true,
         related: true,
         lectures: true,
+        analogy: true,
+        "stories-full": true,
+        important_words: true,
     };
     function isSectionCollapsed(s) {
         return Object.prototype.hasOwnProperty.call(collapsed, s)
@@ -87,6 +95,25 @@
     var ttsPrefs = {};
     try { ttsPrefs = JSON.parse(localStorage.getItem(TTS_PREFS_KEY) || "{}") || {}; } catch (e) {}
     if (ttsPrefs.enabled === false) html.setAttribute("data-tts-off", "1");
+
+    // Presentation mode preload — when the previous verse navigated us here
+    // while in presentation mode (sessionStorage flag), hide all page chrome
+    // before paint so the next verse appears in presentation immediately.
+    // app.js's wirePresentation() will then call enter() to apply the full
+    // presentation state and remove this preload style.
+    try {
+        if (sessionStorage.getItem("fc-presentation") === "1") {
+            var s = document.createElement("style");
+            s.id = "fc-presentation-preload";
+            s.textContent =
+                ".fc-site-header,.fc-site-footer,.fc-left-sidebar,.fc-sidebar," +
+                ".fc-ribbon,.fc-prevnext,.fc-source-link,.fc-breadcrumbs," +
+                ".fc-back-to-chapter,.fc-overlay-backdrop,.fc-mobile-trigger" +
+                "{display:none!important}" +
+                ".fc-layout{grid-template-columns:1fr!important;display:block!important}";
+            document.head.appendChild(s);
+        }
+    } catch (e) {}
 
     // Expose state + helpers for app.js
     window.FC_STATE = {
