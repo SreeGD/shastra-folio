@@ -9,7 +9,7 @@
         "related", "lectures",
         "analogy", "stories-full", "important_words", "note",
         "study", "study_qa", "study_essays",
-        "chapter_overview", "breakdown",
+        "chapter_overview", "breakdown", "section_banner",
     ];
     var DEFAULT_HIDDEN = {
         pronunciation: true,
