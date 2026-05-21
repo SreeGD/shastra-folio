@@ -8,6 +8,8 @@
         "purport", "gaudiya", "classical", "personal_guidance",
         "related", "lectures",
         "analogy", "stories-full", "important_words", "note",
+        "study", "study_qa", "study_essays",
+        "chapter_overview", "breakdown",
     ];
     var DEFAULT_HIDDEN = {
         pronunciation: true,
@@ -56,6 +58,11 @@
         analogy: true,
         "stories-full": true,
         important_words: true,
+        study: true,
+        study_qa: true,
+        study_essays: true,
+        breakdown: true,         // breakdown card starts collapsed (it's long)
+        // chapter_overview: starts expanded by default
     };
     function isSectionCollapsed(s) {
         return Object.prototype.hasOwnProperty.call(collapsed, s)

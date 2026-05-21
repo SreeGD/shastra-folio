@@ -662,12 +662,22 @@ html[data-theme="dark"] .fc-section-banner-heading { color: #b8e0c8; }
     font-size: 1.1rem;
     font-weight: 700;
     color: #1F4632;
-    text-align: center;
     text-transform: uppercase;
     letter-spacing: 0.06em;
     margin-bottom: 1.2rem;
     padding-bottom: 0.6rem;
     border-bottom: 1px dashed #C7D9CE;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    justify-content: center;
+}
+.fc-breakdown-card-label::before {
+    /* override default-left chevron position for centered title */
+    order: -1;
+}
+.fc-chapter-overview-label {
+    /* already has flex / chevron support from .fc-section-label base */
 }
 .fc-breakdown-card-body {
     display: flex;
@@ -1925,7 +1935,12 @@ html[data-hide-lectures="1"] [data-sec="lectures"],
 html[data-hide-analogy="1"] [data-sec="analogy"],
 html[data-hide-stories-full="1"] [data-sec="stories-full"],
 html[data-hide-important_words="1"] [data-sec="important_words"],
-html[data-hide-note="1"] [data-sec="note"] {
+html[data-hide-note="1"] [data-sec="note"],
+html[data-hide-study="1"] [data-sec="study"],
+html[data-hide-study_qa="1"] [data-sec="study_qa"],
+html[data-hide-study_essays="1"] [data-sec="study_essays"],
+html[data-hide-chapter_overview="1"] [data-sec="chapter_overview"],
+html[data-hide-breakdown="1"] [data-sec="breakdown"] {
     display: none !important;
 }
 
@@ -2922,7 +2937,12 @@ html[data-collapsed-related="1"] section[data-sec="related"] > :not(.fc-section-
 html[data-collapsed-lectures="1"] section[data-sec="lectures"] > :not(.fc-section-label),
 html[data-collapsed-analogy="1"] section[data-sec="analogy"] > :not(.fc-section-label),
 html[data-collapsed-stories-full="1"] section[data-sec="stories-full"] > :not(.fc-section-label),
-html[data-collapsed-important_words="1"] section[data-sec="important_words"] > :not(.fc-section-label) {
+html[data-collapsed-important_words="1"] section[data-sec="important_words"] > :not(.fc-section-label),
+html[data-collapsed-study="1"] section[data-sec="study"] > :not(.fc-section-label),
+html[data-collapsed-study_qa="1"] section[data-sec="study_qa"] > :not(.fc-section-label),
+html[data-collapsed-study_essays="1"] section[data-sec="study_essays"] > :not(.fc-section-label),
+html[data-collapsed-chapter_overview="1"] section[data-sec="chapter_overview"] > :not(.fc-section-label),
+html[data-collapsed-breakdown="1"] section[data-sec="breakdown"] > :not(.fc-section-label) {
     display: none !important;
 }
 html[data-collapsed-synonyms="1"] section[data-sec="synonyms"] > .fc-section-label::before,
@@ -2934,7 +2954,12 @@ html[data-collapsed-related="1"] section[data-sec="related"] > .fc-section-label
 html[data-collapsed-lectures="1"] section[data-sec="lectures"] > .fc-section-label::before,
 html[data-collapsed-analogy="1"] section[data-sec="analogy"] > .fc-section-label::before,
 html[data-collapsed-stories-full="1"] section[data-sec="stories-full"] > .fc-section-label::before,
-html[data-collapsed-important_words="1"] section[data-sec="important_words"] > .fc-section-label::before {
+html[data-collapsed-important_words="1"] section[data-sec="important_words"] > .fc-section-label::before,
+html[data-collapsed-study="1"] section[data-sec="study"] > .fc-section-label::before,
+html[data-collapsed-study_qa="1"] section[data-sec="study_qa"] > .fc-section-label::before,
+html[data-collapsed-study_essays="1"] section[data-sec="study_essays"] > .fc-section-label::before,
+html[data-collapsed-chapter_overview="1"] section[data-sec="chapter_overview"] > .fc-section-label::before,
+html[data-collapsed-breakdown="1"] section[data-sec="breakdown"] > .fc-section-label::before {
     transform: rotate(-90deg);
 }
 
