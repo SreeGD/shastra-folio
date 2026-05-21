@@ -1008,6 +1008,39 @@
     }
 
     // -------------------------------------------------------------------------
+    // Global audience filter (all/primary/middle/senior/college).
+    // Sidebar radio buttons under "Audience". Persists in localStorage; sets
+    // html[data-audience-<level>] attribute so CSS rules hide elements that
+    // carry data-level="<other-level>".
+    // -------------------------------------------------------------------------
+    function wireAudienceFilter() {
+        var radios = document.querySelectorAll("input[name='fc-audience']");
+        if (!radios.length) return;
+        var key = (S.AUDIENCE_KEY) || "fc-audience";
+        var current = (S.audience) || "all";
+        // Initialize radio + html-attribute state
+        radios.forEach(function (r) { r.checked = (r.value === current); });
+        function applyHtmlAttr() {
+            // Clear all audience attrs first
+            ["primary", "middle", "senior", "college"].forEach(function (lvl) {
+                html.removeAttribute("data-audience-" + lvl);
+            });
+            if (current && current !== "all") {
+                html.setAttribute("data-audience-" + current, "1");
+            }
+        }
+        applyHtmlAttr();
+        radios.forEach(function (r) {
+            r.addEventListener("change", function () {
+                if (!r.checked) return;
+                current = r.value;
+                try { localStorage.setItem(key, current); } catch (err) {}
+                applyHtmlAttr();
+            });
+        });
+    }
+
+    // -------------------------------------------------------------------------
     // Share-as-image — render a verse to a 1080×1080 PNG via Canvas, with a
     // Download and Copy-to-clipboard action. Fonts are awaited via the FontFace
     // API so Devanāgarī and Lora render correctly the first time.
@@ -2759,6 +2792,7 @@
     wireTtsControls();
     wireReadout();
     wireAgeFilter();
+    wireAudienceFilter();
     wireMobileDrawers();
     wirePresentation();
     wireNotes();

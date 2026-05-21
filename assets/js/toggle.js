@@ -98,6 +98,16 @@
     try { pgFilter = localStorage.getItem(PG_FILTER_KEY) || "all"; } catch (e) {}
     html.setAttribute("data-pg-filter", pgFilter);
 
+    // Global audience filter (all/primary/middle/senior/college)
+    // Applies wherever an element carries data-level="<level>" — primarily
+    // theme DevelopmentalSpec blocks and story cards.
+    var AUDIENCE_KEY = "fc-audience";
+    var audience = "all";
+    try { audience = localStorage.getItem(AUDIENCE_KEY) || "all"; } catch (e) {}
+    if (audience && audience !== "all") {
+        html.setAttribute("data-audience-" + audience, "1");
+    }
+
     // Read-aloud master toggle — default ON.
     var TTS_PREFS_KEY = "fc-tts-prefs";
     var ttsPrefs = {};
@@ -130,6 +140,8 @@
         reading: reading,
         PG_FILTER_KEY: PG_FILTER_KEY,
         pgFilter: pgFilter,
+        AUDIENCE_KEY: AUDIENCE_KEY,
+        audience: audience,
         DEFAULT_COLLAPSED: DEFAULT_COLLAPSED,
         isSectionCollapsed: isSectionCollapsed,
         SECTIONS: SECTIONS,
