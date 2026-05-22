@@ -51,9 +51,8 @@
     // we don't need a default override for it here.
     var DEFAULT_COLLAPSED = {
         synonyms: true,
-        purport: true,
-        gaudiya: true,
-        classical: true,
+        // purport, gaudiya, classical — START EXPANDED so commentaries are
+        // visible at a glance. Users can collapse via the chevron.
         personal_guidance: true,
         related: true,
         lectures: true,
