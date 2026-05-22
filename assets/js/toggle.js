@@ -11,6 +11,7 @@
         "study", "study_qa", "study_essays",
         "chapter_overview", "breakdown", "section_banner",
         "gpd_all",
+        "bb_view",
     ];
     var DEFAULT_HIDDEN = {
         pronunciation: true,
