@@ -12,6 +12,7 @@
         "chapter_overview", "breakdown", "section_banner",
         "gpd_all",
         "bb_view",
+        "audio_player",
     ];
     var DEFAULT_HIDDEN = {
         pronunciation: true,

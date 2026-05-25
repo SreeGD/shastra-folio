@@ -2809,4 +2809,34 @@
     wirePathBanner();
     wireWordsIndex();
     wireNotesModal();
+
+    // -------------------------------------------------------------------------
+    // BG chapter audio player: reciter <select> → <audio> src swap.
+    // Persists picked reciter in localStorage so it carries across chapters.
+    // -------------------------------------------------------------------------
+    function wireBgAudioPlayer() {
+        var sel = document.getElementById("fc-bg-reciter");
+        var aud = document.getElementById("fc-bg-audio");
+        if (!sel || !aud) return;
+        var KEY = "fc-bg-reciter";
+        var saved = null;
+        try { saved = localStorage.getItem(KEY); } catch (e) {}
+        // Apply saved reciter if available in this chapter's options
+        if (saved) {
+            for (var i = 0; i < sel.options.length; i++) {
+                if (sel.options[i].dataset.reciter === saved) {
+                    sel.selectedIndex = i;
+                    aud.src = sel.options[i].value;
+                    break;
+                }
+            }
+        }
+        sel.addEventListener("change", function () {
+            var opt = sel.options[sel.selectedIndex];
+            aud.src = opt.value;
+            aud.load();
+            try { localStorage.setItem(KEY, opt.dataset.reciter); } catch (e) {}
+        });
+    }
+    wireBgAudioPlayer();
 })();
