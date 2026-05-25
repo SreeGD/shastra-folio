@@ -99,6 +99,8 @@
                 <label><input type="checkbox" data-section="important_words"> Important Words</label>
                 <label><input type="checkbox" data-section="note" checked> My note</label>
                 <label><input type="checkbox" data-section="audio_player" checked> Sanskrit recitation player</label>
+                <label><input type="checkbox" data-section="recitation_slokas" checked> &nbsp; Reading-along view (auto-show on play)</label>
+                <label><input type="checkbox" data-section="quiz" checked> MCQ quizzes (chapter + sub-section)</label>
                 <label class="fc-toggle-master"><input type="checkbox" data-section="gpd_all" checked> <strong>Gauranga Priya additions</strong> (master)</label>
                 <label><input type="checkbox" data-section="chapter_overview" checked> &nbsp; Chapter Overview</label>
                 <label><input type="checkbox" data-section="breakdown" checked> &nbsp; Breakdown of Chapter</label>
@@ -309,21 +311,385 @@
 
 <section class="fc-section fc-bg-audio" data-sec="audio_player">
     <div class="fc-section-label">Sanskrit Recitation</div>
-    <div class="fc-bg-audio-picker">
-        <label for="fc-bg-reciter">Reciter:</label>
-        <select id="fc-bg-reciter">
-            <option value="https://bhagavadgitaclass.com//wp-content/audio/Bhagavad-Gita-Recitation/Bhagavad_Gita_Recitation_in_Sanskrit_by_AC_Bhaktivedanta_Swami_Srila_Prabhupada/Bhagavad_Gita_Recitation_Chapter-02_in_Sanskrit_by_AC_Bhaktivedanta_Swami_Prabhupada.mp3" data-reciter="prabhupada">A.C. Bhaktivedanta Swami Prabhupāda</option>
-            <option value="https://bhagavadgitaclass.com//wp-content/audio/Bhagavad-Gita-Recitation/Bhagavad_Gita_Recitation_in_Sanskrit_by_HG_Ananta_Nitai_Prabhu/Bhagavad_Gita_Recitation_Chapter-02_in_Sanskrit_by_HG_Ananta_Nitai_Prabhu.mp3" data-reciter="ananta-nitai">His Grace Ananta Nitai Prabhu</option>
-            <option value="https://bhagavadgitaclass.com//wp-content/audio/Bhagavad-Gita-Recitation/Bhagavad_Gita_Recitation_in_Sanskrit_by_HG_Bharat_Ram_Prabhu/Bhagavad_Gita_Recitation_Chapter-02_in_Sanskrit_by_HG_Bharat_Ram_Prabhu.mp3" data-reciter="bharat-ram">His Grace Bharat Ram Prabhu</option>
-            <option value="https://bhagavadgitaclass.com/wp-content/audio/Bhagavad-Gita-Recitation/Bhagavad_Gita_Recitation_in_Sanskrit_by_HH_Mahavishnu_Goswami/Bhagavad_Gita_Recitation_Chapter-02_in_Sanksrit_by_HH_Mahavishnu_Goswami.mp3" data-reciter="mahavishnu-goswami">His Holiness Mahaviṣṇu Goswami</option>
-            <option value="https://bhagavadgitaclass.com/wp-content/audio/Bhagavad-Gita-Recitation/Bhagavad_Gita_Recitation_in_Sanskrit_by_HG_Radha_Gopinath_Prabhu/Bhagavad_Gita_Recitation_Chapter-02_in_Sanskrit_by_HG_Radha_Gopinath_Prabhu.mp3" data-reciter="radha-gopinath">His Grace Rādhā-Gopīnātha Prabhu</option>
-            <option value="https://bhagavadgitaclass.com/wp-content/audio/Bhagavad-Gita-Recitation/Bhagavad_Gita_Recitation_in_Sanskrit_with_Tamil_Translations/Bhagavad_Gita_Recitation_Chapter-02_in_Sanskrit_with_Tamil_Translations.mp3" data-reciter="tamil-translations">Sanskrit + Tamil Translations</option>
-        </select>
-        <span class="fc-bg-audio-coverage">6 reciters for chapter 2</span>
+    <div class="fc-bg-recitation">
+        <div class="fc-bg-audio-wrap">
+            <div class="fc-bg-audio-picker">
+                <label for="fc-bg-reciter">Reciter:</label>
+                <select id="fc-bg-reciter">
+                    <option value="https://bhagavadgitaclass.com//wp-content/audio/Bhagavad-Gita-Recitation/Bhagavad_Gita_Recitation_in_Sanskrit_by_AC_Bhaktivedanta_Swami_Srila_Prabhupada/Bhagavad_Gita_Recitation_Chapter-02_in_Sanskrit_by_AC_Bhaktivedanta_Swami_Prabhupada.mp3" data-reciter="prabhupada">A.C. Bhaktivedanta Swami Prabhupāda</option>
+                    <option value="https://bhagavadgitaclass.com//wp-content/audio/Bhagavad-Gita-Recitation/Bhagavad_Gita_Recitation_in_Sanskrit_by_HG_Ananta_Nitai_Prabhu/Bhagavad_Gita_Recitation_Chapter-02_in_Sanskrit_by_HG_Ananta_Nitai_Prabhu.mp3" data-reciter="ananta-nitai">His Grace Ananta Nitai Prabhu</option>
+                    <option value="https://bhagavadgitaclass.com//wp-content/audio/Bhagavad-Gita-Recitation/Bhagavad_Gita_Recitation_in_Sanskrit_by_HG_Bharat_Ram_Prabhu/Bhagavad_Gita_Recitation_Chapter-02_in_Sanskrit_by_HG_Bharat_Ram_Prabhu.mp3" data-reciter="bharat-ram">His Grace Bharat Ram Prabhu</option>
+                    <option value="https://bhagavadgitaclass.com/wp-content/audio/Bhagavad-Gita-Recitation/Bhagavad_Gita_Recitation_in_Sanskrit_by_HH_Mahavishnu_Goswami/Bhagavad_Gita_Recitation_Chapter-02_in_Sanksrit_by_HH_Mahavishnu_Goswami.mp3" data-reciter="mahavishnu-goswami">His Holiness Mahaviṣṇu Goswami</option>
+                    <option value="https://bhagavadgitaclass.com/wp-content/audio/Bhagavad-Gita-Recitation/Bhagavad_Gita_Recitation_in_Sanskrit_by_HG_Radha_Gopinath_Prabhu/Bhagavad_Gita_Recitation_Chapter-02_in_Sanskrit_by_HG_Radha_Gopinath_Prabhu.mp3" data-reciter="radha-gopinath">His Grace Rādhā-Gopīnātha Prabhu</option>
+                    <option value="https://bhagavadgitaclass.com/wp-content/audio/Bhagavad-Gita-Recitation/Bhagavad_Gita_Recitation_in_Sanskrit_with_Tamil_Translations/Bhagavad_Gita_Recitation_Chapter-02_in_Sanskrit_with_Tamil_Translations.mp3" data-reciter="tamil-translations">Sanskrit + Tamil Translations</option>
+                </select>
+                <span class="fc-bg-audio-coverage">6 reciters for chapter 2</span>
+            </div>
+            <audio id="fc-bg-audio" controls preload="none" src="https://bhagavadgitaclass.com//wp-content/audio/Bhagavad-Gita-Recitation/Bhagavad_Gita_Recitation_in_Sanskrit_by_AC_Bhaktivedanta_Swami_Srila_Prabhupada/Bhagavad_Gita_Recitation_Chapter-02_in_Sanskrit_by_AC_Bhaktivedanta_Swami_Prabhupada.mp3"></audio>
+            <p class="fc-source-link">Audio hot-linked from
+                <a href="https://bhagavadgitaclass.com/category/recitation/" rel="noopener">bhagavadgitaclass.com</a> — streamed from upstream, not stored.</p>
+        </div>
+        <div id="fc-bg-slokas" class="fc-bg-slokas" data-sec="recitation_slokas" hidden>
+            <div class="fc-bg-slokas-header">Reading along — Chapter 2</div>
+            <div class="fc-bg-slokas-inner">
+                <article class="fc-bg-sloka" id="sloka-2-1">
+                    <div class="fc-bg-sloka-num">2.1</div>
+                    <div class="cr-deva"><div class="cr-deva-line">सञ्जय उवाच</div><div class="cr-deva-line">तं तथा कृपयाविष्टमश्रुपूर्णाकुलेक्षणम् ।</div><div class="cr-deva-line">विषीदन्तमिदं वाक्यमुवाच मधुसूदनः ॥ १ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">sañjaya uvāca</div><div class="cr-iast-line">taṁ tathā kṛpayāviṣṭam</div><div class="cr-iast-line">aśru-pūrṇākulekṣaṇam</div><div class="cr-iast-line">viṣīdantam idaṁ vākyam</div><div class="cr-iast-line">uvāca madhusūdanaḥ</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-2-2">
+                    <div class="fc-bg-sloka-num">2.2</div>
+                    <div class="cr-deva"><div class="cr-deva-line">श्री भगवानुवाच</div><div class="cr-deva-line">कुतस्त्वा कश्मलमिदं विषमे समुपस्थितम् ।</div><div class="cr-deva-line">अनार्यजुष्टमस्वर्ग्यकीर्तिकरमर्जुन ॥ २ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">śrī-bhagavān uvāca</div><div class="cr-iast-line">kutas tvā kaśmalam idaṁ</div><div class="cr-iast-line">viṣame samupasthitam</div><div class="cr-iast-line">anārya-juṣṭam asvargyam</div><div class="cr-iast-line">akīrti-karam arjuna</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-2-3">
+                    <div class="fc-bg-sloka-num">2.3</div>
+                    <div class="cr-deva"><div class="cr-deva-line">क्ल‍ैब्यं मा स्म गमः पार्थ नैतत्त्वय्युपपद्यते ।</div><div class="cr-deva-line">क्षुद्रं हृदयदौर्बल्यं त्यक्त्वोत्तिष्ठ परन्तप ॥ ३ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">klaibyaṁ mā sma gamaḥ pārtha</div><div class="cr-iast-line">naitat tvayy upapadyate</div><div class="cr-iast-line">kṣudraṁ hṛdaya-daurbalyaṁ</div><div class="cr-iast-line">tyaktvottiṣṭha paran-tapa</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-2-4">
+                    <div class="fc-bg-sloka-num">2.4</div>
+                    <div class="cr-deva"><div class="cr-deva-line">अर्जुन उवाच</div><div class="cr-deva-line">कथं भीष्ममहं संख्ये द्रोणं च मधुसूदन ।</div><div class="cr-deva-line">इषुभिः प्रतियोत्स्यामि पूजार्हावरिसूदन ॥ ४ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">arjuna uvāca</div><div class="cr-iast-line">kathaṁ bhīṣmam ahaṁ saṅkhye</div><div class="cr-iast-line">droṇaṁ ca madhusūdana</div><div class="cr-iast-line">iṣubhiḥ pratiyotsyāmi</div><div class="cr-iast-line">pūjārhāv ari-sūdana</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-2-5">
+                    <div class="fc-bg-sloka-num">2.5</div>
+                    <div class="cr-deva"><div class="cr-deva-line">गुरूनहत्वा हि महानुभावान्</div><div class="cr-deva-line">श्रेयो भोक्तुं भैक्ष्यमपीह लोके ।</div><div class="cr-deva-line">हत्वार्थकामांस्तु गुरूनिहैव</div><div class="cr-deva-line">भुज्ज‍ीय भोगान्‍रुधिरप्रदिग्धान् ॥ ५ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">gurūn ahatvā hi mahānubhāvān</div><div class="cr-iast-line">śreyo bhoktuṁ bhaikṣyam apīha loke</div><div class="cr-iast-line">hatvārtha-kāmāṁs tu gurūn ihaiva</div><div class="cr-iast-line">bhuñjīya bhogān rudhira-pradigdhān</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-2-6">
+                    <div class="fc-bg-sloka-num">2.6</div>
+                    <div class="cr-deva"><div class="cr-deva-line">न चैतद्विद्मः कतरन्नो गरीयो</div><div class="cr-deva-line">यद्वा जयेम यदि वा नो जयेयुः ।</div><div class="cr-deva-line">यानेव हत्वा न जिजीविषाम-</div><div class="cr-deva-line">स्तेऽवस्थिताः प्रमुखे धार्तराष्ट्राः ॥ ६ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">na caitad vidmaḥ kataran no garīyo</div><div class="cr-iast-line">yad vā jayema yadi vā no jayeyuḥ</div><div class="cr-iast-line">yān eva hatvā na jijīviṣāmas</div><div class="cr-iast-line">te ’vasthitāḥ pramukhe dhārtarāṣṭrāḥ</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-2-7">
+                    <div class="fc-bg-sloka-num">2.7</div>
+                    <div class="cr-deva"><div class="cr-deva-line">कार्पण्यदोषोपहतस्वभावः</div><div class="cr-deva-line">पृच्छामि त्वां धर्मसम्मूढचेताः ।</div><div class="cr-deva-line">यच्छ्रेयः स्यान्निश्‍चितं ब्रूहि तन्मे</div><div class="cr-deva-line">शिष्यस्तेऽहं शाधि मां त्वां प्रपन्नम् ॥ ७ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">kārpaṇya-doṣopahata-svabhāvaḥ</div><div class="cr-iast-line">pṛcchāmi tvāṁ dharma-sammūḍha-cetāḥ</div><div class="cr-iast-line">yac chreyaḥ syān niścitaṁ brūhi tan me</div><div class="cr-iast-line">śiṣyas te ’haṁ śādhi māṁ tvāṁ prapannam</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-2-8">
+                    <div class="fc-bg-sloka-num">2.8</div>
+                    <div class="cr-deva"><div class="cr-deva-line">न हि प्रपश्यामि ममापनुद्याद् -</div><div class="cr-deva-line">यच्छोकमुच्छोषणमिन्द्रियाणाम् ।</div><div class="cr-deva-line">अवाप्य भूभावसपत्‍नमृद्धं</div><div class="cr-deva-line">राज्यं सुराणामपि चाधिपत्यम् ॥ ८ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">na hi prapaśyāmi mamāpanudyād</div><div class="cr-iast-line">yac chokam ucchoṣaṇam indriyāṇām</div><div class="cr-iast-line">avāpya bhūmāv asapatnam ṛddhaṁ</div><div class="cr-iast-line">rājyaṁ surāṇām api cādhipatyam</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-2-9">
+                    <div class="fc-bg-sloka-num">2.9</div>
+                    <div class="cr-deva"><div class="cr-deva-line">सञ्जय उवाच</div><div class="cr-deva-line">एवमुक्त्वा हृषीकेशं गुडाकेशः परन्तपः ।</div><div class="cr-deva-line">न योत्स्य इति गोविन्दामुक्त्वा तूष्णीं बभूव ह ॥ ९ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">sañjaya uvāca</div><div class="cr-iast-line">evam uktvā hṛṣīkeśaṁ</div><div class="cr-iast-line">guḍākeśaḥ paran-tapaḥ</div><div class="cr-iast-line">na yotsya iti govindam</div><div class="cr-iast-line">uktvā tūṣṇīṁ babhūva ha</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-2-10">
+                    <div class="fc-bg-sloka-num">2.10</div>
+                    <div class="cr-deva"><div class="cr-deva-line">तमुवाच हृषीकेशः प्रहसन्निव भारत ।</div><div class="cr-deva-line">सेनयोरूभयोर्मध्ये विषीदन्तमिदं वचः ॥ १० ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">tam uvāca hṛṣīkeśaḥ</div><div class="cr-iast-line">prahasann iva bhārata</div><div class="cr-iast-line">senayor ubhayor madhye</div><div class="cr-iast-line">viṣīdantam idaṁ vacaḥ</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-2-11">
+                    <div class="fc-bg-sloka-num">2.11</div>
+                    <div class="cr-deva"><div class="cr-deva-line">श्री भगवानुवाच</div><div class="cr-deva-line">अशोच्यनन्वशोचस्त्वं प्रज्ञावादांश्च भाषसे ।</div><div class="cr-deva-line">गतासूनगतासूंश्च नानुशोचन्ति पण्डिताः ॥ ११ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">śrī-bhagavān uvāca</div><div class="cr-iast-line">aśocyān anvaśocas tvaṁ</div><div class="cr-iast-line">prajñā-vādāṁś ca bhāṣase</div><div class="cr-iast-line">gatāsūn agatāsūṁś ca</div><div class="cr-iast-line">nānuśocanti paṇḍitāḥ</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-2-12">
+                    <div class="fc-bg-sloka-num">2.12</div>
+                    <div class="cr-deva"><div class="cr-deva-line">न त्वेवाहं जातु नासं न त्वं नेमे जनाधिपाः ।</div><div class="cr-deva-line">न चैव नभविष्यामः सर्वे वयमतः परम् ॥ १२ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">na tv evāhaṁ jātu nāsaṁ</div><div class="cr-iast-line">na tvaṁ neme janādhipāḥ</div><div class="cr-iast-line">na caiva na bhaviṣyāmaḥ</div><div class="cr-iast-line">sarve vayam ataḥ param</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-2-13">
+                    <div class="fc-bg-sloka-num">2.13</div>
+                    <div class="cr-deva"><div class="cr-deva-line">देहिनोऽस्मिन्यथा देहे कौमारं यौवनं जरा ।</div><div class="cr-deva-line">तथा देहान्तरप्राप्तिर्धीरस्तत्र न मुह्यति ॥ १३ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">dehino ’smin yathā dehe</div><div class="cr-iast-line">kaumāraṁ yauvanaṁ jarā</div><div class="cr-iast-line">tathā dehāntara-prāptir</div><div class="cr-iast-line">dhīras tatra na muhyati</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-2-14">
+                    <div class="fc-bg-sloka-num">2.14</div>
+                    <div class="cr-deva"><div class="cr-deva-line">मात्रास्पर्शास्तु कौन्तेय शीतोष्णसुखदुःखदाः ।</div><div class="cr-deva-line">आगमापायिनोऽनित्यास्तांस्तितिक्षस्व भारत ॥ १४ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">mātrā-sparśās tu kaunteya</div><div class="cr-iast-line">śītoṣṇa-sukha-duḥkha-dāḥ</div><div class="cr-iast-line">āgamāpāyino ’nityās</div><div class="cr-iast-line">tāṁs titikṣasva bhārata</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-2-15">
+                    <div class="fc-bg-sloka-num">2.15</div>
+                    <div class="cr-deva"><div class="cr-deva-line">यं हि न व्यथयन्त्येते पुरुषं पुरुषर्षभ ।</div><div class="cr-deva-line">समदुःखसुखं धीरं सोऽमृतत्वाय कल्पते ॥ १५ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">yaṁ hi na vyathayanty ete</div><div class="cr-iast-line">puruṣaṁ puruṣarṣabha</div><div class="cr-iast-line">sama-duḥkha-sukhaṁ dhīraṁ</div><div class="cr-iast-line">so ’mṛtatvāya kalpate</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-2-16">
+                    <div class="fc-bg-sloka-num">2.16</div>
+                    <div class="cr-deva"><div class="cr-deva-line">नासतो विद्यते भावो नाभावो विद्यते सतः ।</div><div class="cr-deva-line">उभयोरपि दृष्टोऽन्तस्त्वनयोस्तत्त्वदर्शिभिः ॥ १६ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">nāsato vidyate bhāvo</div><div class="cr-iast-line">nābhāvo vidyate sataḥ</div><div class="cr-iast-line">ubhayor api dṛṣṭo ’ntas</div><div class="cr-iast-line">tv anayos tattva-darśibhiḥ</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-2-17">
+                    <div class="fc-bg-sloka-num">2.17</div>
+                    <div class="cr-deva"><div class="cr-deva-line">अविनाशि तु तद्विद्धि येन सर्वमिदं ततम् ।</div><div class="cr-deva-line">विनाशमव्ययस्यास्य न कश्चित्कर्तुमर्हति ॥ १७ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">avināśi tu tad viddhi</div><div class="cr-iast-line">yena sarvam idaṁ tatam</div><div class="cr-iast-line">vināśam avyayasyāsya</div><div class="cr-iast-line">na kaścit kartum arhati</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-2-18">
+                    <div class="fc-bg-sloka-num">2.18</div>
+                    <div class="cr-deva"><div class="cr-deva-line">अन्तवन्त इमे देहा नित्यस्योक्ताः शरीरिणः ।</div><div class="cr-deva-line">अनाशिनोऽप्रमेयस्य तस्माद्युध्यस्व भारत ॥ १८ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">antavanta ime dehā</div><div class="cr-iast-line">nityasyoktāḥ śarīriṇaḥ</div><div class="cr-iast-line">anāśino ’prameyasya</div><div class="cr-iast-line">tasmād yudhyasva bhārata</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-2-19">
+                    <div class="fc-bg-sloka-num">2.19</div>
+                    <div class="cr-deva"><div class="cr-deva-line">य एनं वेत्ति हन्तारं यश्चैनं मन्यते हतम् ।</div><div class="cr-deva-line">उभौ तौ न विजानीतो नायं हन्ति न हन्यते ॥ १९ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">ya enaṁ vetti hantāraṁ</div><div class="cr-iast-line">yaś cainaṁ manyate hatam</div><div class="cr-iast-line">ubhau tau na vijānīto</div><div class="cr-iast-line">nāyaṁ hanti na hanyate</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-2-20">
+                    <div class="fc-bg-sloka-num">2.20</div>
+                    <div class="cr-deva"><div class="cr-deva-line">न जायते म्रियते वा कदाचि-</div><div class="cr-deva-line">न्नायं भूत्वा भविता वा न भूयः ।</div><div class="cr-deva-line">अजो नित्यः शाश्वतोऽयं पुराणो</div><div class="cr-deva-line">न हन्यते हन्यमाने शरीरे ॥ २० ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">na jāyate mriyate vā kadācin</div><div class="cr-iast-line">nāyaṁ bhūtvā bhavitā vā na bhūyaḥ</div><div class="cr-iast-line">ajo nityaḥ śāśvato ’yaṁ purāṇo</div><div class="cr-iast-line">na hanyate hanyamāne śarīre</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-2-21">
+                    <div class="fc-bg-sloka-num">2.21</div>
+                    <div class="cr-deva"><div class="cr-deva-line">वेदाविनाशिनं नित्यं य एनमजमव्ययम् ।</div><div class="cr-deva-line">कथं स पुरुषः पार्थ कं घातयति हन्ति कम् ॥ २१ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">vedāvināśinaṁ nityaṁ</div><div class="cr-iast-line">ya enam ajam avyayam</div><div class="cr-iast-line">kathaṁ sa puruṣaḥ pārtha</div><div class="cr-iast-line">kaṁ ghātayati hanti kam</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-2-22">
+                    <div class="fc-bg-sloka-num">2.22</div>
+                    <div class="cr-deva"><div class="cr-deva-line">वासांसि जीर्णानि यथा विहाय</div><div class="cr-deva-line">नवानि गृह्णाति नरोऽपराणि ।</div><div class="cr-deva-line">तथा शरीराणि विहाय जीर्णा-</div><div class="cr-deva-line">न्यन्यानि संयाति नवानि देही ॥ २२ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">vāsāṁsi jīrṇāni yathā vihāya</div><div class="cr-iast-line">navāni gṛhṇāti naro ’parāṇi</div><div class="cr-iast-line">tathā śarīrāṇi vihāya jīrṇāny</div><div class="cr-iast-line">anyāni saṁyāti navāni dehī</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-2-23">
+                    <div class="fc-bg-sloka-num">2.23</div>
+                    <div class="cr-deva"><div class="cr-deva-line">नैनं छिन्दन्ति शस्त्राणि नैनं दहति पावकः ।</div><div class="cr-deva-line">न चैनं क्ल‍ेदयन्त्यापो न शोषयति मारुतः ॥ २३ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">nainaṁ chindanti śastrāṇi</div><div class="cr-iast-line">nainaṁ dahati pāvakaḥ</div><div class="cr-iast-line">na cainaṁ kledayanty āpo</div><div class="cr-iast-line">na śoṣayati mārutaḥ</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-2-24">
+                    <div class="fc-bg-sloka-num">2.24</div>
+                    <div class="cr-deva"><div class="cr-deva-line">अच्छेद्योऽयमदाह्योऽयमक्ल‍ेद्योऽशोष्य एव च ।</div><div class="cr-deva-line">नित्यः सर्वगतः स्थाणुरचलोऽयं सनातनः ॥ २४ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">acchedyo ’yam adāhyo ’yam</div><div class="cr-iast-line">akledyo ’śoṣya eva ca</div><div class="cr-iast-line">nityaḥ sarva-gataḥ sthāṇur</div><div class="cr-iast-line">acalo ’yaṁ sanātanaḥ</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-2-25">
+                    <div class="fc-bg-sloka-num">2.25</div>
+                    <div class="cr-deva"><div class="cr-deva-line">अव्यक्तोऽयमचिन्त्योऽयमविकार्योऽयमुच्यते ।</div><div class="cr-deva-line">तस्मादेवं विदित्वैनं नानुशोचितुमर्हसि ॥ २५ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">avyakto ’yam acintyo ’yam</div><div class="cr-iast-line">avikāryo ’yam ucyate</div><div class="cr-iast-line">tasmād evaṁ viditvainaṁ</div><div class="cr-iast-line">nānuśocitum arhasi</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-2-26">
+                    <div class="fc-bg-sloka-num">2.26</div>
+                    <div class="cr-deva"><div class="cr-deva-line">अथ चैनं नित्यजातं नित्यं वा मन्यसे मृतम् ।</div><div class="cr-deva-line">तथापि त्वं महाबाहो नैनं शोचितुमर्हसि ॥ २६ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">atha cainaṁ nitya-jātaṁ</div><div class="cr-iast-line">nityaṁ vā manyase mṛtam</div><div class="cr-iast-line">tathāpi tvaṁ mahā-bāho</div><div class="cr-iast-line">nainaṁ śocitum arhasi</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-2-27">
+                    <div class="fc-bg-sloka-num">2.27</div>
+                    <div class="cr-deva"><div class="cr-deva-line">जातस्य हि ध्रुवो मृत्युर्ध्रुवं जन्म मृतस्य च ।</div><div class="cr-deva-line">तस्मादपरिहार्येऽर्थे न त्वं शोचितुमर्हसि ॥ २७ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">jātasya hi dhruvo mṛtyur</div><div class="cr-iast-line">dhruvaṁ janma mṛtasya ca</div><div class="cr-iast-line">tasmād aparihārye ’rthe</div><div class="cr-iast-line">na tvaṁ śocitum arhasi</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-2-28">
+                    <div class="fc-bg-sloka-num">2.28</div>
+                    <div class="cr-deva"><div class="cr-deva-line">अव्यक्तादीनि भूतानि व्यक्तमध्यानि भारत ।</div><div class="cr-deva-line">अव्यक्तनिधनान्येव तत्र का परिदेवना ॥ २८ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">avyaktādīni bhūtāni</div><div class="cr-iast-line">vyakta-madhyāni bhārata</div><div class="cr-iast-line">avyakta-nidhanāny eva</div><div class="cr-iast-line">tatra kā paridevanā</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-2-29">
+                    <div class="fc-bg-sloka-num">2.29</div>
+                    <div class="cr-deva"><div class="cr-deva-line">आश्चर्यवत्पश्यति कश्चिदेन -</div><div class="cr-deva-line">माश्चर्यवद्वदति तथैव चान्यः ।</div><div class="cr-deva-line">आश्चर्यवच्च‍ैनमन्यः श‍ृणोति</div><div class="cr-deva-line">श्रुत्वाप्येनं वेद न चैव कश्चित् ॥ २९ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">āścarya-vat paśyati kaścid enam</div><div class="cr-iast-line">āścarya-vad vadati tathaiva cānyaḥ</div><div class="cr-iast-line">āścarya-vac cainam anyaḥ śṛṇoti</div><div class="cr-iast-line">śrutvāpy enaṁ veda na caiva kaścit</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-2-30">
+                    <div class="fc-bg-sloka-num">2.30</div>
+                    <div class="cr-deva"><div class="cr-deva-line">देही नित्यमवध्योऽयं देहे सर्वस्य भारत ।</div><div class="cr-deva-line">तस्मात्सर्वाणि भूतानि न त्वं शोचितुमर्हसि ॥ ३० ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">dehī nityam avadhyo ’yaṁ</div><div class="cr-iast-line">dehe sarvasya bhārata</div><div class="cr-iast-line">tasmāt sarvāṇi bhūtāni</div><div class="cr-iast-line">na tvaṁ śocitum arhasi</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-2-31">
+                    <div class="fc-bg-sloka-num">2.31</div>
+                    <div class="cr-deva"><div class="cr-deva-line">स्वधर्ममपि चावेक्ष्य न विकम्पितुमर्हसि ।</div><div class="cr-deva-line">धर्म्याद्धि युद्धाच्छ्रेयोऽन्यत्क्षत्रियस्य न विद्यते ॥ ३१ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">sva-dharmam api cāvekṣya</div><div class="cr-iast-line">na vikampitum arhasi</div><div class="cr-iast-line">dharmyād dhi yuddhāc chreyo ’nyat</div><div class="cr-iast-line">kṣatriyasya na vidyate</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-2-32">
+                    <div class="fc-bg-sloka-num">2.32</div>
+                    <div class="cr-deva"><div class="cr-deva-line">यदृच्छया चोपपन्नं स्वर्गद्वारमपावृतम् ।</div><div class="cr-deva-line">सुखिनः क्षत्रियाः पार्थ लभन्ते युद्धमीदृशम् ॥ ३२ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">yadṛcchayā copapannaṁ</div><div class="cr-iast-line">svarga-dvāram apāvṛtam</div><div class="cr-iast-line">sukhinaḥ kṣatriyāḥ pārtha</div><div class="cr-iast-line">labhante yuddham īdṛśam</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-2-33">
+                    <div class="fc-bg-sloka-num">2.33</div>
+                    <div class="cr-deva"><div class="cr-deva-line">अथ चेत्त्वमिमं धर्म्यं सङ्ग्रामं न करिष्यसि ।</div><div class="cr-deva-line">ततः स्वधर्मं कीर्तिं च हित्वा पापमवाप्स्यसि ॥ ३३ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">atha cet tvam imaṁ dharmyaṁ</div><div class="cr-iast-line">saṅgrāmaṁ na kariṣyasi</div><div class="cr-iast-line">tataḥ sva-dharmaṁ kīrtiṁ ca</div><div class="cr-iast-line">hitvā pāpam avāpsyasi</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-2-34">
+                    <div class="fc-bg-sloka-num">2.34</div>
+                    <div class="cr-deva"><div class="cr-deva-line">अकीर्तिं चापि भूतानि कथयिष्यन्ति तेऽव्ययाम् ।</div><div class="cr-deva-line">सम्भावितस्य चाकीर्तिर्मरणादतिरिच्यते ॥ ३४ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">akīrtiṁ cāpi bhūtāni</div><div class="cr-iast-line">kathayiṣyanti te ’vyayām</div><div class="cr-iast-line">sambhāvitasya cākīrtir</div><div class="cr-iast-line">maraṇād atiricyate</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-2-35">
+                    <div class="fc-bg-sloka-num">2.35</div>
+                    <div class="cr-deva"><div class="cr-deva-line">भयाद्रणादुपरतं मंस्यन्ते त्वां महारथाः ।</div><div class="cr-deva-line">येषां च त्वं बहुमतो भूत्वा यास्यसि लाघवम् ॥ ३५ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">bhayād raṇād uparataṁ</div><div class="cr-iast-line">maṁsyante tvāṁ mahā-rathāḥ</div><div class="cr-iast-line">yeṣāṁ ca tvaṁ bahu-mato</div><div class="cr-iast-line">bhūtvā yāsyasi lāghavam</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-2-36">
+                    <div class="fc-bg-sloka-num">2.36</div>
+                    <div class="cr-deva"><div class="cr-deva-line">अवाच्यवादांश्च बहून्वदिष्यन्ति तवाहिताः ।</div><div class="cr-deva-line">निन्दन्तस्तव सामर्थ्य ततो दुःखतरं नु किम् ॥ ३६ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">avācya-vādāṁś ca bahūn</div><div class="cr-iast-line">vadiṣyanti tavāhitāḥ</div><div class="cr-iast-line">nindantas tava sāmarthyaṁ</div><div class="cr-iast-line">tato duḥkha-taraṁ nu kim</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-2-37">
+                    <div class="fc-bg-sloka-num">2.37</div>
+                    <div class="cr-deva"><div class="cr-deva-line">हतो वा प्राप्स्यसि स्वर्ग जित्वा वा भोक्ष्यसे महीम् ।</div><div class="cr-deva-line">तस्मादुत्तिष्ठ कौन्तेय युद्धाय कृतनिश्चयः ॥ ३७ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">hato vā prāpsyasi svargaṁ</div><div class="cr-iast-line">jitvā vā bhokṣyase mahīm</div><div class="cr-iast-line">tasmād uttiṣṭha kaunteya</div><div class="cr-iast-line">yuddhāya kṛta-niścayaḥ</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-2-38">
+                    <div class="fc-bg-sloka-num">2.38</div>
+                    <div class="cr-deva"><div class="cr-deva-line">सुखदुःखे समे कृत्वा लाभालाभौ जयाजयौ ।</div><div class="cr-deva-line">ततो युद्धाय युज्यस्व नैवं पापमवाप्स्यसि ॥ ३८ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">sukha-duḥkhe same kṛtvā</div><div class="cr-iast-line">lābhālābhau jayājayau</div><div class="cr-iast-line">tato yuddhāya yujyasva</div><div class="cr-iast-line">naivaṁ pāpam avāpsyasi</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-2-39">
+                    <div class="fc-bg-sloka-num">2.39</div>
+                    <div class="cr-deva"><div class="cr-deva-line">एषा तेऽभिहिता सांख्ये बुद्धिर्योगे त्विमां श‍ृणु ।</div><div class="cr-deva-line">बुद्ध्या युक्तो यया पार्थ कर्मबन्धं प्रहास्यसि ॥ ३९ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">eṣā te ’bhihitā sāṅkhye</div><div class="cr-iast-line">buddhir yoge tv imāṁ śṛṇu</div><div class="cr-iast-line">buddhyā yukto yayā pārtha</div><div class="cr-iast-line">karma-bandhaṁ prahāsyasi</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-2-40">
+                    <div class="fc-bg-sloka-num">2.40</div>
+                    <div class="cr-deva"><div class="cr-deva-line">नेहाभिक्रमनाशोऽस्ति प्रत्यवायो न विद्यते ।</div><div class="cr-deva-line">स्वल्पमप्यस्य धर्मस्य त्रायते महतो भयात् ॥ ४० ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">nehābhikrama-nāśo ’sti</div><div class="cr-iast-line">pratyavāyo na vidyate</div><div class="cr-iast-line">sv-alpam apy asya dharmasya</div><div class="cr-iast-line">trāyate mahato bhayāt</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-2-41">
+                    <div class="fc-bg-sloka-num">2.41</div>
+                    <div class="cr-deva"><div class="cr-deva-line">व्यवसायात्मिका बुद्धिरेकेह कुरूनन्दन ।</div><div class="cr-deva-line">बहुशाखा ह्यनन्ताश्च बुद्धयोऽव्यवसायिनाम् ॥ ४१ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">vyavasāyātmikā buddhir</div><div class="cr-iast-line">ekeha kuru-nandana</div><div class="cr-iast-line">bahu-śākhā hy anantāś ca</div><div class="cr-iast-line">buddhayo ’vyavasāyinām</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-2-42-43">
+                    <div class="fc-bg-sloka-num">2.42-43</div>
+                    <div class="cr-deva"><div class="cr-deva-line">यामिमां पुष्पितां वाचं प्रवदन्त्यविपश्चितः ।</div><div class="cr-deva-line">वेदवादरताः पार्थ नान्यदस्तीति वादिनः ॥ ४२ ॥</div><div class="cr-deva-line">कामात्मानः स्वर्गपरा जन्मकर्मफलप्रदाम् ।</div><div class="cr-deva-line">क्रियाविशेषबहुलां भोगैश्वर्यगतिं प्रति ॥ ४३ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">yām imāṁ puṣpitāṁ vācaṁ</div><div class="cr-iast-line">pravadanty avipaścitaḥ</div><div class="cr-iast-line">veda-vāda-ratāḥ pārtha</div><div class="cr-iast-line">nānyad astīti vādinaḥ</div><div class="cr-iast-line">kāmātmānaḥ svarga-parā</div><div class="cr-iast-line">janma-karma-phala-pradām</div><div class="cr-iast-line">kriyā-viśeṣa-bahulāṁ</div><div class="cr-iast-line">bhogaiśvarya-gatiṁ prati</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-2-44">
+                    <div class="fc-bg-sloka-num">2.44</div>
+                    <div class="cr-deva"><div class="cr-deva-line">भोगैश्वर्यप्रसक्तानां तयापहृतचेतसाम् ।</div><div class="cr-deva-line">व्यवसायात्मिका बुद्धिः समाधौ न विधीयते ॥ ४४ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">bhogaiśvarya-prasaktānāṁ</div><div class="cr-iast-line">tayāpahṛta-cetasām</div><div class="cr-iast-line">vyavasāyātmikā buddhiḥ</div><div class="cr-iast-line">samādhau na vidhīyate</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-2-45">
+                    <div class="fc-bg-sloka-num">2.45</div>
+                    <div class="cr-deva"><div class="cr-deva-line">त्रैगुण्यविषया वेदा निस्त्रैगुण्यो भवार्जुन ।</div><div class="cr-deva-line">निर्द्वन्द्वो नित्यसत्त्वस्थो निर्योगक्षेम आत्मवान् ॥ ४५ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">trai-guṇya-viṣayā vedā</div><div class="cr-iast-line">nistrai-guṇyo bhavārjuna</div><div class="cr-iast-line">nirdvandvo nitya-sattva-stho</div><div class="cr-iast-line">niryoga-kṣema ātmavān</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-2-46">
+                    <div class="fc-bg-sloka-num">2.46</div>
+                    <div class="cr-deva"><div class="cr-deva-line">यावानर्थ उदपाने सर्वतः सम्प्लुतोदके ।</div><div class="cr-deva-line">तावान्सर्वेषु वेदेषु ब्राह्मणस्य विजानतः ॥ ४६ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">yāvān artha uda-pāne</div><div class="cr-iast-line">sarvataḥ samplutodake</div><div class="cr-iast-line">tāvān sarveṣu vedeṣu</div><div class="cr-iast-line">brāhmaṇasya vijānataḥ</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-2-47">
+                    <div class="fc-bg-sloka-num">2.47</div>
+                    <div class="cr-deva"><div class="cr-deva-line">कर्मण्येवाधिकारस्ते मा फलेषु कदाचन ।</div><div class="cr-deva-line">मा कर्मफलहेतुर्भूर्मा ते सङ्गोऽस्त्वकर्मणि ॥ ४७ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">karmaṇy evādhikāras te</div><div class="cr-iast-line">mā phaleṣu kadācana</div><div class="cr-iast-line">mā karma-phala-hetur bhūr</div><div class="cr-iast-line">mā te saṅgo ’stv akarmaṇi</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-2-48">
+                    <div class="fc-bg-sloka-num">2.48</div>
+                    <div class="cr-deva"><div class="cr-deva-line">योगस्थः कुरु कर्माणि सङ्गं त्यक्त्वा धनञ्जय ।</div><div class="cr-deva-line">सिद्ध्यसिद्ध्योः समो भूत्वा समत्वं योग उच्यते ॥ ४८ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">yoga-sthaḥ kuru karmāṇi</div><div class="cr-iast-line">saṅgaṁ tyaktvā dhanañ-jaya</div><div class="cr-iast-line">siddhy-asiddhyoḥ samo bhūtvā</div><div class="cr-iast-line">samatvaṁ yoga ucyate</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-2-49">
+                    <div class="fc-bg-sloka-num">2.49</div>
+                    <div class="cr-deva"><div class="cr-deva-line">दूरेण ह्यवरं कर्म बुद्धियोगाद्धनञ्जय ।</div><div class="cr-deva-line">बुद्धौ शरणमन्विच्छ कृपणाः फलहेतवः ॥ ४९ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">dūreṇa hy avaraṁ karma</div><div class="cr-iast-line">buddhi-yogād dhanañ-jaya</div><div class="cr-iast-line">buddhau śaraṇam anviccha</div><div class="cr-iast-line">kṛpaṇāḥ phala-hetavaḥ</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-2-50">
+                    <div class="fc-bg-sloka-num">2.50</div>
+                    <div class="cr-deva"><div class="cr-deva-line">बुद्धियुक्तो जहातीह उभे सुकृतदुष्कृते ।</div><div class="cr-deva-line">तस्माद्योगाय युज्यस्व योगः कर्मसु कौशलम् ॥ ५० ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">buddhi-yukto jahātīha</div><div class="cr-iast-line">ubhe sukṛta-duṣkṛte</div><div class="cr-iast-line">tasmād yogāya yujyasva</div><div class="cr-iast-line">yogaḥ karmasu kauśalam</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-2-51">
+                    <div class="fc-bg-sloka-num">2.51</div>
+                    <div class="cr-deva"><div class="cr-deva-line">कर्मजं बुद्धियुक्ता हि फलं त्यक्त्वा मनीषिणः ।</div><div class="cr-deva-line">जन्मबन्धविनिर्मुक्ताः पदं गच्छन्त्यनामयम् ॥ ५१ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">karma-jaṁ buddhi-yuktā hi</div><div class="cr-iast-line">phalaṁ tyaktvā manīṣiṇaḥ</div><div class="cr-iast-line">janma-bandha-vinirmuktāḥ</div><div class="cr-iast-line">padaṁ gacchanty anāmayam</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-2-52">
+                    <div class="fc-bg-sloka-num">2.52</div>
+                    <div class="cr-deva"><div class="cr-deva-line">यदा ते मोहकलिलं बुद्धिर्व्यतितरिष्यति ।</div><div class="cr-deva-line">तदा गन्तासि निर्वेदं श्रोतव्यस्य श्रुतस्य च ॥ ५२ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">yadā te moha-kalilaṁ</div><div class="cr-iast-line">buddhir vyatitariṣyati</div><div class="cr-iast-line">tadā gantāsi nirvedaṁ</div><div class="cr-iast-line">śrotavyasya śrutasya ca</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-2-53">
+                    <div class="fc-bg-sloka-num">2.53</div>
+                    <div class="cr-deva"><div class="cr-deva-line">श्रुतिविप्रतिपन्ना ते यदा स्थास्यति निश्चला ।</div><div class="cr-deva-line">समाधावचला बुद्धिस्तदा योगमवाप्स्यसि ॥ ५३ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">śruti-vipratipannā te</div><div class="cr-iast-line">yadā sthāsyati niścalā</div><div class="cr-iast-line">samādhāv acalā buddhis</div><div class="cr-iast-line">tadā yogam avāpsyasi</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-2-54">
+                    <div class="fc-bg-sloka-num">2.54</div>
+                    <div class="cr-deva"><div class="cr-deva-line">अर्जुन उवाच</div><div class="cr-deva-line">स्थितप्रज्ञस्य का भाषा समाधिस्थस्य केशव ।</div><div class="cr-deva-line">स्थितधीः किं प्रभाषेत किमासीत व्रजेत किम् ॥ ५४ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">arjuna uvāca</div><div class="cr-iast-line">sthita-prajñasya kā bhāṣā</div><div class="cr-iast-line">samādhi-sthasya keśava</div><div class="cr-iast-line">sthita-dhīḥ kiṁ prabhāṣeta</div><div class="cr-iast-line">kim āsīta vrajeta kim</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-2-55">
+                    <div class="fc-bg-sloka-num">2.55</div>
+                    <div class="cr-deva"><div class="cr-deva-line">श्रीभगवानुवाच</div><div class="cr-deva-line">प्रजहाति यदा कामान्सर्वान्पार्थ मनोगतान् ।</div><div class="cr-deva-line">आत्मन्येवात्मना तुष्टः स्थितप्रज्ञस्तदोच्यते ॥ ५५ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">śrī-bhagavān uvāca</div><div class="cr-iast-line">prajahāti yadā kāmān</div><div class="cr-iast-line">sarvān pārtha mano-gatān</div><div class="cr-iast-line">ātmany evātmanā tuṣṭaḥ</div><div class="cr-iast-line">sthita-prajñas tadocyate</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-2-56">
+                    <div class="fc-bg-sloka-num">2.56</div>
+                    <div class="cr-deva"><div class="cr-deva-line">दुःखेष्वनुद्विग्न‍मनाः सुखेषु विगतस्पृहः ।</div><div class="cr-deva-line">वीतरागभयक्रोधः स्थिधीर्मुनिरुच्यते ॥ ५६ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">duḥkheṣv anudvigna-manāḥ</div><div class="cr-iast-line">sukheṣu vigata-spṛhaḥ</div><div class="cr-iast-line">vīta-rāga-bhaya-krodhaḥ</div><div class="cr-iast-line">sthita-dhīr munir ucyate</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-2-57">
+                    <div class="fc-bg-sloka-num">2.57</div>
+                    <div class="cr-deva"><div class="cr-deva-line">यः सर्वत्रानभिस्नेहस्तत्तत्प्राप्य श‍ुभाश‍ुभम् ।</div><div class="cr-deva-line">नाभिनन्दति न द्वेष्टि तस्य प्रज्ञा प्रतिष्ठिता ॥ ५७ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">yaḥ sarvatrānabhisnehas</div><div class="cr-iast-line">tat tat prāpya śubhāśubham</div><div class="cr-iast-line">nābhinandati na dveṣṭi</div><div class="cr-iast-line">tasya prajñā pratiṣṭhitā</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-2-58">
+                    <div class="fc-bg-sloka-num">2.58</div>
+                    <div class="cr-deva"><div class="cr-deva-line">यदा संहरते चायं कूर्मोऽङ्गानीव सर्वशः ।</div><div class="cr-deva-line">इन्द्रियाणीन्द्रियार्थेभ्यस्तस्य प्रज्ञा प्रतिष्ठिता ॥ ५८ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">yadā saṁharate cāyaṁ</div><div class="cr-iast-line">kūrmo ’ṅgānīva sarvaśaḥ</div><div class="cr-iast-line">indriyāṇīndriyārthebhyas</div><div class="cr-iast-line">tasya prajñā pratiṣṭhitā</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-2-59">
+                    <div class="fc-bg-sloka-num">2.59</div>
+                    <div class="cr-deva"><div class="cr-deva-line">विषया विनिवर्तन्ते निराहारस्य देहिनः ।</div><div class="cr-deva-line">रसवर्जं रसोऽप्यस्य परं दृष्ट्वा निवर्तते ॥ ५९ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">viṣayā vinivartante</div><div class="cr-iast-line">nirāhārasya dehinaḥ</div><div class="cr-iast-line">rasa-varjaṁ raso ’py asya</div><div class="cr-iast-line">paraṁ dṛṣṭvā nivartate</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-2-60">
+                    <div class="fc-bg-sloka-num">2.60</div>
+                    <div class="cr-deva"><div class="cr-deva-line">यततो ह्यपि कौन्तेय पुरुषस्य विपश्चितः ।</div><div class="cr-deva-line">इन्द्रियाणि प्रमाथीनि हरन्ति प्रसभं मनः ॥ ६० ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">yatato hy api kaunteya</div><div class="cr-iast-line">puruṣasya vipaścitaḥ</div><div class="cr-iast-line">indriyāṇi pramāthīni</div><div class="cr-iast-line">haranti prasabhaṁ manaḥ</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-2-61">
+                    <div class="fc-bg-sloka-num">2.61</div>
+                    <div class="cr-deva"><div class="cr-deva-line">तानि सर्वाणि संयम्य युक्त आसीत मत्परः ।</div><div class="cr-deva-line">वशे हि यस्येन्द्रियाणि तस्य प्रज्ञा प्रतिष्ठिता ॥ ६१ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">tāni sarvāṇi saṁyamya</div><div class="cr-iast-line">yukta āsīta mat-paraḥ</div><div class="cr-iast-line">vaśe hi yasyendriyāṇi</div><div class="cr-iast-line">tasya prajñā pratiṣṭhitā</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-2-62">
+                    <div class="fc-bg-sloka-num">2.62</div>
+                    <div class="cr-deva"><div class="cr-deva-line">ध्यायतो विषयान्पुंसः सङ्गस्तेषूपजायते ।</div><div class="cr-deva-line">सङ्गात्सञ्जायते कामः कामात्क्रोधोऽभिजायते ॥ ६२ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">dhyāyato viṣayān puṁsaḥ</div><div class="cr-iast-line">saṅgas teṣūpajāyate</div><div class="cr-iast-line">saṅgāt sañjāyate kāmaḥ</div><div class="cr-iast-line">kāmāt krodho ’bhijāyate</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-2-63">
+                    <div class="fc-bg-sloka-num">2.63</div>
+                    <div class="cr-deva"><div class="cr-deva-line">क्रोधाद्भ‍वति सम्मोहः सम्मोहात्स्मृतिविभ्रमः ।</div><div class="cr-deva-line">स्मृतिभ्रंशाद्बुद्धिनाशो बुद्धिनाशात्प्रणश्यति ॥ ६३ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">krodhād bhavati sammohaḥ</div><div class="cr-iast-line">sammohāt smṛti-vibhramaḥ</div><div class="cr-iast-line">smṛti-bhraṁśād buddhi-nāśo</div><div class="cr-iast-line">buddhi-nāśāt praṇaśyati</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-2-64">
+                    <div class="fc-bg-sloka-num">2.64</div>
+                    <div class="cr-deva"><div class="cr-deva-line">रागद्वेषविमुक्तैस्तु विषयनिन्द्रियैश्चरन् ।</div><div class="cr-deva-line">आत्मवश्यैर्विधेयात्मा प्रसादमधिगच्छति ॥ ६४ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">rāga-dveṣa-vimuktais tu</div><div class="cr-iast-line">viṣayān indriyaiś caran</div><div class="cr-iast-line">ātma-vaśyair vidheyātmā</div><div class="cr-iast-line">prasādam adhigacchati</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-2-65">
+                    <div class="fc-bg-sloka-num">2.65</div>
+                    <div class="cr-deva"><div class="cr-deva-line">प्रसादे सर्वदुःखानां हानिरस्योपजायते ।</div><div class="cr-deva-line">प्रसन्नचेतसो ह्याश‍ु बुद्धिः पर्यवतिष्ठते ॥ ६५ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">prasāde sarva-duḥkhānāṁ</div><div class="cr-iast-line">hānir asyopajāyate</div><div class="cr-iast-line">prasanna-cetaso hy āśu</div><div class="cr-iast-line">buddhiḥ paryavatiṣṭhate</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-2-66">
+                    <div class="fc-bg-sloka-num">2.66</div>
+                    <div class="cr-deva"><div class="cr-deva-line">नास्ति बुद्धिरयुक्तस्य न चायुक्तस्य भावना ।</div><div class="cr-deva-line">न चाभावयतः शान्तिरशान्तस्य कुतः सुखम् ॥ ६६ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">nāsti buddhir ayuktasya</div><div class="cr-iast-line">na cāyuktasya bhāvanā</div><div class="cr-iast-line">na cābhāvayataḥ śāntir</div><div class="cr-iast-line">aśāntasya kutaḥ sukham</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-2-67">
+                    <div class="fc-bg-sloka-num">2.67</div>
+                    <div class="cr-deva"><div class="cr-deva-line">इन्द्रियाणां हि चरतां यन्मनोऽनुविधीयते ।</div><div class="cr-deva-line">तदस्य हरति प्रज्ञां वायुर्नावमिवाम्भसि ॥ ६७ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">indriyāṇāṁ hi caratāṁ</div><div class="cr-iast-line">yan mano ’nuvidhīyate</div><div class="cr-iast-line">tad asya harati prajñāṁ</div><div class="cr-iast-line">vāyur nāvam ivāmbhasi</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-2-68">
+                    <div class="fc-bg-sloka-num">2.68</div>
+                    <div class="cr-deva"><div class="cr-deva-line">तस्माद्यस्य महाबाहो निगृहीतानि सर्वशः ।</div><div class="cr-deva-line">इन्द्रियाणीन्द्रियार्थेभ्यस्तस्य प्रज्ञा प्रतिष्ठिता ॥ ६८ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">tasmād yasya mahā-bāho</div><div class="cr-iast-line">nigṛhītāni sarvaśaḥ</div><div class="cr-iast-line">indriyāṇīndriyārthebhyas</div><div class="cr-iast-line">tasya prajñā pratiṣṭhitā</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-2-69">
+                    <div class="fc-bg-sloka-num">2.69</div>
+                    <div class="cr-deva"><div class="cr-deva-line">या निशा सर्वभूतानां तस्यां जागर्ति संयमी ।</div><div class="cr-deva-line">यस्यां जाग्रति भूतानि सा निशा पश्यतो मुनेः ॥ ६९ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">yā niśā sarva-bhūtānāṁ</div><div class="cr-iast-line">tasyāṁ jāgarti saṁyamī</div><div class="cr-iast-line">yasyāṁ jāgrati bhūtāni</div><div class="cr-iast-line">sā niśā paśyato muneḥ</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-2-70">
+                    <div class="fc-bg-sloka-num">2.70</div>
+                    <div class="cr-deva"><div class="cr-deva-line">आपूर्यमाणमचलप्रतिष्ठं</div><div class="cr-deva-line">समुद्रमापः प्रविशन्ति यद्वत् ।</div><div class="cr-deva-line">तद्वत्कामा यं प्रविशन्ति सर्वे</div><div class="cr-deva-line">स शान्तिमाप्‍नोति न कामकामी ॥ ७० ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">āpūryamāṇam acala-pratiṣṭhaṁ</div><div class="cr-iast-line">samudram āpaḥ praviśanti yadvat</div><div class="cr-iast-line">tadvat kāmā yaṁ praviśanti sarve</div><div class="cr-iast-line">sa śāntim āpnoti na kāma-kāmī</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-2-71">
+                    <div class="fc-bg-sloka-num">2.71</div>
+                    <div class="cr-deva"><div class="cr-deva-line">विहाय कामान्यः सर्वान्पुमांश्चरति निःस्पृहः ।</div><div class="cr-deva-line">निर्ममो निरहङ्कार स शान्तिमधिगच्छति ॥ ७१ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">vihāya kāmān yaḥ sarvān</div><div class="cr-iast-line">pumāṁś carati niḥspṛhaḥ</div><div class="cr-iast-line">nirmamo nirahaṅkāraḥ</div><div class="cr-iast-line">sa śāntim adhigacchati</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-2-72">
+                    <div class="fc-bg-sloka-num">2.72</div>
+                    <div class="cr-deva"><div class="cr-deva-line">एषा ब्राह्मी स्थितिःपार्थ नैनां प्राप्य विमुह्यति ।</div><div class="cr-deva-line">स्थित्वास्यामन्तकालेऽपि ब्रह्मनिर्वाणमृच्छति ॥ ७२ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">eṣā brāhmī sthitiḥ pārtha</div><div class="cr-iast-line">naināṁ prāpya vimuhyati</div><div class="cr-iast-line">sthitvāsyām anta-kāle ’pi</div><div class="cr-iast-line">brahma-nirvāṇam ṛcchati</div></div>
+                </article>
+            </div>
+        </div>
     </div>
-    <audio id="fc-bg-audio" controls preload="none" src="https://bhagavadgitaclass.com//wp-content/audio/Bhagavad-Gita-Recitation/Bhagavad_Gita_Recitation_in_Sanskrit_by_AC_Bhaktivedanta_Swami_Srila_Prabhupada/Bhagavad_Gita_Recitation_Chapter-02_in_Sanskrit_by_AC_Bhaktivedanta_Swami_Prabhupada.mp3"></audio>
-    <p class="fc-source-link">Audio hot-linked from
-        <a href="https://bhagavadgitaclass.com/category/recitation/" rel="noopener">bhagavadgitaclass.com</a> — streamed from upstream, not stored.</p>
 </section>
 
 
@@ -336,6 +702,151 @@
 </div>
         <div class="fc-chapter-overview-attrib">— Bhakti-śāstrī Notes, ISKCON Chowpatty (2009)</div>
     </div>
+</section>
+
+<section class="fc-section fc-mcq-chapter" data-sec="quiz">
+    <div class="fc-section-label">Chapter Quiz</div>
+    <form class="fc-mcq-form" data-quiz-key="bg-2">
+    <div class="fc-mcq-meta">12 questions · Chapter 2</div>
+    <div class="fc-mcq-question" data-answer="1">
+        <div class="fc-mcq-q-text">1. What does Kṛṣṇa call Arjuna&#39;s hesitation in BG 2.2?</div>
+        <ul class="fc-mcq-choices">
+            <li><label><input type="radio" name="bg-2-q0" value="0"> Divine wisdom</label></li>
+            <li><label><input type="radio" name="bg-2-q1" value="1"> Anārya-juṣṭam — unworthy of an Aryan</label></li>
+            <li><label><input type="radio" name="bg-2-q2" value="2"> Holy compassion</label></li>
+            <li><label><input type="radio" name="bg-2-q3" value="3"> Strategic caution</label></li>
+        </ul>
+        <div class="fc-mcq-rationale">
+BG 2.2 — Kṛṣṇa rebukes Arjuna&#39;s weakness as &#39;anārya-juṣṭam&#39; and &#39;asvargyam&#39; — disgraceful and not leading to higher worlds.<div class="fc-mcq-refs">Refs: 2.2</div>        </div>
+    </div>
+    <div class="fc-mcq-question" data-answer="2">
+        <div class="fc-mcq-q-text">2. Whom does Arjuna formally accept as his guru in this chapter?</div>
+        <ul class="fc-mcq-choices">
+            <li><label><input type="radio" name="bg-2-q0" value="0"> Vyāsa</label></li>
+            <li><label><input type="radio" name="bg-2-q1" value="1"> Drona</label></li>
+            <li><label><input type="radio" name="bg-2-q2" value="2"> Kṛṣṇa</label></li>
+            <li><label><input type="radio" name="bg-2-q3" value="3"> Bhīṣma</label></li>
+        </ul>
+        <div class="fc-mcq-rationale">
+BG 2.7 — &#39;śiṣyas te &#39;haṁ śādhi māṁ tvāṁ prapannam&#39; — &#39;I am Your disciple; instruct me.&#39;<div class="fc-mcq-refs">Refs: 2.7</div>        </div>
+    </div>
+    <div class="fc-mcq-question" data-answer="2">
+        <div class="fc-mcq-q-text">3. What is the central distinction Kṛṣṇa draws between the body and the self?</div>
+        <ul class="fc-mcq-choices">
+            <li><label><input type="radio" name="bg-2-q0" value="0"> Both are eternal</label></li>
+            <li><label><input type="radio" name="bg-2-q1" value="1"> The body is eternal, the self is temporary</label></li>
+            <li><label><input type="radio" name="bg-2-q2" value="2"> The self (ātmā) is eternal; the body is temporary</label></li>
+            <li><label><input type="radio" name="bg-2-q3" value="3"> Both are temporary</label></li>
+        </ul>
+        <div class="fc-mcq-rationale">
+BG 2.13, 2.17-25 establish ātmā as nitya (eternal) while the body undergoes change.<div class="fc-mcq-refs">Refs: 2.13, 2.20</div>        </div>
+    </div>
+    <div class="fc-mcq-question" data-answer="2">
+        <div class="fc-mcq-q-text">4. BG 2.20 declares the soul is:</div>
+        <ul class="fc-mcq-choices">
+            <li><label><input type="radio" name="bg-2-q0" value="0"> Created and destructible</label></li>
+            <li><label><input type="radio" name="bg-2-q1" value="1"> Modifiable like the body</label></li>
+            <li><label><input type="radio" name="bg-2-q2" value="2"> Unborn, eternal, ever-existing, primeval, not slain when the body is slain</label></li>
+            <li><label><input type="radio" name="bg-2-q3" value="3"> Bound by the senses</label></li>
+        </ul>
+        <div class="fc-mcq-rationale">
+&#39;na jāyate mriyate vā kadācin&#39; — the ātmā is never born and never dies.<div class="fc-mcq-refs">Refs: 2.20</div>        </div>
+    </div>
+    <div class="fc-mcq-question" data-answer="1">
+        <div class="fc-mcq-q-text">5. Which verse contains the famous formula on rights to action?</div>
+        <ul class="fc-mcq-choices">
+            <li><label><input type="radio" name="bg-2-q0" value="0"> 2.13</label></li>
+            <li><label><input type="radio" name="bg-2-q1" value="1"> 2.47</label></li>
+            <li><label><input type="radio" name="bg-2-q2" value="2"> 2.62</label></li>
+            <li><label><input type="radio" name="bg-2-q3" value="3"> 2.71</label></li>
+        </ul>
+        <div class="fc-mcq-rationale">
+BG 2.47 — &#39;karmaṇy evādhikāras te&#39; — you have a right to action, never to its fruits.<div class="fc-mcq-refs">Refs: 2.47</div>        </div>
+    </div>
+    <div class="fc-mcq-question" data-answer="1">
+        <div class="fc-mcq-q-text">6. How does Kṛṣṇa define yoga in this chapter?</div>
+        <ul class="fc-mcq-choices">
+            <li><label><input type="radio" name="bg-2-q0" value="0"> Physical postures</label></li>
+            <li><label><input type="radio" name="bg-2-q1" value="1"> Equanimity in success and failure (samatvam)</label></li>
+            <li><label><input type="radio" name="bg-2-q2" value="2"> Renouncing all activity</label></li>
+            <li><label><input type="radio" name="bg-2-q3" value="3"> Mystic powers</label></li>
+        </ul>
+        <div class="fc-mcq-rationale">
+BG 2.48 — &#39;samatvaṁ yoga ucyate&#39; — yoga is equanimity. BG 2.50 adds &#39;yogaḥ karmasu kauśalam&#39; — yoga is skill in action.<div class="fc-mcq-refs">Refs: 2.48, 2.50</div>        </div>
+    </div>
+    <div class="fc-mcq-question" data-answer="1">
+        <div class="fc-mcq-q-text">7. What chain in BG 2.62-63 leads from sense-contemplation to ruin?</div>
+        <ul class="fc-mcq-choices">
+            <li><label><input type="radio" name="bg-2-q0" value="0"> Hearing → faith → liberation</label></li>
+            <li><label><input type="radio" name="bg-2-q1" value="1"> Contemplation → attachment → lust → anger → bewilderment → loss of memory → loss of intelligence → destruction</label></li>
+            <li><label><input type="radio" name="bg-2-q2" value="2"> Desire → austerity → wisdom</label></li>
+            <li><label><input type="radio" name="bg-2-q3" value="3"> Action → karma → rebirth</label></li>
+        </ul>
+        <div class="fc-mcq-rationale">
+BG 2.62-63 traces the famous 6-step descent from dhyāyataḥ viṣayān to praṇaśyati.<div class="fc-mcq-refs">Refs: 2.62, 2.63</div>        </div>
+    </div>
+    <div class="fc-mcq-question" data-answer="1">
+        <div class="fc-mcq-q-text">8. What is a sthita-prajña (one of steady wisdom) likened to in BG 2.70?</div>
+        <ul class="fc-mcq-choices">
+            <li><label><input type="radio" name="bg-2-q0" value="0"> A flowing river</label></li>
+            <li><label><input type="radio" name="bg-2-q1" value="1"> An ocean ever filled, receiving rivers but never disturbed</label></li>
+            <li><label><input type="radio" name="bg-2-q2" value="2"> A still mountain</label></li>
+            <li><label><input type="radio" name="bg-2-q3" value="3"> A burning fire</label></li>
+        </ul>
+        <div class="fc-mcq-rationale">
+BG 2.70 — desires enter the sage as rivers enter the ocean, which remains undisturbed though always filled.<div class="fc-mcq-refs">Refs: 2.70</div>        </div>
+    </div>
+    <div class="fc-mcq-question" data-answer="1">
+        <div class="fc-mcq-q-text">9. What two paths does Kṛṣṇa briefly identify in BG 2.39?</div>
+        <ul class="fc-mcq-choices">
+            <li><label><input type="radio" name="bg-2-q0" value="0"> Karma and bhakti</label></li>
+            <li><label><input type="radio" name="bg-2-q1" value="1"> Sāṅkhya (analytical) and Yoga (action)</label></li>
+            <li><label><input type="radio" name="bg-2-q2" value="2"> Jñāna and dhyāna</label></li>
+            <li><label><input type="radio" name="bg-2-q3" value="3"> Pravṛtti and nivṛtti</label></li>
+        </ul>
+        <div class="fc-mcq-rationale">
+BG 2.39 transitions from Sāṅkhya (the analysis of self vs. body) to Buddhi-yoga (action without attachment).<div class="fc-mcq-refs">Refs: 2.39</div>        </div>
+    </div>
+    <div class="fc-mcq-question" data-answer="1">
+        <div class="fc-mcq-q-text">10. What state is described as the &#39;brāhmī sthiti&#39; (state of brāhman)?</div>
+        <ul class="fc-mcq-choices">
+            <li><label><input type="radio" name="bg-2-q0" value="0"> Demigod-worship</label></li>
+            <li><label><input type="radio" name="bg-2-q1" value="1"> Steady self-realisation, free from the egoistic &#39;I/mine&#39;</label></li>
+            <li><label><input type="radio" name="bg-2-q2" value="2"> Vedic ritualism</label></li>
+            <li><label><input type="radio" name="bg-2-q3" value="3"> Mystic siddhi</label></li>
+        </ul>
+        <div class="fc-mcq-rationale">
+BG 2.72 — attaining this state at death, one enters the kingdom of God; it is freedom from material identification.<div class="fc-mcq-refs">Refs: 2.71, 2.72</div>        </div>
+    </div>
+    <div class="fc-mcq-question" data-answer="1">
+        <div class="fc-mcq-q-text">11. Why does Kṛṣṇa say a kṣatriya should not refuse a righteous war?</div>
+        <ul class="fc-mcq-choices">
+            <li><label><input type="radio" name="bg-2-q0" value="0"> For fame</label></li>
+            <li><label><input type="radio" name="bg-2-q1" value="1"> Because it is the gateway to heaven, and to refuse causes infamy worse than death</label></li>
+            <li><label><input type="radio" name="bg-2-q2" value="2"> For wealth</label></li>
+            <li><label><input type="radio" name="bg-2-q3" value="3"> To impress demigods</label></li>
+        </ul>
+        <div class="fc-mcq-rationale">
+BG 2.31-37 — for a kṣatriya, righteous war is the path to higher worlds; refusing brings dishonour &#39;worse than death&#39;.<div class="fc-mcq-refs">Refs: 2.31, 2.32, 2.34</div>        </div>
+    </div>
+    <div class="fc-mcq-question" data-answer="1">
+        <div class="fc-mcq-q-text">12. Which Sanskrit term in BG 2.45 refers to the three modes of material nature?</div>
+        <ul class="fc-mcq-choices">
+            <li><label><input type="radio" name="bg-2-q0" value="0"> Tri-mūrti</label></li>
+            <li><label><input type="radio" name="bg-2-q1" value="1"> Tri-guṇa</label></li>
+            <li><label><input type="radio" name="bg-2-q2" value="2"> Tri-loka</label></li>
+            <li><label><input type="radio" name="bg-2-q3" value="3"> Tri-veda</label></li>
+        </ul>
+        <div class="fc-mcq-rationale">
+BG 2.45 — &#39;traiguṇya-viṣayā vedāḥ&#39; — the Vedas deal with the three modes (sattva, rajas, tamas); Arjuna must transcend them.<div class="fc-mcq-refs">Refs: 2.45</div>        </div>
+    </div>
+    <div class="fc-mcq-actions">
+        <button type="button" class="fc-mcq-btn" data-action="check">Check answers</button>
+        <button type="button" class="fc-mcq-btn fc-mcq-btn-secondary" data-action="reset">Reset</button>
+        <span class="fc-mcq-score"></span>
+    </div>
+</form>
+
 </section>
 
 <section class="fc-breakdown-card" data-sec="breakdown">

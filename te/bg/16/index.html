@@ -99,6 +99,8 @@
                 <label><input type="checkbox" data-section="important_words"> Important Words</label>
                 <label><input type="checkbox" data-section="note" checked> My note</label>
                 <label><input type="checkbox" data-section="audio_player" checked> Sanskrit recitation player</label>
+                <label><input type="checkbox" data-section="recitation_slokas" checked> &nbsp; Reading-along view (auto-show on play)</label>
+                <label><input type="checkbox" data-section="quiz" checked> MCQ quizzes (chapter + sub-section)</label>
                 <label class="fc-toggle-master"><input type="checkbox" data-section="gpd_all" checked> <strong>Gauranga Priya additions</strong> (master)</label>
                 <label><input type="checkbox" data-section="chapter_overview" checked> &nbsp; Chapter Overview</label>
                 <label><input type="checkbox" data-section="breakdown" checked> &nbsp; Breakdown of Chapter</label>
@@ -257,20 +259,124 @@
 
 <section class="fc-section fc-bg-audio" data-sec="audio_player">
     <div class="fc-section-label">Sanskrit Recitation</div>
-    <div class="fc-bg-audio-picker">
-        <label for="fc-bg-reciter">Reciter:</label>
-        <select id="fc-bg-reciter">
-            <option value="https://bhagavadgitaclass.com//wp-content/audio/Bhagavad-Gita-Recitation/Bhagavad_Gita_Recitation_in_Sanskrit_by_HG_Ananta_Nitai_Prabhu/Bhagavad_Gita_Recitation_Chapter-16_in_Sanskrit_by_HG_Ananta_Nitai_Prabhu.mp3" data-reciter="ananta-nitai">His Grace Ananta Nitai Prabhu</option>
-            <option value="https://bhagavadgitaclass.com//wp-content/audio/Bhagavad-Gita-Recitation/Bhagavad_Gita_Recitation_in_Sanskrit_by_HG_Bharat_Ram_Prabhu/Bhagavad_Gita_Recitation_Chapter-16_in_Sanskrit_by_HG_Bharat_Ram_Prabhu.mp3" data-reciter="bharat-ram">His Grace Bharat Ram Prabhu</option>
-            <option value="https://bhagavadgitaclass.com/wp-content/audio/Bhagavad-Gita-Recitation/Bhagavad_Gita_Recitation_in_Sanskrit_by_HH_Mahavishnu_Goswami/Bhagavad_Gita_Recitation_Chapter-16_in_Sanksrit_by_HH_Mahavishnu_Goswami.mp3" data-reciter="mahavishnu-goswami">His Holiness Mahaviṣṇu Goswami</option>
-            <option value="https://bhagavadgitaclass.com/wp-content/audio/Bhagavad-Gita-Recitation/Bhagavad_Gita_Recitation_in_Sanskrit_by_HG_Radha_Gopinath_Prabhu/Bhagavad_Gita_Recitation_Chapter-16_in_Sanskrit_by_HG_Radha_Gopinath_Prabhu.mp3" data-reciter="radha-gopinath">His Grace Rādhā-Gopīnātha Prabhu</option>
-            <option value="https://bhagavadgitaclass.com/wp-content/audio/Bhagavad-Gita-Recitation/Bhagavad_Gita_Recitation_in_Sanskrit_with_Tamil_Translations/Bhagavad_Gita_Recitation_Chapter-16_in_Sanskrit_with_Tamil_Translations.mp3" data-reciter="tamil-translations">Sanskrit + Tamil Translations</option>
-        </select>
-        <span class="fc-bg-audio-coverage">5 reciters for chapter 16</span>
+    <div class="fc-bg-recitation">
+        <div class="fc-bg-audio-wrap">
+            <div class="fc-bg-audio-picker">
+                <label for="fc-bg-reciter">Reciter:</label>
+                <select id="fc-bg-reciter">
+                    <option value="https://bhagavadgitaclass.com//wp-content/audio/Bhagavad-Gita-Recitation/Bhagavad_Gita_Recitation_in_Sanskrit_by_HG_Ananta_Nitai_Prabhu/Bhagavad_Gita_Recitation_Chapter-16_in_Sanskrit_by_HG_Ananta_Nitai_Prabhu.mp3" data-reciter="ananta-nitai">His Grace Ananta Nitai Prabhu</option>
+                    <option value="https://bhagavadgitaclass.com//wp-content/audio/Bhagavad-Gita-Recitation/Bhagavad_Gita_Recitation_in_Sanskrit_by_HG_Bharat_Ram_Prabhu/Bhagavad_Gita_Recitation_Chapter-16_in_Sanskrit_by_HG_Bharat_Ram_Prabhu.mp3" data-reciter="bharat-ram">His Grace Bharat Ram Prabhu</option>
+                    <option value="https://bhagavadgitaclass.com/wp-content/audio/Bhagavad-Gita-Recitation/Bhagavad_Gita_Recitation_in_Sanskrit_by_HH_Mahavishnu_Goswami/Bhagavad_Gita_Recitation_Chapter-16_in_Sanksrit_by_HH_Mahavishnu_Goswami.mp3" data-reciter="mahavishnu-goswami">His Holiness Mahaviṣṇu Goswami</option>
+                    <option value="https://bhagavadgitaclass.com/wp-content/audio/Bhagavad-Gita-Recitation/Bhagavad_Gita_Recitation_in_Sanskrit_by_HG_Radha_Gopinath_Prabhu/Bhagavad_Gita_Recitation_Chapter-16_in_Sanskrit_by_HG_Radha_Gopinath_Prabhu.mp3" data-reciter="radha-gopinath">His Grace Rādhā-Gopīnātha Prabhu</option>
+                    <option value="https://bhagavadgitaclass.com/wp-content/audio/Bhagavad-Gita-Recitation/Bhagavad_Gita_Recitation_in_Sanskrit_with_Tamil_Translations/Bhagavad_Gita_Recitation_Chapter-16_in_Sanskrit_with_Tamil_Translations.mp3" data-reciter="tamil-translations">Sanskrit + Tamil Translations</option>
+                </select>
+                <span class="fc-bg-audio-coverage">5 reciters for chapter 16</span>
+            </div>
+            <audio id="fc-bg-audio" controls preload="none" src="https://bhagavadgitaclass.com//wp-content/audio/Bhagavad-Gita-Recitation/Bhagavad_Gita_Recitation_in_Sanskrit_by_HG_Ananta_Nitai_Prabhu/Bhagavad_Gita_Recitation_Chapter-16_in_Sanskrit_by_HG_Ananta_Nitai_Prabhu.mp3"></audio>
+            <p class="fc-source-link">Audio hot-linked from
+                <a href="https://bhagavadgitaclass.com/category/recitation/" rel="noopener">bhagavadgitaclass.com</a> — streamed from upstream, not stored.</p>
+        </div>
+        <div id="fc-bg-slokas" class="fc-bg-slokas" data-sec="recitation_slokas" hidden>
+            <div class="fc-bg-slokas-header">Reading along — Chapter 16</div>
+            <div class="fc-bg-slokas-inner">
+                <article class="fc-bg-sloka" id="sloka-16-1-3">
+                    <div class="fc-bg-sloka-num">16.1-3</div>
+                    <div class="cr-deva"><div class="cr-deva-line">श्रीभगवानुवाच</div><div class="cr-deva-line">अभयं सत्त्वसंश‍ुद्धिर्ज्ञानयोगव्यवस्थिति: ।</div><div class="cr-deva-line">दानं दमश्च यज्ञश्च स्वाध्यायस्तप आर्जवम् ॥ १ ॥</div><div class="cr-deva-line">अहिंसा सत्यमक्रोधस्त्याग: शान्तिरपैश‍ुनम् ।</div><div class="cr-deva-line">दया भूतेष्वलोलुप्‍त्वं मार्दवं ह्रीरचापलम् ॥ २ ॥</div><div class="cr-deva-line">तेज: क्षमा धृति: शौचमद्रोहो नातिमानिता ।</div><div class="cr-deva-line">भवन्ति सम्पदं दैवीमभिजातस्य भारत ॥ ३ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">śrī-bhagavān uvāca</div><div class="cr-iast-line">abhayaṁ sattva-saṁśuddhir</div><div class="cr-iast-line">jñāna-yoga-vyavasthitiḥ</div><div class="cr-iast-line">dānaṁ damaś ca yajñaś ca</div><div class="cr-iast-line">svādhyāyas tapa ārjavam</div><div class="cr-iast-line">ahiṁsā satyam akrodhas</div><div class="cr-iast-line">tyāgaḥ śāntir apaiśunam</div><div class="cr-iast-line">dayā bhūteṣv aloluptvaṁ</div><div class="cr-iast-line">mārdavaṁ hrīr acāpalam</div><div class="cr-iast-line">tejaḥ kṣamā dhṛtiḥ śaucam</div><div class="cr-iast-line">adroho nāti-mānitā</div><div class="cr-iast-line">bhavanti sampadaṁ daivīm</div><div class="cr-iast-line">abhijātasya bhārata</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-16-4">
+                    <div class="fc-bg-sloka-num">16.4</div>
+                    <div class="cr-deva"><div class="cr-deva-line">दम्भो दर्पोऽभिमानश्च क्रोध: पारुष्यमेव च ।</div><div class="cr-deva-line">अज्ञानं चाभिजातस्य पार्थ सम्पदमासुरीम् ॥ ४ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">dambho darpo ’bhimānaś ca</div><div class="cr-iast-line">krodhaḥ pāruṣyam eva ca</div><div class="cr-iast-line">ajñānaṁ cābhijātasya</div><div class="cr-iast-line">pārtha sampadam āsurīm</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-16-5">
+                    <div class="fc-bg-sloka-num">16.5</div>
+                    <div class="cr-deva"><div class="cr-deva-line">दैवी सम्पद्विमोक्षाय निबन्धायासुरी मता ।</div><div class="cr-deva-line">मा श‍ुच: सम्पदं दैवीमभिजातोऽसि पाण्डव ॥ ५ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">daivī sampad vimokṣāya</div><div class="cr-iast-line">nibandhāyāsurī matā</div><div class="cr-iast-line">mā śucaḥ sampadaṁ daivīm</div><div class="cr-iast-line">abhijāto ’si pāṇḍava</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-16-6">
+                    <div class="fc-bg-sloka-num">16.6</div>
+                    <div class="cr-deva"><div class="cr-deva-line">द्वौ भूतसर्गौ लोकेऽस्मिन्दैव आसुर एव च ।</div><div class="cr-deva-line">दैवो विस्तरश: प्रोक्त आसुरं पार्थ मे श‍ृणु ॥ ६ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">dvau bhūta-sargau loke ’smin</div><div class="cr-iast-line">daiva āsura eva ca</div><div class="cr-iast-line">daivo vistaraśaḥ prokta</div><div class="cr-iast-line">āsuraṁ pārtha me śṛṇu</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-16-7">
+                    <div class="fc-bg-sloka-num">16.7</div>
+                    <div class="cr-deva"><div class="cr-deva-line">प्रवृत्तिं च निवृत्तिं च जना न विदुरासुरा: ।</div><div class="cr-deva-line">न शौचं नापि चाचारो न सत्यं तेषु विद्यते ॥ ७ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">pravṛttiṁ ca nivṛttiṁ ca</div><div class="cr-iast-line">janā na vidur āsurāḥ</div><div class="cr-iast-line">na śaucaṁ nāpi cācāro</div><div class="cr-iast-line">na satyaṁ teṣu vidyate</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-16-8">
+                    <div class="fc-bg-sloka-num">16.8</div>
+                    <div class="cr-deva"><div class="cr-deva-line">असत्यमप्रतिष्ठं ते जगदाहुरनीश्वरम् ।</div><div class="cr-deva-line">अपरस्परसम्भूतं किमन्यत्कामहैतुकम् ॥ ८ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">asatyam apratiṣṭhaṁ te</div><div class="cr-iast-line">jagad āhur anīśvaram</div><div class="cr-iast-line">aparaspara-sambhūtaṁ</div><div class="cr-iast-line">kim anyat kāma-haitukam</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-16-9">
+                    <div class="fc-bg-sloka-num">16.9</div>
+                    <div class="cr-deva"><div class="cr-deva-line">एतां दृष्टिमवष्टभ्य नष्टात्मानोऽल्पबुद्धय: ।</div><div class="cr-deva-line">प्रभवन्त्युग्रकर्माण: क्षयाय जगतोऽहिता: ॥ ९ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">etāṁ dṛṣṭim avaṣṭabhya</div><div class="cr-iast-line">naṣṭātmāno ’lpa-buddhayaḥ</div><div class="cr-iast-line">prabhavanty ugra-karmāṇaḥ</div><div class="cr-iast-line">kṣayāya jagato ’hitāḥ</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-16-10">
+                    <div class="fc-bg-sloka-num">16.10</div>
+                    <div class="cr-deva"><div class="cr-deva-line">काममाश्रित्य दुष्पूरं दम्भमानमदान्विता: ।</div><div class="cr-deva-line">मोहाद्‍गृहीत्वासद्‍ग्राहान्प्रवर्तन्तेऽश‍ुचिव्रता: ॥ १० ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">kāmam āśritya duṣpūraṁ</div><div class="cr-iast-line">dambha-māna-madānvitāḥ</div><div class="cr-iast-line">mohād gṛhītvāsad-grāhān</div><div class="cr-iast-line">pravartante ’śuci-vratāḥ</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-16-11-12">
+                    <div class="fc-bg-sloka-num">16.11-12</div>
+                    <div class="cr-deva"><div class="cr-deva-line">चिन्तामपरिमेयां च प्रलयान्तामुपाश्रिता: ।</div><div class="cr-deva-line">कामोपभोगपरमा एतावदिति निश्चिता: ॥ ११ ॥</div><div class="cr-deva-line">आशापाशशतैर्बद्धा: कामक्रोधपरायणा: ।</div><div class="cr-deva-line">ईहन्ते कामभोगार्थमन्यायेनार्थसञ्चयान् ॥ १२ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">cintām aparimeyāṁ ca</div><div class="cr-iast-line">pralayāntām upāśritāḥ</div><div class="cr-iast-line">kāmopabhoga-paramā</div><div class="cr-iast-line">etāvad iti niścitāḥ</div><div class="cr-iast-line">āśā-pāśa-śatair baddhāḥ</div><div class="cr-iast-line">kāma-krodha-parāyaṇāḥ</div><div class="cr-iast-line">īhante kāma-bhogārtham</div><div class="cr-iast-line">anyāyenārtha-sañcayān</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-16-13-15">
+                    <div class="fc-bg-sloka-num">16.13-15</div>
+                    <div class="cr-deva"><div class="cr-deva-line">इदमद्य मया लब्धमिमं प्राप्स्ये मनोरथम् ।</div><div class="cr-deva-line">इदमस्तीदमपि मे भविष्यति पुनर्धनम्  ॥ १३ ॥</div><div class="cr-deva-line">असौ मया हत: शत्रुर्हनिष्ये चापरानपि  ।</div><div class="cr-deva-line">ईश्वरोऽहमहं भोगी सिद्धोऽहं बलवान्सुखी ॥ १४ ॥</div><div class="cr-deva-line">आढ्योऽभिजनवानस्मि कोऽन्योऽस्ति सदृशो मया ।</div><div class="cr-deva-line">यक्ष्ये दास्यामि मोदिष्य इत्यज्ञानविमोहिता: ॥ १५ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">idam adya mayā labdham</div><div class="cr-iast-line">imaṁ prāpsye manoratham</div><div class="cr-iast-line">idam astīdam api me</div><div class="cr-iast-line">bhaviṣyati punar dhanam</div><div class="cr-iast-line">asau mayā hataḥ śatrur</div><div class="cr-iast-line">haniṣye cāparān api</div><div class="cr-iast-line">īśvaro ’ham ahaṁ bhogī</div><div class="cr-iast-line">siddho ’haṁ balavān sukhī</div><div class="cr-iast-line">āḍhyo ’bhijanavān asmi</div><div class="cr-iast-line">ko ’nyo ’sti sadṛśo mayā</div><div class="cr-iast-line">yakṣye dāsyāmi modiṣya</div><div class="cr-iast-line">ity ajñāna-vimohitāḥ</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-16-16">
+                    <div class="fc-bg-sloka-num">16.16</div>
+                    <div class="cr-deva"><div class="cr-deva-line">अनेकचित्तविभ्रान्ता मोहजालसमावृता: ।</div><div class="cr-deva-line">प्रसक्ता: कामभोगेषु पतन्ति नरकेऽश‍ुचौ ॥ १६ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">aneka-citta-vibhrāntā</div><div class="cr-iast-line">moha-jāla-samāvṛtāḥ</div><div class="cr-iast-line">prasaktāḥ kāma-bhogeṣu</div><div class="cr-iast-line">patanti narake ’śucau</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-16-17">
+                    <div class="fc-bg-sloka-num">16.17</div>
+                    <div class="cr-deva"><div class="cr-deva-line">आत्मसम्भाविता: स्तब्धा धनमानमदान्विता: ।</div><div class="cr-deva-line">यजन्ते नामयज्ञैस्ते दम्भेनाविधिपूर्वकम् ॥ १७ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">ātma-sambhāvitāḥ stabdhā</div><div class="cr-iast-line">dhana-māna-madānvitāḥ</div><div class="cr-iast-line">yajante nāma-yajñais te</div><div class="cr-iast-line">dambhenāvidhi-pūrvakam</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-16-18">
+                    <div class="fc-bg-sloka-num">16.18</div>
+                    <div class="cr-deva"><div class="cr-deva-line">अहङ्कारं बलं दर्पं कामं क्रोधं च संश्रिता: ।</div><div class="cr-deva-line">मामात्मपरदेहेषु प्रद्विषन्तोऽभ्यसूयका: ॥ १८ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">ahaṅkāraṁ balaṁ darpaṁ</div><div class="cr-iast-line">kāmaṁ krodhaṁ ca saṁśritāḥ</div><div class="cr-iast-line">mām ātma-para-deheṣu</div><div class="cr-iast-line">pradviṣanto ’bhyasūyakāḥ</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-16-19">
+                    <div class="fc-bg-sloka-num">16.19</div>
+                    <div class="cr-deva"><div class="cr-deva-line">तानहं द्विषत: क्रूरान्संसारेषु नराधमान् ।</div><div class="cr-deva-line">क्षिपाम्यजस्रमश‍ुभानासुरीष्वेव योनिषु ॥ १९ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">tān ahaṁ dviṣataḥ krūrān</div><div class="cr-iast-line">saṁsāreṣu narādhamān</div><div class="cr-iast-line">kṣipāmy ajasram aśubhān</div><div class="cr-iast-line">āsurīṣv eva yoniṣu</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-16-20">
+                    <div class="fc-bg-sloka-num">16.20</div>
+                    <div class="cr-deva"><div class="cr-deva-line">आसुरीं योनिमापन्ना मूढा जन्मनि जन्मनि ।</div><div class="cr-deva-line">मामप्राप्यैव कौन्तेय ततो यान्त्यधमां गतिम् ॥ २० ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">āsurīṁ yonim āpannā</div><div class="cr-iast-line">mūḍhā janmani janmani</div><div class="cr-iast-line">mām aprāpyaiva kaunteya</div><div class="cr-iast-line">tato yānty adhamāṁ gatim</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-16-21">
+                    <div class="fc-bg-sloka-num">16.21</div>
+                    <div class="cr-deva"><div class="cr-deva-line">त्रिविधं नरकस्येदं द्वारं नाशनमात्मन: ।</div><div class="cr-deva-line">काम: क्रोधस्तथा लोभस्तस्मादेतत्‍त्रयं त्यजेत् ॥ २१ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">tri-vidhaṁ narakasyedaṁ</div><div class="cr-iast-line">dvāraṁ nāśanam ātmanaḥ</div><div class="cr-iast-line">kāmaḥ krodhas tathā lobhas</div><div class="cr-iast-line">tasmād etat trayaṁ tyajet</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-16-22">
+                    <div class="fc-bg-sloka-num">16.22</div>
+                    <div class="cr-deva"><div class="cr-deva-line">एतैर्विमुक्त: कौन्तेय तमोद्वारैस्त्रिभिर्नर: ।</div><div class="cr-deva-line">आचरत्यात्मन: श्रेयस्ततो याति परां गतिम् ॥ २२ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">etair vimuktaḥ kaunteya</div><div class="cr-iast-line">tamo-dvārais tribhir naraḥ</div><div class="cr-iast-line">ācaraty ātmanaḥ śreyas</div><div class="cr-iast-line">tato yāti parāṁ gatim</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-16-23">
+                    <div class="fc-bg-sloka-num">16.23</div>
+                    <div class="cr-deva"><div class="cr-deva-line">य: शास्त्रविधिमुत्सृज्य वर्तते कामकारत: ।</div><div class="cr-deva-line">न स सिद्धिमवाप्‍नोति न सुखं न परां गतिम् ॥ २३ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">yaḥ śāstra-vidhim utsṛjya</div><div class="cr-iast-line">vartate kāma-kārataḥ</div><div class="cr-iast-line">na sa siddhim avāpnoti</div><div class="cr-iast-line">na sukhaṁ na parāṁ gatim</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-16-24">
+                    <div class="fc-bg-sloka-num">16.24</div>
+                    <div class="cr-deva"><div class="cr-deva-line">तस्माच्छास्त्रं प्रमाणं ते कार्याकार्यव्यवस्थितौ ।</div><div class="cr-deva-line">ज्ञात्वा शास्त्रविधानोक्तं कर्म कर्तुमिहार्हसि ॥ २४ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">tasmāc chāstraṁ pramāṇaṁ te</div><div class="cr-iast-line">kāryākārya-vyavasthitau</div><div class="cr-iast-line">jñātvā śāstra-vidhānoktaṁ</div><div class="cr-iast-line">karma kartum ihārhasi</div></div>
+                </article>
+            </div>
+        </div>
     </div>
-    <audio id="fc-bg-audio" controls preload="none" src="https://bhagavadgitaclass.com//wp-content/audio/Bhagavad-Gita-Recitation/Bhagavad_Gita_Recitation_in_Sanskrit_by_HG_Ananta_Nitai_Prabhu/Bhagavad_Gita_Recitation_Chapter-16_in_Sanskrit_by_HG_Ananta_Nitai_Prabhu.mp3"></audio>
-    <p class="fc-source-link">Audio hot-linked from
-        <a href="https://bhagavadgitaclass.com/category/recitation/" rel="noopener">bhagavadgitaclass.com</a> — streamed from upstream, not stored.</p>
 </section>
 
 
@@ -285,6 +391,151 @@
 </div>
         <div class="fc-chapter-overview-attrib">— Bhakti-śāstrī Notes, ISKCON Chowpatty (2009)</div>
     </div>
+</section>
+
+<section class="fc-section fc-mcq-chapter" data-sec="quiz">
+    <div class="fc-section-label">Chapter Quiz</div>
+    <form class="fc-mcq-form" data-quiz-key="bg-16">
+    <div class="fc-mcq-meta">12 questions · Chapter 16</div>
+    <div class="fc-mcq-question" data-answer="1">
+        <div class="fc-mcq-q-text">1. What three qualities top the list of divine traits in BG 16.1?</div>
+        <ul class="fc-mcq-choices">
+            <li><label><input type="radio" name="bg-16-q0" value="0"> Wealth, beauty, fame</label></li>
+            <li><label><input type="radio" name="bg-16-q1" value="1"> Fearlessness, purification of one&#39;s existence, cultivation of spiritual knowledge</label></li>
+            <li><label><input type="radio" name="bg-16-q2" value="2"> Power, intelligence, austerity</label></li>
+            <li><label><input type="radio" name="bg-16-q3" value="3"> Renunciation, study, sacrifice</label></li>
+        </ul>
+        <div class="fc-mcq-rationale">
+BG 16.1 — &#39;abhayaṁ sattva-saṁśuddhir jñāna-yoga-vyavasthitiḥ&#39;.<div class="fc-mcq-refs">Refs: 16.1</div>        </div>
+    </div>
+    <div class="fc-mcq-question" data-answer="1">
+        <div class="fc-mcq-q-text">2. How are demoniac people described in BG 16.4?</div>
+        <ul class="fc-mcq-choices">
+            <li><label><input type="radio" name="bg-16-q0" value="0"> Pious</label></li>
+            <li><label><input type="radio" name="bg-16-q1" value="1"> Pride, arrogance, conceit, anger, harshness, ignorance — these are the demoniac qualities</label></li>
+            <li><label><input type="radio" name="bg-16-q2" value="2"> Indifferent</label></li>
+            <li><label><input type="radio" name="bg-16-q3" value="3"> Generous</label></li>
+        </ul>
+        <div class="fc-mcq-rationale">
+BG 16.4 — &#39;dambho darpo &#39;bhimānaś ca krodhaḥ pāruṣyam eva ca&#39;.<div class="fc-mcq-refs">Refs: 16.4</div>        </div>
+    </div>
+    <div class="fc-mcq-question" data-answer="1">
+        <div class="fc-mcq-q-text">3. What do the divine qualities lead to, per BG 16.5?</div>
+        <ul class="fc-mcq-choices">
+            <li><label><input type="radio" name="bg-16-q0" value="0"> Liberation</label></li>
+            <li><label><input type="radio" name="bg-16-q1" value="1"> Liberation (mokṣa); demoniac qualities lead to bondage. Do not worry, Arjuna, you are born with divine qualities.</label></li>
+            <li><label><input type="radio" name="bg-16-q2" value="2"> Bondage</label></li>
+            <li><label><input type="radio" name="bg-16-q3" value="3"> Both equally</label></li>
+        </ul>
+        <div class="fc-mcq-rationale">
+BG 16.5 — divine = liberation; demoniac = bondage; Arjuna belongs to the divine.<div class="fc-mcq-refs">Refs: 16.5</div>        </div>
+    </div>
+    <div class="fc-mcq-question" data-answer="1">
+        <div class="fc-mcq-q-text">4. What do demoniac people deny, per BG 16.8?</div>
+        <ul class="fc-mcq-choices">
+            <li><label><input type="radio" name="bg-16-q0" value="0"> Karma</label></li>
+            <li><label><input type="radio" name="bg-16-q1" value="1"> The world has no foundation, no truth, no controller; arising from mutual union of male/female; caused by lust only</label></li>
+            <li><label><input type="radio" name="bg-16-q2" value="2"> Family</label></li>
+            <li><label><input type="radio" name="bg-16-q3" value="3"> Society</label></li>
+        </ul>
+        <div class="fc-mcq-rationale">
+BG 16.8 — they say the world is unreal, with no God; produced by sex desire alone.<div class="fc-mcq-refs">Refs: 16.8</div>        </div>
+    </div>
+    <div class="fc-mcq-question" data-answer="1">
+        <div class="fc-mcq-q-text">5. What is the result of their philosophy, per BG 16.9?</div>
+        <ul class="fc-mcq-choices">
+            <li><label><input type="radio" name="bg-16-q0" value="0"> Wisdom</label></li>
+            <li><label><input type="radio" name="bg-16-q1" value="1"> Following this view, demoniac people, lost to themselves and having no intelligence, engage in unbeneficial, horrible works meant to destroy the world</label></li>
+            <li><label><input type="radio" name="bg-16-q2" value="2"> Charity</label></li>
+            <li><label><input type="radio" name="bg-16-q3" value="3"> Pious work</label></li>
+        </ul>
+        <div class="fc-mcq-rationale">
+BG 16.9 — engaging in destructive work, the demoniac become enemies of the world.<div class="fc-mcq-refs">Refs: 16.9</div>        </div>
+    </div>
+    <div class="fc-mcq-question" data-answer="1">
+        <div class="fc-mcq-q-text">6. BG 16.10-12 describes demoniac people seeking what?</div>
+        <ul class="fc-mcq-choices">
+            <li><label><input type="radio" name="bg-16-q0" value="0"> Spiritual peace</label></li>
+            <li><label><input type="radio" name="bg-16-q1" value="1"> Insatiable lust, gripped by hundreds of desires and anxieties, hoarding wealth illegally to enjoy senses</label></li>
+            <li><label><input type="radio" name="bg-16-q2" value="2"> Just family</label></li>
+            <li><label><input type="radio" name="bg-16-q3" value="3"> Modest comfort</label></li>
+        </ul>
+        <div class="fc-mcq-rationale">
+BG 16.10-12 — endless lust, anxiety, and unlawful wealth-acquisition.<div class="fc-mcq-refs">Refs: 16.10, 16.11, 16.12</div>        </div>
+    </div>
+    <div class="fc-mcq-question" data-answer="1">
+        <div class="fc-mcq-q-text">7. What is the destination of demoniac persons per BG 16.16, 19?</div>
+        <ul class="fc-mcq-choices">
+            <li><label><input type="radio" name="bg-16-q0" value="0"> Heaven</label></li>
+            <li><label><input type="radio" name="bg-16-q1" value="1"> Bewildered, entangled, addicted; they fall into hellish life; Kṛṣṇa repeatedly casts these envious haters into demoniac wombs (āsurīṣu yoniṣu)</label></li>
+            <li><label><input type="radio" name="bg-16-q2" value="2"> Liberation</label></li>
+            <li><label><input type="radio" name="bg-16-q3" value="3"> Demigod birth</label></li>
+        </ul>
+        <div class="fc-mcq-rationale">
+BG 16.19 — cast repeatedly into demoniac species, never approaching Kṛṣṇa, going to the lowest hellish existence.<div class="fc-mcq-refs">Refs: 16.16, 16.19</div>        </div>
+    </div>
+    <div class="fc-mcq-question" data-answer="1">
+        <div class="fc-mcq-q-text">8. What three gates to hell are listed in BG 16.21?</div>
+        <ul class="fc-mcq-choices">
+            <li><label><input type="radio" name="bg-16-q0" value="0"> Theft, violence, lying</label></li>
+            <li><label><input type="radio" name="bg-16-q1" value="1"> Lust, anger, and greed (kāma krodha lobha) — give them up to act for the soul&#39;s welfare</label></li>
+            <li><label><input type="radio" name="bg-16-q2" value="2"> Wealth, fame, power</label></li>
+            <li><label><input type="radio" name="bg-16-q3" value="3"> Disbelief</label></li>
+        </ul>
+        <div class="fc-mcq-rationale">
+BG 16.21 — &#39;tri-vidhaṁ narakasyedaṁ dvāraṁ nāśanam ātmanaḥ: kāmaḥ krodhas tathā lobhaḥ&#39;.<div class="fc-mcq-refs">Refs: 16.21</div>        </div>
+    </div>
+    <div class="fc-mcq-question" data-answer="1">
+        <div class="fc-mcq-q-text">9. Who acts according to scripture, per BG 16.23-24?</div>
+        <ul class="fc-mcq-choices">
+            <li><label><input type="radio" name="bg-16-q0" value="0"> Anyone</label></li>
+            <li><label><input type="radio" name="bg-16-q1" value="1"> One should follow śāstra to know what is to be done and not to be done; one who acts on whim attains neither perfection, nor happiness, nor the supreme destination</label></li>
+            <li><label><input type="radio" name="bg-16-q2" value="2"> Just sages</label></li>
+            <li><label><input type="radio" name="bg-16-q3" value="3"> Demigods only</label></li>
+        </ul>
+        <div class="fc-mcq-rationale">
+BG 16.23-24 — śāstra is the criterion of action.<div class="fc-mcq-refs">Refs: 16.23, 16.24</div>        </div>
+    </div>
+    <div class="fc-mcq-question" data-answer="1">
+        <div class="fc-mcq-q-text">10. What is the consequence of rejecting scripture, per BG 16.23?</div>
+        <ul class="fc-mcq-choices">
+            <li><label><input type="radio" name="bg-16-q0" value="0"> No consequence</label></li>
+            <li><label><input type="radio" name="bg-16-q1" value="1"> He attains neither perfection, nor happiness, nor the supreme destination — &#39;yaḥ śāstra-vidhim utsṛjya&#39;</label></li>
+            <li><label><input type="radio" name="bg-16-q2" value="2"> Reward</label></li>
+            <li><label><input type="radio" name="bg-16-q3" value="3"> Mystic powers</label></li>
+        </ul>
+        <div class="fc-mcq-rationale">
+BG 16.23 — acting whimsically apart from scripture brings neither happiness nor goal.<div class="fc-mcq-refs">Refs: 16.23</div>        </div>
+    </div>
+    <div class="fc-mcq-question" data-answer="1">
+        <div class="fc-mcq-q-text">11. What contrast does Chapter 16 highlight?</div>
+        <ul class="fc-mcq-choices">
+            <li><label><input type="radio" name="bg-16-q0" value="0"> Wealthy vs poor</label></li>
+            <li><label><input type="radio" name="bg-16-q1" value="1"> Daiva-sampad (divine endowments) vs āsura-sampad (demoniac endowments) — leading to liberation vs bondage</label></li>
+            <li><label><input type="radio" name="bg-16-q2" value="2"> King vs commoner</label></li>
+            <li><label><input type="radio" name="bg-16-q3" value="3"> Past vs future</label></li>
+        </ul>
+        <div class="fc-mcq-rationale">
+BG 16.5 — the central thesis is the contrast between divine and demoniac qualities.<div class="fc-mcq-refs">Refs: 16.5</div>        </div>
+    </div>
+    <div class="fc-mcq-question" data-answer="1">
+        <div class="fc-mcq-q-text">12. Where does Kṛṣṇa say Arjuna is positioned?</div>
+        <ul class="fc-mcq-choices">
+            <li><label><input type="radio" name="bg-16-q0" value="0"> Demoniac</label></li>
+            <li><label><input type="radio" name="bg-16-q1" value="1"> &#39;mā śucaḥ sampadaṁ daivīm abhijāto &#39;si pāṇḍava&#39; — born of divine nature; do not grieve</label></li>
+            <li><label><input type="radio" name="bg-16-q2" value="2"> Mixed</label></li>
+            <li><label><input type="radio" name="bg-16-q3" value="3"> Unclear</label></li>
+        </ul>
+        <div class="fc-mcq-rationale">
+BG 16.5 — Kṛṣṇa reassures Arjuna he is born with divine qualities.<div class="fc-mcq-refs">Refs: 16.5</div>        </div>
+    </div>
+    <div class="fc-mcq-actions">
+        <button type="button" class="fc-mcq-btn" data-action="check">Check answers</button>
+        <button type="button" class="fc-mcq-btn fc-mcq-btn-secondary" data-action="reset">Reset</button>
+        <span class="fc-mcq-score"></span>
+    </div>
+</form>
+
 </section>
 
 <section class="fc-breakdown-card" data-sec="breakdown">

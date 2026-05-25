@@ -99,6 +99,8 @@
                 <label><input type="checkbox" data-section="important_words"> Important Words</label>
                 <label><input type="checkbox" data-section="note" checked> My note</label>
                 <label><input type="checkbox" data-section="audio_player" checked> Sanskrit recitation player</label>
+                <label><input type="checkbox" data-section="recitation_slokas" checked> &nbsp; Reading-along view (auto-show on play)</label>
+                <label><input type="checkbox" data-section="quiz" checked> MCQ quizzes (chapter + sub-section)</label>
                 <label class="fc-toggle-master"><input type="checkbox" data-section="gpd_all" checked> <strong>Gauranga Priya additions</strong> (master)</label>
                 <label><input type="checkbox" data-section="chapter_overview" checked> &nbsp; Chapter Overview</label>
                 <label><input type="checkbox" data-section="breakdown" checked> &nbsp; Breakdown of Chapter</label>
@@ -262,20 +264,149 @@
 
 <section class="fc-section fc-bg-audio" data-sec="audio_player">
     <div class="fc-section-label">Sanskrit Recitation</div>
-    <div class="fc-bg-audio-picker">
-        <label for="fc-bg-reciter">Reciter:</label>
-        <select id="fc-bg-reciter">
-            <option value="https://bhagavadgitaclass.com//wp-content/audio/Bhagavad-Gita-Recitation/Bhagavad_Gita_Recitation_in_Sanskrit_by_HG_Ananta_Nitai_Prabhu/Bhagavad_Gita_Recitation_Chapter-14_in_Sanskrit_by_HG_Ananta_Nitai_Prabhu.mp3" data-reciter="ananta-nitai">His Grace Ananta Nitai Prabhu</option>
-            <option value="https://bhagavadgitaclass.com//wp-content/audio/Bhagavad-Gita-Recitation/Bhagavad_Gita_Recitation_in_Sanskrit_by_HG_Bharat_Ram_Prabhu/Bhagavad_Gita_Recitation_Chapter-14_in_Sanskrit_by_HG_Bharat_Ram_Prabhu.mp3" data-reciter="bharat-ram">His Grace Bharat Ram Prabhu</option>
-            <option value="https://bhagavadgitaclass.com/wp-content/audio/Bhagavad-Gita-Recitation/Bhagavad_Gita_Recitation_in_Sanskrit_by_HH_Mahavishnu_Goswami/Bhagavad_Gita_Recitation_Chapter-14_in_Sanksrit_by_HH_Mahavishnu_Goswami.mp3" data-reciter="mahavishnu-goswami">His Holiness Mahaviṣṇu Goswami</option>
-            <option value="https://bhagavadgitaclass.com/wp-content/audio/Bhagavad-Gita-Recitation/Bhagavad_Gita_Recitation_in_Sanskrit_by_HG_Radha_Gopinath_Prabhu/Bhagavad_Gita_Recitation_Chapter-14_in_Sanskrit_by_HG_Radha_Gopinath_Prabhu.mp3" data-reciter="radha-gopinath">His Grace Rādhā-Gopīnātha Prabhu</option>
-            <option value="https://bhagavadgitaclass.com/wp-content/audio/Bhagavad-Gita-Recitation/Bhagavad_Gita_Recitation_in_Sanskrit_with_Tamil_Translations/Bhagavad_Gita_Recitation_Chapter-14_in_Sanskrit_with_Tamil_Translations.mp3" data-reciter="tamil-translations">Sanskrit + Tamil Translations</option>
-        </select>
-        <span class="fc-bg-audio-coverage">5 reciters for chapter 14</span>
+    <div class="fc-bg-recitation">
+        <div class="fc-bg-audio-wrap">
+            <div class="fc-bg-audio-picker">
+                <label for="fc-bg-reciter">Reciter:</label>
+                <select id="fc-bg-reciter">
+                    <option value="https://bhagavadgitaclass.com//wp-content/audio/Bhagavad-Gita-Recitation/Bhagavad_Gita_Recitation_in_Sanskrit_by_HG_Ananta_Nitai_Prabhu/Bhagavad_Gita_Recitation_Chapter-14_in_Sanskrit_by_HG_Ananta_Nitai_Prabhu.mp3" data-reciter="ananta-nitai">His Grace Ananta Nitai Prabhu</option>
+                    <option value="https://bhagavadgitaclass.com//wp-content/audio/Bhagavad-Gita-Recitation/Bhagavad_Gita_Recitation_in_Sanskrit_by_HG_Bharat_Ram_Prabhu/Bhagavad_Gita_Recitation_Chapter-14_in_Sanskrit_by_HG_Bharat_Ram_Prabhu.mp3" data-reciter="bharat-ram">His Grace Bharat Ram Prabhu</option>
+                    <option value="https://bhagavadgitaclass.com/wp-content/audio/Bhagavad-Gita-Recitation/Bhagavad_Gita_Recitation_in_Sanskrit_by_HH_Mahavishnu_Goswami/Bhagavad_Gita_Recitation_Chapter-14_in_Sanksrit_by_HH_Mahavishnu_Goswami.mp3" data-reciter="mahavishnu-goswami">His Holiness Mahaviṣṇu Goswami</option>
+                    <option value="https://bhagavadgitaclass.com/wp-content/audio/Bhagavad-Gita-Recitation/Bhagavad_Gita_Recitation_in_Sanskrit_by_HG_Radha_Gopinath_Prabhu/Bhagavad_Gita_Recitation_Chapter-14_in_Sanskrit_by_HG_Radha_Gopinath_Prabhu.mp3" data-reciter="radha-gopinath">His Grace Rādhā-Gopīnātha Prabhu</option>
+                    <option value="https://bhagavadgitaclass.com/wp-content/audio/Bhagavad-Gita-Recitation/Bhagavad_Gita_Recitation_in_Sanskrit_with_Tamil_Translations/Bhagavad_Gita_Recitation_Chapter-14_in_Sanskrit_with_Tamil_Translations.mp3" data-reciter="tamil-translations">Sanskrit + Tamil Translations</option>
+                </select>
+                <span class="fc-bg-audio-coverage">5 reciters for chapter 14</span>
+            </div>
+            <audio id="fc-bg-audio" controls preload="none" src="https://bhagavadgitaclass.com//wp-content/audio/Bhagavad-Gita-Recitation/Bhagavad_Gita_Recitation_in_Sanskrit_by_HG_Ananta_Nitai_Prabhu/Bhagavad_Gita_Recitation_Chapter-14_in_Sanskrit_by_HG_Ananta_Nitai_Prabhu.mp3"></audio>
+            <p class="fc-source-link">Audio hot-linked from
+                <a href="https://bhagavadgitaclass.com/category/recitation/" rel="noopener">bhagavadgitaclass.com</a> — streamed from upstream, not stored.</p>
+        </div>
+        <div id="fc-bg-slokas" class="fc-bg-slokas" data-sec="recitation_slokas" hidden>
+            <div class="fc-bg-slokas-header">Reading along — Chapter 14</div>
+            <div class="fc-bg-slokas-inner">
+                <article class="fc-bg-sloka" id="sloka-14-1">
+                    <div class="fc-bg-sloka-num">14.1</div>
+                    <div class="cr-deva"><div class="cr-deva-line">श्रीभगवानुवाच</div><div class="cr-deva-line">परं भूय: प्रवक्ष्यामि ज्ञानानां ज्ञानमुत्तमम् । ‍‍ ॥</div><div class="cr-deva-line">यज्ज्ञात्वा मुनय: सर्वे परां सिद्धिमितो गता: ॥ १ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">śrī-bhagavān uvāca</div><div class="cr-iast-line">paraṁ bhūyaḥ pravakṣyāmi</div><div class="cr-iast-line">jñānānāṁ jñānam uttamam</div><div class="cr-iast-line">yaj jñātvā munayaḥ sarve</div><div class="cr-iast-line">parāṁ siddhim ito gatāḥ</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-14-2">
+                    <div class="fc-bg-sloka-num">14.2</div>
+                    <div class="cr-deva"><div class="cr-deva-line">इदं ज्ञानमुपाश्रित्य मम साधर्म्यमागता: ।</div><div class="cr-deva-line">सर्गेऽपि नोपजायन्ते प्रलये न व्यथन्ति च ॥ २ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">idaṁ jñānam upāśritya</div><div class="cr-iast-line">mama sādharmyam āgatāḥ</div><div class="cr-iast-line">sarge ’pi nopajāyante</div><div class="cr-iast-line">pralaye na vyathanti ca</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-14-3">
+                    <div class="fc-bg-sloka-num">14.3</div>
+                    <div class="cr-deva"><div class="cr-deva-line">मम योनिर्महद्‍ब्रह्म तस्मिन्गर्भं दधाम्यहम् ।</div><div class="cr-deva-line">सम्भव: सर्वभूतानां ततो भवति भारत ॥ ३ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">mama yonir mahad brahma</div><div class="cr-iast-line">tasmin garbhaṁ dadhāmy aham</div><div class="cr-iast-line">sambhavaḥ sarva-bhūtānāṁ</div><div class="cr-iast-line">tato bhavati bhārata</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-14-4">
+                    <div class="fc-bg-sloka-num">14.4</div>
+                    <div class="cr-deva"><div class="cr-deva-line">सर्वयोनिषु कौन्तेय मूर्तय: सम्भवन्ति या: ।</div><div class="cr-deva-line">तासां ब्रह्म महद्योनिरहं बीजप्रद: पिता ॥ ४ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">sarva-yoniṣu kaunteya</div><div class="cr-iast-line">mūrtayaḥ sambhavanti yāḥ</div><div class="cr-iast-line">tāsāṁ brahma mahad yonir</div><div class="cr-iast-line">ahaṁ bīja-pradaḥ pitā</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-14-5">
+                    <div class="fc-bg-sloka-num">14.5</div>
+                    <div class="cr-deva"><div class="cr-deva-line">सत्त्वं रजस्तम इति गुणा: प्रकृतिसम्भवा: ।</div><div class="cr-deva-line">निबध्‍नन्ति महाबाहो देहे देहिनमव्ययम् ॥ ५ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">sattvaṁ rajas tama iti</div><div class="cr-iast-line">guṇāḥ prakṛti-sambhavāḥ</div><div class="cr-iast-line">nibadhnanti mahā-bāho</div><div class="cr-iast-line">dehe dehinam avyayam</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-14-6">
+                    <div class="fc-bg-sloka-num">14.6</div>
+                    <div class="cr-deva"><div class="cr-deva-line">तत्र सत्त्वं निर्मलत्वात्प्रकाशकमनामयम् ।</div><div class="cr-deva-line">सुखसङ्गेन बध्‍नाति ज्ञानसङ्गेन चानघ ॥ ६ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">tatra sattvaṁ nirmalatvāt</div><div class="cr-iast-line">prakāśakam anāmayam</div><div class="cr-iast-line">sukha-saṅgena badhnāti</div><div class="cr-iast-line">jñāna-saṅgena cānagha</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-14-7">
+                    <div class="fc-bg-sloka-num">14.7</div>
+                    <div class="cr-deva"><div class="cr-deva-line">रजो रागात्मकं विद्धि तृष्णासङ्गसमुद्भ‍वम् ।</div><div class="cr-deva-line">तन्निबध्‍नाति कौन्तेय कर्मसङ्गेन देहिनम् ॥ ७ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">rajo rāgātmakaṁ viddhi</div><div class="cr-iast-line">tṛṣṇā-saṅga-samudbhavam</div><div class="cr-iast-line">tan nibadhnāti kaunteya</div><div class="cr-iast-line">karma-saṅgena dehinam</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-14-8">
+                    <div class="fc-bg-sloka-num">14.8</div>
+                    <div class="cr-deva"><div class="cr-deva-line">तमस्त्वज्ञानजं विद्धि मोहनं सर्वदेहिनाम् ।</div><div class="cr-deva-line">प्रमादालस्यनिद्राभिस्तन्निबध्‍नाति भारत ॥ ८ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">tamas tv ajñāna-jaṁ viddhi</div><div class="cr-iast-line">mohanaṁ sarva-dehinām</div><div class="cr-iast-line">pramādālasya-nidrābhis</div><div class="cr-iast-line">tan nibadhnāti bhārata</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-14-9">
+                    <div class="fc-bg-sloka-num">14.9</div>
+                    <div class="cr-deva"><div class="cr-deva-line">सत्त्वं सुखे सञ्जयति रज: कर्मणि भारत ।</div><div class="cr-deva-line">ज्ञानमावृत्य तु तम: प्रमादे सञ्जयत्युत ॥ ९ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">sattvaṁ sukhe sañjayati</div><div class="cr-iast-line">rajaḥ karmaṇi bhārata</div><div class="cr-iast-line">jñānam āvṛtya tu tamaḥ</div><div class="cr-iast-line">pramāde sañjayaty uta</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-14-10">
+                    <div class="fc-bg-sloka-num">14.10</div>
+                    <div class="cr-deva"><div class="cr-deva-line">रजस्तमश्चाभिभूय सत्त्वं भवति भारत ।</div><div class="cr-deva-line">रज: सत्त्वं तमश्चैव तम: सत्त्वं रजस्तथा ॥ १० ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">rajas tamaś cābhibhūya</div><div class="cr-iast-line">sattvaṁ bhavati bhārata</div><div class="cr-iast-line">rajaḥ sattvaṁ tamaś caiva</div><div class="cr-iast-line">tamaḥ sattvaṁ rajas tathā</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-14-11">
+                    <div class="fc-bg-sloka-num">14.11</div>
+                    <div class="cr-deva"><div class="cr-deva-line">सर्वद्वारेषु देहेऽस्मिन्प्रकाश उपजायते ।</div><div class="cr-deva-line">ज्ञानं यदा तदा विद्याद्विवृद्धं सत्त्वमित्युत ॥ ११ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">sarva-dvāreṣu dehe ’smin</div><div class="cr-iast-line">prakāśa upajāyate</div><div class="cr-iast-line">jñānaṁ yadā tadā vidyād</div><div class="cr-iast-line">vivṛddhaṁ sattvam ity uta</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-14-12">
+                    <div class="fc-bg-sloka-num">14.12</div>
+                    <div class="cr-deva"><div class="cr-deva-line">लोभ: प्रवृत्तिरारम्भ: कर्मणामशम: स्पृहा ।</div><div class="cr-deva-line">रजस्येतानि जायन्ते विवृद्धे भरतर्षभ ॥ १२ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">lobhaḥ pravṛttir ārambhaḥ</div><div class="cr-iast-line">karmaṇām aśamaḥ spṛhā</div><div class="cr-iast-line">rajasy etāni jāyante</div><div class="cr-iast-line">vivṛddhe bharatarṣabha</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-14-13">
+                    <div class="fc-bg-sloka-num">14.13</div>
+                    <div class="cr-deva"><div class="cr-deva-line">अप्रकाशोऽप्रवृत्तिश्च प्रमादो मोह एव च ।</div><div class="cr-deva-line">तमस्येतानि जायन्ते विवृद्धे कुरुनन्दन ॥ १३ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">aprakāśo ’pravṛttiś ca</div><div class="cr-iast-line">pramādo moha eva ca</div><div class="cr-iast-line">tamasy etāni jāyante</div><div class="cr-iast-line">vivṛddhe kuru-nandana</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-14-14">
+                    <div class="fc-bg-sloka-num">14.14</div>
+                    <div class="cr-deva"><div class="cr-deva-line">यदा सत्त्वे प्रवृद्धे तु प्रलयं याति देहभृत् ।</div><div class="cr-deva-line">तदोत्तमविदां लोकानमलान्प्रतिपद्यते ॥ १४ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">yadā sattve pravṛddhe tu</div><div class="cr-iast-line">pralayaṁ yāti deha-bhṛt</div><div class="cr-iast-line">tadottama-vidāṁ lokān</div><div class="cr-iast-line">amalān pratipadyate</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-14-15">
+                    <div class="fc-bg-sloka-num">14.15</div>
+                    <div class="cr-deva"><div class="cr-deva-line">रजसि प्रलयं गत्वा कर्मसङ्गिषु जायते ।</div><div class="cr-deva-line">तथा प्रलीनस्तमसि मूढयोनिषु जायते ॥ १५ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">rajasi pralayaṁ gatvā</div><div class="cr-iast-line">karma-saṅgiṣu jāyate</div><div class="cr-iast-line">tathā pralīnas tamasi</div><div class="cr-iast-line">mūḍha-yoniṣu jāyate</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-14-16">
+                    <div class="fc-bg-sloka-num">14.16</div>
+                    <div class="cr-deva"><div class="cr-deva-line">कर्मण: सुकृतस्याहु: सात्त्विकं निर्मलं फलम् ।</div><div class="cr-deva-line">रजसस्तु फलं दु:खमज्ञानं तमस: फलम् ॥ १६ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">karmaṇaḥ sukṛtasyāhuḥ</div><div class="cr-iast-line">sāttvikaṁ nirmalaṁ phalam</div><div class="cr-iast-line">rajasas tu phalaṁ duḥkham</div><div class="cr-iast-line">ajñānaṁ tamasaḥ phalam</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-14-17">
+                    <div class="fc-bg-sloka-num">14.17</div>
+                    <div class="cr-deva"><div class="cr-deva-line">सत्त्वात्सञ्जायते ज्ञानं रजसो लोभ एव च ।</div><div class="cr-deva-line">प्रमादमोहौ तमसो भवतोऽज्ञानमेव च ॥ १७ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">sattvāt sañjāyate jñānaṁ</div><div class="cr-iast-line">rajaso lobha eva ca</div><div class="cr-iast-line">pramāda-mohau tamaso</div><div class="cr-iast-line">bhavato ’jñānam eva ca</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-14-18">
+                    <div class="fc-bg-sloka-num">14.18</div>
+                    <div class="cr-deva"><div class="cr-deva-line">ऊर्ध्वं गच्छन्ति सत्त्वस्था मध्ये तिष्ठन्ति राजसा: ।</div><div class="cr-deva-line">जघन्यगुणवृत्तिस्था अधो गच्छन्ति तामसा: ॥ १८ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">ūrdhvaṁ gacchanti sattva-sthā</div><div class="cr-iast-line">madhye tiṣṭhanti rājasāḥ</div><div class="cr-iast-line">jaghanya-guṇa-vṛtti-sthā</div><div class="cr-iast-line">adho gacchanti tāmasāḥ</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-14-19">
+                    <div class="fc-bg-sloka-num">14.19</div>
+                    <div class="cr-deva"><div class="cr-deva-line">नान्यं गुणेभ्य: कर्तारं यदा द्रष्टानुपश्यति ।</div><div class="cr-deva-line">गुणेभ्यश्च परं वेत्ति मद्भ‍ावं सोऽधिगच्छति ॥ १९ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">nānyaṁ guṇebhyaḥ kartāraṁ</div><div class="cr-iast-line">yadā draṣṭānupaśyati</div><div class="cr-iast-line">guṇebhyaś ca paraṁ vetti</div><div class="cr-iast-line">mad-bhāvaṁ so ’dhigacchati</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-14-20">
+                    <div class="fc-bg-sloka-num">14.20</div>
+                    <div class="cr-deva"><div class="cr-deva-line">गुणानेतानतीत्य त्रीन्देही देहसमुद्भ‍वान् ।</div><div class="cr-deva-line">जन्ममृत्युजरादु:खैर्विमुक्तोऽमृतमश्न‍ुते ॥ २० ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">guṇān etān atītya trīn</div><div class="cr-iast-line">dehī deha-samudbhavān</div><div class="cr-iast-line">janma-mṛtyu-jarā-duḥkhair</div><div class="cr-iast-line">vimukto ’mṛtam aśnute</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-14-21">
+                    <div class="fc-bg-sloka-num">14.21</div>
+                    <div class="cr-deva"><div class="cr-deva-line">अर्जुन उवाच</div><div class="cr-deva-line">कैर्लिङ्गैस्त्रीन्गुणानेतानतीतो भवति प्रभो ।</div><div class="cr-deva-line">किमाचार: कथं चैतांस्त्रीन्गुणानतिवर्तते ॥ २१ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">arjuna uvāca</div><div class="cr-iast-line">kair liṅgais trīn guṇān etān</div><div class="cr-iast-line">atīto bhavati prabho</div><div class="cr-iast-line">kim-ācāraḥ kathaṁ caitāṁs</div><div class="cr-iast-line">trīn guṇān ativartate</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-14-22-25">
+                    <div class="fc-bg-sloka-num">14.22-25</div>
+                    <div class="cr-deva"><div class="cr-deva-line">श्रीभगवानुवाच</div><div class="cr-deva-line">प्रकाशं च प्रवृत्तिं च मोहमेव च पाण्डव ।</div><div class="cr-deva-line">न द्वेष्टि सम्प्रवृत्तानि न निवृत्तानि काङ्‍क्षति ॥ २२ ॥</div><div class="cr-deva-line">उदासीनवदासीनो गुणैर्यो न विचाल्यते ।</div><div class="cr-deva-line">गुणा वर्तन्त इत्येवं योऽवतिष्ठति नेङ्गते ॥ २३ ॥</div><div class="cr-deva-line">समदु:खसुख: स्वस्थ: समलोष्टाश्मकाञ्चन: ।</div><div class="cr-deva-line">तुल्यप्रियाप्रियो धीरस्तुल्यनिन्दात्मसंस्तुति: ॥ २४ ॥</div><div class="cr-deva-line">मानापमानयोस्तुल्यस्तुल्यो मित्रारिपक्षयो: ।</div><div class="cr-deva-line">सर्वारम्भपरित्यागी गुणातीत: स उच्यते ॥ २५ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">śrī-bhagavān uvāca</div><div class="cr-iast-line">prakāśaṁ ca pravṛttiṁ ca</div><div class="cr-iast-line">moham eva ca pāṇḍava</div><div class="cr-iast-line">na dveṣṭi sampravṛttāni</div><div class="cr-iast-line">na nivṛttāni kāṅkṣati</div><div class="cr-iast-line">udāsīna-vad āsīno</div><div class="cr-iast-line">guṇair yo na vicālyate</div><div class="cr-iast-line">guṇā vartanta ity evaṁ</div><div class="cr-iast-line">yo ’vatiṣṭhati neṅgate</div><div class="cr-iast-line">sama-duḥkha-sukhaḥ sva-sthaḥ</div><div class="cr-iast-line">sama-loṣṭāśma-kāñcanaḥ</div><div class="cr-iast-line">tulya-priyāpriyo dhīras</div><div class="cr-iast-line">tulya-nindātma-saṁstutiḥ</div><div class="cr-iast-line">mānāpamānayos tulyas</div><div class="cr-iast-line">tulyo mitrāri-pakṣayoḥ</div><div class="cr-iast-line">sarvārambha-parityāgī</div><div class="cr-iast-line">guṇātītaḥ sa ucyate</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-14-26">
+                    <div class="fc-bg-sloka-num">14.26</div>
+                    <div class="cr-deva"><div class="cr-deva-line">मां च योऽव्यभिचारेण भक्तियोगेन सेवते ।</div><div class="cr-deva-line">स गुणान्समतीत्यैतान्ब्रह्मभूयाय कल्पते ॥ २६ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">māṁ ca yo ’vyabhicāreṇa</div><div class="cr-iast-line">bhakti-yogena sevate</div><div class="cr-iast-line">sa guṇān samatītyaitān</div><div class="cr-iast-line">brahma-bhūyāya kalpate</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-14-27">
+                    <div class="fc-bg-sloka-num">14.27</div>
+                    <div class="cr-deva"><div class="cr-deva-line">ब्रह्मणो हि प्रतिष्ठाहममृतस्याव्ययस्य च ।</div><div class="cr-deva-line">शाश्वतस्य च धर्मस्य सुखस्यैकान्तिकस्य च ॥ २७ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">brahmaṇo hi pratiṣṭhāham</div><div class="cr-iast-line">amṛtasyāvyayasya ca</div><div class="cr-iast-line">śāśvatasya ca dharmasya</div><div class="cr-iast-line">sukhasyaikāntikasya ca</div></div>
+                </article>
+            </div>
+        </div>
     </div>
-    <audio id="fc-bg-audio" controls preload="none" src="https://bhagavadgitaclass.com//wp-content/audio/Bhagavad-Gita-Recitation/Bhagavad_Gita_Recitation_in_Sanskrit_by_HG_Ananta_Nitai_Prabhu/Bhagavad_Gita_Recitation_Chapter-14_in_Sanskrit_by_HG_Ananta_Nitai_Prabhu.mp3"></audio>
-    <p class="fc-source-link">Audio hot-linked from
-        <a href="https://bhagavadgitaclass.com/category/recitation/" rel="noopener">bhagavadgitaclass.com</a> — streamed from upstream, not stored.</p>
 </section>
 
 
@@ -289,6 +420,151 @@
 </div>
         <div class="fc-chapter-overview-attrib">— Bhakti-śāstrī Notes, ISKCON Chowpatty (2009)</div>
     </div>
+</section>
+
+<section class="fc-section fc-mcq-chapter" data-sec="quiz">
+    <div class="fc-section-label">Chapter Quiz</div>
+    <form class="fc-mcq-form" data-quiz-key="bg-14">
+    <div class="fc-mcq-meta">12 questions · Chapter 14</div>
+    <div class="fc-mcq-question" data-answer="1">
+        <div class="fc-mcq-q-text">1. What does Kṛṣṇa declare to be the womb of all creatures, per BG 14.3-4?</div>
+        <ul class="fc-mcq-choices">
+            <li><label><input type="radio" name="bg-14-q0" value="0"> Demigods</label></li>
+            <li><label><input type="radio" name="bg-14-q1" value="1"> Mahad-brahma (material nature) — and He impregnates it; all life-forms emerge from this combination</label></li>
+            <li><label><input type="radio" name="bg-14-q2" value="2"> Just the elements</label></li>
+            <li><label><input type="radio" name="bg-14-q3" value="3"> Karma</label></li>
+        </ul>
+        <div class="fc-mcq-rationale">
+BG 14.3-4 — &#39;mama yonir mahad-brahma tasmin garbhaṁ dadhāmy aham&#39;.<div class="fc-mcq-refs">Refs: 14.3, 14.4</div>        </div>
+    </div>
+    <div class="fc-mcq-question" data-answer="1">
+        <div class="fc-mcq-q-text">2. How many modes of material nature are there per BG 14.5?</div>
+        <ul class="fc-mcq-choices">
+            <li><label><input type="radio" name="bg-14-q0" value="0"> Two</label></li>
+            <li><label><input type="radio" name="bg-14-q1" value="1"> Three: sattva (goodness), rajas (passion), tamas (ignorance)</label></li>
+            <li><label><input type="radio" name="bg-14-q2" value="2"> Five</label></li>
+            <li><label><input type="radio" name="bg-14-q3" value="3"> Seven</label></li>
+        </ul>
+        <div class="fc-mcq-rationale">
+BG 14.5 — the three guṇas bind the embodied soul.<div class="fc-mcq-refs">Refs: 14.5</div>        </div>
+    </div>
+    <div class="fc-mcq-question" data-answer="1">
+        <div class="fc-mcq-q-text">3. What is the binding nature of sattva per BG 14.6?</div>
+        <ul class="fc-mcq-choices">
+            <li><label><input type="radio" name="bg-14-q0" value="0"> Lust</label></li>
+            <li><label><input type="radio" name="bg-14-q1" value="1"> Knowledge and happiness — by attachment to which the soul is bound</label></li>
+            <li><label><input type="radio" name="bg-14-q2" value="2"> Ignorance</label></li>
+            <li><label><input type="radio" name="bg-14-q3" value="3"> Lethargy</label></li>
+        </ul>
+        <div class="fc-mcq-rationale">
+BG 14.6 — sattva binds through attachment to happiness and knowledge.<div class="fc-mcq-refs">Refs: 14.6</div>        </div>
+    </div>
+    <div class="fc-mcq-question" data-answer="1">
+        <div class="fc-mcq-q-text">4. What is the binding nature of rajas, per BG 14.7?</div>
+        <ul class="fc-mcq-choices">
+            <li><label><input type="radio" name="bg-14-q0" value="0"> Sleep</label></li>
+            <li><label><input type="radio" name="bg-14-q1" value="1"> Unlimited desires and longings; binds through attachment to fruitive activity</label></li>
+            <li><label><input type="radio" name="bg-14-q2" value="2"> Knowledge</label></li>
+            <li><label><input type="radio" name="bg-14-q3" value="3"> Stillness</label></li>
+        </ul>
+        <div class="fc-mcq-rationale">
+BG 14.7 — rajas binds with attachment to action and its fruits.<div class="fc-mcq-refs">Refs: 14.7</div>        </div>
+    </div>
+    <div class="fc-mcq-question" data-answer="1">
+        <div class="fc-mcq-q-text">5. What is the binding nature of tamas per BG 14.8?</div>
+        <ul class="fc-mcq-choices">
+            <li><label><input type="radio" name="bg-14-q0" value="0"> Truth</label></li>
+            <li><label><input type="radio" name="bg-14-q1" value="1"> Madness, indolence, sleep — born of ignorance, deluding all embodied beings</label></li>
+            <li><label><input type="radio" name="bg-14-q2" value="2"> Activity</label></li>
+            <li><label><input type="radio" name="bg-14-q3" value="3"> Knowledge</label></li>
+        </ul>
+        <div class="fc-mcq-rationale">
+BG 14.8 — tamas binds through madness, indolence, and sleep.<div class="fc-mcq-refs">Refs: 14.8</div>        </div>
+    </div>
+    <div class="fc-mcq-question" data-answer="1">
+        <div class="fc-mcq-q-text">6. What is the effect of one dying in sattva, per BG 14.14-15?</div>
+        <ul class="fc-mcq-choices">
+            <li><label><input type="radio" name="bg-14-q0" value="0"> Rebirth as demon</label></li>
+            <li><label><input type="radio" name="bg-14-q1" value="1"> Pure higher worlds of sages; great wise men&#39;s planets</label></li>
+            <li><label><input type="radio" name="bg-14-q2" value="2"> Rebirth as plant</label></li>
+            <li><label><input type="radio" name="bg-14-q3" value="3"> No rebirth</label></li>
+        </ul>
+        <div class="fc-mcq-rationale">
+BG 14.14 — one dying in sattva attains the pure higher planets.<div class="fc-mcq-refs">Refs: 14.14</div>        </div>
+    </div>
+    <div class="fc-mcq-question" data-answer="1">
+        <div class="fc-mcq-q-text">7. What is the effect of dying in rajas?</div>
+        <ul class="fc-mcq-choices">
+            <li><label><input type="radio" name="bg-14-q0" value="0"> Liberation</label></li>
+            <li><label><input type="radio" name="bg-14-q1" value="1"> Rebirth among those engaged in fruitive activities (human realm)</label></li>
+            <li><label><input type="radio" name="bg-14-q2" value="2"> Among demigods only</label></li>
+            <li><label><input type="radio" name="bg-14-q3" value="3"> Animal birth</label></li>
+        </ul>
+        <div class="fc-mcq-rationale">
+BG 14.15 — rajas at death brings birth among karma-saṅgi.<div class="fc-mcq-refs">Refs: 14.15</div>        </div>
+    </div>
+    <div class="fc-mcq-question" data-answer="1">
+        <div class="fc-mcq-q-text">8. What is the effect of dying in tamas?</div>
+        <ul class="fc-mcq-choices">
+            <li><label><input type="radio" name="bg-14-q0" value="0"> Heaven</label></li>
+            <li><label><input type="radio" name="bg-14-q1" value="1"> Rebirth in the animal kingdom or lower species</label></li>
+            <li><label><input type="radio" name="bg-14-q2" value="2"> Demigod birth</label></li>
+            <li><label><input type="radio" name="bg-14-q3" value="3"> Pure consciousness</label></li>
+        </ul>
+        <div class="fc-mcq-rationale">
+BG 14.15 — tamas leads to birth in the animal kingdom.<div class="fc-mcq-refs">Refs: 14.15</div>        </div>
+    </div>
+    <div class="fc-mcq-question" data-answer="1">
+        <div class="fc-mcq-q-text">9. Who transcends the modes per BG 14.19?</div>
+        <ul class="fc-mcq-choices">
+            <li><label><input type="radio" name="bg-14-q0" value="0"> Demigod worshippers</label></li>
+            <li><label><input type="radio" name="bg-14-q1" value="1"> One who sees that all activities are done by the guṇas and knows the transcendental Lord — attains Kṛṣṇa&#39;s nature</label></li>
+            <li><label><input type="radio" name="bg-14-q2" value="2"> Anyone</label></li>
+            <li><label><input type="radio" name="bg-14-q3" value="3"> Karma-yogīs only</label></li>
+        </ul>
+        <div class="fc-mcq-rationale">
+BG 14.19 — &#39;nānyaṁ guṇebhyaḥ kartāraṁ yadā draṣṭānupaśyati guṇebhyaś ca paraṁ vetti&#39;.<div class="fc-mcq-refs">Refs: 14.19</div>        </div>
+    </div>
+    <div class="fc-mcq-question" data-answer="1">
+        <div class="fc-mcq-q-text">10. What qualities mark one who has transcended the guṇas, per BG 14.22-25?</div>
+        <ul class="fc-mcq-choices">
+            <li><label><input type="radio" name="bg-14-q0" value="0"> Aggressive engagement</label></li>
+            <li><label><input type="radio" name="bg-14-q1" value="1"> Neither hates nor desires the manifestations of the modes; is impartial in honor or dishonor, friend or foe; abandons all undertakings — established in self</label></li>
+            <li><label><input type="radio" name="bg-14-q2" value="2"> Indifference only</label></li>
+            <li><label><input type="radio" name="bg-14-q3" value="3"> Just patience</label></li>
+        </ul>
+        <div class="fc-mcq-rationale">
+BG 14.22-25 enumerate these signs of one beyond the three modes.<div class="fc-mcq-refs">Refs: 14.22, 14.23, 14.24, 14.25</div>        </div>
+    </div>
+    <div class="fc-mcq-question" data-answer="1">
+        <div class="fc-mcq-q-text">11. How does one transcend the modes per BG 14.26?</div>
+        <ul class="fc-mcq-choices">
+            <li><label><input type="radio" name="bg-14-q0" value="0"> By austerity alone</label></li>
+            <li><label><input type="radio" name="bg-14-q1" value="1"> By engaging in unalloyed devotional service to Kṛṣṇa — bhakti-yoga</label></li>
+            <li><label><input type="radio" name="bg-14-q2" value="2"> By demigod worship</label></li>
+            <li><label><input type="radio" name="bg-14-q3" value="3"> By renouncing work</label></li>
+        </ul>
+        <div class="fc-mcq-rationale">
+BG 14.26 — &#39;māṁ ca yo &#39;vyabhicāreṇa bhakti-yogena sevate sa guṇān samatītyaitān brahma-bhūyāya kalpate&#39;.<div class="fc-mcq-refs">Refs: 14.26</div>        </div>
+    </div>
+    <div class="fc-mcq-question" data-answer="1">
+        <div class="fc-mcq-q-text">12. What does Kṛṣṇa say of His position vis-à-vis Brahman in BG 14.27?</div>
+        <ul class="fc-mcq-choices">
+            <li><label><input type="radio" name="bg-14-q0" value="0"> Less than Brahman</label></li>
+            <li><label><input type="radio" name="bg-14-q1" value="1"> He is the basis of impersonal Brahman, of immortality, of eternal dharma, and of ultimate happiness</label></li>
+            <li><label><input type="radio" name="bg-14-q2" value="2"> Same as demigods</label></li>
+            <li><label><input type="radio" name="bg-14-q3" value="3"> Subservient to time</label></li>
+        </ul>
+        <div class="fc-mcq-rationale">
+BG 14.27 — &#39;brahmaṇo hi pratiṣṭhāham amṛtasyāvyayasya ca ...&#39;.<div class="fc-mcq-refs">Refs: 14.27</div>        </div>
+    </div>
+    <div class="fc-mcq-actions">
+        <button type="button" class="fc-mcq-btn" data-action="check">Check answers</button>
+        <button type="button" class="fc-mcq-btn fc-mcq-btn-secondary" data-action="reset">Reset</button>
+        <span class="fc-mcq-score"></span>
+    </div>
+</form>
+
 </section>
 
 <section class="fc-breakdown-card" data-sec="breakdown">

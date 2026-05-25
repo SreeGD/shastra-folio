@@ -99,6 +99,8 @@
                 <label><input type="checkbox" data-section="important_words"> Important Words</label>
                 <label><input type="checkbox" data-section="note" checked> My note</label>
                 <label><input type="checkbox" data-section="audio_player" checked> Sanskrit recitation player</label>
+                <label><input type="checkbox" data-section="recitation_slokas" checked> &nbsp; Reading-along view (auto-show on play)</label>
+                <label><input type="checkbox" data-section="quiz" checked> MCQ quizzes (chapter + sub-section)</label>
                 <label class="fc-toggle-master"><input type="checkbox" data-section="gpd_all" checked> <strong>Gauranga Priya additions</strong> (master)</label>
                 <label><input type="checkbox" data-section="chapter_overview" checked> &nbsp; Chapter Overview</label>
                 <label><input type="checkbox" data-section="breakdown" checked> &nbsp; Breakdown of Chapter</label>
@@ -257,20 +259,124 @@
 
 <section class="fc-section fc-bg-audio" data-sec="audio_player">
     <div class="fc-section-label">Sanskrit Recitation</div>
-    <div class="fc-bg-audio-picker">
-        <label for="fc-bg-reciter">Reciter:</label>
-        <select id="fc-bg-reciter">
-            <option value="https://bhagavadgitaclass.com//wp-content/audio/Bhagavad-Gita-Recitation/Bhagavad_Gita_Recitation_in_Sanskrit_by_HG_Ananta_Nitai_Prabhu/Bhagavad_Gita_Recitation_Chapter-15_in_Sanskrit_by_HG_Ananta_Nitai_Prabhu.mp3" data-reciter="ananta-nitai">His Grace Ananta Nitai Prabhu</option>
-            <option value="https://bhagavadgitaclass.com//wp-content/audio/Bhagavad-Gita-Recitation/Bhagavad_Gita_Recitation_in_Sanskrit_by_HG_Bharat_Ram_Prabhu/Bhagavad_Gita_Recitation_Chapter-15_in_Sanskrit_by_HG_Bharat_Ram_Prabhu.mp3" data-reciter="bharat-ram">His Grace Bharat Ram Prabhu</option>
-            <option value="https://bhagavadgitaclass.com/wp-content/audio/Bhagavad-Gita-Recitation/Bhagavad_Gita_Recitation_in_Sanskrit_by_HH_Mahavishnu_Goswami/Bhagavad_Gita_Recitation_Chapter-15_in_Sanksrit_by_HH_Mahavishnu_Goswami.mp3" data-reciter="mahavishnu-goswami">His Holiness Mahaviṣṇu Goswami</option>
-            <option value="https://bhagavadgitaclass.com/wp-content/audio/Bhagavad-Gita-Recitation/Bhagavad_Gita_Recitation_in_Sanskrit_by_HG_Radha_Gopinath_Prabhu/Bhagavad_Gita_Recitation_Chapter-15_in_Sanskrit_by_HG_Radha_Gopinath_Prabhu.mp3" data-reciter="radha-gopinath">His Grace Rādhā-Gopīnātha Prabhu</option>
-            <option value="https://bhagavadgitaclass.com/wp-content/audio/Bhagavad-Gita-Recitation/Bhagavad_Gita_Recitation_in_Sanskrit_with_Tamil_Translations/Bhagavad_Gita_Recitation_Chapter-15_in_Sanskrit_with_Tamil_Translations.mp3" data-reciter="tamil-translations">Sanskrit + Tamil Translations</option>
-        </select>
-        <span class="fc-bg-audio-coverage">5 reciters for chapter 15</span>
+    <div class="fc-bg-recitation">
+        <div class="fc-bg-audio-wrap">
+            <div class="fc-bg-audio-picker">
+                <label for="fc-bg-reciter">Reciter:</label>
+                <select id="fc-bg-reciter">
+                    <option value="https://bhagavadgitaclass.com//wp-content/audio/Bhagavad-Gita-Recitation/Bhagavad_Gita_Recitation_in_Sanskrit_by_HG_Ananta_Nitai_Prabhu/Bhagavad_Gita_Recitation_Chapter-15_in_Sanskrit_by_HG_Ananta_Nitai_Prabhu.mp3" data-reciter="ananta-nitai">His Grace Ananta Nitai Prabhu</option>
+                    <option value="https://bhagavadgitaclass.com//wp-content/audio/Bhagavad-Gita-Recitation/Bhagavad_Gita_Recitation_in_Sanskrit_by_HG_Bharat_Ram_Prabhu/Bhagavad_Gita_Recitation_Chapter-15_in_Sanskrit_by_HG_Bharat_Ram_Prabhu.mp3" data-reciter="bharat-ram">His Grace Bharat Ram Prabhu</option>
+                    <option value="https://bhagavadgitaclass.com/wp-content/audio/Bhagavad-Gita-Recitation/Bhagavad_Gita_Recitation_in_Sanskrit_by_HH_Mahavishnu_Goswami/Bhagavad_Gita_Recitation_Chapter-15_in_Sanksrit_by_HH_Mahavishnu_Goswami.mp3" data-reciter="mahavishnu-goswami">His Holiness Mahaviṣṇu Goswami</option>
+                    <option value="https://bhagavadgitaclass.com/wp-content/audio/Bhagavad-Gita-Recitation/Bhagavad_Gita_Recitation_in_Sanskrit_by_HG_Radha_Gopinath_Prabhu/Bhagavad_Gita_Recitation_Chapter-15_in_Sanskrit_by_HG_Radha_Gopinath_Prabhu.mp3" data-reciter="radha-gopinath">His Grace Rādhā-Gopīnātha Prabhu</option>
+                    <option value="https://bhagavadgitaclass.com/wp-content/audio/Bhagavad-Gita-Recitation/Bhagavad_Gita_Recitation_in_Sanskrit_with_Tamil_Translations/Bhagavad_Gita_Recitation_Chapter-15_in_Sanskrit_with_Tamil_Translations.mp3" data-reciter="tamil-translations">Sanskrit + Tamil Translations</option>
+                </select>
+                <span class="fc-bg-audio-coverage">5 reciters for chapter 15</span>
+            </div>
+            <audio id="fc-bg-audio" controls preload="none" src="https://bhagavadgitaclass.com//wp-content/audio/Bhagavad-Gita-Recitation/Bhagavad_Gita_Recitation_in_Sanskrit_by_HG_Ananta_Nitai_Prabhu/Bhagavad_Gita_Recitation_Chapter-15_in_Sanskrit_by_HG_Ananta_Nitai_Prabhu.mp3"></audio>
+            <p class="fc-source-link">Audio hot-linked from
+                <a href="https://bhagavadgitaclass.com/category/recitation/" rel="noopener">bhagavadgitaclass.com</a> — streamed from upstream, not stored.</p>
+        </div>
+        <div id="fc-bg-slokas" class="fc-bg-slokas" data-sec="recitation_slokas" hidden>
+            <div class="fc-bg-slokas-header">Reading along — Chapter 15</div>
+            <div class="fc-bg-slokas-inner">
+                <article class="fc-bg-sloka" id="sloka-15-1">
+                    <div class="fc-bg-sloka-num">15.1</div>
+                    <div class="cr-deva"><div class="cr-deva-line">श्रीभगवानुवाच</div><div class="cr-deva-line">ऊर्ध्वमूलमध:शाखमश्वत्थं प्राहुरव्ययम् ।</div><div class="cr-deva-line">छन्दांसि यस्य पर्णानि यस्तं वेद स वेदवित् ॥ १ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">śrī-bhagavān uvāca</div><div class="cr-iast-line">ūrdhva-mūlam adhaḥ-śākham</div><div class="cr-iast-line">aśvatthaṁ prāhur avyayam</div><div class="cr-iast-line">chandāṁsi yasya parṇāni</div><div class="cr-iast-line">yas taṁ veda sa veda-vit</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-15-2">
+                    <div class="fc-bg-sloka-num">15.2</div>
+                    <div class="cr-deva"><div class="cr-deva-line">अधश्चोर्ध्वं प्रसृतास्तस्य शाखा</div><div class="cr-deva-line">गुणप्रवृद्धा विषयप्रवाला: ।</div><div class="cr-deva-line">अधश्च मूलान्यनुसन्ततानि</div><div class="cr-deva-line">कर्मानुबन्धीनि मनुष्यलोके ॥ २ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">adhaś cordhvaṁ prasṛtās tasya śākhā</div><div class="cr-iast-line">guṇa-pravṛddhā viṣaya-pravālāḥ</div><div class="cr-iast-line">adhaś ca mūlāny anusantatāni</div><div class="cr-iast-line">karmānubandhīni manuṣya-loke</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-15-3-4">
+                    <div class="fc-bg-sloka-num">15.3-4</div>
+                    <div class="cr-deva"><div class="cr-deva-line">न रूपमस्येह तथोपलभ्यते</div><div class="cr-deva-line">नान्तो न चादिर्न च सम्प्रतिष्ठा ।</div><div class="cr-deva-line">अश्वत्थमेनं सुविरूढमूल-</div><div class="cr-deva-line">मसङ्गशस्त्रेण दृढेन छित्त्वा ॥ ३ ॥</div><div class="cr-deva-line">तत: पदं तत्परिमार्गितव्यं</div><div class="cr-deva-line">यस्मिन्गता न निवर्तन्ति भूय: ।</div><div class="cr-deva-line">तमेव चाद्यं पुरुषं प्रपद्ये</div><div class="cr-deva-line">यत: प्रवृत्ति: प्रसृता पुराणी ॥ ४ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">na rūpam asyeha tathopalabhyate</div><div class="cr-iast-line">nānto na cādir na ca sampratiṣṭhā</div><div class="cr-iast-line">aśvattham enaṁ su-virūḍha-mūlam</div><div class="cr-iast-line">asaṅga-śastreṇa dṛḍhena chittvā</div><div class="cr-iast-line">tataḥ padaṁ tat parimārgitavyaṁ</div><div class="cr-iast-line">yasmin gatā na nivartanti bhūyaḥ</div><div class="cr-iast-line">tam eva cādyaṁ puruṣaṁ prapadye</div><div class="cr-iast-line">yataḥ pravṛttiḥ prasṛtā purāṇī</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-15-5">
+                    <div class="fc-bg-sloka-num">15.5</div>
+                    <div class="cr-deva"><div class="cr-deva-line">निर्मानमोहा जितसङ्गदोषा</div><div class="cr-deva-line">अध्यात्मनित्या विनिवृत्तकामा: ।</div><div class="cr-deva-line">द्वन्द्वैर्विमुक्ता: सुखदु:खसंज्ञै-</div><div class="cr-deva-line">र्गच्छन्त्यमूढा: पदमव्ययं तत् ॥ ५ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">nirmāna-mohā jita-saṅga-doṣā</div><div class="cr-iast-line">adhyātma-nityā vinivṛtta-kāmāḥ</div><div class="cr-iast-line">dvandvair vimuktāḥ sukha-duḥkha-saṁjñair</div><div class="cr-iast-line">gacchanty amūḍhāḥ padam avyayaṁ tat</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-15-6">
+                    <div class="fc-bg-sloka-num">15.6</div>
+                    <div class="cr-deva"><div class="cr-deva-line">न तद्भ‍ासयते सूर्यो न शशाङ्को न पावक: ।</div><div class="cr-deva-line">यद्ग‍त्वा न निवर्तन्ते तद्धाम परमं मम ॥ ६ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">na tad bhāsayate sūryo</div><div class="cr-iast-line">na śaśāṅko na pāvakaḥ</div><div class="cr-iast-line">yad gatvā na nivartante</div><div class="cr-iast-line">tad dhāma paramaṁ mama</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-15-7">
+                    <div class="fc-bg-sloka-num">15.7</div>
+                    <div class="cr-deva"><div class="cr-deva-line">ममैवांशो जीवलोके जीवभूत: सनातन: ।</div><div class="cr-deva-line">मन:षष्ठानीन्द्रियाणि प्रकृतिस्थानि कर्षति ॥ ७ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">mamaivāṁśo jīva-loke</div><div class="cr-iast-line">jīva-bhūtaḥ sanātanaḥ</div><div class="cr-iast-line">manaḥ-ṣaṣṭhānīndriyāṇi</div><div class="cr-iast-line">prakṛti-sthāni karṣati</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-15-8">
+                    <div class="fc-bg-sloka-num">15.8</div>
+                    <div class="cr-deva"><div class="cr-deva-line">शरीरं यदवाप्‍नोति यच्च‍ाप्युत्क्रामतीश्वर: ।</div><div class="cr-deva-line">गृहीत्वैतानि संयाति वायुर्गन्धानिवाशयात् ॥ ८ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">śarīraṁ yad avāpnoti</div><div class="cr-iast-line">yac cāpy utkrāmatīśvaraḥ</div><div class="cr-iast-line">gṛhītvaitāni saṁyāti</div><div class="cr-iast-line">vāyur gandhān ivāśayāt</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-15-9">
+                    <div class="fc-bg-sloka-num">15.9</div>
+                    <div class="cr-deva"><div class="cr-deva-line">श्रोत्रं चक्षु: स्पर्शनं च रसनं घ्राणमेव च ।</div><div class="cr-deva-line">अधिष्ठाय मनश्चायं विषयानुपसेवते ॥ ९ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">śrotraṁ cakṣuḥ sparśanaṁ ca</div><div class="cr-iast-line">rasanaṁ ghrāṇam eva ca</div><div class="cr-iast-line">adhiṣṭhāya manaś cāyaṁ</div><div class="cr-iast-line">viṣayān upasevate</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-15-10">
+                    <div class="fc-bg-sloka-num">15.10</div>
+                    <div class="cr-deva"><div class="cr-deva-line">उत्क्रामन्तं स्थितं वाऽपि भुञ्जानं वा गुणान्वितम् ।</div><div class="cr-deva-line">विमूढा नानुपश्यन्ति पश्यन्ति ज्ञानचक्षुष: ॥ १० ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">utkrāmantaṁ sthitaṁ vāpi</div><div class="cr-iast-line">bhuñjānaṁ vā guṇānvitam</div><div class="cr-iast-line">vimūḍhā nānupaśyanti</div><div class="cr-iast-line">paśyanti jñāna-cakṣuṣaḥ</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-15-11">
+                    <div class="fc-bg-sloka-num">15.11</div>
+                    <div class="cr-deva"><div class="cr-deva-line">यतन्तो योगिनश्चैनं पश्यन्त्यात्मन्यवस्थितम् ।</div><div class="cr-deva-line">यतन्तोऽप्यकृतात्मानो नैनं पश्यन्त्यचेतस: ॥ ११ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">yatanto yoginaś cainaṁ</div><div class="cr-iast-line">paśyanty ātmany avasthitam</div><div class="cr-iast-line">yatanto ’py akṛtātmāno</div><div class="cr-iast-line">nainaṁ paśyanty acetasaḥ</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-15-12">
+                    <div class="fc-bg-sloka-num">15.12</div>
+                    <div class="cr-deva"><div class="cr-deva-line">यदादित्यगतं तेजो जगद्भ‍ासयतेऽखिलम् ।</div><div class="cr-deva-line">यच्च‍न्द्रमसि यच्च‍ाग्न‍ौ तत्तेजो विद्धि मामकम् ॥ १२ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">yad āditya-gataṁ tejo</div><div class="cr-iast-line">jagad bhāsayate ’khilam</div><div class="cr-iast-line">yac candramasi yac cāgnau</div><div class="cr-iast-line">tat tejo viddhi māmakam</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-15-13">
+                    <div class="fc-bg-sloka-num">15.13</div>
+                    <div class="cr-deva"><div class="cr-deva-line">गामाविश्य च भूतानि धारयाम्यहमोजसा ।</div><div class="cr-deva-line">पुष्णामि चौषधी: सर्वा: सोमो भूत्वा रसात्मक: ॥ १३ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">gām āviśya ca bhūtāni</div><div class="cr-iast-line">dhārayāmy aham ojasā</div><div class="cr-iast-line">puṣṇāmi cauṣadhīḥ sarvāḥ</div><div class="cr-iast-line">somo bhūtvā rasātmakaḥ</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-15-14">
+                    <div class="fc-bg-sloka-num">15.14</div>
+                    <div class="cr-deva"><div class="cr-deva-line">अहं वैश्वानरो भूत्वा प्राणिनां देहमाश्रित: ।</div><div class="cr-deva-line">प्राणापानसमायुक्त: पचाम्यन्नं चतुर्विधम् ॥ १४ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">ahaṁ vaiśvānaro bhūtvā</div><div class="cr-iast-line">prāṇināṁ deham āśritaḥ</div><div class="cr-iast-line">prāṇāpāna-samāyuktaḥ</div><div class="cr-iast-line">pacāmy annaṁ catur-vidham</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-15-15">
+                    <div class="fc-bg-sloka-num">15.15</div>
+                    <div class="cr-deva"><div class="cr-deva-line">सर्वस्य चाहं हृदि सन्निविष्टो</div><div class="cr-deva-line">मत्त: स्मृतिर्ज्ञानमपोहनं च ।</div><div class="cr-deva-line">वेदैश्च सर्वैरहमेव वेद्यो</div><div class="cr-deva-line">वेदान्तकृद्वेदविदेव चाहम् ॥ १५ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">sarvasya cāhaṁ hṛdi sanniviṣṭo</div><div class="cr-iast-line">mattaḥ smṛtir jñānam apohanaṁ ca</div><div class="cr-iast-line">vedaiś ca sarvair aham eva vedyo</div><div class="cr-iast-line">vedānta-kṛd veda-vid eva cāham</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-15-16">
+                    <div class="fc-bg-sloka-num">15.16</div>
+                    <div class="cr-deva"><div class="cr-deva-line">द्वाविमौ पुरुषौ लोके क्षरश्चाक्षर एव च ।</div><div class="cr-deva-line">क्षर: सर्वाणि भूतानि कूटस्थोऽक्षर उच्यते ॥ १६ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">dvāv imau puruṣau loke</div><div class="cr-iast-line">kṣaraś cākṣara eva ca</div><div class="cr-iast-line">kṣaraḥ sarvāṇi bhūtāni</div><div class="cr-iast-line">kūṭa-stho ’kṣara ucyate</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-15-17">
+                    <div class="fc-bg-sloka-num">15.17</div>
+                    <div class="cr-deva"><div class="cr-deva-line">उत्तम: पुरुषस्त्वन्य: परमात्मेत्युदाहृत: ।</div><div class="cr-deva-line">यो लोकत्रयमाविश्य बिभर्त्यव्यय ईश्वर: ॥ १७ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">uttamaḥ puruṣas tv anyaḥ</div><div class="cr-iast-line">paramātmety udāhṛtaḥ</div><div class="cr-iast-line">yo loka-trayam āviśya</div><div class="cr-iast-line">bibharty avyaya īśvaraḥ</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-15-18">
+                    <div class="fc-bg-sloka-num">15.18</div>
+                    <div class="cr-deva"><div class="cr-deva-line">यस्मात्क्षरमतीतोऽहमक्षरादपि चोत्तम: ।</div><div class="cr-deva-line">अतोऽस्मि लोके वेदे च प्रथित: पुरुषोत्तम: ॥ १८ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">yasmāt kṣaram atīto ’ham</div><div class="cr-iast-line">akṣarād api cottamaḥ</div><div class="cr-iast-line">ato ’smi loke vede ca</div><div class="cr-iast-line">prathitaḥ puruṣottamaḥ</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-15-19">
+                    <div class="fc-bg-sloka-num">15.19</div>
+                    <div class="cr-deva"><div class="cr-deva-line">यो मामेवमसम्मूढो जानाति पुरुषोत्तमम् ।</div><div class="cr-deva-line">स सर्वविद्भ‍जति मां सर्वभावेन भारत ॥ १९ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">yo mām evam asammūḍho</div><div class="cr-iast-line">jānāti puruṣottamam</div><div class="cr-iast-line">sa sarva-vid bhajati māṁ</div><div class="cr-iast-line">sarva-bhāvena bhārata</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-15-20">
+                    <div class="fc-bg-sloka-num">15.20</div>
+                    <div class="cr-deva"><div class="cr-deva-line">इति गुह्यतमं शास्त्रमिदमुक्तं मयानघ ।</div><div class="cr-deva-line">एतद्‍बुद्ध्वा बुद्धिमान्स्यात्कृतकृत्यश्च भारत ॥ २० ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">iti guhya-tamaṁ śāstram</div><div class="cr-iast-line">idam uktaṁ mayānagha</div><div class="cr-iast-line">etad buddhvā buddhimān syāt</div><div class="cr-iast-line">kṛta-kṛtyaś ca bhārata</div></div>
+                </article>
+            </div>
+        </div>
     </div>
-    <audio id="fc-bg-audio" controls preload="none" src="https://bhagavadgitaclass.com//wp-content/audio/Bhagavad-Gita-Recitation/Bhagavad_Gita_Recitation_in_Sanskrit_by_HG_Ananta_Nitai_Prabhu/Bhagavad_Gita_Recitation_Chapter-15_in_Sanskrit_by_HG_Ananta_Nitai_Prabhu.mp3"></audio>
-    <p class="fc-source-link">Audio hot-linked from
-        <a href="https://bhagavadgitaclass.com/category/recitation/" rel="noopener">bhagavadgitaclass.com</a> — streamed from upstream, not stored.</p>
 </section>
 
 
@@ -285,6 +391,151 @@
 </div>
         <div class="fc-chapter-overview-attrib">— Bhakti-śāstrī Notes, ISKCON Chowpatty (2009)</div>
     </div>
+</section>
+
+<section class="fc-section fc-mcq-chapter" data-sec="quiz">
+    <div class="fc-section-label">Chapter Quiz</div>
+    <form class="fc-mcq-form" data-quiz-key="bg-15">
+    <div class="fc-mcq-meta">12 questions · Chapter 15</div>
+    <div class="fc-mcq-question" data-answer="1">
+        <div class="fc-mcq-q-text">1. What is the great banyan tree of BG 15.1?</div>
+        <ul class="fc-mcq-choices">
+            <li><label><input type="radio" name="bg-15-q0" value="0"> A tree in Vraja</label></li>
+            <li><label><input type="radio" name="bg-15-q1" value="1"> The material world — roots upward, branches downward; its leaves are Vedic hymns</label></li>
+            <li><label><input type="radio" name="bg-15-q2" value="2"> A real tree</label></li>
+            <li><label><input type="radio" name="bg-15-q3" value="3"> A symbol of dharma</label></li>
+        </ul>
+        <div class="fc-mcq-rationale">
+BG 15.1 — &#39;ūrdhva-mūlam adhaḥ-śākham aśvatthaṁ prāhur avyayam&#39;.<div class="fc-mcq-refs">Refs: 15.1</div>        </div>
+    </div>
+    <div class="fc-mcq-question" data-answer="1">
+        <div class="fc-mcq-q-text">2. With what weapon should this tree be cut down, per BG 15.3?</div>
+        <ul class="fc-mcq-choices">
+            <li><label><input type="radio" name="bg-15-q0" value="0"> A real axe</label></li>
+            <li><label><input type="radio" name="bg-15-q1" value="1"> The strong weapon of detachment (asaṅga-śastreṇa)</label></li>
+            <li><label><input type="radio" name="bg-15-q2" value="2"> Vedic ritual</label></li>
+            <li><label><input type="radio" name="bg-15-q3" value="3"> Demigod boons</label></li>
+        </ul>
+        <div class="fc-mcq-rationale">
+BG 15.3 — &#39;asaṅga-śastreṇa dṛḍhena chittvā&#39;.<div class="fc-mcq-refs">Refs: 15.3</div>        </div>
+    </div>
+    <div class="fc-mcq-question" data-answer="1">
+        <div class="fc-mcq-q-text">3. Where does one go after cutting the tree, per BG 15.4?</div>
+        <ul class="fc-mcq-choices">
+            <li><label><input type="radio" name="bg-15-q0" value="0"> Heaven</label></li>
+            <li><label><input type="radio" name="bg-15-q1" value="1"> That place from which, having gone, one never returns — the original sanātana puruṣa</label></li>
+            <li><label><input type="radio" name="bg-15-q2" value="2"> Brahmā&#39;s planet</label></li>
+            <li><label><input type="radio" name="bg-15-q3" value="3"> Demigod realm</label></li>
+        </ul>
+        <div class="fc-mcq-rationale">
+BG 15.4 — &#39;yasmin gatā na nivartanti bhūyaḥ&#39;.<div class="fc-mcq-refs">Refs: 15.4</div>        </div>
+    </div>
+    <div class="fc-mcq-question" data-answer="1">
+        <div class="fc-mcq-q-text">4. BG 15.5 lists qualities that lead one to the eternal kingdom. Which set is correct?</div>
+        <ul class="fc-mcq-choices">
+            <li><label><input type="radio" name="bg-15-q0" value="0"> Pride and force</label></li>
+            <li><label><input type="radio" name="bg-15-q1" value="1"> Free from false prestige, illusion, false association; understanding the eternal; free from lust, dual sufferings; surrender to the supreme person</label></li>
+            <li><label><input type="radio" name="bg-15-q2" value="2"> Heroism</label></li>
+            <li><label><input type="radio" name="bg-15-q3" value="3"> Asceticism only</label></li>
+        </ul>
+        <div class="fc-mcq-rationale">
+BG 15.5 — &#39;nirmāna-mohā jita-saṅga-doṣā adhyātma-nityā ...&#39;.<div class="fc-mcq-refs">Refs: 15.5</div>        </div>
+    </div>
+    <div class="fc-mcq-question" data-answer="1">
+        <div class="fc-mcq-q-text">5. How is the supreme abode described in BG 15.6?</div>
+        <ul class="fc-mcq-choices">
+            <li><label><input type="radio" name="bg-15-q0" value="0"> Sun-lit only</label></li>
+            <li><label><input type="radio" name="bg-15-q1" value="1"> Not illumined by sun, moon, fire, or electricity — that is My supreme abode, from which no one returns</label></li>
+            <li><label><input type="radio" name="bg-15-q2" value="2"> Just light</label></li>
+            <li><label><input type="radio" name="bg-15-q3" value="3"> Brahmā&#39;s abode</label></li>
+        </ul>
+        <div class="fc-mcq-rationale">
+BG 15.6 — &#39;na tad bhāsayate sūryo na śaśāṅko na pāvakaḥ&#39;.<div class="fc-mcq-refs">Refs: 15.6</div>        </div>
+    </div>
+    <div class="fc-mcq-question" data-answer="1">
+        <div class="fc-mcq-q-text">6. What is the relationship of jīvas to Kṛṣṇa per BG 15.7?</div>
+        <ul class="fc-mcq-choices">
+            <li><label><input type="radio" name="bg-15-q0" value="0"> Independent</label></li>
+            <li><label><input type="radio" name="bg-15-q1" value="1"> Living entities are eternal fragmental parts of Me (mamaivāṁśo jīva-loke jīva-bhūtaḥ sanātanaḥ); struggling with senses and mind</label></li>
+            <li><label><input type="radio" name="bg-15-q2" value="2"> Material</label></li>
+            <li><label><input type="radio" name="bg-15-q3" value="3"> Demigods</label></li>
+        </ul>
+        <div class="fc-mcq-rationale">
+BG 15.7 — eternally part-and-parcel of Kṛṣṇa.<div class="fc-mcq-refs">Refs: 15.7</div>        </div>
+    </div>
+    <div class="fc-mcq-question" data-answer="1">
+        <div class="fc-mcq-q-text">7. What does the soul carry from one body to the next, per BG 15.8?</div>
+        <ul class="fc-mcq-choices">
+            <li><label><input type="radio" name="bg-15-q0" value="0"> Possessions</label></li>
+            <li><label><input type="radio" name="bg-15-q1" value="1"> The conception of life (six senses including the mind), like air carrying aromas</label></li>
+            <li><label><input type="radio" name="bg-15-q2" value="2"> Friends</label></li>
+            <li><label><input type="radio" name="bg-15-q3" value="3"> Demigods</label></li>
+        </ul>
+        <div class="fc-mcq-rationale">
+BG 15.8 — &#39;gṛhītvaitāni saṁyāti vāyur gandhān ivāśayāt&#39;.<div class="fc-mcq-refs">Refs: 15.8</div>        </div>
+    </div>
+    <div class="fc-mcq-question" data-answer="1">
+        <div class="fc-mcq-q-text">8. Who can see the soul transmigrating, per BG 15.10?</div>
+        <ul class="fc-mcq-choices">
+            <li><label><input type="radio" name="bg-15-q0" value="0"> All</label></li>
+            <li><label><input type="radio" name="bg-15-q1" value="1"> Only the wise endowed with the eyes of knowledge (jñāna-cakṣuṣaḥ) see it; foolish men cannot</label></li>
+            <li><label><input type="radio" name="bg-15-q2" value="2"> Demigods only</label></li>
+            <li><label><input type="radio" name="bg-15-q3" value="3"> Sense-driven persons</label></li>
+        </ul>
+        <div class="fc-mcq-rationale">
+BG 15.10 — &#39;paśyanti jñāna-cakṣuṣaḥ&#39;.<div class="fc-mcq-refs">Refs: 15.10</div>        </div>
+    </div>
+    <div class="fc-mcq-question" data-answer="1">
+        <div class="fc-mcq-q-text">9. Where is the source of digestion identified in BG 15.14?</div>
+        <ul class="fc-mcq-choices">
+            <li><label><input type="radio" name="bg-15-q0" value="0"> In the stomach as enzymes</label></li>
+            <li><label><input type="radio" name="bg-15-q1" value="1"> Kṛṣṇa as Vaiśvānara — the fire of digestion in the bodies of all living beings</label></li>
+            <li><label><input type="radio" name="bg-15-q2" value="2"> Demigods</label></li>
+            <li><label><input type="radio" name="bg-15-q3" value="3"> The breath</label></li>
+        </ul>
+        <div class="fc-mcq-rationale">
+BG 15.14 — &#39;ahaṁ vaiśvānaro bhūtvā prāṇināṁ deham āśritaḥ ... pacāmy annaṁ catur-vidham&#39;.<div class="fc-mcq-refs">Refs: 15.14</div>        </div>
+    </div>
+    <div class="fc-mcq-question" data-answer="1">
+        <div class="fc-mcq-q-text">10. What does Kṛṣṇa do as seated in everyone&#39;s heart, per BG 15.15?</div>
+        <ul class="fc-mcq-choices">
+            <li><label><input type="radio" name="bg-15-q0" value="0"> He sleeps</label></li>
+            <li><label><input type="radio" name="bg-15-q1" value="1"> He is the source of memory, knowledge, and forgetfulness; He is the goal of Vedic study; He is the knower of the Vedas (vedānta-kṛd veda-vid)</label></li>
+            <li><label><input type="radio" name="bg-15-q2" value="2"> He simply observes</label></li>
+            <li><label><input type="radio" name="bg-15-q3" value="3"> He does nothing</label></li>
+        </ul>
+        <div class="fc-mcq-rationale">
+BG 15.15 — &#39;sarvasya cāhaṁ hṛdi sanniviṣṭo mattaḥ smṛtir jñānam apohanaṁ ca&#39;.<div class="fc-mcq-refs">Refs: 15.15</div>        </div>
+    </div>
+    <div class="fc-mcq-question" data-answer="1">
+        <div class="fc-mcq-q-text">11. What three categories of being does BG 15.16-17 describe?</div>
+        <ul class="fc-mcq-choices">
+            <li><label><input type="radio" name="bg-15-q0" value="0"> Sattva, rajas, tamas</label></li>
+            <li><label><input type="radio" name="bg-15-q1" value="1"> Kṣara (fallible — all beings), Akṣara (infallible — soul), and Uttama Puruṣa / Puruṣottama — Supreme Person beyond both</label></li>
+            <li><label><input type="radio" name="bg-15-q2" value="2"> Brahmā, Viṣṇu, Śiva</label></li>
+            <li><label><input type="radio" name="bg-15-q3" value="3"> Body, mind, soul</label></li>
+        </ul>
+        <div class="fc-mcq-rationale">
+BG 15.16-17 distinguishes kṣara, akṣara, and the supreme uttamaḥ puruṣaḥ.<div class="fc-mcq-refs">Refs: 15.16, 15.17</div>        </div>
+    </div>
+    <div class="fc-mcq-question" data-answer="1">
+        <div class="fc-mcq-q-text">12. What does Kṛṣṇa declare in BG 15.18-19 to be the most confidential of all?</div>
+        <ul class="fc-mcq-choices">
+            <li><label><input type="radio" name="bg-15-q0" value="0"> A mantra</label></li>
+            <li><label><input type="radio" name="bg-15-q1" value="1"> I am transcendental, beyond both fallible and infallible; therefore I am celebrated as Puruṣottama. Knowing this, one becomes a perfect knower and serves Me with all his being</label></li>
+            <li><label><input type="radio" name="bg-15-q2" value="2"> Just love</label></li>
+            <li><label><input type="radio" name="bg-15-q3" value="3"> Karma</label></li>
+        </ul>
+        <div class="fc-mcq-rationale">
+BG 15.18-19 — declares Himself Puruṣottama; knowing this is the most confidential.<div class="fc-mcq-refs">Refs: 15.18, 15.19</div>        </div>
+    </div>
+    <div class="fc-mcq-actions">
+        <button type="button" class="fc-mcq-btn" data-action="check">Check answers</button>
+        <button type="button" class="fc-mcq-btn fc-mcq-btn-secondary" data-action="reset">Reset</button>
+        <span class="fc-mcq-score"></span>
+    </div>
+</form>
+
 </section>
 
 <section class="fc-breakdown-card" data-sec="breakdown">

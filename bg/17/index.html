@@ -99,6 +99,8 @@
                 <label><input type="checkbox" data-section="important_words"> Important Words</label>
                 <label><input type="checkbox" data-section="note" checked> My note</label>
                 <label><input type="checkbox" data-section="audio_player" checked> Sanskrit recitation player</label>
+                <label><input type="checkbox" data-section="recitation_slokas" checked> &nbsp; Reading-along view (auto-show on play)</label>
+                <label><input type="checkbox" data-section="quiz" checked> MCQ quizzes (chapter + sub-section)</label>
                 <label class="fc-toggle-master"><input type="checkbox" data-section="gpd_all" checked> <strong>Gauranga Priya additions</strong> (master)</label>
                 <label><input type="checkbox" data-section="chapter_overview" checked> &nbsp; Chapter Overview</label>
                 <label><input type="checkbox" data-section="breakdown" checked> &nbsp; Breakdown of Chapter</label>
@@ -264,20 +266,159 @@
 
 <section class="fc-section fc-bg-audio" data-sec="audio_player">
     <div class="fc-section-label">Sanskrit Recitation</div>
-    <div class="fc-bg-audio-picker">
-        <label for="fc-bg-reciter">Reciter:</label>
-        <select id="fc-bg-reciter">
-            <option value="https://bhagavadgitaclass.com//wp-content/audio/Bhagavad-Gita-Recitation/Bhagavad_Gita_Recitation_in_Sanskrit_by_HG_Ananta_Nitai_Prabhu/Bhagavad_Gita_Recitation_Chapter-17_in_Sanskrit_by_HG_Ananta_Nitai_Prabhu.mp3" data-reciter="ananta-nitai">His Grace Ananta Nitai Prabhu</option>
-            <option value="https://bhagavadgitaclass.com//wp-content/audio/Bhagavad-Gita-Recitation/Bhagavad_Gita_Recitation_in_Sanskrit_by_HG_Bharat_Ram_Prabhu/Bhagavad_Gita_Recitation_Chapter-17_in_Sanskrit_by_HG_Bharat_Ram_Prabhu.mp3" data-reciter="bharat-ram">His Grace Bharat Ram Prabhu</option>
-            <option value="https://bhagavadgitaclass.com/wp-content/audio/Bhagavad-Gita-Recitation/Bhagavad_Gita_Recitation_in_Sanskrit_by_HH_Mahavishnu_Goswami/Bhagavad_Gita_Recitation_Chapter-17_in_Sanksrit_by_HH_Mahavishnu_Goswami.mp3" data-reciter="mahavishnu-goswami">His Holiness Mahaviṣṇu Goswami</option>
-            <option value="https://bhagavadgitaclass.com/wp-content/audio/Bhagavad-Gita-Recitation/Bhagavad_Gita_Recitation_in_Sanskrit_by_HG_Radha_Gopinath_Prabhu/Bhagavad_Gita_Recitation_Chapter-17_in_Sanskrit_by_HG_Radha_Gopinath_Prabhu.mp3" data-reciter="radha-gopinath">His Grace Rādhā-Gopīnātha Prabhu</option>
-            <option value="https://bhagavadgitaclass.com/wp-content/audio/Bhagavad-Gita-Recitation/Bhagavad_Gita_Recitation_in_Sanskrit_with_Tamil_Translations/Bhagavad_Gita_Recitation_Chapter-17_in_Sanskrit_with_Tamil_Translations.mp3" data-reciter="tamil-translations">Sanskrit + Tamil Translations</option>
-        </select>
-        <span class="fc-bg-audio-coverage">5 reciters for chapter 17</span>
+    <div class="fc-bg-recitation">
+        <div class="fc-bg-audio-wrap">
+            <div class="fc-bg-audio-picker">
+                <label for="fc-bg-reciter">Reciter:</label>
+                <select id="fc-bg-reciter">
+                    <option value="https://bhagavadgitaclass.com//wp-content/audio/Bhagavad-Gita-Recitation/Bhagavad_Gita_Recitation_in_Sanskrit_by_HG_Ananta_Nitai_Prabhu/Bhagavad_Gita_Recitation_Chapter-17_in_Sanskrit_by_HG_Ananta_Nitai_Prabhu.mp3" data-reciter="ananta-nitai">His Grace Ananta Nitai Prabhu</option>
+                    <option value="https://bhagavadgitaclass.com//wp-content/audio/Bhagavad-Gita-Recitation/Bhagavad_Gita_Recitation_in_Sanskrit_by_HG_Bharat_Ram_Prabhu/Bhagavad_Gita_Recitation_Chapter-17_in_Sanskrit_by_HG_Bharat_Ram_Prabhu.mp3" data-reciter="bharat-ram">His Grace Bharat Ram Prabhu</option>
+                    <option value="https://bhagavadgitaclass.com/wp-content/audio/Bhagavad-Gita-Recitation/Bhagavad_Gita_Recitation_in_Sanskrit_by_HH_Mahavishnu_Goswami/Bhagavad_Gita_Recitation_Chapter-17_in_Sanksrit_by_HH_Mahavishnu_Goswami.mp3" data-reciter="mahavishnu-goswami">His Holiness Mahaviṣṇu Goswami</option>
+                    <option value="https://bhagavadgitaclass.com/wp-content/audio/Bhagavad-Gita-Recitation/Bhagavad_Gita_Recitation_in_Sanskrit_by_HG_Radha_Gopinath_Prabhu/Bhagavad_Gita_Recitation_Chapter-17_in_Sanskrit_by_HG_Radha_Gopinath_Prabhu.mp3" data-reciter="radha-gopinath">His Grace Rādhā-Gopīnātha Prabhu</option>
+                    <option value="https://bhagavadgitaclass.com/wp-content/audio/Bhagavad-Gita-Recitation/Bhagavad_Gita_Recitation_in_Sanskrit_with_Tamil_Translations/Bhagavad_Gita_Recitation_Chapter-17_in_Sanskrit_with_Tamil_Translations.mp3" data-reciter="tamil-translations">Sanskrit + Tamil Translations</option>
+                </select>
+                <span class="fc-bg-audio-coverage">5 reciters for chapter 17</span>
+            </div>
+            <audio id="fc-bg-audio" controls preload="none" src="https://bhagavadgitaclass.com//wp-content/audio/Bhagavad-Gita-Recitation/Bhagavad_Gita_Recitation_in_Sanskrit_by_HG_Ananta_Nitai_Prabhu/Bhagavad_Gita_Recitation_Chapter-17_in_Sanskrit_by_HG_Ananta_Nitai_Prabhu.mp3"></audio>
+            <p class="fc-source-link">Audio hot-linked from
+                <a href="https://bhagavadgitaclass.com/category/recitation/" rel="noopener">bhagavadgitaclass.com</a> — streamed from upstream, not stored.</p>
+        </div>
+        <div id="fc-bg-slokas" class="fc-bg-slokas" data-sec="recitation_slokas" hidden>
+            <div class="fc-bg-slokas-header">Reading along — Chapter 17</div>
+            <div class="fc-bg-slokas-inner">
+                <article class="fc-bg-sloka" id="sloka-17-1">
+                    <div class="fc-bg-sloka-num">17.1</div>
+                    <div class="cr-deva"><div class="cr-deva-line">अर्जुन उवाच</div><div class="cr-deva-line">ये शास्त्रविधिमुत्सृज्य यजन्ते श्रद्धयान्विता: ।</div><div class="cr-deva-line">तेषां निष्ठा तु का कृष्ण सत्त्वमाहो रजस्तम: ॥ १ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">arjuna uvāca</div><div class="cr-iast-line">ye śāstra-vidhim utsṛjya</div><div class="cr-iast-line">yajante śraddhayānvitāḥ</div><div class="cr-iast-line">teṣāṁ niṣṭhā tu kā kṛṣṇa</div><div class="cr-iast-line">sattvam āho rajas tamaḥ</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-17-2">
+                    <div class="fc-bg-sloka-num">17.2</div>
+                    <div class="cr-deva"><div class="cr-deva-line">श्रीभगवानुवाच</div><div class="cr-deva-line">त्रिविधा भवति श्रद्धा देहिनां सा स्वभावजा ।</div><div class="cr-deva-line">सात्त्विकी राजसी चैव तामसी चेति तां श‍ृणु ॥ २ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">śrī-bhagavān uvāca</div><div class="cr-iast-line">tri-vidhā bhavati śraddhā</div><div class="cr-iast-line">dehināṁ sā svabhāva-jā</div><div class="cr-iast-line">sāttvikī rājasī caiva</div><div class="cr-iast-line">tāmasī ceti tāṁ śṛṇu</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-17-3">
+                    <div class="fc-bg-sloka-num">17.3</div>
+                    <div class="cr-deva"><div class="cr-deva-line">सत्त्वानुरूपा सर्वस्य श्रद्धा भवति भारत ।</div><div class="cr-deva-line">श्रद्धामयोऽयं पुरुषो यो यच्छ्रद्ध: स एव स: ॥ ३ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">sattvānurūpā sarvasya</div><div class="cr-iast-line">śraddhā bhavati bhārata</div><div class="cr-iast-line">śraddhā-mayo ’yaṁ puruṣo</div><div class="cr-iast-line">yo yac-chraddhaḥ sa eva saḥ</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-17-4">
+                    <div class="fc-bg-sloka-num">17.4</div>
+                    <div class="cr-deva"><div class="cr-deva-line">यजन्ते सात्त्विका देवान्यक्षरक्षांसि राजसा: ।</div><div class="cr-deva-line">प्रेतान्भूतगणांश्चान्ये यजन्ते तामसा जना: ॥ ४ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">yajante sāttvikā devān</div><div class="cr-iast-line">yakṣa-rakṣāṁsi rājasāḥ</div><div class="cr-iast-line">pretān bhūta-gaṇāṁś cānye</div><div class="cr-iast-line">yajante tāmasā janāḥ</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-17-5-6">
+                    <div class="fc-bg-sloka-num">17.5-6</div>
+                    <div class="cr-deva"><div class="cr-deva-line">अशास्त्रविहितं घोरं तप्यन्ते ये तपो जना: ।</div><div class="cr-deva-line">दम्भाहङ्कारसंयुक्ता: कामरागबलान्विता: ॥ ५ ॥</div><div class="cr-deva-line">कर्षयन्त: शरीरस्थं भूतग्राममचेतस: ।</div><div class="cr-deva-line">मां चैवान्त: शरीरस्थं तान्विद्ध्यासुरनिश्चयान् ॥ ६ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">aśāstra-vihitaṁ ghoraṁ</div><div class="cr-iast-line">tapyante ye tapo janāḥ</div><div class="cr-iast-line">dambhāhaṅkāra-saṁyuktāḥ</div><div class="cr-iast-line">kāma-rāga-balānvitāḥ</div><div class="cr-iast-line">karṣayantaḥ śarīra-sthaṁ</div><div class="cr-iast-line">bhūta-grāmam acetasaḥ</div><div class="cr-iast-line">māṁ caivāntaḥ śarīra-sthaṁ</div><div class="cr-iast-line">tān viddhy āsura-niścayān</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-17-7">
+                    <div class="fc-bg-sloka-num">17.7</div>
+                    <div class="cr-deva"><div class="cr-deva-line">आहारस्त्वपि सर्वस्य त्रिविधो भवति प्रिय: ।</div><div class="cr-deva-line">यज्ञस्तपस्तथा दानं तेषां भेदमिमं श‍ृणु ॥ ७ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">āhāras tv api sarvasya</div><div class="cr-iast-line">tri-vidho bhavati priyaḥ</div><div class="cr-iast-line">yajñas tapas tathā dānaṁ</div><div class="cr-iast-line">teṣāṁ bhedam imaṁ śṛṇu</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-17-8">
+                    <div class="fc-bg-sloka-num">17.8</div>
+                    <div class="cr-deva"><div class="cr-deva-line">आयु:सत्त्वबलारोग्यसुखप्रीतिविवर्धना: ।</div><div class="cr-deva-line">रस्या: स्‍निग्धा: स्थिरा हृद्या आहारा: सात्त्विकप्रिया: ॥ ८ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">āyuḥ-sattva-balārogya-</div><div class="cr-iast-line">sukha-prīti-vivardhanāḥ</div><div class="cr-iast-line">rasyāḥ snigdhāḥ sthirā hṛdyā</div><div class="cr-iast-line">āhārāḥ sāttvika-priyāḥ</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-17-9">
+                    <div class="fc-bg-sloka-num">17.9</div>
+                    <div class="cr-deva"><div class="cr-deva-line">कट्‌वम्ललवणात्युष्णतीक्ष्णरूक्षविदाहिन: ।</div><div class="cr-deva-line">आहारा राजसस्येष्टा दु:खशोकामयप्रदा: ॥ ९ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">kaṭv-amla-lavaṇāty-uṣṇa-</div><div class="cr-iast-line">tīkṣṇa-rūkṣa-vidāhinaḥ</div><div class="cr-iast-line">āhārā rājasasyeṣṭā</div><div class="cr-iast-line">duḥkha-śokāmaya-pradāḥ</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-17-10">
+                    <div class="fc-bg-sloka-num">17.10</div>
+                    <div class="cr-deva"><div class="cr-deva-line">यातयामं गतरसं पूति पर्युषितं च यत् ।</div><div class="cr-deva-line">उच्छिष्टमपि चामेध्यं भोजनं तामसप्रियम् ॥ १० ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">yāta-yāmaṁ gata-rasaṁ</div><div class="cr-iast-line">pūti paryuṣitaṁ ca yat</div><div class="cr-iast-line">ucchiṣṭam api cāmedhyaṁ</div><div class="cr-iast-line">bhojanaṁ tāmasa-priyam</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-17-11">
+                    <div class="fc-bg-sloka-num">17.11</div>
+                    <div class="cr-deva"><div class="cr-deva-line">अफलाकाङ्‌‍क्षिभिर्यज्ञो विधिदिष्टो य इज्यते ।</div><div class="cr-deva-line">यष्टव्यमेवेति मन: समाधाय स सात्त्विक: ॥ ११ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">aphalākāṅkṣibhir yajño</div><div class="cr-iast-line">vidhi-diṣṭo ya ijyate</div><div class="cr-iast-line">yaṣṭavyam eveti manaḥ</div><div class="cr-iast-line">samādhāya sa sāttvikaḥ</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-17-12">
+                    <div class="fc-bg-sloka-num">17.12</div>
+                    <div class="cr-deva"><div class="cr-deva-line">अभिसन्धाय तु फलं दम्भार्थमपि चैव यत् ।</div><div class="cr-deva-line">इज्यते भरतश्रेष्ठ तं यज्ञं विद्धि राजसम् ॥ १२ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">abhisandhāya tu phalaṁ</div><div class="cr-iast-line">dambhārtham api caiva yat</div><div class="cr-iast-line">ijyate bharata-śreṣṭha</div><div class="cr-iast-line">taṁ yajñaṁ viddhi rājasam</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-17-13">
+                    <div class="fc-bg-sloka-num">17.13</div>
+                    <div class="cr-deva"><div class="cr-deva-line">विधिहीनमसृष्टान्नं मन्‍त्रहीनमदक्षिणम् ।</div><div class="cr-deva-line">श्रद्धाविरहितं यज्ञं तामसं परिचक्षते ॥ १३ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">vidhi-hīnam asṛṣṭānnaṁ</div><div class="cr-iast-line">mantra-hīnam adakṣiṇam</div><div class="cr-iast-line">śraddhā-virahitaṁ yajñaṁ</div><div class="cr-iast-line">tāmasaṁ paricakṣate</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-17-14">
+                    <div class="fc-bg-sloka-num">17.14</div>
+                    <div class="cr-deva"><div class="cr-deva-line">देवद्विजगुरुप्राज्ञपूजनं शौचमार्जवम् ।</div><div class="cr-deva-line">ब्रह्मचर्यमहिंसा च शारीरं तप उच्यते ॥ १४ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">deva-dvija-guru-prājña-</div><div class="cr-iast-line">pūjanaṁ śaucam ārjavam</div><div class="cr-iast-line">brahmacaryam ahiṁsā ca</div><div class="cr-iast-line">śārīraṁ tapa ucyate</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-17-15">
+                    <div class="fc-bg-sloka-num">17.15</div>
+                    <div class="cr-deva"><div class="cr-deva-line">अनुद्वेगकरं वाक्यं सत्यं प्रियहितं च यत् ।</div><div class="cr-deva-line">स्वाध्यायाभ्यसनं चैव वाङ्‍मयं तप उच्यते ॥ १५ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">anudvega-karaṁ vākyaṁ</div><div class="cr-iast-line">satyaṁ priya-hitaṁ ca yat</div><div class="cr-iast-line">svādhyāyābhyasanaṁ caiva</div><div class="cr-iast-line">vāṅ-mayaṁ tapa ucyate</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-17-16">
+                    <div class="fc-bg-sloka-num">17.16</div>
+                    <div class="cr-deva"><div class="cr-deva-line">मन:प्रसाद: सौम्यत्वं मौनमात्मविनिग्रह: ।</div><div class="cr-deva-line">भावसंश‍ुद्धिरित्येतत्तपो मानसमुच्यते ॥ १६ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">manaḥ-prasādaḥ saumyatvaṁ</div><div class="cr-iast-line">maunam ātma-vinigrahaḥ</div><div class="cr-iast-line">bhāva-saṁśuddhir ity etat</div><div class="cr-iast-line">tapo mānasam ucyate</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-17-17">
+                    <div class="fc-bg-sloka-num">17.17</div>
+                    <div class="cr-deva"><div class="cr-deva-line">श्रद्धया परया तप्‍तं तपस्तत्‍त्रिविधं नरै: ।</div><div class="cr-deva-line">अफलाकाङ्‌‍क्षिभिर्युक्तै: सात्त्विकं परिचक्षते ॥ १७ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">śraddhayā parayā taptaṁ</div><div class="cr-iast-line">tapas tat tri-vidhaṁ naraiḥ</div><div class="cr-iast-line">aphalākāṅkṣibhir yuktaiḥ</div><div class="cr-iast-line">sāttvikaṁ paricakṣate</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-17-18">
+                    <div class="fc-bg-sloka-num">17.18</div>
+                    <div class="cr-deva"><div class="cr-deva-line">सत्कारमानपूजार्थं तपो दम्भेन चैव यत् ।</div><div class="cr-deva-line">क्रियते तदिह प्रोक्तं राजसं चलमध्रुवम् ॥ १८ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">satkāra-māna-pūjārthaṁ</div><div class="cr-iast-line">tapo dambhena caiva yat</div><div class="cr-iast-line">kriyate tad iha proktaṁ</div><div class="cr-iast-line">rājasaṁ calam adhruvam</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-17-19">
+                    <div class="fc-bg-sloka-num">17.19</div>
+                    <div class="cr-deva"><div class="cr-deva-line">मूढग्राहेणात्मनो यत्पीडया क्रियते तप: ।</div><div class="cr-deva-line">परस्योत्सादनार्थं वा तत्तामसमुदाहृतम् ॥ १९ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">mūḍha-grāheṇātmano yat</div><div class="cr-iast-line">pīḍayā kriyate tapaḥ</div><div class="cr-iast-line">parasyotsādanārthaṁ vā</div><div class="cr-iast-line">tat tāmasam udāhṛtam</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-17-20">
+                    <div class="fc-bg-sloka-num">17.20</div>
+                    <div class="cr-deva"><div class="cr-deva-line">दातव्यमिति यद्दानं दीयतेऽनुपकारिणे ।</div><div class="cr-deva-line">देशे काले च पात्रे च तद्दानं सात्त्विकं स्मृतम् ॥ २० ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">dātavyam iti yad dānaṁ</div><div class="cr-iast-line">dīyate ’nupakāriṇe</div><div class="cr-iast-line">deśe kāle ca pātre ca</div><div class="cr-iast-line">tad dānaṁ sāttvikaṁ smṛtam</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-17-21">
+                    <div class="fc-bg-sloka-num">17.21</div>
+                    <div class="cr-deva"><div class="cr-deva-line">यत्तु प्रत्युपकारार्थं फलमुद्दिश्य वा पुन: ।</div><div class="cr-deva-line">दीयते च परिक्ल‍ि‍ष्टं तद्दानं राजसं स्मृतम् ॥ २१ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">yat tu pratyupakārārthaṁ</div><div class="cr-iast-line">phalam uddiśya vā punaḥ</div><div class="cr-iast-line">dīyate ca parikliṣṭaṁ</div><div class="cr-iast-line">tad dānaṁ rājasaṁ smṛtam</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-17-22">
+                    <div class="fc-bg-sloka-num">17.22</div>
+                    <div class="cr-deva"><div class="cr-deva-line">अदेशकाले यद्दानमपात्रेभ्यश्च दीयते ।</div><div class="cr-deva-line">असत्कृतमवज्ञातं तत्तामसमुदाहृतम् ॥ २२ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">adeśa-kāle yad dānam</div><div class="cr-iast-line">apātrebhyaś ca dīyate</div><div class="cr-iast-line">asat-kṛtam avajñātaṁ</div><div class="cr-iast-line">tat tāmasam udāhṛtam</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-17-23">
+                    <div class="fc-bg-sloka-num">17.23</div>
+                    <div class="cr-deva"><div class="cr-deva-line">ॐ तत्सदिति निर्देशो ब्रह्मणस्त्रिविध: स्मृत: ।</div><div class="cr-deva-line">ब्राह्मणास्तेन वेदाश्च यज्ञाश्च विहिता: पुरा ॥ २३ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">oṁ tat sad iti nirdeśo</div><div class="cr-iast-line">brahmaṇas tri-vidhaḥ smṛtaḥ</div><div class="cr-iast-line">brāhmaṇās tena vedāś ca</div><div class="cr-iast-line">yajñāś ca vihitāḥ purā</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-17-24">
+                    <div class="fc-bg-sloka-num">17.24</div>
+                    <div class="cr-deva"><div class="cr-deva-line">तस्माद् ॐ इत्युदाहृत्य यज्ञदानतप:क्रिया: ।</div><div class="cr-deva-line">प्रवर्तन्ते विधानोक्ता: सततं ब्रह्मवादिनाम् ॥ २४ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">tasmād oṁ ity udāhṛtya</div><div class="cr-iast-line">yajña-dāna-tapaḥ-kriyāḥ</div><div class="cr-iast-line">pravartante vidhānoktāḥ</div><div class="cr-iast-line">satataṁ brahma-vādinām</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-17-25">
+                    <div class="fc-bg-sloka-num">17.25</div>
+                    <div class="cr-deva"><div class="cr-deva-line">तदित्यनभिसन्धाय फलं यज्ञतप:क्रिया: ।</div><div class="cr-deva-line">दानक्रियाश्च विविधा: क्रियन्ते मोक्षकाङ्‌‍क्षिभि: ॥ २५ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">tad ity anabhisandhāya</div><div class="cr-iast-line">phalaṁ yajña-tapaḥ-kriyāḥ</div><div class="cr-iast-line">dāna-kriyāś ca vividhāḥ</div><div class="cr-iast-line">kriyante mokṣa-kāṅkṣibhiḥ</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-17-26-27">
+                    <div class="fc-bg-sloka-num">17.26-27</div>
+                    <div class="cr-deva"><div class="cr-deva-line">सद्भ‍ावे साधुभावे च सदित्येतत्प्रयुज्यते ।</div><div class="cr-deva-line">प्रशस्ते कर्मणि तथा सच्छब्द: पार्थ युज्यते ॥ २६ ॥</div><div class="cr-deva-line">यज्ञे तपसि दाने च स्थिति: सदिति चोच्यते ।</div><div class="cr-deva-line">कर्म चैव तदर्थीयं सदित्येवाभिधीयते ॥ २७ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">sad-bhāve sādhu-bhāve ca</div><div class="cr-iast-line">sad ity etat prayujyate</div><div class="cr-iast-line">praśaste karmaṇi tathā</div><div class="cr-iast-line">sac-chabdaḥ pārtha yujyate</div><div class="cr-iast-line">yajñe tapasi dāne ca</div><div class="cr-iast-line">sthitiḥ sad iti cocyate</div><div class="cr-iast-line">karma caiva tad-arthīyaṁ</div><div class="cr-iast-line">sad ity evābhidhīyate</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-17-28">
+                    <div class="fc-bg-sloka-num">17.28</div>
+                    <div class="cr-deva"><div class="cr-deva-line">अश्रद्धया हुतं दत्तं तपस्तप्‍तं कृतं च यत् ।</div><div class="cr-deva-line">असदित्युच्यते पार्थ न च तत्प्रेत्य नो इह ॥ २८ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">aśraddhayā hutaṁ dattaṁ</div><div class="cr-iast-line">tapas taptaṁ kṛtaṁ ca yat</div><div class="cr-iast-line">asad ity ucyate pārtha</div><div class="cr-iast-line">na ca tat pretya no iha</div></div>
+                </article>
+            </div>
+        </div>
     </div>
-    <audio id="fc-bg-audio" controls preload="none" src="https://bhagavadgitaclass.com//wp-content/audio/Bhagavad-Gita-Recitation/Bhagavad_Gita_Recitation_in_Sanskrit_by_HG_Ananta_Nitai_Prabhu/Bhagavad_Gita_Recitation_Chapter-17_in_Sanskrit_by_HG_Ananta_Nitai_Prabhu.mp3"></audio>
-    <p class="fc-source-link">Audio hot-linked from
-        <a href="https://bhagavadgitaclass.com/category/recitation/" rel="noopener">bhagavadgitaclass.com</a> — streamed from upstream, not stored.</p>
 </section>
 
 
@@ -290,6 +431,151 @@
 </div>
         <div class="fc-chapter-overview-attrib">— Bhakti-śāstrī Notes, ISKCON Chowpatty (2009)</div>
     </div>
+</section>
+
+<section class="fc-section fc-mcq-chapter" data-sec="quiz">
+    <div class="fc-section-label">Chapter Quiz</div>
+    <form class="fc-mcq-form" data-quiz-key="bg-17">
+    <div class="fc-mcq-meta">12 questions · Chapter 17</div>
+    <div class="fc-mcq-question" data-answer="1">
+        <div class="fc-mcq-q-text">1. What does Arjuna ask in BG 17.1?</div>
+        <ul class="fc-mcq-choices">
+            <li><label><input type="radio" name="bg-17-q0" value="0"> About karma</label></li>
+            <li><label><input type="radio" name="bg-17-q1" value="1"> What is the position of those who worship not by scripture but with faith? Is it sattva, rajas, or tamas?</label></li>
+            <li><label><input type="radio" name="bg-17-q2" value="2"> About dharma</label></li>
+            <li><label><input type="radio" name="bg-17-q3" value="3"> About self</label></li>
+        </ul>
+        <div class="fc-mcq-rationale">
+BG 17.1 — Arjuna asks about the faith of those acting without following scripture.<div class="fc-mcq-refs">Refs: 17.1</div>        </div>
+    </div>
+    <div class="fc-mcq-question" data-answer="1">
+        <div class="fc-mcq-q-text">2. How is faith categorised per BG 17.2?</div>
+        <ul class="fc-mcq-choices">
+            <li><label><input type="radio" name="bg-17-q0" value="0"> Two</label></li>
+            <li><label><input type="radio" name="bg-17-q1" value="1"> Three: sāttvika, rājasika, tāmasika — according to the mode of the person</label></li>
+            <li><label><input type="radio" name="bg-17-q2" value="2"> Five</label></li>
+            <li><label><input type="radio" name="bg-17-q3" value="3"> Seven</label></li>
+        </ul>
+        <div class="fc-mcq-rationale">
+BG 17.2 — every embodied being&#39;s faith is of three kinds per his nature.<div class="fc-mcq-refs">Refs: 17.2</div>        </div>
+    </div>
+    <div class="fc-mcq-question" data-answer="1">
+        <div class="fc-mcq-q-text">3. What does BG 17.3 say about faith and being?</div>
+        <ul class="fc-mcq-choices">
+            <li><label><input type="radio" name="bg-17-q0" value="0"> They are unrelated</label></li>
+            <li><label><input type="radio" name="bg-17-q1" value="1"> A person&#39;s faith follows his nature — he is made up of his faith — whatever his faith is, he is</label></li>
+            <li><label><input type="radio" name="bg-17-q2" value="2"> Faith doesn&#39;t matter</label></li>
+            <li><label><input type="radio" name="bg-17-q3" value="3"> Faith is independent</label></li>
+        </ul>
+        <div class="fc-mcq-rationale">
+BG 17.3 — &#39;yo yac-chraddhaḥ sa eva saḥ&#39;.<div class="fc-mcq-refs">Refs: 17.3</div>        </div>
+    </div>
+    <div class="fc-mcq-question" data-answer="0">
+        <div class="fc-mcq-q-text">4. Who do those in tamas worship, per BG 17.4?</div>
+        <ul class="fc-mcq-choices">
+            <li><label><input type="radio" name="bg-17-q0" value="0"> Sages</label></li>
+            <li><label><input type="radio" name="bg-17-q1" value="1"> Demigods (sattva), yakṣas and rākṣasas (rajas), ghosts and spirits (tamas)</label></li>
+            <li><label><input type="radio" name="bg-17-q2" value="2"> Kṛṣṇa</label></li>
+            <li><label><input type="radio" name="bg-17-q3" value="3"> Brahmā only</label></li>
+        </ul>
+        <div class="fc-mcq-rationale">
+BG 17.4 — sattva worships devas, rajas worships yakṣas/rākṣasas, tamas worships ghosts.<div class="fc-mcq-refs">Refs: 17.4</div>        </div>
+    </div>
+    <div class="fc-mcq-question" data-answer="1">
+        <div class="fc-mcq-q-text">5. What is sāttvika food per BG 17.8?</div>
+        <ul class="fc-mcq-choices">
+            <li><label><input type="radio" name="bg-17-q0" value="0"> Spicy and hot</label></li>
+            <li><label><input type="radio" name="bg-17-q1" value="1"> Increases life, purifies, gives strength, health, happiness; juicy, fatty, wholesome, pleasing</label></li>
+            <li><label><input type="radio" name="bg-17-q2" value="2"> Burnt</label></li>
+            <li><label><input type="radio" name="bg-17-q3" value="3"> Stale</label></li>
+        </ul>
+        <div class="fc-mcq-rationale">
+BG 17.8 — sāttvika foods are juicy, fatty, wholesome, life-promoting.<div class="fc-mcq-refs">Refs: 17.8</div>        </div>
+    </div>
+    <div class="fc-mcq-question" data-answer="1">
+        <div class="fc-mcq-q-text">6. What is rājasika food?</div>
+        <ul class="fc-mcq-choices">
+            <li><label><input type="radio" name="bg-17-q0" value="0"> Sattvic</label></li>
+            <li><label><input type="radio" name="bg-17-q1" value="1"> Too bitter, too sour, salty, hot, pungent, dry, burning — causing distress, misery, disease</label></li>
+            <li><label><input type="radio" name="bg-17-q2" value="2"> Demigod offerings</label></li>
+            <li><label><input type="radio" name="bg-17-q3" value="3"> Sweet only</label></li>
+        </ul>
+        <div class="fc-mcq-rationale">
+BG 17.9 — rājasika foods provoke distress and disease.<div class="fc-mcq-refs">Refs: 17.9</div>        </div>
+    </div>
+    <div class="fc-mcq-question" data-answer="1">
+        <div class="fc-mcq-q-text">7. What is tāmasika food?</div>
+        <ul class="fc-mcq-choices">
+            <li><label><input type="radio" name="bg-17-q0" value="0"> Just-cooked</label></li>
+            <li><label><input type="radio" name="bg-17-q1" value="1"> Cooked more than three hours before being eaten, tasteless, decomposed, putrid, leftover, impure</label></li>
+            <li><label><input type="radio" name="bg-17-q2" value="2"> Pure</label></li>
+            <li><label><input type="radio" name="bg-17-q3" value="3"> Sweet</label></li>
+        </ul>
+        <div class="fc-mcq-rationale">
+BG 17.10 — tāmasika food is stale, putrid, and impure.<div class="fc-mcq-refs">Refs: 17.10</div>        </div>
+    </div>
+    <div class="fc-mcq-question" data-answer="1">
+        <div class="fc-mcq-q-text">8. What is sāttvika sacrifice, per BG 17.11?</div>
+        <ul class="fc-mcq-choices">
+            <li><label><input type="radio" name="bg-17-q0" value="0"> For reward</label></li>
+            <li><label><input type="radio" name="bg-17-q1" value="1"> Performed according to scriptural duty, without desire for reward — for its own sake; the firm mind says: &#39;This is to be performed.&#39;</label></li>
+            <li><label><input type="radio" name="bg-17-q2" value="2"> For fame</label></li>
+            <li><label><input type="radio" name="bg-17-q3" value="3"> Demigod-oriented</label></li>
+        </ul>
+        <div class="fc-mcq-rationale">
+BG 17.11 — sāttvika yajña is duty-based, fruit-renounced.<div class="fc-mcq-refs">Refs: 17.11</div>        </div>
+    </div>
+    <div class="fc-mcq-question" data-answer="1">
+        <div class="fc-mcq-q-text">9. What is the threefold austerity of body / speech / mind per BG 17.14-16?</div>
+        <ul class="fc-mcq-choices">
+            <li><label><input type="radio" name="bg-17-q0" value="0"> Wealth</label></li>
+            <li><label><input type="radio" name="bg-17-q1" value="1"> Body: worship, cleanliness, simplicity, celibacy, nonviolence; Speech: truthful, beneficial, pleasing, Vedic study; Mind: serenity, gentleness, silence, self-control, purity</label></li>
+            <li><label><input type="radio" name="bg-17-q2" value="2"> Just yoga postures</label></li>
+            <li><label><input type="radio" name="bg-17-q3" value="3"> Renunciation</label></li>
+        </ul>
+        <div class="fc-mcq-rationale">
+BG 17.14-16 — these three categories of austerity.<div class="fc-mcq-refs">Refs: 17.14, 17.15, 17.16</div>        </div>
+    </div>
+    <div class="fc-mcq-question" data-answer="1">
+        <div class="fc-mcq-q-text">10. What is the famous three-letter formula given in BG 17.23?</div>
+        <ul class="fc-mcq-choices">
+            <li><label><input type="radio" name="bg-17-q0" value="0"> A-U-M</label></li>
+            <li><label><input type="radio" name="bg-17-q1" value="1"> Oṁ Tat Sat — the three indicators of the Absolute Truth; from the beginning brāhmaṇas, Vedas, and sacrifices have been called by these names</label></li>
+            <li><label><input type="radio" name="bg-17-q2" value="2"> Hare Kṛṣṇa</label></li>
+            <li><label><input type="radio" name="bg-17-q3" value="3"> Tat tvam asi</label></li>
+        </ul>
+        <div class="fc-mcq-rationale">
+BG 17.23 — &#39;oṁ tat sad iti nirdeśo brahmaṇas tri-vidhaḥ smṛtaḥ&#39;.<div class="fc-mcq-refs">Refs: 17.23</div>        </div>
+    </div>
+    <div class="fc-mcq-question" data-answer="1">
+        <div class="fc-mcq-q-text">11. What is BG 17.24-26 about?</div>
+        <ul class="fc-mcq-choices">
+            <li><label><input type="radio" name="bg-17-q0" value="0"> Times of day</label></li>
+            <li><label><input type="radio" name="bg-17-q1" value="1"> The use of oṁ, tat, sat in sacrifices, charities, and austerities — invoking and securing the Lord&#39;s protection and reality</label></li>
+            <li><label><input type="radio" name="bg-17-q2" value="2"> Demigod names</label></li>
+            <li><label><input type="radio" name="bg-17-q3" value="3"> Music</label></li>
+        </ul>
+        <div class="fc-mcq-rationale">
+BG 17.24-26 elucidate the use of each syllable in sacrificial activities.<div class="fc-mcq-refs">Refs: 17.24, 17.25, 17.26</div>        </div>
+    </div>
+    <div class="fc-mcq-question" data-answer="1">
+        <div class="fc-mcq-q-text">12. What does BG 17.28 conclude about faithless acts?</div>
+        <ul class="fc-mcq-choices">
+            <li><label><input type="radio" name="bg-17-q0" value="0"> They reward</label></li>
+            <li><label><input type="radio" name="bg-17-q1" value="1"> Whatever is done as sacrifice, charity, or austerity without faith in the Supreme is asat — useless both here and in the next life</label></li>
+            <li><label><input type="radio" name="bg-17-q2" value="2"> They aid liberation</label></li>
+            <li><label><input type="radio" name="bg-17-q3" value="3"> They are demigod-worshipping</label></li>
+        </ul>
+        <div class="fc-mcq-rationale">
+BG 17.28 — &#39;aśraddhayā hutaṁ dattaṁ tapas taptaṁ kṛtaṁ ca yat asad ity ucyate&#39;.<div class="fc-mcq-refs">Refs: 17.28</div>        </div>
+    </div>
+    <div class="fc-mcq-actions">
+        <button type="button" class="fc-mcq-btn" data-action="check">Check answers</button>
+        <button type="button" class="fc-mcq-btn fc-mcq-btn-secondary" data-action="reset">Reset</button>
+        <span class="fc-mcq-score"></span>
+    </div>
+</form>
+
 </section>
 
 <section class="fc-breakdown-card" data-sec="breakdown">

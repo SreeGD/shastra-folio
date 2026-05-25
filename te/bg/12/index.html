@@ -99,6 +99,8 @@
                 <label><input type="checkbox" data-section="important_words"> Important Words</label>
                 <label><input type="checkbox" data-section="note" checked> My note</label>
                 <label><input type="checkbox" data-section="audio_player" checked> Sanskrit recitation player</label>
+                <label><input type="checkbox" data-section="recitation_slokas" checked> &nbsp; Reading-along view (auto-show on play)</label>
+                <label><input type="checkbox" data-section="quiz" checked> MCQ quizzes (chapter + sub-section)</label>
                 <label class="fc-toggle-master"><input type="checkbox" data-section="gpd_all" checked> <strong>Gauranga Priya additions</strong> (master)</label>
                 <label><input type="checkbox" data-section="chapter_overview" checked> &nbsp; Chapter Overview</label>
                 <label><input type="checkbox" data-section="breakdown" checked> &nbsp; Breakdown of Chapter</label>
@@ -254,20 +256,109 @@
 
 <section class="fc-section fc-bg-audio" data-sec="audio_player">
     <div class="fc-section-label">Sanskrit Recitation</div>
-    <div class="fc-bg-audio-picker">
-        <label for="fc-bg-reciter">Reciter:</label>
-        <select id="fc-bg-reciter">
-            <option value="https://bhagavadgitaclass.com//wp-content/audio/Bhagavad-Gita-Recitation/Bhagavad_Gita_Recitation_in_Sanskrit_by_HG_Ananta_Nitai_Prabhu/Bhagavad_Gita_Recitation_Chapter-12_in_Sanskrit_by_HG_Ananta_Nitai_Prabhu.mp3" data-reciter="ananta-nitai">His Grace Ananta Nitai Prabhu</option>
-            <option value="https://bhagavadgitaclass.com//wp-content/audio/Bhagavad-Gita-Recitation/Bhagavad_Gita_Recitation_in_Sanskrit_by_HG_Bharat_Ram_Prabhu/Bhagavad_Gita_Recitation_Chapter-12_in_Sanskrit_by_HG_Bharat_Ram_Prabhu.mp3" data-reciter="bharat-ram">His Grace Bharat Ram Prabhu</option>
-            <option value="https://bhagavadgitaclass.com/wp-content/audio/Bhagavad-Gita-Recitation/Bhagavad_Gita_Recitation_in_Sanskrit_by_HH_Mahavishnu_Goswami/Bhagavad_Gita_Recitation_Chapter-12_in_Sanksrit_by_HH_Mahavishnu_Goswami.mp3" data-reciter="mahavishnu-goswami">His Holiness Mahaviṣṇu Goswami</option>
-            <option value="https://bhagavadgitaclass.com/wp-content/audio/Bhagavad-Gita-Recitation/Bhagavad_Gita_Recitation_in_Sanskrit_by_HG_Radha_Gopinath_Prabhu/Bhagavad_Gita_Recitation_Chapter-12_in_Sanskrit_by_HG_Radha_Gopinath_Prabhu.mp3" data-reciter="radha-gopinath">His Grace Rādhā-Gopīnātha Prabhu</option>
-            <option value="https://bhagavadgitaclass.com/wp-content/audio/Bhagavad-Gita-Recitation/Bhagavad_Gita_Recitation_in_Sanskrit_with_Tamil_Translations/Bhagavad_Gita_Recitation_Chapter-12_in_Sanskrit_with_Tamil_Translations.mp3" data-reciter="tamil-translations">Sanskrit + Tamil Translations</option>
-        </select>
-        <span class="fc-bg-audio-coverage">5 reciters for chapter 12</span>
+    <div class="fc-bg-recitation">
+        <div class="fc-bg-audio-wrap">
+            <div class="fc-bg-audio-picker">
+                <label for="fc-bg-reciter">Reciter:</label>
+                <select id="fc-bg-reciter">
+                    <option value="https://bhagavadgitaclass.com//wp-content/audio/Bhagavad-Gita-Recitation/Bhagavad_Gita_Recitation_in_Sanskrit_by_HG_Ananta_Nitai_Prabhu/Bhagavad_Gita_Recitation_Chapter-12_in_Sanskrit_by_HG_Ananta_Nitai_Prabhu.mp3" data-reciter="ananta-nitai">His Grace Ananta Nitai Prabhu</option>
+                    <option value="https://bhagavadgitaclass.com//wp-content/audio/Bhagavad-Gita-Recitation/Bhagavad_Gita_Recitation_in_Sanskrit_by_HG_Bharat_Ram_Prabhu/Bhagavad_Gita_Recitation_Chapter-12_in_Sanskrit_by_HG_Bharat_Ram_Prabhu.mp3" data-reciter="bharat-ram">His Grace Bharat Ram Prabhu</option>
+                    <option value="https://bhagavadgitaclass.com/wp-content/audio/Bhagavad-Gita-Recitation/Bhagavad_Gita_Recitation_in_Sanskrit_by_HH_Mahavishnu_Goswami/Bhagavad_Gita_Recitation_Chapter-12_in_Sanksrit_by_HH_Mahavishnu_Goswami.mp3" data-reciter="mahavishnu-goswami">His Holiness Mahaviṣṇu Goswami</option>
+                    <option value="https://bhagavadgitaclass.com/wp-content/audio/Bhagavad-Gita-Recitation/Bhagavad_Gita_Recitation_in_Sanskrit_by_HG_Radha_Gopinath_Prabhu/Bhagavad_Gita_Recitation_Chapter-12_in_Sanskrit_by_HG_Radha_Gopinath_Prabhu.mp3" data-reciter="radha-gopinath">His Grace Rādhā-Gopīnātha Prabhu</option>
+                    <option value="https://bhagavadgitaclass.com/wp-content/audio/Bhagavad-Gita-Recitation/Bhagavad_Gita_Recitation_in_Sanskrit_with_Tamil_Translations/Bhagavad_Gita_Recitation_Chapter-12_in_Sanskrit_with_Tamil_Translations.mp3" data-reciter="tamil-translations">Sanskrit + Tamil Translations</option>
+                </select>
+                <span class="fc-bg-audio-coverage">5 reciters for chapter 12</span>
+            </div>
+            <audio id="fc-bg-audio" controls preload="none" src="https://bhagavadgitaclass.com//wp-content/audio/Bhagavad-Gita-Recitation/Bhagavad_Gita_Recitation_in_Sanskrit_by_HG_Ananta_Nitai_Prabhu/Bhagavad_Gita_Recitation_Chapter-12_in_Sanskrit_by_HG_Ananta_Nitai_Prabhu.mp3"></audio>
+            <p class="fc-source-link">Audio hot-linked from
+                <a href="https://bhagavadgitaclass.com/category/recitation/" rel="noopener">bhagavadgitaclass.com</a> — streamed from upstream, not stored.</p>
+        </div>
+        <div id="fc-bg-slokas" class="fc-bg-slokas" data-sec="recitation_slokas" hidden>
+            <div class="fc-bg-slokas-header">Reading along — Chapter 12</div>
+            <div class="fc-bg-slokas-inner">
+                <article class="fc-bg-sloka" id="sloka-12-1">
+                    <div class="fc-bg-sloka-num">12.1</div>
+                    <div class="cr-deva"><div class="cr-deva-line">अर्जुन उवाच</div><div class="cr-deva-line">एवं सततयुक्ता ये भक्तास्त्वां पर्युपासते ।</div><div class="cr-deva-line">ये चाप्यक्षरमव्यक्तं तेषां के योगवित्तमा: ॥ १ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">arjuna uvāca</div><div class="cr-iast-line">evaṁ satata-yuktā ye</div><div class="cr-iast-line">bhaktās tvāṁ paryupāsate</div><div class="cr-iast-line">ye cāpy akṣaram avyaktaṁ</div><div class="cr-iast-line">teṣāṁ ke yoga-vittamāḥ</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-12-2">
+                    <div class="fc-bg-sloka-num">12.2</div>
+                    <div class="cr-deva"><div class="cr-deva-line">श्रीभगवानुवाच</div><div class="cr-deva-line">मय्यावेश्य मनो ये मां नित्ययुक्ता उपासते ।</div><div class="cr-deva-line">श्रद्धया परयोपेतास्ते मे युक्ततमा मता: ॥ २ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">śrī-bhagavān uvāca</div><div class="cr-iast-line">mayy āveśya mano ye māṁ</div><div class="cr-iast-line">nitya-yuktā upāsate</div><div class="cr-iast-line">śraddhayā parayopetās</div><div class="cr-iast-line">te me yukta-tamā matāḥ</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-12-3-4">
+                    <div class="fc-bg-sloka-num">12.3-4</div>
+                    <div class="cr-deva"><div class="cr-deva-line">ये त्वक्षरमनिर्देश्यमव्यक्तं पर्युपासते ।</div><div class="cr-deva-line">सर्वत्रगमचिन्त्यं च कूटस्थमचलं ध्रुवम् ॥ ३ ॥</div><div class="cr-deva-line">सन्नियम्येन्द्रियग्रामं सर्वत्र समबुद्धय: ।</div><div class="cr-deva-line">ते प्राप्‍नुवन्ति मामेव सर्वभूतहिते रता: ॥ ४ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">ye tv akṣaram anirdeśyam</div><div class="cr-iast-line">avyaktaṁ paryupāsate</div><div class="cr-iast-line">sarvatra-gam acintyaṁ ca</div><div class="cr-iast-line">kūṭa-stham acalaṁ dhruvam</div><div class="cr-iast-line">sanniyamyendriya-grāmaṁ</div><div class="cr-iast-line">sarvatra sama-buddhayaḥ</div><div class="cr-iast-line">te prāpnuvanti mām eva</div><div class="cr-iast-line">sarva-bhūta-hite ratāḥ</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-12-5">
+                    <div class="fc-bg-sloka-num">12.5</div>
+                    <div class="cr-deva"><div class="cr-deva-line">क्ल‍ेशोऽधिकतरस्तेषामव्यक्तासक्तचेतसाम् ।</div><div class="cr-deva-line">अव्यक्ता हि गतिर्दु:खं देहवद्भ‍िरवाप्यते ॥ ५ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">kleśo ’dhika-taras teṣām</div><div class="cr-iast-line">avyaktāsakta-cetasām</div><div class="cr-iast-line">avyaktā hi gatir duḥkhaṁ</div><div class="cr-iast-line">dehavadbhir avāpyate</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-12-6-7">
+                    <div class="fc-bg-sloka-num">12.6-7</div>
+                    <div class="cr-deva"><div class="cr-deva-line">ये तु सर्वाणि कर्माणि मयि सन्न्यस्य मत्परा: ।</div><div class="cr-deva-line">अनन्येनैव योगेन मां ध्यायन्त उपासते ॥ ६ ॥</div><div class="cr-deva-line">तेषामहं समुद्धर्ता मृत्युसंसारसागरात् ।</div><div class="cr-deva-line">भवामि न चिरात्पार्थ मय्यावेशितचेतसाम् ॥ ७ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">ye tu sarvāṇi karmāṇi</div><div class="cr-iast-line">mayi sannyasya mat-parāḥ</div><div class="cr-iast-line">ananyenaiva yogena</div><div class="cr-iast-line">māṁ dhyāyanta upāsate</div><div class="cr-iast-line">teṣām ahaṁ samuddhartā</div><div class="cr-iast-line">mṛtyu-saṁsāra-sāgarāt</div><div class="cr-iast-line">bhavāmi na cirāt pārtha</div><div class="cr-iast-line">mayy āveśita-cetasām</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-12-8">
+                    <div class="fc-bg-sloka-num">12.8</div>
+                    <div class="cr-deva"><div class="cr-deva-line">मय्येव मन आधत्स्व मयि बुद्धिं निवेशय ।</div><div class="cr-deva-line">निवसिष्यसि मय्येव अत ऊर्ध्वं न संशय: ॥ ८ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">mayy eva mana ādhatsva</div><div class="cr-iast-line">mayi buddhiṁ niveśaya</div><div class="cr-iast-line">nivasiṣyasi mayy eva</div><div class="cr-iast-line">ata ūrdhvaṁ na saṁśayaḥ</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-12-9">
+                    <div class="fc-bg-sloka-num">12.9</div>
+                    <div class="cr-deva"><div class="cr-deva-line">अथ चित्तं समाधातुं न शक्न‍ोषि मयि स्थिरम् ।</div><div class="cr-deva-line">अभ्यासयोगेन ततो मामिच्छाप्‍तुं धनञ्जय ॥ ९ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">atha cittaṁ samādhātuṁ</div><div class="cr-iast-line">na śaknoṣi mayi sthiram</div><div class="cr-iast-line">abhyāsa-yogena tato</div><div class="cr-iast-line">mām icchāptuṁ dhanañ-jaya</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-12-10">
+                    <div class="fc-bg-sloka-num">12.10</div>
+                    <div class="cr-deva"><div class="cr-deva-line">अभ्यासेऽप्यसमर्थोऽसि मत्कर्मपरमो भव ।</div><div class="cr-deva-line">मदर्थमपि कर्माणि कुर्वन्सिद्धिमवाप्स्यसि ॥ १० ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">abhyāse ’py asamartho ’si</div><div class="cr-iast-line">mat-karma-paramo bhava</div><div class="cr-iast-line">mad-artham api karmāṇi</div><div class="cr-iast-line">kurvan siddhim avāpsyasi</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-12-11">
+                    <div class="fc-bg-sloka-num">12.11</div>
+                    <div class="cr-deva"><div class="cr-deva-line">अथैतदप्यशक्तोऽसि कर्तुं मद्योगमाश्रित: ।</div><div class="cr-deva-line">सर्वकर्मफलत्यागं तत: कुरु यतात्मवान् ॥ ११ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">athaitad apy aśakto ’si</div><div class="cr-iast-line">kartuṁ mad-yogam āśritaḥ</div><div class="cr-iast-line">sarva-karma-phala-tyāgaṁ</div><div class="cr-iast-line">tataḥ kuru yatātmavān</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-12-12">
+                    <div class="fc-bg-sloka-num">12.12</div>
+                    <div class="cr-deva"><div class="cr-deva-line">श्रेयो हि ज्ञानमभ्यासाज्ज्ञानाद्ध्यानं विशिष्यते ।</div><div class="cr-deva-line">ध्यानात्कर्मफलत्यागस्त्यागाच्छान्तिरनन्तरम् ॥ १२ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">śreyo hi jñānam abhyāsāj</div><div class="cr-iast-line">jñānād dhyānaṁ viśiṣyate</div><div class="cr-iast-line">dhyānāt karma-phala-tyāgas</div><div class="cr-iast-line">tyāgāc chāntir anantaram</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-12-13-14">
+                    <div class="fc-bg-sloka-num">12.13-14</div>
+                    <div class="cr-deva"><div class="cr-deva-line">अद्वेष्टा सर्वभूतानां मैत्र: करुण एव च ।</div><div class="cr-deva-line">निर्ममो निरहङ्कार: समदु:खसुख: क्षमी ॥ १३ ॥</div><div class="cr-deva-line">सन्तुष्ट: सततं योगी यतात्मा दृढनिश्चय: ।</div><div class="cr-deva-line">मय्यर्पितमनोबुद्धिर्यो मद्भ‍क्त: स मे प्रिय: ॥ १४ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">adveṣṭā sarva-bhūtānāṁ</div><div class="cr-iast-line">maitraḥ karuṇa eva ca</div><div class="cr-iast-line">nirmamo nirahaṅkāraḥ</div><div class="cr-iast-line">sama-duḥkha-sukhaḥ kṣamī</div><div class="cr-iast-line">santuṣṭaḥ satataṁ yogī</div><div class="cr-iast-line">yatātmā dṛḍha-niścayaḥ</div><div class="cr-iast-line">mayy arpita-mano-buddhir</div><div class="cr-iast-line">yo mad-bhaktaḥ sa me priyaḥ</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-12-15">
+                    <div class="fc-bg-sloka-num">12.15</div>
+                    <div class="cr-deva"><div class="cr-deva-line">यस्मान्नोद्विजते लोको लोकान्नोद्विजते च य: ।</div><div class="cr-deva-line">हर्षामर्षभयोद्वेगैर्मुक्तो य: स च मे प्रिय: ॥ १५ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">yasmān nodvijate loko</div><div class="cr-iast-line">lokān nodvijate ca yaḥ</div><div class="cr-iast-line">harṣāmarṣa-bhayodvegair</div><div class="cr-iast-line">mukto yaḥ sa ca me priyaḥ</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-12-16">
+                    <div class="fc-bg-sloka-num">12.16</div>
+                    <div class="cr-deva"><div class="cr-deva-line">अनपेक्ष: श‍ुचिर्दक्ष उदासीनो गतव्यथ: ।</div><div class="cr-deva-line">सर्वारम्भपरित्यागी यो मद्भ‍क्त: स मे प्रिय: ॥ १६ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">anapekṣaḥ śucir dakṣa</div><div class="cr-iast-line">udāsīno gata-vyathaḥ</div><div class="cr-iast-line">sarvārambha-parityāgī</div><div class="cr-iast-line">yo mad-bhaktaḥ sa me priyaḥ</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-12-17">
+                    <div class="fc-bg-sloka-num">12.17</div>
+                    <div class="cr-deva"><div class="cr-deva-line">यो न हृष्यति न द्वेष्टि न शोचति न काङ्‍क्षति ।</div><div class="cr-deva-line">श‍ुभाश‍ुभपरित्यागी भक्तिमान्य: स मे प्रिय: ॥ १७ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">yo na hṛṣyati na dveṣṭi</div><div class="cr-iast-line">na śocati na kāṅkṣati</div><div class="cr-iast-line">śubhāśubha-parityāgī</div><div class="cr-iast-line">bhaktimān yaḥ sa me priyaḥ</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-12-18-19">
+                    <div class="fc-bg-sloka-num">12.18-19</div>
+                    <div class="cr-deva"><div class="cr-deva-line">सम: शत्रौ च मित्रे च तथा मानापमानयो: ।</div><div class="cr-deva-line">शीतोष्णसुखदु:खेषु सम: सङ्गविवर्जित: ॥ १८ ॥</div><div class="cr-deva-line">तुल्यनिन्दास्तुतिर्मौनी सन्तुष्टो येन केनचित् ।</div><div class="cr-deva-line">अनिकेत: स्थिरमतिर्भक्तिमान्मे प्रियो नर: ॥ १९ ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">samaḥ śatrau ca mitre ca</div><div class="cr-iast-line">tathā mānāpamānayoḥ</div><div class="cr-iast-line">śītoṣṇa-sukha-duḥkheṣu</div><div class="cr-iast-line">samaḥ saṅga-vivarjitaḥ</div><div class="cr-iast-line">tulya-nindā-stutir maunī</div><div class="cr-iast-line">santuṣṭo yena kenacit</div><div class="cr-iast-line">aniketaḥ sthira-matir</div><div class="cr-iast-line">bhaktimān me priyo naraḥ</div></div>
+                </article>
+                <article class="fc-bg-sloka" id="sloka-12-20">
+                    <div class="fc-bg-sloka-num">12.20</div>
+                    <div class="cr-deva"><div class="cr-deva-line">ये तु धर्मामृतमिदं यथोक्तं पर्युपासते ।</div><div class="cr-deva-line">श्रद्दधाना मत्परमा भक्तास्तेऽतीव मे प्रिया: ॥ २० ॥</div></div>
+                    <div class="cr-iast"><div class="cr-iast-line">ye tu dharmāmṛtam idaṁ</div><div class="cr-iast-line">yathoktaṁ paryupāsate</div><div class="cr-iast-line">śraddadhānā mat-paramā</div><div class="cr-iast-line">bhaktās te ’tīva me priyāḥ</div></div>
+                </article>
+            </div>
+        </div>
     </div>
-    <audio id="fc-bg-audio" controls preload="none" src="https://bhagavadgitaclass.com//wp-content/audio/Bhagavad-Gita-Recitation/Bhagavad_Gita_Recitation_in_Sanskrit_by_HG_Ananta_Nitai_Prabhu/Bhagavad_Gita_Recitation_Chapter-12_in_Sanskrit_by_HG_Ananta_Nitai_Prabhu.mp3"></audio>
-    <p class="fc-source-link">Audio hot-linked from
-        <a href="https://bhagavadgitaclass.com/category/recitation/" rel="noopener">bhagavadgitaclass.com</a> — streamed from upstream, not stored.</p>
 </section>
 
 
@@ -283,6 +374,151 @@
 </div>
         <div class="fc-chapter-overview-attrib">— Bhakti-śāstrī Notes, ISKCON Chowpatty (2009)</div>
     </div>
+</section>
+
+<section class="fc-section fc-mcq-chapter" data-sec="quiz">
+    <div class="fc-section-label">Chapter Quiz</div>
+    <form class="fc-mcq-form" data-quiz-key="bg-12">
+    <div class="fc-mcq-meta">12 questions · Chapter 12</div>
+    <div class="fc-mcq-question" data-answer="1">
+        <div class="fc-mcq-q-text">1. What does Arjuna ask at the start of Chapter 12?</div>
+        <ul class="fc-mcq-choices">
+            <li><label><input type="radio" name="bg-12-q0" value="0"> About the demigods</label></li>
+            <li><label><input type="radio" name="bg-12-q1" value="1"> Who is better — those worshipping the personal Lord or the impersonal Brahman</label></li>
+            <li><label><input type="radio" name="bg-12-q2" value="2"> About the modes</label></li>
+            <li><label><input type="radio" name="bg-12-q3" value="3"> About time</label></li>
+        </ul>
+        <div class="fc-mcq-rationale">
+BG 12.1 — Arjuna asks which path is superior: worship of the personal Lord or the impersonal akṣaram avyaktam.<div class="fc-mcq-refs">Refs: 12.1</div>        </div>
+    </div>
+    <div class="fc-mcq-question" data-answer="1">
+        <div class="fc-mcq-q-text">2. Whom does Kṛṣṇa consider most perfect per BG 12.2?</div>
+        <ul class="fc-mcq-choices">
+            <li><label><input type="radio" name="bg-12-q0" value="0"> The impersonalist</label></li>
+            <li><label><input type="radio" name="bg-12-q1" value="1"> Those who fix their minds on Me with full faith and worship Me</label></li>
+            <li><label><input type="radio" name="bg-12-q2" value="2"> Those who avoid all worship</label></li>
+            <li><label><input type="radio" name="bg-12-q3" value="3"> Demigod worshippers</label></li>
+        </ul>
+        <div class="fc-mcq-rationale">
+BG 12.2 — &#39;mayy āveśya mano ye māṁ ... te me yuktatamā matāḥ&#39;.<div class="fc-mcq-refs">Refs: 12.2</div>        </div>
+    </div>
+    <div class="fc-mcq-question" data-answer="1">
+        <div class="fc-mcq-q-text">3. What does Kṛṣṇa say about the difficulty of impersonalism in BG 12.5?</div>
+        <ul class="fc-mcq-choices">
+            <li><label><input type="radio" name="bg-12-q0" value="0"> It is easier</label></li>
+            <li><label><input type="radio" name="bg-12-q1" value="1"> Greater is their trouble whose minds are set on the unmanifested — the embodied find that goal hard to reach</label></li>
+            <li><label><input type="radio" name="bg-12-q2" value="2"> Equal</label></li>
+            <li><label><input type="radio" name="bg-12-q3" value="3"> Impossible</label></li>
+        </ul>
+        <div class="fc-mcq-rationale">
+BG 12.5 — &#39;kleśo &#39;dhikataras teṣām avyaktāsakta-cetasām&#39;.<div class="fc-mcq-refs">Refs: 12.5</div>        </div>
+    </div>
+    <div class="fc-mcq-question" data-answer="1">
+        <div class="fc-mcq-q-text">4. Who, per BG 12.7, does Kṛṣṇa quickly deliver from the ocean of birth and death?</div>
+        <ul class="fc-mcq-choices">
+            <li><label><input type="radio" name="bg-12-q0" value="0"> The wealthy</label></li>
+            <li><label><input type="radio" name="bg-12-q1" value="1"> His devotees who worship Him exclusively and absorb their minds in Him</label></li>
+            <li><label><input type="radio" name="bg-12-q2" value="2"> Demigods</label></li>
+            <li><label><input type="radio" name="bg-12-q3" value="3"> Ritualists</label></li>
+        </ul>
+        <div class="fc-mcq-rationale">
+BG 12.7 — &#39;teṣām ahaṁ samuddhartā mṛtyu-saṁsāra-sāgarāt&#39;.<div class="fc-mcq-refs">Refs: 12.7</div>        </div>
+    </div>
+    <div class="fc-mcq-question" data-answer="1">
+        <div class="fc-mcq-q-text">5. What is the first method recommended in BG 12.8 to fix the mind on Kṛṣṇa?</div>
+        <ul class="fc-mcq-choices">
+            <li><label><input type="radio" name="bg-12-q0" value="0"> Mystic concentration</label></li>
+            <li><label><input type="radio" name="bg-12-q1" value="1"> Simply fix your mind upon Me, place all intelligence in Me — and you will dwell in Me without doubt</label></li>
+            <li><label><input type="radio" name="bg-12-q2" value="2"> Renunciation</label></li>
+            <li><label><input type="radio" name="bg-12-q3" value="3"> Demigod worship</label></li>
+        </ul>
+        <div class="fc-mcq-rationale">
+BG 12.8 — &#39;mayy eva mana ādhatsva mayi buddhiṁ niveśaya&#39;.<div class="fc-mcq-refs">Refs: 12.8</div>        </div>
+    </div>
+    <div class="fc-mcq-question" data-answer="1">
+        <div class="fc-mcq-q-text">6. If one cannot fix the mind, what does BG 12.9 recommend?</div>
+        <ul class="fc-mcq-choices">
+            <li><label><input type="radio" name="bg-12-q0" value="0"> Give up</label></li>
+            <li><label><input type="radio" name="bg-12-q1" value="1"> Practise regulation by the rules of abhyāsa-yoga</label></li>
+            <li><label><input type="radio" name="bg-12-q2" value="2"> Penance</label></li>
+            <li><label><input type="radio" name="bg-12-q3" value="3"> Renounce work</label></li>
+        </ul>
+        <div class="fc-mcq-rationale">
+BG 12.9 — abhyāsa-yoga (regulative practice) is the next option.<div class="fc-mcq-refs">Refs: 12.9</div>        </div>
+    </div>
+    <div class="fc-mcq-question" data-answer="1">
+        <div class="fc-mcq-q-text">7. If even practice is too difficult, what is the next step per BG 12.10?</div>
+        <ul class="fc-mcq-choices">
+            <li><label><input type="radio" name="bg-12-q0" value="0"> Demigod worship</label></li>
+            <li><label><input type="radio" name="bg-12-q1" value="1"> Work for Kṛṣṇa — by performing duties for Him you will achieve perfection</label></li>
+            <li><label><input type="radio" name="bg-12-q2" value="2"> Wealth-giving</label></li>
+            <li><label><input type="radio" name="bg-12-q3" value="3"> Forest retreat</label></li>
+        </ul>
+        <div class="fc-mcq-rationale">
+BG 12.10 — &#39;mad-artham api karmāṇi kurvan siddhim avāpsyasi&#39;.<div class="fc-mcq-refs">Refs: 12.10</div>        </div>
+    </div>
+    <div class="fc-mcq-question" data-answer="1">
+        <div class="fc-mcq-q-text">8. If even that is too hard, what does BG 12.11 advise?</div>
+        <ul class="fc-mcq-choices">
+            <li><label><input type="radio" name="bg-12-q0" value="0"> Renunciation</label></li>
+            <li><label><input type="radio" name="bg-12-q1" value="1"> Give up the fruits of all your work — be self-situated</label></li>
+            <li><label><input type="radio" name="bg-12-q2" value="2"> Demigod worship</label></li>
+            <li><label><input type="radio" name="bg-12-q3" value="3"> Quietism</label></li>
+        </ul>
+        <div class="fc-mcq-rationale">
+BG 12.11 — give up the results (sarva-karma-phala-tyāgaṁ) for inner steadiness.<div class="fc-mcq-refs">Refs: 12.11</div>        </div>
+    </div>
+    <div class="fc-mcq-question" data-answer="3">
+        <div class="fc-mcq-q-text">9. BG 12.12 establishes a hierarchy. Which is the topmost?</div>
+        <ul class="fc-mcq-choices">
+            <li><label><input type="radio" name="bg-12-q0" value="0"> Practice</label></li>
+            <li><label><input type="radio" name="bg-12-q1" value="1"> Knowledge</label></li>
+            <li><label><input type="radio" name="bg-12-q2" value="2"> Meditation</label></li>
+            <li><label><input type="radio" name="bg-12-q3" value="3"> Renunciation of the fruits of action (karma-phala-tyāga) — bringing immediate peace</label></li>
+        </ul>
+        <div class="fc-mcq-rationale">
+BG 12.12 — practice &gt; knowledge &gt; meditation &gt; renunciation-of-fruits, which brings immediate śānti.<div class="fc-mcq-refs">Refs: 12.12</div>        </div>
+    </div>
+    <div class="fc-mcq-question" data-answer="1">
+        <div class="fc-mcq-q-text">10. Which qualities make a devotee dear to Kṛṣṇa per BG 12.13-14?</div>
+        <ul class="fc-mcq-choices">
+            <li><label><input type="radio" name="bg-12-q0" value="0"> Wealth</label></li>
+            <li><label><input type="radio" name="bg-12-q1" value="1"> Free from envy, friendly to all, free from possessiveness and ego, equipoised in pain and joy, forgiving, always satisfied, self-controlled, with fixed determination, mind and intelligence dedicated to Me</label></li>
+            <li><label><input type="radio" name="bg-12-q2" value="2"> Just intelligence</label></li>
+            <li><label><input type="radio" name="bg-12-q3" value="3"> Just renunciation</label></li>
+        </ul>
+        <div class="fc-mcq-rationale">
+BG 12.13-14 list these qualities — &#39;sa me priyaḥ&#39;.<div class="fc-mcq-refs">Refs: 12.13, 12.14</div>        </div>
+    </div>
+    <div class="fc-mcq-question" data-answer="1">
+        <div class="fc-mcq-q-text">11. Who is said in BG 12.15 to be dear to Kṛṣṇa?</div>
+        <ul class="fc-mcq-choices">
+            <li><label><input type="radio" name="bg-12-q0" value="0"> The wealthy</label></li>
+            <li><label><input type="radio" name="bg-12-q1" value="1"> He who is never a source of trouble to others, and whom no one disturbs</label></li>
+            <li><label><input type="radio" name="bg-12-q2" value="2"> The renunciate only</label></li>
+            <li><label><input type="radio" name="bg-12-q3" value="3"> The intelligent only</label></li>
+        </ul>
+        <div class="fc-mcq-rationale">
+BG 12.15 — &#39;yasmān nodvijate loko lokān nodvijate ca yaḥ&#39; — he is dear to Me.<div class="fc-mcq-refs">Refs: 12.15</div>        </div>
+    </div>
+    <div class="fc-mcq-question" data-answer="1">
+        <div class="fc-mcq-q-text">12. What is the chapter&#39;s summarising point about the dharma it describes in BG 12.20?</div>
+        <ul class="fc-mcq-choices">
+            <li><label><input type="radio" name="bg-12-q0" value="0"> Mere theory</label></li>
+            <li><label><input type="radio" name="bg-12-q1" value="1"> Those who follow this imperishable path of devotional service with full faith, accepting Me as supreme — they are exceedingly dear to Me</label></li>
+            <li><label><input type="radio" name="bg-12-q2" value="2"> Only for renunciates</label></li>
+            <li><label><input type="radio" name="bg-12-q3" value="3"> Demigod-oriented</label></li>
+        </ul>
+        <div class="fc-mcq-rationale">
+BG 12.20 — &#39;ye tu dharmāmṛtam idaṁ ... śraddadhānā mat-paramā bhaktās te &#39;tīva me priyāḥ&#39;.<div class="fc-mcq-refs">Refs: 12.20</div>        </div>
+    </div>
+    <div class="fc-mcq-actions">
+        <button type="button" class="fc-mcq-btn" data-action="check">Check answers</button>
+        <button type="button" class="fc-mcq-btn fc-mcq-btn-secondary" data-action="reset">Reset</button>
+        <span class="fc-mcq-score"></span>
+    </div>
+</form>
+
 </section>
 
 <section class="fc-breakdown-card" data-sec="breakdown">

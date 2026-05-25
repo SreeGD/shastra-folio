@@ -13,6 +13,8 @@
         "gpd_all",
         "bb_view",
         "audio_player",
+        "recitation_slokas",
+        "quiz",
     ];
     var DEFAULT_HIDDEN = {
         pronunciation: true,

@@ -2819,6 +2819,22 @@
         var aud = document.getElementById("fc-bg-audio");
         if (!sel || !aud) return;
         var KEY = "fc-bg-reciter";
+        var slokasEl = document.getElementById("fc-bg-slokas");
+
+        function showSlokas() {
+            if (!slokasEl) return;
+            // Respect the sidebar toggle — if user hid the panel, never show it.
+            if (html.getAttribute("data-hide-recitation_slokas")) return;
+            slokasEl.hidden = false;
+        }
+        function hideSlokas() {
+            if (slokasEl) slokasEl.hidden = true;
+        }
+        if (slokasEl) {
+            aud.addEventListener("play", showSlokas);
+            aud.addEventListener("pause", hideSlokas);
+            aud.addEventListener("ended", hideSlokas);
+        }
 
         function swapTo(opt, autoPlay) {
             if (!opt) return;
@@ -2854,4 +2870,50 @@
         });
     }
     wireBgAudioPlayer();
+
+    // -------------------------------------------------------------------------
+    // MCQ quiz: check answers, reveal rationale, update score, persist.
+    // -------------------------------------------------------------------------
+    function wireMcq() {
+        document.querySelectorAll(".fc-mcq-form").forEach(function (form) {
+            var quizKey = form.dataset.quizKey || "";
+            var scoreEl = form.querySelector(".fc-mcq-score");
+            var checkBtn = form.querySelector("[data-action='check']");
+            var resetBtn = form.querySelector("[data-action='reset']");
+            var questions = form.querySelectorAll(".fc-mcq-question");
+            if (!checkBtn) return;
+
+            checkBtn.addEventListener("click", function (e) {
+                e.preventDefault();
+                var correct = 0, total = questions.length;
+                questions.forEach(function (q) {
+                    q.classList.remove("fc-mcq-correct", "fc-mcq-wrong");
+                    var ans = parseInt(q.dataset.answer, 10);
+                    var sel = q.querySelector("input[type='radio']:checked");
+                    if (sel && parseInt(sel.value, 10) === ans) {
+                        q.classList.add("fc-mcq-correct");
+                        correct++;
+                    } else if (sel) {
+                        q.classList.add("fc-mcq-wrong");
+                    }
+                });
+                if (scoreEl) scoreEl.textContent = "Score: " + correct + "/" + total;
+                if (quizKey) {
+                    try { localStorage.setItem("fc-mcq-score-" + quizKey,
+                        JSON.stringify({correct: correct, total: total, ts: Date.now()})); }
+                    catch (e2) {}
+                }
+            });
+            if (resetBtn) resetBtn.addEventListener("click", function (e) {
+                e.preventDefault();
+                questions.forEach(function (q) {
+                    q.classList.remove("fc-mcq-correct", "fc-mcq-wrong");
+                    var inputs = q.querySelectorAll("input[type='radio']");
+                    inputs.forEach(function (i) { i.checked = false; });
+                });
+                if (scoreEl) scoreEl.textContent = "";
+            });
+        });
+    }
+    wireMcq();
 })();
