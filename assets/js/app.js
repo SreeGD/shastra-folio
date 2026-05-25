@@ -2831,20 +2831,65 @@
             if (slokasEl) slokasEl.hidden = true;
         }
 
-        // Auto-scroll: estimate the currently-recited sloka from
-        // audio.currentTime / duration × verseCount, highlight it, and size
-        // the panel to show exactly 2 rows (4 slokas in 2-column grid).
-        // The grid has 2 columns, so each row holds 2 slokas. We anchor
-        // the active sloka's row at the top of the visible window.
+        // Auto-scroll: estimate the currently-recited sloka. Each chapter
+        // has an introductory section before sloka 1 (reciter mentions
+        // chapter title, offers prayers, etc.), so naive currentTime/duration
+        // overshoots. We hold an offset INTRO_SEC that's subtracted from
+        // currentTime before linear interpolation across slokas.
+        //
+        // Calibration: user can click any sloka to set "this sloka is being
+        // recited NOW" — we recompute the offset and persist per chapter
+        // to localStorage (key: fc-recit-cal-bg-N).
         var slokas = slokasEl ? slokasEl.querySelectorAll(".fc-bg-sloka") : [];
         var slokasHeader = slokasEl ? slokasEl.querySelector(".fc-bg-slokas-header") : null;
+        var chapterPath = (location.pathname.match(/\/bg\/(\d+)\//) || [])[1] || "x";
+        var CAL_KEY = "fc-recit-cal-bg-" + chapterPath;
+        var DEFAULT_INTRO_SEC = 25;
+        var introSec = DEFAULT_INTRO_SEC;
+        try {
+            var saved = parseFloat(localStorage.getItem(CAL_KEY));
+            if (!isNaN(saved) && saved >= 0) introSec = saved;
+        } catch (e) {}
+
         var lastIdx = -1;
+        function currentSlokaIndex() {
+            var dur = aud.duration;
+            if (!dur || isNaN(dur) || dur <= 0) return -1;
+            var effective = Math.max(0, aud.currentTime - introSec);
+            var remaining = Math.max(1, dur - introSec);
+            var frac = Math.min(1, effective / remaining);
+            return Math.min(slokas.length - 1, Math.floor(frac * slokas.length));
+        }
+        // Click handler: recalibrate so the clicked sloka is "active right now"
+        slokas.forEach(function (s, i) {
+            s.addEventListener("click", function () {
+                var dur = aud.duration;
+                if (!dur || isNaN(dur)) return;
+                // Solve: i = floor( (currentTime - newIntro) / (dur - newIntro) * N )
+                // For exact alignment: newIntro = currentTime - (i / N) * (dur - newIntro)
+                // Approx: newIntro = currentTime - (i / N) * (dur - DEFAULT_INTRO_SEC)
+                var n = slokas.length;
+                var newIntro = aud.currentTime - (i / n) * (dur - DEFAULT_INTRO_SEC);
+                introSec = Math.max(0, Math.min(dur - 1, newIntro));
+                try { localStorage.setItem(CAL_KEY, String(introSec)); } catch (e2) {}
+                lastIdx = -1;  // force re-highlight
+                autoScrollSlokas();
+            });
+            s.style.cursor = "pointer";
+            s.title = "Click to mark this verse as currently being recited (calibrates auto-scroll)";
+        });
+
         function autoScrollSlokas() {
             if (!slokasEl || slokasEl.hidden || !slokas.length) return;
             var dur = aud.duration;
             if (!dur || isNaN(dur) || dur <= 0) return;
-            var frac = Math.min(1, Math.max(0, aud.currentTime / dur));
-            var idx = Math.min(slokas.length - 1, Math.floor(frac * slokas.length));
+            var idx = currentSlokaIndex();
+            // Don't highlight during the intro
+            if (aud.currentTime < introSec) {
+                slokas.forEach(function (s) { s.classList.remove("fc-bg-sloka-active"); });
+                lastIdx = -1;
+                return;
+            }
             if (idx === lastIdx) return;
             lastIdx = idx;
             slokas.forEach(function (s) { s.classList.remove("fc-bg-sloka-active"); });
