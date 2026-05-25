@@ -2646,19 +2646,22 @@
         function renderGlobal(q, qNorm) {
             if (!globalPanel || !globalIndex) return;
             if (q.length < 2) { globalPanel.setAttribute("hidden", ""); return; }
-            var matches = [];
+            // Collect all Gītā matches; current-chapter ones come first so the
+            // user sees their own chapter's hits without thinking they're missing.
+            var here = [], other = [];
             for (var k = 0; k < globalIndex.length; k++) {
                 var entry = globalIndex[k];
-                if (currentChapter != null && entry.chapter === currentChapter) continue;
-                if (entry._n.indexOf(qNorm) !== -1) {
-                    matches.push(entry);
-                    if (matches.length >= 20) break;
-                }
+                if (entry._n.indexOf(qNorm) === -1) continue;
+                if (currentChapter != null && entry.chapter === currentChapter) here.push(entry);
+                else other.push(entry);
             }
+            var matches = here.concat(other).slice(0, 20);
             if (!matches.length) { globalPanel.setAttribute("hidden", ""); return; }
-            globalHeader.textContent = "Also found in " + matches.length + " other verse" +
-                (matches.length === 1 ? "" : "s") + " across the Gītā" +
-                (matches.length >= 20 ? " (first 20 shown)" : "");
+            var totalGita = here.length + other.length;
+            globalHeader.textContent = "Found in " + totalGita + " verse" +
+                (totalGita === 1 ? "" : "s") + " across the Gītā" +
+                (here.length ? " (" + here.length + " in this chapter)" : "") +
+                (totalGita > 20 ? " — first 20 shown" : "");
             var qSafeRe = new RegExp("(" + escapeRegex(q) + ")", "ig");
             globalList.innerHTML = matches.map(function (e) {
                 var src = e.translation + (e.purport ? " — " + e.purport : "");
@@ -2673,10 +2676,12 @@
                     preview = (start > 0 ? "…" : "") + src.slice(start, end) + (end < src.length ? "…" : "");
                 }
                 var safePreview = escapeHtmlFor(preview);
-                // Bold matches in preview (best-effort exact-substring; diacritic mismatches stay un-marked).
                 safePreview = safePreview.replace(qSafeRe, "<mark>$1</mark>");
-                return '<li><a href="' + toRoot + e.url + '">' +
-                    '<div class="fc-search-ref">' + escapeHtmlFor(e.ref) + '</div>' +
+                var isHere = (currentChapter != null && e.chapter === currentChapter);
+                var hrefBase = isHere ? "#" + e.id : toRoot + e.url;
+                var badge = isHere ? '<span class="fc-search-badge">this ch</span> ' : '';
+                return '<li><a href="' + hrefBase + '">' +
+                    '<div class="fc-search-ref">' + badge + escapeHtmlFor(e.ref) + '</div>' +
                     '<div class="fc-search-preview">' + safePreview + '</div></a></li>';
             }).join("");
             globalPanel.removeAttribute("hidden");
