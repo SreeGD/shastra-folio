@@ -72,6 +72,9 @@
             if (e.target.closest(".fc-readout-btn")) return;
             var label = e.target.closest(".fc-section-label");
             if (!label) return;
+            // Skip native <summary> elements — they handle their own
+            // toggling via <details>, and preventDefault would cancel that.
+            if (label.tagName === "SUMMARY" || label.closest("details")) return;
             var sec = label.closest("[data-sec]");
             if (!sec) return;
             var name = sec.dataset.sec;
