@@ -2859,20 +2859,33 @@
             var frac = Math.min(1, effective / remaining);
             return Math.min(slokas.length - 1, Math.floor(frac * slokas.length));
         }
-        // Calibration: when the user picks "Currently reciting: X.Y" from
-        // the dropdown OR clicks a sloka, recompute the intro-offset so that
-        // sloka aligns to the current audio.currentTime.
+        // Highlight a specific sloka + scroll panel to center it. Works
+        // even when audio hasn't loaded yet (calibration storage skipped).
+        function highlightSloka(i) {
+            if (i < 0 || i >= slokas.length) return;
+            slokas.forEach(function (s) { s.classList.remove("fc-bg-sloka-active"); });
+            var active = slokas[i];
+            active.classList.add("fc-bg-sloka-active");
+            lastIdx = i;
+            // Try to scroll panel to center this sloka
+            try {
+                var top = active.offsetTop - slokasEl.offsetTop - 40;
+                slokasEl.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
+            } catch (e) {}
+        }
+
+        // Calibration: when user picks "Currently reciting: X.Y" or clicks
+        // a sloka. If audio has duration, recompute intro-offset so the
+        // chosen sloka aligns to the current audio.currentTime. Always
+        // highlight regardless of audio state.
         function calibrateTo(i) {
+            highlightSloka(i);
             var dur = aud.duration;
-            if (!dur || isNaN(dur)) return;
+            if (!dur || isNaN(dur)) return;  // no duration yet, but UI is updated
             var n = slokas.length;
-            // Solve: i = (currentTime - newIntro) / (dur - newIntro) * n
-            // Use DEFAULT_INTRO_SEC as denominator estimate
             var newIntro = aud.currentTime - (i / n) * (dur - DEFAULT_INTRO_SEC);
             introSec = Math.max(0, Math.min(dur - 1, newIntro));
             try { localStorage.setItem(CAL_KEY, String(introSec)); } catch (e2) {}
-            lastIdx = -1;
-            autoScrollSlokas();
         }
         // Always-visible dropdown picker in the panel header
         var calSelect = document.getElementById("fc-bg-cal-select");
