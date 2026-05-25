@@ -2824,15 +2824,11 @@
         var KEY = "fc-bg-reciter";
         var slokasEl = document.getElementById("fc-bg-slokas");
 
-        function showSlokas() {
-            if (!slokasEl) return;
-            // Respect the sidebar toggle — if user hid the panel, never show it.
-            if (html.getAttribute("data-hide-recitation_slokas")) return;
-            slokasEl.hidden = false;
-        }
-        function hideSlokas() {
-            if (slokasEl) slokasEl.hidden = true;
-        }
+        // Panel is now persistently visible (was hidden-until-play). The
+        // sidebar "Reading-along view" checkbox toggles data-hide-recitation_slokas
+        // for explicit hide. Keep functions as no-ops to preserve callers below.
+        function showSlokas() {}
+        function hideSlokas() {}
 
         // Auto-scroll: estimate the currently-recited sloka. Each chapter
         // has an introductory section before sloka 1 (reciter mentions
@@ -2896,7 +2892,9 @@
         });
 
         function autoScrollSlokas() {
-            if (!slokasEl || slokasEl.hidden || !slokas.length) return;
+            if (!slokasEl || !slokas.length) return;
+            // Respect the user's explicit sidebar hide
+            if (html.getAttribute("data-hide-recitation_slokas")) return;
             var dur = aud.duration;
             if (!dur || isNaN(dur) || dur <= 0) return;
             var idx = currentSlokaIndex();
