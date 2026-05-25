@@ -1949,7 +1949,7 @@ html[data-hide-quiz="1"] [data-sec="quiz"] {
     display: none !important;
 }
 
-/* ───────── Recitation reading-along view (slokas below player, 3-window) ───────── */
+/* ───────── Recitation reading-along view (2-column, 4 slokas in view) ───────── */
 .fc-bg-recitation {
     display: flex;
     flex-direction: column;
@@ -1957,14 +1957,21 @@ html[data-hide-quiz="1"] [data-sec="quiz"] {
 }
 .fc-bg-audio-wrap { width: 100%; }
 .fc-bg-slokas {
-    /* ~3 slokas visible at a time — slight overscan so prev + current + next show */
-    max-height: 16rem;
     overflow-y: auto;
     background: #FCFAF0;
     border: 1px solid #ECDFC4;
     border-radius: 4px;
     padding: 0 1rem;
     scroll-behavior: smooth;
+}
+.fc-bg-slokas-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 1.2rem;
+    row-gap: 0.4rem;
+}
+@media (max-width: 599px) {
+    .fc-bg-slokas-inner { grid-template-columns: 1fr; }
 }
 .fc-bg-slokas-header {
     font-family: 'Lora', Georgia, serif;
@@ -1977,12 +1984,12 @@ html[data-hide-quiz="1"] [data-sec="quiz"] {
     top: 0;
     background: #FCFAF0;
     z-index: 1;
+    grid-column: 1 / -1;
 }
 .fc-bg-sloka {
-    padding: 0.6rem 0;
+    padding: 0.6rem 0.4rem;
     border-bottom: 1px dashed #ECDFC4;
 }
-.fc-bg-sloka:last-child { border-bottom: none; }
 .fc-bg-sloka-num {
     font-family: 'Lora', Georgia, serif;
     color: #B8860B;
@@ -1990,6 +1997,22 @@ html[data-hide-quiz="1"] [data-sec="quiz"] {
     font-size: 0.92rem;
     margin-bottom: 0.25rem;
 }
+
+/* Audio Recitation collapsible header (same pattern as MCQ details) */
+.fc-bg-audio-details > summary.fc-bg-audio-summary {
+    cursor: pointer;
+    list-style: none;
+    user-select: none;
+}
+.fc-bg-audio-details > summary.fc-bg-audio-summary::-webkit-details-marker { display: none; }
+.fc-bg-audio-details > summary.fc-bg-audio-summary::before {
+    content: "▾";
+    color: #B8860B;
+    display: inline-block;
+    margin-right: 0.45rem;
+    transition: transform 0.15s;
+}
+.fc-bg-audio-details:not([open]) > summary.fc-bg-audio-summary::before { transform: rotate(-90deg); }
 
 /* ───────── MCQ quiz panel ───────── */
 .fc-mcq-chapter, .fc-mcq-section {

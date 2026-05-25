@@ -2833,8 +2833,9 @@
 
         // Auto-scroll: estimate the currently-recited sloka from
         // audio.currentTime / duration × verseCount, highlight it, and size
-        // the panel to fit exactly 3 slokas (prev + current + next) with
-        // prev anchored at the top.
+        // the panel to show exactly 2 rows (4 slokas in 2-column grid).
+        // The grid has 2 columns, so each row holds 2 slokas. We anchor
+        // the active sloka's row at the top of the visible window.
         var slokas = slokasEl ? slokasEl.querySelectorAll(".fc-bg-sloka") : [];
         var slokasHeader = slokasEl ? slokasEl.querySelector(".fc-bg-slokas-header") : null;
         var lastIdx = -1;
@@ -2849,15 +2850,37 @@
             slokas.forEach(function (s) { s.classList.remove("fc-bg-sloka-active"); });
             var active = slokas[idx];
             active.classList.add("fc-bg-sloka-active");
-            // 3-sloka window: prev, current, next (clamped at boundaries)
-            var prev = slokas[Math.max(0, idx - 1)];
-            var next = slokas[Math.min(slokas.length - 1, idx + 1)];
+
+            // Detect actual column count from the grid (responsive: 1 col below 600px, 2 above)
+            var cols = 2;
+            try {
+                var inner = slokasEl.querySelector(".fc-bg-slokas-inner");
+                if (inner) {
+                    var gtc = window.getComputedStyle(inner).gridTemplateColumns || "";
+                    cols = Math.max(1, gtc.split(" ").filter(function (x) { return x.trim(); }).length);
+                }
+            } catch (e) {}
+
             var hdr = slokasHeader ? slokasHeader.offsetHeight : 0;
-            var winH = prev.offsetHeight + active.offsetHeight + next.offsetHeight + hdr + 24;
+            // Active sloka's row position in pixels (relative to inner-grid)
+            var rowTop = active.offsetTop;
+            // Find row height by measuring max of 2 slokas on the active row
+            var rowStart = Math.floor(idx / cols) * cols;
+            var rowEnd = Math.min(slokas.length, rowStart + cols);
+            var rowHeights = [];
+            // Get 2 rows worth of heights: active row + next row
+            for (var r = rowStart; r < Math.min(slokas.length, rowStart + 2 * cols); r += cols) {
+                var rowH = 0;
+                for (var c = r; c < Math.min(slokas.length, r + cols); c++) {
+                    rowH = Math.max(rowH, slokas[c].offsetHeight);
+                }
+                rowHeights.push(rowH);
+            }
+            var winH = rowHeights.reduce(function (a, b) { return a + b; }, 0) + hdr + 24;
             slokasEl.style.maxHeight = winH + "px";
-            // Scroll so the previous sloka is at the top of the scroll area
+            // Scroll so the active sloka's row anchors at the top of the scroll area
             var panel = slokasEl;
-            var top = prev.offsetTop - panel.offsetTop - hdr;
+            var top = rowTop - panel.offsetTop - hdr;
             panel.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
         }
         if (slokasEl) {
