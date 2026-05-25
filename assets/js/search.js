@@ -47,7 +47,9 @@
              .replace(/\bcaitanya\b/g, "chaitanya")
              .replace(/\bvis+nu\b/g, "vishnu")
              .replace(/\bsiva\b/g, "shiva")
-             .replace(/\bganga\b/g, "ganga");
+             .replace(/\bganga\b/g, "ganga")
+             .replace(/\bvrndavana?\b/g, "vrindavan")
+             .replace(/\bvrindavana\b/g, "vrindavan");
         return t;
     }
 
