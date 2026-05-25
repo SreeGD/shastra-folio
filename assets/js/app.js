@@ -2819,23 +2819,38 @@
         var aud = document.getElementById("fc-bg-audio");
         if (!sel || !aud) return;
         var KEY = "fc-bg-reciter";
+
+        function swapTo(opt, autoPlay) {
+            if (!opt) return;
+            var wasPlaying = !aud.paused;
+            try { aud.pause(); } catch (e) {}
+            aud.src = opt.value;
+            aud.removeAttribute("preload");        // browser may need a nudge
+            aud.setAttribute("preload", "metadata");
+            try { aud.load(); } catch (e) {}
+            try { localStorage.setItem(KEY, opt.dataset.reciter); } catch (e) {}
+            if (autoPlay || wasPlaying) {
+                // Resume playback with the new src if user was already listening
+                aud.play().catch(function () {});
+            }
+        }
+
+        // Apply saved reciter if available in this chapter's options
         var saved = null;
         try { saved = localStorage.getItem(KEY); } catch (e) {}
-        // Apply saved reciter if available in this chapter's options
         if (saved) {
             for (var i = 0; i < sel.options.length; i++) {
                 if (sel.options[i].dataset.reciter === saved) {
                     sel.selectedIndex = i;
+                    // Initial load: just set src, don't auto-play
                     aud.src = sel.options[i].value;
                     break;
                 }
             }
         }
+
         sel.addEventListener("change", function () {
-            var opt = sel.options[sel.selectedIndex];
-            aud.src = opt.value;
-            aud.load();
-            try { localStorage.setItem(KEY, opt.dataset.reciter); } catch (e) {}
+            swapTo(sel.options[sel.selectedIndex], false);
         });
     }
     wireBgAudioPlayer();
