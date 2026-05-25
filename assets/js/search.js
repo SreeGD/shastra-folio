@@ -129,13 +129,19 @@
             this.field("ref", { boost: 5 });
             this.field("chapter_label", { boost: 1 });
             this.metadataWhitelist = ["position"];
-            // Custom pipeline: strip diacritics + aliasNormalise before
-            // Lunr's built-in stemmer.
+            // Custom pipeline: strip diacritics + aliasNormalise BEFORE
+            // lunr.trimmer. The default trimmer uses /^\W+|\W+$/ which
+            // treats non-ASCII letters (ā, ī, ṛ, etc.) as non-word and
+            // chops them off — so 'bhavānyā' would become 'bhavāny' before
+            // we ever get to strip diacritics, asymmetrically stemming to
+            // 'bhavani' and never matching a user query of 'bhavanya'.
+            // Inserting our normalize step before the trimmer means the
+            // trimmer only ever sees plain ASCII tokens and behaves correctly.
             var stripFn = function (token) {
                 return token.update(function (str) { return aliasNormalise(str); });
             };
             lunr.Pipeline.registerFunction(stripFn, "fcStrip");
-            this.pipeline.before(lunr.stemmer, stripFn);
+            this.pipeline.before(lunr.trimmer, stripFn);
             this.searchPipeline.before(lunr.stemmer, stripFn);
 
             for (var i = 0; i < docs.length; i++) {
