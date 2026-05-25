@@ -2863,23 +2863,36 @@
             var frac = Math.min(1, effective / remaining);
             return Math.min(slokas.length - 1, Math.floor(frac * slokas.length));
         }
-        // Click handler: recalibrate so the clicked sloka is "active right now"
-        slokas.forEach(function (s, i) {
-            s.addEventListener("click", function () {
-                var dur = aud.duration;
-                if (!dur || isNaN(dur)) return;
-                // Solve: i = floor( (currentTime - newIntro) / (dur - newIntro) * N )
-                // For exact alignment: newIntro = currentTime - (i / N) * (dur - newIntro)
-                // Approx: newIntro = currentTime - (i / N) * (dur - DEFAULT_INTRO_SEC)
-                var n = slokas.length;
-                var newIntro = aud.currentTime - (i / n) * (dur - DEFAULT_INTRO_SEC);
-                introSec = Math.max(0, Math.min(dur - 1, newIntro));
-                try { localStorage.setItem(CAL_KEY, String(introSec)); } catch (e2) {}
-                lastIdx = -1;  // force re-highlight
-                autoScrollSlokas();
+        // Calibration: when the user picks "Currently reciting: X.Y" from
+        // the dropdown OR clicks a sloka, recompute the intro-offset so that
+        // sloka aligns to the current audio.currentTime.
+        function calibrateTo(i) {
+            var dur = aud.duration;
+            if (!dur || isNaN(dur)) return;
+            var n = slokas.length;
+            // Solve: i = (currentTime - newIntro) / (dur - newIntro) * n
+            // Use DEFAULT_INTRO_SEC as denominator estimate
+            var newIntro = aud.currentTime - (i / n) * (dur - DEFAULT_INTRO_SEC);
+            introSec = Math.max(0, Math.min(dur - 1, newIntro));
+            try { localStorage.setItem(CAL_KEY, String(introSec)); } catch (e2) {}
+            lastIdx = -1;
+            autoScrollSlokas();
+        }
+        // Always-visible dropdown picker in the panel header
+        var calSelect = document.getElementById("fc-bg-cal-select");
+        if (calSelect) {
+            calSelect.addEventListener("change", function () {
+                var i = parseInt(calSelect.value, 10);
+                if (isNaN(i)) return;
+                calibrateTo(i);
+                calSelect.value = "";  // reset for next pick
             });
+        }
+        // Click on any sloka card still works as a shortcut
+        slokas.forEach(function (s, i) {
+            s.addEventListener("click", function () { calibrateTo(i); });
             s.style.cursor = "pointer";
-            s.title = "Click to mark this verse as currently being recited (calibrates auto-scroll)";
+            s.title = "Click to calibrate auto-scroll to this verse";
         });
 
         function autoScrollSlokas() {
