@@ -2818,9 +2818,9 @@
     // Persists picked reciter in localStorage so it carries across chapters.
     // -------------------------------------------------------------------------
     function wireBgAudioPlayer() {
-        var sel = document.getElementById("fc-bg-reciter");
+        var sel = document.getElementById("fc-bg-reciter");  // null when only 1 reciter
         var aud = document.getElementById("fc-bg-audio");
-        if (!sel || !aud) return;
+        if (!aud) return;                                     // require audio only
         var KEY = "fc-bg-reciter";
         var slokasEl = document.getElementById("fc-bg-slokas");
 
@@ -2979,22 +2979,23 @@
         }
 
         // Apply saved reciter if available in this chapter's options
-        var saved = null;
-        try { saved = localStorage.getItem(KEY); } catch (e) {}
-        if (saved) {
-            for (var i = 0; i < sel.options.length; i++) {
-                if (sel.options[i].dataset.reciter === saved) {
-                    sel.selectedIndex = i;
-                    // Initial load: just set src, don't auto-play
-                    aud.src = sel.options[i].value;
-                    break;
+        // (only relevant when multiple reciters → <select> rendered)
+        if (sel) {
+            var saved = null;
+            try { saved = localStorage.getItem(KEY); } catch (e) {}
+            if (saved) {
+                for (var i = 0; i < sel.options.length; i++) {
+                    if (sel.options[i].dataset.reciter === saved) {
+                        sel.selectedIndex = i;
+                        aud.src = sel.options[i].value;
+                        break;
+                    }
                 }
             }
+            sel.addEventListener("change", function () {
+                swapTo(sel.options[sel.selectedIndex], false);
+            });
         }
-
-        sel.addEventListener("change", function () {
-            swapTo(sel.options[sel.selectedIndex], false);
-        });
     }
     wireBgAudioPlayer();
 
