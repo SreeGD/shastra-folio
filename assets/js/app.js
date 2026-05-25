@@ -2831,11 +2831,12 @@
             if (slokasEl) slokasEl.hidden = true;
         }
 
-        // Auto-scroll: as the recitation plays, estimate which sloka is
-        // currently being recited (linear interpolation across duration),
-        // highlight it, and scroll the slokas panel so it's centered.
-        // Without per-verse timestamps this is approximate but useful.
+        // Auto-scroll: estimate the currently-recited sloka from
+        // audio.currentTime / duration × verseCount, highlight it, and size
+        // the panel to fit exactly 3 slokas (prev + current + next) with
+        // prev anchored at the top.
         var slokas = slokasEl ? slokasEl.querySelectorAll(".fc-bg-sloka") : [];
+        var slokasHeader = slokasEl ? slokasEl.querySelector(".fc-bg-slokas-header") : null;
         var lastIdx = -1;
         function autoScrollSlokas() {
             if (!slokasEl || slokasEl.hidden || !slokas.length) return;
@@ -2848,11 +2849,16 @@
             slokas.forEach(function (s) { s.classList.remove("fc-bg-sloka-active"); });
             var active = slokas[idx];
             active.classList.add("fc-bg-sloka-active");
-            // Scroll panel so the active sloka is centered within the inner scroll area
+            // 3-sloka window: prev, current, next (clamped at boundaries)
+            var prev = slokas[Math.max(0, idx - 1)];
+            var next = slokas[Math.min(slokas.length - 1, idx + 1)];
+            var hdr = slokasHeader ? slokasHeader.offsetHeight : 0;
+            var winH = prev.offsetHeight + active.offsetHeight + next.offsetHeight + hdr + 24;
+            slokasEl.style.maxHeight = winH + "px";
+            // Scroll so the previous sloka is at the top of the scroll area
             var panel = slokasEl;
-            var top = active.offsetTop - panel.offsetTop;
-            var center = top - (panel.clientHeight / 2) + (active.offsetHeight / 2);
-            panel.scrollTo({ top: Math.max(0, center), behavior: "smooth" });
+            var top = prev.offsetTop - panel.offsetTop - hdr;
+            panel.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
         }
         if (slokasEl) {
             aud.addEventListener("play", showSlokas);
