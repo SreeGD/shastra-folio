@@ -25,6 +25,7 @@
     var renderCursor = 0;
     var filterWork = "";
     var filterField = "";
+    var filterGenre = "";
 
     // ───── Helpers ─────────────────────────────────────────────────────────
     function $(id) { return document.getElementById(id); }
@@ -186,6 +187,7 @@
         var filtered = results.filter(function (r) {
             var doc = docById[r.ref];
             if (filterWork && doc.work !== filterWork) return false;
+            if (filterGenre && (doc.genre || "discourse") !== filterGenre) return false;
             if (filterField) {
                 var fields = Object.keys(r.matchData.metadata || {})
                     .reduce(function (acc, term) {
@@ -201,7 +203,7 @@
 
         // Status line
         var statusMsg = filtered.length + " match" + (filtered.length === 1 ? "" : "es");
-        if (filterWork || filterField) {
+        if (filterWork || filterField || filterGenre) {
             statusMsg += " (filtered from " + results.length + ")";
         }
         setStatus("<strong>" + statusMsg + "</strong> for \"" + escapeHtml(lastQuery) + "\"");
@@ -222,7 +224,7 @@
 
     function appendResultRows(filtered) {
         var resultsEl = $("fc-search-results");
-        var rootPath = document.documentElement.getAttribute("data-root") || "/";
+        var rootPath = window.FC_TO_ROOT || "../";
         var end = Math.min(filtered.length, renderCursor + PAGE_SIZE);
         for (var i = renderCursor; i < end; i++) {
             var r = filtered[i];
@@ -276,16 +278,16 @@
 
     function renderFacets(results) {
         $("fc-search-facets").hidden = false;
-        // Hierarchy facet
-        var workCounts = {};
-        var workLabels = {};
+        var workCounts = {}, workLabels = {};
         var fieldCounts = {};
+        var genreCounts = {};
         results.forEach(function (r) {
             var doc = docById[r.ref];
             if (!doc) return;
             workCounts[doc.work] = (workCounts[doc.work] || 0) + 1;
             workLabels[doc.work] = doc.work_label;
-            // Which fields matched?
+            var g = doc.genre || "discourse";
+            genreCounts[g] = (genreCounts[g] || 0) + 1;
             var meta = r.matchData.metadata || {};
             Object.keys(meta).forEach(function (term) {
                 Object.keys(meta[term]).forEach(function (f) {
@@ -305,6 +307,23 @@
                    '" data-facet="work" data-value="' + it.w + '">' +
                    escapeHtml(it.label) + ' <span class="fc-facet-count">(' + it.n + ')</span></a></li>';
         }).join("");
+        var genreLabel = { scripture: "Scripture (śāstra)",
+                            commentary: "Commentary / Treatise",
+                            practice: "Practice / Stotra",
+                            discourse: "Article / Discourse" };
+        var genreItems = Object.keys(genreCounts)
+            .map(function (g) { return { g: g, n: genreCounts[g] }; })
+            .sort(function (a, b) { return b.n - a.n; });
+        var facetGenreEl = $("fc-facet-genre");
+        if (facetGenreEl) {
+            facetGenreEl.innerHTML = genreItems.map(function (it) {
+                var active = it.g === filterGenre ? " is-active" : "";
+                return '<li><a href="#" class="fc-facet-link' + active +
+                       '" data-facet="genre" data-value="' + it.g + '">' +
+                       escapeHtml(genreLabel[it.g] || it.g) +
+                       ' <span class="fc-facet-count">(' + it.n + ')</span></a></li>';
+            }).join("");
+        }
         $("fc-facet-field").innerHTML = fieldItems.map(function (it) {
             var active = it.f === filterField ? " is-active" : "";
             var nice = { translation: "Translation", purport: "Purport / Commentary",
@@ -328,6 +347,7 @@
         var q = params.get("q") || "";
         filterWork = params.get("work") || "";
         filterField = params.get("field") || "";
+        filterGenre = params.get("genre") || "";
         return q;
     }
     function updateUrl(q) {
@@ -335,6 +355,7 @@
         if (q) p.set("q", q);
         if (filterWork) p.set("work", filterWork);
         if (filterField) p.set("field", filterField);
+        if (filterGenre) p.set("genre", filterGenre);
         var qs = p.toString();
         var url = location.pathname + (qs ? "?" + qs : "");
         if (url !== location.pathname + location.search) {
@@ -381,6 +402,8 @@
                 filterWork = (filterWork === value) ? "" : value;
             } else if (facet === "field") {
                 filterField = (filterField === value) ? "" : value;
+            } else if (facet === "genre") {
+                filterGenre = (filterGenre === value) ? "" : value;
             }
             renderResults();
             updateUrl(input.value);
