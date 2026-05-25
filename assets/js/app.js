@@ -2830,10 +2830,36 @@
         function hideSlokas() {
             if (slokasEl) slokasEl.hidden = true;
         }
+
+        // Auto-scroll: as the recitation plays, estimate which sloka is
+        // currently being recited (linear interpolation across duration),
+        // highlight it, and scroll the slokas panel so it's centered.
+        // Without per-verse timestamps this is approximate but useful.
+        var slokas = slokasEl ? slokasEl.querySelectorAll(".fc-bg-sloka") : [];
+        var lastIdx = -1;
+        function autoScrollSlokas() {
+            if (!slokasEl || slokasEl.hidden || !slokas.length) return;
+            var dur = aud.duration;
+            if (!dur || isNaN(dur) || dur <= 0) return;
+            var frac = Math.min(1, Math.max(0, aud.currentTime / dur));
+            var idx = Math.min(slokas.length - 1, Math.floor(frac * slokas.length));
+            if (idx === lastIdx) return;
+            lastIdx = idx;
+            slokas.forEach(function (s) { s.classList.remove("fc-bg-sloka-active"); });
+            var active = slokas[idx];
+            active.classList.add("fc-bg-sloka-active");
+            // Scroll panel so the active sloka is centered within the inner scroll area
+            var panel = slokasEl;
+            var top = active.offsetTop - panel.offsetTop;
+            var center = top - (panel.clientHeight / 2) + (active.offsetHeight / 2);
+            panel.scrollTo({ top: Math.max(0, center), behavior: "smooth" });
+        }
         if (slokasEl) {
             aud.addEventListener("play", showSlokas);
             aud.addEventListener("pause", hideSlokas);
             aud.addEventListener("ended", hideSlokas);
+            aud.addEventListener("timeupdate", autoScrollSlokas);
+            aud.addEventListener("seeked", autoScrollSlokas);
         }
 
         function swapTo(opt, autoPlay) {
