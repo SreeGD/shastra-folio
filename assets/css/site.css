@@ -4937,8 +4937,26 @@ html[data-theme="dark"] .fc-persona-week-name { color: #f0a8b8; }
     align-items: flex-start;
 }
 @media (max-width: 800px) {
-    .fc-search-layout { grid-template-columns: 1fr; }
-    .fc-search-facets { order: -1; }
+    .fc-search-layout { grid-template-columns: 1fr; gap: 0.8rem; }
+    .fc-search-facets {
+        order: -1;
+        position: static;          /* drop sticky — no longer eats the viewport */
+        max-height: none;           /* let the details element control height */
+        padding: 0.3rem 0.7rem;
+    }
+    /* On phones default the facet groups to closed so they don't crowd
+       the results. Tap the heading to reveal options. */
+    .fc-search-facet:not([data-user-toggled]) { /* keyed by JS later if needed */ }
+    .fc-search-form { flex-wrap: wrap; gap: 0.5rem; }
+    .fc-search-q { width: 100%; max-width: none; flex: 1 1 100%; }
+    .fc-search-submit { width: 100%; padding: 0.8rem; }
+    .fc-search-row { padding: 0.7rem 0; }
+    .fc-search-row-ref { font-size: 1rem; display: inline-block; }
+    .fc-search-row-snippet { font-size: 0.95rem; }
+}
+@media (max-width: 540px) {
+    .fc-search-page-title { font-size: 1.4rem; margin: 0.3rem 0 0.6rem; }
+    .fc-search-row-context { font-size: 0.78rem; }
 }
 .fc-search-results { min-height: 12rem; }
 .fc-search-row {

@@ -90,6 +90,12 @@
 <script src="../assets/js/search.js" defer></script>
 <script>
 window.FC_SEARCH_DOCS_URL = "../assets/data/search-docs.json";
+// On phones, collapse facet groups by default so they don't fill the viewport.
+if (window.matchMedia('(max-width: 800px)').matches) {
+    document.querySelectorAll('.fc-search-facet[open]').forEach(function (d) {
+        d.removeAttribute('open');
+    });
+}
 </script>
     </main>
 </div>

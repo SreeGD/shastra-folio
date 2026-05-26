@@ -59,8 +59,58 @@
 
   @media (max-width: 760px) {
     .te-pilot-script, .te-pilot-bilingual { grid-template-columns: 1fr; }
+    .te-pilot-wrap { padding: 0 0.8rem 3rem; }
+    .te-pilot-verse { padding: 0.7rem 0.7rem 0.9rem; margin-bottom: 1.6rem; }
+    .te-pilot-col { padding: 0.7rem 0.8rem; }
   }
+
+  /* Language toggle — show EN only / both / TE only */
+  .te-lang-toggle {
+    display: inline-flex; gap: 0; margin: 0.4rem 0 1rem;
+    border: 1px solid #d4b78a; border-radius: 4px; overflow: hidden;
+    font-size: 0.88rem; background: #fff8e6;
+  }
+  .te-lang-toggle button {
+    background: transparent; border: none; padding: 0.4rem 0.9rem;
+    font: inherit; color: var(--fc-maroon, #6B1D2A); cursor: pointer;
+    border-right: 1px solid #d4b78a;
+  }
+  .te-lang-toggle button:last-child { border-right: none; }
+  .te-lang-toggle button.active { background: var(--fc-maroon, #6B1D2A); color: #fff; }
+  .te-lang-toggle button:hover:not(.active) { background: #FCEFA1; }
+  body[data-langs="en"] .te-pilot-col-te { display: none; }
+  body[data-langs="en"] .te-pilot-bilingual { grid-template-columns: 1fr; }
+  body[data-langs="te"] .te-pilot-col-en { display: none; }
+  body[data-langs="te"] .te-pilot-bilingual { grid-template-columns: 1fr; }
+  body[data-langs="te"] .te-pilot-script-col:first-child { display: none; }
+  body[data-langs="te"] .te-pilot-script { grid-template-columns: 1fr; }
+  body[data-langs="en"] .te-pilot-script-col:last-child { display: none; }
+  body[data-langs="en"] .te-pilot-script { grid-template-columns: 1fr; }
 </style>
+<script>
+  // Restore saved language preference + wire toggle
+  (function () {
+    var saved = (typeof localStorage !== "undefined" && localStorage.getItem("fc-bilingual-langs")) || "both";
+    if (saved !== "both") document.body.setAttribute("data-langs", saved);
+    document.addEventListener("DOMContentLoaded", function () {
+      var btns = document.querySelectorAll(".te-lang-toggle button");
+      function syncActive() {
+        var cur = document.body.getAttribute("data-langs") || "both";
+        btns.forEach(function (b) { b.classList.toggle("active", b.dataset.langs === cur); });
+      }
+      btns.forEach(function (b) {
+        b.addEventListener("click", function () {
+          var v = b.dataset.langs;
+          if (v === "both") document.body.removeAttribute("data-langs");
+          else document.body.setAttribute("data-langs", v);
+          try { localStorage.setItem("fc-bilingual-langs", v); } catch (e) {}
+          syncActive();
+        });
+      });
+      syncActive();
+    });
+  })();
+</script>
 </head>
 <body>
 <header class="fc-site-header">
@@ -78,6 +128,12 @@
     <strong>Draft Telugu translation.</strong> Auto-translated by Claude (Opus 4.7) from
     Śrīla Prabhupāda's English edition. Not BBT-approved. 19/19 verses translated.
   </p>
+
+  <div class="te-lang-toggle" role="group" aria-label="Language view">
+    <button type="button" data-langs="en">English only</button>
+    <button type="button" data-langs="both">Both</button>
+    <button type="button" data-langs="te" lang="te">తెలుగు only</button>
+  </div>
 
   <nav class="te-jump"><strong>Telugu chapters:</strong> <a href="../../../bg/1/telugu/">Ch 1</a> <a href="../../../bg/2/telugu/">Ch 2</a> <a href="../../../bg/3/telugu/">Ch 3</a> <a href="../../../bg/4/telugu/">Ch 4</a> <a href="../../../bg/5/telugu/">Ch 5</a> <a href="../../../bg/6/telugu/">Ch 6</a> <a href="../../../bg/7/telugu/">Ch 7</a> <a href="../../../bg/8/telugu/">Ch 8</a> <a href="../../../bg/9/telugu/">Ch 9</a> <a href="../../../bg/10/telugu/">Ch 10</a> <a href="../../../bg/11/telugu/">Ch 11</a> <a href="../../../bg/12/telugu/">Ch 12</a> <a href="../../../bg/13/telugu/">Ch 13</a> <a href="../../../bg/14/telugu/">Ch 14</a> <a href="../../../bg/15/telugu/">Ch 15</a> <a class="te-jump-current" href="../../../bg/16/telugu/">Ch 16</a> <a href="../../../bg/17/telugu/">Ch 17</a> <a href="../../../bg/18/telugu/">Ch 18</a></nav>
 
