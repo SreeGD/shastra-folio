@@ -4,7 +4,7 @@
      - cache-first for static assets (CSS / JS / JSON / SVG / fonts)
      - precache the app shell on install so first offline visit still works */
 
-const VERSION = "v20260526105036";
+const VERSION = "v20260526110040";
 const CACHE = "foliocorpus-" + VERSION;
 const SHELL = [
     "./",
