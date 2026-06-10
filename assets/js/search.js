@@ -224,6 +224,7 @@
             this.field("iast", { boost: 2 });
             this.field("synonyms", { boost: 1 });
             this.field("ref", { boost: 5 });
+            this.field("guidance", { boost: 1 });
             // chapter_label + position metadata intentionally omitted to
             // match the pre-built index shape (smaller, faster).
             this.pipeline.before(lunr.trimmer, fcStripFn);
