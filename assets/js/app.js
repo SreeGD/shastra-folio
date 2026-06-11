@@ -3086,4 +3086,183 @@
         });
     }
     wireClassicalJargonTooltips();
+
+    // -------------------------------------------------------------------------
+    // BG Display panel: preset chips, layer panel persistence, count badges,
+    // reset button, "Custom" auto-detection.
+    // -------------------------------------------------------------------------
+    function wireBgDisplayPanel() {
+        var layersRoot = document.querySelector(".fc-sb-layers");
+        if (!layersRoot) return; // not a BG page
+
+        // Each layer master + the children whose visibility it covers.
+        var LAYER_MEMBERS = {
+            layer_prabhupada:        ["devanagari", "iast", "pronunciation", "synonyms", "blended", "purport"],
+            layer_gaudiya:           ["gaudiya", "classical"],
+            layer_recitation_pg:     ["audio_player", "recitation_slokas", "personal_guidance"],
+            layer_sanskrit_analysis: ["classical_analysis"],
+            layer_study_aids:        ["quiz", "study_qa", "study_essays", "gpd_all",
+                                      "chapter_overview", "breakdown", "section_banner", "study"],
+            layer_connections:       ["related", "lectures", "stories-full", "analogy", "important_words"],
+        };
+
+        // Hidden-map shape per preset. Key present + truthy = hidden.
+        // "standard" = the site's `DEFAULT_HIDDEN` (so we wipe the map).
+        var PRESETS = {
+            minimal: {
+                // Only L1 layer + its core sub-toggles visible. Everything else hidden.
+                pronunciation: 1, blended: 1,
+                layer_gaudiya: 1,
+                layer_recitation_pg: 1,
+                layer_sanskrit_analysis: 1,
+                layer_study_aids: 1,
+                layer_connections: 1,
+            },
+            standard: {}, // wipe to DEFAULT_HIDDEN
+            scholar: {
+                // Force everything visible — including the leaf-defaults that are OFF
+                pronunciation: 0,
+                analogy: 0,
+                "stories-full": 0,
+                important_words: 0,
+            },
+        };
+
+        function setHidden(sec, hidden) {
+            if (hidden) {
+                S.hidden[sec] = 1;
+                html.setAttribute("data-hide-" + sec, "1");
+            } else {
+                if (S.DEFAULT_HIDDEN && S.DEFAULT_HIDDEN[sec]) S.hidden[sec] = 0;
+                else delete S.hidden[sec];
+                html.removeAttribute("data-hide-" + sec);
+            }
+        }
+
+        function applyPreset(name) {
+            var map = PRESETS[name];
+            if (!map) return;
+            // Reset everything first to defaults.
+            S.hidden = {};
+            // Reapply DEFAULT_HIDDEN visually
+            var allSecs = (S.SECTIONS || []).slice();
+            Object.keys(LAYER_MEMBERS).forEach(function (k) {
+                allSecs.push(k);
+                LAYER_MEMBERS[k].forEach(function (m) { if (allSecs.indexOf(m) < 0) allSecs.push(m); });
+            });
+            allSecs.forEach(function (s) {
+                if (S.DEFAULT_HIDDEN && S.DEFAULT_HIDDEN[s]) html.setAttribute("data-hide-" + s, "1");
+                else html.removeAttribute("data-hide-" + s);
+            });
+            // Then apply preset overrides
+            Object.keys(map).forEach(function (k) { setHidden(k, !!map[k]); });
+            save(S.HIDDEN_KEY, S.hidden);
+            // Sync checkbox states to localStorage truth
+            document.querySelectorAll(".fc-sb-grid input[type='checkbox'][data-section], .fc-sb-layers input[type='checkbox'][data-section]").forEach(function (cb) {
+                cb.checked = !S.isHidden(cb.dataset.section);
+            });
+            updateCounts();
+            updateActivePreset();
+        }
+
+        function presetMatches(map) {
+            // For every section we know about, check if its current hidden-ness
+            // matches what `map` would produce.
+            var allKeys = new Set();
+            Object.keys(map).forEach(function (k) { allKeys.add(k); });
+            // Also need to verify defaults aren't overridden
+            (S.SECTIONS || []).forEach(function (k) { allKeys.add(k); });
+            Object.keys(LAYER_MEMBERS).forEach(function (k) { allKeys.add(k); });
+            var ok = true;
+            allKeys.forEach(function (k) {
+                var wantHidden;
+                if (Object.prototype.hasOwnProperty.call(map, k)) wantHidden = !!map[k];
+                else wantHidden = !!(S.DEFAULT_HIDDEN && S.DEFAULT_HIDDEN[k]);
+                if (!!S.isHidden(k) !== wantHidden) ok = false;
+            });
+            return ok;
+        }
+
+        function updateActivePreset() {
+            var chips = document.querySelectorAll(".fc-preset-chip");
+            var activeName = null;
+            ["minimal", "standard", "scholar"].forEach(function (name) {
+                if (activeName) return;
+                if (presetMatches(PRESETS[name])) activeName = name;
+            });
+            if (!activeName) activeName = "custom";
+            chips.forEach(function (chip) {
+                if (chip.dataset.preset === activeName) chip.classList.add("fc-preset-active");
+                else chip.classList.remove("fc-preset-active");
+            });
+        }
+
+        function updateCounts() {
+            Object.keys(LAYER_MEMBERS).forEach(function (master) {
+                var el = document.querySelector('[data-layer-count="' + master + '"]');
+                if (!el) return;
+                var members = LAYER_MEMBERS[master];
+                var on = 0;
+                members.forEach(function (m) { if (!S.isHidden(m)) on++; });
+                el.textContent = on + "/" + members.length;
+                el.classList.toggle("fc-count-all-on", on === members.length);
+                el.classList.toggle("fc-count-all-off", on === 0);
+            });
+        }
+
+        // Stop checkbox clicks inside <summary> from also toggling the <details>.
+        layersRoot.querySelectorAll(".fc-layer-summary input[type='checkbox']").forEach(function (cb) {
+            cb.addEventListener("click", function (e) { e.stopPropagation(); });
+        });
+        layersRoot.querySelectorAll(".fc-layer-summary label").forEach(function (lbl) {
+            lbl.addEventListener("click", function (e) { e.stopPropagation(); });
+        });
+
+        // Persist <details> open state per layer.
+        var PANEL_KEY = "fc-bg-layer-panels";
+        var savedPanels = {};
+        try { savedPanels = JSON.parse(localStorage.getItem(PANEL_KEY) || "{}") || {}; } catch (e) {}
+        layersRoot.querySelectorAll(".fc-layer-panel").forEach(function (panel) {
+            var key = panel.dataset.layer;
+            if (Object.prototype.hasOwnProperty.call(savedPanels, key)) {
+                panel.open = !!savedPanels[key];
+            }
+            panel.addEventListener("toggle", function () {
+                savedPanels[key] = !!panel.open;
+                try { localStorage.setItem(PANEL_KEY, JSON.stringify(savedPanels)); } catch (e) {}
+            });
+        });
+        // Remove the early-paint anti-flicker style now that real <details> state is synced.
+        var preloadStyle = document.getElementById("fc-bg-layer-panels-preload");
+        if (preloadStyle) preloadStyle.remove();
+
+        // Preset chip clicks
+        document.querySelectorAll(".fc-preset-chip").forEach(function (chip) {
+            if (chip.dataset.preset === "custom") return; // disabled — auto-selected
+            chip.addEventListener("click", function () {
+                applyPreset(chip.dataset.preset);
+            });
+        });
+
+        // Reset button — same as Standard preset
+        var resetBtn = document.querySelector('[data-action="reset-display"]');
+        if (resetBtn) {
+            resetBtn.addEventListener("click", function () {
+                applyPreset("standard");
+            });
+        }
+
+        // Hook into any toggle change to keep counts + active preset fresh.
+        document.querySelectorAll('input[type="checkbox"][data-section]').forEach(function (cb) {
+            cb.addEventListener("change", function () {
+                updateCounts();
+                updateActivePreset();
+            });
+        });
+
+        // Initial paint
+        updateCounts();
+        updateActivePreset();
+    }
+    wireBgDisplayPanel();
 })();

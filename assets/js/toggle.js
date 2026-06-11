@@ -93,6 +93,30 @@
     if (sidebars.left) html.setAttribute("data-left-collapsed", "1");
     if (sidebars.right) html.setAttribute("data-right-collapsed", "1");
 
+    // BG sidebar layer-panel open state (applied via CSS pre-paint).
+    // We can't manipulate <details open> from script before parse, but we can
+    // inject a <style> that sets the default state for any panels with a
+    // persisted "closed" preference. After parse, app.js syncs the actual
+    // `open` attribute. This style block prevents the brief expand-flash.
+    try {
+        var bgPanels = JSON.parse(localStorage.getItem("fc-bg-layer-panels") || "{}") || {};
+        var closedKeys = Object.keys(bgPanels).filter(function (k) { return bgPanels[k] === false; });
+        var openKeys   = Object.keys(bgPanels).filter(function (k) { return bgPanels[k] === true; });
+        if (closedKeys.length || openKeys.length) {
+            var css = "";
+            // For panels we want closed but HTML has open: temporarily hide their children
+            closedKeys.forEach(function (k) {
+                css += ".fc-layer-panel[data-layer=\"" + k + "\"] > .fc-layer-children{display:none}";
+            });
+            if (css) {
+                var st = document.createElement("style");
+                st.id = "fc-bg-layer-panels-preload";
+                st.textContent = css;
+                document.head.appendChild(st);
+            }
+        }
+    } catch (e) {}
+
     // Reading preferences (theme / font / size). Apply early to avoid flicker.
     var READ_KEY = "fc-reading";
     var DEFAULTS = { theme: "light", font: "serif", size: "normal", layout: "single" };

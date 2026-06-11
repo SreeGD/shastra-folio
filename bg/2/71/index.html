@@ -77,50 +77,99 @@
 
         <div class="fc-sb-section">
             <div class="fc-sb-title">Display</div>
-            <div class="fc-sb-grid fc-sb-layers">
-                <label class="fc-toggle-master fc-layer-master" data-layer="1"><input type="checkbox" data-section="layer_prabhupada" checked> <strong>Prabhupāda</strong></label>
-                <label class="fc-layer-child"><input type="checkbox" data-section="devanagari" checked> Devanāgarī</label>
-                <label class="fc-layer-child"><input type="checkbox" data-section="iast" checked> IAST transliteration</label>
-                <label class="fc-layer-child"><input type="checkbox" data-section="pronunciation"> English reading guide</label>
-                <label class="fc-layer-child"><input type="checkbox" data-section="synonyms" checked> Word-for-word</label>
-                <label class="fc-layer-child"><input type="checkbox" data-section="blended" checked> Blended reading</label>
-                <label class="fc-layer-child"><input type="checkbox" data-section="purport" checked> Purport</label>
+            <div class="fc-display-presets" role="group" aria-label="Reader mode presets">
+                <button type="button" class="fc-preset-chip" data-preset="minimal" title="Just Prabhupāda's verse text and purport — everything else off">Minimal</button>
+                <button type="button" class="fc-preset-chip" data-preset="standard" title="The site's default layer mix">Standard</button>
+                <button type="button" class="fc-preset-chip" data-preset="scholar" title="Everything on — Sanskrit analysis, all commentaries, all study aids">Scholar</button>
+                <button type="button" class="fc-preset-chip" data-preset="custom" disabled title="Auto-selected when your selections don't match a preset">Custom</button>
+            </div>
+            <div class="fc-sb-layers">
+                <details class="fc-layer-panel" data-layer="layer_prabhupada" open>
+                    <summary class="fc-layer-summary" title="Canonical reading — Śrīla Prabhupāda's edition: Devanāgarī, IAST, synonyms, translation, purport.">
+                        <label class="fc-layer-master-label"><input type="checkbox" data-section="layer_prabhupada" checked> <strong>Prabhupāda</strong></label>
+                        <span class="fc-layer-count" data-layer-count="layer_prabhupada"></span>
+                    </summary>
+                    <div class="fc-layer-children">
+                        <label class="fc-layer-child"><input type="checkbox" data-section="devanagari" checked> Devanāgarī</label>
+                        <label class="fc-layer-child"><input type="checkbox" data-section="iast" checked> IAST transliteration</label>
+                        <label class="fc-layer-child"><input type="checkbox" data-section="pronunciation"> English reading guide</label>
+                        <label class="fc-layer-child"><input type="checkbox" data-section="synonyms" checked> Word-for-word</label>
+                        <label class="fc-layer-child"><input type="checkbox" data-section="blended" checked> Blended reading</label>
+                        <label class="fc-layer-child"><input type="checkbox" data-section="purport" checked> Purport</label>
+                    </div>
+                </details>
 
-                <label class="fc-toggle-master fc-layer-master" data-layer="2"><input type="checkbox" data-section="layer_gaudiya" checked> <strong>Gauḍīya</strong></label>
-                <label class="fc-layer-child"><input type="checkbox" data-section="gaudiya" checked> Gauḍīya Ācāryas</label>
-                <label class="fc-layer-child"><input type="checkbox" data-section="classical" checked> Classical Ācāryas</label>
+                <details class="fc-layer-panel" data-layer="layer_gaudiya">
+                    <summary class="fc-layer-summary" title="Sampradāya commentaries — Gauḍīya ācāryas (VCT, BSST, Bhaktivinoda) and classical bhāṣyas (Śaṅkara, Madhusūdana, Rāmānuja).">
+                        <label class="fc-layer-master-label"><input type="checkbox" data-section="layer_gaudiya" checked> <strong>Gauḍīya</strong></label>
+                        <span class="fc-layer-count" data-layer-count="layer_gaudiya"></span>
+                    </summary>
+                    <div class="fc-layer-children">
+                        <label class="fc-layer-child"><input type="checkbox" data-section="gaudiya" checked> Gauḍīya Ācāryas</label>
+                        <label class="fc-layer-child"><input type="checkbox" data-section="classical" checked> Classical Ācāryas</label>
+                    </div>
+                </details>
 
-                <label class="fc-toggle-master fc-layer-master" data-layer="3"><input type="checkbox" data-section="layer_recitation_pg" checked> <strong>Recitation &amp; Personal Guidance</strong></label>
-                <label class="fc-layer-child"><input type="checkbox" data-section="audio_player" checked> Sanskrit recitation player</label>
-                <label class="fc-layer-child"><input type="checkbox" data-section="recitation_slokas" checked> Reading-along view</label>
-                <label class="fc-layer-child"><input type="checkbox" data-section="personal_guidance" checked> Personal Guidance</label>
+                <details class="fc-layer-panel" data-layer="layer_recitation_pg">
+                    <summary class="fc-layer-summary" title="Listen and reflect — Sanskrit recitation player, reading-along view, and personal-life guidance for each verse.">
+                        <label class="fc-layer-master-label"><input type="checkbox" data-section="layer_recitation_pg" checked> <strong>Recitation &amp; Personal Guidance</strong></label>
+                        <span class="fc-layer-count" data-layer-count="layer_recitation_pg"></span>
+                    </summary>
+                    <div class="fc-layer-children">
+                        <label class="fc-layer-child"><input type="checkbox" data-section="audio_player" checked> Sanskrit recitation player</label>
+                        <label class="fc-layer-child"><input type="checkbox" data-section="recitation_slokas" checked> Reading-along view</label>
+                        <label class="fc-layer-child"><input type="checkbox" data-section="personal_guidance" checked> Personal Guidance</label>
+                    </div>
+                </details>
 
-                <label class="fc-toggle-master fc-layer-master" data-layer="4"><input type="checkbox" data-section="layer_sanskrit_analysis" checked> <strong>Sanskrit Analysis</strong></label>
-                <label class="fc-layer-child"><input type="checkbox" data-section="classical_analysis" checked> Classical analysis (पदच्छेद, अन्वय…)</label>
+                <details class="fc-layer-panel" data-layer="layer_sanskrit_analysis">
+                    <summary class="fc-layer-summary" title="Scholar layer — sandhi-split (padaccheda), prose order (anvaya), per-word grammar (vyākaraṇa), intended meaning (tātparya), and further notes (vivaraṇa).">
+                        <label class="fc-layer-master-label"><input type="checkbox" data-section="layer_sanskrit_analysis" checked> <strong>Sanskrit Analysis</strong></label>
+                        <span class="fc-layer-count" data-layer-count="layer_sanskrit_analysis"></span>
+                    </summary>
+                    <div class="fc-layer-children">
+                        <label class="fc-layer-child"><input type="checkbox" data-section="classical_analysis" checked> Classical analysis (पदच्छेद, अन्वय…)</label>
+                    </div>
+                </details>
 
-                <label class="fc-toggle-master fc-layer-master" data-layer="5"><input type="checkbox" data-section="layer_study_aids" checked> <strong>Study aids</strong></label>
-                <label class="fc-layer-child"><input type="checkbox" data-section="quiz" checked> MCQ quizzes</label>
-                <label class="fc-layer-child"><input type="checkbox" data-section="study_qa" checked> Study Q&amp;A (Book of Life)</label>
-                <label class="fc-layer-child"><input type="checkbox" data-section="study_essays" checked> Sciences essays</label>
-                <label class="fc-toggle-master fc-layer-child fc-layer-child-master"><input type="checkbox" data-section="gpd_all" checked> Gauranga Priya additions</label>
-                <label class="fc-layer-grandchild"><input type="checkbox" data-section="chapter_overview" checked> Chapter Overview</label>
-                <label class="fc-layer-grandchild"><input type="checkbox" data-section="breakdown" checked> Breakdown of Chapter</label>
-                <label class="fc-layer-grandchild"><input type="checkbox" data-section="section_banner" checked> Section banners</label>
-                <label class="fc-layer-grandchild"><input type="checkbox" data-section="study" checked> Study Notes (per verse)</label>
+                <details class="fc-layer-panel" data-layer="layer_study_aids">
+                    <summary class="fc-layer-summary" title="Pedagogical apparatus — MCQ quizzes, study Q&amp;A, science essays, and chapter-level study aids by Gauranga Priya Dāsa.">
+                        <label class="fc-layer-master-label"><input type="checkbox" data-section="layer_study_aids" checked> <strong>Study aids</strong></label>
+                        <span class="fc-layer-count" data-layer-count="layer_study_aids"></span>
+                    </summary>
+                    <div class="fc-layer-children">
+                        <label class="fc-layer-child"><input type="checkbox" data-section="quiz" checked> MCQ quizzes</label>
+                        <label class="fc-layer-child"><input type="checkbox" data-section="study_qa" checked> Study Q&amp;A (Book of Life)</label>
+                        <label class="fc-layer-child"><input type="checkbox" data-section="study_essays" checked> Sciences essays</label>
+                        <label class="fc-layer-child fc-layer-child-master"><input type="checkbox" data-section="gpd_all" checked> Gauranga Priya additions</label>
+                        <label class="fc-layer-grandchild"><input type="checkbox" data-section="chapter_overview" checked> Chapter Overview</label>
+                        <label class="fc-layer-grandchild"><input type="checkbox" data-section="breakdown" checked> Breakdown of Chapter</label>
+                        <label class="fc-layer-grandchild"><input type="checkbox" data-section="section_banner" checked> Section banners</label>
+                        <label class="fc-layer-grandchild"><input type="checkbox" data-section="study" checked> Study Notes (per verse)</label>
+                    </div>
+                </details>
 
-                <label class="fc-toggle-master fc-layer-master" data-layer="6"><input type="checkbox" data-section="layer_connections" checked> <strong>Connections</strong></label>
-                <label class="fc-layer-child"><input type="checkbox" data-section="related" checked> Related values &amp; verses</label>
-                <label class="fc-layer-child"><input type="checkbox" data-section="lectures" checked> Related lectures</label>
-                <label class="fc-layer-child"><input type="checkbox" data-section="stories-full"> Stories</label>
-                <label class="fc-layer-child"><input type="checkbox" data-section="analogy"> Analogy</label>
-                <label class="fc-layer-child"><input type="checkbox" data-section="important_words"> Important Words</label>
+                <details class="fc-layer-panel" data-layer="layer_connections">
+                    <summary class="fc-layer-summary" title="FolioCorpus ontology — links to related values, lectures, stories, analogies, and important words across the corpus.">
+                        <label class="fc-layer-master-label"><input type="checkbox" data-section="layer_connections" checked> <strong>Connections</strong></label>
+                        <span class="fc-layer-count" data-layer-count="layer_connections"></span>
+                    </summary>
+                    <div class="fc-layer-children">
+                        <label class="fc-layer-child"><input type="checkbox" data-section="related" checked> Related values &amp; verses</label>
+                        <label class="fc-layer-child"><input type="checkbox" data-section="lectures" checked> Related lectures</label>
+                        <label class="fc-layer-child"><input type="checkbox" data-section="stories-full"> Stories</label>
+                        <label class="fc-layer-child"><input type="checkbox" data-section="analogy"> Analogy</label>
+                        <label class="fc-layer-child"><input type="checkbox" data-section="important_words"> Important Words</label>
+                    </div>
+                </details>
 
                 <div class="fc-sb-layer-divider">Personal</div>
-                <label><input type="checkbox" data-section="note" checked> My note</label>
+                <label class="fc-layer-personal"><input type="checkbox" data-section="note" checked> My note</label>
             </div>
             <div class="fc-sb-actions">
                 <button type="button" data-action="expand-all">Expand all</button>
                 <button type="button" data-action="collapse-all">Collapse all</button>
+                <button type="button" data-action="reset-display" title="Restore all toggle defaults">Reset</button>
             </div>
         </div>
 

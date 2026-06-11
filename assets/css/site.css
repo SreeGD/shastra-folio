@@ -2294,70 +2294,202 @@ html[data-hide-layer_connections="1"] [data-sec="important_words"] {
     color: #6B1D2A;
 }
 
-/* BG 6-layer sidebar — layer-master rows + indented children */
-.fc-sb-layers .fc-layer-master {
-    grid-column: 1 / -1;
-    padding: 0.45rem 0 0.3rem;
-    margin-top: 0.5rem;
-    border-top: 1px solid #D4B78A;
-    border-bottom: none;
+/* BG 6-layer sidebar — collapsible layer panels + preset chips */
+
+/* Preset chip row */
+.fc-display-presets {
+    display: flex;
+    gap: 0.3rem;
+    flex-wrap: wrap;
+    margin: 0 0 0.6rem;
+    padding: 0.3rem 0.4rem;
+    background: #fff8e6;
+    border: 1px solid #e0c890;
+    border-radius: 4px;
+}
+.fc-preset-chip {
+    flex: 1;
+    min-width: 0;
+    padding: 0.3rem 0.5rem;
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    border: 1px solid #d4b78a;
+    background: #fff;
+    color: #5a4520;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background 0.12s, color 0.12s, border-color 0.12s;
+}
+.fc-preset-chip:hover { background: #fdf3d8; }
+.fc-preset-chip:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+    background: #f0e4c8;
+}
+.fc-preset-chip.fc-preset-active {
+    background: #6B1D2A;
+    color: #fff;
+    border-color: #6B1D2A;
+}
+.fc-preset-chip.fc-preset-active:disabled {
+    background: #b89a6a;
+    color: #fff;
+    border-color: #b89a6a;
+    opacity: 1;
+}
+
+/* Layered display — block layout, not grid */
+.fc-sb-layers {
+    display: block;
+}
+
+/* Each layer is a <details> panel */
+.fc-layer-panel {
+    border-top: 1px solid #d4b78a;
+    margin: 0;
+    padding: 0;
+}
+.fc-layer-panel:first-of-type {
+    border-top: none;
+}
+.fc-layer-summary {
+    cursor: pointer;
+    list-style: none;
+    padding: 0.5rem 0 0.4rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    user-select: none;
+}
+.fc-layer-summary::-webkit-details-marker { display: none; }
+.fc-layer-summary::before {
+    content: "▸";
+    color: #b89a6a;
+    transition: transform 0.15s;
+    display: inline-block;
+    font-size: 0.85rem;
+    width: 0.8rem;
+}
+.fc-layer-panel[open] > .fc-layer-summary::before {
+    transform: rotate(90deg);
+}
+.fc-layer-master-label {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    flex: 1;
     color: #4a3a20;
     font-size: 0.93rem;
 }
-.fc-sb-layers .fc-layer-master:first-child {
-    border-top: none;
-    margin-top: 0;
-    padding-top: 0.1rem;
-}
-.fc-sb-layers .fc-layer-master strong {
+.fc-layer-master-label strong {
     color: #6B1D2A;
     font-weight: 700;
 }
-.fc-sb-layers .fc-layer-child {
-    grid-column: 1 / -1;
-    padding-left: 1.1rem;
+.fc-layer-count {
+    font-size: 0.75rem;
+    color: #7a5a3a;
+    font-variant-numeric: tabular-nums;
+    background: #f0e4c8;
+    padding: 0.05rem 0.4rem;
+    border-radius: 8px;
+    min-width: 2.2rem;
+    text-align: center;
+}
+.fc-layer-count.fc-count-all-off {
+    background: #f5dada;
+    color: #8a3030;
+}
+.fc-layer-count.fc-count-all-on {
+    background: #d8eddc;
+    color: #2e5f46;
+}
+
+/* Children inside a layer */
+.fc-layer-children {
+    padding: 0.1rem 0 0.5rem 1.4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+}
+.fc-layer-child {
     font-size: 0.88rem;
     color: #4a3a20;
 }
-.fc-sb-layers .fc-layer-child-master {
-    border-bottom: none;
+.fc-layer-child-master {
     border-top: 1px dotted #d4b78a;
-    margin-top: 0.25rem;
-    padding-top: 0.3rem;
+    margin-top: 0.3rem;
+    padding-top: 0.35rem;
     font-weight: 600;
     color: #5a4520;
 }
-.fc-sb-layers .fc-layer-grandchild {
-    grid-column: 1 / -1;
-    padding-left: 2.2rem;
+.fc-layer-grandchild {
+    padding-left: 1.1rem;
     font-size: 0.85rem;
     color: #5a4520;
 }
+
 .fc-sb-layer-divider {
-    grid-column: 1 / -1;
-    margin: 0.7rem 0 0.2rem;
-    padding-top: 0.45rem;
-    border-top: 1px solid #D4B78A;
+    margin: 0.8rem 0 0.3rem;
+    padding-top: 0.5rem;
+    border-top: 1px solid #d4b78a;
     font-size: 0.78rem;
     text-transform: uppercase;
     letter-spacing: 0.06em;
     color: #7a5a3a;
     font-weight: 700;
 }
+.fc-layer-personal {
+    font-size: 0.88rem;
+    color: #4a3a20;
+}
+
+/* Reset button in action row */
+.fc-sb-actions [data-action="reset-display"] {
+    margin-left: auto;
+    color: #6B1D2A;
+}
 
 /* Dark theme */
-html[data-theme="dark"] .fc-sb-layers .fc-layer-master {
+html[data-theme="dark"] .fc-display-presets {
+    background: #1f1a12; border-color: #4a3a20;
+}
+html[data-theme="dark"] .fc-preset-chip {
+    background: #2a2218; color: #d4b78a; border-color: #4a3a20;
+}
+html[data-theme="dark"] .fc-preset-chip:hover { background: #3a3128; }
+html[data-theme="dark"] .fc-preset-chip:disabled {
+    background: #1a1612; color: #7a5a3a;
+}
+html[data-theme="dark"] .fc-preset-chip.fc-preset-active {
+    background: #e08aa0; color: #1f1a12; border-color: #e08aa0;
+}
+html[data-theme="dark"] .fc-preset-chip.fc-preset-active:disabled {
+    background: #6a5a3a; color: #1f1a12; border-color: #6a5a3a;
+}
+html[data-theme="dark"] .fc-layer-panel { border-top-color: #4a3a20; }
+html[data-theme="dark"] .fc-layer-master-label { color: #d4b78a; }
+html[data-theme="dark"] .fc-layer-master-label strong { color: #e08aa0; }
+html[data-theme="dark"] .fc-layer-count {
+    background: #2a2218; color: #b89a6a;
+}
+html[data-theme="dark"] .fc-layer-count.fc-count-all-off {
+    background: #3a1a1a; color: #f0a8b8;
+}
+html[data-theme="dark"] .fc-layer-count.fc-count-all-on {
+    background: #1a2a20; color: #8fd0a8;
+}
+html[data-theme="dark"] .fc-layer-child { color: #c8b48a; }
+html[data-theme="dark"] .fc-layer-child-master {
     border-top-color: #4a3a20; color: #d4b78a;
 }
-html[data-theme="dark"] .fc-sb-layers .fc-layer-master strong { color: #e08aa0; }
-html[data-theme="dark"] .fc-sb-layers .fc-layer-child { color: #c8b48a; }
-html[data-theme="dark"] .fc-sb-layers .fc-layer-child-master {
-    border-top-color: #4a3a20; color: #d4b78a;
-}
-html[data-theme="dark"] .fc-sb-layers .fc-layer-grandchild { color: #b89a6a; }
+html[data-theme="dark"] .fc-layer-grandchild { color: #b89a6a; }
 html[data-theme="dark"] .fc-sb-layer-divider {
     border-top-color: #4a3a20; color: #b89a6a;
 }
+html[data-theme="dark"] .fc-layer-personal { color: #c8b48a; }
+html[data-theme="dark"] .fc-sb-actions [data-action="reset-display"] { color: #e08aa0; }
 
 /* ───────── Toggle panel (Display options) ───────── */
 .fc-toggle-panel {
