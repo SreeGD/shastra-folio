@@ -238,6 +238,60 @@
     }
 
     // ───── Search ──────────────────────────────────────────────────────────
+    // ─── Boolean operator translator (Vedabase-compatible syntax) ─────────
+    // Translates VB-style query syntax into Lunr's +term / -term form.
+    //   "A and B"  /  "A & B"  /  "A B"        →  +A +B
+    //   "A or B"   /  "A | B"                  →  A B   (Lunr default OR)
+    //   "A not B"  /  "A ^ B"  /  "not A"      →  A -B  /  -A
+    // Pure pass-through when no boolean operators are present, so existing
+    // habits (typing "karma yoga" with no operators) keep ranked-OR semantics.
+    var _BOOL_RE = /(^|\s)(?:or|and|not)(\s|$)|[|&^]/i;
+    function translateBooleanQuery(q) {
+        if (!_BOOL_RE.test(q)) return q;
+        // Strip parens (precedence grouping not supported)
+        var s = q.replace(/[()]/g, " ");
+        // Normalise symbol operators to keywords
+        s = s.replace(/\s*\|\s*/g, " or ")
+             .replace(/\s*&\s*/g, " and ")
+             .replace(/\s*\^\s*/g, " not ");
+        // Tokenise: quoted phrases stay intact, everything else is whitespace-split
+        var tokens = [];
+        var re = /"[^"]*"|\S+/g, m;
+        while ((m = re.exec(s)) !== null) {
+            var tok = m[0], lower = tok.toLowerCase();
+            if (lower === "or" || lower === "and" || lower === "not") {
+                tokens.push({ type: "op", val: lower });
+            } else {
+                tokens.push({ type: "term", val: tok });
+            }
+        }
+        // Walk tokens: default each term to "+term" (required); 'or' makes the
+        // previous + next term optional; 'not' negates the next term.
+        var out = [], i = 0;
+        while (i < tokens.length) {
+            var t = tokens[i];
+            if (t.type === "op") {
+                if (t.val === "not" && i + 1 < tokens.length && tokens[i + 1].type === "term") {
+                    out.push("-" + tokens[i + 1].val);
+                    i += 2; continue;
+                }
+                if (t.val === "or") {
+                    // Drop the leading + on the most recent emitted term
+                    if (out.length) out[out.length - 1] = out[out.length - 1].replace(/^\+/, "");
+                    if (i + 1 < tokens.length && tokens[i + 1].type === "term") {
+                        out.push(tokens[i + 1].val);
+                        i += 2; continue;
+                    }
+                }
+                // 'and' is implicit; just skip
+                i++; continue;
+            }
+            out.push("+" + t.val);
+            i++;
+        }
+        return out.join(" ");
+    }
+
     function performSearch(q) {
         if (!idx) return;
         lastQuery = q;
@@ -251,13 +305,22 @@
             setStatus("Type a query to search.");
             return;
         }
+        // Translate VB-style boolean syntax before sending to Lunr
+        var translated = translateBooleanQuery(query);
         try {
             // Plain query, then if empty try with wildcard fallback
-            var hits = idx.search(query);
+            var hits = idx.search(translated);
             if (hits.length === 0) {
-                // Try wildcard on each term
-                var wq = query.split(/\s+/).map(function (t) {
-                    return t.length >= 2 ? t + "*" : t;
+                // Try wildcard on each non-operator term
+                var wq = translated.split(/\s+/).map(function (t) {
+                    if (!t) return t;
+                    var prefix = "";
+                    if (t[0] === "+" || t[0] === "-") {
+                        prefix = t[0];
+                        t = t.slice(1);
+                    }
+                    if (t[0] === '"') return prefix + t; // leave phrases alone
+                    return prefix + (t.length >= 2 ? t + "*" : t);
                 }).join(" ");
                 hits = idx.search(wq);
             }

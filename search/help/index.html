@@ -91,16 +91,31 @@
 </table>
 
 <h2>Boolean operators</h2>
-<p>By default, multiple words are joined with AND. Use <code>+</code> to require a term and <code>-</code> to exclude one.</p>
+<p>
+    Supports AND, OR, and NOT as words or symbols — Vedabase-compatible. Without
+    operators, multiple words rank by relevance (verses with more matches score higher).
+    With operators, the query becomes strict.
+</p>
 <table class="fc-search-help-table">
-    <thead><tr><th>Query</th><th>Matches</th></tr></thead>
+    <thead><tr><th>Query</th><th>Behavior</th></tr></thead>
     <tbody>
-        <tr><td><code>karma yoga</code></td><td>AND (default) — both required</td></tr>
-        <tr><td><code>+karma +yoga</code></td><td>explicit AND — same as above</td></tr>
-        <tr><td><code>karma -kāma</code></td><td>karma but NOT kāma (the wrong-vowel false-match)</td></tr>
-        <tr><td><code>krishna -arjuna</code></td><td>kṛṣṇa-without-arjuna verses</td></tr>
+        <tr><td><code>karma yoga</code></td><td>Ranked — verses with both rank highest</td></tr>
+        <tr><td><code>karma and yoga</code></td><td>AND — both required</td></tr>
+        <tr><td><code>karma &amp; yoga</code></td><td>AND — symbol form</td></tr>
+        <tr><td><code>+karma +yoga</code></td><td>AND — native Lunr form (also works)</td></tr>
+        <tr><td><code>karma or yoga</code></td><td>OR — either matches</td></tr>
+        <tr><td><code>karma | yoga</code></td><td>OR — symbol form</td></tr>
+        <tr><td><code>karma not yoga</code></td><td>karma but NOT yoga</td></tr>
+        <tr><td><code>karma ^ yoga</code></td><td>NOT — symbol form</td></tr>
+        <tr><td><code>karma -yoga</code></td><td>NOT — native Lunr form (also works)</td></tr>
+        <tr><td><code>not yoga</code></td><td>Exclude all yoga matches</td></tr>
+        <tr><td><code>karma and yoga not māyā</code></td><td>Combined — both required, exclude māyā</td></tr>
     </tbody>
 </table>
+<p style="font-size:0.85rem;color:#7a5a3a">
+    <em>Note: operator precedence is left-to-right; grouping parentheses are stripped.
+    Use one operator type at a time for predictable results.</em>
+</p>
 
 <h2>Diacritics and Sanskrit aliases</h2>
 <p>
@@ -164,7 +179,7 @@
 <h2>What's not (yet) supported</h2>
 <ul class="fc-search-help-list">
     <li><strong>Single-character wildcards</strong> (<code>?</code> as in <code>s?n</code>) — coming later</li>
-    <li><strong>OR operator</strong> (<code>|</code> or <code>or</code>) — currently the search always ANDs unless you exclude with <code>-</code></li>
+    <li><strong>Parentheses for grouping</strong> (<code>(A or B) and C</code>) — parens are stripped; use one operator type per query</li>
     <li><strong>Proximity search</strong> (within N words / N verses) — would require positional metadata; deferred for index-size reasons</li>
     <li><strong>Fuzzy / typo-tolerant matching</strong> — Sanskrit terms are precise; we lean on the diacritic + alias normaliser instead</li>
 </ul>
