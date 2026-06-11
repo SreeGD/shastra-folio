@@ -20,7 +20,7 @@
     // early-apply pass in toggle.js already set the data-hide-* attributes.
     // -------------------------------------------------------------------------
     function wireSectionVisibility() {
-        var cbs = document.querySelectorAll(".fc-sb-grid input[type='checkbox'][data-section]");
+        var cbs = document.querySelectorAll(".fc-sb-grid input[type='checkbox'][data-section], .fc-sb-layers input[type='checkbox'][data-section]");
         cbs.forEach(function (cb) {
             var s = cb.dataset.section;
             cb.checked = !S.isHidden(s);
@@ -3265,4 +3265,25 @@
         updateActivePreset();
     }
     wireBgDisplayPanel();
+
+    // -------------------------------------------------------------------------
+    // Sidebar section open/closed persistence — Reading, Display, Tools, etc.
+    // each became a <details data-sbsec="..."> so users can collapse them.
+    // -------------------------------------------------------------------------
+    function wireSidebarSectionPersistence() {
+        var KEY = "fc-sb-section-panels";
+        var saved = {};
+        try { saved = JSON.parse(localStorage.getItem(KEY) || "{}") || {}; } catch (e) {}
+        document.querySelectorAll("details.fc-sb-section[data-sbsec]").forEach(function (panel) {
+            var key = panel.dataset.sbsec;
+            if (Object.prototype.hasOwnProperty.call(saved, key)) {
+                panel.open = !!saved[key];
+            }
+            panel.addEventListener("toggle", function () {
+                saved[key] = !!panel.open;
+                try { localStorage.setItem(KEY, JSON.stringify(saved)); } catch (e) {}
+            });
+        });
+    }
+    wireSidebarSectionPersistence();
 })();

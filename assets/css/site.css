@@ -2832,6 +2832,33 @@ html[data-right-collapsed="1"] .fc-sidebar { padding: 0.6rem 0.3rem; border-left
     gap: 0.4rem;
     user-select: none;
 }
+/* When a section is a <details>, make summary clickable with a chevron */
+details.fc-sb-section > summary.fc-sb-title {
+    cursor: pointer;
+    list-style: none;
+    padding: 0.2rem 0;
+    margin: 0 0 0.4rem;
+    align-items: center;
+}
+details.fc-sb-section > summary.fc-sb-title::-webkit-details-marker { display: none; }
+details.fc-sb-section > summary.fc-sb-title::before {
+    content: "▸";
+    color: #C8B47A;
+    transition: transform 0.15s;
+    display: inline-block;
+    width: 0.9rem;
+    font-size: 0.85rem;
+}
+details.fc-sb-section[open] > summary.fc-sb-title::before {
+    transform: rotate(90deg);
+}
+details.fc-sb-section[open] > summary.fc-sb-title {
+    margin-bottom: 0.6rem;
+    border-bottom: 1px dotted #DCD0B0;
+    padding-bottom: 0.4rem;
+}
+html[data-theme="dark"] details.fc-sb-section > summary.fc-sb-title::before { color: #b89a6a; }
+html[data-theme="dark"] details.fc-sb-section[open] > summary.fc-sb-title { border-bottom-color: #3a3128; }
 .fc-sb-sub { user-select: none; }
 .fc-sb-count {
     background: var(--fc-gold);
