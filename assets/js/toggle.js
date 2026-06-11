@@ -16,13 +16,19 @@
         "recitation_slokas",
         "quiz",
         "classical_analysis",
+        // BG 6-layer master keys
+        "layer_prabhupada",
+        "layer_gaudiya",
+        "layer_recitation_pg",
+        "layer_sanskrit_analysis",
+        "layer_study_aids",
+        "layer_connections",
     ];
     var DEFAULT_HIDDEN = {
         pronunciation: true,
         analogy: true,
         "stories-full": true,
         important_words: true,
-        classical_analysis: true,
     };
     var HIDDEN_KEY = "fc-sections-hidden";
     var COLLAPSED_KEY = "fc-sections-collapsed";
