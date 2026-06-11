@@ -15,12 +15,14 @@
         "audio_player",
         "recitation_slokas",
         "quiz",
+        "classical_analysis",
     ];
     var DEFAULT_HIDDEN = {
         pronunciation: true,
         analogy: true,
         "stories-full": true,
         important_words: true,
+        classical_analysis: true,
     };
     var HIDDEN_KEY = "fc-sections-hidden";
     var COLLAPSED_KEY = "fc-sections-collapsed";
