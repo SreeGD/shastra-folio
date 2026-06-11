@@ -5686,3 +5686,191 @@ html[data-theme="dark"] .cr-cl-tatparya {
 html[data-theme="dark"] .cr-cl-vivarana {
     background: #2a2218; color: #d4b78a;
 }
+
+/* ============================================================
+   Classical analysis v2 — English-first labels, IAST sub-lines,
+   vyākaraṇa table.
+   ============================================================ */
+.cr-classical-intro {
+    background: #fff;
+    border: 1px dashed #d4b78a;
+    color: #5a4520;
+    font-size: 0.88rem;
+    line-height: 1.55;
+    padding: 0.55rem 0.85rem;
+    margin: 0.4rem 0 0.7rem;
+    border-radius: 3px;
+}
+.cr-classical-intro strong { color: #2e5f46; }
+
+.fc-classical-analysis .fc-section-label .cr-cl-sa-side {
+    font-family: 'RM Devanagari', 'Sanskrit 2003', 'Noto Sans Devanagari', serif;
+    color: #7a5a3a;
+    font-weight: 500;
+    font-size: 0.92rem;
+    margin-left: 0.5rem;
+}
+.cr-cl-layer summary strong {
+    font-weight: 700;
+    color: #2a2218;
+}
+.cr-cl-sa-side {
+    color: #7a5a3a;
+    font-size: 0.85rem;
+    font-weight: 400;
+    margin-left: 0.3rem;
+}
+
+/* Promote tātparya + vivaraṇa visually */
+.cr-cl-elevated {
+    background: #fff;
+    border: 1px solid #c8a86a;
+    box-shadow: 0 1px 0 rgba(190, 160, 100, 0.15);
+    border-radius: 4px;
+    padding: 0.2rem 0.7rem;
+    margin: 0.5rem 0;
+}
+.cr-cl-elevated > summary { padding: 0.4rem 0; }
+.cr-cl-elevated[open] > summary {
+    border-bottom: 1px dotted #d4b78a;
+    margin-bottom: 0.4rem;
+}
+
+/* Padaccheda / Anvaya blocks: paired Devanāgarī + IAST lines */
+.cr-cl-padaccheda-block,
+.cr-cl-anvaya-block {
+    background: #fff8e6;
+    padding: 0.6rem 0.95rem;
+    border-radius: 3px;
+    margin: 0.4rem 0;
+}
+.cr-cl-dev {
+    font-family: 'RM Devanagari', 'Sanskrit 2003', 'Noto Sans Devanagari', serif;
+    font-size: 1.1rem;
+    line-height: 1.55;
+    color: #2a2218;
+    margin-top: 0.35rem;
+}
+.cr-cl-dev:first-child { margin-top: 0; }
+.cr-cl-iast {
+    font-family: 'Lora', Georgia, serif;
+    font-style: italic;
+    font-size: 0.95rem;
+    color: #7a5a3a;
+    line-height: 1.45;
+    margin-bottom: 0.15rem;
+}
+.cr-cl-gloss {
+    margin-top: 0.55rem;
+    padding-top: 0.45rem;
+    border-top: 1px dotted #d4b78a;
+    color: #4a3a20;
+    font-size: 0.95rem;
+    line-height: 1.55;
+    font-style: italic;
+}
+
+/* Vyākaraṇa — 4-column table */
+.cr-cl-vyakarana-tablewrap {
+    overflow-x: auto;
+    margin: 0.4rem 0;
+}
+.cr-cl-vyakarana-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.92rem;
+    background: #fff;
+    border-radius: 3px;
+    overflow: hidden;
+}
+.cr-cl-vyakarana-table thead th {
+    background: #f0e4c8;
+    color: #5a4520;
+    text-align: left;
+    font-weight: 700;
+    padding: 0.35rem 0.6rem;
+    border-bottom: 2px solid #d4b78a;
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+.cr-cl-vyakarana-table tbody td {
+    padding: 0.4rem 0.6rem;
+    border-bottom: 1px dotted #e6d3a8;
+    vertical-align: top;
+}
+.cr-cl-vyakarana-table tbody tr:last-child td { border-bottom: none; }
+.cr-cl-vyakarana-table tbody tr:nth-child(even) { background: #fdfaf0; }
+.cr-cl-vk-dev {
+    font-family: 'RM Devanagari', 'Sanskrit 2003', 'Noto Sans Devanagari', serif;
+    color: #2a2218;
+    font-size: 1.02rem;
+    white-space: nowrap;
+}
+.cr-cl-vk-iast {
+    font-family: 'Lora', Georgia, serif;
+    font-style: italic;
+    color: #5a4520;
+    white-space: nowrap;
+}
+.cr-cl-vk-gram {
+    color: #4a3a20;
+    font-size: 0.88rem;
+    line-height: 1.45;
+}
+.cr-cl-vk-gram abbr[title] {
+    text-decoration: underline dotted #b89a6a;
+    cursor: help;
+}
+.cr-cl-vk-en {
+    color: #2a2218;
+    font-style: italic;
+}
+
+/* Mobile: stack the 4 cells vertically per row */
+@media (max-width: 640px) {
+    .cr-cl-vyakarana-table thead { display: none; }
+    .cr-cl-vyakarana-table,
+    .cr-cl-vyakarana-table tbody,
+    .cr-cl-vyakarana-table tr,
+    .cr-cl-vyakarana-table td { display: block; width: 100%; }
+    .cr-cl-vyakarana-table tr {
+        border-bottom: 1px solid #e6d3a8;
+        padding: 0.4rem 0;
+    }
+    .cr-cl-vyakarana-table td {
+        border: none;
+        padding: 0.15rem 0;
+        white-space: normal;
+    }
+    .cr-cl-vk-dev { font-size: 1.1rem; font-weight: 700; }
+    .cr-cl-vk-iast::before { content: "IAST: "; color: #b89a6a; font-style: normal; }
+    .cr-cl-vk-gram::before { content: "Grammar: "; color: #b89a6a; font-weight: 700; }
+    .cr-cl-vk-en::before { content: "Meaning: "; color: #b89a6a; font-style: normal; font-weight: 700; }
+}
+
+/* Dark theme overrides */
+html[data-theme="dark"] .cr-classical-intro {
+    background: #1f1a12; border-color: #6a5a3a; color: #d4b78a;
+}
+html[data-theme="dark"] .cr-classical-intro strong { color: #8fd0a8; }
+html[data-theme="dark"] .cr-cl-elevated {
+    background: #1a1612; border-color: #8a7050; box-shadow: none;
+}
+html[data-theme="dark"] .cr-cl-padaccheda-block,
+html[data-theme="dark"] .cr-cl-anvaya-block {
+    background: #2a2218; color: #e8d5a8;
+}
+html[data-theme="dark"] .cr-cl-dev { color: #e8d5a8; }
+html[data-theme="dark"] .cr-cl-iast { color: #b89a6a; }
+html[data-theme="dark"] .cr-cl-gloss { color: #d4b78a; border-top-color: #4a3a20; }
+html[data-theme="dark"] .cr-cl-vyakarana-table { background: #1f1a12; }
+html[data-theme="dark"] .cr-cl-vyakarana-table thead th {
+    background: #2a2218; color: #d4b78a; border-bottom-color: #6a5a3a;
+}
+html[data-theme="dark"] .cr-cl-vyakarana-table tbody td { border-bottom-color: #3a3128; }
+html[data-theme="dark"] .cr-cl-vyakarana-table tbody tr:nth-child(even) { background: #1a1612; }
+html[data-theme="dark"] .cr-cl-vk-dev { color: #e8d5a8; }
+html[data-theme="dark"] .cr-cl-vk-iast { color: #b89a6a; }
+html[data-theme="dark"] .cr-cl-vk-gram { color: #d4b78a; }
+html[data-theme="dark"] .cr-cl-vk-en { color: #e8d5a8; }

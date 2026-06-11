@@ -3049,4 +3049,41 @@
         });
     }
     wireMcq();
+
+    // -------------------------------------------------------------------------
+    // Classical analysis — Sanskrit grammar jargon tooltips. Scan the
+    // vyākaraṇa table gram cells and wrap recognized compound types in
+    // <abbr title="..."> so hovering reveals an English definition.
+    // -------------------------------------------------------------------------
+    function wireClassicalJargonTooltips() {
+        var SANSKRIT_JARGON = [
+            ["tatpuruṣa",     "Determinative compound — the first member modifies the second (e.g. राज-पुत्र, 'son of the king')."],
+            ["bahuvrīhi",     "Possessive compound — describes someone/something by their attribute (e.g. पीताम्बर, 'one whose garment is yellow' = Kṛṣṇa)."],
+            ["dvandva",       "Copulative compound — items in coordination (e.g. राम-लक्ष्मणौ, 'Rāma and Lakṣmaṇa')."],
+            ["karmadhāraya",  "Descriptive compound — the first member describes the second adjectivally (e.g. नीलोत्पल, 'blue lotus')."],
+            ["avyayībhāva",   "Adverbial compound — turns the whole into an indeclinable (e.g. यथाशक्ति, 'according to capacity')."],
+            ["dvigu",         "Numeral compound — first member is a numeral (e.g. पञ्चपात्र, 'set of five vessels')."],
+            ["upapada",       "Compound whose final member is a verbal noun (kṛt-formation) governing the prior member."],
+            ["nañ-tatpuruṣa", "Negative tatpuruṣa — formed with the negative particle अ-/अन्- (e.g. अधर्म, 'non-dharma')."],
+            ["desid.",        "Desiderative — verbal form expressing 'wishing to V' (e.g. युयुत्सु = 'desiring to fight')."]
+        ];
+        var pats = SANSKRIT_JARGON.map(function (p) { return p[0]; });
+        pats.sort(function (a, b) { return b.length - a.length; });
+        var lookupMap = {};
+        SANSKRIT_JARGON.forEach(function (p) { lookupMap[p[0]] = p[1]; });
+        var esc = pats.map(function (p) {
+            return p.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+        }).join("|");
+        var rx = new RegExp("(" + esc + ")", "g");
+
+        document.querySelectorAll(".cr-cl-vk-gram").forEach(function (cell) {
+            if (cell.dataset.jargonWired === "1") return;
+            cell.dataset.jargonWired = "1";
+            cell.innerHTML = cell.innerHTML.replace(rx, function (m, term) {
+                var title = (lookupMap[term] || "").replace(/"/g, "&quot;");
+                return '<abbr title="' + title + '">' + term + "</abbr>";
+            });
+        });
+    }
+    wireClassicalJargonTooltips();
 })();
