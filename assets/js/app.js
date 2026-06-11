@@ -84,13 +84,16 @@
         });
 
         // Expand all / Collapse all buttons in the Display panel.
+        // Affect BOTH on-page section collapse-state AND sidebar layer panels.
         document.querySelectorAll(".fc-sb-actions button[data-action]").forEach(function (btn) {
             btn.addEventListener("click", function () {
                 var act = btn.dataset.action;
                 if (act === "collapse-all") {
                     S.SECTIONS.forEach(function (s) { setSectionCollapsed(s, true); });
+                    document.querySelectorAll("details.fc-layer-panel").forEach(function (p) { p.open = false; });
                 } else if (act === "expand-all") {
                     S.SECTIONS.forEach(function (s) { setSectionCollapsed(s, false); });
+                    document.querySelectorAll("details.fc-layer-panel").forEach(function (p) { p.open = true; });
                 }
             });
         });
@@ -3244,11 +3247,29 @@
             });
         });
 
-        // Reset button — same as Standard preset
+        // Reset button — restore defaults across visibility, layer panel state,
+        // and on-page section collapse state.
         var resetBtn = document.querySelector('[data-action="reset-display"]');
         if (resetBtn) {
             resetBtn.addEventListener("click", function () {
                 applyPreset("standard");
+                // Reset layer panel open state — only L1 open by default
+                try { localStorage.removeItem("fc-bg-layer-panels"); } catch (e) {}
+                document.querySelectorAll("details.fc-layer-panel").forEach(function (p) {
+                    p.open = (p.dataset.layer === "layer_prabhupada");
+                });
+                // Reset on-page section collapse state
+                S.collapsed = {};
+                try { localStorage.setItem(S.COLLAPSED_KEY, JSON.stringify({})); } catch (e) {}
+                (S.SECTIONS || []).forEach(function (s) {
+                    if (S.DEFAULT_COLLAPSED && S.DEFAULT_COLLAPSED[s]) {
+                        html.setAttribute("data-collapsed-" + s, "1");
+                    } else {
+                        html.removeAttribute("data-collapsed-" + s);
+                    }
+                });
+                // Reset sidebar section panel state
+                try { localStorage.removeItem("fc-sb-section-panels"); } catch (e) {}
             });
         }
 
