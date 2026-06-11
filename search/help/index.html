@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#6B1D2A">
+    <title>Search syntax — FolioCorpus</title>
+    <meta name="description" content="Query syntax reference for the FolioCorpus search: phrases, wildcards, boolean operators, diacritic handling, field boosts.">
+
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="FolioCorpus · Bhagavad-gītā">
+    <meta property="og:title" content="FolioCorpus — Bhagavad-gītā">
+    <meta property="og:description" content="Query syntax reference for the FolioCorpus search: phrases, wildcards, boolean operators, diacritic handling, field boosts.">
+    <meta property="og:url" content="/">
+    <meta property="og:image" content="/assets/og-image.png">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="FolioCorpus — Bhagavad-gītā">
+    <meta name="twitter:description" content="Query syntax reference for the FolioCorpus search: phrases, wildcards, boolean operators, diacritic handling, field boosts.">
+    <meta name="twitter:image" content="/assets/og-image.png">
+
+    <link rel="manifest" href="../../manifest.webmanifest">
+    <link rel="icon" href="../../assets/icons/icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="../../assets/icons/icon.svg">
+    <link rel="stylesheet" href="../../assets/css/site.css">
+    <script>window.FC_TO_ROOT = "../../";</script>
+    <script src="../../assets/js/toggle.js"></script>
+</head>
+<body>
+<header class="fc-site-header">
+<a class="fc-brand" href="../../">FolioCorpus<span class="fc-sub">Vedic library</span></a>
+    <nav class="fc-site-nav">
+        <a href="../../">Home</a>
+        <a href="../../bg/">Bhagavad-gītā</a>
+        <a href="../../sb/">Śrīmad-Bhāgavatam</a>
+        <a href="../../search/" title="Search across all integrated works">🔍 Search</a>
+        <button type="button" id="fc-random-verse" class="fc-nav-btn" title="Jump to a random verse">🎲 Random</button>
+    </nav>
+</header>
+<div class="fc-layout">
+    <main class="fc-container">
+<nav class="fc-breadcrumbs">
+    <a href="../../">Home</a>
+    <span class="sep">›</span>
+    <a href="../../search/">Search</a>
+    <span class="sep">›</span>
+    <span>Syntax</span>
+</nav>
+
+<h1 class="fc-search-page-title">Search syntax</h1>
+
+<p class="fc-search-help-lead">
+    The search box accepts plain words, exact phrases, prefix wildcards, and
+    boolean operators. Diacritics and Sanskrit aliases are handled automatically.
+    Examples on this page use universal terms (kṛṣṇa, dharma, yoga…) so they
+    work against any of the 22 integrated works.
+</p>
+
+<h2>Plain words</h2>
+<table class="fc-search-help-table">
+    <thead><tr><th>Query</th><th>Matches</th></tr></thead>
+    <tbody>
+        <tr><td><code>karma</code></td><td>verses containing <em>karma</em> (or any stemmed form: <em>karmic</em>, <em>karmaṇi</em>)</td></tr>
+        <tr><td><code>karma yoga</code></td><td>verses containing <strong>both</strong> <em>karma</em> AND <em>yoga</em> (default: AND)</td></tr>
+        <tr><td><code>krsna</code></td><td>also matches <em>kṛṣṇa</em>, <em>krishna</em>, <em>kr̥ṣṇa</em> — diacritics + aliases handled</td></tr>
+    </tbody>
+</table>
+
+<h2>Phrases</h2>
+<p>Wrap an exact phrase in quotes. Order matters.</p>
+<table class="fc-search-help-table">
+    <thead><tr><th>Query</th><th>Matches</th></tr></thead>
+    <tbody>
+        <tr><td><code>"sarva-dharmān parityajya"</code></td><td>verses with that exact phrase (BG 18.66)</td></tr>
+        <tr><td><code>"aham brahmāsmi"</code></td><td>verses with the exact phrase</td></tr>
+        <tr><td><code>"karma yoga" arjuna</code></td><td>phrase plus standalone word — both required</td></tr>
+    </tbody>
+</table>
+
+<h2>Wildcards</h2>
+<p>Use <code>*</code> at the end of a word for prefix matching. Wildcards inside or at the start of a word aren't supported.</p>
+<table class="fc-search-help-table">
+    <thead><tr><th>Query</th><th>Matches</th></tr></thead>
+    <tbody>
+        <tr><td><code>medit*</code></td><td><em>meditate, meditation, meditating, meditator</em>…</td></tr>
+        <tr><td><code>devotion*</code></td><td><em>devotion, devotional, devotionally</em>…</td></tr>
+        <tr><td><code>yog*</code></td><td><em>yoga, yogī, yogic, yogeśvara</em>…</td></tr>
+    </tbody>
+</table>
+
+<h2>Boolean operators</h2>
+<p>By default, multiple words are joined with AND. Use <code>+</code> to require a term and <code>-</code> to exclude one.</p>
+<table class="fc-search-help-table">
+    <thead><tr><th>Query</th><th>Matches</th></tr></thead>
+    <tbody>
+        <tr><td><code>karma yoga</code></td><td>AND (default) — both required</td></tr>
+        <tr><td><code>+karma +yoga</code></td><td>explicit AND — same as above</td></tr>
+        <tr><td><code>karma -kāma</code></td><td>karma but NOT kāma (the wrong-vowel false-match)</td></tr>
+        <tr><td><code>krishna -arjuna</code></td><td>kṛṣṇa-without-arjuna verses</td></tr>
+    </tbody>
+</table>
+
+<h2>Diacritics and Sanskrit aliases</h2>
+<p>
+    You can type Sanskrit names with full IAST diacritics or without — both find the
+    same verses. The search index normalises diacritics and applies a small alias
+    map for common spellings:
+</p>
+<table class="fc-search-help-table">
+    <thead><tr><th>Type</th><th>Also matches</th></tr></thead>
+    <tbody>
+        <tr><td><code>krsna</code></td><td>kṛṣṇa, kr̥ṣṇa, krishna</td></tr>
+        <tr><td><code>caitanya</code></td><td>chaitanya</td></tr>
+        <tr><td><code>visnu</code></td><td>viṣṇu, vishnu</td></tr>
+        <tr><td><code>siva</code></td><td>śiva, shiva</td></tr>
+        <tr><td><code>vrindavan</code></td><td>vṛndāvana, vrndavana</td></tr>
+        <tr><td><code>radha</code></td><td>rādhā</td></tr>
+        <tr><td><code>gita</code></td><td>gītā</td></tr>
+    </tbody>
+</table>
+
+<h2>Where the search looks</h2>
+<p>
+    Each verse document is indexed over several fields, each with a relevance boost.
+    A hit in <em>ref</em> (e.g. typing <code>BG 2.47</code>) ranks above a hit in
+    <em>synonyms</em>:
+</p>
+<table class="fc-search-help-table">
+    <thead><tr><th>Field</th><th>Boost</th><th>Notes</th></tr></thead>
+    <tbody>
+        <tr><td>ref</td><td>×5</td><td>Verse reference like <em>BG 2.47</em>, <em>SB 10.14.4</em></td></tr>
+        <tr><td>translation</td><td>×3</td><td>English verse translation</td></tr>
+        <tr><td>iast</td><td>×2</td><td>Sanskrit verse in IAST transliteration</td></tr>
+        <tr><td>purport</td><td>×2</td><td>English purport / commentary</td></tr>
+        <tr><td>synonyms</td><td>×1</td><td>Word-for-word Sanskrit → English glossary</td></tr>
+        <tr><td>guidance</td><td>×1</td><td>Personal-guidance essence (where present)</td></tr>
+    </tbody>
+</table>
+
+<h2>Result facets</h2>
+<p>
+    Once results appear, the sidebar (or top of the page on mobile) shows three facets
+    you can click to filter:
+</p>
+<ul class="fc-search-help-list">
+    <li><strong>Genre</strong> — Scripture, Commentary, Practice, Discourse</li>
+    <li><strong>Hierarchy (work)</strong> — Filter to BG, SB, CC, ISO, NoI, …</li>
+    <li><strong>Text Type</strong> — Which field matched (translation, purport, iast, …)</li>
+</ul>
+
+<h2>Bookmarkable URLs</h2>
+<p>
+    Every search is a shareable URL with query parameters:
+</p>
+<ul class="fc-search-help-list">
+    <li><code>/search/?q=karma</code> — initial query</li>
+    <li><code>/search/?q=karma&amp;work=bg</code> — narrow to one work</li>
+    <li><code>/search/?q=karma&amp;genre=scripture</code> — narrow by genre</li>
+    <li><code>/search/?q=karma&amp;field=translation</code> — narrow by matched field</li>
+</ul>
+
+<h2>What's not (yet) supported</h2>
+<ul class="fc-search-help-list">
+    <li><strong>Single-character wildcards</strong> (<code>?</code> as in <code>s?n</code>) — coming later</li>
+    <li><strong>OR operator</strong> (<code>|</code> or <code>or</code>) — currently the search always ANDs unless you exclude with <code>-</code></li>
+    <li><strong>Proximity search</strong> (within N words / N verses) — would require positional metadata; deferred for index-size reasons</li>
+    <li><strong>Fuzzy / typo-tolerant matching</strong> — Sanskrit terms are precise; we lean on the diacritic + alias normaliser instead</li>
+</ul>
+
+<p class="fc-search-help-footer">
+    <a class="fc-search-help-back" href="../../search/">← Back to search</a>
+</p>
+    </main>
+</div>
+<footer class="fc-site-footer">
+    <p>Translations and purports © A.C. Bhaktivedanta Swami Prabhupāda — Bhaktivedanta Book Trust.</p>
+    <p>Static site built from <a href="https://github.com/SreeGD/foliocorpus">foliocorpus</a>.</p>
+</footer>
+<script src="../../assets/js/app.js" defer></script>
+</body>
+</html>
