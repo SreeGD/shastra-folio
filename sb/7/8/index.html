@@ -25,19 +25,25 @@
     <link rel="icon" href="../../../assets/icons/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="../../../assets/icons/icon.svg">
     <link rel="stylesheet" href="../../../assets/css/site.css">
+    <link rel="alternate" hreflang="te-IN" href="../../../te/sb/7/8/">
+    <link rel="alternate" hreflang="x-default" href="../../../">
     <script>window.FC_TO_ROOT = "../../../";</script>
     <script src="../../../assets/js/toggle.js"></script>
 </head>
 <body class="has-sidebar" data-chapter="8">
 <header class="fc-site-header">
     <button type="button" class="fc-mobile-trigger fc-mobile-trigger-left" data-overlay="left" aria-label="Open settings drawer">⚙</button>
-<a class="fc-brand" href="../../../">FolioCorpus<span class="fc-sub">Śrīmad-Bhāgavatam</span></a>
+    <a class="fc-brand" href="../../../">FolioCorpus<span class="fc-sub">Bhagavad-gītā</span></a>
     <nav class="fc-site-nav">
         <a href="../../../">Home</a>
         <a href="../../../bg/">Bhagavad-gītā</a>
         <a href="../../../sb/">Śrīmad-Bhāgavatam</a>
         <a href="../../../search/" title="Search across all integrated works">🔍 Search</a>
         <button type="button" id="fc-random-verse" class="fc-nav-btn" title="Jump to a random verse">🎲 Random</button>
+        <span class="fc-lang-switch" aria-label="Script">
+            <a class="active" href="#" title="Devanāgarī edition">EN</a>
+            <a class="" href="../../../te/sb/7/8/" title="Telugu lipi edition">తె</a>
+        </span>
     </nav>
     <button type="button" class="fc-mobile-trigger fc-mobile-trigger-right" data-overlay="right" aria-label="Open chapter index drawer">📚</button>
 </header>
@@ -46,8 +52,8 @@
     <button class="fc-sb-collapse" type="button" data-sb="left" title="Collapse left sidebar" aria-label="Collapse"></button>
 
     <div class="fc-sb-body">
-        <details class="fc-sb-section" data-sbsec="reading" open>
-            <summary class="fc-sb-title">Reading</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Reading</div>
             <div class="fc-sb-sub">Theme</div>
             <div class="fc-segmented" data-setting="theme">
                 <button type="button" data-val="light">Light</button>
@@ -73,10 +79,10 @@
                 <button type="button" data-val="single">Single</button>
                 <button type="button" data-val="side">Side-by-side</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="display" open>
-            <summary class="fc-sb-title">Display</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Display</div>
             <div class="fc-sb-grid">
                 <label><input type="checkbox" data-section="devanagari" checked> Devanāgarī</label>
                 <label><input type="checkbox" data-section="iast" checked> IAST transliteration</label>
@@ -99,10 +105,33 @@
                 <button type="button" data-action="expand-all">Expand all</button>
                 <button type="button" data-action="collapse-all">Collapse all</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="tools" open>
-            <summary class="fc-sb-title">Tools</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Find your starting point</div>
+            <div class="fc-persona-links">
+                <a class="fc-persona-link" href="../../../daily/">🌅 Daily (one value a week)</a>
+                <a class="fc-persona-link" href="../../../householder/">🏠 Householder (family & work)</a>
+                <a class="fc-persona-link" href="../../../parenting/">👨‍👩‍👧 Parenting (stories for kids)</a>
+                <a class="fc-persona-link" href="../../../themes/">📚 All themes</a>
+                <a class="fc-persona-link" href="../../../values/" style="background:#F0F6F2;border-left-color:#1F4632;">ॐ Vedic Value System ↗</a>
+                <a class="fc-persona-link" href="../../../vidya/" style="background:#FBF6E4;border-left-color:#C8860B;">📚 Vidyā Karaṇa (kids, multi-lang) ↗</a>
+            </div>
+        </div>
+
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Audience</div>
+            <div class="fc-audience-filter">
+                <label><input type="radio" name="fc-audience" value="all" checked> All levels</label>
+                <label><input type="radio" name="fc-audience" value="primary"> Primary (children)</label>
+                <label><input type="radio" name="fc-audience" value="middle"> Middle (teens)</label>
+                <label><input type="radio" name="fc-audience" value="senior"> Senior (adults)</label>
+                <label><input type="radio" name="fc-audience" value="college"> College / scholar</label>
+            </div>
+        </div>
+
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Tools</div>
             <div class="fc-sb-tools">
                 <button type="button" id="fc-presentation-toggle" class="fc-tool-btn"><span>🖥 Presentation</span><kbd class="fc-kbd">F</kbd></button>
                 <button type="button" id="fc-pen-toggle" class="fc-tool-btn"><span>✏️ Pen mode</span><kbd class="fc-kbd">P</kbd></button>
@@ -117,10 +146,26 @@
                 <button type="button" id="fc-clear-highlights" class="fc-tool-btn">🩷 Clear highlights (page)</button>
                 <button type="button" id="fc-notes-modal-open" class="fc-tool-btn">📓 My annotations</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="progress" id="fc-progress-section" open>
-            <summary class="fc-sb-title">Progress</summary>
+        <div class="fc-sb-section" id="fc-tts-controls" hidden>
+            <div class="fc-sb-title">
+                Read-aloud
+                <label class="fc-tts-master">
+                    <input type="checkbox" id="fc-tts-enabled" checked>
+                    <span class="fc-tts-master-label">On</span>
+                </label>
+            </div>
+            <div class="fc-tts-inner">
+                <div class="fc-sb-sub">Voice</div>
+                <select id="fc-tts-voice" class="fc-tts-select" aria-label="TTS voice"></select>
+                <div class="fc-sb-sub">Rate <span class="fc-tts-rate-val">1.0×</span></div>
+                <input type="range" id="fc-tts-rate" min="0.5" max="2" step="0.1" value="1" class="fc-tts-rate" aria-label="Reading rate">
+            </div>
+        </div>
+
+        <div class="fc-sb-section" id="fc-progress-section">
+            <div class="fc-sb-title">Progress</div>
             <div class="fc-progress-row">
                 <span class="fc-progress-num" id="fc-progress-num">0</span>
                 <span class="fc-progress-divider">/</span>
@@ -135,29 +180,29 @@
                 <span class="fc-progress-spacer"></span>
                 <button type="button" class="fc-progress-reset" id="fc-progress-reset" title="Reset progress">↺</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="bookmarks" open>
-            <summary class="fc-sb-title">Bookmarks <span class="fc-sb-count" id="fc-bookmarks-count">0</span></summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Bookmarks <span class="fc-sb-count" id="fc-bookmarks-count">0</span></div>
             <ul class="fc-bookmark-list" id="fc-bookmarks-list">
                 <li class="fc-sb-empty">No bookmarks yet — click ☆ on any verse.</li>
             </ul>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="notes" open>
-            <summary class="fc-sb-title">Notes <span class="fc-sb-count" id="fc-notes-count">0</span></summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Notes <span class="fc-sb-count" id="fc-notes-count">0</span></div>
             <ul class="fc-bookmark-list" id="fc-notes-list">
                 <li class="fc-sb-empty">No notes yet — open any verse and write in the 📝 block.</li>
             </ul>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="export">
-            <summary class="fc-sb-title">Export</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Export</div>
             <div class="fc-sb-tools">
                 <button type="button" id="fc-export-md" class="fc-tool-btn">📥 Download Markdown</button>
                 <button type="button" id="fc-export-json" class="fc-tool-btn">💾 Download JSON backup</button>
             </div>
-        </details>
+        </div>
     </div>
 </aside>    <main class="fc-container">
 <nav class="fc-breadcrumbs">
@@ -175,7 +220,7 @@
         <h1 class="fc-verse-heading">7.8 · Lord Nṛsiṁhadeva Slays the King of the Demons</h1>
         <span class="fc-ribbon-meta">
             50 verses
- · <a class="fc-ribbon-link" href="class-prep/">🖨 Class prep</a>        </span>
+        </span>
         <input type="search" class="fc-search" id="fc-search" placeholder="🔍 Search in this chapter" aria-label="Search verses in this chapter">
         <span class="fc-ribbon-current" id="fc-ribbon-current" aria-live="polite"></span>
     </div>
@@ -471,7 +516,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <div class="fc-translation" data-sec="translation">Nārada Muni continued: All the sons of the demons appreciated the transcendental instructions of Prahlāda Mahārāja and took them very seriously. They rejected the materialistic instructions given by their teachers, Ṣaṇḍa and Amarka.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -612,18 +656,6 @@ In the Eighth Chapter Hiraṇyakaśipu tries to kill his son and attacks a pilla
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The sons of demons take Prahlāda&#39;s instructions seriously and reject the materialistic teachings of Ṣaṇḍa and Amarka. Sincere preaching, rooted in real lineage, actually changes hearts even in hostile environments. Pure association is contagious in the best way.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Whose pure association in your life has shifted you, and how do you maintain that contact?</li><li>Where could your own sincere word change a young heart this week?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -792,7 +824,6 @@ In the Eighth Chapter Hiraṇyakaśipu tries to kill his son and attacks a pilla
 
     <div class="fc-translation" data-sec="translation">When Ṣaṇḍa and Amarka, the sons of Śukrācārya, observed that all the students, the sons of the demons, were becoming advanced in Kṛṣṇa consciousness because of the association of Prahlāda Mahārāja, they were afraid. They approached the King of the demons and described the situation as it was.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -871,18 +902,6 @@ Ekānta-saṁsthitām can mean “their intelligence was fixed first on bhakti, 
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Seeing the boys becoming fixed in Kṛṣṇa-consciousness, the asura priests grow afraid and report to the king. Real spiritual influence frightens those committed to a worldly script. Be ready: pure presence is itself political news.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Whose &#39;reporting&#39; on your spiritual influence are you afraid of?</li><li>How do you keep teaching truth even when it makes the keepers of the script nervous?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -1234,7 +1253,6 @@ Ekānta-saṁsthitām can mean “their intelligence was fixed first on bhakti, 
 
     <div class="fc-translation" data-sec="translation">When Hiraṇyakaśipu understood the entire situation, he was extremely angry, so much so that his body trembled. Thus he finally decided to kill his son Prahlāda. Hiraṇyakaśipu was by nature very cruel, and feeling insulted, he began hissing like a snake trampled upon by someone’s foot. His son Prahlāda was peaceful, mild and gentle, his senses were under control, and he stood before Hiraṇyakaśipu with folded hands. According to Prahlāda’s age and behavior, he was not to be chastised. Yet with staring, crooked eyes, Hiraṇyakaśipu rebuked him with the following harsh words.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1298,18 +1316,6 @@ Ekānta-saṁsthitām can mean “their intelligence was fixed first on bhakti, 
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Hiraṇyakaśipu&#39;s body trembles with rage; he hisses like a trampled snake at his peaceful, mild son. Cruelty toward a great devotee diminishes lifespan and erases pious results. Power means nothing once vaiṣṇava-aparādha is added to it.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where in your life is rage at someone gentle quietly eroding what you have built?</li><li>What single de-escalation would arrest that erosion?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -1503,7 +1509,6 @@ Ekānta-saṁsthitām can mean “their intelligence was fixed first on bhakti, 
 
     <div class="fc-translation" data-sec="translation">Hiraṇyakaśipu said: O most impudent, most unintelligent disruptor of the family, O lowest of mankind, you have violated my power to rule you, and therefore you are an obstinate fool. Today I shall send you to the place of Yamarāja.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1594,18 +1599,6 @@ Durvinīta means impudent but it also has another meaning: especially well-behav
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Hiraṇyakaśipu calls Prahlāda durvinīta — impudent and unteachable — and threatens to send him to Yamarāja. The demonic mind cannot tell devotion from defiance. Real refinement looks like rebellion to those addicted to control.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Whose &#39;impudence&#39; in your life might actually be saintliness you have misread?</li><li>Where do you frame disagreement with you as defiance of order itself?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -1792,7 +1785,6 @@ Durvinīta means impudent but it also has another meaning: especially well-behav
 
     <div class="fc-translation" data-sec="translation">My son Prahlāda, you rascal, you know that when I am angry all the planets of the three worlds tremble, along with their chief rulers. By whose power has a rascal like you become so impudent that you appear fearless and overstep my power to rule you?</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1872,18 +1864,6 @@ Balaḥ means “whose strength.”</div>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Hiraṇyakaśipu boasts that his anger makes the three worlds tremble — yet this small boy is fearless. By whose power, he asks, does this &#39;rascal&#39; overstep my rule? Demonic confidence collapses when it meets fearlessness it cannot explain.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Whose fearlessness in your circle has quietly exposed the limits of someone else&#39;s power?</li><li>Where does your own bravery confront the question, &#39;by whose power?&#39;</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -2160,7 +2140,6 @@ Balaḥ means “whose strength.”</div>
 
     <div class="fc-translation" data-sec="translation">Prahlāda Mahārāja said: My dear King, the source of my strength, of which you are asking, is also the source of yours. Indeed, the original source of all kinds of strength is one. He is not only your strength or mine, but the only strength for everyone. Without Him, no one can get any strength. Whether moving or not moving, superior or inferior, everyone, including Lord Brahmā, is controlled by the strength of the Supreme Personality of Godhead.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2252,18 +2231,6 @@ Balaḥ means “whose strength.”</div>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Prahlāda answers: the source of my strength is the source of yours — there is one Strength, and everyone is controlled by it. Even Brahmā depends on Him. Naming the true Source disarms every competitive comparison.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Whose strength do you measure against your own, instead of tracing both to the Source?</li><li>How does that reframing soften your battles?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -2513,7 +2480,6 @@ Balaḥ means “whose strength.”</div>
 
     <div class="fc-translation" data-sec="translation">The Supreme Personality of Godhead, who is the supreme controller and time factor, is the power of the senses, the power of the mind, the power of the body, and the vital force of the senses. His influence is unlimited. He is the best of all living entities, the controller of the three modes of material nature. By His own power, He creates this cosmic manifestation, maintains it and annihilates it also.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2595,18 +2561,6 @@ Balaḥ means “whose strength.”</div>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The Lord is the power of the senses, the mind, the body, and the vital force; controller of the three modes; creator, maintainer, annihilator. Recognize who is actually doing everything you call your own action. Every breath is a loan.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which &#39;achievement&#39; of yours have you credited yourself for that was actually borrowed power?</li><li>How could acknowledging the loan reshape your gratitude?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -2876,7 +2830,6 @@ Balaḥ means “whose strength.”</div>
 
     <div class="fc-translation" data-sec="translation">Prahlāda Mahārāja continued: My dear father, please give up your demoniac mentality. Do not discriminate in your heart between enemies and friends; make your mind equipoised toward everyone. Except for the uncontrolled and misguided mind, there is no enemy within this world. When one sees everyone on the platform of equality, one then comes to the position of worshiping the Lord perfectly.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2962,18 +2915,6 @@ Give up your demonic nature and make your mind think yourself and others to be e
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Prahlāda urges his father to give up the demoniac mentality, drop the friend-enemy distinction, become equipoised. The only enemy is the uncontrolled mind. When you see equally, you worship the Lord perfectly.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which &#39;enemy&#39; in your life is mostly the projection of your own uncontrolled mind?</li><li>What practice could move you closer to equipoise rather than reaction?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -3207,7 +3148,6 @@ Give up your demonic nature and make your mind think yourself and others to be e
 
     <div class="fc-translation" data-sec="translation">In former times there were many fools like you who did not conquer the six enemies that steal away the wealth of the body. These fools were very proud, thinking, “I have conquered all enemies in all the ten directions.” But if a person is victorious over the six enemies and is equipoised toward all living entities, for him there are no enemies. Enemies are merely imagined by one in ignorance.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3291,18 +3231,6 @@ Foolish persons like you (eke), not conquering the six plunderers who steal ever
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">In former times many proud fools claimed to conquer all directions while never conquering the six inner enemies — lust, anger, greed, illusion, madness, jealousy. Real victory is over the senses; outer enemies are imagined when one is ignorant.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which of the six inner enemies is the most overlooked in your own conquest narrative?</li><li>Where could a single internal victory render an external &#39;enemy&#39; irrelevant?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -3514,7 +3442,6 @@ Foolish persons like you (eke), not conquering the six plunderers who steal ever
 
     <div class="fc-translation" data-sec="translation">Hiraṇyakaśipu replied: You rascal, you are trying to minimize my value, as if you were better than me at controlling the senses. This is over-intelligent. I can therefore understand that you desire to die at my hands, for this kind of nonsensical talk is indulged in by those about to die.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3593,18 +3520,6 @@ Viklavā means incoherent.  You are praising yourself saying “I have conquered
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Hiraṇyakaśipu mocks Prahlāda as over-clever and predicts he is talking nonsense in the way of those about to die. Good instruction angers fools rather than calming them. Notice when truth offered to a hardened heart only increases its heat.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where are you offering instruction to a hardened heart whose response is more heat, not less?</li><li>When is silence the higher service than further explanation?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -3800,7 +3715,6 @@ Viklavā means incoherent.  You are praising yourself saying “I have conquered
 
     <div class="fc-translation" data-sec="translation">O most unfortunate Prahlāda, you have always described a supreme being other than me, a supreme being who is above everything, who is the controller of everyone, and who is all-pervading. But where is He? If He is everywhere, then why is He not present before me in this pillar?</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3905,18 +3819,6 @@ You are most unfortunate because you have given up the wealth of the universe wh
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Hiraṇyakaśipu demands: if your Lord is everywhere, why is He not in this pillar? Demonic challenge dressed as inquiry. The Lord is veiled by yoga-māyā from the foolish; the question itself reveals the questioner&#39;s spiritual blindness.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which &#39;reasonable demand&#39; for proof have you posed that is actually a refusal?</li><li>Where could honest looking, not loud demanding, reveal the Lord&#39;s presence?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -4115,7 +4017,6 @@ You are most unfortunate because you have given up the wealth of the universe wh
 
     <div class="fc-translation" data-sec="translation">Because you are speaking so much nonsense, I shall now sever your head from your body. Now let me see your most worshipable God come to protect you. I want to see it.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -4189,18 +4090,6 @@ Hiraṇyakaśipu does not see the Lord. He then speaks this verse.</div>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Hiraṇyakaśipu threatens to sever Prahlāda&#39;s head, daring his God to come protect him. Atheistic boldness peaks just before the Lord acts. The &#39;come, then, prove it&#39; moment is often the threshold of revelation.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where have you dared the Lord to act, only to find Him acting?</li><li>What dare are you making today that should give you pause?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -4417,7 +4306,6 @@ Hiraṇyakaśipu does not see the Lord. He then speaks this verse.</div>
     <div class="fc-translation" data-sec="translation">Being obsessed with anger, Hiraṇyakaśipu, who was very great in bodily strength, thus chastised his exalted devotee-son Prahlāda with harsh words. Cursing him again and again, Hiraṇyakaśipu took up his sword, got up from his royal throne, and with great anger struck his fist against the column.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -4451,18 +4339,6 @@ Hiraṇyakaśipu does not see the Lord. He then speaks this verse.</div>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Obsessed with anger, Hiraṇyakaśipu curses repeatedly, takes up his sword, rises from his throne, and strikes his fist against the column. The body of demonic rage telegraphs itself in posture and gesture. Notice the moment violence prepares its own threshold.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>When have you struck a &#39;column&#39; in anger — and what was about to emerge from it?</li><li>Where do you see rage in your own body about to cross a threshold?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -4694,7 +4570,6 @@ Hiraṇyakaśipu does not see the Lord. He then speaks this verse.</div>
 
     <div class="fc-translation" data-sec="translation">Then from within the pillar came a fearful sound, which appeared to crack the covering of the universe. O my dear Yudhiṣṭhira, this sound reached even the abodes of the demigods like Lord Brahmā, and when the demigods heard it, they thought, “Oh, now our planets are being destroyed!”</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -4748,18 +4623,6 @@ The sound appeared to crack the universe.  Hearing that sound (yam), the devatā
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">A fearful sound emerges from inside the pillar, seeming to crack the universal covering; even Brahmā fears their planets are being destroyed. When the Lord readies a move, the whole cosmos trembles. Real interventions are not subtle.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What &#39;cosmic trembling&#39; in your life might be the prelude to a divine intervention you are not yet seeing?</li><li>How do you respond when the world&#39;s order itself seems to shake?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -4966,7 +4829,6 @@ The sound appeared to crack the universe.  Hearing that sound (yam), the devatā
 
     <div class="fc-translation" data-sec="translation">While showing his extraordinary prowess, Hiraṇyakaśipu, who desired to kill his own son, heard that wonderful, tumultuous sound, which had never before been heard. Upon hearing the sound, the other leaders of the demons were afraid. None of them could find the origin of that sound in the assembly.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -5037,18 +4899,6 @@ They could not see the source of that sound (tat-padam).</div>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The tumultuous sound shocks Hiraṇyakaśipu and his demon court; none can find its origin. The Lord can be present as sound in space before He is present in form. Sometimes the first sign of divine presence is something heard, not seen.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What &#39;sound from nowhere&#39; in your life pointed toward a presence that arrived only later?</li><li>How could you listen for such announcements more attentively?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -5300,7 +5150,6 @@ They could not see the source of that sound (tat-padam).</div>
 
     <div class="fc-translation" data-sec="translation">To prove that the statement of His servant Prahlāda Mahārāja was substantial — in other words, to prove that the Supreme Lord is present everywhere, even within the pillar of an assembly hall — the Supreme Personality of Godhead, Hari, exhibited a wonderful form never before seen. The form was neither that of a man nor that of a lion. Thus the Lord appeared in His wonderful form in the assembly hall.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -5484,18 +5333,6 @@ Prahlāda had said that the Lord was present in the pillar. To prove those words
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">To prove that the Lord is everywhere — even in the pillar — Hari manifests in a never-before-seen form, neither human nor lion. The Lord answers a sincere question (and an insincere one) with the exact form needed. Specificity is mercy.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What question of yours has been answered by an unprecedented form of presence?</li><li>Where might you be waiting for a familiar form when an unfamiliar one is being offered?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -5738,7 +5575,6 @@ Prahlāda had said that the Lord was present in the pillar. To prove those words
 
     <div class="fc-translation" data-sec="translation">While Hiraṇyakaśipu looked all around to find the source of the sound, that wonderful form of the Lord, which could not be ascertained to be either a man or a lion, emerged from the pillar. In amazement, Hiraṇyakaśipu wondered, “What is this creature that is half man and half lion?”</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -5832,18 +5668,6 @@ Looking all around the pillar at the being emerging from the pillar, he thought 
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Hiraṇyakaśipu wonders — &#39;what is this half-lion, half-man?&#39; The demonic mind cannot calculate the Lord&#39;s unlimited potencies; categories collapse in the face of revelation. Be wary of intellectual frameworks that cannot hold the Lord&#39;s actual appearance.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which spiritual framework of yours is being stretched by something it cannot categorize?</li><li>How do you receive a revelation that defies your settled taxonomies?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -6459,7 +6283,6 @@ Looking all around the pillar at the being emerging from the pillar, he thought 
     <div class="fc-translation" data-sec="translation">Hiraṇyakaśipu studied the form of the Lord, trying to decide who the form of Nṛsiṁhadeva standing before him was. The Lord’s form was extremely fearsome because of His angry eyes, which resembled molten gold; His shining mane, which expanded the dimensions of His fearful face; His deadly teeth; and His razor-sharp tongue, which moved about like a dueling sword. His ears were erect and motionless, and His nostrils and gaping mouth appeared like caves of a mountain. His jaws parted fearfully, and His entire body touched the sky. His neck was very short and thick, His chest broad, His waist thin, and the hairs on His body as white as the rays of the moon. His arms, which resembled flanks of soldiers, spread in all directions as He killed the demons, rogues and atheists with His conchshell, disc, club, lotus and other natural weapons.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -6565,18 +6388,6 @@ Nṛsiṁha appeared before Hiraṇyakaśipu while he was considering that extre
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Nṛsiṁha appears with molten-gold eyes, deadly teeth, razor-sharp tongue, mountain-cave nostrils, sky-touching body, thunderbolt arms, weapons in every hand. The fierce form of the Lord exists precisely to protect the gentle. Mercy sometimes wears a terrifying face.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where in your life has the Lord&#39;s protective mercy come in a form you initially feared?</li><li>How do you receive ferocity offered on your behalf?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -6819,7 +6630,6 @@ Nṛsiṁha appeared before Hiraṇyakaśipu while he was considering that extre
 
     <div class="fc-translation" data-sec="translation">Hiraṇyakaśipu murmured to himself, “Lord Viṣṇu, who possesses great mystic power, has made this plan to kill me, but what is the use of such an attempt? Who can fight with me?” Thinking like this and taking up his club, Hiraṇyakaśipu attacked the Lord like an elephant.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -6858,18 +6668,6 @@ Seeing that astonishing form, he thought and then spoke as follows. The Lord has
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Hiraṇyakaśipu thinks Viṣṇu has merely planned a clever attack — &#39;who can fight with me?&#39; — and charges Nṛsiṁha like an elephant attacking a lion. Demonic confidence does not recognize cosmic inevitability. Underestimating the Lord is the demon&#39;s final mistake.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where are you confidently charging at a situation you have not yet recognized as cosmic?</li><li>What in you needs the humility to stop and look before charging?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -7130,7 +6928,6 @@ Seeing that astonishing form, he thought and then spoke as follows. The Lord has
 
     <div class="fc-translation" data-sec="translation">Just as a small insect falls forcefully into a fire and the insignificant creature becomes invisible, when Hiraṇyakaśipu attacked the Lord, who was full of effulgence, Hiraṇyakaśipu became invisible. This is not at all astonishing, for the Lord is always situated in pure goodness. Formerly, during creation, He entered the dark universe and illuminated it by His spiritual effulgence.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -7206,18 +7003,6 @@ Entering the effulgence of the Lord, he disappeared. This is not surprising for 
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Like an insect falling into fire, Hiraṇyakaśipu becomes invisible in the Lord&#39;s effulgence. The Lord, in pure goodness, illuminates even dark universes — the demon vanishes by mere contact with that light. Some opponents do not survive proximity.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which demonic pattern in you would not survive proximity to the Lord&#39;s light?</li><li>What single act of approach this week could begin that incineration?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -7434,7 +7219,6 @@ Entering the effulgence of the Lord, he disappeared. This is not surprising for 
     <div class="fc-translation" data-sec="translation">Thereafter, the great demon Hiraṇyakaśipu, who was extremely angry, swiftly attacked Nṛsiṁhadeva with his club and began to beat Him. Lord Nṛsiṁhadeva, however, captured the great demon, along with his club, just as Garuḍa might capture a great snake.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -7515,18 +7299,6 @@ Then, separating himself from the effulgence, he came before that form and stuck
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The demon attacks again with his club; Nṛsiṁha captures him as Garuḍa captures a snake. The Lord allows the demonstration of demonic effort, then ends it on His own terms. Resistance is permitted up to the moment it is concluded.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where are you exhausting yourself in resistance the Lord is patiently allowing?</li><li>What might &#39;being caught&#39; by grace look like for you right now?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -7751,7 +7523,6 @@ Then, separating himself from the effulgence, he came before that form and stuck
 
     <div class="fc-translation" data-sec="translation">O Yudhiṣṭhira, O great son of Bharata, when Lord Nṛsiṁhadeva gave Hiraṇyakaśipu a chance to slip from His hand, just as Garuḍa sometimes plays with a snake and lets it slip from his mouth, the demigods, who had lost their abodes and who were hiding behind the clouds for fear of the demon, did not consider that incident very good. Indeed, they were perturbed.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -7795,18 +7566,6 @@ The demon slipped from his hands.  The devatās were hidden by clouds, fearing t
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Nṛsiṁha plays — letting Hiraṇyakaśipu slip from His hand. The demigods, hiding, are perturbed. Even the Lord&#39;s play can look like miscalculation to those who do not understand. Trust the choreography even when it seems to favor the wrong side.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which recent &#39;slip&#39; in a situation perturbed you because you didn&#39;t see it as play?</li><li>How does trust in the Lord&#39;s choreography change how you read setbacks?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -8013,7 +7772,6 @@ The demon slipped from his hands.  The devatās were hidden by clouds, fearing t
 
     <div class="fc-translation" data-sec="translation">When Hiraṇyakaśipu was freed from the hands of Nṛsiṁhadeva, he falsely thought that the Lord was afraid of his prowess. Therefore, after taking a little rest from the fight, he took up his sword and shield and again attacked the Lord with great force.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -8097,18 +7855,6 @@ Thinking that the Lord was afraid of his prowess because (yat) he got free from 
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Freed momentarily, Hiraṇyakaśipu falsely concludes that the Lord is afraid of his prowess and attacks again. Demonic minds mistake mercy for fear and grace-room for weakness. Watch the conclusions you draw from the Lord&#39;s apparent slowness.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where have you mistaken the Lord&#39;s patience for the Lord&#39;s powerlessness?</li><li>What pause in His response should you be reading more carefully?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -8316,7 +8062,6 @@ Thinking that the Lord was afraid of his prowess because (yat) he got free from 
     <div class="fc-translation" data-sec="translation">Making a loud, shrill sound of laughter, the Supreme Personality of Godhead, Nārāyaṇa, who is extremely strong and powerful, captured Hiraṇyakaśipu, who was protecting himself with his sword and shield, leaving no gaps open. With the speed of a hawk, Hiraṇyakaśipu moved sometimes in the sky and sometimes on the earth, his eyes closed because of fear of Nṛsiṁhadeva’s laughter.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -8377,18 +8122,6 @@ Thinking that the Lord was afraid of his prowess because (yat) he got free from 
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Laughing shrilly, Nārāyaṇa captures Hiraṇyakaśipu — fully armored, sword and shield raised. The demon moves between sky and earth, eyes closed in fear of that laugh. The Lord&#39;s laughter is the sound of inevitability.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where does the Lord&#39;s &#39;laughter&#39; in your life remind you of inevitability you cannot evade?</li><li>What would surrender to that inevitability free up in you?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -8631,7 +8364,6 @@ Thinking that the Lord was afraid of his prowess because (yat) he got free from 
 
     <div class="fc-translation" data-sec="translation">As a snake captures a mouse or Garuḍa captures a very venomous snake, Lord Nṛsiṁhadeva captured Hiraṇyakaśipu, who could not be pierced even by the thunderbolt of King Indra. As Hiraṇyakaśipu moved his limbs here, there and all around, very much afflicted at being captured, Lord Nṛsiṁhadeva placed the demon on His lap, supporting him with His thighs, and in the doorway of the assembly hall the Lord very easily tore the demon to pieces with the nails of His hand.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -8705,18 +8437,6 @@ He captured the demon just as a snake captures a mouse. Without paying attention
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Nṛsiṁha places Hiraṇyakaśipu on His lap in the doorway and tears him apart with His nails — neither land nor sky, neither day nor night, neither inside nor outside, not by any weapon, not by any created creature. Every loophole the demon engineered becomes the precise design of his death.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What &#39;loophole&#39; in your life are you constructing that may itself become your undoing?</li><li>Where do clever defenses against the Lord actually invite His exact intervention?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -8941,7 +8661,6 @@ He captured the demon just as a snake captures a mouse. Without paying attention
 
     <div class="fc-translation" data-sec="translation">Lord Nṛsiṁhadeva’s mouth and mane were sprinkled with drops of blood, and His fierce eyes, full of anger, were impossible to look at. Licking the edge of His mouth with His tongue, the Supreme Personality of Godhead, Nṛsiṁhadeva, decorated with a garland of intestines taken from Hiraṇyakaśipu’s abdomen, resembled a lion that has just killed an elephant.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -9010,18 +8729,6 @@ His face was stained with drops of blood. Thus his mane and face were red. He wo
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The Lord, blood-sprinkled, intestine-garlanded, licks the corner of His mouth. The fierce devotion of Nṛsiṁha-līlā has a strange beauty even in its violence. Some loves wear terrible ornaments — and they are still loves.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where do you find beauty in fierce protection that other eyes would call horror?</li><li>How might &#39;terrible&#39; love around you be working on behalf of something gentle?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -9206,7 +8913,6 @@ His face was stained with drops of blood. Thus his mane and face were red. He wo
 
     <div class="fc-translation" data-sec="translation">The Supreme Personality of Godhead, who had many, many arms, first uprooted Hiraṇyakaśipu’s heart and then threw him aside and turned toward the demon’s soldiers. These soldiers had come in thousands to fight with Him with raised weapons and were very faithful followers of Hiraṇyakaśipu, but Lord Nṛsiṁhadeva killed all of them merely with the ends of His nails.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -9270,18 +8976,6 @@ Hiraṇyakaśipu’s lotus heart was uprooted by the buds of the Lord’s nails.
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The many-armed Lord uproots Hiraṇyakaśipu&#39;s heart, throws him aside, and kills the entire faithful demonic army with the tips of His nails. Demons exist always; the Lord can dispatch thousands with a fingernail. Scale does not impress the Source.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where do you over-fear an &#39;army&#39; that is, to the Lord, a fingernail&#39;s work?</li><li>How could this image change how you face overwhelming opposition?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -9488,7 +9182,6 @@ Hiraṇyakaśipu’s lotus heart was uprooted by the buds of the Lord’s nails.
 
     <div class="fc-translation" data-sec="translation">The hair on Nṛsiṁhadeva’s head shook the clouds and scattered them here and there, His glaring eyes stole the effulgence of the luminaries in the sky, and His breathing agitated the seas and oceans. Because of His roaring, all the elephants in the world began to cry in fear.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -9584,18 +9277,6 @@ This describes how he afflicted the enemy.</div>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">His hair scatters clouds, His eyes steal the luminaries&#39; brightness, His breath agitates the seas, His roar makes the world&#39;s elephants cry. The Lord&#39;s body, when fierce, is the standard against which every glory is measured. All splendor is a spark of His.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which &#39;glory&#39; in your life are you treating as ultimate that is actually a borrowed spark?</li><li>How could remembering the Source reorient your gratitude?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -9809,7 +9490,6 @@ This describes how he afflicted the enemy.</div>
 
     <div class="fc-translation" data-sec="translation">Airplanes were thrown into outer space and the upper planetary system by the hair on Nṛsiṁhadeva’s head. Because of the pressure of the Lord’s lotus feet, the earth appeared to slip from its position, and all the hills and mountains sprang up due to His intolerable force. Because of the Lord’s bodily effulgence, both the sky and all directions diminished in their natural illumination.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -9888,18 +9568,6 @@ With airplanes disturbed by the upward movement of his mane the sky and the eart
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Airplanes are thrown into outer space by Nṛsiṁha&#39;s hair; the earth slips from its position; mountains spring up; the sky dims before His effulgence. The Bhāgavatam&#39;s vision of ancient civilization is far larger than modern science admits. Be humble before what your worldview cannot host.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What does your worldview refuse to host, that scripture takes for granted?</li><li>Where could intellectual humility open you to broader categories of the real?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -10106,7 +9774,6 @@ With airplanes disturbed by the upward movement of his mane the sky and the eart
 
     <div class="fc-translation" data-sec="translation">Manifesting a full effulgence and a fearsome countenance, Lord Nṛsiṁha, being very angry and finding no contestant to face His power and opulence, then sat down in the assembly hall on the excellent throne of the king. Because of fear and obedience, no one could come forward to serve the Lord directly.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -10195,18 +9862,6 @@ A king is defined as one whose power is accepted by the person whom he conquers.
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Finding no contestant for His power, Nṛsiṁha sits on Hiraṇyakaśipu&#39;s throne — and out of fear and awe no one approaches to serve directly. Even rightful service falters when the form is unfamiliar. Sometimes we hesitate to approach what has clearly come for our welfare.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Whom or what have you been afraid to approach who plainly came for your welfare?</li><li>What small approach could you make this week despite the fear?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -10414,7 +10069,6 @@ A king is defined as one whose power is accepted by the person whom he conquers.
     <div class="fc-translation" data-sec="translation">Hiraṇyakaśipu had been exactly like a fever of meningitis in the head of the three worlds. Thus when the wives of the demigods in the heavenly planets saw that the great demon had been killed by the personal hands of the Supreme Personality of Godhead, their faces blossomed in great joy. The wives of the demigods again and again showered flowers from heaven upon Lord Nṛsiṁhadeva like rain.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -10465,18 +10119,6 @@ Seeing that the demon, intolerable like a fever in the head, was killed by the L
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The demigod wives shower flowers from heaven as the &#39;meningitis fever&#39; of the three worlds is removed. The end of a tyrant produces joy in those who quietly suffered. Sometimes the loudest celebration comes from the previously silenced.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Whose silenced joy in your circle would erupt if a long-held burden were lifted?</li><li>Where could you help end such a burden?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -10684,7 +10326,6 @@ Seeing that the demon, intolerable like a fever in the head, was killed by the L
     <div class="fc-translation" data-sec="translation">At that time, the airplanes of the demigods, who desired to see the activities of the Supreme Lord, Nārāyaṇa, crowded the sky. The demigods began beating drums and kettledrums, and upon hearing them the angelic women began to dance, while the chiefs of the Gandharvas sang sweetly.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -10715,18 +10356,6 @@ The sky became crowded with airplanes of the devatās (nākinām).</div>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Airplanes of the demigods crowd the sky; drums, dancing, Gandharvas singing. The cosmos parties when a great threat is finally finished. Joy at deliverance is a sacred response, not unseemly excess.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where do you suppress sacred joy because it feels excessive?</li><li>What deliverance in your past deserves a fuller celebration even now?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -11130,7 +10759,6 @@ The sky became crowded with airplanes of the devatās (nākinām).</div>
     <div class="fc-translation" data-sec="translation">My dear King Yudhiṣṭhira, the demigods then approached the Lord. They were headed by Lord Brahmā, King Indra and Lord Śiva and included great saintly persons and the residents of Pitṛloka, Siddhaloka, Vidyādhara-loka and the planet of the snakes. The Manus approached, and so did the chiefs of various other planets. The angelic dancers approached, as did the Gandharvas, the Cāraṇas, the Yakṣas, the inhabitants of Kinnaraloka, the Vetālas, the inhabitants of Kimpuruṣa-loka, and the personal servants of Viṣṇu like Sunanda and Kumuda. All of them came near the Lord, who glowed with intense light. They individually offered their obeisances and prayers, their hands folded at their heads.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -11151,18 +10779,6 @@ The form apsara-cāranāḥ is poetic license.</div>
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Brahmā, Indra, Śiva, sages, Pitṛs, Siddhas, Vidyādharas, Manus, dancers, Gandharvas, Cāraṇas, Yakṣas, Kinnaras, Vetālas, Kimpuruṣas, Sunanda, Kumuda — every rank approaches and offers prayers, hands folded at the head. Every order of being responds when the Lord acts decisively.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which orders in your life all respond when one decisive act is taken?</li><li>What &#39;every-rank assembly&#39; would your own breakthrough call forth?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -11385,7 +11001,6 @@ The form apsara-cāranāḥ is poetic license.</div>
 
     <div class="fc-translation" data-sec="translation">Lord Brahmā prayed: My Lord, You are unlimited, and You possess unending potencies. No one can estimate or calculate Your prowess and wonderful influence, for Your actions are never polluted by the material energy. Through the material qualities, You very easily create the universe, maintain it and again annihilate it, yet You remain the same, without deterioration. I therefore offer my respectful obeisances unto You.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -11444,18 +11059,6 @@ You made the Kumāras get angry and made your two gate keepers fall. You made me
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Brahmā prays: no one can estimate Your unending potencies; You create, maintain, annihilate, yet remain unchanged. Surrender begins by admitting that the Lord&#39;s prowess is beyond measurement, including by oneself. Awe is a form of accuracy.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where do you act as if you have measured the Lord&#39;s power, when in truth you have not?</li><li>How does honest awe change your prayer life?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -11656,7 +11259,6 @@ You made the Kumāras get angry and made your two gate keepers fall. You made me
 
     <div class="fc-translation" data-sec="translation">Lord Śiva said: The end of the millennium is the time for Your anger. Now that this insignificant demon Hiraṇyakaśipu has been killed, O my Lord, who are naturally affectionate to Your devotee, kindly protect his son Prahlāda Mahārāja, who is standing nearby as Your fully surrendered devotee.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -11755,18 +11357,6 @@ Everyone is afraid of final destruction on seeing your ferocious form, but I am 
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Śiva prays: this insignificant demon has been killed; now protect Prahlāda, who is surrendered before You. After a divine cosmic act, ask for the small mercy too. The Lord&#39;s anger has its arc; His protection has its asking.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What small mercy is yours to request after a recent large intervention?</li><li>Where do you fail to ask because you assume the big work is enough?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -12070,7 +11660,6 @@ Everyone is afraid of final destruction on seeing your ferocious form, but I am 
 
     <div class="fc-translation" data-sec="translation">King Indra said: O Supreme Lord, You are our deliverer and protector. Our shares of sacrifices, which are actually Yours, have been recovered from the demon by You. Because the demoniac king Hiraṇyakaśipu was most fearsome, our hearts, which are Your permanent abode, were all overtaken by him. Now, by Your presence, the gloom and darkness in our hearts have been dissipated. O Lord, for those who always engage in Your service, which is more exalted than liberation, all material opulence is insignificant. They do not even care for liberation, not to speak of the benefits of kāma, artha and dharma.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -12167,18 +11756,6 @@ Until this time I have not been attracted to remembering your lotus feet (since 
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Indra prays: the demon stole our shares of sacrifice and our hearts, which are Your abode; now You have dispelled our darkness. For Your servants, even liberation is insignificant — let alone kāma, artha, dharma. Service is the highest aim.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where have you let your heart — the Lord&#39;s abode — be occupied by a demonic concern?</li><li>What &#39;lesser&#39; aim are you still pursuing that service would render insignificant?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -12446,7 +12023,6 @@ Until this time I have not been attracted to remembering your lotus feet (since 
 
     <div class="fc-translation" data-sec="translation">All the saintly persons present offered their prayers in this way: O Lord, O supreme maintainer of those sheltered at Your lotus feet, O original Personality of Godhead, the process of austerity and penance, in which You instructed us before, is the spiritual power of Your very self. It is by austerity that You create the material world, which lies dormant within You. This austerity was almost stopped by the activities of this demon, but now, by Yourself appearing in the form of Nṛsiṁhadeva, which is meant just to give us protection, and by killing this demon, You have again approved the process of austerity.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -12535,18 +12111,6 @@ Until today we have not been performing austerities.  You have taught us about t
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Saints pray: austerity is Your spiritual power; demonic activity nearly stopped it, but Your form of Nṛsiṁha has re-approved it. The Lord defends the practices of His devotees by His own appearance. Tapas survives because He defends it.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which austerity in your life has been quietly defended by grace despite opposition?</li><li>How do you honor that defense by intensifying rather than relaxing the practice?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -12830,7 +12394,6 @@ Until today we have not been performing austerities.  You have taught us about t
 
     <div class="fc-translation" data-sec="translation">The inhabitants of Pitṛloka prayed: Let us offer our respectful obeisances unto Lord Nṛsiṁhadeva, the maintainer of the religious principles of the universe. He has killed Hiraṇyakaśipu, the demon who by force enjoyed all the offerings of the śrāddha ceremonies performed by our sons and grandsons on the anniversaries of our death and who drank the water with sesame seeds offered in holy places of pilgrimage. By killing this demon, O Lord, You have taken back all this stolen property from his abdomen by piercing it with Your nails. We therefore wish to offer our respectful obeisances unto You.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -12899,18 +12462,6 @@ Until today we have been fasting. Śrāddhāni means the offerings of rice balls
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The Pitṛs pray: by killing the demon who stole our śrāddha offerings, You have returned what was taken from our descendants&#39; rituals. When demonic rule falls, the proper flow of offerings to forefathers is restored. Note: the unseen also have stake in our practices.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which family or ancestral practice in your tradition has lapsed and could be restored?</li><li>How does remembering the unseen recipients change the quality of your offerings?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -13154,7 +12705,6 @@ Until today we have been fasting. Śrāddhāni means the offerings of rice balls
 
     <div class="fc-translation" data-sec="translation">The inhabitants of Siddhaloka prayed: O Lord Nṛsiṁhadeva, because we belong to Siddhaloka, we automatically achieve perfection in all eight kinds of mystic power. Yet Hiraṇyakaśipu was so dishonest that by the strength of his power and austerity, he took away our powers. Thus he became very proud of his mystic strength. Now, because this rogue has been killed by Your nails, we offer our respectful obeisances unto You.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -13213,18 +12763,6 @@ Stripped of our yoga powers, we have been starving until now. We have been waiti
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Siddhaloka residents pray: our mystic powers were stolen by Hiraṇyakaśipu&#39;s austerity; now You have returned them. Even great inborn powers can be taken if a stronger demonic discipline arises. Power asymmetry is the norm; the Lord rebalances it.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which natural gift of yours has been overpowered by someone else&#39;s discipline directed wrongly?</li><li>Where do you wait for the Lord&#39;s rebalancing rather than match the wrong discipline?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -13466,7 +13004,6 @@ Stripped of our yoga powers, we have been starving until now. We have been waiti
     <div class="fc-translation" data-sec="translation">The inhabitants of Vidyādhara-loka prayed: Our acquired power to appear and disappear in various ways according to varieties of meditation was banned by that foolish Hiraṇyakaśipu because of his pride in his superior bodily strength and his ability to conquer others. Now the Supreme Personality of Godhead has killed him just as if the demon were an animal. Unto that supreme pastime form of Lord Nṛsiṁhadeva, we eternally offer our respectful obeisances.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -13527,18 +13064,6 @@ Till now we have been without knowledge.  The knowledge consists of power of bei
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Vidyādharas pray: our power to appear and disappear by meditation was banned by Hiraṇyakaśipu&#39;s pride; the Lord has now killed him as a hunter kills an animal. Demons ban what they fear; the Lord restores what was banned.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which spiritual capacity in your community has been quietly banned by a dominant force?</li><li>What would restoration of that capacity require, beyond the Lord&#39;s intervention?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -13741,7 +13266,6 @@ Till now we have been without knowledge.  The knowledge consists of power of bei
 
     <div class="fc-translation" data-sec="translation">The inhabitants of Nāgaloka said: The most sinful Hiraṇyakaśipu took away all the jewels on our hoods and all our beautiful wives. Now, since his chest has been pierced by Your nails, You are the source of all pleasure to our wives. Thus we together offer our respectful obeisances unto You.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -13795,18 +13319,6 @@ We have been suffering till now because our wealth and women have been stolen. B
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Nāgaloka residents pray: the demon took our jewels and wives; now You are the source of pleasure to our wives. When a tyrant is removed, both wealth and beloved relationships return. Real restoration is wide.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where has tyranny in your sphere disrupted both material flow and intimate relationships?</li><li>What single restoration would ripple widest?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -14056,7 +13568,6 @@ We have been suffering till now because our wealth and women have been stolen. B
 
     <div class="fc-translation" data-sec="translation">All the Manus offered their prayers as follows: As Your order carriers, O Lord, we, the Manus, are the law-givers for human society, but because of the temporary supremacy of this great demon, Hiraṇyakaśipu, our laws for maintaining varṇāśrama-dharma were destroyed. O Lord, now that You have killed this great demon, we are in our normal condition. Kindly order us, Your eternal servants, what to do now.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -14145,18 +13656,6 @@ Suddenly receiving the glance of Nṛsiṁha, the Manus with hands folded on the
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The Manus pray: as Your order-carriers, we are the law-givers, but demonic rule destroyed varṇāśrama; now order us afresh. After upheaval, ask for fresh instruction rather than presume the old role. Restoration requires fresh asking.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>After an upheaval in your life, where are you reverting to the old role without asking for fresh instruction?</li><li>What would &#39;order us anew&#39; look like for you?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -14425,7 +13924,6 @@ Suddenly receiving the glance of Nṛsiṁha, the Manus with hands folded on the
     <div class="fc-translation" data-sec="translation">The prajāpatis offered their prayers as follows: O Supreme Lord, Lord of even Brahmā and Śiva, we, the prajāpatis, were created by You to execute Your orders, but we were forbidden by Hiraṇyakaśipu to create any more good progeny. Now the demon is lying dead before us, his chest pierced by You. Let us therefore offer our respectful obeisances unto You, whose incarnation in this form of pure goodness is meant for the welfare of the entire universe.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -14496,18 +13994,6 @@ O Supreme Lord!  The demon gave us the order not to create progeny (niṣiddhā�
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The Prajāpatis pray: we were forbidden by Hiraṇyakaśipu to create more good progeny; now we can resume. Demonic rule prevents the generation of the good. The Lord&#39;s appearance reopens the production of virtue itself.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What generative work of yours was paused under bad influences and could be resumed?</li><li>Where does the world need &#39;more good progeny&#39; from your specific craft?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -14766,7 +14252,6 @@ O Supreme Lord!  The demon gave us the order not to create progeny (niṣiddhā�
 
     <div class="fc-translation" data-sec="translation">The inhabitants of Gandharvaloka prayed: Your Lordship, we ever engage in Your service by dancing and singing in dramatic performances, but this Hiraṇyakaśipu, by the influence of his bodily strength and valor, brought us under his subjugation. Now he has been brought to this low condition by Your Lordship. What benefit can result from the activities of such an upstart as Hiraṇyakaśipu?</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -14795,18 +14280,6 @@ We were subjugated by him.  We had to perform dances and sing for him.</div>
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Gandharvas pray: we dance and sing in Your service, but the demon subjugated us; now he is brought low. Real service is to the Lord; subjugation by anyone else is exile from one&#39;s true vocation. The fall of tyranny restores vocation.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which natural vocation of yours has been bent into the service of a lesser master?</li><li>What would returning that vocation to the Lord look like in practice?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -14991,7 +14464,6 @@ We were subjugated by him.  We had to perform dances and sing for him.</div>
 
     <div class="fc-translation" data-sec="translation">The inhabitants of the Cāraṇa planet said: O Lord, because You have destroyed the demon Hiraṇyakaśipu, who was always a stake in the hearts of all honest men, we are now relieved, and we eternally take shelter of Your lotus feet, which award the conditioned soul liberation from materialistic contamination.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -15065,18 +14537,6 @@ He sleeps even in the bed of the heart of the devotees. Not tolerating that, you
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Cāraṇas pray: the demon who was a stake in the hearts of honest men has been destroyed — we now eternally take shelter at Your lotus feet. Removal of long pain enables permanent shelter. Crisis can be the doorway to deeper refuge.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which long pain in your life, when finally removed, opened a deeper shelter?</li><li>What is the &#39;stake&#39; currently lodged that needs the Lord&#39;s specific intervention?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -15344,7 +14804,6 @@ He sleeps even in the bed of the heart of the devotees. Not tolerating that, you
 
     <div class="fc-translation" data-sec="translation">The inhabitants of Yakṣaloka prayed: O controller of the twenty-four elements, we are considered the best servants of Your Lordship because of rendering services pleasing to You, yet we engaged as palanquin carriers by the order of Hiraṇyakaśipu, the son of Diti. O Lord in the form of Nṛsiṁhadeva, You know how this demon gave trouble to everyone, but now You have killed him, and his body is mixing with the five material elements.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -15403,18 +14862,6 @@ We are the chief experts in serving you by pleasing actions. Or we are chief amo
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Yakṣas pray: best servants of the Lord, we were demoted to palanquin-carriers by the demon; now his body is dissolving into the elements. Servants of the Lord, when subjugated, must wait — but the body of tyranny returns to dust.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where have you been demoted from your true service into a lesser role, and how do you maintain hope?</li><li>What does it mean for you to wait while a tyranny dissolves?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -15608,7 +15055,6 @@ We are the chief experts in serving you by pleasing actions. Or we are chief amo
 
     <div class="fc-translation" data-sec="translation">The inhabitants of Kimpuruṣa-loka said: We are insignificant living entities, and You are the Supreme Personality of Godhead, the supreme controller. Therefore how can we offer suitable prayers unto You? When this demon was condemned by devotees because they were disgusted with him, he was then killed by You.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -15683,18 +15129,6 @@ We are the chief experts in serving you by pleasing actions. Or we are chief amo
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Kimpuruṣa inhabitants admit they are too insignificant to offer suitable prayers — yet they offer them. When the demon was condemned by devotees disgusted with him, the Lord killed him. Devotee disgust is itself a prayer answered.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Whose disgust at injustice in your circle has done more than they realize?</li><li>Where could honest moral revulsion become a real prayer for change?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -15972,7 +15406,6 @@ We are the chief experts in serving you by pleasing actions. Or we are chief amo
     <div class="fc-translation" data-sec="translation">The inhabitants of Vaitālika-loka said: Dear Lord, because of chanting Your spotless glories in great assemblies and arenas of sacrifice, we were accustomed to great respect from everyone. This demon, however, usurped that position. Now, to our great fortune, You have killed this great demon, exactly as one cures a chronic disease.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -16033,18 +15466,6 @@ He took that respect offered to us and brought it under his control.</div>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Vaitālikas pray: chanting Your spotless glories used to bring us respect; the demon usurped it; You have cured the chronic disease by killing him. Some social diseases really do persist for years before the Lord finally lances them.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which chronic social disease in your sphere has finally been addressed — and how do you give thanks?</li><li>What chronic illness are you still waiting on the Lord to lance?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -16304,7 +15725,6 @@ He took that respect offered to us and brought it under his control.</div>
     <div class="fc-translation" data-sec="translation">The Kinnaras said: O supreme controller, we are ever-existing servants of Your Lordship, but instead of rendering service to You, we were engaged by this demon in his service, constantly and without remuneration. This sinful man has now been killed by You. Therefore, O Lord Nṛsiṁhadeva, our master, we offer our respectful obeisances unto You. Please continue to be our patron.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -16335,18 +15755,6 @@ Viṣtim means service without pay. We are engaged constantly (anu) without pay.
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Kinnaras pray: ever-existing servants of Yours, we were drafted into the demon&#39;s service constantly and without remuneration. Now the sinful one has been killed; please continue as our patron. Service to the wrong master is unpaid; service to the Lord is patronage itself.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which &#39;unpaid service to the wrong master&#39; currently fills your week?</li><li>Where could you transfer even a small share of that to genuine patronage by the Lord?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -16621,7 +16029,6 @@ Viṣtim means service without pay. We are engaged constantly (anu) without pay.
 
     <div class="fc-translation" data-sec="translation">The associates of Lord Viṣṇu in Vaikuṇṭha offered this prayer: O Lord, our supreme giver of shelter, today we have seen Your wonderful form as Lord Nṛsiṁhadeva, meant for the good fortune of all the world. O Lord, we can understand that Hiraṇyakaśipu was the same Jaya who engaged in Your service but was cursed by brāhmaṇas and who thus received the body of a demon. We understand that his having now been killed is Your special mercy upon him.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -16670,18 +16077,6 @@ Prahlāda Offers Prayers</div>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Vaikuṇṭha associates pray: we know Hiraṇyakaśipu was Jaya, cursed by the Kumāras and made a demon; this killing is Your special mercy to him. The Lord&#39;s most ferocious act is, from a higher angle, a private mercy. The same blow looks different from different seats.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Whose &#39;punishment&#39; in your perception might be hidden mercy from a higher angle?</li><li>How does that double-reading change how you respond to apparent harshness?</li></ul>
-
-
-
-
-
-    </section>
 
 
 

@@ -25,19 +25,25 @@
     <link rel="icon" href="../../../assets/icons/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="../../../assets/icons/icon.svg">
     <link rel="stylesheet" href="../../../assets/css/site.css">
+    <link rel="alternate" hreflang="te-IN" href="../../../te/sb/8/2/">
+    <link rel="alternate" hreflang="x-default" href="../../../">
     <script>window.FC_TO_ROOT = "../../../";</script>
     <script src="../../../assets/js/toggle.js"></script>
 </head>
 <body class="has-sidebar" data-chapter="2">
 <header class="fc-site-header">
     <button type="button" class="fc-mobile-trigger fc-mobile-trigger-left" data-overlay="left" aria-label="Open settings drawer">⚙</button>
-<a class="fc-brand" href="../../../">FolioCorpus<span class="fc-sub">Śrīmad-Bhāgavatam</span></a>
+    <a class="fc-brand" href="../../../">FolioCorpus<span class="fc-sub">Bhagavad-gītā</span></a>
     <nav class="fc-site-nav">
         <a href="../../../">Home</a>
         <a href="../../../bg/">Bhagavad-gītā</a>
         <a href="../../../sb/">Śrīmad-Bhāgavatam</a>
         <a href="../../../search/" title="Search across all integrated works">🔍 Search</a>
         <button type="button" id="fc-random-verse" class="fc-nav-btn" title="Jump to a random verse">🎲 Random</button>
+        <span class="fc-lang-switch" aria-label="Script">
+            <a class="active" href="#" title="Devanāgarī edition">EN</a>
+            <a class="" href="../../../te/sb/8/2/" title="Telugu lipi edition">తె</a>
+        </span>
     </nav>
     <button type="button" class="fc-mobile-trigger fc-mobile-trigger-right" data-overlay="right" aria-label="Open chapter index drawer">📚</button>
 </header>
@@ -46,8 +52,8 @@
     <button class="fc-sb-collapse" type="button" data-sb="left" title="Collapse left sidebar" aria-label="Collapse"></button>
 
     <div class="fc-sb-body">
-        <details class="fc-sb-section" data-sbsec="reading" open>
-            <summary class="fc-sb-title">Reading</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Reading</div>
             <div class="fc-sb-sub">Theme</div>
             <div class="fc-segmented" data-setting="theme">
                 <button type="button" data-val="light">Light</button>
@@ -73,10 +79,10 @@
                 <button type="button" data-val="single">Single</button>
                 <button type="button" data-val="side">Side-by-side</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="display" open>
-            <summary class="fc-sb-title">Display</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Display</div>
             <div class="fc-sb-grid">
                 <label><input type="checkbox" data-section="devanagari" checked> Devanāgarī</label>
                 <label><input type="checkbox" data-section="iast" checked> IAST transliteration</label>
@@ -99,10 +105,33 @@
                 <button type="button" data-action="expand-all">Expand all</button>
                 <button type="button" data-action="collapse-all">Collapse all</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="tools" open>
-            <summary class="fc-sb-title">Tools</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Find your starting point</div>
+            <div class="fc-persona-links">
+                <a class="fc-persona-link" href="../../../daily/">🌅 Daily (one value a week)</a>
+                <a class="fc-persona-link" href="../../../householder/">🏠 Householder (family & work)</a>
+                <a class="fc-persona-link" href="../../../parenting/">👨‍👩‍👧 Parenting (stories for kids)</a>
+                <a class="fc-persona-link" href="../../../themes/">📚 All themes</a>
+                <a class="fc-persona-link" href="../../../values/" style="background:#F0F6F2;border-left-color:#1F4632;">ॐ Vedic Value System ↗</a>
+                <a class="fc-persona-link" href="../../../vidya/" style="background:#FBF6E4;border-left-color:#C8860B;">📚 Vidyā Karaṇa (kids, multi-lang) ↗</a>
+            </div>
+        </div>
+
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Audience</div>
+            <div class="fc-audience-filter">
+                <label><input type="radio" name="fc-audience" value="all" checked> All levels</label>
+                <label><input type="radio" name="fc-audience" value="primary"> Primary (children)</label>
+                <label><input type="radio" name="fc-audience" value="middle"> Middle (teens)</label>
+                <label><input type="radio" name="fc-audience" value="senior"> Senior (adults)</label>
+                <label><input type="radio" name="fc-audience" value="college"> College / scholar</label>
+            </div>
+        </div>
+
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Tools</div>
             <div class="fc-sb-tools">
                 <button type="button" id="fc-presentation-toggle" class="fc-tool-btn"><span>🖥 Presentation</span><kbd class="fc-kbd">F</kbd></button>
                 <button type="button" id="fc-pen-toggle" class="fc-tool-btn"><span>✏️ Pen mode</span><kbd class="fc-kbd">P</kbd></button>
@@ -117,10 +146,26 @@
                 <button type="button" id="fc-clear-highlights" class="fc-tool-btn">🩷 Clear highlights (page)</button>
                 <button type="button" id="fc-notes-modal-open" class="fc-tool-btn">📓 My annotations</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="progress" id="fc-progress-section" open>
-            <summary class="fc-sb-title">Progress</summary>
+        <div class="fc-sb-section" id="fc-tts-controls" hidden>
+            <div class="fc-sb-title">
+                Read-aloud
+                <label class="fc-tts-master">
+                    <input type="checkbox" id="fc-tts-enabled" checked>
+                    <span class="fc-tts-master-label">On</span>
+                </label>
+            </div>
+            <div class="fc-tts-inner">
+                <div class="fc-sb-sub">Voice</div>
+                <select id="fc-tts-voice" class="fc-tts-select" aria-label="TTS voice"></select>
+                <div class="fc-sb-sub">Rate <span class="fc-tts-rate-val">1.0×</span></div>
+                <input type="range" id="fc-tts-rate" min="0.5" max="2" step="0.1" value="1" class="fc-tts-rate" aria-label="Reading rate">
+            </div>
+        </div>
+
+        <div class="fc-sb-section" id="fc-progress-section">
+            <div class="fc-sb-title">Progress</div>
             <div class="fc-progress-row">
                 <span class="fc-progress-num" id="fc-progress-num">0</span>
                 <span class="fc-progress-divider">/</span>
@@ -135,29 +180,29 @@
                 <span class="fc-progress-spacer"></span>
                 <button type="button" class="fc-progress-reset" id="fc-progress-reset" title="Reset progress">↺</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="bookmarks" open>
-            <summary class="fc-sb-title">Bookmarks <span class="fc-sb-count" id="fc-bookmarks-count">0</span></summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Bookmarks <span class="fc-sb-count" id="fc-bookmarks-count">0</span></div>
             <ul class="fc-bookmark-list" id="fc-bookmarks-list">
                 <li class="fc-sb-empty">No bookmarks yet — click ☆ on any verse.</li>
             </ul>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="notes" open>
-            <summary class="fc-sb-title">Notes <span class="fc-sb-count" id="fc-notes-count">0</span></summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Notes <span class="fc-sb-count" id="fc-notes-count">0</span></div>
             <ul class="fc-bookmark-list" id="fc-notes-list">
                 <li class="fc-sb-empty">No notes yet — open any verse and write in the 📝 block.</li>
             </ul>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="export">
-            <summary class="fc-sb-title">Export</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Export</div>
             <div class="fc-sb-tools">
                 <button type="button" id="fc-export-md" class="fc-tool-btn">📥 Download Markdown</button>
                 <button type="button" id="fc-export-json" class="fc-tool-btn">💾 Download JSON backup</button>
             </div>
-        </details>
+        </div>
     </div>
 </aside>    <main class="fc-container">
 <nav class="fc-breadcrumbs">
@@ -175,7 +220,7 @@
         <h1 class="fc-verse-heading">8.2 · The Elephant Gajendra&#39;s Crisis</h1>
         <span class="fc-ribbon-meta">
             22 verses
- · <a class="fc-ribbon-link" href="class-prep/">🖨 Class prep</a>        </span>
+        </span>
         <input type="search" class="fc-search" id="fc-search" placeholder="🔍 Search in this chapter" aria-label="Search verses in this chapter">
         <span class="fc-ribbon-current" id="fc-ribbon-current" aria-live="polite"></span>
     </div>
@@ -467,7 +512,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
     <div class="fc-translation" data-sec="translation">Śukadeva Gosvāmī said: My dear King, there is a very large mountain called Trikūṭa. It is ten thousand yojanas [eighty thousand miles] high. Being surrounded by the Ocean of Milk, it is very beautifully situated.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -558,18 +602,6 @@ The Second Chapter describes the garden and lake at Trikūṭa Mountain, and Gaj
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Trikūṭa Mountain stands eighty thousand miles tall, surrounded by the Ocean of Milk. Hearing such cosmic descriptions stretches our shrunken sense of reality. The universe the Bhāgavata describes is vastly larger and more wondrous than the small world our senses report.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>How willing am I to let scripture expand my picture of reality beyond what I can verify?</li><li>What changes in me when I admit the cosmos is bigger and stranger than I imagined?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -900,7 +932,6 @@ The Second Chapter describes the garden and lake at Trikūṭa Mountain, and Gaj
     <div class="fc-translation" data-sec="translation">The length and breadth of the mountain are of the same measurement [eighty thousand miles]. Its three principal peaks, which are made of iron, silver and gold, beautify all directions and the sky. The mountain also has other peaks, which are full of jewels and minerals and are decorated with nice trees, creepers and shrubs. The sounds of the waterfalls on the mountain create a pleasing vibration. In this way the mountain stands, increasing the beauty of all directions.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -951,18 +982,6 @@ The width was the same as the height.  The meaning of Trikūṭa is given:  it h
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The mountain&#39;s three peaks of iron, silver and gold and its jewelled cliffs broadcast beauty in every direction. The Lord&#39;s creation is generous with splendor even where no human eye will see. Beauty is not for utility; it is the Lord&#39;s natural overflow.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where do I dismiss beauty as luxury rather than receive it as the Lord&#39;s gift?</li><li>What hidden splendor in my own surroundings have I stopped noticing?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -1131,7 +1150,6 @@ The width was the same as the height.  The meaning of Trikūṭa is given:  it h
 
     <div class="fc-translation" data-sec="translation">The ground at the foot of the mountain is always washed by waves of milk that produce emeralds all around in the eight directions [north, south, east, west and the directions midway between them].</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1170,18 +1188,6 @@ The mountain whose base was washed all around by the milk ocean became green lan
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Waves of milk producing emeralds remind us that material laws here are not universal everywhere. Scientific limits are not cosmic limits; the Lord&#39;s creation includes regions our instruments cannot reach. Cultivate humility about what we &#39;know&#39; is possible.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where am I confusing the limits of my instruments with the limits of reality?</li><li>How does scriptural cosmology shift my confidence in purely empirical certainty?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -1350,7 +1356,6 @@ The mountain whose base was washed all around by the milk ocean became green lan
 
     <div class="fc-translation" data-sec="translation">The inhabitants of the higher planets — the Siddhas, Cāraṇas, Gandharvas, Vidyādharas, serpents, Kinnaras and Apsarās — go to that mountain to sport. Thus all the caves of the mountain are full of these denizens of the heavenly planets.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1437,18 +1442,6 @@ The mountain whose base was washed all around by the milk ocean became green lan
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Higher beings — Siddhas, Gandharvas, Apsarās — sport in Trikūṭa&#39;s caves as we play at the seaside. There are layers of life above and below ours engaged in their own enjoyments. Pride in our human position softens when we see how thin a slice of existence we occupy.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Does my picture of life still imagine humans as the apex of existence?</li><li>How might my behavior change if I remembered I am observed by beings on other planes?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -1608,7 +1601,6 @@ The mountain whose base was washed all around by the milk ocean became green lan
 
     <div class="fc-translation" data-sec="translation">Because of the resounding vibrations of the denizens of heaven singing in the caves, the lions there, being very proud of their strength, roar with unbearable envy, thinking that another lion is roaring in that way.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1662,18 +1654,6 @@ The proud (ślaginaḥ) lions roared out of intolerance and fear of another lion
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The lions roar in proud envy at the echoing songs of heavenly singers. Pride mistakes another&#39;s voice for a rival&#39;s challenge. We do the same — hearing of another&#39;s spiritual progress as a threat rather than as music to enjoy.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Whose spiritual or material success do I currently treat as a challenge to me?</li><li>How would my heart feel if I let another&#39;s roar simply be celebrated, not matched?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -1843,7 +1823,6 @@ The proud (ślaginaḥ) lions roared out of intolerance and fear of another lion
     <div class="fc-translation" data-sec="translation">The valleys beneath Trikūṭa Mountain are beautifully decorated by many varieties of jungle animals, and in the trees, which are maintained in gardens by the demigods, varieties of birds chirp with sweet voices.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -1909,18 +1888,6 @@ The mountain has singing birds in gardens of the devatās filled with colorful t
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Demigods tend the trees and gardens where birds sing sweetly. Heavenly culture combines wild beauty with careful cultivation. Our own homes and lives become more divine when we add care, attention, and beautification to what we have been given.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What part of my environment is begging for a small act of cultivation and care?</li><li>How does tending visible beauty support my inner devotional life?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -2107,7 +2074,6 @@ The mountain has singing birds in gardens of the devatās filled with colorful t
 
     <div class="fc-translation" data-sec="translation">Trikūṭa Mountain has many lakes and rivers, with beaches covered by small gems resembling grains of sand. The water is as clear as crystal, and when the demigod damsels bathe in it, their bodies lend fragrance to the water and the breeze, thus enriching the atmosphere.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2136,18 +2102,6 @@ The mountain had air and water endowed with fragrance from the perfumes of the h
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The bodies of demigod damsels are so pure that they perfume the very rivers and breezes around them. The truly purified person changes the atmosphere of every room they enter. Inner cleanliness, not cosmetics, is the most lasting fragrance.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What &#39;atmosphere&#39; do I bring into the rooms I enter — calming, agitating, or fragrant?</li><li>Which inner habits would slowly purify my presence so others feel uplifted near me?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -2822,7 +2776,6 @@ The mountain had air and water endowed with fragrance from the perfumes of the h
     <div class="fc-translation" data-sec="translation">In a valley of Trikūṭa Mountain there was a garden called Ṛtumat. This garden belonged to the great devotee Varuṇa and was a sporting place for the damsels of the demigods. Flowers and fruits grew there in all seasons. Among them were mandāras, pārijātas, pāṭalas, aśokas, campakas, cūtas, piyālas, panasas, mangoes, āmrātakas, kramukas, coconut trees, date trees and pomegranates. There were madhukas, palm trees, tamālas, asanas, arjunas, ariṣṭas, uḍumbaras, plakṣas, banyan trees, kiṁśukas and sandalwood trees. There were also picumardas, kovidāras, saralas, sura-dārus, grapes, sugarcane, bananas, jambu, badarīs, akṣas, abhayas and āmalakīs.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -2868,18 +2821,6 @@ The name of the garden was Ṛtumat.</div>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Varuṇa&#39;s garden holds dozens of named trees fruiting in every season. Devotee-owned spaces become endlessly fertile playgrounds for divine beings. When ownership is offered to the Lord, the resulting environment naturally turns into a place of perpetual sweetness.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Whom do my time, home, and resources actually belong to in practice?</li><li>What would it look like to dedicate one small &#39;garden&#39; in my life entirely to the Lord&#39;s pleasure?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -3682,7 +3623,6 @@ The name of the garden was Ṛtumat.</div>
 
     <div class="fc-translation" data-sec="translation">In that garden there was a very large lake filled with shining golden lotus flowers and the flowers known as kumuda, kahlāra, utpala and śatapatra, which added excellent beauty to the mountain. There were also bilva, kapittha, jambīra and bhallātaka trees. Intoxicated bumblebees drank honey and hummed with the chirping of the birds, whose songs were very melodious. The lake was crowded with swans, kāraṇḍavas, cakrāvakas, cranes, and flocks of water chickens, dātyūhas, koyaṣṭis and other murmuring birds. Because of the agitating movements of the fish and tortoises, the water was decorated with pollen that had fallen from the lotus flowers. The lake was surrounded by kadamba flowers, vetasa flowers, nalas, nīpas, vaṣjulakas, kundas, kurubakas, aśokas, śirīṣas, kūṭajas, iṅgudas, kubjakas, svarṇa-yūthīs, nāgas, punnāgas, jātīs, mallikās, śatapatras, jālakās and mādhavī-latās. The banks were also abundantly adorned with varieties of trees that yielded flowers and fruits in all seasons. Thus the entire mountain stood gloriously decorated.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3728,18 +3668,6 @@ The word vṛtaḥ should actually be vṛtam, as a modifier of udyanam in verse
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The lake glitters with lotuses, lily pads, humming bees, fish, swans, and flowering banks. Scripture lingers in such detail because the Lord&#39;s creation is meant to be savored, not skimmed. Slowness and attentiveness are themselves a kind of worship.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Am I rushing through scripture and life, or pausing to savor specific details?</li><li>When did I last sit long enough by water or trees for the place itself to speak to me?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -3920,7 +3848,6 @@ The word vṛtaḥ should actually be vṛtam, as a modifier of udyanam in verse
     <div class="fc-translation" data-sec="translation">The leader of the elephants who lived in the forest of the mountain Trikūṭa once wandered toward the lake with his female elephants. He broke many plants, creepers, thickets and trees, not caring for their piercing thorns.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -3976,18 +3903,6 @@ The sentence continues for five verses.  Moving about, eating and having his wiv
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The bull elephant crashes through the forest with his herd, indifferent to the thorns and damage he causes. Unconscious power is destructive power. Many of us move through life with elephantine momentum, trampling more than we realize on our way to satisfaction.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where am I crashing through people or principles in pursuit of my own enjoyment?</li><li>Whose &#39;thorns&#39; have I been ignoring because my agenda feels too urgent to slow down?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -4195,7 +4110,6 @@ The sentence continues for five verses.  Moving about, eating and having his wiv
     <div class="fc-translation" data-sec="translation">Simply by catching scent of that elephant, all the other elephants, the tigers and the other ferocious animals, such as lions, rhinoceroses, great serpents and black and white sarabhas, fled in fear. The camarī deer also fled.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -4226,18 +4140,6 @@ Harayaḥ means lions.</div>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Lions, tigers, rhinos and serpents all flee the elephant&#39;s scent. Sometimes our presence intimidates others not by intention but by sheer mass. Notice who quietly leaves the room when you enter, and ask whether your strength is being used to protect or to dominate.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Who shrinks or withdraws when I show up, and what does that tell me?</li><li>How can my strength be wielded so that others feel safer rather than smaller?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -4452,7 +4354,6 @@ Harayaḥ means lions.</div>
 
     <div class="fc-translation" data-sec="translation">By the mercy of this elephant, animals like the foxes, wolves, buffalos, bears, boars, gopucchas, porcupines, monkeys, rabbits, the other deer and many other small animals loitered elsewhere in the forest. They were not afraid of him.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -4491,18 +4392,6 @@ Smaller animals moved without fear by his mercy. However, other animals avoided 
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Foxes, deer, rabbits, and other small animals safely wandered the forest under the bull&#39;s protection. True leadership creates space for smaller beings to flourish. Power is measured not just by who fears you but by who can breathe freely because of you.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Who is breathing more freely in this world because of my presence and choices?</li><li>How can I use whatever authority I have to protect rather than to crowd out the small?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -4869,7 +4758,6 @@ Smaller animals moved without fear by his mercy. However, other animals avoided 
     <div class="fc-translation" data-sec="translation">Surrounded by the herd’s other elephants, including females, and followed by the young ones, Gajapati, the leader of the elephants, made Trikūṭa Mountain tremble all around because of the weight of his body. He was perspiring, liquor dripped from his mouth, and his vision was overwhelmed by intoxication. He was being served by bumblebees who drank honey, and from a distance he could smell the dust of the lotus flowers, which was carried from the lake by the breeze. Thus surrounded by his associates, who were afflicted by thirst, he soon arrived at the bank of the lake.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -4925,18 +4813,6 @@ He came to the lake as was his custom (tat sarovarābhyāsam).  This means witho
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Drunk on mada, surrounded by females and bees, Gajapati makes the mountain tremble as he comes to drink. Material life sweeps us along in great processions of pleasure-seeking. The very vigor that thrills us is also what carries us toward the crocodile waiting in the water.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which intoxicating procession am I currently part of in my own life?</li><li>If I stepped briefly out of the herd, what would I notice that I cannot see while inside it?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -5153,7 +5029,6 @@ He came to the lake as was his custom (tat sarovarābhyāsam).  This means witho
     <div class="fc-translation" data-sec="translation">The King of the elephants entered the lake, bathed thoroughly and was relieved of his fatigue. Then, with the aid of his trunk, he drank the cold, clear, nectarean water, which was mixed with the dust of lotus flowers and water lilies, until he was fully satisfied.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -5184,18 +5059,6 @@ He drank using the tip of his trunk (nija-puṣkaroddhṛtam).</div>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The elephant bathes, drinks, and is utterly satisfied — at the very moment death is approaching. Peak material satisfaction often comes just before the bite. Do not mistake the calm before disaster for proof that the path is safe.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What recent moments of full satisfaction might in fact be the lull before a turning point?</li><li>How can I learn to enjoy without forgetting that the crocodile is real?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -5430,7 +5293,6 @@ He drank using the tip of his trunk (nija-puṣkaroddhṛtam).</div>
     <div class="fc-translation" data-sec="translation">Like a human being who lacks spiritual knowledge and is too attached to the members of his family, the elephant, being illusioned by the external energy of Kṛṣṇa, had his wives and children bathe and drink the water. Indeed, he raised water from the lake with his trunk and sprayed it over them. He did not mind the hard labor involved in this endeavor.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -5451,18 +5313,6 @@ He bathed his wives (kareṇuḥ) and children (karabhāṇ).</div>
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Like an attached householder, Gajendra labors to bathe and water his wives and young. Family duty is good, but performed under the illusion of total ownership it traps us. Care for those entrusted to you while remembering that they too belong to the Lord.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where does my family service slip from offering to anxious possession?</li><li>How would my caregiving feel different if I held each loved one as the Lord&#39;s, not mine?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -5706,7 +5556,6 @@ He bathed his wives (kareṇuḥ) and children (karabhāṇ).</div>
     <div class="fc-translation" data-sec="translation">By the arrangement of providence, O King, a strong crocodile was angry at the elephant and attacked the elephant’s leg in the water. The elephant was certainly strong, and he tried his best to get free from this danger sent by providence.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -5735,18 +5584,6 @@ He bathed his wives (kareṇuḥ) and children (karabhāṇ).</div>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Without warning, a crocodile clamps onto Gajendra&#39;s leg. The mighty elephant uses all his strength against a danger sent by providence. Some difficulties are not for us to muscle through; they arrive precisely so that we discover the limits of our own strength.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which current problem am I exhausting myself trying to defeat by strength alone?</li><li>What might this difficulty be trying to teach me about my actual smallness?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -5963,7 +5800,6 @@ He bathed his wives (kareṇuḥ) and children (karabhāṇ).</div>
     <div class="fc-translation" data-sec="translation">Thereafter, seeing Gajendra in that grave condition, his wives felt very, very sorry and began to cry. The other elephants wanted to help Gajendra, but because of the crocodile’s great strength, they could not rescue him by grasping him from behind.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -5984,18 +5820,6 @@ The female elephants, distressed in mind, seeing him being pulled away, just cri
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Gajendra&#39;s wives weep and the herd cannot rescue him from behind. In a true crisis, family love is real but not powerful enough. Recognize the limits of even sincere human help, so that you do not delay turning to the Lord by hoping others will pull you out.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where am I waiting for family or friends to do what only the Lord can do?</li><li>How does honoring their limits free both them and me?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -6212,7 +6036,6 @@ The female elephants, distressed in mind, seeing him being pulled away, just cri
     <div class="fc-translation" data-sec="translation">O King, the elephant and the crocodile fought in this way, pulling one another in and out of the water, for one thousand years. Upon seeing the fight, the demigods were very surprised.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -6231,18 +6054,6 @@ The female elephants, distressed in mind, seeing him being pulled away, just cri
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The fight goes on for one thousand years, dragging in and out of water. Some struggles in our lives stretch on for what feels like lifetimes. The demigods are surprised because such persistent struggle is itself a kind of training ground for surrender.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which long, repeating struggle have I been treating as a problem instead of as a teacher?</li><li>What might &#39;a thousand years&#39; of wrestling with this issue finally be preparing in me?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -6467,7 +6278,6 @@ The female elephants, distressed in mind, seeing him being pulled away, just cri
 
     <div class="fc-translation" data-sec="translation">Thereafter, because of being pulled into the water and fighting for many long years, the elephant became diminished in his mental, physical and sensual strength. The crocodile, on the contrary, being an animal of the water, increased in enthusiasm, physical strength and sensual power.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -6539,18 +6349,6 @@ The crocodile, a water animal, was the opposite.  Instead of decreasing in physi
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Fighting on the enemy&#39;s ground, the elephant grows weaker while the crocodile grows stronger. In our own conditioned environment, lower urges thrive and higher will erodes. Eventually we must call out from a different ground — the ground of the Lord&#39;s name and shelter.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>In which environment am I fighting at a disadvantage, where lower habits are favored?</li><li>What &#39;higher ground&#39; practice (chanting, association) could shift the battlefield?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -6784,7 +6582,6 @@ The crocodile, a water animal, was the opposite.  Instead of decreasing in physi
 
     <div class="fc-translation" data-sec="translation">When the King of the elephants saw that he was under the clutches of the crocodile by the will of providence and, being embodied and circumstantially helpless, could not save himself from danger, he was extremely afraid of being killed. He consequently thought for a long time and finally reached the following decision.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -6865,18 +6662,6 @@ He thought, “This is my karma.” When he thought in that way, he suddenly got
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Realizing he cannot save himself, Gajendra finally pauses to think clearly and decides to take shelter of the Lord. Crisis can reveal the door of bhakti that comfort hides. Pious distress is often the doorway that opens us to the lotus feet.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What distress in my life might already be inviting me to make a similar decision?</li><li>Have I &#39;thought for a long time&#39; yet about where my actual shelter lies?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -7137,7 +6922,6 @@ He thought, “This is my karma.” When he thought in that way, he suddenly got
 
     <div class="fc-translation" data-sec="translation">The other elephants, who are my friends and relatives, could not rescue me from this danger. What then to speak of my wives? They cannot do anything. It is by the will of providence that I have been attacked by this crocodile, and therefore I shall seek shelter of the Supreme Personality of Godhead, who is always the shelter of everyone, even of great personalities.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -7236,18 +7020,6 @@ This verse explains his intelligence.  These elephants cannot free me, what to s
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Gajendra concludes that not friends, herd, nor wives can save him; only the Lord is the shelter of all. Material life sets danger at every step (padaṁ padaṁ vipadām). Real intelligence is recognizing this and seeking the one true refuge.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where have I confused comfort with safety?</li><li>Who or what have I been treating as my shelter that I now see cannot actually shelter me?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -7472,7 +7244,6 @@ This verse explains his intelligence.  These elephants cannot free me, what to s
 
     <div class="fc-translation" data-sec="translation">The Supreme Personality of Godhead is certainly not known to everyone, but He is very powerful and influential. Therefore, although the serpent of eternal time, which is fearful in force, endlessly chases everyone, ready to swallow him, if one who fears this serpent seeks shelter of the Lord, the Lord gives him protection, for even death runs away in fear of the Lord. I therefore surrender unto Him, the great and powerful supreme authority who is the actual shelter of everyone.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -7590,18 +7361,6 @@ Deliverance of Gajendra</div>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Eternal time is a serpent endlessly swallowing everyone, but even death runs from the Lord. Anyone who takes refuge in Him is protected. Death is not the largest power in the universe; the Lord is, and He stands available to those who surrender.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Do I live as if death is the final power, or as if the Lord is greater than death?</li><li>What would it feel like to entrust my mortality to the One whom even death obeys?</li></ul>
-
-
-
-
-
-    </section>
 
 
 

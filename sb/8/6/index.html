@@ -25,19 +25,25 @@
     <link rel="icon" href="../../../assets/icons/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="../../../assets/icons/icon.svg">
     <link rel="stylesheet" href="../../../assets/css/site.css">
+    <link rel="alternate" hreflang="te-IN" href="../../../te/sb/8/6/">
+    <link rel="alternate" hreflang="x-default" href="../../../">
     <script>window.FC_TO_ROOT = "../../../";</script>
     <script src="../../../assets/js/toggle.js"></script>
 </head>
 <body class="has-sidebar" data-chapter="6">
 <header class="fc-site-header">
     <button type="button" class="fc-mobile-trigger fc-mobile-trigger-left" data-overlay="left" aria-label="Open settings drawer">⚙</button>
-<a class="fc-brand" href="../../../">FolioCorpus<span class="fc-sub">Śrīmad-Bhāgavatam</span></a>
+    <a class="fc-brand" href="../../../">FolioCorpus<span class="fc-sub">Bhagavad-gītā</span></a>
     <nav class="fc-site-nav">
         <a href="../../../">Home</a>
         <a href="../../../bg/">Bhagavad-gītā</a>
         <a href="../../../sb/">Śrīmad-Bhāgavatam</a>
         <a href="../../../search/" title="Search across all integrated works">🔍 Search</a>
         <button type="button" id="fc-random-verse" class="fc-nav-btn" title="Jump to a random verse">🎲 Random</button>
+        <span class="fc-lang-switch" aria-label="Script">
+            <a class="active" href="#" title="Devanāgarī edition">EN</a>
+            <a class="" href="../../../te/sb/8/6/" title="Telugu lipi edition">తె</a>
+        </span>
     </nav>
     <button type="button" class="fc-mobile-trigger fc-mobile-trigger-right" data-overlay="right" aria-label="Open chapter index drawer">📚</button>
 </header>
@@ -46,8 +52,8 @@
     <button class="fc-sb-collapse" type="button" data-sb="left" title="Collapse left sidebar" aria-label="Collapse"></button>
 
     <div class="fc-sb-body">
-        <details class="fc-sb-section" data-sbsec="reading" open>
-            <summary class="fc-sb-title">Reading</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Reading</div>
             <div class="fc-sb-sub">Theme</div>
             <div class="fc-segmented" data-setting="theme">
                 <button type="button" data-val="light">Light</button>
@@ -73,10 +79,10 @@
                 <button type="button" data-val="single">Single</button>
                 <button type="button" data-val="side">Side-by-side</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="display" open>
-            <summary class="fc-sb-title">Display</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Display</div>
             <div class="fc-sb-grid">
                 <label><input type="checkbox" data-section="devanagari" checked> Devanāgarī</label>
                 <label><input type="checkbox" data-section="iast" checked> IAST transliteration</label>
@@ -99,10 +105,33 @@
                 <button type="button" data-action="expand-all">Expand all</button>
                 <button type="button" data-action="collapse-all">Collapse all</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="tools" open>
-            <summary class="fc-sb-title">Tools</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Find your starting point</div>
+            <div class="fc-persona-links">
+                <a class="fc-persona-link" href="../../../daily/">🌅 Daily (one value a week)</a>
+                <a class="fc-persona-link" href="../../../householder/">🏠 Householder (family & work)</a>
+                <a class="fc-persona-link" href="../../../parenting/">👨‍👩‍👧 Parenting (stories for kids)</a>
+                <a class="fc-persona-link" href="../../../themes/">📚 All themes</a>
+                <a class="fc-persona-link" href="../../../values/" style="background:#F0F6F2;border-left-color:#1F4632;">ॐ Vedic Value System ↗</a>
+                <a class="fc-persona-link" href="../../../vidya/" style="background:#FBF6E4;border-left-color:#C8860B;">📚 Vidyā Karaṇa (kids, multi-lang) ↗</a>
+            </div>
+        </div>
+
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Audience</div>
+            <div class="fc-audience-filter">
+                <label><input type="radio" name="fc-audience" value="all" checked> All levels</label>
+                <label><input type="radio" name="fc-audience" value="primary"> Primary (children)</label>
+                <label><input type="radio" name="fc-audience" value="middle"> Middle (teens)</label>
+                <label><input type="radio" name="fc-audience" value="senior"> Senior (adults)</label>
+                <label><input type="radio" name="fc-audience" value="college"> College / scholar</label>
+            </div>
+        </div>
+
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Tools</div>
             <div class="fc-sb-tools">
                 <button type="button" id="fc-presentation-toggle" class="fc-tool-btn"><span>🖥 Presentation</span><kbd class="fc-kbd">F</kbd></button>
                 <button type="button" id="fc-pen-toggle" class="fc-tool-btn"><span>✏️ Pen mode</span><kbd class="fc-kbd">P</kbd></button>
@@ -117,10 +146,26 @@
                 <button type="button" id="fc-clear-highlights" class="fc-tool-btn">🩷 Clear highlights (page)</button>
                 <button type="button" id="fc-notes-modal-open" class="fc-tool-btn">📓 My annotations</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="progress" id="fc-progress-section" open>
-            <summary class="fc-sb-title">Progress</summary>
+        <div class="fc-sb-section" id="fc-tts-controls" hidden>
+            <div class="fc-sb-title">
+                Read-aloud
+                <label class="fc-tts-master">
+                    <input type="checkbox" id="fc-tts-enabled" checked>
+                    <span class="fc-tts-master-label">On</span>
+                </label>
+            </div>
+            <div class="fc-tts-inner">
+                <div class="fc-sb-sub">Voice</div>
+                <select id="fc-tts-voice" class="fc-tts-select" aria-label="TTS voice"></select>
+                <div class="fc-sb-sub">Rate <span class="fc-tts-rate-val">1.0×</span></div>
+                <input type="range" id="fc-tts-rate" min="0.5" max="2" step="0.1" value="1" class="fc-tts-rate" aria-label="Reading rate">
+            </div>
+        </div>
+
+        <div class="fc-sb-section" id="fc-progress-section">
+            <div class="fc-sb-title">Progress</div>
             <div class="fc-progress-row">
                 <span class="fc-progress-num" id="fc-progress-num">0</span>
                 <span class="fc-progress-divider">/</span>
@@ -135,29 +180,29 @@
                 <span class="fc-progress-spacer"></span>
                 <button type="button" class="fc-progress-reset" id="fc-progress-reset" title="Reset progress">↺</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="bookmarks" open>
-            <summary class="fc-sb-title">Bookmarks <span class="fc-sb-count" id="fc-bookmarks-count">0</span></summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Bookmarks <span class="fc-sb-count" id="fc-bookmarks-count">0</span></div>
             <ul class="fc-bookmark-list" id="fc-bookmarks-list">
                 <li class="fc-sb-empty">No bookmarks yet — click ☆ on any verse.</li>
             </ul>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="notes" open>
-            <summary class="fc-sb-title">Notes <span class="fc-sb-count" id="fc-notes-count">0</span></summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Notes <span class="fc-sb-count" id="fc-notes-count">0</span></div>
             <ul class="fc-bookmark-list" id="fc-notes-list">
                 <li class="fc-sb-empty">No notes yet — open any verse and write in the 📝 block.</li>
             </ul>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="export">
-            <summary class="fc-sb-title">Export</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Export</div>
             <div class="fc-sb-tools">
                 <button type="button" id="fc-export-md" class="fc-tool-btn">📥 Download Markdown</button>
                 <button type="button" id="fc-export-json" class="fc-tool-btn">💾 Download JSON backup</button>
             </div>
-        </details>
+        </div>
     </div>
 </aside>    <main class="fc-container">
 <nav class="fc-breadcrumbs">
@@ -175,7 +220,7 @@
         <h1 class="fc-verse-heading">8.6 · The Demigods and Demons Declare a Truce</h1>
         <span class="fc-ribbon-meta">
             34 verses
- · <a class="fc-ribbon-link" href="class-prep/">🖨 Class prep</a>        </span>
+        </span>
         <input type="search" class="fc-search" id="fc-search" placeholder="🔍 Search in this chapter" aria-label="Search verses in this chapter">
         <span class="fc-ribbon-current" id="fc-ribbon-current" aria-live="polite"></span>
     </div>
@@ -504,7 +549,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
     <div class="fc-translation" data-sec="translation">Śrī Śukadeva Gosvāmī said: O King Parīkṣit, the Supreme Personality of Godhead, Hari, being thus worshiped with prayers by the demigods and Lord Brahmā, appeared before them. His bodily effulgence resembled the simultaneous rising of thousands of suns.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -585,18 +629,6 @@ The sixth chapter describes how the Lord makes his appearance, how Brahmā prais
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">When prayers were offered, the Lord appeared in dazzling effulgence. Sincere collective calling — even from beings far above us — draws the Lord&#39;s presence. Heartfelt prayer, not credentials, is what brings Him forward.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>When did I last pray with the desperation of the demigods, rather than as routine?</li><li>What would it look like to invite the Lord into a difficulty I currently face alone?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -783,7 +815,6 @@ The sixth chapter describes how the Lord makes his appearance, how Brahmā prais
     <div class="fc-translation" data-sec="translation">The vision of all the demigods was blocked by the Lord’s effulgence. Thus they could see neither the sky, the directions, the land, nor even themselves, what to speak of seeing the Lord, who was present before them.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -812,18 +843,6 @@ The sixth chapter describes how the Lord makes his appearance, how Brahmā prais
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The Lord&#39;s effulgence so overwhelmed the demigods that they could not see anything, including themselves. Real encounter with the Divine first humbles us — we lose our usual reference points before we are given new ones.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where in my spiritual life am I still trying to keep my familiar self-image intact?</li><li>What &#39;blindness&#39; might actually be a mercy, hiding what I do not need to see?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -1380,7 +1399,6 @@ The sixth chapter describes how the Lord makes his appearance, how Brahmā prais
     <div class="fc-translation" data-sec="translation">Lord Brahmā, along with Lord Śiva, saw the crystal-clear personal beauty of the Supreme Personality of Godhead, whose blackish body resembles a marakata gem, whose eyes are reddish like the depths of a lotus, who is dressed with garments that are yellow like molten gold, and whose entire body is attractively decorated. They saw His beautiful, smiling, lotuslike face, crowned by a helmet bedecked with valuable jewels. The Lord has attractive eyebrows, and His cheeks are adorned with earrings. Lord Brahmā and Lord Śiva saw the belt on the Lord’s waist, the bangles on His arms, the necklace on His chest, and the ankle bells on His legs. The Lord is bedecked with flower garlands, His neck is decorated with the Kaustubha gem, and He carries with Him the goddess of fortune and His personal weapons, like His disc and club. When Lord Brahmā, along with Lord Śiva and the other demigods, thus saw the form of the Lord, they all immediately fell to the ground, offering their obeisances.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -1411,18 +1429,6 @@ Brahmā offered prayers.  The sentence continues for five verses. Avadhāta mean
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Brahmā and Śiva, the highest demigods, prostrated full-length on the ground before the Lord&#39;s form. The most exalted devotees model the deepest humility — high spiritual position is shown by lower, not higher, posture before kṛṣṇa.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Whom do I currently see as &#39;beneath&#39; offering obeisances? What does that reveal about my heart?</li><li>How does my body language during worship match — or contradict — my words?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -1590,7 +1596,6 @@ Brahmā offered prayers.  The sentence continues for five verses. Avadhāta mean
 
     <div class="fc-translation" data-sec="translation">Lord Brahmā said: Although You are never born, Your appearance and disappearance as an incarnation never cease. You are always free from the material qualities, and You are the shelter of transcendental bliss resembling an ocean. Eternally existing in Your transcendental form, You are the supreme subtle of the most extremely subtle. We therefore offer our respectful obeisances unto You, the Supreme, whose existence is inconceivable.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1638,18 +1643,6 @@ The Lord does not have a destruction of his birth and maintenance.  This means t
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Though never born, the Lord&#39;s incarnations keep appearing — eternally, without material compulsion. His descent is a choice, not karma. We can trust that whenever dharma declines, He comes again, not as myth but as living fact.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Do I treat the Lord&#39;s incarnations as historical stories or as ongoing realities?</li><li>What &#39;decline of dharma&#39; in my own life might be quietly inviting the Lord to appear?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -1892,7 +1885,6 @@ The Lord does not have a destruction of his birth and maintenance.  This means t
 
     <div class="fc-translation" data-sec="translation">O best of persons, O supreme director, those who actually aspire for supreme good fortune worship this form of Your Lordship according to the Vedic Tantras. My Lord, we can see all the three worlds in You.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1978,18 +1970,6 @@ The Lord does not have a destruction of his birth and maintenance.  This means t
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Those who truly want supreme good fortune worship the Lord&#39;s form according to authorized śāstra — and in seeing Him, they see the whole universe. Vision of the Lord is comprehensive vision, not narrow sectarianism.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Am I worshiping in a way the scriptures actually authorize, or in a way I invented?</li><li>If I really saw the Lord, what about my world would I see differently?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -2251,7 +2231,6 @@ The Lord does not have a destruction of his birth and maintenance.  This means t
     <div class="fc-translation" data-sec="translation">My dear Lord, who are always fully independent, this entire cosmic manifestation arises from You, rests upon You and ends in You. Your Lordship is the beginning, sustenance and end of everything, like the earth, which is the cause of an earthen pot, which supports the pot, and to which the pot, when broken, finally returns.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -2307,18 +2286,6 @@ Brahmā explains how the Lord is the form of the universe. Just as the earth of 
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Like earth which is the cause, support, and dissolution of the pot, the Lord is the beginning, middle, and end of everything. The cosmos has no independent existence — it is borrowed from Him. This frames every gain and loss in proper context.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What in my life am I treating as if it had independent existence apart from the Lord?</li><li>How does seeing kṛṣṇa as the &#39;earth of the pot&#39; change how I hold my possessions?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -2552,7 +2519,6 @@ Brahmā explains how the Lord is the form of the universe. Just as the earth of 
 
     <div class="fc-translation" data-sec="translation">O Supreme, You are independent in Your self and do not take help from others. Through Your own potency, You create this cosmic manifestation and enter into it. Those who are advanced in Kṛṣṇa consciousness, who are fully in knowledge of the authoritative śāstra, and who, through the practice of bhakti-yoga, are cleansed of all material contamination, can see with clear minds that although You exist within the transformations of the material qualities, Your presence is untouched by these qualities.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2608,18 +2574,6 @@ Brahmā explains how the Lord is the form of the universe. Just as the earth of 
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The Lord creates this world through His own potency and enters it, yet remains untouched by material qualities. A bhakta in clear consciousness can perceive this — God is present in nature, but not stained by it.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where do I confuse the Lord with the material energy I see around me?</li><li>What spiritual practice is actually clearing my vision — and what is just decorating it?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -2880,7 +2834,6 @@ Brahmā explains how the Lord is the form of the universe. Just as the earth of 
 
     <div class="fc-translation" data-sec="translation">As one can derive fire from wood, milk from the milk bag of the cow, food grains and water from the land, and prosperity in one’s livelihood from industrial enterprises, so, by the practice of bhakti-yoga, even within this material world, one can achieve Your favor or intelligently approach You. Those who are pious all affirm this.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2956,18 +2909,6 @@ An example is given to show that if one has the help of devotees the process bec
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Just as fire is hidden in wood and milk in the cow, the Lord&#39;s favor is hidden within bhakti-yoga — accessible right here in this material world. We do not need to leave our circumstances; we need the right method to draw Him out.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Am I waiting for better circumstances to begin bhakti, or churning what I already have?</li><li>Who is my &#39;spiritual master&#39; — the one whose mercy could plant the bhakti-seed in me?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -3201,7 +3142,6 @@ An example is given to show that if one has the help of devotees the process bec
 
     <div class="fc-translation" data-sec="translation">Elephants afflicted by a forest fire become very happy when they get water from the Ganges. Similarly, O my Lord, from whose navel grows a lotus flower, since You have now appeared before us, we have become transcendentally happy. By seeing Your Lordship, whom we have desired to see for a very long time, we have achieved our ultimate goal in life.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3285,18 +3225,6 @@ We have become successful.  O lord with a lotus navel!   You are the object long
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Like fire-stricken elephants relieved by Ganges water, devotees who finally see the Lord feel they have reached life&#39;s ultimate goal. Long waiting for darśana is not failure; it ripens the heart so the seeing, when it comes, is complete.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What &#39;forest fire&#39; in my life is making me actually thirst for the Lord, not just talk about Him?</li><li>Can I love the waiting itself, as part of the path, rather than only the arrival?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -3512,7 +3440,6 @@ We have become successful.  O lord with a lotus navel!   You are the object long
 
     <div class="fc-translation" data-sec="translation">My Lord, we, the various demigods, the directors of this universe, have come to Your lotus feet. Please fulfill the purpose for which we have come. You are the witness of everything, from within and without. Nothing is unknown to You, and therefore it is unnecessary to inform You again of anything.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3591,18 +3518,6 @@ Please accomplish what we came for (yad arthāḥ). If you say, “Please tell m
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The demigods admit the Lord already knows their need — they come simply to present themselves. Real prayer is not informing God of our problems; it is acknowledging that He already sees, and surrendering to His response.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Do my prayers try to instruct the Lord, or do they rest in His already knowing?</li><li>What would I stop saying in prayer if I truly believed He sees everything within and without?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -3845,7 +3760,6 @@ Please accomplish what we came for (yad arthāḥ). If you say, “Please tell m
 
     <div class="fc-translation" data-sec="translation">I [Lord Brahmā], Lord Śiva and all the demigods, accompanied by the prajāpatis like Dakṣa, are nothing but sparks illuminated by You, who are the original fire. Since we are particles of You, what can we understand about our welfare? O Supreme Lord, please give us the means of deliverance that is suitable for the brāhmaṇas and demigods.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3902,18 +3816,6 @@ Please accomplish what we came for (yad arthāḥ). If you say, “Please tell m
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Brahmā confesses that he and even Śiva are just sparks of the Lord&#39;s fire — incapable of grasping their own welfare. Maturity in bhakti begins when we stop trusting our own judgment and ask the Lord directly for the means of deliverance.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where am I still trusting my own assessment of what is good for me?</li><li>What &#39;mantra&#39; or instruction from the Lord am I currently ignoring because I prefer my own plan?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -4137,7 +4039,6 @@ Please accomplish what we came for (yad arthāḥ). If you say, “Please tell m
     <div class="fc-translation" data-sec="translation">Śukadeva Gosvāmī continued: When the Lord was thus offered prayers by the demigods, headed by Lord Brahmā, He understood the purpose for which they had approached Him. Therefore, in a deep voice that resembled the rumbling of clouds, the Lord replied to the demigods, who all stood there attentively with folded hands.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -4208,18 +4109,6 @@ The Lord understood that they were requesting that the he give them a method for
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Without being told, the Lord understood what the demigods needed, and answered in a deep, thunderous voice. The Lord responds to the unspoken need behind our words. We need not perfect our request; we need only stand attentively before Him.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What is the unspoken request behind my recent prayers that I have not even admitted to myself?</li><li>Am I attentive enough to recognize the Lord&#39;s reply when it comes in unexpected form?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -4389,7 +4278,6 @@ The Lord understood that they were requesting that the he give them a method for
     <div class="fc-translation" data-sec="translation">Although the Supreme Personality of Godhead, the master of the demigods, was capable of performing the activities of the demigods by Himself, He wanted to enjoy pastimes in churning the ocean. Therefore He spoke as follows.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -4418,18 +4306,6 @@ The Lord understood that they were requesting that the he give them a method for
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The Lord could have done everything Himself, but He chose to enjoy the līlā of churning together with the demigods. He gives us roles in His work not because He needs them, but because participation is the joy He shares.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Do I serve as if the Lord needs me, or as if He is graciously letting me participate?</li><li>What &#39;churning&#39; is the Lord inviting me into that I have been treating as a burden?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -4651,7 +4527,6 @@ The Lord understood that they were requesting that the he give them a method for
     <div class="fc-translation" data-sec="translation">The Supreme Personality of Godhead said: O Lord Brahmā, Lord Śiva and other demigods, please hear Me with great attention, for what I say will bring good fortune for all of you.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -4670,18 +4545,6 @@ The Lord understood that they were requesting that the he give them a method for
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The Lord calls Brahmā, Śiva, and all the demigods to hear Him attentively — what He says will bring good fortune to all. When the Lord speaks, even the most powerful beings must listen. Our welfare is bound up in attentive hearing.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>When did I last sit and hear scripture as if my fortune depended on it?</li><li>Where do I tune out the Lord&#39;s instructions because they require something I do not want to give?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -4868,7 +4731,6 @@ The Lord understood that they were requesting that the he give them a method for
 
     <div class="fc-translation" data-sec="translation">As long as you are not flourishing, you should make a truce with the demons and asuras, who are now being favored by time.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -4912,18 +4774,6 @@ As long as you do not have prosperity (abhavaḥ), [Note: Viśvanātha takes the
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Until you flourish, make a truce with those favored by time. Spiritual life is not always frontal battle. Wisdom sometimes means strategic patience — recognizing when the season favors compromise so the eventual goal can be achieved.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What &#39;enemy&#39; in my life is currently favored by time, calling for patience rather than confrontation?</li><li>Am I confusing principled compromise with cowardly avoidance — or vice versa?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -5115,7 +4965,6 @@ As long as you do not have prosperity (abhavaḥ), [Note: Viśvanātha takes the
 
     <div class="fc-translation" data-sec="translation">O demigods, fulfilling one’s own interests is so important that one may even have to make a truce with one’s enemies. For the sake of one’s self-interest, one has to act according to the logic of the snake and the mouse.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -5179,18 +5028,6 @@ The Lord teaches nīti, proper conduct.  A snake caught in a box first made truc
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Sometimes self-interest demands making peace even with enemies — the logic of the snake and the mouse. Pragmatism in service of the higher goal is not hypocrisy; it is wisdom. The aim justifies temporary alliances along the way.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What higher goal am I willing to make temporary peace for — and what compromises am I refusing out of pride?</li><li>Where in my life do I behave more rigidly than the demigods themselves did?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -5360,7 +5197,6 @@ The Lord teaches nīti, proper conduct.  A snake caught in a box first made truc
     <div class="fc-translation" data-sec="translation">Immediately endeavor to produce nectar, which a person who is about to die may drink to become immortal.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -5406,18 +5242,6 @@ Produce nectar which, on drinking, will make a dying person recover.</div>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The Lord instructs them to produce nectar — that which makes the dying immortal. The spiritual quest is exactly this: extracting from this mortal world the one thing that lasts beyond it. Everything else is preliminary.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What in my daily activity is actually producing &#39;nectar&#39; versus producing only buttermilk?</li><li>If I had only one project to pursue before death, what would it be?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -5729,7 +5553,6 @@ Produce nectar which, on drinking, will make a dying person recover.</div>
 
     <div class="fc-translation" data-sec="translation">O demigods, cast into the Ocean of Milk all kinds of vegetables, grass, creepers and drugs. Then, with My help, making Mandara Mountain the churning rod and Vāsuki the rope for churning, churn the Ocean of Milk with undiverted attention. Thus the demons will be engaged in labor, but you, the demigods, will gain the actual result, the nectar produced from the ocean.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -5768,18 +5591,6 @@ Churning the plants with the milk will produce a decoction which will be nectar.
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Churn with Mandara as the rod, Vāsuki as the rope — and the demons will labor while the demigods get the result. With the Lord&#39;s plan, even hostile forces unknowingly serve our spiritual goal. Surrender turns rivals into co-laborers.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What &#39;demons&#39; in my circumstances are unknowingly helping me churn out something precious?</li><li>Am I trying to do the churning alone, when the Lord has arranged help I have not noticed?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -5967,7 +5778,6 @@ Churning the plants with the milk will produce a decoction which will be nectar.
     <div class="fc-translation" data-sec="translation">My dear demigods, with patience and peace everything can be done, but if one is agitated by anger, the goal is not achieved. Therefore, whatever the demons ask, agree to their proposal.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -6003,18 +5813,6 @@ O devas!  Goals are not achieved by disagreement and quarrel but by compromise.<
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">With patience and peace everything can be done; anger destroys the goal. Even when the demons demand unfair terms, the Lord counsels the demigods to agree. Goal-clarity makes us flexible about everything except the goal itself.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where has my anger recently cost me something more valuable than the issue I was angry about?</li><li>What unfair demand can I peacefully accept this week for the sake of a larger spiritual goal?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -6219,7 +6017,6 @@ O devas!  Goals are not achieved by disagreement and quarrel but by compromise.<
 
     <div class="fc-translation" data-sec="translation">A poison known as kālakūṭa will be generated from the Ocean of Milk, but you should not fear it. And when various products are churned from the ocean, you should not be greedy for them or anxious to obtain them, nor should you be angry.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -6248,18 +6045,6 @@ Tu here means “and.” You should not be greedy for the jewels produced. You s
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Poison will come before nectar, and beautiful things will appear before the one thing you actually want — do not be greedy or fearful. The spiritual path produces many byproducts. Discernment means refusing the byproducts and waiting for the real treasure.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What spiritual &#39;byproducts&#39; (visions, recognition, comfort) am I mistaking for the goal itself?</li><li>What &#39;poison&#39; have I run from when the Lord asked me to simply endure it?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -6445,7 +6230,6 @@ Tu here means “and.” You should not be greedy for the jewels produced. You s
     <div class="fc-translation" data-sec="translation">Śukadeva Gosvāmī continued: O King Parīkṣit, after advising the demigods in this way, the independent Supreme Personality of Godhead, the best of all living entities, disappeared from their presence.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -6486,18 +6270,6 @@ Tesām īśvaraḥ means “the lord of the devatās.”</div>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">After instructing them, the independent Lord disappeared. He does not stay to micromanage. He gives the plan, and trusts His devotees to execute. Sometimes His absence is itself an instruction — go, do, I am with you unseen.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Am I waiting for further signs when the Lord has already given me the instruction?</li><li>How do I tell the difference between the Lord&#39;s silent presence and His actual absence?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -6676,7 +6448,6 @@ Tesām īśvaraḥ means “the lord of the devatās.”</div>
     <div class="fc-translation" data-sec="translation">Then Lord Brahmā and Lord Śiva, after offering their respectful obeisances to the Lord, returned to their abodes. All the demigods then approached Mahārāja Bali.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -6697,18 +6468,6 @@ Upeyuḥ means “they approached.”</div>
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Brahmā and Śiva offered obeisances and returned to their abodes. The demigods then approached Bali. After receiving guidance, even the most exalted simply got to work — no fanfare, no postponement. Hearing leads to doing.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What teaching have I recently heard that I have still not acted on?</li><li>Do I imitate the demigods&#39; quick execution, or do I prefer to keep discussing the plan?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -6895,7 +6654,6 @@ Upeyuḥ means “they approached.”</div>
 
     <div class="fc-translation" data-sec="translation">Mahārāja Bali, a most celebrated king of the demons, knew very well when to make peace and when to fight. Thus although his commanders and captains were agitated and were about to kill the demigods, Mahārāja Bali, seeing that the demigods were coming to him without a militant attitude, forbade his commanders to kill them.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -6934,18 +6692,6 @@ Bali, seeing that the devatās had come without weapons and armor, forbade his c
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Bali knew when to fight and when to make peace; he received the demigods graciously despite his commanders&#39; fury. True greatness includes the etiquette of receiving even enemies as guests. Hospitality reveals character more than victory does.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>How do I receive people I consider &#39;on the other side&#39; when they come to me asking?</li><li>Where am I letting my emotional reactions override the etiquette that bhakti culture asks of me?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -7115,7 +6861,6 @@ Bali, seeing that the devatās had come without weapons and armor, forbade his c
     <div class="fc-translation" data-sec="translation">The demigods approached Bali Mahārāja, the son of Virocana, and sat down near him. Bali Mahārāja was protected by the commanders of the demons and was most opulent, having conquered the entire universe.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -7161,18 +6906,6 @@ Bali had conquered all directions (jitāśeṣam).</div>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The demigods approached Bali, who though their adversary was opulent and protected. They went humbly to the one who had defeated them. Sometimes the path forward requires entering the territory of those we have lost to.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Whom have I been avoiding because admitting their current advantage would humble me?</li><li>What can be gained by graciously sitting near someone who currently has the upper hand?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -7333,7 +7066,6 @@ Bali had conquered all directions (jitāśeṣam).</div>
     <div class="fc-translation" data-sec="translation">After pleasing Bali Mahārāja with mild words, Lord Indra, the King of the demigods, who was most intelligent, very politely submitted all the proposals he had learned from the Supreme Personality of Godhead, Lord Viṣṇu.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -7352,18 +7084,6 @@ Bali had conquered all directions (jitāśeṣam).</div>
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Indra, the king, spoke mildly and presented the Lord&#39;s proposal with diplomacy. Wisdom from the Lord is not delivered like a command; it is offered through respect and gentle speech. The medium honors the message.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>When I share spiritual teaching, do I use mild words or righteous ones?</li><li>Where could diplomacy carry the Lord&#39;s plan further than confrontation has?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -7557,7 +7277,6 @@ Bali had conquered all directions (jitāśeṣam).</div>
 
     <div class="fc-translation" data-sec="translation">The proposals submitted by King Indra were immediately accepted by Bali Mahārāja and his assistants, headed by Śambara and Ariṣṭanemi, and by all the other residents of Tripura.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -7586,18 +7305,6 @@ The proposals were pleasing to Bali and the others. They thought that they could
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Bali and the demons accepted the proposal — each side privately scheming to cheat the other. Politics and diplomacy operate even in the upper planets. The difference is that those siding with viṣṇu always finally win, regardless of cleverness.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where do I assume that spiritual people are above ordinary politics — and ignore evidence to the contrary?</li><li>Am I quietly counting on the Lord&#39;s protection, or am I trying to out-scheme my opponents?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -7757,7 +7464,6 @@ The proposals were pleasing to Bali and the others. They thought that they could
 
     <div class="fc-translation" data-sec="translation">O Mahārāja Parīkṣit, chastiser of enemies, the demigods and the demons thereafter made an armistice between them. Then, with great enterprise, they arranged to produce nectar, as proposed by Lord Indra.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -7803,18 +7509,6 @@ Saṁvidam means an agreement.  The dictionary called Ajaya says that saṁvit c
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">An armistice was struck and they began producing nectar together. Even temporary cooperation between opposed parties can produce real fruit, when the goal is high enough. The word saṁvit holds many meanings — the agreement must be lived, not just declared.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What truce do I need to declare in a relationship to allow something valuable to be produced?</li><li>Is my idea of &#39;agreement&#39; superficial words, or does it include sustained practical action?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -7984,7 +7678,6 @@ Saṁvidam means an agreement.  The dictionary called Ajaya says that saṁvit c
     <div class="fc-translation" data-sec="translation">Thereafter, with great strength, the demons and demigods, who were all very powerful and who had long, stout arms, uprooted Mandara Mountain. Crying very loudly, they brought it toward the Ocean of Milk.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -8030,18 +7723,6 @@ They had arms like parighas (iron weapons).</div>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Long-armed and powerful, demigods and demons together uprooted Mandara and brought it crying toward the ocean. Big undertakings require collaboration across difference and enormous effort. The cry is not failure — it is the sound of the work being done.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What &#39;mountain&#39; am I called to move that I keep underestimating in size?</li><li>Where am I refusing to cry out and ask for help with what is clearly too heavy for me alone?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -8211,7 +7892,6 @@ They had arms like parighas (iron weapons).</div>
     <div class="fc-translation" data-sec="translation">Because of conveying the great mountain for a long distance, King Indra, Mahārāja Bali and the other demigods and demons became fatigued. Being unable to carry the mountain, they left it on the way.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -8230,18 +7910,6 @@ They had arms like parighas (iron weapons).</div>
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Halfway there, exhausted, they put the mountain down. Even the best efforts run out of strength somewhere. Fatigue at the threshold of a sacred work is normal — not a sign you chose wrong, but a sign the Lord is about to enter.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What service have I put down out of exhaustion that I might be tempted to call a mistake?</li><li>Can I let fatigue be the doorway through which I admit I need divine help?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -8401,7 +8069,6 @@ They had arms like parighas (iron weapons).</div>
 
     <div class="fc-translation" data-sec="translation">The mountain known as Mandara, which was extremely heavy, being made of gold, fell and smashed many demigods and demons.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -8430,18 +8097,6 @@ The mountain is called kanaka acala, or “golden mountain.” Acala also means 
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The golden mountain fell and crushed many demigods and demons. Spiritual undertakings, mishandled, can hurt the very people trying to do them. Heavy things require not only enthusiasm but the right method and the right helper.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What &#39;heavy&#39; spiritual project have I tried to carry with mere enthusiasm rather than method?</li><li>Whom have I unintentionally hurt because I would not pause to seek proper guidance?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -8611,7 +8266,6 @@ The mountain is called kanaka acala, or “golden mountain.” Acala also means 
     <div class="fc-translation" data-sec="translation">The demigods and demons were frustrated and disheartened, and their arms, thighs and shoulders were broken. Therefore the Supreme Personality of Godhead, who knows everything, appeared there on the back of His carrier, Garuḍa.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -8642,18 +8296,6 @@ Babhūva means “he made his appearance.”</div>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Crushed, broken, frustrated — and only then did the Lord appear, riding Garuḍa. Often the Lord waits for the end of our self-effort before stepping in. Brokenness is not the obstacle; it is the appointed moment of His arrival.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where am I still relying on my arms, thighs, and shoulders before allowing the Lord to come?</li><li>What recent &#39;breaking&#39; might actually be the prelude to His appearance, not a sign of His absence?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -8814,7 +8456,6 @@ Babhūva means “he made his appearance.”</div>
     <div class="fc-translation" data-sec="translation">Observing that most of the demons and the demigods had been crushed by the falling of the mountain, the Lord glanced over them and brought them back to life. Thus they became free from grief, and they even had no bruises on their bodies.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -8833,18 +8474,6 @@ Babhūva means “he made his appearance.”</div>
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">With one glance the Lord brought the dead back to life, free of grief and even of bruises. Divine mercy is total — it does not just patch us up; it restores as though the injury never happened. He can erase what we cannot heal.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What wound am I still nursing that I have not yet brought into the Lord&#39;s glance?</li><li>Do I believe full restoration is possible, or have I quietly accepted permanent damage?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -9022,7 +8651,6 @@ Babhūva means “he made his appearance.”</div>
 
     <div class="fc-translation" data-sec="translation">The Lord very easily lifted the mountain with one hand and placed it on the back of Garuḍa. Then, He too got on the back of Garuḍa and went to the Ocean of Milk, surrounded by the demigods and demons.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -9059,18 +8687,6 @@ Babhūva means “he made his appearance.”</div>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The Lord effortlessly lifted the mountain, demigods, and demons together onto Garuḍa. What devotees see as omnipotence, demons dismiss as mythology. The same act reveals God to faith and hides Him from doubt.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where in my reading of scripture do I behave like a demon — dismissing what I cannot mechanically explain?</li><li>What &#39;impossible&#39; lift has the Lord already done in my life that I have explained away?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -9248,7 +8864,6 @@ Babhūva means “he made his appearance.”</div>
 
     <div class="fc-translation" data-sec="translation">Thereafter, Garuḍa, the chief of birds, unloaded Mandara Mountain from his shoulder and brought it near the water. Then he was asked by the Lord to leave that place, and he left.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -9342,18 +8957,6 @@ Chapter Seven
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Garuḍa unloaded the mountain and was asked to leave, because Vāsuki the snake could not approach in his presence. The Lord arranges every detail — even removing helpers who would block the next stage. Nothing in His plan happens by accident.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What &#39;helper&#39; may the Lord be removing from my life right now so the next stage can begin?</li><li>Where do I resist the Lord&#39;s reshuffling, mistaking change for loss?</li></ul>
-
-
-
-
-
-    </section>
 
 
 

@@ -25,19 +25,25 @@
     <link rel="icon" href="../../../assets/icons/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="../../../assets/icons/icon.svg">
     <link rel="stylesheet" href="../../../assets/css/site.css">
+    <link rel="alternate" hreflang="te-IN" href="../../../te/sb/5/10/">
+    <link rel="alternate" hreflang="x-default" href="../../../">
     <script>window.FC_TO_ROOT = "../../../";</script>
     <script src="../../../assets/js/toggle.js"></script>
 </head>
 <body class="has-sidebar" data-chapter="10">
 <header class="fc-site-header">
     <button type="button" class="fc-mobile-trigger fc-mobile-trigger-left" data-overlay="left" aria-label="Open settings drawer">⚙</button>
-<a class="fc-brand" href="../../../">FolioCorpus<span class="fc-sub">Śrīmad-Bhāgavatam</span></a>
+    <a class="fc-brand" href="../../../">FolioCorpus<span class="fc-sub">Bhagavad-gītā</span></a>
     <nav class="fc-site-nav">
         <a href="../../../">Home</a>
         <a href="../../../bg/">Bhagavad-gītā</a>
         <a href="../../../sb/">Śrīmad-Bhāgavatam</a>
         <a href="../../../search/" title="Search across all integrated works">🔍 Search</a>
         <button type="button" id="fc-random-verse" class="fc-nav-btn" title="Jump to a random verse">🎲 Random</button>
+        <span class="fc-lang-switch" aria-label="Script">
+            <a class="active" href="#" title="Devanāgarī edition">EN</a>
+            <a class="" href="../../../te/sb/5/10/" title="Telugu lipi edition">తె</a>
+        </span>
     </nav>
     <button type="button" class="fc-mobile-trigger fc-mobile-trigger-right" data-overlay="right" aria-label="Open chapter index drawer">📚</button>
 </header>
@@ -46,8 +52,8 @@
     <button class="fc-sb-collapse" type="button" data-sb="left" title="Collapse left sidebar" aria-label="Collapse"></button>
 
     <div class="fc-sb-body">
-        <details class="fc-sb-section" data-sbsec="reading" open>
-            <summary class="fc-sb-title">Reading</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Reading</div>
             <div class="fc-sb-sub">Theme</div>
             <div class="fc-segmented" data-setting="theme">
                 <button type="button" data-val="light">Light</button>
@@ -73,10 +79,10 @@
                 <button type="button" data-val="single">Single</button>
                 <button type="button" data-val="side">Side-by-side</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="display" open>
-            <summary class="fc-sb-title">Display</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Display</div>
             <div class="fc-sb-grid">
                 <label><input type="checkbox" data-section="devanagari" checked> Devanāgarī</label>
                 <label><input type="checkbox" data-section="iast" checked> IAST transliteration</label>
@@ -99,10 +105,33 @@
                 <button type="button" data-action="expand-all">Expand all</button>
                 <button type="button" data-action="collapse-all">Collapse all</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="tools" open>
-            <summary class="fc-sb-title">Tools</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Find your starting point</div>
+            <div class="fc-persona-links">
+                <a class="fc-persona-link" href="../../../daily/">🌅 Daily (one value a week)</a>
+                <a class="fc-persona-link" href="../../../householder/">🏠 Householder (family & work)</a>
+                <a class="fc-persona-link" href="../../../parenting/">👨‍👩‍👧 Parenting (stories for kids)</a>
+                <a class="fc-persona-link" href="../../../themes/">📚 All themes</a>
+                <a class="fc-persona-link" href="../../../values/" style="background:#F0F6F2;border-left-color:#1F4632;">ॐ Vedic Value System ↗</a>
+                <a class="fc-persona-link" href="../../../vidya/" style="background:#FBF6E4;border-left-color:#C8860B;">📚 Vidyā Karaṇa (kids, multi-lang) ↗</a>
+            </div>
+        </div>
+
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Audience</div>
+            <div class="fc-audience-filter">
+                <label><input type="radio" name="fc-audience" value="all" checked> All levels</label>
+                <label><input type="radio" name="fc-audience" value="primary"> Primary (children)</label>
+                <label><input type="radio" name="fc-audience" value="middle"> Middle (teens)</label>
+                <label><input type="radio" name="fc-audience" value="senior"> Senior (adults)</label>
+                <label><input type="radio" name="fc-audience" value="college"> College / scholar</label>
+            </div>
+        </div>
+
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Tools</div>
             <div class="fc-sb-tools">
                 <button type="button" id="fc-presentation-toggle" class="fc-tool-btn"><span>🖥 Presentation</span><kbd class="fc-kbd">F</kbd></button>
                 <button type="button" id="fc-pen-toggle" class="fc-tool-btn"><span>✏️ Pen mode</span><kbd class="fc-kbd">P</kbd></button>
@@ -117,10 +146,26 @@
                 <button type="button" id="fc-clear-highlights" class="fc-tool-btn">🩷 Clear highlights (page)</button>
                 <button type="button" id="fc-notes-modal-open" class="fc-tool-btn">📓 My annotations</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="progress" id="fc-progress-section" open>
-            <summary class="fc-sb-title">Progress</summary>
+        <div class="fc-sb-section" id="fc-tts-controls" hidden>
+            <div class="fc-sb-title">
+                Read-aloud
+                <label class="fc-tts-master">
+                    <input type="checkbox" id="fc-tts-enabled" checked>
+                    <span class="fc-tts-master-label">On</span>
+                </label>
+            </div>
+            <div class="fc-tts-inner">
+                <div class="fc-sb-sub">Voice</div>
+                <select id="fc-tts-voice" class="fc-tts-select" aria-label="TTS voice"></select>
+                <div class="fc-sb-sub">Rate <span class="fc-tts-rate-val">1.0×</span></div>
+                <input type="range" id="fc-tts-rate" min="0.5" max="2" step="0.1" value="1" class="fc-tts-rate" aria-label="Reading rate">
+            </div>
+        </div>
+
+        <div class="fc-sb-section" id="fc-progress-section">
+            <div class="fc-sb-title">Progress</div>
             <div class="fc-progress-row">
                 <span class="fc-progress-num" id="fc-progress-num">0</span>
                 <span class="fc-progress-divider">/</span>
@@ -135,29 +180,29 @@
                 <span class="fc-progress-spacer"></span>
                 <button type="button" class="fc-progress-reset" id="fc-progress-reset" title="Reset progress">↺</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="bookmarks" open>
-            <summary class="fc-sb-title">Bookmarks <span class="fc-sb-count" id="fc-bookmarks-count">0</span></summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Bookmarks <span class="fc-sb-count" id="fc-bookmarks-count">0</span></div>
             <ul class="fc-bookmark-list" id="fc-bookmarks-list">
                 <li class="fc-sb-empty">No bookmarks yet — click ☆ on any verse.</li>
             </ul>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="notes" open>
-            <summary class="fc-sb-title">Notes <span class="fc-sb-count" id="fc-notes-count">0</span></summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Notes <span class="fc-sb-count" id="fc-notes-count">0</span></div>
             <ul class="fc-bookmark-list" id="fc-notes-list">
                 <li class="fc-sb-empty">No notes yet — open any verse and write in the 📝 block.</li>
             </ul>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="export">
-            <summary class="fc-sb-title">Export</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Export</div>
             <div class="fc-sb-tools">
                 <button type="button" id="fc-export-md" class="fc-tool-btn">📥 Download Markdown</button>
                 <button type="button" id="fc-export-json" class="fc-tool-btn">💾 Download JSON backup</button>
             </div>
-        </details>
+        </div>
     </div>
 </aside>    <main class="fc-container">
 <nav class="fc-breadcrumbs">
@@ -175,7 +220,7 @@
         <h1 class="fc-verse-heading">5.10 · The Discussion Between Jaḍa Bharata and Mahārāja Rahūgaṇa</h1>
         <span class="fc-ribbon-meta">
             25 verses
- · <a class="fc-ribbon-link" href="class-prep/">🖨 Class prep</a>        </span>
+        </span>
         <input type="search" class="fc-search" id="fc-search" placeholder="🔍 Search in this chapter" aria-label="Search verses in this chapter">
         <span class="fc-ribbon-current" id="fc-ribbon-current" aria-live="polite"></span>
     </div>
@@ -619,7 +664,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
     <div class="fc-translation" data-sec="translation">Śukadeva Gosvāmī continued: My dear King, after this, King Rahūgaṇa, ruler of the states known as Sindhu and Sauvīra, was going to Kapilāśrama. When the King’s chief palanquin carriers reached the banks of the river Ikṣumatī, they needed another carrier. Therefore they began searching for someone, and by chance they came upon Jaḍa Bharata. They considered the fact that Jaḍa Bharata was very young and strong and had firm limbs. Like cows and asses, he was quite fit to carry loads. Thinking in this way, although the great soul Jaḍa Bharata was unfit for such work, they nonetheless unhesitatingly forced him to carry the palanquin.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -719,18 +763,6 @@ Rahūgana was King the states of Sindhu and Sauvīra.  The leader of the carrier
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Spiritual greatness can be drafted into menial work by people who cannot see who it actually is. The world often presses saints into service as if they were ordinary laborers — and the saint, unconcerned, simply complies. Real strength wears no badge.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Whose true stature in your life have you been measuring by their menial role?</li><li>Where could you serve without protest in a role beneath your perceived worth?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -988,7 +1020,6 @@ Rahūgana was King the states of Sindhu and Sauvīra.  The leader of the carrier
 
     <div class="fc-translation" data-sec="translation">The palanquin, however, was very erratically carried by Jaḍa Bharata due to his sense of nonviolence. As he stepped forward, he checked before him every three feet to see whether he was about to step on ants. Consequently he could not keep pace with the other carriers. Due to this, the palanquin was shaking, and King Rahūgaṇa immediately asked the carriers, “Why are you carrying this palanquin unevenly? Better carry it properly.”</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1027,18 +1058,6 @@ Bharata moved only after glancing three feet ahead to avoid violence to ants.  T
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Even pressed into rough labor, the devotee keeps his commitment to nonviolence — even toward ants on the path. Inconvenience to others is no excuse to abandon principle. The depth of commitment shows in the small, costly moments.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where are you currently sacrificing principle for the convenience of others around you?</li><li>What &#39;ants&#39; on your path are you stepping on because slowing down would inconvenience the schedule?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -1179,7 +1198,6 @@ Bharata moved only after glancing three feet ahead to avoid violence to ants.  T
 
     <div class="fc-translation" data-sec="translation">When the palanquin carriers heard the threatening words of Mahārāja Rahūgaṇa, they became very afraid of his punishment and began to speak to him as follows.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1228,18 +1246,6 @@ The carriers heard abusive (sopālambham) words of the King (īśvara).  The fou
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Threatened employees scramble to deflect blame onto the one who is actually doing right. Group pressure tends to scapegoat the conscientious. Watch where this pattern shows up in your own circles — and where you yourself become the scapegoater.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where in your group is someone being scapegoated for following a higher standard?</li><li>Where are you defending yourself by shifting blame onto someone whose standard is actually higher than yours?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -1507,7 +1513,6 @@ The carriers heard abusive (sopālambham) words of the King (īśvara).  The fou
 
     <div class="fc-translation" data-sec="translation">O lord, please note that we are not at all negligent in discharging our duties. We have been faithfully carrying this palanquin according to your desire, but this man who has been recently engaged to work with us cannot walk very swiftly. Therefore we are not able to carry the palanquin with him.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1556,18 +1561,6 @@ We are not inattentive, but follow your orders.</div>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Putting a Vaiṣṇava and a śūdra-minded person on the same task without acknowledging the difference creates predictable friction. Different inner orientations cannot be forced to march at the same pace; honest leaders make space for the difference.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where have you been forcing very different inner orientations to march in lockstep, and what is the cost?</li><li>How could acknowledging real differences of consciousness improve a team or family situation you are in?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -1897,7 +1890,6 @@ We are not inattentive, but follow your orders.</div>
 
     <div class="fc-translation" data-sec="translation">King Rahūgaṇa could understand the speeches given by the carriers, who were afraid of being punished. He could also understand that simply due to the fault of one person, the palanquin was not being carried properly. Knowing this perfectly well and hearing their appeal, he became a little angry, although he was very advanced in political science and was very experienced. His anger arose due to his inborn nature as a king. Actually King Rahūgaṇa’s mind was covered by the mode of passion, and he therefore spoke as follows to Jaḍa Bharata, whose Brahman effulgence was not clearly visible, being covered like a fire covered by ashes.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1959,18 +1951,6 @@ We are not inattentive, but follow your orders.</div>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Even a learned, well-trained leader in the mode of passion can flare into anger at a single inconvenience. Education does not erase rajo-guṇa; it only dresses it more politely. Be skeptical of your own composure under pressure.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where did your last flash of anger reveal that polish was hiding passion rather than transmuting it?</li><li>What practice is actually softening the mode of passion in you, not just covering it?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -2426,7 +2406,6 @@ We are not inattentive, but follow your orders.</div>
 
     <div class="fc-translation" data-sec="translation">King Rahūgaṇa told Jaḍa Bharata: How troublesome this is, my dear brother. You certainly appear very fatigued because you have carried this palanquin alone without assistance for a long time and for a long distance. Besides that, due to your old age you have become greatly troubled. My dear friend, I see that you are not very firm, nor very strong and stout. Aren’t your fellow carriers cooperating with you?</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2489,18 +2468,6 @@ in his final body made of the gross elements, senses, karma, and antaḥkaraṇa
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Sarcasm dressed as concern — &#39;are you old, are you weak?&#39; — is one of the meaner forms of cruelty because it pretends to be kindness. The devotee, beyond the bodily conception, is not even there to receive the cut. The cut still reveals the cutter.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where have you used &#39;concerned questions&#39; as a vehicle for cruelty?</li><li>Where have you been cut by someone&#39;s &#39;concern&#39; and let it land harder than it should because you took it personally?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -2805,7 +2772,6 @@ in his final body made of the gross elements, senses, karma, and antaḥkaraṇa
     <div class="fc-translation" data-sec="translation">Thereafter, when the King saw that his palanquin was still being shaken by the carriers, he became very angry and said: You rascal, what are you doing? Are you dead despite the life within your body? Do you not know that I am your master? You are disregarding me and are not carrying out my order. For this disobedience I shall now punish you just as Yamarāja, the superintendent of death, punishes sinful people. I shall give you proper treatment so that you will come to your senses and do the correct thing.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -2859,18 +2825,6 @@ in his final body made of the gross elements, senses, karma, and antaḥkaraṇa
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Authority unaccompanied by self-knowledge curdles quickly into threat: &#39;I am your master, obey me or I will punish you.&#39; Real authority does not need to threaten. If threats are how you secure compliance, you have already lost your ground.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where are you using threat to secure compliance, when genuine authority could simply ask?</li><li>Whose threats are you complying with that you might more honestly examine and resist?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -3164,7 +3118,6 @@ in his final body made of the gross elements, senses, karma, and antaḥkaraṇa
 
     <div class="fc-translation" data-sec="translation">Thinking himself a king, King Rahūgaṇa was in the bodily conception and was influenced by material nature’s modes of passion and ignorance. Due to madness, he chastised Jaḍa Bharata with uncalled-for and contradictory words. Jaḍa Bharata was a topmost devotee and the dear abode of the Supreme Personality of Godhead. Although considering himself very learned, the King did not know about the position of an advanced devotee situated in devotional service, nor did he know his characteristics. Jaḍa Bharata was the residence of the Supreme Personality of Godhead; he always carried the form of the Lord within his heart. He was the dear friend of all living beings, and he did not entertain any bodily conception. He therefore smiled and spoke the following words.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3208,18 +3161,6 @@ Abaddham means incoherent.  Anuviddhena means “mixed with.”  The King had cr
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">A king living in the bodily conception will, by his very mode, mistake a great devotee for a useless laborer. The very act of misjudging the saint reveals where the misjudger himself is stuck. The diagnosis runs in both directions.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Whose stature have you radically misjudged recently — and what does that misjudgment say about your own consciousness?</li><li>Where might someone you dismiss be actually placed by the Lord to teach you?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -3505,7 +3446,6 @@ Abaddham means incoherent.  Anuviddhena means “mixed with.”  The King had cr
 
     <div class="fc-translation" data-sec="translation">The great brāhmaṇa Jaḍa Bharata said: My dear King and hero, whatever you have spoken sarcastically is certainly true. Actually these are not simply words of chastisement, for the body is the carrier. The load carried by the body does not belong to me, for I am the spirit soul. There is no contradiction in your statements because I am different from the body. I am not the carrier of the palanquin; the body is the carrier. Certainly, as you have hinted, I have not labored carrying the palanquin, for I am detached from the body. You have said that I am not stout and strong, and these words are befitting a person who does not know the distinction between the body and the soul. The body may be fat or thin, but no learned man would say such things of the spirit soul. As far as the spirit soul is concerned, I am neither fat nor skinny; therefore you are correct when you say that I am not very stout. Also, if the object of this journey and the path leading there were mine, there would be many troubles for me, but because they relate not to me but to my body, there is no trouble at all.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3579,18 +3519,6 @@ I will show mercy to this person who thinks he has knowledge by defeating him wi
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The body carries the burden; the soul is not the carrier. &#39;I am the spirit soul&#39; is not a slogan but a working stance that defuses insult. When the soul stops claiming the burden, the burden stops being able to wound.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where are you absorbing burdens into your sense of self that, properly seen, belong only to the body and circumstances?</li><li>What insult would lose its sting if you stopped accepting that you are the body it targeted?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -3860,7 +3788,6 @@ I will show mercy to this person who thinks he has knowledge by defeating him wi
 
     <div class="fc-translation" data-sec="translation">Fatness, thinness, bodily and mental distress, thirst, hunger, fear, disagreement, desires for material happiness, old age, sleep, attachment for material possessions, anger, lamentation, illusion and identification of the body with the self are all transformations of the material covering of the spirit soul. A person absorbed in the material bodily conception is affected by these things, but I am free from all bodily conceptions. Consequently I am neither fat nor skinny nor anything else you have mentioned.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3951,18 +3878,6 @@ Not only am I a well-nourished, but no bodily quality belongs to me. One who is 
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Fatness, thinness, hunger, fear, lamentation, illusion — all of these belong to the material covering, not to the soul. When you stop identifying with these transformations, they stop running your life. Watching them happen is itself a form of liberation.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which of these listed transformations most reliably hijacks your identity day by day?</li><li>What practice helps you watch it instead of becoming it?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -4169,7 +4084,6 @@ Not only am I a well-nourished, but no bodily quality belongs to me. One who is 
 
     <div class="fc-translation" data-sec="translation">My dear King, you have unnecessarily accused me of being dead though alive. In this regard, I can only say that this is the case everywhere because everything material has its beginning and end. As far as your thinking that you are the king and master and are thus trying to order me, this is also incorrect because these positions are temporary. Today you are a king and I am your servant, but tomorrow the position may be changed, and you may be my servant and I your master. These are temporary circumstances created by providence.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -4273,18 +4187,6 @@ You have said that I am living but dead. If you are defining me in terms of bodi
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Every material situation has a beginning and an end. Today&#39;s master is tomorrow&#39;s servant, today&#39;s servant is tomorrow&#39;s king. The roles are temporary; only the soul&#39;s relationship to the Lord persists. Stop investing identity in roles that change.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which current role are you investing identity in that you know perfectly well will change?</li><li>What would remain solid in you if all current roles dissolved tomorrow?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -4525,7 +4427,6 @@ You have said that I am living but dead. If you are defining me in terms of bodi
 
     <div class="fc-translation" data-sec="translation">My dear King, if you still think that you are the King and that I am your servant, you should order me, and I should follow your order. I can then say that this differentiation is temporary, and it expands only from usage or convention. I do not see any other cause. In that case, who is the master, and who is the servant? Everyone is being forced by the laws of material nature; therefore no one is master, and no one is servant. Nonetheless, if you think that you are the master and that I am the servant, I shall accept this. Please order me. What can I do for you?</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -4621,18 +4522,6 @@ You have said that I am living but dead. If you are defining me in terms of bodi
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The master-servant distinction expands from convention, not from ultimate reality. Even the most powerful are themselves pushed around by the laws of nature. The hierarchy is a story we play inside a larger story we did not write.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where are you playing master in a small story while forgetting you are servant in the larger one?</li><li>How does seeing nature&#39;s larger laws above you change how you wield whatever authority you have?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -4848,7 +4737,6 @@ You have said that I am living but dead. If you are defining me in terms of bodi
 
     <div class="fc-translation" data-sec="translation">My dear King, you have said, “You rascal, you dull, crazy fellow! I am going to chastise you, and then you will come to your senses.” In this regard, let me say that although I live like a dull, deaf and dumb man, I am actually a self-realized person. What will you gain by punishing me? If your calculation is true and I am a madman, then your punishment will be like beating a dead horse. There will be no effect. When a madman is punished, he is not cured of his madness.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -4907,18 +4795,6 @@ You have said you will punish me for being inattentive. What do you hope to acco
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Punishing a madman accomplishes nothing — like grinding already-ground flour. Force fails against those who are beyond bodily concern, and it fails to reform those still bound by it. Punishment is rarely the actual lever of change.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where are you applying force, hoping it will produce change it cannot produce?</li><li>What would actually transform the situation if punishment is not the answer?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -5120,7 +4996,6 @@ You have said you will punish me for being inattentive. What do you hope to acco
 
     <div class="fc-translation" data-sec="translation">Śukadeva Gosvāmī said: O Mahārāja Parīkṣit, when King Rahūgaṇa chastised the exalted devotee Jaḍa Bharata with harsh words, that peaceful, saintly person tolerated it all and replied properly. Nescience is due to the bodily conception, and Jaḍa Bharata was not affected by this false conception. Out of his natural humility, he never considered himself a great devotee, and he agreed to suffer the results of his past karma. Like an ordinary man, he thought that by carrying the palanquin he was destroying the reactions of his past misdeeds. Thinking in this way, he began to carry the palanquin as before.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -5191,18 +5066,6 @@ Bharata answered the King by explanations with repetition of the King’s statem
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">A genuine paramahaṁsa never claims the title and accepts harsh treatment as the Lord&#39;s arrangement, not as injustice. Humility plus equanimity is the unmistakable signature of real attainment. The advertised devotee is rarely the one in question.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where do you advertise your spiritual standing, and what does that advertising reveal about its depth?</li><li>What insult could you receive today and treat as the Lord&#39;s concession rather than as offense?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -5452,7 +5315,6 @@ Bharata answered the King by explanations with repetition of the King’s statem
 
     <div class="fc-translation" data-sec="translation">Śukadeva Gosvāmī continued: O best of the Pāṇḍu dynasty [Mahārāja Parīkṣit], the King of the Sindhu and Sauvīra states [Mahārāja Rahūgaṇa] had great faith in discussions of the Absolute Truth. Being thus qualified, he heard from Jaḍa Bharata that philosophical presentation which is approved by all scriptures on the mystic yoga process and which slackens the knot in the heart. His material conception of himself as a king was thus destroyed. He immediately descended from his palanquin and fell flat on the ground with his head at the lotus feet of Jaḍa Bharata in such a way that he might be excused for his insulting words against the great brāhmaṇa. He then prayed as follows.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -5524,18 +5386,6 @@ Adhikṛtādhikāraḥ means “he had attained qualification.”</div>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">When a king genuinely listens to a sage, the knot in his heart begins to loosen. Real Vedic culture has always rested on rulers who would humble themselves before knowers of truth. Take the lower seat when truth is being spoken — the gain is yours.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Whose teaching could loosen the knot in your heart, if you would actually humble yourself enough to receive it?</li><li>Where are you holding the higher seat with someone who actually deserves the higher seat?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -5769,7 +5619,6 @@ Adhikṛtādhikāraḥ means “he had attained qualification.”</div>
 
     <div class="fc-translation" data-sec="translation">King Rahūgaṇa said: O brāhmaṇa, you appear to be moving in this world very much covered and unknown to others. Who are you? Are you a learned brāhmaṇa and saintly person? I see that you are wearing a sacred thread. Are you one of those exalted, liberated saints such as Dattātreya and other highly advanced, learned scholars? May I ask whose disciple you are? Where do you live? Why have you come to this place? Is your mission in coming here to do good for us? Please let me know who you are.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -5828,18 +5677,6 @@ Who are you among the brāhmaṇas, since you wear the thread?  Are you Dattātr
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">When something genuine breaks through one&#39;s defenses, the right response is to ask honestly: who are you, where do you come from, who is your teacher? Curiosity about lineage and source is the beginning of becoming a real disciple.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Whose source and lineage have you never asked about because you were busy reacting to surface impressions?</li><li>Where could honest inquiry into someone&#39;s spiritual roots open a door for you?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -6091,7 +5928,6 @@ Who are you among the brāhmaṇas, since you wear the thread?  Are you Dattātr
 
     <div class="fc-translation" data-sec="translation">My dear sir, I am not at all afraid of the thunderbolt of King Indra, nor am I afraid of the serpentine, piercing trident of Lord Śiva. I do not care about the punishment of Yamarāja, the superintendent of death, nor am I afraid of fire, scorching sun, moon, wind, nor the weapons of Kuvera. Yet I am afraid of offending a brāhmaṇa. I am very much afraid of this.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -6155,18 +5991,6 @@ Who are you among the brāhmaṇas, since you wear the thread?  Are you Dattātr
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Rahūgaṇa is afraid not of weapons or natural disasters but of offending a brāhmaṇa. Vaiṣṇava-aparādha is the mad elephant that destroys the garden of spiritual progress. Guard your speech toward devotees as you would guard your most precious possession.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Whose feet should you be very careful not to offend, given their spiritual position?</li><li>Where might unguarded speech of yours have already let the mad elephant into someone else&#39;s garden — or your own?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -6382,7 +6206,6 @@ Who are you among the brāhmaṇas, since you wear the thread?  Are you Dattātr
 
     <div class="fc-translation" data-sec="translation">My dear sir, it appears that the influence of your great spiritual knowledge is hidden. Factually you are bereft of all material association and fully absorbed in the thought of the Supreme. Consequently you are unlimitedly advanced in spiritual knowledge. Please tell me why you are wandering around like a dullard. O great saintly person, you have spoken words approved by the yogic process, but it is not possible for us to understand what you have said. Therefore kindly explain it.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -6476,18 +6299,6 @@ Therefore please speak, and say who you are.  “I am your palanquin bearer.” 
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Truly spiritual people often appear unimpressive because their power is hidden inside, not displayed outside. The world looks for fireworks; the wise look for words that hold up under scrutiny. Learn to recognize substance disguised as ordinariness.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Whose hidden depth in your life have you been overlooking because they look ordinary?</li><li>How are you yourself hiding — or revealing — your inner work, and is that the right balance?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -6703,7 +6514,6 @@ Therefore please speak, and say who you are.  “I am your palanquin bearer.” 
 
     <div class="fc-translation" data-sec="translation">I consider your good self the most exalted master of mystic power. You know the spiritual science perfectly well. You are the most exalted of all learned sages, and you have descended for the benefit of all human society. You have come to give spiritual knowledge, and you are a direct representative of Kapiladeva, the incarnation of God and the plenary portion of knowledge. I am therefore asking you, O spiritual master, what is the most secure shelter in this world?</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -6777,18 +6587,6 @@ The chief among the great yogīs will be able to cut my doubts.  That is indicat
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Real teachers come for the benefit of human society, not for personal recognition. When you find one, the right move is to declare oneself a foolish student and submit. The greatest yogī is not the one with powers but the one with surrender.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Whose tutelage are you ready to submit to, declaring yourself a beginner?</li><li>Where do you still want to be the smartest in the room, when becoming the most humble would serve you better?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -6977,7 +6775,6 @@ The chief among the great yogīs will be able to cut my doubts.  That is indicat
 
     <div class="fc-translation" data-sec="translation">Is it not a fact that your good self is the direct representative of Kapiladeva, the incarnation of the Supreme Personality of Godhead? To examine people and see who is actually a human being and who is not, you have presented yourself to be a deaf and dumb person. Are you not moving this way upon the surface of the world? I am very attached to family life and worldly activities, and I am blind to spiritual knowledge. Nonetheless, I am now present before you and am seeking enlightenment from you. How can I advance in spiritual life?</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -7083,18 +6880,6 @@ Are you (kim svit) Kapiladeva?  The person with blind intelligence refers to him
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Saints may travel disguised as dullards precisely to find out who has eyes to see. The world is being silently tested by the saints walking through it. Pay attention to whom you dismiss — they may be doing the testing.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Whom have you dismissed recently who might have been silently examining whether you have eyes to see?</li><li>What kind of attention would you pay to ordinary strangers if you suspected one might be a hidden sage?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -7328,7 +7113,6 @@ Are you (kim svit) Kapiladeva?  The person with blind intelligence refers to him
 
     <div class="fc-translation" data-sec="translation">You have said, “I am not fatigued from labor.” Although the soul is different from the body, there is fatigue because of bodily labor, and it appears to be the fatigue of the soul. When you are carrying the palanquin, there is certainly labor for the soul. This is my conjecture. You have also said that the external behavior exhibited between the master and the servant is not factual, but although in the phenomenal world it is not factual, the products of the phenomenal world can actually affect things. That is visible and experienced. As such, even though material activities are impermanent, they cannot be said to be untrue.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -7397,18 +7181,6 @@ The King thought, “I will begin questioning Kapiladeva.  Having met him on the
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The soul does not actually labor, but as long as one is immersed in bodily identification, the dream of fatigue feels real enough to suffer from. The argument is not that pain is unreal but that its source is misidentification — and that can be addressed.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where are you suffering as the body when, on closer look, you are not the body suffering?</li><li>What practice gradually loosens the dream that grips you?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -7579,7 +7351,6 @@ The King thought, “I will begin questioning Kapiladeva.  Having met him on the
 
     <div class="fc-translation" data-sec="translation">King Rahūgaṇa continued: My dear sir, you have said that designations like bodily fatness and thinness are not characteristics of the soul. That is incorrect because designations like pain and pleasure are certainly felt by the soul. You may put a pot of milk and rice within fire, and the milk and rice are automatically heated one after the other. Similarly, due to bodily pains and pleasures, the senses, mind and soul are affected. The soul cannot be completely detached from this conditioning.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -7638,18 +7409,6 @@ An example is given to illustrate that the ātmā becomes tired because of fatig
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Even though the soul is distinct from the body, attachment makes us feel the body&#39;s heat as our own — just as a car owner feels personally damaged when his car is scratched. The cure is loosening identification, not denying that pain feels real until then.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where do you feel personally damaged by things happening to your &#39;vehicle&#39; rather than to you?</li><li>Which loosening of identification would relieve the most current pain in your life?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -7863,7 +7622,6 @@ An example is given to illustrate that the ātmā becomes tired because of fatig
 
     <div class="fc-translation" data-sec="translation">My dear sir, you have said that the relationship between the king and the subject or between the master and the servant are not eternal, but although such relationships are temporary, when a person takes the position of a king his duty is to rule the citizens and punish those who are disobedient to the laws. By punishing them, he teaches the citizens to obey the laws of the state. Again, you have said that punishing a person who is deaf and dumb is like chewing the chewed or grinding the pulp; that is to say, there is no benefit in it. However, if one is engaged in his own occupational duty as ordered by the Supreme Lord, his sinful activities are certainly diminished. Therefore if one is engaged in his occupational duty by force, he benefits because he can vanquish all his sinful activities in that way.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -7937,18 +7695,6 @@ You have said “If the states of servant and master were permanent…”  Even 
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Even temporary roles like king and subject have real duties: a king must rule and punish to keep society stable. Spiritual truth does not erase social responsibility; it informs how to fulfill it. Don&#39;t use higher philosophy as an excuse to dodge actual duty.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where are you using &#39;it&#39;s all temporary&#39; as a reason to neglect a duty you can clearly see?</li><li>How could spiritual perspective sharpen rather than dissolve your sense of present responsibility?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -8135,7 +7881,6 @@ You have said “If the states of servant and master were permanent…”  Even 
 
     <div class="fc-translation" data-sec="translation">Whatever you have spoken appears to me to be contradictory. O best friend of the distressed, I have committed a great offense by insulting you. I was puffed up with false prestige due to possessing the body of a king. For this I have certainly become an offender. Therefore I pray that you kindly glance at me with your causeless mercy. If you do so, I can be relieved from sinful activities brought about by insulting you.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -8219,18 +7964,6 @@ Since your statements appear to me to contrary, glance upon me with affection.  
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">When you recognize you have offended a real devotee, the right response is immediate humility: &#39;I have offended you. Please glance on me with mercy.&#39; Pride keeps the wound open; sincere apology lets the mercy in.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Whose mercy do you need to ask for after a careless offense, and what is keeping you from asking?</li><li>What does sincere, non-defensive apology actually look like for you?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -8444,7 +8177,6 @@ Since your statements appear to me to contrary, glance upon me with affection.  
 
     <div class="fc-translation" data-sec="translation">O my dear lord, you are the friend of the Supreme Personality of Godhead, who is the friend of all living entities. You are therefore equal to everyone, and you are free from the bodily conception. Although I have committed an offense by insulting you, I know that there is no loss or gain for you due to my insult. You are fixed in your determination, but I have committed an offense. Because of this, even though I may be as strong as Lord Śiva, I shall be vanquished without delay due to my offense at the lotus feet of a Vaiṣṇava.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -8550,18 +8282,6 @@ The Teachings of Jaḍa Bharata</div>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">An advanced devotee neither gains nor loses from our offense, but we lose enormously by giving it. Apologizing is not for the saint&#39;s sake but for our own. The act of asking forgiveness opens the door back to grace.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Whom have you injured whose stature is unchanged by your apology, but whose forgiveness changes you?</li><li>Where is the asking itself the medicine you need, regardless of how the other person receives it?</li></ul>
-
-
-
-
-
-    </section>
 
 
 

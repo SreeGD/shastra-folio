@@ -31,7 +31,7 @@
 <body class="has-sidebar">
 <header class="fc-site-header">
     <button type="button" class="fc-mobile-trigger fc-mobile-trigger-left" data-overlay="left" aria-label="Open settings drawer">⚙</button>
-<a class="fc-brand" href="../../../">FolioCorpus<span class="fc-sub">Bhakti-rasāmṛta-sindhu</span></a>
+    <a class="fc-brand" href="../../../">FolioCorpus<span class="fc-sub">Bhagavad-gītā</span></a>
     <nav class="fc-site-nav">
         <a href="../../../">Home</a>
         <a href="../../../bg/">Bhagavad-gītā</a>
@@ -46,8 +46,8 @@
     <button class="fc-sb-collapse" type="button" data-sb="left" title="Collapse left sidebar" aria-label="Collapse"></button>
 
     <div class="fc-sb-body">
-        <details class="fc-sb-section" data-sbsec="reading" open>
-            <summary class="fc-sb-title">Reading</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Reading</div>
             <div class="fc-sb-sub">Theme</div>
             <div class="fc-segmented" data-setting="theme">
                 <button type="button" data-val="light">Light</button>
@@ -73,10 +73,10 @@
                 <button type="button" data-val="single">Single</button>
                 <button type="button" data-val="side">Side-by-side</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="display" open>
-            <summary class="fc-sb-title">Display</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Display</div>
             <div class="fc-sb-grid">
                 <label><input type="checkbox" data-section="devanagari" checked> Devanāgarī</label>
                 <label><input type="checkbox" data-section="iast" checked> IAST transliteration</label>
@@ -98,10 +98,33 @@
                 <button type="button" data-action="expand-all">Expand all</button>
                 <button type="button" data-action="collapse-all">Collapse all</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="tools" open>
-            <summary class="fc-sb-title">Tools</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Find your starting point</div>
+            <div class="fc-persona-links">
+                <a class="fc-persona-link" href="../../../daily/">🌅 Daily (one value a week)</a>
+                <a class="fc-persona-link" href="../../../householder/">🏠 Householder (family & work)</a>
+                <a class="fc-persona-link" href="../../../parenting/">👨‍👩‍👧 Parenting (stories for kids)</a>
+                <a class="fc-persona-link" href="../../../themes/">📚 All themes</a>
+                <a class="fc-persona-link" href="../../../values/" style="background:#F0F6F2;border-left-color:#1F4632;">ॐ Vedic Value System ↗</a>
+                <a class="fc-persona-link" href="../../../vidya/" style="background:#FBF6E4;border-left-color:#C8860B;">📚 Vidyā Karaṇa (kids, multi-lang) ↗</a>
+            </div>
+        </div>
+
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Audience</div>
+            <div class="fc-audience-filter">
+                <label><input type="radio" name="fc-audience" value="all" checked> All levels</label>
+                <label><input type="radio" name="fc-audience" value="primary"> Primary (children)</label>
+                <label><input type="radio" name="fc-audience" value="middle"> Middle (teens)</label>
+                <label><input type="radio" name="fc-audience" value="senior"> Senior (adults)</label>
+                <label><input type="radio" name="fc-audience" value="college"> College / scholar</label>
+            </div>
+        </div>
+
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Tools</div>
             <div class="fc-sb-tools">
                 <button type="button" id="fc-presentation-toggle" class="fc-tool-btn"><span>🖥 Presentation</span><kbd class="fc-kbd">F</kbd></button>
                 <button type="button" id="fc-pen-toggle" class="fc-tool-btn"><span>✏️ Pen mode</span><kbd class="fc-kbd">P</kbd></button>
@@ -116,10 +139,26 @@
                 <button type="button" id="fc-clear-highlights" class="fc-tool-btn">🩷 Clear highlights (page)</button>
                 <button type="button" id="fc-notes-modal-open" class="fc-tool-btn">📓 My annotations</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="progress" id="fc-progress-section" open>
-            <summary class="fc-sb-title">Progress</summary>
+        <div class="fc-sb-section" id="fc-tts-controls" hidden>
+            <div class="fc-sb-title">
+                Read-aloud
+                <label class="fc-tts-master">
+                    <input type="checkbox" id="fc-tts-enabled" checked>
+                    <span class="fc-tts-master-label">On</span>
+                </label>
+            </div>
+            <div class="fc-tts-inner">
+                <div class="fc-sb-sub">Voice</div>
+                <select id="fc-tts-voice" class="fc-tts-select" aria-label="TTS voice"></select>
+                <div class="fc-sb-sub">Rate <span class="fc-tts-rate-val">1.0×</span></div>
+                <input type="range" id="fc-tts-rate" min="0.5" max="2" step="0.1" value="1" class="fc-tts-rate" aria-label="Reading rate">
+            </div>
+        </div>
+
+        <div class="fc-sb-section" id="fc-progress-section">
+            <div class="fc-sb-title">Progress</div>
             <div class="fc-progress-row">
                 <span class="fc-progress-num" id="fc-progress-num">0</span>
                 <span class="fc-progress-divider">/</span>
@@ -134,29 +173,29 @@
                 <span class="fc-progress-spacer"></span>
                 <button type="button" class="fc-progress-reset" id="fc-progress-reset" title="Reset progress">↺</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="bookmarks" open>
-            <summary class="fc-sb-title">Bookmarks <span class="fc-sb-count" id="fc-bookmarks-count">0</span></summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Bookmarks <span class="fc-sb-count" id="fc-bookmarks-count">0</span></div>
             <ul class="fc-bookmark-list" id="fc-bookmarks-list">
                 <li class="fc-sb-empty">No bookmarks yet — click ☆ on any verse.</li>
             </ul>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="notes" open>
-            <summary class="fc-sb-title">Notes <span class="fc-sb-count" id="fc-notes-count">0</span></summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Notes <span class="fc-sb-count" id="fc-notes-count">0</span></div>
             <ul class="fc-bookmark-list" id="fc-notes-list">
                 <li class="fc-sb-empty">No notes yet — open any verse and write in the 📝 block.</li>
             </ul>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="export">
-            <summary class="fc-sb-title">Export</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Export</div>
             <div class="fc-sb-tools">
                 <button type="button" id="fc-export-md" class="fc-tool-btn">📥 Download Markdown</button>
                 <button type="button" id="fc-export-json" class="fc-tool-btn">💾 Download JSON backup</button>
             </div>
-        </details>
+        </div>
     </div>
 </aside>    <main class="fc-container">
 <nav class="fc-breadcrumbs">
@@ -234,7 +273,6 @@
 
     <div class="fc-translation" data-sec="translation">Anubhāvas refers to those things which express the bhāva situated within the heart. They are predominantly external transformations, and are thus called udbhāsvara (shining in the body).</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -300,7 +338,6 @@ The bodily symptoms manifested by a devotee in expressing ecstatic love for Kṛ
 
 
     <div class="fc-translation" data-sec="translation">External transformations known as anubhāvas are actions, such as dancing, rolling on the ground, singing, shouting, stretching the body, bellowing, yawning, breathing heavily, disregarding others, drooling, laughing loudly, whirling around, and hiccups.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -375,7 +412,6 @@ The bodily symptoms manifested by a devotee in expressing ecstatic love for Kṛ
 
 
     <div class="fc-translation" data-sec="translation">Anubhāvas are of two types with the suitable names of śīta (meaning “cool,” with lack of bodily movement) and kṣepaṇa (meaning “throwing about,” involving distinct bodily movements). Śīta includes singing, yawning, breathing heavily, disregarding others, drooling and smiling. Kṣepaṇa includes dancing, rolling on the ground, shouting, stretching the body, bellowing, laughing loudly, [Note: The definition of aṭṭa-hāsa (laughing loudly) is given in the commentary on verse 18. It involves bodily movement as well as laughing. It would seem that shouting, bellowing and hiccups would also involve more bodily movement than usual as kṣepaṇa anubhāvas.] whirling around and having hiccups.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -462,7 +498,6 @@ The bodily symptoms manifested by a devotee in expressing ecstatic love for Kṛ
 
 
     <div class="fc-translation" data-sec="translation">Dancing: Seeing the moon-like face of Hari, radiating sweetness as He practiced His flute playing, Lord Śiva began to tremble and then began to dance in the sky along with Ganeśa to the rhythm of his drum.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -551,7 +586,6 @@ While watching the rāsa dance performed by Lord Kṛṣṇa and the gopīs, Lor
 
     <div class="fc-translation" data-sec="translation">Falling on the ground, from the Third Canto: Please tell me whether Akrūra, the son of Śvaphalka, is doing well. He is a faultless soul surrendered unto the Personality of Godhead. He once lost his mental equilibrium due to his ecstasy of transcendental love and fell down on the dust of a road which was marked with the footprints of Lord Kṛṣṇa. SB 3.1.32</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -625,7 +659,6 @@ In the Third Canto, First Chapter, verse 32, of Śrīmad-Bhāgavatam, Vidura inq
 
 
     <div class="fc-translation" data-sec="translation">Another example: O Kṛṣṇa! Because of her new attraction for You, Rādhā is not in control of her limbs. On smelling the fragrance of Your forest garland, becoming intoxicated, she has fallen on the hard ground of Vraja and injured her beautiful body.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -712,7 +745,6 @@ In the Third Canto, First Chapter, verse 32, of Śrīmad-Bhāgavatam, Vidura inq
 
 
     <div class="fc-translation" data-sec="translation">Singing: Moon of Gokula! Today, Rādhā, whose mind is possessed by the beauty of the śrīrāga (or the zeal of love), is singing a new song about you. Her friends have become like stones, and the stones have melted.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -801,7 +833,6 @@ One gopī informed Kṛṣṇa that when Śrīmatī Rādhārāṇī was singing 
 
     <div class="fc-translation" data-sec="translation">Shouting: Because of the transformations brought about by the chanting of the name of Hari, Nārada began shouting in such a manner that the demons immediately hid themselves, trembling in fear that Narasiṁha had made His appearance.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -874,7 +905,6 @@ One gopī informed Kṛṣṇa that when Śrīmatī Rādhārāṇī was singing 
 
 
     <div class="fc-translation" data-sec="translation">Another example: O son of Vraja’s king! Today in Vṛndāvana the beautiful Rādhā, her heart melted by sound of Your flute, was constantly shouting in agitation like a female osprey with a changed voice.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -961,7 +991,6 @@ One gopī informed Kṛṣṇa that when Śrīmatī Rādhārāṇī was singing 
 
 
     <div class="fc-translation" data-sec="translation">Stretching the body: Nārada, blissfully singing the names of Kṛṣṇa on his vīnā with a happy mind, stretched his body in a most astonishing way and completely broke his sacred thread.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -1050,7 +1079,6 @@ It is said that sometimes when Nārada, the carrier of the vīṇā, remembers h
 
     <div class="fc-translation" data-sec="translation">Bellowing: Hearing the sound of the vīṇā, Śiva, mind excited, bellowed in such a way that it destroyed the demons and gave the highest bliss to the devotees at every moment.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1137,7 +1165,6 @@ It is described that by hearing the vibration of Kṛṣṇa’s flute, Lord Śi
 
 
     <div class="fc-translation" data-sec="translation">Yawning: O lotus! [Note: The kumuda blooms at night and the lotus blooms during the day.] How astonishing that in the grove of blossoming water lilies, you have blossomed at the rising of the full moon on the eastern horizon.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -1227,7 +1254,6 @@ Vistṛta-kumuda-vana (broad lotus forest) can be analyzed as vistṛta-ku-mud-a
 
     <div class="fc-translation" data-sec="translation">Heavy breathing: When the monsoon arrived with colorful clothing, the Cātakī bird named Lalitā became increasingly thirsty. Seeing the form of that black cloud called Kṛṣṇa driven away by the strong breathing of the monsoon wind mixed with rain, she became disturbed.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1306,7 +1332,6 @@ As far as breathing heavily is concerned, it is stated, “Lalitā [one of the g
 
 
     <div class="fc-translation" data-sec="translation">Disregard for all others, from the Tenth Canto: Just see the unlimited love these women have developed for Lord Kṛṣṇa, the spiritual master of the entire universe! This love has broken their very bonds of death—their attachment to family life. SB 10.23.41</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -1395,7 +1420,6 @@ As far as neglecting the presence of others is concerned, the wives of the brāh
 
     <div class="fc-translation" data-sec="translation">Another example, from Padyāvalī: Let the big mouths gossip! We will not consider it at all! By tasting the sweet liquor of Hari, we have become joyful and intoxicated. Let us fall on the ground, dance and enjoy.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1474,7 +1498,6 @@ As far as neglecting the presence of others is concerned, the wives of the brāh
 
     <div class="fc-translation" data-sec="translation">Drooling: I think that Nārada, bitten by the scorpion of prema, is suffering in pain, because he has fallen into a motionless state, and saliva is dripping from his mouth.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1545,7 +1568,6 @@ As an example of the running down of saliva from the mouth, it is stated that so
 
 
     <div class="fc-translation" data-sec="translation">Laughing loudly: That laughing which arises from disturbance of the heart is called laughing loudly or aṭṭahāsa. This is distinguished from the normal laugh.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -1620,7 +1642,6 @@ When a devotee laughs very loudly like a madman, it is done out of an extraordin
 
 
     <div class="fc-translation" data-sec="translation">An example: I think that the creeper of devotion in the heart of the servant of Kṛṣṇa has been blossoming for a long time, because a multitude of flowers in the form of his loud laughing is shaking his trembling lips.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -1708,7 +1729,6 @@ When a devotee laughs very loudly like a madman, it is done out of an extraordin
 
     <div class="fc-translation" data-sec="translation">Whirling around: O my friend, dear flute! Kṛṣṇa, on the pretext of blowing you, is certainly producing a gale. Otherwise, how does your sound alone cause the beautiful women of Vraja to whirl around?</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1782,7 +1802,6 @@ One gopī told her friend, “It appears that Lord Kṛṣṇa, the enemy of the
 
 
     <div class="fc-translation" data-sec="translation">Hiccups: O daughter! Are you worrying uselessly that something has happened to your dear friend Rādhā? Do not apply any medicine! Give up this loud weeping! O beautiful eyed girl! Today, Rādhā, afflicted by the transformations brought on by love for Kṛṣṇa, is afflicted with hiccups while chanting His name incessantly.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -1858,7 +1877,6 @@ Sometimes belching also becomes a symptom of ecstatic love for Kṛṣṇa. Ther
 
 
     <div class="fc-translation" data-sec="translation">Other symptoms such as extreme goose bumps and sweating blood are not described here since they are very rare.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>

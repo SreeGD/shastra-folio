@@ -31,7 +31,7 @@
 <body class="has-sidebar">
 <header class="fc-site-header">
     <button type="button" class="fc-mobile-trigger fc-mobile-trigger-left" data-overlay="left" aria-label="Open settings drawer">⚙</button>
-<a class="fc-brand" href="../../../">FolioCorpus<span class="fc-sub">Caitanya-caritāmṛta</span></a>
+    <a class="fc-brand" href="../../../">FolioCorpus<span class="fc-sub">Bhagavad-gītā</span></a>
     <nav class="fc-site-nav">
         <a href="../../../">Home</a>
         <a href="../../../bg/">Bhagavad-gītā</a>
@@ -46,8 +46,8 @@
     <button class="fc-sb-collapse" type="button" data-sb="left" title="Collapse left sidebar" aria-label="Collapse"></button>
 
     <div class="fc-sb-body">
-        <details class="fc-sb-section" data-sbsec="reading" open>
-            <summary class="fc-sb-title">Reading</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Reading</div>
             <div class="fc-sb-sub">Theme</div>
             <div class="fc-segmented" data-setting="theme">
                 <button type="button" data-val="light">Light</button>
@@ -73,10 +73,10 @@
                 <button type="button" data-val="single">Single</button>
                 <button type="button" data-val="side">Side-by-side</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="display" open>
-            <summary class="fc-sb-title">Display</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Display</div>
             <div class="fc-sb-grid">
                 <label><input type="checkbox" data-section="devanagari" checked> Devanāgarī</label>
                 <label><input type="checkbox" data-section="iast" checked> IAST transliteration</label>
@@ -98,10 +98,33 @@
                 <button type="button" data-action="expand-all">Expand all</button>
                 <button type="button" data-action="collapse-all">Collapse all</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="tools" open>
-            <summary class="fc-sb-title">Tools</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Find your starting point</div>
+            <div class="fc-persona-links">
+                <a class="fc-persona-link" href="../../../daily/">🌅 Daily (one value a week)</a>
+                <a class="fc-persona-link" href="../../../householder/">🏠 Householder (family & work)</a>
+                <a class="fc-persona-link" href="../../../parenting/">👨‍👩‍👧 Parenting (stories for kids)</a>
+                <a class="fc-persona-link" href="../../../themes/">📚 All themes</a>
+                <a class="fc-persona-link" href="../../../values/" style="background:#F0F6F2;border-left-color:#1F4632;">ॐ Vedic Value System ↗</a>
+                <a class="fc-persona-link" href="../../../vidya/" style="background:#FBF6E4;border-left-color:#C8860B;">📚 Vidyā Karaṇa (kids, multi-lang) ↗</a>
+            </div>
+        </div>
+
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Audience</div>
+            <div class="fc-audience-filter">
+                <label><input type="radio" name="fc-audience" value="all" checked> All levels</label>
+                <label><input type="radio" name="fc-audience" value="primary"> Primary (children)</label>
+                <label><input type="radio" name="fc-audience" value="middle"> Middle (teens)</label>
+                <label><input type="radio" name="fc-audience" value="senior"> Senior (adults)</label>
+                <label><input type="radio" name="fc-audience" value="college"> College / scholar</label>
+            </div>
+        </div>
+
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Tools</div>
             <div class="fc-sb-tools">
                 <button type="button" id="fc-presentation-toggle" class="fc-tool-btn"><span>🖥 Presentation</span><kbd class="fc-kbd">F</kbd></button>
                 <button type="button" id="fc-pen-toggle" class="fc-tool-btn"><span>✏️ Pen mode</span><kbd class="fc-kbd">P</kbd></button>
@@ -116,10 +139,26 @@
                 <button type="button" id="fc-clear-highlights" class="fc-tool-btn">🩷 Clear highlights (page)</button>
                 <button type="button" id="fc-notes-modal-open" class="fc-tool-btn">📓 My annotations</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="progress" id="fc-progress-section" open>
-            <summary class="fc-sb-title">Progress</summary>
+        <div class="fc-sb-section" id="fc-tts-controls" hidden>
+            <div class="fc-sb-title">
+                Read-aloud
+                <label class="fc-tts-master">
+                    <input type="checkbox" id="fc-tts-enabled" checked>
+                    <span class="fc-tts-master-label">On</span>
+                </label>
+            </div>
+            <div class="fc-tts-inner">
+                <div class="fc-sb-sub">Voice</div>
+                <select id="fc-tts-voice" class="fc-tts-select" aria-label="TTS voice"></select>
+                <div class="fc-sb-sub">Rate <span class="fc-tts-rate-val">1.0×</span></div>
+                <input type="range" id="fc-tts-rate" min="0.5" max="2" step="0.1" value="1" class="fc-tts-rate" aria-label="Reading rate">
+            </div>
+        </div>
+
+        <div class="fc-sb-section" id="fc-progress-section">
+            <div class="fc-sb-title">Progress</div>
             <div class="fc-progress-row">
                 <span class="fc-progress-num" id="fc-progress-num">0</span>
                 <span class="fc-progress-divider">/</span>
@@ -134,29 +173,29 @@
                 <span class="fc-progress-spacer"></span>
                 <button type="button" class="fc-progress-reset" id="fc-progress-reset" title="Reset progress">↺</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="bookmarks" open>
-            <summary class="fc-sb-title">Bookmarks <span class="fc-sb-count" id="fc-bookmarks-count">0</span></summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Bookmarks <span class="fc-sb-count" id="fc-bookmarks-count">0</span></div>
             <ul class="fc-bookmark-list" id="fc-bookmarks-list">
                 <li class="fc-sb-empty">No bookmarks yet — click ☆ on any verse.</li>
             </ul>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="notes" open>
-            <summary class="fc-sb-title">Notes <span class="fc-sb-count" id="fc-notes-count">0</span></summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Notes <span class="fc-sb-count" id="fc-notes-count">0</span></div>
             <ul class="fc-bookmark-list" id="fc-notes-list">
                 <li class="fc-sb-empty">No notes yet — open any verse and write in the 📝 block.</li>
             </ul>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="export">
-            <summary class="fc-sb-title">Export</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Export</div>
             <div class="fc-sb-tools">
                 <button type="button" id="fc-export-md" class="fc-tool-btn">📥 Download Markdown</button>
                 <button type="button" id="fc-export-json" class="fc-tool-btn">💾 Download JSON backup</button>
             </div>
-        </details>
+        </div>
     </div>
 </aside>    <main class="fc-container">
 <nav class="fc-breadcrumbs">
@@ -435,7 +474,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-1" data-note-label="BG 3.1" data-note-chapter="3" data-note-vlabel="1">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.1…" rows="4"></textarea>
@@ -474,7 +512,6 @@
 
 
     <div class="fc-translation" data-sec="translation">All glories to Śrī Caitanya Mahāprabhu! All glories to Nityānanda! All glories to Advaita Prabhu! And all glories to all the devotees of Lord Caitanya, headed by Śrīvāsa!</div>
-
 
 
 
@@ -537,7 +574,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-3" data-note-label="BG 3.3" data-note-chapter="3" data-note-vlabel="3">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.3…" rows="4"></textarea>
@@ -576,7 +612,6 @@
 
 
     <div class="fc-translation" data-sec="translation">After accepting the sannyāsa order, Caitanya Mahāprabhu, out of intense love for Kṛṣṇa, started for Vṛndāvana. However, He mistakenly wandered about in a trance continuously for three days in the tract of land known as Rāḍha-deśa.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -646,7 +681,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-5" data-note-label="BG 3.5" data-note-chapter="3" data-note-vlabel="5">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.5…" rows="4"></textarea>
@@ -685,7 +719,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“[As a brāhmaṇa from Avantī-deśa said:] ‘I shall cross over the insurmountable ocean of nescience by being firmly fixed in the service of the lotus feet of Kṛṣṇa. This was approved by the previous ācāryas, who were fixed in firm devotion to the Lord, Paramātmā, the Supreme Personality of Godhead.’ ”</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -755,7 +788,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-7" data-note-label="BG 3.7" data-note-chapter="3" data-note-vlabel="7">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.7…" rows="4"></textarea>
@@ -794,7 +826,6 @@
 
 
     <div class="fc-translation" data-sec="translation">The real purpose of accepting sannyāsa is to dedicate oneself to the service of Mukunda. By serving Mukunda, one can actually be liberated from the bondage of material existence.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -864,7 +895,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-9" data-note-label="BG 3.9" data-note-chapter="3" data-note-vlabel="9">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.9…" rows="4"></textarea>
@@ -903,7 +933,6 @@
 
 
     <div class="fc-translation" data-sec="translation">As Śrī Caitanya Mahāprabhu was en route to Vṛndāvana, all the ecstatic symptoms became manifest, and He did not know in which direction He was going, nor did He know whether it was day or night.</div>
-
 
 
 
@@ -966,7 +995,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-11" data-note-label="BG 3.11" data-note-chapter="3" data-note-vlabel="11">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.11…" rows="4"></textarea>
@@ -1005,7 +1033,6 @@
 
 
     <div class="fc-translation" data-sec="translation">When Śrī Caitanya Mahāprabhu passed through Rāḍha-deśa, whoever saw Him in ecstasy exclaimed, “Hari! Hari!” As they chanted this with the Lord, all the unhappiness of material existence diminished.</div>
-
 
 
 
@@ -1068,7 +1095,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-13" data-note-label="BG 3.13" data-note-chapter="3" data-note-vlabel="13">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.13…" rows="4"></textarea>
@@ -1107,7 +1133,6 @@
 
 
     <div class="fc-translation" data-sec="translation">When He heard all the cowherd boys also chanting “Hari! Hari!” Śrī Caitanya Mahāprabhu was very pleased. He approached them, put His hand on their heads and said, “Go on chanting like that.”</div>
-
 
 
 
@@ -1170,7 +1195,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-15" data-note-label="BG 3.15" data-note-chapter="3" data-note-vlabel="15">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.15…" rows="4"></textarea>
@@ -1209,7 +1233,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Calling all the boys in confidence and telling a reasonable story, Nityānanda Prabhu instructed them as follows.</div>
-
 
 
 
@@ -1272,7 +1295,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-17" data-note-label="BG 3.17" data-note-chapter="3" data-note-vlabel="17">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.17…" rows="4"></textarea>
@@ -1311,7 +1333,6 @@
 
 
     <div class="fc-translation" data-sec="translation">When the cowherd boys were questioned by Lord Caitanya Mahāprabhu about the path to Vṛndāvana, the boys showed Him the path on the bank of the Ganges, and the Lord went that way in ecstasy.</div>
-
 
 
 
@@ -1374,7 +1395,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-20" data-note-label="BG 3.20" data-note-chapter="3" data-note-vlabel="20">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.20…" rows="4"></textarea>
@@ -1413,7 +1433,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Śrī Nityānanda Gosvāmī told him, “I shall take Śrī Caitanya Mahāprabhu to the bank of the Ganges at Śāntipura, and Advaita Ācārya should carefully stay there on shore with a boat.</div>
-
 
 
 
@@ -1476,7 +1495,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-22" data-note-label="BG 3.22" data-note-chapter="3" data-note-vlabel="22">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.22…" rows="4"></textarea>
@@ -1515,7 +1533,6 @@
 
 
     <div class="fc-translation" data-sec="translation">After sending Ācāryaratna to the house of Advaita Ācārya, Śrī Nityānanda Prabhu went before Lord Caitanya Mahāprabhu and gave notice of His coming.</div>
-
 
 
 
@@ -1578,7 +1595,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-24" data-note-label="BG 3.24" data-note-chapter="3" data-note-vlabel="24">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.24…" rows="4"></textarea>
@@ -1617,7 +1633,6 @@
 
 
     <div class="fc-translation" data-sec="translation">When the Lord asked Nityānanda Prabhu how far it was to Vṛndāvana, Nityānanda replied, “Just see! Here is the river Yamunā.”</div>
-
 
 
 
@@ -1680,7 +1695,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-26" data-note-label="BG 3.26" data-note-chapter="3" data-note-vlabel="26">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.26…" rows="4"></textarea>
@@ -1731,7 +1745,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-27" data-note-label="BG 3.27" data-note-chapter="3" data-note-vlabel="27">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.27…" rows="4"></textarea>
@@ -1770,7 +1783,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“O river Yamunā, you are the blissful spiritual water that gives love to the son of Nanda Mahārāja. You are the same as the water of the spiritual world, for you can vanquish all our offenses and the sinful reactions incurred in life. You are the creator of all auspicious things for the world. O daughter of the sun-god, kindly purify us by your pious activities.”</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -1840,7 +1852,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-29" data-note-label="BG 3.29" data-note-chapter="3" data-note-vlabel="29">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.29…" rows="4"></textarea>
@@ -1879,7 +1890,6 @@
 
 
     <div class="fc-translation" data-sec="translation">While Śrī Caitanya Mahāprabhu was standing there without a second garment, Śrī Advaita Ācārya arrived in a boat, bringing with Him new underwear and external garments.</div>
-
 
 
 
@@ -1942,7 +1952,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-31" data-note-label="BG 3.31" data-note-chapter="3" data-note-vlabel="31">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.31…" rows="4"></textarea>
@@ -1981,7 +1990,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Still in His ecstasy, the Lord asked Advaita Ācārya, “Why did You come here? How did You know that I was in Vṛndāvana?”</div>
-
 
 
 
@@ -2044,7 +2052,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-33" data-note-label="BG 3.33" data-note-chapter="3" data-note-vlabel="33">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.33…" rows="4"></textarea>
@@ -2083,7 +2090,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Śrī Caitanya Mahāprabhu then said, “Nityānanda has cheated Me. He has brought Me to the bank of the Ganges and told Me that it was the Yamunā.”</div>
-
 
 
 
@@ -2146,7 +2152,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-35" data-note-label="BG 3.35" data-note-chapter="3" data-note-vlabel="35">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.35…" rows="4"></textarea>
@@ -2185,7 +2190,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Advaita Ācārya then explained that at that spot the Ganges and Yamunā flow together. On the western side was the Yamunā, and on the eastern side was the Ganges.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -2255,7 +2259,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-37" data-note-label="BG 3.37" data-note-chapter="3" data-note-vlabel="37">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.37…" rows="4"></textarea>
@@ -2294,7 +2297,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Advaita Ācārya said, “You have been fasting continuously for three days in Your ecstasy of love for Kṛṣṇa. I therefore invite You to My home, where You may kindly take Your alms. Come with Me to My residence.”</div>
-
 
 
 
@@ -2357,7 +2359,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-39" data-note-label="BG 3.39" data-note-chapter="3" data-note-vlabel="39">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.39…" rows="4"></textarea>
@@ -2408,7 +2409,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-40" data-note-label="BG 3.40" data-note-chapter="3" data-note-vlabel="40">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.40…" rows="4"></textarea>
@@ -2447,7 +2447,6 @@
 
 
     <div class="fc-translation" data-sec="translation">All the eatables were first cooked by the wife of Advaita Ācārya. Then Śrīla Advaita Ācārya personally offered everything to Lord Viṣṇu.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -2505,7 +2504,6 @@
 
 
     <div class="fc-translation" data-sec="translation">All the prepared food was divided into three equal parts. One part was arranged on a metal plate for offering to Lord Kṛṣṇa.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -2575,7 +2573,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-43" data-note-label="BG 3.43" data-note-chapter="3" data-note-vlabel="43">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.43…" rows="4"></textarea>
@@ -2614,7 +2611,6 @@
 
 
     <div class="fc-translation" data-sec="translation">The cooked rice was a stack of very fine grains nicely cooked, and in the middle was yellow clarified butter from the milk of cows. Surrounding the stack of rice were pots made of the skins of banana trees, and in these pots were varieties of vegetables and mung dhal.</div>
-
 
 
 
@@ -2677,7 +2673,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-45" data-note-label="BG 3.45" data-note-chapter="3" data-note-vlabel="45">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.45…" rows="4"></textarea>
@@ -2728,7 +2723,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-46" data-note-label="BG 3.46" data-note-chapter="3" data-note-vlabel="46">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.46…" rows="4"></textarea>
@@ -2767,7 +2761,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Amongst the various vegetables were newly grown leaves of nimba trees fried with eggplant. The fruit known as paṭola was fried with phulabaḍi, a kind of dhal preparation first mashed and then dried in the sun. There was also a preparation known as kuṣmāṇḍa-mānacāki.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -2837,7 +2830,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-48" data-note-label="BG 3.48" data-note-chapter="3" data-note-vlabel="48">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.48…" rows="4"></textarea>
@@ -2876,7 +2868,6 @@
 
 
     <div class="fc-translation" data-sec="translation">There were small cakes in sweet and sour sauce and five or six kinds of sour preparations. All the vegetables were so made that everyone present could take prasādam.</div>
-
 
 
 
@@ -2939,7 +2930,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-50" data-note-label="BG 3.50" data-note-chapter="3" data-note-vlabel="50">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.50…" rows="4"></textarea>
@@ -2978,7 +2968,6 @@
 
 
     <div class="fc-translation" data-sec="translation">All the vegetables were served in pots made of banana leaves taken from trees producing at least thirty-two bunches of bananas. These pots were very strong and big and did not tilt or totter.</div>
-
 
 
 
@@ -3041,7 +3030,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-52" data-note-label="BG 3.52" data-note-chapter="3" data-note-vlabel="52">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.52…" rows="4"></textarea>
@@ -3080,7 +3068,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Along with the various vegetables was sweet rice mixed with ghee. This was kept in new earthen pots. Earthen pots filled with highly condensed milk were placed in three places.</div>
-
 
 
 
@@ -3143,7 +3130,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-54" data-note-label="BG 3.54" data-note-chapter="3" data-note-vlabel="54">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.54…" rows="4"></textarea>
@@ -3182,7 +3168,6 @@
 
 
     <div class="fc-translation" data-sec="translation">In two places there were earthen pots filled with another preparation made with yogurt, sandeśa [a sweetmeat made with curd] and banana. I am unable to describe it all.</div>
-
 
 
 
@@ -3245,7 +3230,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-56" data-note-label="BG 3.56" data-note-chapter="3" data-note-vlabel="56">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.56…" rows="4"></textarea>
@@ -3284,7 +3268,6 @@
 
 
     <div class="fc-translation" data-sec="translation">There were three sitting places where soft cloths were placed. Thus Lord Kṛṣṇa was offered all the food, and the Lord took it very pleasantly.</div>
-
 
 
 
@@ -3347,7 +3330,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-58" data-note-label="BG 3.58" data-note-chapter="3" data-note-vlabel="58">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.58…" rows="4"></textarea>
@@ -3386,7 +3368,6 @@
 
 
     <div class="fc-translation" data-sec="translation">After ārati was performed for the Deities in the temple, Lord Kṛṣṇa was made to lie down to rest. Advaita Ācārya then came out to submit something to Lord Caitanya Mahāprabhu.</div>
-
 
 
 
@@ -3449,7 +3430,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-60" data-note-label="BG 3.60" data-note-chapter="3" data-note-vlabel="60">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.60…" rows="4"></textarea>
@@ -3488,7 +3468,6 @@
 
 
     <div class="fc-translation" data-sec="translation">When Lord Śrī Caitanya Mahāprabhu and Nityānanda Prabhu went to accept the prasādam, They both called Mukunda and Haridāsa to come with Them. However, Mukunda and Haridāsa, both with folded hands, spoke as follows.</div>
-
 
 
 
@@ -3551,7 +3530,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-62" data-note-label="BG 3.62" data-note-chapter="3" data-note-vlabel="62">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.62…" rows="4"></textarea>
@@ -3590,7 +3568,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Haridāsa Ṭhākura said, “I am the most sinful and lowest among men. Later I shall eat one palmful of prasādam while waiting outside.”</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -3648,7 +3625,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Advaita Ācārya took Lord Nityānanda Prabhu and Lord Caitanya Mahāprabhu within the room, and the two Lords saw the arrangement of the prasādam. Śrī Caitanya Mahāprabhu was especially very pleased.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -3718,7 +3694,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-65" data-note-label="BG 3.65" data-note-chapter="3" data-note-vlabel="65">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.65…" rows="4"></textarea>
@@ -3757,7 +3732,6 @@
 
 
     <div class="fc-translation" data-sec="translation">When Śrī Caitanya Mahāprabhu entered the room, He saw three divisions of food, and He knew that all of these were meant for Kṛṣṇa. However, He did not understand the intentions of Advaita Ācārya.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -3827,7 +3801,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-67" data-note-label="BG 3.67" data-note-chapter="3" data-note-vlabel="67">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.67…" rows="4"></textarea>
@@ -3866,7 +3839,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Śrī Caitanya Mahāprabhu thought that all three servings were meant for distribution; therefore He asked for another two banana leaves, saying, “Let Us have a very little quantity of vegetable and rice.”</div>
-
 
 
 
@@ -3929,7 +3901,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-69" data-note-label="BG 3.69" data-note-chapter="3" data-note-vlabel="69">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.69…" rows="4"></textarea>
@@ -3968,7 +3939,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Śrī Caitanya Mahāprabhu said, “It is not proper for a sannyāsī to eat such a variety of foods. If he does, how can he control his senses?”</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -4038,7 +4008,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-71" data-note-label="BG 3.71" data-note-chapter="3" data-note-vlabel="71">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.71…" rows="4"></textarea>
@@ -4077,7 +4046,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Advaita Ācārya thus requested Śrī Caitanya Mahāprabhu to eat and give up juggling words. The Lord replied, “I certainly cannot eat so much food.”</div>
-
 
 
 
@@ -4140,7 +4108,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-73" data-note-label="BG 3.73" data-note-chapter="3" data-note-vlabel="73">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.73…" rows="4"></textarea>
@@ -4179,7 +4146,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Śrī Caitanya Mahāprabhu said, “I will not be able to eat so much food, and it is not the duty of a sannyāsī to leave remnants.”</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -4249,7 +4215,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-75" data-note-label="BG 3.75" data-note-chapter="3" data-note-vlabel="75">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.75…" rows="4"></textarea>
@@ -4288,7 +4253,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Śrī Advaita Ācārya said, “The amount of food that three people can eat does not constitute even a morsel for You. In proportion to that, these edibles are not even five morsels of food for You.”</div>
-
 
 
 
@@ -4351,7 +4315,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-77" data-note-label="BG 3.77" data-note-chapter="3" data-note-vlabel="77">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.77…" rows="4"></textarea>
@@ -4390,7 +4353,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Upon saying this, Advaita Ācārya supplied water to the two Lords so that They could wash Their hands. The two Lords then sat down and, smiling, began to eat the prasādam.</div>
-
 
 
 
@@ -4453,7 +4415,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-79" data-note-label="BG 3.79" data-note-chapter="3" data-note-vlabel="79">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.79…" rows="4"></textarea>
@@ -4492,7 +4453,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Although Śrī Caitanya Mahāprabhu was thinking that the quantity of food was enormous, Nityānanda Prabhu, on the contrary, thought it not even a morsel. He had been fasting for three days and had greatly hoped to break fast on that day. Indeed, He said, “Although I am invited to eat by Advaita Ācārya, today also is a fast. So small a quantity of food will not fill even half My belly.”</div>
-
 
 
 
@@ -4555,7 +4515,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-81" data-note-label="BG 3.81" data-note-chapter="3" data-note-vlabel="81">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.81…" rows="4"></textarea>
@@ -4594,7 +4553,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“I am a poor brāhmaṇa, and You have come to My home. Please be satisfied with whatever little food You have received and give up Your greedy mentality.”</div>
-
 
 
 
@@ -4657,7 +4615,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-83" data-note-label="BG 3.83" data-note-chapter="3" data-note-vlabel="83">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.83…" rows="4"></textarea>
@@ -4708,7 +4665,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-84" data-note-label="BG 3.84" data-note-chapter="3" data-note-vlabel="84">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.84…" rows="4"></textarea>
@@ -4747,7 +4703,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Advaita Ācārya said, “You are a reject paramahaṁsa, and You have accepted the renounced order of life just to fill up Your belly. I can understand that Your business is to give trouble to brāhmaṇas.”</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -4805,7 +4760,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Advaita Ācārya accused Nityānanda Prabhu, saying, “You can eat ten to twenty mānas of rice. I am a poor brāhmaṇa. How shall I get so much rice?</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -4875,7 +4829,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-87" data-note-label="BG 3.87" data-note-chapter="3" data-note-vlabel="87">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.87…" rows="4"></textarea>
@@ -4914,7 +4867,6 @@
 
 
     <div class="fc-translation" data-sec="translation">In this way, Nityānanda Prabhu and Lord Caitanya Mahāprabhu ate and talked with Advaita Ācārya jokingly. After eating half of each vegetable preparation given to Him, Śrī Caitanya Mahāprabhu abandoned it and went on to the next.</div>
-
 
 
 
@@ -4977,7 +4929,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-89" data-note-label="BG 3.89" data-note-chapter="3" data-note-vlabel="89">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.89…" rows="4"></textarea>
@@ -5016,7 +4967,6 @@
 
 
     <div class="fc-translation" data-sec="translation">After filling a pot with vegetables, Advaita Ācārya requested Them to eat more, and Caitanya Mahāprabhu said, “How much more can I go on eating?”</div>
-
 
 
 
@@ -5079,7 +5029,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-91" data-note-label="BG 3.91" data-note-chapter="3" data-note-vlabel="91">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.91…" rows="4"></textarea>
@@ -5118,7 +5067,6 @@
 
 
     <div class="fc-translation" data-sec="translation">In this way, by submitting various humble requests, Advaita Ācārya made Śrī Caitanya Mahāprabhu and Lord Nityānanda eat. Thus Caitanya Mahāprabhu fulfilled all the desires of Advaita Ācārya.</div>
-
 
 
 
@@ -5181,7 +5129,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-93" data-note-label="BG 3.93" data-note-chapter="3" data-note-vlabel="93">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.93…" rows="4"></textarea>
@@ -5220,7 +5167,6 @@
 
 
     <div class="fc-translation" data-sec="translation">After saying this, Nityānanda Prabhu took a handful of rice and threw it on the floor in front of Him, as if He were angry.</div>
-
 
 
 
@@ -5283,7 +5229,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-95" data-note-label="BG 3.95" data-note-chapter="3" data-note-vlabel="95">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.95…" rows="4"></textarea>
@@ -5322,7 +5267,6 @@
 
 
     <div class="fc-translation" data-sec="translation">When the rice thrown by Nityānanda Prabhu touched His body, Advaita Ācārya thought Himself purified by the touch of remnants thrown by Paramahaṁsa Nityānanda. Therefore He began dancing.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -5381,7 +5325,6 @@
 
     <div class="fc-translation" data-sec="translation">Advaita Ācārya jokingly said, “My dear Nityānanda, I invited You, and indeed I have received the results. You have no fixed caste or dynasty. By nature You are a madman.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -5439,7 +5382,6 @@
 
     <div class="fc-translation" data-sec="translation">“To make Me a madman like Yourself, You have thrown the remnants of Your food at Me. You did not even fear the fact that I am a brāhmaṇa.”</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -5496,7 +5438,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Nityānanda Prabhu replied, “These are the remnants of food left by Lord Kṛṣṇa. If You take them to be ordinary remnants, You have committed an offense.”</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -5566,7 +5507,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-100" data-note-label="BG 3.100" data-note-chapter="3" data-note-vlabel="100">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.100…" rows="4"></textarea>
@@ -5605,7 +5545,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Advaita Ācārya replied, “I shall never again invite another sannyāsī, for it is a sannyāsī who has spoiled all My brahminical smṛti regulations.”</div>
-
 
 
 
@@ -5668,7 +5607,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-102" data-note-label="BG 3.102" data-note-chapter="3" data-note-vlabel="102">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.102…" rows="4"></textarea>
@@ -5707,7 +5645,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Śrī Advaita Ācārya fed the two Lords cloves and cardamom mixed with tulasī flowers. Thus there was a good flavor within Their mouths.</div>
-
 
 
 
@@ -5770,7 +5707,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-104" data-note-label="BG 3.104" data-note-chapter="3" data-note-vlabel="104">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.104…" rows="4"></textarea>
@@ -5821,7 +5757,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-105" data-note-label="BG 3.105" data-note-chapter="3" data-note-vlabel="105">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.105…" rows="4"></textarea>
@@ -5860,7 +5795,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Śrī Caitanya Mahāprabhu said, “Advaita Ācārya, You have made Me dance in various ways. Now give up this practice. Go with Mukunda and Haridāsa and accept Your lunch.”</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -5930,7 +5864,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-107" data-note-label="BG 3.107" data-note-chapter="3" data-note-vlabel="107">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.107…" rows="4"></textarea>
@@ -5969,7 +5902,6 @@
 
 
     <div class="fc-translation" data-sec="translation">When the people of Śāntipura heard that Lord Śrī Caitanya Mahāprabhu was staying there, they all immediately came to see His lotus feet.</div>
-
 
 
 
@@ -6032,7 +5964,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-109" data-note-label="BG 3.109" data-note-chapter="3" data-note-vlabel="109">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.109…" rows="4"></textarea>
@@ -6071,7 +6002,6 @@
 
 
     <div class="fc-translation" data-sec="translation">They saw Śrī Caitanya Mahāprabhu’s very fair-complexioned body and its bright luster, which conquered the brilliance of the sun. Over and above this was the beauty of the saffron garments that glittered upon His body.</div>
-
 
 
 
@@ -6134,7 +6064,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-111" data-note-label="BG 3.111" data-note-chapter="3" data-note-vlabel="111">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.111…" rows="4"></textarea>
@@ -6173,7 +6102,6 @@
 
 
     <div class="fc-translation" data-sec="translation">As soon as it was evening, Advaita Ācārya began the congregational chanting. He even began to dance Himself, and the Lord saw the performance.</div>
-
 
 
 
@@ -6236,7 +6164,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-113" data-note-label="BG 3.113" data-note-chapter="3" data-note-vlabel="113">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.113…" rows="4"></textarea>
@@ -6275,7 +6202,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Advaita Ācārya said, “ ‘My dear friends, what shall I say? Today I have received the highest transcendental pleasure. After many, many days, Lord Kṛṣṇa is in My house.’ ”</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -6345,7 +6271,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-115" data-note-label="BG 3.115" data-note-chapter="3" data-note-vlabel="115">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.115…" rows="4"></textarea>
@@ -6384,7 +6309,6 @@
 
 
     <div class="fc-translation" data-sec="translation">While dancing, Advaita Ācārya would sometimes turn around and around and catch the lotus feet of Śrī Caitanya Mahāprabhu. Advaita Ācārya would then speak to Him as follows.</div>
-
 
 
 
@@ -6447,7 +6371,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-117" data-note-label="BG 3.117" data-note-chapter="3" data-note-vlabel="117">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.117…" rows="4"></textarea>
@@ -6486,7 +6409,6 @@
 
 
     <div class="fc-translation" data-sec="translation">So speaking, Advaita Ācārya performed congregational chanting with great pleasure for three hours that night and danced all the time.</div>
-
 
 
 
@@ -6549,7 +6471,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-119" data-note-label="BG 3.119" data-note-chapter="3" data-note-vlabel="119">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.119…" rows="4"></textarea>
@@ -6588,7 +6509,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Being agitated by the ecstasy, Śrī Caitanya Mahāprabhu suddenly fell to the ground. Seeing this, Advaita Ācārya stopped dancing.</div>
-
 
 
 
@@ -6651,7 +6571,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-121" data-note-label="BG 3.121" data-note-chapter="3" data-note-vlabel="121">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.121…" rows="4"></textarea>
@@ -6690,7 +6609,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Advaita Ācārya raised the body of Śrī Caitanya Mahāprabhu to help Him dance, but the Lord, after hearing the stanzas sung by Mukunda, could not be held due to His bodily symptoms.</div>
-
 
 
 
@@ -6753,7 +6671,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-123" data-note-label="BG 3.123" data-note-chapter="3" data-note-vlabel="123">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.123…" rows="4"></textarea>
@@ -6792,7 +6709,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Mukunda sang, “ ‘My dear intimate friend! What has not happened to Me! Due to the effects of the poison of love for Kṛṣṇa, My body and mind have been severely afflicted.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -6862,7 +6778,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-125" data-note-label="BG 3.125" data-note-chapter="3" data-note-vlabel="125">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.125…" rows="4"></textarea>
@@ -6913,7 +6828,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-126" data-note-label="BG 3.126" data-note-chapter="3" data-note-vlabel="126">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.126…" rows="4"></textarea>
@@ -6952,7 +6866,6 @@
 
 
     <div class="fc-translation" data-sec="translation">The transcendental ecstatic symptoms of disappointment, moroseness, pleasure, restlessness, pride and humility all began to fight like soldiers within the Lord.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -7022,7 +6935,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-128" data-note-label="BG 3.128" data-note-chapter="3" data-note-vlabel="128">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.128…" rows="4"></textarea>
@@ -7061,7 +6973,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Upon seeing the condition of the Lord, all the devotees became very anxious. Then, suddenly, the Lord got up and began to make thundering sounds.</div>
-
 
 
 
@@ -7124,7 +7035,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-130" data-note-label="BG 3.130" data-note-chapter="3" data-note-vlabel="130">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.130…" rows="4"></textarea>
@@ -7163,7 +7073,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Lord Nityānanda began to walk with Caitanya Mahāprabhu to see that He would not fall, and Advaita Ācārya and Haridāsa Ṭhākura followed Them, dancing.</div>
-
 
 
 
@@ -7226,7 +7135,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-132" data-note-label="BG 3.132" data-note-chapter="3" data-note-vlabel="132">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.132…" rows="4"></textarea>
@@ -7265,7 +7173,6 @@
 
 
     <div class="fc-translation" data-sec="translation">The Lord had been fasting for three days, and after that period He took eatables sumptuously. Thus when He danced and jumped high, He became a little fatigued.</div>
-
 
 
 
@@ -7328,7 +7235,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-134" data-note-label="BG 3.134" data-note-chapter="3" data-note-vlabel="134">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.134…" rows="4"></textarea>
@@ -7367,7 +7273,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Although the Lord was fatigued, Nityānanda Prabhu kept Him steady by holding Him. At that time Advaita Ācārya suspended the chanting and, by rendering various services to the Lord, made Him lie down to take rest.</div>
-
 
 
 
@@ -7430,7 +7335,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-136" data-note-label="BG 3.136" data-note-chapter="3" data-note-vlabel="136">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.136…" rows="4"></textarea>
@@ -7469,7 +7373,6 @@
 
 
     <div class="fc-translation" data-sec="translation">In the morning Candraśekhara seated Śacīmātā in a palanquin and brought her from her house with many devotees.</div>
-
 
 
 
@@ -7532,7 +7435,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-138" data-note-label="BG 3.138" data-note-chapter="3" data-note-vlabel="138">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.138…" rows="4"></textarea>
@@ -7571,7 +7473,6 @@
 
 
     <div class="fc-translation" data-sec="translation">In the morning, after regular duties were completed and the Lord was chanting the Hare Kṛṣṇa mahā-mantra, the people accompanied Śacīmātā to the house of Advaita Ācārya.</div>
-
 
 
 
@@ -7634,7 +7535,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-140" data-note-label="BG 3.140" data-note-chapter="3" data-note-vlabel="140">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.140…" rows="4"></textarea>
@@ -7673,7 +7573,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Upon seeing each other, they both became overwhelmed. Seeing the Lord’s head without hair, mother Śacī became greatly agitated.</div>
-
 
 
 
@@ -7736,7 +7635,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-142" data-note-label="BG 3.142" data-note-chapter="3" data-note-vlabel="142">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.142…" rows="4"></textarea>
@@ -7775,7 +7673,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Understanding that Lord Caitanya had accepted the renounced order of life, Śacīmātā, crying, said to the Lord, “My darling Nimāi, do not be cruel like Viśvarūpa, Your elder brother.”</div>
-
 
 
 
@@ -7838,7 +7735,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-144" data-note-label="BG 3.144" data-note-chapter="3" data-note-vlabel="144">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.144…" rows="4"></textarea>
@@ -7877,7 +7773,6 @@
 
 
     <div class="fc-translation" data-sec="translation">The Lord replied, “My dear mother, please hear. This body belongs to you. I do not possess anything.</div>
-
 
 
 
@@ -7940,7 +7835,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-146" data-note-label="BG 3.146" data-note-chapter="3" data-note-vlabel="146">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.146…" rows="4"></textarea>
@@ -7979,7 +7873,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“Knowingly or unknowingly I have accepted this renounced order. Still, I shall never be indifferent to you.</div>
-
 
 
 
@@ -8042,7 +7935,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-148" data-note-label="BG 3.148" data-note-chapter="3" data-note-vlabel="148">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.148…" rows="4"></textarea>
@@ -8081,7 +7973,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Saying this, the Lord offered obeisances to His mother again and again, and mother Śacī, being pleased, took Him again and again on her lap.</div>
-
 
 
 
@@ -8144,7 +8035,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-150" data-note-label="BG 3.150" data-note-chapter="3" data-note-vlabel="150">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.150…" rows="4"></textarea>
@@ -8183,7 +8073,6 @@
 
 
     <div class="fc-translation" data-sec="translation">The Lord met all the devotees one after the other, and looking at everyone’s face individually, He embraced them tightly.</div>
-
 
 
 
@@ -8246,7 +8135,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-152" data-note-label="BG 3.152" data-note-chapter="3" data-note-vlabel="152">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.152…" rows="4"></textarea>
@@ -8285,7 +8173,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Śrīvāsa, Rāmāi, Vidyānidhi, Gadādhara, Gaṅgādāsa, Vakreśvara, Murāri, Śuklāmbara, Buddhimanta Khāṅ, Nandana, Śrīdhara, Vijaya, Vāsudeva, Dāmodara, Mukunda, Sañjaya and all the others, however many I can mention — indeed, all the inhabitants of Navadvīpa — arrived there, and the Lord met them with smiles and glances of mercy.</div>
-
 
 
 
@@ -8348,7 +8235,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-156" data-note-label="BG 3.156" data-note-chapter="3" data-note-vlabel="156">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.156…" rows="4"></textarea>
@@ -8387,7 +8273,6 @@
 
 
     <div class="fc-translation" data-sec="translation">People came to see Śrī Caitanya Mahāprabhu from various other villages nearby, as well as Navadvīpa.</div>
-
 
 
 
@@ -8450,7 +8335,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-158" data-note-label="BG 3.158" data-note-chapter="3" data-note-vlabel="158">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.158…" rows="4"></textarea>
@@ -8489,7 +8373,6 @@
 
 
     <div class="fc-translation" data-sec="translation">The supplies of Advaita Ācārya were inexhaustible and indestructible. As many goods and commodities as He used, just as many again appeared.</div>
-
 
 
 
@@ -8552,7 +8435,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-160" data-note-label="BG 3.160" data-note-chapter="3" data-note-vlabel="160">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.160…" rows="4"></textarea>
@@ -8603,7 +8485,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-161" data-note-label="BG 3.161" data-note-chapter="3" data-note-vlabel="161">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.161…" rows="4"></textarea>
@@ -8642,7 +8523,6 @@
 
 
     <div class="fc-translation" data-sec="translation">When the Lord performed kīrtana, He manifested all kinds of transcendental symptoms. He appeared stunned and trembling, His hair stood on end, and His voice faltered. There were tears and devastation.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -8712,7 +8592,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-163" data-note-label="BG 3.163" data-note-chapter="3" data-note-vlabel="163">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.163…" rows="4"></textarea>
@@ -8751,7 +8630,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Śrīmatī Śacīmātā thought that the body of Nimāi was being smashed when He fell down so. She cried, “Alas!” and petitioned Lord Viṣṇu.</div>
-
 
 
 
@@ -8814,7 +8692,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-165" data-note-label="BG 3.165" data-note-chapter="3" data-note-vlabel="165">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.165…" rows="4"></textarea>
@@ -8865,7 +8742,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-166" data-note-label="BG 3.166" data-note-chapter="3" data-note-vlabel="166">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.166…" rows="4"></textarea>
@@ -8904,7 +8780,6 @@
 
 
     <div class="fc-translation" data-sec="translation">When mother Śacī was thus overwhelmed in maternal love for Lord Caitanya Mahāprabhu, she became transformed with happiness, fear and humility, as well as bodily symptoms.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -8962,7 +8837,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Since Advaita Ācārya was giving alms and food to Lord Caitanya Mahāprabhu, the other devotees, headed by Śrīvāsa Ṭhākura, also desired to give Him alms and invite Him for lunch.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -9032,7 +8906,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-169" data-note-label="BG 3.169" data-note-chapter="3" data-note-vlabel="169">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.169…" rows="4"></textarea>
@@ -9071,7 +8944,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Śacīmātā submitted, “As far as you are concerned, you can meet Nimāi [Śrī Caitanya Mahāprabhu] many times somewhere else, but what is the possibility of my ever meeting Him again? I shall have to remain at home. A sannyāsī never returns to his home.”</div>
-
 
 
 
@@ -9134,7 +9006,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-171" data-note-label="BG 3.171" data-note-chapter="3" data-note-vlabel="171">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.171…" rows="4"></textarea>
@@ -9173,7 +9044,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Hearing this appeal from mother Śacī, all the devotees offered obeisances and said, “We all agree to whatever mother Śacī desires.”</div>
-
 
 
 
@@ -9236,7 +9106,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-173" data-note-label="BG 3.173" data-note-chapter="3" data-note-vlabel="173">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.173…" rows="4"></textarea>
@@ -9275,7 +9144,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Śrī Caitanya Mahāprabhu informed them all, “Without your order, I tried to go to Vṛndāvana. There was some obstacle, however, and I had to return.</div>
-
 
 
 
@@ -9338,7 +9206,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-175" data-note-label="BG 3.175" data-note-chapter="3" data-note-vlabel="175">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.175…" rows="4"></textarea>
@@ -9377,7 +9244,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“My dear friends, as long as I remain manifest, I shall never give you up. Nor shall I be able to give up My mother.</div>
-
 
 
 
@@ -9440,7 +9306,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-177" data-note-label="BG 3.177" data-note-chapter="3" data-note-vlabel="177">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.177…" rows="4"></textarea>
@@ -9479,7 +9344,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“Make some arrangement so that I may not leave you and at the same time people may not blame Me for remaining with relatives after taking sannyāsa.”</div>
-
 
 
 
@@ -9542,7 +9406,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-179" data-note-label="BG 3.179" data-note-chapter="3" data-note-vlabel="179">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.179…" rows="4"></textarea>
@@ -9593,7 +9456,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-180" data-note-label="BG 3.180" data-note-chapter="3" data-note-vlabel="180">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.180…" rows="4"></textarea>
@@ -9632,7 +9494,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Śacīmātā said, “It will be a great happiness for me if Nimāi [Śrī Caitanya Mahāprabhu] stays here. But at the same time, if someone blames Him, it will be my great unhappiness.”</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -9702,7 +9563,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-182" data-note-label="BG 3.182" data-note-chapter="3" data-note-vlabel="182">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.182…" rows="4"></textarea>
@@ -9741,7 +9601,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“Since Jagannātha Purī and Navadvīpa are intimately related — as if they were two rooms in the same house — people from Navadvīpa generally go to Jagannātha Purī, and those in Jagannātha Purī go to Navadvīpa. This going and coming will help carry news of Lord Caitanya. In this way I will be able to get news of Him.</div>
-
 
 
 
@@ -9804,7 +9663,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-184" data-note-label="BG 3.184" data-note-chapter="3" data-note-vlabel="184">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.184…" rows="4"></textarea>
@@ -9843,7 +9701,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“I do not care for my personal happiness or unhappiness, but only for His happiness. Indeed, I accept His happiness as my happiness.”</div>
-
 
 
 
@@ -9906,7 +9763,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-186" data-note-label="BG 3.186" data-note-chapter="3" data-note-vlabel="186">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.186…" rows="4"></textarea>
@@ -9945,7 +9801,6 @@
 
 
     <div class="fc-translation" data-sec="translation">All the devotees informed Lord Caitanya of Śacīmātā’s decision. Hearing it, the Lord became very pleased.</div>
-
 
 
 
@@ -10008,7 +9863,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-188" data-note-label="BG 3.188" data-note-chapter="3" data-note-vlabel="188">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.188…" rows="4"></textarea>
@@ -10059,7 +9913,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-189" data-note-label="BG 3.189" data-note-chapter="3" data-note-vlabel="189">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.189…" rows="4"></textarea>
@@ -10098,7 +9951,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Lord Caitanya Mahāprabhu requested them all to return home and begin chanting the holy name congregationally. He also requested them to worship Kṛṣṇa, chant His holy name and discuss His holy pastimes.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -10168,7 +10020,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-191" data-note-label="BG 3.191" data-note-chapter="3" data-note-vlabel="191">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.191…" rows="4"></textarea>
@@ -10207,7 +10058,6 @@
 
 
     <div class="fc-translation" data-sec="translation">In this way, Śrī Caitanya Mahāprabhu, offering due respects to all the devotees and smiling very mildly, bade them farewell.</div>
-
 
 
 
@@ -10270,7 +10120,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-193" data-note-label="BG 3.193" data-note-chapter="3" data-note-vlabel="193">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.193…" rows="4"></textarea>
@@ -10309,7 +10158,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Haridāsa Ṭhākura said, “You are going to Jagannātha Purī, and that is all right, but what will be my destination? I am not able to go to Jagannātha Purī.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -10379,7 +10227,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-195" data-note-label="BG 3.195" data-note-chapter="3" data-note-vlabel="195">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.195…" rows="4"></textarea>
@@ -10418,7 +10265,6 @@
 
 
     <div class="fc-translation" data-sec="translation">The Lord replied to Haridāsa Ṭhākura, “Please check your humility. Just the sight of your humility very much agitates My mind.”</div>
-
 
 
 
@@ -10481,7 +10327,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-197" data-note-label="BG 3.197" data-note-chapter="3" data-note-vlabel="197">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.197…" rows="4"></textarea>
@@ -10520,7 +10365,6 @@
 
 
     <div class="fc-translation" data-sec="translation">After that, Advaita Ācārya respectfully requested Lord Caitanya Mahāprabhu to show Him mercy by remaining another two or four days.</div>
-
 
 
 
@@ -10583,7 +10427,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-199" data-note-label="BG 3.199" data-note-chapter="3" data-note-vlabel="199">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.199…" rows="4"></textarea>
@@ -10622,7 +10465,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Lord Caitanya’s decision was received very happily by Advaita Ācārya, mother Śacī and all the devotees. Advaita Ācārya celebrated every day with a great festival.</div>
-
 
 
 
@@ -10685,7 +10527,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-201" data-note-label="BG 3.201" data-note-chapter="3" data-note-vlabel="201">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.201…" rows="4"></textarea>
@@ -10736,7 +10577,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-202" data-note-label="BG 3.202" data-note-chapter="3" data-note-vlabel="202">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.202…" rows="4"></textarea>
@@ -10775,7 +10615,6 @@
 
 
     <div class="fc-translation" data-sec="translation">In this way all the opulences of Advaita Ācārya — His faith, devotion, home, riches and everything else — were successfully utilized in the worship of Lord Caitanya Mahāprabhu.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -10845,7 +10684,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-204" data-note-label="BG 3.204" data-note-chapter="3" data-note-vlabel="204">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.204…" rows="4"></textarea>
@@ -10884,7 +10722,6 @@
 
 
     <div class="fc-translation" data-sec="translation">In this way, at Advaita Ācārya’s house all the devotees met and passed some days together in a greatly festive mood.</div>
-
 
 
 
@@ -10947,7 +10784,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-206" data-note-label="BG 3.206" data-note-chapter="3" data-note-vlabel="206">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.206…" rows="4"></textarea>
@@ -10986,7 +10822,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Śrī Caitanya Mahāprabhu also asked them to execute the congregational chanting of the holy name of the Lord at their homes, and He assured them that they would be able to meet Him again.</div>
-
 
 
 
@@ -11049,7 +10884,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-208" data-note-label="BG 3.208" data-note-chapter="3" data-note-vlabel="208">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.208…" rows="4"></textarea>
@@ -11088,7 +10922,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Śrī Advaita Ācārya sent four persons — Nityānanda Gosāñi, Jagadānanda Paṇḍita, Dāmodara Paṇḍita and Mukunda Datta — to accompany the Lord. After pacifying His mother, Śacīmātā, Śrī Caitanya Mahāprabhu submitted prayers to her lotus feet.</div>
-
 
 
 
@@ -11151,7 +10984,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-211" data-note-label="BG 3.211" data-note-chapter="3" data-note-vlabel="211">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.211…" rows="4"></textarea>
@@ -11190,7 +11022,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Śrī Caitanya Mahāprabhu was unaffected. He left swiftly, and Advaita Ācārya followed Him, weeping.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -11260,7 +11091,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-213" data-note-label="BG 3.213" data-note-chapter="3" data-note-vlabel="213">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.213…" rows="4"></textarea>
@@ -11299,7 +11129,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Śrī Caitanya Mahāprabhu said, “Please pacify all the devotees and My mother. If You become agitated, no one will be able to continue to exist.”</div>
-
 
 
 
@@ -11362,7 +11191,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-215" data-note-label="BG 3.215" data-note-chapter="3" data-note-vlabel="215">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.215…" rows="4"></textarea>
@@ -11401,7 +11229,6 @@
 
 
     <div class="fc-translation" data-sec="translation">The Lord, with the other four persons, went along the banks of the Ganges through the path of Chatrabhoga toward Nīlādri, Jagannātha Purī.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -11459,7 +11286,6 @@
 
 
     <div class="fc-translation" data-sec="translation">In his book known as Caitanya-maṅgala [Caitanya-bhāgavata], Vṛndāvana dāsa Ṭhākura has elaborately described the Lord’s passage to Jagannātha Purī.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -11529,7 +11355,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-218" data-note-label="BG 3.218" data-note-chapter="3" data-note-vlabel="218">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.218…" rows="4"></textarea>
@@ -11568,7 +11393,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Praying at the lotus feet of Śrī Rūpa and Śrī Raghunātha, always desiring their mercy, I, Kṛṣṇadāsa, narrate Śrī Caitanya-caritāmṛta, following in their footsteps.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>

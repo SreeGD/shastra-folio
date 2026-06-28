@@ -31,7 +31,7 @@
 <body class="has-sidebar">
 <header class="fc-site-header">
     <button type="button" class="fc-mobile-trigger fc-mobile-trigger-left" data-overlay="left" aria-label="Open settings drawer">⚙</button>
-<a class="fc-brand" href="../../../">FolioCorpus<span class="fc-sub">Bhakti-rasāmṛta-sindhu</span></a>
+    <a class="fc-brand" href="../../../">FolioCorpus<span class="fc-sub">Bhagavad-gītā</span></a>
     <nav class="fc-site-nav">
         <a href="../../../">Home</a>
         <a href="../../../bg/">Bhagavad-gītā</a>
@@ -46,8 +46,8 @@
     <button class="fc-sb-collapse" type="button" data-sb="left" title="Collapse left sidebar" aria-label="Collapse"></button>
 
     <div class="fc-sb-body">
-        <details class="fc-sb-section" data-sbsec="reading" open>
-            <summary class="fc-sb-title">Reading</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Reading</div>
             <div class="fc-sb-sub">Theme</div>
             <div class="fc-segmented" data-setting="theme">
                 <button type="button" data-val="light">Light</button>
@@ -73,10 +73,10 @@
                 <button type="button" data-val="single">Single</button>
                 <button type="button" data-val="side">Side-by-side</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="display" open>
-            <summary class="fc-sb-title">Display</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Display</div>
             <div class="fc-sb-grid">
                 <label><input type="checkbox" data-section="devanagari" checked> Devanāgarī</label>
                 <label><input type="checkbox" data-section="iast" checked> IAST transliteration</label>
@@ -98,10 +98,33 @@
                 <button type="button" data-action="expand-all">Expand all</button>
                 <button type="button" data-action="collapse-all">Collapse all</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="tools" open>
-            <summary class="fc-sb-title">Tools</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Find your starting point</div>
+            <div class="fc-persona-links">
+                <a class="fc-persona-link" href="../../../daily/">🌅 Daily (one value a week)</a>
+                <a class="fc-persona-link" href="../../../householder/">🏠 Householder (family & work)</a>
+                <a class="fc-persona-link" href="../../../parenting/">👨‍👩‍👧 Parenting (stories for kids)</a>
+                <a class="fc-persona-link" href="../../../themes/">📚 All themes</a>
+                <a class="fc-persona-link" href="../../../values/" style="background:#F0F6F2;border-left-color:#1F4632;">ॐ Vedic Value System ↗</a>
+                <a class="fc-persona-link" href="../../../vidya/" style="background:#FBF6E4;border-left-color:#C8860B;">📚 Vidyā Karaṇa (kids, multi-lang) ↗</a>
+            </div>
+        </div>
+
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Audience</div>
+            <div class="fc-audience-filter">
+                <label><input type="radio" name="fc-audience" value="all" checked> All levels</label>
+                <label><input type="radio" name="fc-audience" value="primary"> Primary (children)</label>
+                <label><input type="radio" name="fc-audience" value="middle"> Middle (teens)</label>
+                <label><input type="radio" name="fc-audience" value="senior"> Senior (adults)</label>
+                <label><input type="radio" name="fc-audience" value="college"> College / scholar</label>
+            </div>
+        </div>
+
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Tools</div>
             <div class="fc-sb-tools">
                 <button type="button" id="fc-presentation-toggle" class="fc-tool-btn"><span>🖥 Presentation</span><kbd class="fc-kbd">F</kbd></button>
                 <button type="button" id="fc-pen-toggle" class="fc-tool-btn"><span>✏️ Pen mode</span><kbd class="fc-kbd">P</kbd></button>
@@ -116,10 +139,26 @@
                 <button type="button" id="fc-clear-highlights" class="fc-tool-btn">🩷 Clear highlights (page)</button>
                 <button type="button" id="fc-notes-modal-open" class="fc-tool-btn">📓 My annotations</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="progress" id="fc-progress-section" open>
-            <summary class="fc-sb-title">Progress</summary>
+        <div class="fc-sb-section" id="fc-tts-controls" hidden>
+            <div class="fc-sb-title">
+                Read-aloud
+                <label class="fc-tts-master">
+                    <input type="checkbox" id="fc-tts-enabled" checked>
+                    <span class="fc-tts-master-label">On</span>
+                </label>
+            </div>
+            <div class="fc-tts-inner">
+                <div class="fc-sb-sub">Voice</div>
+                <select id="fc-tts-voice" class="fc-tts-select" aria-label="TTS voice"></select>
+                <div class="fc-sb-sub">Rate <span class="fc-tts-rate-val">1.0×</span></div>
+                <input type="range" id="fc-tts-rate" min="0.5" max="2" step="0.1" value="1" class="fc-tts-rate" aria-label="Reading rate">
+            </div>
+        </div>
+
+        <div class="fc-sb-section" id="fc-progress-section">
+            <div class="fc-sb-title">Progress</div>
             <div class="fc-progress-row">
                 <span class="fc-progress-num" id="fc-progress-num">0</span>
                 <span class="fc-progress-divider">/</span>
@@ -134,29 +173,29 @@
                 <span class="fc-progress-spacer"></span>
                 <button type="button" class="fc-progress-reset" id="fc-progress-reset" title="Reset progress">↺</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="bookmarks" open>
-            <summary class="fc-sb-title">Bookmarks <span class="fc-sb-count" id="fc-bookmarks-count">0</span></summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Bookmarks <span class="fc-sb-count" id="fc-bookmarks-count">0</span></div>
             <ul class="fc-bookmark-list" id="fc-bookmarks-list">
                 <li class="fc-sb-empty">No bookmarks yet — click ☆ on any verse.</li>
             </ul>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="notes" open>
-            <summary class="fc-sb-title">Notes <span class="fc-sb-count" id="fc-notes-count">0</span></summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Notes <span class="fc-sb-count" id="fc-notes-count">0</span></div>
             <ul class="fc-bookmark-list" id="fc-notes-list">
                 <li class="fc-sb-empty">No notes yet — open any verse and write in the 📝 block.</li>
             </ul>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="export">
-            <summary class="fc-sb-title">Export</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Export</div>
             <div class="fc-sb-tools">
                 <button type="button" id="fc-export-md" class="fc-tool-btn">📥 Download Markdown</button>
                 <button type="button" id="fc-export-json" class="fc-tool-btn">💾 Download JSON backup</button>
             </div>
-        </details>
+        </div>
     </div>
 </aside>    <main class="fc-container">
 <nav class="fc-breadcrumbs">
@@ -258,7 +297,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Kṛṣṇa, the destroyer of all sin and the bestower of all bliss, the very form of the highest bliss, filled with all rasas, excels all others in glory. He brings Tārakā and Pālikā under His control by the diffusion of His beauty; He accepts Śyāmalā and Lalitā as His equals; and gives pleasure to Rādhā by His excellent qualities. Second meaning: The full moon, which destroys suffering and creates happiness by its cooling rays, shines everywhere with its excellent qualities and beauty. It is the very form of nectar, filled with all tastes. It eclipses the host of stars by its light, accepts the playful gestures of the night, and fondly enters the Viśākhā constellation in the spring season.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -437,7 +475,6 @@ Here the word “insurmountable (durgama)” is used in describing the commentar
 
     <div class="fc-translation" data-sec="translation">I offer my respects to the lotus feet of the Supreme Lord in the form of Caitanya-deva. Though I am a vile person by nature, by His inspiration within my heart, I have undertaken this work.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -513,7 +550,6 @@ Let me offer my respectful obeisances unto the lotus feet of Śrīla Rūpa Gosv�
 
     <div class="fc-translation" data-sec="translation">May this work named “the ocean of nectar composed of bhakti-rasa” always serve as the recreation hall of my Lord manifested in the form called Sanātana (Gosvāmī) for His pleasure.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -587,7 +623,6 @@ Let me offer my respectful obeisances unto the lotus feet of Śrīla Rūpa Gosv�
 
 
     <div class="fc-translation" data-sec="translation">I offer my respects to the devotees who are like makaras, kings among fishes, frolicking in the sweet ocean of devotional rasa; who disregard the insignificant rivers of liberation; and who are free from fear caused by the net of time.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -676,7 +711,6 @@ My dear servants please do not approach such devotees, for they have fully surre
 
     <div class="fc-translation" data-sec="translation">O Sanātana, may your ocean of bhakti-rasa [Note: The author has already invited Sanātana to make this work his resting place.] remain for a long time, restricting the harsh arguments of the proponents of karma and jṣāna, just as the ocean restricts the flame of the vaḍabā fire.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -751,7 +785,6 @@ Another meaning is that, by the metaphor, he is pointing out the difference betw
 
 
     <div class="fc-translation" data-sec="translation">Though I am ignorant, I have undertaken this work concerning bhakti-rasa related to Kṛṣṇa, who is auspicious for the whole world, for the joy of my friends.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -831,7 +864,6 @@ Another meaning is that, by the metaphor, he is pointing out the difference betw
 
     <div class="fc-translation" data-sec="translation">The divisions of the book: In this sweet ocean of bhakti-rasa, offered to the Lord, four sections, starting with the eastern section, will be expounded one after the other.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -906,7 +938,6 @@ Another meaning is that, by the metaphor, he is pointing out the difference betw
 
     <div class="fc-translation" data-sec="translation">The Eastern Division defines the different types of bhakti. This will be discussed in four successive waves (chapters).</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -968,7 +999,6 @@ Another meaning is that, by the metaphor, he is pointing out the difference betw
 
     <div class="fc-translation" data-sec="translation">The first wave of the Eastern Division of the ocean is concerned with bhakti in general. The second wave describes sādhana-bhakti. The third wave describes bhāva-bhakti. The fourth wave describes prema-bhakti.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1029,7 +1059,6 @@ Another meaning is that, by the metaphor, he is pointing out the difference betw
 
 
     <div class="fc-translation" data-sec="translation">In the first wave or chapter, in order to describe clearly the superiority of bhakti to other processes, the unique characteristics of uttama-bhakti will be related, as approved by the ācāryas.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -1117,7 +1146,6 @@ One who has unflinching devotion (uttama-bhakti) unto the Supreme Personality of
 
 
     <div class="fc-translation" data-sec="translation">The highest bhakti is defined as continuous service or emotions directed towards Kṛṣṇa, His expansion forms or others related to Him, with a pleasing attitude towards Kṛṣṇa. It should be devoid of desires other than the desire to please the Lord, and unobstructed by impersonal jṣāna, the materialistic rituals of karma or other unfavorable acts.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -1225,7 +1253,6 @@ Someone may propose that since the definition mentions kṛṣṇānuśīlanam, 
 
     <div class="fc-translation" data-sec="translation">Thus, Nārada-paṣcarātra says: Bhakti is defined as service to the Lord using the senses. It should be done with the intention of pleasing the Lord, free of other desires, and unobstructed by other processes.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1312,7 +1339,6 @@ As long as one identifies himself as belonging to a certain family, a certain so
 
 
     <div class="fc-translation" data-sec="translation">This is also stated in the Third Canto: These are the characteristics of transcendental loving service to Puruṣottama, the Supreme Personality of Godhead. It is without other desires, and it is not contaminated by karma or jṣāna. In this type of bhakti, My devotees do not accept sālokya, sārṣṭi, sārūpya, sāmīpya or oneness with Me—even if I offer these liberations—in preference to serving Me. This is called bhakti yoga, and is declared as the highest object of human pursuit. SB 3.29.12-14</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -1402,7 +1428,6 @@ There are five kinds of liberation, namely to become one with the Lord, to live 
 
     <div class="fc-translation" data-sec="translation">This is also stated in the Third Canto: These are the characteristics of transcendental loving service to Puruṣottama, the Supreme Personality of Godhead. It is without other desires, and it is not contaminated by karma or jṣāna. In this type of bhakti, My devotees do not accept sālokya, sārṣṭi, sārūpya, sāmīpya or oneness with Me—even if I offer these liberations—in preference to serving Me. This is called bhakti yoga, and is declared as the highest object of human pursuit. SB 3.29.12-14</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1491,7 +1516,6 @@ There are five kinds of liberation, namely to become one with the Lord, to live 
 
     <div class="fc-translation" data-sec="translation">This is also stated in the Third Canto: These are the characteristics of transcendental loving service to Puruṣottama, the Supreme Personality of Godhead. It is without other desires, and it is not contaminated by karma or jṣāna. In this type of bhakti, My devotees do not accept sālokya, sārṣṭi, sārūpya, sāmīpya or oneness with Me—even if I offer these liberations—in preference to serving Me. This is called bhakti yoga, and is declared as the highest object of human pursuit. SB 3.29.12-14</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1568,7 +1592,6 @@ There are five kinds of liberation, namely to become one with the Lord, to live 
 
     <div class="fc-translation" data-sec="translation">The description of the excellence of the devotee in the above verse amounts to describing the characteristics of bhakti by revealing its purity.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1629,7 +1652,6 @@ There are five kinds of liberation, namely to become one with the Lord, to live 
 
 
     <div class="fc-translation" data-sec="translation">The unique characteristics of bhakti are: its ability to destroy suffering; its bestowal of auspiciousness; its disregard for liberation; its rarity of attainment; its manifestation of concentrated bliss; and its ability to attract Kṛṣṇa.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -1720,7 +1742,6 @@ Kṛṣṇa is all-attractive, but pure devotional service attracts even Him. Th
 
     <div class="fc-translation" data-sec="translation">The first topic, its ability to destroy all suffering, will be discussed: Suffering is three-fold: sinful reaction, the seed of sin and ignorance. First sinful reactions will be discussed: There are two types of sinful reactions (effects of sinful acts): effects which are to be experienced in future lives (aprārabdham) and effects which are to be experienced in this lifetime (prārabdham).</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1793,7 +1814,6 @@ There are many results of past sinful activities for which we are suffering at t
 
     <div class="fc-translation" data-sec="translation">The first topic, its ability to destroy all suffering, will be discussed: Suffering is three-fold: sinful reaction, the seed of sin and ignorance. First sinful reactions will be discussed: There are two types of sinful reactions (effects of sinful acts): effects which are to be experienced in future lives (aprārabdham) and effects which are to be experienced in this lifetime (prārabdham).</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1861,7 +1881,6 @@ There are many results of past sinful activities for which we are suffering at t
 
 
     <div class="fc-translation" data-sec="translation">Here is an example of destroying all aprārabdha reactions, from the Eleventh Canto of Bhāgavatam: My dear Uddhava, devotional service in relationship with Me is like a blazing fire that can burn to ashes all the fuel of sinful activities supplied to it. SB 11.14.19</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -1949,7 +1968,6 @@ There are many results of past sinful activities for which we are suffering at t
 
     <div class="fc-translation" data-sec="translation">Here is proof of destroying prārabdha reactions, from the Third Canto of Bhāgavatam: To say nothing of the spiritual advancement of persons who see the Supreme Person face to face, even a person born in a family of dog-eaters immediately becomes eligible to perform Vedic sacrifices if he once utters the holy name of the Supreme Personality of Godhead or chants about Him, hears about His pastimes, offers Him obeisances or even remembers Him. SB 3.33.6</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2026,7 +2044,6 @@ Devotional service fixed on Me purifies even the dog-eaters from the contaminati
 
 
     <div class="fc-translation" data-sec="translation">It was understood that the low birth of the dog-eater is the cause of his disqualification for performing sacrifices. The sinful reaction by which he attains such low birth in this life is called the prārabdha sin.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -2111,7 +2128,6 @@ There is no sin at all in the devotees of Vāsudeva. Birth, death, old age, and 
 
     <div class="fc-translation" data-sec="translation">Also, in the Padma Purāṇa it is said: For those engaged in bhakti to Viṣṇu, step by step the aprārabdha, kūṭa, bīja and prārabdha-karmas are destroyed.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2191,7 +2207,6 @@ Kramena means that the reactions are destroyed gradually from recent to previous
 
 
     <div class="fc-translation" data-sec="translation">An illustration of bhakti destroying the seed of sin, namely, material desires, [Note: This seed must be distinguished from the bīja mentioned in the last verse, which is part of the sinful reaction mentioned in verse 18. The seed now being discussed is the second type of kleśa mentioned in verse 18.] is found in the Sixth Canto: Although one may neutralize the reactions of sinful life through austerity, charity, vows and other such methods, these pious activities cannot uproot the material desires in one’s heart. However, if one serves the lotus feet of the Personality of Godhead, he is immediately freed from all such contaminations. SB 6.2.17</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -2280,7 +2295,6 @@ Another example given in Śrīmad-Bhāgavatam concerns the elephant who enters i
 
 
     <div class="fc-translation" data-sec="translation">Next bhakti’s ability to destroy avidyā is illustrated: The devotees, by actions of service to the toes of the lotus feet of the Lord, can very easily overcome the knot of ignorance carrying unlimited impressions of karma, tied tightly by action. Because this is very difficult, the empty-minded non-devotees—the jṣānīs and yogīs—although trying to stop the flow of sense activities, cannot do so. Therefore, you are advised to engage in the devotional service of Kṛṣṇa, the son of Vasudeva. SB 4.22.39</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -2377,7 +2391,6 @@ The word naiṣṭhikī in the verse means immovable or fixed, according to the 
 
     <div class="fc-translation" data-sec="translation">Padma Purāṇa says the following: As the forest fire burns up a female snake demon, supreme devotion to the Lord quickly burns up avidyā completely by the knowledge (vidyā) which accompanies bhakti.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2442,7 +2455,6 @@ The word naiṣṭhikī in the verse means immovable or fixed, according to the 
 
 
     <div class="fc-translation" data-sec="translation">Next, the second unique characteristic of uttama-bhakti, namely, its bestowal of śubha, is discussed: The wise explain that there are four types of auspiciousness (śubha) [Note: Śubha means fortune, prosperity, virtue, beauty, eminence and happiness.] affection for all living entities, being attractive to all living entities, possession of good qualities, and happiness, as well as other items.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -2527,7 +2539,6 @@ The mention of other items (ādini) indicates such things as controlling all oth
 
     <div class="fc-translation" data-sec="translation">The first two types of śubha are illustrated in the Padma Purāṇa: He who worships the Lord is pleasing to all living entities; and all the inhabitants of the world, both moving and non-moving, are pleasing to him.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2600,7 +2611,6 @@ The mention of other items (ādini) indicates such things as controlling all oth
 
 
     <div class="fc-translation" data-sec="translation">Bhakti bestows good qualities and other things (sad-guṇādi): One who has unflinching devotion for the Personality of Godhead has the Lord and his followers along with all their good qualities under his control. But one who is not a devotee of the Lord has only material qualifications that are of little value. He simply pursues temporary material objects motivated by desire. SB 5.18.12</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -2679,7 +2689,6 @@ One who is not in Kṛṣṇa consciousness usually cannot sit silently even for
 
     <div class="fc-translation" data-sec="translation">Bhakti bestows happiness: There are three types of happiness: from material things, from brahman realization and from the Lord.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2745,7 +2754,6 @@ One who is not in Kṛṣṇa consciousness usually cannot sit silently even for
 
 
     <div class="fc-translation" data-sec="translation">Thus it is said in a tantra: Astounding mystic powers, material enjoyment, eternal happiness in the realization of brahman, and eternal bliss from service to the Lord all appear from bhakti to Govinda.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -2821,7 +2829,6 @@ Foolishly, people who are enamored of the glitter of modern materialistic advanc
 
     <div class="fc-translation" data-sec="translation">Thus it also says in Hari-bhakti-sudhodaya: O lord of the devas! I again pray to You that I may have firm devotion to You. That bhakti is a creeper which bestows artha, dharma, kāma, mokṣa and also the happiness of realization of the Lord.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2887,7 +2894,6 @@ Actually, a pure devotee does not aspire after any of these perfections, because
 
 
     <div class="fc-translation" data-sec="translation">Bhakti causes total disregard for liberation: When even a little attraction for the Lord grows in the heart, the four objects of human attainment—artha, dharma, kāma and mokṣa—become like grass, shameful to appear before bhakti.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -2968,7 +2974,6 @@ There was a great devotee of Lord Caitanya known as Kholāvecā Śrīdhara, who 
 
     <div class="fc-translation" data-sec="translation">Thus, Nārada-paṣcarātra says: All the siddhis headed by liberation and all astonishing material pleasures follow after the great goddess called Hari-bhakti like fearful maidservants.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3046,7 +3051,6 @@ There was a great devotee of Lord Caitanya known as Kholāvecā Śrīdhara, who 
 
 
     <div class="fc-translation" data-sec="translation">Bhakti is rarely attained: Bhakti is difficult to attain in two ways: if undertaken in great quantity but without attachment, bhakti cannot be attained even after a long time; and even if practiced with attachment, Kṛṣṇa does not give bhakti to the practitioner immediately.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -3126,7 +3130,6 @@ In the preliminary phase of spiritual life there are different kinds of austerit
 
 
     <div class="fc-translation" data-sec="translation">The first type of rarity (by practice without attachment) is illustrated in one of the tantras: Liberation is easily attained by jṣāna and material enjoyment is easily attained by puṇyas such as sacrifice, after attaining dedication to those goals by thousands of attempts. However, bhāva-bhakti to the Lord cannot be attained if one practices thousands of different sādhanas (because āsakti will not appear).</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -3243,7 +3246,6 @@ Therefore, this bhakti should not even be mixed with other sādhanas. It has bee
 
     <div class="fc-translation" data-sec="translation">The second type of rarity is described in the Bhāgavatam. My dear King, the Supreme Person, Mukunda, is actually the maintainer of all the members of the Pāṇḍava and Yadu dynasties. He is your spiritual master, worshipable Deity, friend, and the director of your activities. To say nothing of this, He sometimes serves your family as a messenger or servant. This means that He worked just as ordinary servants do. Those engaged in getting the Lord’s favor attain liberation from the Lord very easily, but He does not give bhāva-bhakti at all times. SB 5.6.18</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3321,7 +3323,6 @@ Therefore, this bhakti should not even be mixed with other sādhanas. It has bee
 
 
     <div class="fc-translation" data-sec="translation">Bhakti is composed of a special condensed bliss: The bliss of brahman realization accumulated by samādhi lasting for half of Brahmā’s life cannot compare to one drop of the ocean of the happiness of bhakti.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -3401,7 +3402,6 @@ Therefore, this bhakti should not even be mixed with other sādhanas. It has bee
 
 
     <div class="fc-translation" data-sec="translation">Hari-bhakti-sudhodaya says: O guru of the universe, on seeing You directly, I am situated in a pure ocean of bliss. All the happiness of impersonal brahman is as insignificant as the water in the hoof print of a cow.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -3486,7 +3486,6 @@ When the breeze carrying the aroma of tulasī leaves from the toes of the lotus 
 
     <div class="fc-translation" data-sec="translation">Also, it is said in Bhāvārtha-dīpikā (10.88.11): Some fortunate people play in the sweet ocean of Your topics and enjoy the greatest bliss. They consider the happiness from artha, dharma, kāma and mokṣa to be as insignificant as grass.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3564,7 +3563,6 @@ When the breeze carrying the aroma of tulasī leaves from the toes of the lotus 
 
 
     <div class="fc-translation" data-sec="translation">Bhakti attracts Kṛṣṇa and His associates: Bhakti is called śrī-kṛṣṇākarṣiṇī because it makes the Lord addicted to prema and brings Him under control along with His associates.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -3645,7 +3643,6 @@ To perform devotional service means to follow in the footsteps of Rādhārāṇ�
 
 
     <div class="fc-translation" data-sec="translation">Thus Bhāgavatam says in the Eleventh Canto: My dear Uddhava, the unalloyed devotional service in the form of prema-bhakti rendered to Me by My devotees brings Me under their control. Those engaged in mystic yoga, Sāṅkhya philosophy, pious work, Vedic study, austerity or renunciation cannot thus control Me to this extent. SB 11.14.20</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -3733,7 +3730,6 @@ To perform devotional service means to follow in the footsteps of Rādhārāṇ�
 
     <div class="fc-translation" data-sec="translation">Similarly, Nārada says in the Seventh Canto of Bhāgavatam: My dear Mahārāja Yudhiṣṭhira, all of you [the Pāṇḍavas] are extremely fortunate, for the Supreme Personality of Godhead, Kṛṣṇa, lives in your palace just like a human being. Great saintly persons know this very well, and therefore they constantly visit this house. SB 7.10.48</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3808,7 +3804,6 @@ In Bhagavad-gītā when Kṛṣṇa appeared in His universal form Arjuna prayed
 
 
     <div class="fc-translation" data-sec="translation">Three types of bhakti will be explained, later, one after the other. The greatness of bhakti is uniquely glorified by the six qualities just mentioned, two qualities appearing in each type of bhakti.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -3889,7 +3884,6 @@ The three categories of devotional service which Śrīla Rūpa Gosvāmī describ
 
     <div class="fc-translation" data-sec="translation">Furthermore, it should be stated: Even if one has a little taste for the topic of bhakti, he can understand it. He who tries to understand bhakti by dry logic cannot understand it, because logic is insubstantial.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3967,7 +3961,6 @@ The three categories of devotional service which Śrīla Rūpa Gosvāmī describ
 
 
     <div class="fc-translation" data-sec="translation">Concerning this topic it is said by the ancient authorities: A person more skillful at logic can bring about a conclusion different from what was carefully proven previously by another skillful logician.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>

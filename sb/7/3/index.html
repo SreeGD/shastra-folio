@@ -25,19 +25,25 @@
     <link rel="icon" href="../../../assets/icons/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="../../../assets/icons/icon.svg">
     <link rel="stylesheet" href="../../../assets/css/site.css">
+    <link rel="alternate" hreflang="te-IN" href="../../../te/sb/7/3/">
+    <link rel="alternate" hreflang="x-default" href="../../../">
     <script>window.FC_TO_ROOT = "../../../";</script>
     <script src="../../../assets/js/toggle.js"></script>
 </head>
 <body class="has-sidebar" data-chapter="3">
 <header class="fc-site-header">
     <button type="button" class="fc-mobile-trigger fc-mobile-trigger-left" data-overlay="left" aria-label="Open settings drawer">⚙</button>
-<a class="fc-brand" href="../../../">FolioCorpus<span class="fc-sub">Śrīmad-Bhāgavatam</span></a>
+    <a class="fc-brand" href="../../../">FolioCorpus<span class="fc-sub">Bhagavad-gītā</span></a>
     <nav class="fc-site-nav">
         <a href="../../../">Home</a>
         <a href="../../../bg/">Bhagavad-gītā</a>
         <a href="../../../sb/">Śrīmad-Bhāgavatam</a>
         <a href="../../../search/" title="Search across all integrated works">🔍 Search</a>
         <button type="button" id="fc-random-verse" class="fc-nav-btn" title="Jump to a random verse">🎲 Random</button>
+        <span class="fc-lang-switch" aria-label="Script">
+            <a class="active" href="#" title="Devanāgarī edition">EN</a>
+            <a class="" href="../../../te/sb/7/3/" title="Telugu lipi edition">తె</a>
+        </span>
     </nav>
     <button type="button" class="fc-mobile-trigger fc-mobile-trigger-right" data-overlay="right" aria-label="Open chapter index drawer">📚</button>
 </header>
@@ -46,8 +52,8 @@
     <button class="fc-sb-collapse" type="button" data-sb="left" title="Collapse left sidebar" aria-label="Collapse"></button>
 
     <div class="fc-sb-body">
-        <details class="fc-sb-section" data-sbsec="reading" open>
-            <summary class="fc-sb-title">Reading</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Reading</div>
             <div class="fc-sb-sub">Theme</div>
             <div class="fc-segmented" data-setting="theme">
                 <button type="button" data-val="light">Light</button>
@@ -73,10 +79,10 @@
                 <button type="button" data-val="single">Single</button>
                 <button type="button" data-val="side">Side-by-side</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="display" open>
-            <summary class="fc-sb-title">Display</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Display</div>
             <div class="fc-sb-grid">
                 <label><input type="checkbox" data-section="devanagari" checked> Devanāgarī</label>
                 <label><input type="checkbox" data-section="iast" checked> IAST transliteration</label>
@@ -99,10 +105,33 @@
                 <button type="button" data-action="expand-all">Expand all</button>
                 <button type="button" data-action="collapse-all">Collapse all</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="tools" open>
-            <summary class="fc-sb-title">Tools</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Find your starting point</div>
+            <div class="fc-persona-links">
+                <a class="fc-persona-link" href="../../../daily/">🌅 Daily (one value a week)</a>
+                <a class="fc-persona-link" href="../../../householder/">🏠 Householder (family & work)</a>
+                <a class="fc-persona-link" href="../../../parenting/">👨‍👩‍👧 Parenting (stories for kids)</a>
+                <a class="fc-persona-link" href="../../../themes/">📚 All themes</a>
+                <a class="fc-persona-link" href="../../../values/" style="background:#F0F6F2;border-left-color:#1F4632;">ॐ Vedic Value System ↗</a>
+                <a class="fc-persona-link" href="../../../vidya/" style="background:#FBF6E4;border-left-color:#C8860B;">📚 Vidyā Karaṇa (kids, multi-lang) ↗</a>
+            </div>
+        </div>
+
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Audience</div>
+            <div class="fc-audience-filter">
+                <label><input type="radio" name="fc-audience" value="all" checked> All levels</label>
+                <label><input type="radio" name="fc-audience" value="primary"> Primary (children)</label>
+                <label><input type="radio" name="fc-audience" value="middle"> Middle (teens)</label>
+                <label><input type="radio" name="fc-audience" value="senior"> Senior (adults)</label>
+                <label><input type="radio" name="fc-audience" value="college"> College / scholar</label>
+            </div>
+        </div>
+
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Tools</div>
             <div class="fc-sb-tools">
                 <button type="button" id="fc-presentation-toggle" class="fc-tool-btn"><span>🖥 Presentation</span><kbd class="fc-kbd">F</kbd></button>
                 <button type="button" id="fc-pen-toggle" class="fc-tool-btn"><span>✏️ Pen mode</span><kbd class="fc-kbd">P</kbd></button>
@@ -117,10 +146,26 @@
                 <button type="button" id="fc-clear-highlights" class="fc-tool-btn">🩷 Clear highlights (page)</button>
                 <button type="button" id="fc-notes-modal-open" class="fc-tool-btn">📓 My annotations</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="progress" id="fc-progress-section" open>
-            <summary class="fc-sb-title">Progress</summary>
+        <div class="fc-sb-section" id="fc-tts-controls" hidden>
+            <div class="fc-sb-title">
+                Read-aloud
+                <label class="fc-tts-master">
+                    <input type="checkbox" id="fc-tts-enabled" checked>
+                    <span class="fc-tts-master-label">On</span>
+                </label>
+            </div>
+            <div class="fc-tts-inner">
+                <div class="fc-sb-sub">Voice</div>
+                <select id="fc-tts-voice" class="fc-tts-select" aria-label="TTS voice"></select>
+                <div class="fc-sb-sub">Rate <span class="fc-tts-rate-val">1.0×</span></div>
+                <input type="range" id="fc-tts-rate" min="0.5" max="2" step="0.1" value="1" class="fc-tts-rate" aria-label="Reading rate">
+            </div>
+        </div>
+
+        <div class="fc-sb-section" id="fc-progress-section">
+            <div class="fc-sb-title">Progress</div>
             <div class="fc-progress-row">
                 <span class="fc-progress-num" id="fc-progress-num">0</span>
                 <span class="fc-progress-divider">/</span>
@@ -135,29 +180,29 @@
                 <span class="fc-progress-spacer"></span>
                 <button type="button" class="fc-progress-reset" id="fc-progress-reset" title="Reset progress">↺</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="bookmarks" open>
-            <summary class="fc-sb-title">Bookmarks <span class="fc-sb-count" id="fc-bookmarks-count">0</span></summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Bookmarks <span class="fc-sb-count" id="fc-bookmarks-count">0</span></div>
             <ul class="fc-bookmark-list" id="fc-bookmarks-list">
                 <li class="fc-sb-empty">No bookmarks yet — click ☆ on any verse.</li>
             </ul>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="notes" open>
-            <summary class="fc-sb-title">Notes <span class="fc-sb-count" id="fc-notes-count">0</span></summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Notes <span class="fc-sb-count" id="fc-notes-count">0</span></div>
             <ul class="fc-bookmark-list" id="fc-notes-list">
                 <li class="fc-sb-empty">No notes yet — open any verse and write in the 📝 block.</li>
             </ul>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="export">
-            <summary class="fc-sb-title">Export</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Export</div>
             <div class="fc-sb-tools">
                 <button type="button" id="fc-export-md" class="fc-tool-btn">📥 Download Markdown</button>
                 <button type="button" id="fc-export-json" class="fc-tool-btn">💾 Download JSON backup</button>
             </div>
-        </details>
+        </div>
     </div>
 </aside>    <main class="fc-container">
 <nav class="fc-breadcrumbs">
@@ -175,7 +220,7 @@
         <h1 class="fc-verse-heading">7.3 · Hiraṇyakaśipu&#39;s Plan to Become Immortal</h1>
         <span class="fc-ribbon-meta">
             34 verses
- · <a class="fc-ribbon-link" href="class-prep/">🖨 Class prep</a>        </span>
+        </span>
         <input type="search" class="fc-search" id="fc-search" placeholder="🔍 Search in this chapter" aria-label="Search verses in this chapter">
         <span class="fc-ribbon-current" id="fc-ribbon-current" aria-live="polite"></span>
     </div>
@@ -457,7 +502,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <div class="fc-translation" data-sec="translation">Nārada Muni said to Mahārāja Yudhiṣṭhira: The demoniac king Hiraṇyakaśipu wanted to be unconquerable and free from old age and dwindling of the body. He wanted to gain all the yogic perfections like aṇimā and laghimā, to be deathless, and to be the only king of the entire universe, including Brahmaloka.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -581,18 +625,6 @@ The Third Chapter describes how Hiraṇyakaśipu performed penance, disturbed th
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Hiraṇyakaśipu wants invulnerability, mystic powers, and rule over the entire universe — even Brahmaloka. Demoniac austerity aims to topple the benefactor and seize his post; Vaiṣṇava austerity aims to serve forever. Examine the goal of your discipline, not just its intensity.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What is the true goal of the discipline you currently practice — service or power?</li><li>Where does ambition in your spiritual life look more demoniac than devotional?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -780,7 +812,6 @@ The Third Chapter describes how Hiraṇyakaśipu performed penance, disturbed th
     <div class="fc-translation" data-sec="translation">In the valley of Mandara Hill, Hiraṇyakaśipu began performing his austerities by standing with his toes on the ground, keeping his arms upward and looking toward the sky. This position was extremely difficult, but he accepted it as a means to attain perfection.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -836,18 +867,6 @@ Therefore he performed austerities.</div>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">On Mandara Hill, Hiraṇyakaśipu stands on his toes with arms raised toward the sky — an almost impossible posture sustained for years. Tremendous willpower in a wrong direction is one of the most dangerous forces in the world. Discipline without right aim is a weapon.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where is your willpower currently being spent in service of an unworthy aim?</li><li>What would change if even half that strength were directed toward devotional life?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -1017,7 +1036,6 @@ Therefore he performed austerities.</div>
     <div class="fc-translation" data-sec="translation">From the hair on Hiraṇyakaśipu’s head there emanated an effulgent light as brilliant and intolerable as the rays of the sun at the time of dissolution. Seeing the performance of such austere penances, the demigods, who had been wandering throughout the planets, now returned to their respective homes.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -1038,18 +1056,6 @@ Sthānāni means their houses.</div>
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">From Hiraṇyakaśipu&#39;s head emanates an intolerable light, like a sun at cosmic dissolution. Even the demigods are disturbed and return home. Misdirected austerity radiates enough heat to disturb the upper worlds — not all spiritual power is good news.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Whose &#39;spiritual intensity&#39; in your circle is actually disturbing rather than nourishing?</li><li>How do you tell the difference between radiance that warms and radiance that scorches?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -1237,7 +1243,6 @@ Sthānāni means their houses.</div>
     <div class="fc-translation" data-sec="translation">Because of Hiraṇyakaśipu’s severe austerities, fire came from his head, and this fire and its smoke spread throughout the sky, encompassing the upper and lower planets, which all became extremely hot.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -1256,18 +1261,6 @@ Sthānāni means their houses.</div>
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Fire and smoke from his head spread through the sky, heating upper and lower worlds. Severe tapas, even when demonic, has cosmic side effects. Our inner state is never private — it leaks into the worlds around us.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What inner fire of yours is currently overheating the people closest to you?</li><li>Where do you act as if your inner state were private when it is plainly contagious?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -1446,7 +1439,6 @@ Sthānāni means their houses.</div>
     <div class="fc-translation" data-sec="translation">Because of the power of his severe austerities, all the rivers and oceans were agitated, the surface of the globe, with its mountains and islands, began trembling, and the stars and planets fell. All directions were ablaze.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -1475,18 +1467,6 @@ Sthānāni means their houses.</div>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Rivers and oceans agitate, mountains tremble, stars fall, every direction blazes. One determined demoniac will can rattle the structure of the world. Be sober about how much disruption a single hardened heart can cause.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where is one hardened will — yours or someone else&#39;s — currently shaking a community?</li><li>What would it look like to bring that intensity into service rather than disruption?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -1723,7 +1703,6 @@ Sthānāni means their houses.</div>
     <div class="fc-translation" data-sec="translation">Scorched and extremely disturbed because of Hiraṇyakaśipu’s severe penances, all the demigods left the planets where they reside and went to the planet of Lord Brahmā, where they informed the creator as follows: O lord of the demigods, O master of the universe, because of the fire emanating from Hiraṇyakaśipu’s head as a result of his severe austerities, we have become so disturbed that we could not stay in our planets but have come to you.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -1757,18 +1736,6 @@ Sthānāni means their houses.</div>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Scorched and disturbed, the demigods abandon their planets and flee to Brahmā, reporting the crisis. When demonic energy rises, even the high abandon their normal stations to seek guidance from above. Crisis demands escalation to the right authority.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What situation in your life needs to be escalated to a higher authority you have been avoiding?</li><li>Where are you trying to handle alone what has become bigger than your post?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -1965,7 +1932,6 @@ Sthānāni means their houses.</div>
     <div class="fc-translation" data-sec="translation">O great person, chief of the universe, if you think it proper, kindly stop these disturbances, meant to destroy everything, before all your obedient subjects are annihilated.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -1986,18 +1952,6 @@ Abhibhūḥ means “he who is everywhere.”  O Lord of everything!</div>
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The demigods beg Brahmā to stop the disturbances before everyone is annihilated. Asking for intervention before destruction is wiser than after. Pray early in a crisis, not late.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where in your life are you waiting until &#39;after annihilation&#39; to ask for help?</li><li>What early prayer or call could prevent a coming collapse?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -2194,7 +2148,6 @@ Abhibhūḥ means “he who is everywhere.”  O Lord of everything!</div>
     <div class="fc-translation" data-sec="translation">Hiraṇyakaśipu has undertaken a most severe type of austerity. Although his plan is not unknown to you, kindly listen as we submit his intentions.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -2213,18 +2166,6 @@ Abhibhūḥ means “he who is everywhere.”  O Lord of everything!</div>
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The demigods say Hiraṇyakaśipu&#39;s intentions are already known to Brahmā, but they will articulate them anyway. Even when the wise already see the truth, naming it aloud serves the act of asking. Speak the situation; don&#39;t assume omniscience excuses silence.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What truth are you withholding from a wise person because &#39;they already know&#39;?</li><li>How does naming a problem aloud change your relationship to it?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -2536,7 +2477,6 @@ Abhibhūḥ means “he who is everywhere.”  O Lord of everything!</div>
 
     <div class="fc-translation" data-sec="translation">“The supreme person within this universe, Lord Brahmā, has gotten his exalted post by dint of severe austerities, mystic power and trance. Consequently, after creating the universe, he has become the most worshipable demigod within it. Since I am eternal and time is eternal, I shall endeavor for such austerity, mystic power and trance for many, many births, and thus I shall occupy the same post occupied by Lord Brahmā.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2580,18 +2520,6 @@ Sarva-dhiṣṇyebhyaḥ vardhamānena means “I will achieve power greater tha
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Hiraṇyakaśipu reasons that since soul and time are both eternal, he will simply do austerities life after life until he occupies Brahmā&#39;s post. Demoniac patience is real — and terrifying. Long-game ambition for the wrong thing is a tragedy in waiting.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What long-game ambition are you carrying that may not survive scrutiny?</li><li>How would you reorient if you imagined many lifetimes given fully to devotion instead?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -2769,7 +2697,6 @@ Sarva-dhiṣṇyebhyaḥ vardhamānena means “I will achieve power greater tha
 
     <div class="fc-translation" data-sec="translation">“By dint of my severe austerities, I shall reverse the results of pious and impious activities. I shall overturn all the established practices within this world. Even Dhruvaloka will be vanquished at the end of the millennium. Therefore, what is the use of it? I shall prefer to remain in the position of Brahmā.”</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2838,18 +2765,6 @@ I will make the world opposite.  Those who suffer by vows like celibacy and aust
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Hiraṇyakaśipu plans to overturn the results of pious and impious acts and harass even the heavenly planets. Demonic vision is not merely selfish — it wants everyone&#39;s order disrupted. Watch for ideologies that aim to make rule-following itself feel foolish.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What worldview around you is quietly trying to overturn the link between action and consequence?</li><li>Where are you tempted to feel foolish for following dharma?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -3018,7 +2933,6 @@ I will make the world opposite.  Those who suffer by vows like celibacy and aust
 
     <div class="fc-translation" data-sec="translation">O lord, we have heard from reliable sources that in order to obtain your post, Hiraṇyakaśipu is now engaged in severe austerity. You are the master of the three worlds. Please, without delay, take whatever steps you deem appropriate.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3082,18 +2996,6 @@ We have heard that he is insistent (nirbandham) on taking your post. Therefore h
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The demigods plead with Brahmā to act before Hiraṇyakaśipu captures his post. History shows servants overthrowing masters through deception. Watch the rising student or apprentice, not with paranoia, but with attentiveness to character.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where have you taken loyalty for granted that may need re-examination?</li><li>How do you cultivate genuine succession rather than merely hoping for it?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -3271,7 +3173,6 @@ We have heard that he is insistent (nirbandham) on taking your post. Therefore h
 
     <div class="fc-translation" data-sec="translation">O Lord Brahmā, your position within this universe is certainly most auspicious for everyone, especially the cows and brāhmaṇas. Brahminical culture and the protection of cows can be increasingly glorified, and thus all kinds of material happiness, opulence and good fortune will automatically increase. But unfortunately, if Hiraṇyakaśipu occupies your seat, everything will be lost.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3352,18 +3253,6 @@ Your position is for producing the best for the world (bhavāya śreyase). If he
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Brahmā&#39;s post upholds the welfare of cows and brāhmaṇas — gentle creatures and contemplative people. If demons seize that post, brahminical culture dies and all blessings disappear. The character of who holds the highest post determines the destiny of the gentlest beings.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Whose character in a high post is shaping the gentlest people in your community?</li><li>What &#39;cow and brāhmaṇa&#39; equivalents in your life need a benevolent guardian?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -3550,7 +3439,6 @@ Your position is for producing the best for the world (bhavāya śreyase). If he
 
     <div class="fc-translation" data-sec="translation">O King, being thus informed by the demigods, the most powerful Lord Brahmā, accompanied by Bhṛgu, Dakṣa and other great sages, immediately started for the place where Hiraṇyakaśipu was performing his penances and austerities.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3614,18 +3502,6 @@ Brahmā went with the intention of stopping his austerities by offering benedict
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Brahmā, accompanied by Bhṛgu, Dakṣa, and other sages, goes immediately to Hiraṇyakaśipu — not to refuse him but to grant matured austerity its due. The cosmic order rewards even misdirected effort up to a point. Know that grace may take forms you fear.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What &#39;reward&#39; have you received whose form you did not initially recognize as grace?</li><li>Where is the cosmic order honoring effort of yours that you have not yet understood?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -3946,7 +3822,6 @@ Brahmā went with the intention of stopping his austerities by offering benedict
 
     <div class="fc-translation" data-sec="translation">Lord Brahmā, who is carried by a swan airplane, at first could not see where Hiraṇyakaśipu was, for Hiraṇyakaśipu’s body was covered by an anthill and by grass and bamboo sticks. Because Hiraṇyakaśipu had been there for a long time, the ants had devoured his skin, fat, flesh and blood. Then Lord Brahmā and the demigods spotted him, resembling a cloud-covered sun, heating all the world by his austerity. Struck with wonder, Lord Brahmā began to smile and then addressed him as follows.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -4021,18 +3896,6 @@ First Brahmā did not see him since he was covered by the anthill.  Then seeing 
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Hiraṇyakaśipu&#39;s body has been eaten by ants down to bones; even Brahmā cannot at first locate him. He is like a sun behind a cloud, heating the world from within an anthill. The soul lives independent of skin and flesh — but most of us cannot tell the cost of such practice.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What &#39;anthill&#39; do you imagine you could endure for the sake of an aim?</li><li>Is your aim worthy of the kind of cost demoniac discipline is willing to pay?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -4235,7 +4098,6 @@ First Brahmā did not see him since he was covered by the anthill.  Then seeing 
 
     <div class="fc-translation" data-sec="translation">Lord Brahmā said: O son of Kaśyapa Muni, please get up, please get up. All good fortune unto you. You are now perfect in the performance of your austerities, and therefore I may give you a benediction. You may now ask from me whatever you desire, and I shall try to fulfill your wish.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -4307,18 +4169,6 @@ First Brahmā did not see him since he was covered by the anthill.  Then seeing 
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Brahmā greets Hiraṇyakaśipu: rise, you have perfected austerity, ask any benediction. Even the demonic, when they fulfill their part of cosmic law, receive their boon. The universe responds to sincerity of effort, regardless of motive — a sobering and humbling truth.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What boon is being offered to you right now because of effort already invested?</li><li>Are you ready to choose a benediction wisely, or will you ask for what binds you?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -4505,7 +4355,6 @@ First Brahmā did not see him since he was covered by the anthill.  Then seeing 
 
     <div class="fc-translation" data-sec="translation">I have been very much astonished to see your endurance. In spite of being eaten and bitten by all kinds of worms and ants, you are keeping your life air circulating within your bones. Certainly this is wonderful.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -4559,18 +4408,6 @@ Hṛt-sāram means fortitude.</div>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Brahmā marvels: insects have eaten you, yet your life-air still circulates through your bones. The soul can persist where everything material has been stripped away. Even great yogīs in samādhi exhibit this independence of body.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where in your life is there life-air still circulating in something that looks already eaten?</li><li>What faith does this verse offer about your apparent depletions?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -4773,7 +4610,6 @@ Hṛt-sāram means fortitude.</div>
 
     <div class="fc-translation" data-sec="translation">Even saintly persons like Bhṛgu, born previously, could not perform such severe austerities, nor will anyone in the future be able to do so. Who within these three worlds can sustain his life without even drinking water for one hundred celestial years?</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -4830,18 +4666,6 @@ Hṛt-sāram means fortitude.</div>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Even Bhṛgu could not perform such austerity, and no one in the future will match it. Sustaining life without water for a hundred celestial years is extraordinary by any measure. Demonic capacity for tapas exposes how soft most of our &#39;discipline&#39; actually is.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What would your spiritual life look like at even a tenth of this commitment?</li><li>Where do you call something a &#39;discipline&#39; that is actually a comfort?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -5001,7 +4825,6 @@ Hṛt-sāram means fortitude.</div>
 
     <div class="fc-translation" data-sec="translation">My dear son of Diti, with your great determination and austerity you have done what was impossible even for great saintly persons, and thus I have certainly been conquered by you.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -5043,18 +4866,6 @@ Hṛt-sāram means fortitude.</div>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Brahmā says, &#39;I have certainly been conquered by you.&#39; To be jitaḥ means to be brought under control. Even the universe&#39;s secondary creator concedes to relentless determination. Determination has cosmic leverage — be careful what you bend the universe toward.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What is your determination currently conquering in your life — for good or ill?</li><li>Where could the same intensity, redirected, conquer something worth conquering?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -5248,7 +5059,6 @@ Hṛt-sāram means fortitude.</div>
 
     <div class="fc-translation" data-sec="translation">O best of the asuras, for this reason I am now prepared to give you all benedictions, according to your desire. I belong to the celestial world of demigods, who do not die like human beings. Therefore, although you are subject to death, your audience with me will not go in vain.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -5312,18 +5122,6 @@ Because Hiraṇyakaśipu was born from demons, he is bound to die. Therefore he 
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Brahmā warns that as a member of human and demonic species, Hiraṇyakaśipu is still subject to death — demigods alone escape it in their present bodies. Even mountains of austerity cannot grant true immortality. Notice when you are pursuing &#39;immortality&#39; on the wrong axis.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where are you working hard to secure a kind of immortality that this verse declares impossible?</li><li>What would deathless life — through devotion rather than power — look like for you?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -5517,7 +5315,6 @@ Because Hiraṇyakaśipu was born from demons, he is bound to die. Therefore he 
 
     <div class="fc-translation" data-sec="translation">Śrī Nārada Muni continued: After speaking these words to Hiraṇyakaśipu, Lord Brahmā, the original being of this universe, who is extremely powerful, sprinkled transcendental, infallible, spiritual water from his kamaṇḍalu upon Hiraṇyakaśipu’s body, which had been eaten away by ants and moths. Thus he enlivened Hiraṇyakaśipu.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -5591,18 +5388,6 @@ Pipīlikaiḥ means “by ants and gnats.”  Ādibhavaḥ is Brahmā.  Brahmā 
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Brahmā sprinkles spiritual water from his kamaṇḍalu, restoring Hiraṇyakaśipu&#39;s body. As ādi-deva taught directly by the Lord, Brahmā is infallible in what he wills. Some restorations require sources far beyond ordinary medicine.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What restoration in your life is needed that no ordinary means can supply?</li><li>Where might you be asking the right thing from the wrong source?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -5838,7 +5623,6 @@ Pipīlikaiḥ means “by ants and gnats.”  Ādibhavaḥ is Brahmā.  Brahmā 
 
     <div class="fc-translation" data-sec="translation">As soon as he was sprinkled with the water from Lord Brahmā’s waterpot, Hiraṇyakaśipu arose, endowed with a full body with limbs so strong that they could bear the striking of a thunderbolt. With physical strength and a bodily luster resembling molten gold, he emerged from the anthill a completely young man, just as fire springs from fuel wood.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -5917,18 +5701,6 @@ His limbs were as strong as thunderbolts (vajra-saṁhananaḥ).</div>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Hiraṇyakaśipu rises with a thunderbolt-tolerating, gold-lustred, youthful body. Tapas plus mercy together produced a rejuvenation impossible by either alone. Real transformation is grace meeting effort, never grace alone or effort alone.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where in your life are you waiting for grace without doing your part?</li><li>Where are you driving effort without ever asking for grace?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -6097,7 +5869,6 @@ His limbs were as strong as thunderbolts (vajra-saṁhananaḥ).</div>
 
     <div class="fc-translation" data-sec="translation">Seeing Lord Brahmā present before him in the sky, carried by his swan airplane, Hiraṇyakaśipu was extremely pleased. He immediately fell flat with his head on the ground and began to express his obligation to the lord.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -6181,18 +5952,6 @@ His limbs were as strong as thunderbolts (vajra-saṁhananaḥ).</div>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Hiraṇyakaśipu falls flat with his head on the ground, expressing obligation. Kṛṣṇa says all worship of demigods ultimately reaches Him, but the worshiper who does not recognize this falls. Gratitude misdirected to a secondary cause is still incomplete.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where is your gratitude going to a secondary cause without acknowledging the Source?</li><li>How might tracing each blessing upstream reorient your inner life?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -6380,7 +6139,6 @@ His limbs were as strong as thunderbolts (vajra-saṁhananaḥ).</div>
     <div class="fc-translation" data-sec="translation">Then, getting up from the ground and seeing Lord Brahmā before him, the head of the Daityas was overwhelmed by jubilation. With tears in his eyes, his whole body shivering, he began praying in a humble mood, with folded hands and a faltering voice, to satisfy Lord Brahmā.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -6429,18 +6187,6 @@ His limbs were as strong as thunderbolts (vajra-saṁhananaḥ).</div>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Tears in his eyes, body shivering, voice faltering, Hiraṇyakaśipu prays humbly with folded hands. Even the demonic exhibit ecstatic symptoms when in the presence of a benefactor. External signs of devotion can coexist with deeply selfish motives.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where might your own ecstatic symptoms be masking a self-interested request?</li><li>How do you distinguish authentic surrender from theatrical surrender in yourself?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -6773,7 +6519,6 @@ His limbs were as strong as thunderbolts (vajra-saṁhananaḥ).</div>
 
     <div class="fc-translation" data-sec="translation">Let me offer my respectful obeisances unto the supreme lord within this universe. At the end of each day of his life, the universe is fully covered with dense darkness by the influence of time, and then again, during his next day, that self-effulgent lord, by his own effulgence, manifests, maintains and destroys the entire cosmic manifestation through the material energy, which is invested with the three modes of material nature. He, Lord Brahmā, is the shelter of those modes of nature — sattva-guṇa, rajo-guṇa and tamo-guṇa.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -6838,18 +6583,6 @@ Abhivyanak means he manifested.  He creates and destroys by himself, by acceptin
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Hiraṇyakaśipu praises Brahmā as the lord who creates, maintains, and destroys universes — though Brahmā too acts only as Kṛṣṇa&#39;s engineer. Beautiful theology can be spoken by anyone; what matters is whether it lives in the speaker. Words alone do not purify.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which beautiful spiritual truths do you speak but not yet inhabit?</li><li>How can you tell when your theology is becoming actual experience?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -7036,7 +6769,6 @@ Abhivyanak means he manifested.  He creates and destroys by himself, by acceptin
 
     <div class="fc-translation" data-sec="translation">I offer my obeisances to the original personality within this universe, Lord Brahmā, who is cognizant and who can apply his mind and realized intelligence in creating this cosmic manifestation. It is because of his activities that everything within the universe is visible. He is therefore the cause of all manifestations.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -7121,18 +6853,6 @@ He has taken a form (īyuṣe vyaktim) by transformation of life airs, mind, sen
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Hiraṇyakaśipu offers obeisances to Brahmā as the cognizant cause of the visible cosmos. Yet Brahmā himself receives mind and intelligence from Kṛṣṇa. Always trace causality past the immediate cause to the original source.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What &#39;cause&#39; are you crediting that is itself the effect of something deeper?</li><li>Where could tracing one causal chain in your life back to the Lord transform your gratitude?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -7375,7 +7095,6 @@ He has taken a form (īyuṣe vyaktim) by transformation of life airs, mind, sen
 
     <div class="fc-translation" data-sec="translation">Your Lordship, being the origin of the life of this material world, is the master and controller of the living entities, both moving and stationary, and you inspire their consciousness. You maintain the mind and the acting and knowledge-acquiring senses, and therefore you are the great controller of all the material elements and their qualities, and you are the controller of all desires.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -7460,18 +7179,6 @@ You are the controller (īśiṣe) through the chief prāṇa, sūtrātmā. [Not
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Brahmā controls living entities, mind, senses, elements, and desires — yet he himself was instructed by Kṛṣṇa within the heart. The original source of every life is life itself, the Supreme Person. Everything alive flows from the supremely alive.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Whom or what do you treat as ultimate source that is actually intermediary?</li><li>How does the truth that life flows from Life change your sense of what is most real?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -7687,7 +7394,6 @@ You are the controller (īśiṣe) through the chief prāṇa, sūtrātmā. [Not
 
     <div class="fc-translation" data-sec="translation">My dear lord, by your form as the Vedas personified and through knowledge relating to the activities of all the yajṣic brāhmaṇas, you spread the Vedic ritualistic ceremonies of the seven kinds of sacrifices, headed by agniṣṭoma. Indeed, you inspire the yajṣic brāhmaṇas to perform the rituals mentioned in the three Vedas. Being the Supreme Soul, the Supersoul of all living entities, you are beginningless, endless and omniscient, beyond the limits of time and space.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -7766,18 +7472,6 @@ You alone propagate the seven parts of sacrifice such as agniṣṭoma by the Ve
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Brahmā as Vedas-personified inspires the priests who perform the seven sacrifices. The Supersoul gives knowledge, remembrance, and forgetfulness from within. Every spiritual act in this world is sourced and sustained from within the heart.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>When was the last time you noticed a holy thought arising from within rather than acquired from outside?</li><li>How would your practice change if you addressed it to the Supersoul instead of performing it for an audience?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -8020,7 +7714,6 @@ You alone propagate the seven parts of sacrifice such as agniṣṭoma by the Ve
 
     <div class="fc-translation" data-sec="translation">O my lord, Your Lordship is eternally awake, seeing everything that happens. As eternal time, you reduce the duration of life for all living entities through your different parts, such as moments, seconds, minutes and hours. Nonetheless, you are unchanged, resting in one place as the Supersoul, witness and Supreme Lord, the birthless, all-pervading controller who is the cause of life for all living entities.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -8094,18 +7787,6 @@ You are unchanging (kūṭa-sthaḥ), since you do not undergo transformations. 
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Brahmā as eternal time slowly reduces the lifespan of every living being through moments and hours — yet the Lord behind time is unchanged, the still witness. We feel time eat us; the Lord neither moves nor wears down. Take shelter where time does not corrode.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where is time visibly eating something in your life right now?</li><li>What practice connects you to the unchanging witness behind that erosion?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -8366,7 +8047,6 @@ You are unchanging (kūṭa-sthaḥ), since you do not undergo transformations. 
 
     <div class="fc-translation" data-sec="translation">There is nothing separate from you, whether it be better or lower, stationary or moving. The knowledge derived from the Vedic literatures like the Upaniṣads, and from all the sub-limbs of the original Vedic knowledge, form your external body. You are Hiraṇyagarbha, the reservoir of the universe, but nonetheless, being situated as the supreme controller, you are transcendental to the material world, which consists of the three modes of material nature.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -8440,18 +8120,6 @@ You are separate from the cause (param) and effect (aparam), from non-moving (an
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Nothing is separate from the Supreme — Vedic knowledge is His external body, and the entire cosmos rests within His breath. Hiraṇyakaśipu praises a truth that, if lived, would dismantle his demonic project. Knowledge unlived is no protection from delusion.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which truth, if you actually lived it, would dismantle your current main project?</li><li>Where do you praise non-duality with the lips while operating in duality with the hands?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -8694,7 +8362,6 @@ You are separate from the cause (param) and effect (aparam), from non-moving (an
 
     <div class="fc-translation" data-sec="translation">O my lord, being changelessly situated in your own abode, you expand your universal form within this cosmic manifestation, thus appearing to taste the material world. You are Brahman, the Supersoul, the oldest, the Personality of Godhead.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -8738,18 +8405,6 @@ This universe, as the universal form, is your gross body by which you enjoy the 
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The Absolute, changeless in His abode, expands the universal form and seems to taste material life through it. The cosmos is the Supreme tasting His own creation through countless tongues. You are one of those tongues — how is the Lord tasting through you today?</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What experience in your day, offered up, would let the Lord taste sweetly through you?</li><li>Where are you serving the Lord&#39;s tasting of saṁsāra without realizing it?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -8927,7 +8582,6 @@ This universe, as the universal form, is your gross body by which you enjoy the 
 
     <div class="fc-translation" data-sec="translation">Let me offer my respectful obeisances unto the Supreme, who in his unlimited, unmanifested form has expanded the cosmic manifestation, the form of the totality of the universe. He possesses external and internal energies and the mixed energy called the marginal potency, which consists of all the living entities.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -9001,18 +8655,6 @@ You are endowed with both cit-śakti from your svarūpa and acit-śakti of prak�
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The Supreme has external, internal, and marginal potencies — the marginal being the living entities, mixtures of spirit and matter. We straddle two worlds and can incline toward either. Spiritual life is choosing which potency dominates day by day.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which side of your marginal nature did your last seven days reinforce?</li><li>What single habit could tilt the balance toward the internal potency this week?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -9208,7 +8850,6 @@ You are endowed with both cit-śakti from your svarūpa and acit-śakti of prak�
 
     <div class="fc-translation" data-sec="translation">O my lord, O best of the givers of benediction, if you will kindly grant me the benediction I desire, please let me not meet death from any of the living entities created by you.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -9298,18 +8939,6 @@ You are endowed with both cit-śakti from your svarūpa and acit-śakti of prak�
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Hiraṇyakaśipu finally states his wish: do not let me be killed by any living entity you have created. He seeks immortality through technicality — exploiting a loophole in mortality. The demoniac mind always thinks it can find an exception to the laws of being.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where are you currently seeking an &#39;exception&#39; to a law everyone else lives under?</li><li>What spiritual law have you been quietly negotiating with instead of accepting?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -9550,7 +9179,6 @@ You are endowed with both cit-śakti from your svarūpa and acit-śakti of prak�
 
     <div class="fc-translation" data-sec="translation">Grant me that I not die within any residence or outside any residence, during the daytime or at night, nor on the ground or in the sky. Grant me that my death not be brought by any being other than those created by you, nor by any weapon, nor by any human being or animal.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -9634,18 +9262,6 @@ Death should happen naturally. If all places and times are excluded for death, t
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Hiraṇyakaśipu adds: not inside or outside, not day or night, not on ground or sky, not by any creature or weapon. Fear of Viṣṇu drives elaborately layered conditions. The mind that fears the Lord most thoroughly is the one that crafts the cleverest defenses.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What elaborate conditions have you placed around an outcome you secretly fear?</li><li>Where might your defensive cleverness be the surest sign of underlying dread?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -9939,7 +9555,6 @@ Death should happen naturally. If all places and times are excluded for death, t
 
     <div class="fc-translation" data-sec="translation">Grant me that I not meet death from any entity, living or nonliving. Grant me, further, that I not be killed by any demigod or demon or by any great snake from the lower planets. Since no one can kill you in the battlefield, you have no competitor. Therefore, grant me the benediction that I too may have no rival. Give me sole lordship over all the living entities and presiding deities, and give me all the glories obtained by that position. Furthermore, give me all the mystic powers attained by long austerities and the practice of yoga, for these cannot be lost at any time.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -10013,18 +9628,6 @@ Hiraṇyakaśipu Conquers the Devatās</div>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">He asks for invulnerability to every living and nonliving entity, sole lordship, all glories, and undying mystic powers. The demoniac wish list grows to fill all conceivable space. Notice how desire, once granted scope, expands toward absolute control.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where, given an open boon, would your wish list start expanding toward control?</li><li>What single desire — if it were the only one you asked for — would actually free you?</li></ul>
-
-
-
-
-
-    </section>
 
 
 

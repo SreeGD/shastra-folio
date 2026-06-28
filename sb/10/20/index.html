@@ -25,19 +25,25 @@
     <link rel="icon" href="../../../assets/icons/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="../../../assets/icons/icon.svg">
     <link rel="stylesheet" href="../../../assets/css/site.css">
+    <link rel="alternate" hreflang="te-IN" href="../../../te/sb/10/20/">
+    <link rel="alternate" hreflang="x-default" href="../../../">
     <script>window.FC_TO_ROOT = "../../../";</script>
     <script src="../../../assets/js/toggle.js"></script>
 </head>
 <body class="has-sidebar" data-chapter="20">
 <header class="fc-site-header">
     <button type="button" class="fc-mobile-trigger fc-mobile-trigger-left" data-overlay="left" aria-label="Open settings drawer">⚙</button>
-<a class="fc-brand" href="../../../">FolioCorpus<span class="fc-sub">Śrīmad-Bhāgavatam</span></a>
+    <a class="fc-brand" href="../../../">FolioCorpus<span class="fc-sub">Bhagavad-gītā</span></a>
     <nav class="fc-site-nav">
         <a href="../../../">Home</a>
         <a href="../../../bg/">Bhagavad-gītā</a>
         <a href="../../../sb/">Śrīmad-Bhāgavatam</a>
         <a href="../../../search/" title="Search across all integrated works">🔍 Search</a>
         <button type="button" id="fc-random-verse" class="fc-nav-btn" title="Jump to a random verse">🎲 Random</button>
+        <span class="fc-lang-switch" aria-label="Script">
+            <a class="active" href="#" title="Devanāgarī edition">EN</a>
+            <a class="" href="../../../te/sb/10/20/" title="Telugu lipi edition">తె</a>
+        </span>
     </nav>
     <button type="button" class="fc-mobile-trigger fc-mobile-trigger-right" data-overlay="right" aria-label="Open chapter index drawer">📚</button>
 </header>
@@ -46,8 +52,8 @@
     <button class="fc-sb-collapse" type="button" data-sb="left" title="Collapse left sidebar" aria-label="Collapse"></button>
 
     <div class="fc-sb-body">
-        <details class="fc-sb-section" data-sbsec="reading" open>
-            <summary class="fc-sb-title">Reading</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Reading</div>
             <div class="fc-sb-sub">Theme</div>
             <div class="fc-segmented" data-setting="theme">
                 <button type="button" data-val="light">Light</button>
@@ -73,10 +79,10 @@
                 <button type="button" data-val="single">Single</button>
                 <button type="button" data-val="side">Side-by-side</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="display" open>
-            <summary class="fc-sb-title">Display</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Display</div>
             <div class="fc-sb-grid">
                 <label><input type="checkbox" data-section="devanagari" checked> Devanāgarī</label>
                 <label><input type="checkbox" data-section="iast" checked> IAST transliteration</label>
@@ -99,10 +105,33 @@
                 <button type="button" data-action="expand-all">Expand all</button>
                 <button type="button" data-action="collapse-all">Collapse all</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="tools" open>
-            <summary class="fc-sb-title">Tools</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Find your starting point</div>
+            <div class="fc-persona-links">
+                <a class="fc-persona-link" href="../../../daily/">🌅 Daily (one value a week)</a>
+                <a class="fc-persona-link" href="../../../householder/">🏠 Householder (family & work)</a>
+                <a class="fc-persona-link" href="../../../parenting/">👨‍👩‍👧 Parenting (stories for kids)</a>
+                <a class="fc-persona-link" href="../../../themes/">📚 All themes</a>
+                <a class="fc-persona-link" href="../../../values/" style="background:#F0F6F2;border-left-color:#1F4632;">ॐ Vedic Value System ↗</a>
+                <a class="fc-persona-link" href="../../../vidya/" style="background:#FBF6E4;border-left-color:#C8860B;">📚 Vidyā Karaṇa (kids, multi-lang) ↗</a>
+            </div>
+        </div>
+
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Audience</div>
+            <div class="fc-audience-filter">
+                <label><input type="radio" name="fc-audience" value="all" checked> All levels</label>
+                <label><input type="radio" name="fc-audience" value="primary"> Primary (children)</label>
+                <label><input type="radio" name="fc-audience" value="middle"> Middle (teens)</label>
+                <label><input type="radio" name="fc-audience" value="senior"> Senior (adults)</label>
+                <label><input type="radio" name="fc-audience" value="college"> College / scholar</label>
+            </div>
+        </div>
+
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Tools</div>
             <div class="fc-sb-tools">
                 <button type="button" id="fc-presentation-toggle" class="fc-tool-btn"><span>🖥 Presentation</span><kbd class="fc-kbd">F</kbd></button>
                 <button type="button" id="fc-pen-toggle" class="fc-tool-btn"><span>✏️ Pen mode</span><kbd class="fc-kbd">P</kbd></button>
@@ -117,10 +146,26 @@
                 <button type="button" id="fc-clear-highlights" class="fc-tool-btn">🩷 Clear highlights (page)</button>
                 <button type="button" id="fc-notes-modal-open" class="fc-tool-btn">📓 My annotations</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="progress" id="fc-progress-section" open>
-            <summary class="fc-sb-title">Progress</summary>
+        <div class="fc-sb-section" id="fc-tts-controls" hidden>
+            <div class="fc-sb-title">
+                Read-aloud
+                <label class="fc-tts-master">
+                    <input type="checkbox" id="fc-tts-enabled" checked>
+                    <span class="fc-tts-master-label">On</span>
+                </label>
+            </div>
+            <div class="fc-tts-inner">
+                <div class="fc-sb-sub">Voice</div>
+                <select id="fc-tts-voice" class="fc-tts-select" aria-label="TTS voice"></select>
+                <div class="fc-sb-sub">Rate <span class="fc-tts-rate-val">1.0×</span></div>
+                <input type="range" id="fc-tts-rate" min="0.5" max="2" step="0.1" value="1" class="fc-tts-rate" aria-label="Reading rate">
+            </div>
+        </div>
+
+        <div class="fc-sb-section" id="fc-progress-section">
+            <div class="fc-sb-title">Progress</div>
             <div class="fc-progress-row">
                 <span class="fc-progress-num" id="fc-progress-num">0</span>
                 <span class="fc-progress-divider">/</span>
@@ -135,29 +180,29 @@
                 <span class="fc-progress-spacer"></span>
                 <button type="button" class="fc-progress-reset" id="fc-progress-reset" title="Reset progress">↺</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="bookmarks" open>
-            <summary class="fc-sb-title">Bookmarks <span class="fc-sb-count" id="fc-bookmarks-count">0</span></summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Bookmarks <span class="fc-sb-count" id="fc-bookmarks-count">0</span></div>
             <ul class="fc-bookmark-list" id="fc-bookmarks-list">
                 <li class="fc-sb-empty">No bookmarks yet — click ☆ on any verse.</li>
             </ul>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="notes" open>
-            <summary class="fc-sb-title">Notes <span class="fc-sb-count" id="fc-notes-count">0</span></summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Notes <span class="fc-sb-count" id="fc-notes-count">0</span></div>
             <ul class="fc-bookmark-list" id="fc-notes-list">
                 <li class="fc-sb-empty">No notes yet — open any verse and write in the 📝 block.</li>
             </ul>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="export">
-            <summary class="fc-sb-title">Export</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Export</div>
             <div class="fc-sb-tools">
                 <button type="button" id="fc-export-md" class="fc-tool-btn">📥 Download Markdown</button>
                 <button type="button" id="fc-export-json" class="fc-tool-btn">💾 Download JSON backup</button>
             </div>
-        </details>
+        </div>
     </div>
 </aside>    <main class="fc-container">
 <nav class="fc-breadcrumbs">
@@ -542,7 +587,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
     <div class="fc-translation" data-sec="translation">Śukadeva Gosvāmī said:To the ladies of Vṛndāvana, the cowherd boys then related in full detail Kṛṣṇa’s and Balarāma’s wonderful activities of delivering them from the forest fire and killing the demon Pralamba.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -670,10 +714,8 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <section class="fc-section" data-sec="personal_guidance">
         <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The boys recount in full detail how Kṛṣṇa and Balarāma saved them from the forest fire and killed Pralamba. Telling the rescue story to family afterward is itself an act of devotion — testimony keeps the pastime alive.</div>
 
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Whose rescue by the Lord have I lived through but never told someone in detail?</li><li>Where could I let a story become testimony rather than private memory?</li></ul>
+
 
 
 
@@ -902,7 +944,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
     <div class="fc-translation" data-sec="translation">The elder cowherd men and ladies were amazed to hear this account, and they concluded that Kṛṣṇa and Balarāma must be exalted demigods who had appeared in Vṛndāvana.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -970,10 +1011,8 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <section class="fc-section" data-sec="personal_guidance">
         <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The elders, amazed, conclude Kṛṣṇa and Balarāma must be exalted demigods in Vṛndāvana. Loving devotees often underrate the Lord, mistaking Him for a powerful demigod — because friendship is sweeter than awe.</div>
 
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where do I prefer to keep the Lord smaller in identity to keep Him intimate?</li><li>What balance between awe and friendship is right for me right now?</li></ul>
+
 
 
 
@@ -1175,7 +1214,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
     <div class="fc-translation" data-sec="translation">Then the rainy season began, giving life and sustenance to all living beings. The sky began to rumble with thunder, and lightning flashed on the horizon.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -1247,10 +1285,8 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <section class="fc-section" data-sec="personal_guidance">
         <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The rainy season arrives, bringing life and sustenance, with thunder and lightning on the horizon. New seasons of grace often announce themselves with disruption first — sustenance comes with rumble.</div>
 
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What recent rumble in my life might be the announcement of a season of grace rather than crisis?</li><li>Where am I bracing for harm when I should be opening to nourishment?</li></ul>
+
 
 
 
@@ -1477,7 +1513,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <div class="fc-translation" data-sec="translation">The sky was then covered by dense blue clouds accompanied by lightning and thunder. Thus the sky and its natural illumination were covered in the same way that the spirit soul is covered by the three modes of material nature.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1564,10 +1599,8 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <section class="fc-section" data-sec="personal_guidance">
         <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Dense blue clouds with lightning and thunder cover the sky&#39;s natural light — like the soul covered by the three modes. The covering doesn&#39;t destroy the brilliance; it dims it. Recognition of this is half the work.</div>
 
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which &#39;mode&#39; (goodness, passion, ignorance) is currently fogging my sight, and how do I know?</li><li>Where am I treating the cloud as my actual self instead of as cover?</li></ul>
+
 
 
 
@@ -1803,7 +1836,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <div class="fc-translation" data-sec="translation">With its rays, the sun had for eight months drunk up the earth’s wealth in the form of water. Now that the proper time had arrived, the sun began releasing this accumulated wealth.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1899,10 +1931,8 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <section class="fc-section" data-sec="personal_guidance">
         <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">For eight months the sun drank the earth&#39;s water; now in time it returns this wealth as rain. A good king collects taxes only to distribute back when needed. The Lord&#39;s withdrawals are deposits — what is taken is held in trust for return.</div>
 
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What has the Lord &#39;evaporated&#39; from me that may be returning as rain when needed?</li><li>Where am I mourning a withdrawal that is actually accruing for later distribution?</li></ul>
+
 
 
 
@@ -2130,7 +2160,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <div class="fc-translation" data-sec="translation">Flashing with lightning, great clouds were shaken and swept about by fierce winds. Just like merciful persons, the clouds gave their lives for the pleasure of this world.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2241,10 +2270,8 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <section class="fc-section" data-sec="personal_guidance">
         <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Wind-shaken clouds give their lives pouring rain for the world&#39;s pleasure, like compassionate persons giving wealth or life for others. Real generosity is dissolving — the giver may not survive the gift.</div>
 
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What &#39;dissolution&#39; generosity is being asked of me, and am I willing?</li><li>Where have I tried to give without being consumed, and is that even giving?</li></ul>
+
 
 
 
@@ -2472,7 +2499,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <div class="fc-translation" data-sec="translation">The earth had been emaciated by the summer heat, but she became fully nourished again when moistened by the god of rain. Thus the earth was like a person whose body has been emaciated by austerities undergone for a material purpose, but who again becomes fully nourished when he achieves the fruit of those austerities.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2560,10 +2586,8 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <section class="fc-section" data-sec="personal_guidance">
         <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The summer-emaciated earth is fully nourished again by rain, like a person whose body grew thin from austerity now enjoying its fruits. Real austerities yield real fruits — depletion is a phase, not a verdict.</div>
 
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which &#39;fruit&#39; of an old austerity am I about to receive that I&#39;ve stopped expecting?</li><li>Where am I still in depletion, trusting the rain will come?</li></ul>
+
 
 
 
@@ -2800,7 +2824,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <div class="fc-translation" data-sec="translation">In the evening twilight during the rainy season, the darkness allowed the glowworms but not the stars to shine forth, just as in the Age of Kali the predominance of sinful activities allows atheistic doctrines to overshadow the true knowledge of the Vedas.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2886,10 +2909,8 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <section class="fc-section" data-sec="personal_guidance">
         <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">In rainy-season twilight glowworms shine but stars do not, just as in Kali-yuga atheistic doctrines glow while Vedic truth is obscured. Small lights claim center stage when greater lights are veiled. Don&#39;t mistake brightness for truth.</div>
 
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which &#39;glowworms&#39; in my information diet have I confused with stars?</li><li>Where could I look up past the local glow and search for veiled true light?</li></ul>
+
 
 
 
@@ -3117,7 +3138,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <div class="fc-translation" data-sec="translation">The frogs, who had all along been lying silent, suddenly began croaking when they heard the rumbling of the rain clouds, in the same way that brāhmaṇa students, who perform their morning duties in silence begin reciting their lessons when called by their teacher.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3215,10 +3235,8 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <section class="fc-section" data-sec="personal_guidance">
         <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Frogs, silent all summer, croak loudly when thunder calls — like brāhmaṇa students who recite when their teacher calls. Some practices wait for a signal; readiness means starting the moment the call arrives.</div>
 
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What signal from my teacher or community am I half-waiting for to begin a practice I&#39;ve been postponing?</li><li>Where am I croaking before the thunder — performing without being called?</li></ul>
+
 
 
 
@@ -3437,7 +3455,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <div class="fc-translation" data-sec="translation">With the advent of the rainy season, the insignificant streams, which had become dry, began to swell and then strayed from their proper courses, like the body, property and money of a man controlled by the urges of his senses.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3537,10 +3554,8 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <section class="fc-section" data-sec="personal_guidance">
         <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Dried-up streams suddenly swell and stray from their proper courses, like a sense-driven man&#39;s body, property, and money. New opulence often runs out of bounds; sudden flush requires fresh structure to contain it.</div>
 
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What &#39;sudden swell&#39; in my life is straying out of its proper course?</li><li>Where do I need new banks, not new water?</li></ul>
+
 
 
 
@@ -3776,7 +3791,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <div class="fc-translation" data-sec="translation">The newly grown grass made the earth emerald green, the indragopa insects added a reddish hue, and white mushrooms added further color and circles of shade. Thus the earth appeared like a person who has suddenly become rich.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3867,10 +3881,8 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <section class="fc-section" data-sec="personal_guidance">
         <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Earth becomes emerald with grass, red with indragopa insects, dotted white with mushrooms — like a person who has suddenly become rich. Sudden beauty has its own dazzle, but it is layered, not unitary.</div>
 
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which layers of my present &#39;wealth&#39; have I been ignoring while focusing on one color?</li><li>Where could I notice the colorful particulars of an abundance I have flattened?</li></ul>
+
 
 
 
@@ -4080,7 +4092,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <div class="fc-translation" data-sec="translation">With their wealth of grains, the fields gave joy to the farmers. But those fields created remorse in the hearts of those who were too proud to engage in farming and who failed to understand how everything is under the control of the Supreme.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -4158,10 +4169,8 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <section class="fc-section" data-sec="personal_guidance">
         <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Grain-rich fields delight farmers but make those too proud to farm feel remorse. The same rain that nourishes humbles the proud. Honest labor reaps both food and joy; pride starves.</div>
 
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which work am I &#39;too proud&#39; to do that is now bearing fruit for those who didn&#39;t avoid it?</li><li>Where could I trade pride for participation while it is still planting season?</li></ul>
+
 
 
 
@@ -4389,7 +4398,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <div class="fc-translation" data-sec="translation">As all creatures of the land and water took advantage of the newly fallen rainwater, their forms became attractive and pleasing, just as a devotee becomes beautiful by engaging in the service of the Supreme Lord.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -4490,10 +4498,8 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <section class="fc-section" data-sec="personal_guidance">
         <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">All creatures look attractive in fresh rainwater, as devotees become beautiful by serving the Lord. Service has visible effects — skin, eyes, posture, voice all show what the inner is doing.</div>
 
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What recent service of mine has visibly changed me — and have I let myself notice?</li><li>Where am I waiting for inner transformation while neglecting the outer signs of service?</li></ul>
+
 
 
 
@@ -4722,7 +4728,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
     <div class="fc-translation" data-sec="translation">Where the rivers joined the ocean it became agitated, its waves blown about by the wind, just as the mind of an immature yogī becomes agitated because he is still tainted by lust and attached to the objects of sense gratification.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -4800,10 +4805,8 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <section class="fc-section" data-sec="personal_guidance">
         <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Where rivers meet the ocean, wind agitates the waves — like an immature yogī&#39;s mind tainted with lust. Confluence points stir agitation; not every disturbance is failure, but it does signal incomplete maturation.</div>
 
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which &#39;confluence&#39; (a major life choice, a relationship) is currently stirring my mind?</li><li>Where can I read agitation as a maturation signal rather than as defeat?</li></ul>
+
 
 
 
@@ -4985,7 +4988,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <div class="fc-translation" data-sec="translation">Just as devotees whose minds are absorbed in the Personality of Godhead remain peaceful even when attacked by all sorts of dangers, the mountains in the rainy season were not at all disturbed by the repeated striking of the rain-bearing clouds.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -5061,10 +5063,8 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <section class="fc-section" data-sec="personal_guidance">
         <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Mountains stand undisturbed by repeated rain-cloud strikes — like devotees absorbed in the Lord. Strikes that would shake others cleanse and reveal the mountain; difficulty makes the steady devotee more beautiful.</div>
 
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What recent &#39;strike&#39; has cleansed me rather than shaken me?</li><li>Where am I still being shaken because I have not committed to mountain-like absorption?</li></ul>
+
 
 
 
@@ -5309,7 +5309,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
     <div class="fc-translation" data-sec="translation">During the rainy season the roads, not being cleansed, became covered with grass and debris and were thus difficult to make out. These roads were like religious scriptures that brāhmaṇas no longer study and that thus become corrupted and covered over with the passage of time.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -5401,10 +5400,8 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <section class="fc-section" data-sec="personal_guidance">
         <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Uncleansed roads become grass-covered and hard to discern, like scriptures brāhmaṇas no longer study. Disuse hides the path; the maps need re-walking to stay visible.</div>
 
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which scripture have I stopped studying so it has gone grass-covered for me?</li><li>What old practice &#39;road&#39; could I clear back to walkable condition this week?</li></ul>
+
 
 
 
@@ -5623,7 +5620,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <div class="fc-translation" data-sec="translation">Though the clouds are the well-wishing friends of all living beings, the lightning, fickle in its affinities, moved from one group of clouds to another, like lusty women unfaithful even to virtuous men.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -5704,10 +5700,8 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <section class="fc-section" data-sec="personal_guidance">
         <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Lightning is fickle, moving from cloud to cloud like a lusty woman unfaithful even to virtuous men. Some inner glow leaps from object to object without commitment; the lesson is to bind energy to one virtuous source.</div>
 
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where is my attention behaving like fickle lightning right now?</li><li>What &#39;virtuous cloud&#39; deserves my steady commitment instead?</li></ul>
+
 
 
 
@@ -5925,7 +5919,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <div class="fc-translation" data-sec="translation">When the curved bow of Indra [the rainbow] appeared in the sky, which had the quality of thundering sound, it was unlike ordinary bows because it did not rest upon a string. Similarly, when the Supreme Lord appears in this world, which is the interaction of the material qualities, He is unlike ordinary persons because He remains free from all material qualities and independent of all material conditions.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -6011,10 +6004,8 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <section class="fc-section" data-sec="personal_guidance">
         <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Indra&#39;s rainbow appears in the thundering sky with no string holding it taut, like the Lord descending free of material conditions. The shape that needs no support reveals a different physics — Kṛṣṇa works without the props we assume necessary.</div>
 
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where am I assuming the Lord needs the structural support I rely on?</li><li>What &#39;string&#39; do I keep adding to His work that isn&#39;t actually His?</li></ul>
+
 
 
 
@@ -6233,7 +6224,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <div class="fc-translation" data-sec="translation">During the rainy season the moon was prevented from appearing directly by the covering of the clouds, which were themselves illumined by the moon’s rays. Similarly, the living being in material existence is prevented from appearing directly by the covering of the false ego, which is itself illumined by the consciousness of the pure soul.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -6332,10 +6322,8 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <section class="fc-section" data-sec="personal_guidance">
         <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The moon is hidden by clouds, yet the clouds shine with the moon&#39;s own light — like the soul covered by false ego, yet the ego shines with the soul&#39;s own consciousness. Even our distortions borrow their glow from what they obscure.</div>
 
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where is my ego currently shining with borrowed soul-light and getting credit?</li><li>How might I direct the shine back to its true source?</li></ul>
+
 
 
 
@@ -6560,7 +6548,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <div class="fc-translation" data-sec="translation">The peacocks became festive and cried out a joyful greeting when they saw the clouds arrive, just as people distressed in household life feel pleasure when the pure devotees of the infallible Supreme Lord visit them.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -6659,10 +6646,8 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <section class="fc-section" data-sec="personal_guidance">
         <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Peacocks dance joyously at the first thunder — like householders distressed by daily life feeling pleasure when pure devotees visit. The arrival of a devotee changes the climate of a household; their visit is monsoon.</div>
 
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which devotee&#39;s visit changed the climate of my home last and could I invite them again?</li><li>Where am I a peacock in someone else&#39;s drought, and am I letting them feel my dance?</li></ul>
+
 
 
 
@@ -6899,7 +6884,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <div class="fc-translation" data-sec="translation">The trees had grown thin and dry, but after they drank the newly fallen rainwater through their feet, their various bodily features blossomed. Similarly, one whose body has grown thin and weak from austerity again exhibits his healthy bodily features upon enjoying the material objects gained through that austerity.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -6984,10 +6968,8 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <section class="fc-section" data-sec="personal_guidance">
         <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Thin, dry trees drink rain through their feet and blossom — like one whose body, thinned by austerity for material aim, regains health when the desired object arrives. Even worldly success quenches; the Lord arranges these too.</div>
 
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What &#39;rain&#39; have I received recently after a long austerity, and have I thanked Him?</li><li>Where am I still waiting for the rain my roots are already drinking quietly?</li></ul>
+
 
 
 
@@ -7214,7 +7196,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <div class="fc-translation" data-sec="translation">The cranes continued dwelling on the shores of the lakes, although the shores were agitated during the rainy season, just as materialistic persons with contaminated minds always remain at home, despite the many disturbances there.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -7283,10 +7264,8 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <section class="fc-section" data-sec="personal_guidance">
         <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Cranes stay on agitated lakeshores despite mud slides — like materialistic persons clinging to home despite endless disturbances. Habit is sticky; we tolerate enormous discomfort rather than relocate to drier ground.</div>
 
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where am I tolerating mud because moving feels too much?</li><li>What &#39;drier shore&#39; have I been refusing to consider that the Lord may be pointing toward?</li></ul>
+
 
 
 
@@ -7497,7 +7476,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
     <div class="fc-translation" data-sec="translation">When Indra sent forth his rains, the floodwaters broke through the irrigation dikes in the agricultural fields, just as in the Kali-yuga the atheists’ false theories break down the boundaries of Vedic injunctions.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -7557,10 +7535,8 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <section class="fc-section" data-sec="personal_guidance">
         <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Indra&#39;s floodwaters break the irrigation dikes, just as Kali-yuga&#39;s false theories break Vedic boundaries. Strong external pressure exposes weak structures; what bursts had been bursting waiting for the rain.</div>
 
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which &#39;dike&#39; in my discipline has been quietly weak and is now bursting under pressure?</li><li>Where can I rebuild boundaries before next season&#39;s flood?</li></ul>
+
 
 
 
@@ -7797,7 +7773,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <div class="fc-translation" data-sec="translation">The clouds, impelled by the winds, released their nectarean water for the benefit of all living beings, just as kings, instructed by their brāhmaṇa priests, dispense charity to the citizens.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -7882,10 +7857,8 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <section class="fc-section" data-sec="personal_guidance">
         <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Wind-driven clouds release nectar-water for all, like kings instructed by brāhmaṇa priests dispensing charity. Real distribution has two layers — wind/intuition + brāhmaṇa/wisdom — and benefits the whole society.</div>
 
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Whose wisdom is informing my current &#39;distribution&#39; of resources?</li><li>Where would consulting a more brāhmaṇa-like voice improve my generosity?</li></ul>
+
 
 
 
@@ -8141,7 +8114,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
     <div class="fc-translation" data-sec="translation">When the Vṛndāvana forest had thus become resplendent, filled with ripe dates and jambu fruits, Lord Kṛṣṇa, surrounded by His cows and cowherd boyfriends and accompanied by Śrī Balarāma, entered that forest to enjoy.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -8233,10 +8205,8 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <section class="fc-section" data-sec="personal_guidance">
         <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Vṛndāvana, full of ripe dates and jambu fruits, becomes resplendent — and Kṛṣṇa with Balarāma and friends and cows enters to enjoy. The Lord enters places already prepared with abundance; preparation and pastime go together.</div>
 
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What &#39;fruit-ripe&#39; part of my life is ready for Him to enter and enjoy?</li><li>Where am I preparing without letting Him actually arrive to taste it?</li></ul>
+
 
 
 
@@ -8464,7 +8434,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <div class="fc-translation" data-sec="translation">The cows had to move slowly because of their weighty milk bags, but they quickly ran to the Supreme Personality of Godhead as soon as He called them, their affection for Him causing their udders to become wet.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -8533,10 +8502,8 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <section class="fc-section" data-sec="personal_guidance">
         <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The cows move slowly under heavy udders but run when Kṛṣṇa calls — affection makes their udders wet on the way. Love for the Lord overrides physical heaviness, and even bodily functions respond to His name.</div>
 
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>When did my body last move faster than I expected because His name called?</li><li>Where have I been measuring my response time by fatigue instead of love?</li></ul>
+
 
 
 
@@ -8747,7 +8714,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
     <div class="fc-translation" data-sec="translation">The Lord saw the joyful aborigine girls of the forest, the trees dripping sweet sap, and the mountain waterfalls, whose resounding indicated that there were caves nearby.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -8824,10 +8790,8 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <section class="fc-section" data-sec="personal_guidance">
         <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Kṛṣṇa sees joyful aborigine girls, sap-dripping trees, and resounding mountain waterfalls hinting at nearby caves. The Lord notices the joy of the marginal, the sweetness of trees, the music of land — observation itself is pastime.</div>
 
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Whose joy have I overlooked because they were not central to my world?</li><li>What &#39;music&#39; from my landscape have I treated as background that the Lord would savor?</li></ul>
+
 
 
 
@@ -9045,7 +9009,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <div class="fc-translation" data-sec="translation">When it rained, the Lord would sometimes enter a cave or the hollow of a tree to play and to eat roots and fruits.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -9103,10 +9066,8 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <section class="fc-section" data-sec="personal_guidance">
         <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">When it rained, Kṛṣṇa entered a cave or tree hollow to play and eat roots and fruits. The Lord uses what is at hand — natural shelter, foraged food, friends — without insisting on prepared comfort.</div>
 
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where am I refusing to play because shelter is improvised rather than prepared?</li><li>What &#39;cave or hollow&#39; in my circumstance could become a venue for joy?</li></ul>
+
 
 
 
@@ -9299,7 +9260,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
     <div class="fc-translation" data-sec="translation">Lord Kṛṣṇa would take His meal of boiled rice and yogurt, sent from home, in the company of Lord Saṅkarṣaṇa and the cowherd boys who regularly ate with Him. They would all sit down to eat on a large stone near the water.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -9389,10 +9349,8 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <section class="fc-section" data-sec="personal_guidance">
         <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Kṛṣṇa takes rice and yogurt sent from home with Saṅkarṣaṇa and the regular boys, sitting on a large stone near water. Even the Lord values the meal carried out from home — domestic care travels with Him into wild places.</div>
 
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What &#39;rice and yogurt&#39; from home travels with me into my work, and do I treat it as His meal?</li><li>Whose preparation am I eating without acknowledgment?</li></ul>
+
 
 
 
@@ -9774,7 +9732,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <div class="fc-translation" data-sec="translation">Lord Kṛṣṇa watched the contented bulls, calves and cows sitting on the green grass and grazing with closed eyes, and He saw that the cows were tired from the burden of their heavy milk bags. Thus observing the beauty and opulence of Vṛndāvana’s rainy season, a perennial source of great happiness, the Lord offered all respect to that season, which was expanded from His own internal potency.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -9879,10 +9836,8 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <section class="fc-section" data-sec="personal_guidance">
         <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Watching contented bulls, calves, and cows graze with closed eyes, Kṛṣṇa offers respect to the rainy season, expanded from His own internal potency. The Lord respects what He Himself made; we should similarly honor the seasons He arranges.</div>
 
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which &#39;season&#39; of my life have I been complaining about that the Lord might be honoring as His own arrangement?</li><li>Where could I bow to a circumstance instead of resenting it?</li></ul>
+
 
 
 
@@ -10083,7 +10038,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
     <div class="fc-translation" data-sec="translation">While Lord Rāma and Lord Keśava were thus dwelling in Vṛndāvana, the fall season arrived, when the sky is cloudless, the water clear and the wind gentle.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -10165,10 +10119,8 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <section class="fc-section" data-sec="personal_guidance">
         <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Rāma and Keśava dwell in Vṛndāvana as fall arrives — cloudless sky, clear water, gentle wind. Seasons turn; even the rainy intensity passes. Sweetness has its own quieter movement in clarity and calm.</div>
 
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What &#39;fall&#39; is arriving in my life after a recent intense season?</li><li>Am I rushing to refill the calm, or letting it teach me its different sweetness?</li></ul>
+
 
 
 
@@ -10387,7 +10339,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
     <div class="fc-translation" data-sec="translation">The autumn season, which regenerated the lotus flowers, also restored the various bodies of water to their original purity, just as the process of devotional service purifies the minds of the fallen yogīs when they return to it.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -10466,10 +10417,8 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <section class="fc-section" data-sec="personal_guidance">
         <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Autumn regenerates the lotuses and restores water to original purity, just as devotional service restores fallen yogīs&#39; minds. Practice itself is restorative; returning to it clears what wandered.</div>
 
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What practice am I being invited to return to that would clear my water?</li><li>Where am I waiting to feel clean before practicing instead of letting practice clean?</li></ul>
+
 
 
 
@@ -10722,7 +10671,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <div class="fc-translation" data-sec="translation">Autumn cleared the sky of clouds, let the animals get out of their crowded living conditions, cleaned the earth of its covering of mud, and purified the water of contamination, in the same way that loving service rendered to Lord Kṛṣṇa frees the members of the four spiritual orders from their respective troubles.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -10806,10 +10754,8 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <section class="fc-section" data-sec="personal_guidance">
         <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Autumn clears sky, lets animals roam, cleans earth of mud, purifies water — as loving service frees each of the four orders of life from its troubles. Service is the cosmic cleanser; whatever your role, it removes the role&#39;s specific mud.</div>
 
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What specific &#39;mud&#39; does my current life-stage carry that service to Him would specifically clean?</li><li>Where am I expecting general spiritual progress without role-specific service?</li></ul>
+
 
 
 
@@ -11018,7 +10964,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <div class="fc-translation" data-sec="translation">The clouds, having given up all they possessed, shone forth with purified effulgence, just like peaceful sages who have given up all material desires and are thus free of all sinful propensities.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -11115,10 +11060,8 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <section class="fc-section" data-sec="personal_guidance">
         <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Clouds, having given up all they held, now shine with purified effulgence — like sages who give up material desires and reflect their soul. The cost of brilliance is emptying. Hoarding obscures.</div>
 
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What am I hoarding right now that is dimming my own light?</li><li>Where could a full release this week reveal a sheen I&#39;ve forgotten I had?</li></ul>
+
 
 
 
@@ -11355,7 +11298,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <div class="fc-translation" data-sec="translation">During this season the mountains sometimes released their pure water and sometimes did not, just as experts in transcendental science sometimes give the nectar of transcendental knowledge and sometimes do not.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -11461,10 +11403,8 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <section class="fc-section" data-sec="personal_guidance">
         <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Mountains sometimes release pure water, sometimes hold it — like teachers who sometimes give knowledge, sometimes are silent. Silence in a teacher is not absence; it is timing.</div>
 
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Whose silence am I currently misreading as withdrawal that may be timing?</li><li>When am I tempted to fill quiet stretches with content that should remain unspoken?</li></ul>
+
 
 
 
@@ -11710,7 +11650,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <div class="fc-translation" data-sec="translation">The fish swimming in the increasingly shallow water did not at all understand that the water was diminishing, just as foolish family men cannot see how the time they have left to live is diminishing with every passing day.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -11821,10 +11760,8 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <section class="fc-section" data-sec="personal_guidance">
         <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Fish swimming in shrinking water don&#39;t notice the water diminishing — like family men unaware that their remaining lifespan diminishes daily. Background contraction can pass unnoticed for years.</div>
 
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What background contraction in my life — time, energy, opportunity — have I stopped noticing?</li><li>Where am I living as if the water will keep filling on its own?</li></ul>
+
 
 
 
@@ -12025,7 +11962,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <div class="fc-translation" data-sec="translation">Just as a miserly, poverty-stricken person overly absorbed in family life suffers because he cannot control his senses, the fish swimming in the shallow water had to suffer the heat of the autumn sun.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -12106,10 +12042,8 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <section class="fc-section" data-sec="personal_guidance">
         <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Fish in shallow water suffer the autumn sun — like a senses-driven family man scorched by his uncontrolled life. Ignorance offers only momentary bliss; the heat catches up.</div>
 
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where am I confusing temporary numbness for ignorance-based bliss?</li><li>What heat is already reaching me that I am pretending isn&#39;t there?</li></ul>
+
 
 
 
@@ -12327,7 +12261,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <div class="fc-translation" data-sec="translation">Gradually the different areas of land gave up their muddy condition and the plants grew past their unripe stage, in the same way that sober sages give up egotism and possessiveness. These are based on things different from the real self, namely, the material body and its by-products.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -12435,10 +12368,8 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <section class="fc-section" data-sec="personal_guidance">
         <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Land gives up muddiness, plants mature past unripeness — like sages giving up egotism and possessiveness, which were based on the body and its by-products. Maturation is a giving-up, not a holding-on.</div>
 
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What current &#39;unripeness&#39; in me is the doorway to a real maturation if I let it pass through?</li><li>Where am I still defending mud as if it were ground?</li></ul>
+
 
 
 
@@ -12665,7 +12596,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <div class="fc-translation" data-sec="translation">With the arrival of autumn, the ocean and the lakes became silent, their water still, just like a sage who has desisted from all material activities and given up his recitation of Vedic mantras.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -12748,10 +12678,8 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <section class="fc-section" data-sec="personal_guidance">
         <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The ocean and lakes go silent, water still — like a sage who has desisted from material activity and even Vedic recitation. Some silences are not lack but completion; the song no longer needs to be sung.</div>
 
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which of my recitations have I been performing past their actual season?</li><li>Where could stillness now be the right next &#39;practice&#39;?</li></ul>
+
 
 
 
@@ -12997,7 +12925,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <div class="fc-translation" data-sec="translation">In the same way that the practitioners of yoga bring their senses under strict control to check their consciousness from flowing out through the agitated senses, the farmers erected strong mud banks to keep the water within their rice fields from draining out.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -13088,10 +13015,8 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <section class="fc-section" data-sec="personal_guidance">
         <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Farmers build mud banks to hold the water that won&#39;t be replenished — like yogīs controlling senses to keep consciousness from draining out. Senses are the dike; consciousness is the water you don&#39;t want to lose.</div>
 
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which sense of mine is currently the weakest dike letting consciousness drain?</li><li>What concrete daily restraint would build that wall higher this week?</li></ul>
+
 
 
 
@@ -13310,7 +13235,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
     <div class="fc-translation" data-sec="translation">The autumn moon relieved all creatures of the suffering caused by the sun’s rays, just as wisdom relieves a person of the misery caused by his identifying with his material body and as Lord Mukunda relieves Vṛndāvana’s ladies of the distress caused by their separation from Him.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -13395,10 +13319,8 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <section class="fc-section" data-sec="personal_guidance">
         <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The autumn moon relieves creatures from sun-suffering, just as wisdom relieves the body-identifier and Mukunda relieves the gopīs of separation. Three reliefs run on the same principle — the right presence absorbs the burning.</div>
 
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which &#39;sun-burn&#39; in my life would the right wisdom or presence soothe immediately?</li><li>Am I seeking relief from the right source, or the wrong one?</li></ul>
+
 
 
 
@@ -13626,7 +13548,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <div class="fc-translation" data-sec="translation">Free of clouds and filled with clearly visible stars, the autumn sky shone brilliantly, just like the spiritual consciousness of one who has directly experienced the purport of the Vedic scriptures.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -13715,10 +13636,8 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <section class="fc-section" data-sec="personal_guidance">
         <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Cloudless, star-filled autumn sky shines brilliantly, like the spiritual consciousness of one who has directly experienced the Vedas. The cleared inner sky reveals its built-in light; the work is removal, not addition.</div>
 
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What clouds in my inner sky most need clearing for the stars to be obvious?</li><li>Where am I trying to add brightness when removal is what is called for?</li></ul>
+
 
 
 
@@ -13946,7 +13865,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <div class="fc-translation" data-sec="translation">The full moon shone in the sky, surrounded by stars, just as Śrī Kṛṣṇa, the Lord of the Yadu dynasty, shone brilliantly on the earth, surrounded by all the Vṛṣṇis.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -14014,10 +13932,8 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <section class="fc-section" data-sec="personal_guidance">
         <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The full moon shines surrounded by stars, like Kṛṣṇa on earth surrounded by the Vṛṣṇis. The Lord&#39;s presence on earth gathers its own constellation — His company always has a sky around it.</div>
 
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Whom in my circle does my own devotional life make brighter — and am I helping them shine?</li><li>Where am I trying to be a solo moon without a constellation?</li></ul>
+
 
 
 
@@ -14245,7 +14161,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
     <div class="fc-translation" data-sec="translation">Except for the gopīs, whose hearts had been stolen by Kṛṣṇa, the people could forget their suffering by embracing the wind coming from the flower-filled forest. This wind was neither hot nor cold.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -14339,10 +14254,8 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <section class="fc-section" data-sec="personal_guidance">
         <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Except for the gopīs, whose hearts are stolen by Kṛṣṇa, everyone forgets suffering in the flower-fragrant breeze. The world&#39;s relief still works for most; only those who have lost their hearts to Him feel the breeze as nothing.</div>
 
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which simple worldly comforts no longer relieve me — and is that a clue about whose I have become?</li><li>Where am I trying to be relieved by the breeze when the cure is His return?</li></ul>
+
 
 
 
@@ -14570,7 +14483,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <div class="fc-translation" data-sec="translation">By the influence of the autumn season, all the cows, doe, women and female birds became fertile and were followed by their respective mates in search of sexual enjoyment, just as activities performed for the service of the Supreme Lord are automatically followed by all beneficial results.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -14646,10 +14558,8 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <section class="fc-section" data-sec="personal_guidance">
         <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">All female creatures become fertile and are followed by their mates — like activities for the Lord automatically followed by all beneficial results. Service breeds outcomes you didn&#39;t have to chase.</div>
 
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What service of mine has had beneficial outcomes I didn&#39;t strategize for?</li><li>Where am I chasing results separately from doing the actual service?</li></ul>
+
 
 
 
@@ -14886,7 +14796,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
     <div class="fc-translation" data-sec="translation">O King Parīkṣit, when the autumn sun rose, all the lotus flowers blossomed happily, except the night-blooming kumut, just as in the presence of a strong ruler everyone becomes fearless, except the thieves.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -14974,10 +14883,8 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <section class="fc-section" data-sec="personal_guidance">
         <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Autumn lotuses bloom under the sun; only the night-kumut does not — like everyone becoming fearless under a strong ruler except the thieves. The Lord&#39;s strong presence delights the honest and frightens the corrupt.</div>
 
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What in me opens or closes when I sit before His presence — and what does that reveal?</li><li>Where am I still partially night-blooming, hoping His sun won&#39;t rise yet?</li></ul>
+
 
 
 
@@ -15232,7 +15139,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <div class="fc-translation" data-sec="translation">In all the towns and villages people held great festivals, performing the Vedic fire sacrifice for honoring and tasting the first grains of the new harvest, along with similar celebrations that followed local custom and tradition. Thus the earth, rich with newly grown grain and especially beautified by the presence of Kṛṣṇa and Balarāma, shone beautifully as an expansion of the Supreme Lord.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -15320,10 +15226,8 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <section class="fc-section" data-sec="personal_guidance">
         <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Towns and villages perform Vedic fire sacrifices, taste first grains, hold customary festivals — and the earth, rich and beautified by Kṛṣṇa and Balarāma&#39;s presence, shines as His expansion. Harvest is for offering first, eating second.</div>
 
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What &#39;first grain&#39; of a recent harvest have I tasted without first offering?</li><li>Where could a small festival mark a quiet harvest I&#39;ve been treating as routine?</li></ul>
+
 
 
 
@@ -15569,7 +15473,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <div class="fc-translation" data-sec="translation">The merchants, sages, kings and brahmacārī students, kept in by the rain, were at last free to go out and attain their desired objects, just as those who achieve perfection in this life can, when the proper time comes, leave the material body and attain their respective forms.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -15688,10 +15591,8 @@ The gopīs declared, &#34;To see Lord Kṛṣṇa playing His flute while taking
 
     <section class="fc-section" data-sec="personal_guidance">
         <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Rain-trapped merchants, sages, kings, and brahmacārīs are at last free to go after their objects — like those who reach perfection leaving the body and attaining their respective forms. End of constraint is a journey beginning, not just relief.</div>
 
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which constraint has just lifted in my life that I should now use to actually move?</li><li>Where am I treating the end of a restriction as the goal rather than as the start of motion?</li></ul>
+
 
 
 

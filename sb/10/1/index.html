@@ -25,19 +25,25 @@
     <link rel="icon" href="../../../assets/icons/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="../../../assets/icons/icon.svg">
     <link rel="stylesheet" href="../../../assets/css/site.css">
+    <link rel="alternate" hreflang="te-IN" href="../../../te/sb/10/1/">
+    <link rel="alternate" hreflang="x-default" href="../../../">
     <script>window.FC_TO_ROOT = "../../../";</script>
     <script src="../../../assets/js/toggle.js"></script>
 </head>
 <body class="has-sidebar" data-chapter="1">
 <header class="fc-site-header">
     <button type="button" class="fc-mobile-trigger fc-mobile-trigger-left" data-overlay="left" aria-label="Open settings drawer">⚙</button>
-<a class="fc-brand" href="../../../">FolioCorpus<span class="fc-sub">Śrīmad-Bhāgavatam</span></a>
+    <a class="fc-brand" href="../../../">FolioCorpus<span class="fc-sub">Bhagavad-gītā</span></a>
     <nav class="fc-site-nav">
         <a href="../../../">Home</a>
         <a href="../../../bg/">Bhagavad-gītā</a>
         <a href="../../../sb/">Śrīmad-Bhāgavatam</a>
         <a href="../../../search/" title="Search across all integrated works">🔍 Search</a>
         <button type="button" id="fc-random-verse" class="fc-nav-btn" title="Jump to a random verse">🎲 Random</button>
+        <span class="fc-lang-switch" aria-label="Script">
+            <a class="active" href="#" title="Devanāgarī edition">EN</a>
+            <a class="" href="../../../te/sb/10/1/" title="Telugu lipi edition">తె</a>
+        </span>
     </nav>
     <button type="button" class="fc-mobile-trigger fc-mobile-trigger-right" data-overlay="right" aria-label="Open chapter index drawer">📚</button>
 </header>
@@ -46,8 +52,8 @@
     <button class="fc-sb-collapse" type="button" data-sb="left" title="Collapse left sidebar" aria-label="Collapse"></button>
 
     <div class="fc-sb-body">
-        <details class="fc-sb-section" data-sbsec="reading" open>
-            <summary class="fc-sb-title">Reading</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Reading</div>
             <div class="fc-sb-sub">Theme</div>
             <div class="fc-segmented" data-setting="theme">
                 <button type="button" data-val="light">Light</button>
@@ -73,10 +79,10 @@
                 <button type="button" data-val="single">Single</button>
                 <button type="button" data-val="side">Side-by-side</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="display" open>
-            <summary class="fc-sb-title">Display</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Display</div>
             <div class="fc-sb-grid">
                 <label><input type="checkbox" data-section="devanagari" checked> Devanāgarī</label>
                 <label><input type="checkbox" data-section="iast" checked> IAST transliteration</label>
@@ -99,10 +105,33 @@
                 <button type="button" data-action="expand-all">Expand all</button>
                 <button type="button" data-action="collapse-all">Collapse all</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="tools" open>
-            <summary class="fc-sb-title">Tools</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Find your starting point</div>
+            <div class="fc-persona-links">
+                <a class="fc-persona-link" href="../../../daily/">🌅 Daily (one value a week)</a>
+                <a class="fc-persona-link" href="../../../householder/">🏠 Householder (family & work)</a>
+                <a class="fc-persona-link" href="../../../parenting/">👨‍👩‍👧 Parenting (stories for kids)</a>
+                <a class="fc-persona-link" href="../../../themes/">📚 All themes</a>
+                <a class="fc-persona-link" href="../../../values/" style="background:#F0F6F2;border-left-color:#1F4632;">ॐ Vedic Value System ↗</a>
+                <a class="fc-persona-link" href="../../../vidya/" style="background:#FBF6E4;border-left-color:#C8860B;">📚 Vidyā Karaṇa (kids, multi-lang) ↗</a>
+            </div>
+        </div>
+
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Audience</div>
+            <div class="fc-audience-filter">
+                <label><input type="radio" name="fc-audience" value="all" checked> All levels</label>
+                <label><input type="radio" name="fc-audience" value="primary"> Primary (children)</label>
+                <label><input type="radio" name="fc-audience" value="middle"> Middle (teens)</label>
+                <label><input type="radio" name="fc-audience" value="senior"> Senior (adults)</label>
+                <label><input type="radio" name="fc-audience" value="college"> College / scholar</label>
+            </div>
+        </div>
+
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Tools</div>
             <div class="fc-sb-tools">
                 <button type="button" id="fc-presentation-toggle" class="fc-tool-btn"><span>🖥 Presentation</span><kbd class="fc-kbd">F</kbd></button>
                 <button type="button" id="fc-pen-toggle" class="fc-tool-btn"><span>✏️ Pen mode</span><kbd class="fc-kbd">P</kbd></button>
@@ -117,10 +146,26 @@
                 <button type="button" id="fc-clear-highlights" class="fc-tool-btn">🩷 Clear highlights (page)</button>
                 <button type="button" id="fc-notes-modal-open" class="fc-tool-btn">📓 My annotations</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="progress" id="fc-progress-section" open>
-            <summary class="fc-sb-title">Progress</summary>
+        <div class="fc-sb-section" id="fc-tts-controls" hidden>
+            <div class="fc-sb-title">
+                Read-aloud
+                <label class="fc-tts-master">
+                    <input type="checkbox" id="fc-tts-enabled" checked>
+                    <span class="fc-tts-master-label">On</span>
+                </label>
+            </div>
+            <div class="fc-tts-inner">
+                <div class="fc-sb-sub">Voice</div>
+                <select id="fc-tts-voice" class="fc-tts-select" aria-label="TTS voice"></select>
+                <div class="fc-sb-sub">Rate <span class="fc-tts-rate-val">1.0×</span></div>
+                <input type="range" id="fc-tts-rate" min="0.5" max="2" step="0.1" value="1" class="fc-tts-rate" aria-label="Reading rate">
+            </div>
+        </div>
+
+        <div class="fc-sb-section" id="fc-progress-section">
+            <div class="fc-sb-title">Progress</div>
             <div class="fc-progress-row">
                 <span class="fc-progress-num" id="fc-progress-num">0</span>
                 <span class="fc-progress-divider">/</span>
@@ -135,29 +180,29 @@
                 <span class="fc-progress-spacer"></span>
                 <button type="button" class="fc-progress-reset" id="fc-progress-reset" title="Reset progress">↺</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="bookmarks" open>
-            <summary class="fc-sb-title">Bookmarks <span class="fc-sb-count" id="fc-bookmarks-count">0</span></summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Bookmarks <span class="fc-sb-count" id="fc-bookmarks-count">0</span></div>
             <ul class="fc-bookmark-list" id="fc-bookmarks-list">
                 <li class="fc-sb-empty">No bookmarks yet — click ☆ on any verse.</li>
             </ul>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="notes" open>
-            <summary class="fc-sb-title">Notes <span class="fc-sb-count" id="fc-notes-count">0</span></summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Notes <span class="fc-sb-count" id="fc-notes-count">0</span></div>
             <ul class="fc-bookmark-list" id="fc-notes-list">
                 <li class="fc-sb-empty">No notes yet — open any verse and write in the 📝 block.</li>
             </ul>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="export">
-            <summary class="fc-sb-title">Export</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Export</div>
             <div class="fc-sb-tools">
                 <button type="button" id="fc-export-md" class="fc-tool-btn">📥 Download Markdown</button>
                 <button type="button" id="fc-export-json" class="fc-tool-btn">💾 Download JSON backup</button>
             </div>
-        </details>
+        </div>
     </div>
 </aside>    <main class="fc-container">
 <nav class="fc-breadcrumbs">
@@ -535,7 +580,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
     </section>
 
     <div class="fc-translation" data-sec="translation">King Parīkṣit said: My dear lord, you have elaborately described the dynasties of both the moon-god and the sun-god, with the exalted and wonderful character of their kings.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -951,7 +995,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <div class="fc-translation" data-sec="translation">O best of munis, you have also described the descendants of Yadu, who were very pious and strictly adherent to religious principles. Now, if you will, kindly describe the wonderful, glorious activities of Lord Viṣṇu, or Kṛṣṇa, who appeared in that Yadu dynasty with Baladeva, His plenary expansion.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1313,7 +1356,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
     </section>
 
     <div class="fc-translation" data-sec="translation">The Supersoul, the Supreme Personality of Godhead, Śrī Kṛṣṇa, the cause of the cosmic manifestation, appeared in the dynasty of Yadu. Please tell me elaborately about His glorious activities and character, from the beginning to the end of His life.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -1752,7 +1794,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
     </section>
 
     <div class="fc-translation" data-sec="translation">Glorification of the Supreme Personality of Godhead is performed in the paramparā system, that is, it is conveyed from the spiritual master to disciple. Such glorification is relished by those no longer interested in the false, temporary glorification of this cosmic manifestation. Descriptions of the Lord are the right medicine for the conditioned soul undergoing repeated birth and death. Therefore, who will cease hearing such glorification of the Lord except a butcher or one who is killing his own self?</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -2571,7 +2612,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <div class="fc-translation" data-sec="translation">Taking the boat of Kṛṣṇa’s lotus feet, my grandfather Arjuna and others crossed the ocean of the Battlefield of Kurukṣetra, in which such commanders as Bhīṣmadeva resembled great fish that could very easily have swallowed them. By the mercy of Lord Kṛṣṇa, my grandfathers crossed this ocean, which was very difficult to cross, as easily as one steps over the hoofprint of a calf. Because my mother surrendered unto Lord Kṛṣṇa’s lotus feet, the Lord, Sudarśana-cakra in hand, entered her womb and saved my body, the body of the last remaining descendant of the Kurus and the Pāṇḍavas, which was almost destroyed by the fiery weapon of Aśvatthāmā. Lord Śrī Kṛṣṇa, appearing within and outside of all materially embodied living beings by His own potency in the forms of eternal time — that is, as Paramātmā and as virāṭ-rūpa — gave liberation to everyone, either as cruel death or as life. Kindly enlighten me by describing His transcendental characteristics.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2969,7 +3009,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <div class="fc-translation" data-sec="translation">My dear Śukadeva Gosvāmī, you have already explained that Saṅkarṣaṇa, who belongs to the second quadruple, appeared as the son of Rohiṇī named Balarāma. If Balarāma was not transferred from one body to another, how is it possible that He was first in the womb of Devakī and then in the womb of Rohiṇī? Kindly explain this to me.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3311,7 +3350,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
     </section>
 
     <div class="fc-translation" data-sec="translation">Why did Kṛṣṇa, the Supreme Personality of Godhead, leave the house of His father, Vasudeva, and transfer Himself to the house of Nanda in Vṛndāvana? Where did the Lord, the master of the Yadu dynasty, live with His relatives in Vṛndāvana?</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -3666,7 +3704,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <div class="fc-translation" data-sec="translation">Lord Kṛṣṇa lived both in Vṛndāvana and in Mathurā. What did He do there? Why did He kill Kaṁsa, His mother’s brother? Such killing is not at all sanctioned in the śāstras.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3982,7 +4019,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
     </section>
 
     <div class="fc-translation" data-sec="translation">Kṛṣṇa, the Supreme Personality of Godhead, has no material body, yet He appears as a human being. For how many years did He live with the descendants of Vṛṣṇi? How many wives did He marry, and for how many years did He live in Dvārakā?</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -4314,7 +4350,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
     <div class="fc-translation" data-sec="translation">O great sage, who know everything about Kṛṣṇa, please describe in detail all the activities of which I have inquired and also those of which I have not, for I have full faith and am very eager to hear of them.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -4616,7 +4651,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
     </section>
 
     <div class="fc-translation" data-sec="translation">Because of my vow on the verge of death, I have given up even drinking water, yet because I am drinking the nectar of topics about Kṛṣṇa, which is flowing from the lotus mouth of your Lordship, my hunger and thirst, which are extremely difficult to bear, cannot hinder me.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -5052,7 +5086,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <div class="fc-translation" data-sec="translation">Sūta Gosvāmī said: O son of Bhṛgu, after Śukadeva Gosvāmī, the most respectable devotee, the son of Vyāsadeva, heard the pious questions of Mahārāja Parīkṣit, he thanked the King with great respect. Then he began to discourse on topics concerning Kṛṣṇa, which are the remedy for all sufferings in this Age of Kali.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -5475,7 +5508,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <div class="fc-translation" data-sec="translation">Śrīla Śukadeva Gosvāmī said: O Your Majesty, best of all saintly kings, because you are greatly attracted to topics of Vāsudeva, it is certain that your intelligence is firmly fixed in spiritual understanding, which is the only true goal for humanity. Because that attraction is unceasing, it is certainly sublime.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -5828,7 +5860,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <div class="fc-translation" data-sec="translation">The Ganges, emanating from the toe of Lord Viṣṇu, purifies the three worlds, the upper, middle and lower planetary systems. Similarly, when one asks questions about the pastimes and characteristics of Lord Vāsudeva, Kṛṣṇa, three varieties of men are purified: the speaker or preacher, he who inquires, and the people in general who listen.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -6155,7 +6186,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
     </section>
 
     <div class="fc-translation" data-sec="translation">Once when mother earth was overburdened by hundreds of thousands of military phalanxes of various conceited demons dressed like kings, she approached Lord Brahmā for relief.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -6532,7 +6562,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
     <div class="fc-translation" data-sec="translation">Mother earth assumed the form of a cow. Very much distressed, with tears in her eyes, she appeared before Lord Brahmā and told him about her misfortune.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -6858,7 +6887,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <div class="fc-translation" data-sec="translation">Thereafter, having heard of the distress of mother earth, Lord Brahmā, with mother earth, Lord Śiva and all the other demigods, approached the shore of the Ocean of Milk.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -7164,7 +7192,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
     </section>
 
     <div class="fc-translation" data-sec="translation">After reaching the shore of the Ocean of Milk, the demigods worshiped the Supreme Personality of Godhead, Lord Viṣṇu, the master of the whole universe, the supreme God of all gods, who provides for everyone and diminishes everyone’s suffering. With great attention, they worshiped Lord Viṣṇu, who lies on the Ocean of Milk, by reciting the Vedic mantras known as the Puruṣa-sūkta.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -7588,7 +7615,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <div class="fc-translation" data-sec="translation">While in trance, Lord Brahmā heard the words of Lord Viṣṇu vibrating in the sky. Thus he told the demigods: O demigods, hear from me the order of Kṣīrodakaśāyī Viṣṇu, the Supreme Person, and execute it attentively without delay.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -7986,7 +8012,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <div class="fc-translation" data-sec="translation">Lord Brahmā informed the demigods: Before we submitted our petition to the Lord, He was already aware of the distress on earth. Consequently, for as long as the Lord moves on earth to diminish its burden by His own potency in the form of time, all of you demigods should appear through plenary portions as sons and grandsons in the family of the Yadus.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -8349,7 +8374,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <div class="fc-translation" data-sec="translation">The Supreme Personality of Godhead, Śrī Kṛṣṇa, who has full potency, will personally appear as the son of Vasudeva. Therefore all the wives of the demigods should also appear in order to satisfy Him.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -8682,7 +8706,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
     </section>
 
     <div class="fc-translation" data-sec="translation">The foremost manifestation of Kṛṣṇa is Saṅkarṣaṇa, who is known as Ananta. He is the origin of all incarnations within this material world. Previous to the appearance of Lord Kṛṣṇa, this original Saṅkarṣaṇa will appear as Baladeva, just to please the Supreme Lord Kṛṣṇa in His transcendental pastimes.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -9024,7 +9047,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
     </section>
 
     <div class="fc-translation" data-sec="translation">The potency of the Lord, known as viṣṇu-māyā, who is as good as the Supreme Personality of Godhead, will also appear with Lord Kṛṣṇa. This potency, acting in different capacities, captivates all the worlds, both material and spiritual. At the request of her master, she will appear with her different potencies in order to execute the work of the Lord.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -9387,7 +9409,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
     <div class="fc-translation" data-sec="translation">Śukadeva Gosvāmī continued: After thus advising the demigods and pacifying mother earth, the very powerful Lord Brahmā, who is the master of all other Prajāpatis and is therefore known as Prajāpati-pati, returned to his own abode, Brahmaloka.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -9690,7 +9711,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
     </section>
 
     <div class="fc-translation" data-sec="translation">Formerly, Śūrasena, the chief of the Yadu dynasty, had gone to live in the city of Mathurā. There he enjoyed the places known as Māthura and Śūrasena.</div>
-
 
 
     <section class="fc-section" data-sec="gaudiya">
@@ -10024,7 +10044,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
     </section>
 
     <div class="fc-translation" data-sec="translation">Since that time, the city of Mathurā had been the capital of all the kings of the Yadu dynasty. The city and district of Mathurā are very intimately connected with Kṛṣṇa, for Lord Kṛṣṇa lives there eternally.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -10376,7 +10395,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
     <div class="fc-translation" data-sec="translation">Some time ago, Vasudeva, who belonged to the demigod family [or to the Śūra dynasty], married Devakī. After the marriage, he mounted his chariot to return home with his newly married wife.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -10671,7 +10689,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
     </section>
 
     <div class="fc-translation" data-sec="translation">Kaṁsa, the son of King Ugrasena, in order to please his sister Devakī on the occasion of her marriage, took charge of the reins of the horses and became the chariot driver. He was surrounded by hundreds of golden chariots.</div>
-
 
 
     <section class="fc-section" data-sec="gaudiya">
@@ -11085,7 +11102,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <div class="fc-translation" data-sec="translation">Devakī’s father, King Devaka, was very much affectionate to his daughter. Therefore, while she and her husband were leaving home, he gave her a dowry of four hundred elephants nicely decorated with golden garlands. He also gave ten thousand horses, eighteen hundred chariots, and two hundred very beautiful young maidservants, fully decorated with ornaments.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -11417,7 +11433,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
     <div class="fc-translation" data-sec="translation">O beloved son, Mahārāja Parīkṣit, when the bride and bridegroom were ready to start, conchshells, bugles, drums and kettledrums all vibrated in concert for their auspicious departure.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -11747,7 +11762,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
     </section>
 
     <div class="fc-translation" data-sec="translation">While Kaṁsa, controlling the reins of the horses, was driving the chariot along the way, an unembodied voice addressed him, “You foolish rascal, the eighth child of the woman you are carrying will kill you!”</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -12088,7 +12102,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <div class="fc-translation" data-sec="translation">Kaṁsa was a condemned personality in the Bhoja dynasty because he was envious and sinful. Therefore, upon hearing this omen from the sky, he caught hold of his sister’s hair with his left hand and took up his sword with his right hand to sever her head from her body.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -12380,7 +12393,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
     </section>
 
     <div class="fc-translation" data-sec="translation">Wanting to pacify Kaṁsa, who was so cruel and envious that he was shamelessly ready to kill his sister, the great soul Vasudeva, who was to be the father of Kṛṣṇa, spoke to him in the following words.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -12748,7 +12760,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <div class="fc-translation" data-sec="translation">Vasudeva said: My dear brother-in-law Kaṁsa, you are the pride of your family, the Bhoja dynasty, and great heroes praise your qualities. How could such a qualified person as you kill a woman, your own sister, especially on the occasion of her marriage?</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -13108,7 +13119,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <div class="fc-translation" data-sec="translation">O great hero, one who takes birth is sure to die, for death is born with the body. One may die today or after hundreds of years, but death is sure for every living entity.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -13434,7 +13444,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
     </section>
 
     <div class="fc-translation" data-sec="translation">When the present body turns to dust and is again reduced to five elements — earth, water, fire, air and ether — the proprietor of the body, the living being, automatically receives another body of material elements according to his fruitive activities. When the next body is obtained, he gives up the present body.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -13800,7 +13809,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
     </section>
 
     <div class="fc-translation" data-sec="translation">Just as a person traveling on the road rests one foot on the ground and then lifts the other, or as a worm on a vegetable transfers itself to one leaf and then gives up the previous one, the conditioned soul takes shelter of another body and then gives up the one he had before.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -14206,7 +14214,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <div class="fc-translation" data-sec="translation">Having experienced a situation by seeing or hearing about it, one contemplates and speculates about that situation, and thus one surrenders to it, not considering his present body. Similarly, by mental adjustments one dreams at night of living under different circumstances, in different bodies, and forgets his actual position. Under this same process, one gives up his present body and accepts another [tathā dehāntara-prāptiḥ].</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -14591,7 +14598,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <div class="fc-translation" data-sec="translation">At the time of death, according to the thinking, feeling and willing of the mind, which is involved in fruitive activities, one receives a particular body. In other words, the body develops according to the activities of the mind. Changes of body are due to the flickering of the mind, for otherwise the soul could remain in its original, spiritual body.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -14947,7 +14953,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
     </section>
 
     <div class="fc-translation" data-sec="translation">When the luminaries in the sky, such as the moon, the sun and the stars, are reflected in liquids like oil or water, they appear to be of different shapes — sometimes round, sometimes long, and so on — because of the movements of the wind. Similarly, when the living entity, the soul, is absorbed in materialistic thoughts, he accepts various manifestations as his own identity because of ignorance. In other words, one is bewildered by mental concoctions because of agitation from the material modes of nature.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -15314,7 +15319,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <div class="fc-translation" data-sec="translation">Therefore, since envious, impious activities cause a body in which one suffers in the next life, why should one act impiously? Considering one’s welfare, one should not envy anyone, for an envious person must always fear harm from his enemies, either in this life or in the next.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -15676,7 +15680,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
     <div class="fc-translation" data-sec="translation">As your younger sister, this poor girl Devakī is like your own daughter and deserves to be affectionately maintained. You are merciful, and therefore you should not kill her. Indeed, she deserves your affection.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -16022,7 +16025,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
     <div class="fc-translation" data-sec="translation">Śukadeva Gosvāmī continued: O best of the Kuru dynasty, Kaṁsa was fiercely cruel and was actually a follower of the Rākṣasas. Therefore he could be neither pacified nor terrified by the good instructions given by Vasudeva. He did not care about the results of sinful activities, either in this life or in the next.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -16340,7 +16342,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
     </section>
 
     <div class="fc-translation" data-sec="translation">When Vasudeva saw that Kaṁsa was determined to kill his sister Devakī, he thought to himself very deeply. Considering the imminent danger of death, he thought of another plan to stop Kaṁsa.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -16670,7 +16671,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
     </section>
 
     <div class="fc-translation" data-sec="translation">As long as he has intelligence and bodily strength, an intelligent person must try to avoid death. This is the duty of every embodied person. But if death cannot be avoided in spite of one’s endeavors, a person facing death commits no offense.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -17175,7 +17175,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <div class="fc-translation" data-sec="translation">Vasudeva considered: By delivering all my sons to Kaṁsa, who is death personified, I shall save the life of Devakī. Perhaps Kaṁsa will die before my sons take birth, or, since he is already destined to die at the hands of my son, one of my sons may kill him. For the time being, let me promise to hand over my sons so that Kaṁsa will give up this immediate threat, and if in due course of time Kaṁsa dies, I shall have nothing to fear.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -17590,7 +17589,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <div class="fc-translation" data-sec="translation">When a fire, for some unseen reason, leaps over one piece of wood and sets fire to the next, the reason is destiny. Similarly, when a living being accepts one kind of body and leaves aside another, there is no other reason than unseen destiny.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -17918,7 +17916,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
     <div class="fc-translation" data-sec="translation">After thus considering the matter as far as his knowledge would allow, Vasudeva submitted his proposal to the sinful Kaṁsa with great respect.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -18199,7 +18196,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
     </section>
 
     <div class="fc-translation" data-sec="translation">Vasudeva’s mind was full of anxiety because his wife was facing danger, but in order to please the cruel, shameless and sinful Kaṁsa, he externally smiled and spoke to him as follows.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -18592,7 +18588,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <div class="fc-translation" data-sec="translation">Vasudeva said: O best of the sober, you have nothing to fear from your sister Devakī because of what you have heard from the unseen omen. The cause of death will be her sons. Therefore I promise that when she gives birth to the sons from whom your fear has arisen, I shall deliver them all unto your hands.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -18948,7 +18943,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <div class="fc-translation" data-sec="translation">Śrīla Śukadeva Gosvāmī continued: Kaṁsa agreed to the logical arguments of Vasudeva, and, having full faith in Vasudeva’s words, he refrained from killing his sister. Vasudeva, being pleased with Kaṁsa, pacified him further and entered his own house.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -19282,7 +19276,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
     </section>
 
     <div class="fc-translation" data-sec="translation">Each year thereafter, in due course of time, Devakī, the mother of God and all the demigods, gave birth to a child. Thus she bore eight sons, one after another, and a daughter named Subhadrā.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -19618,7 +19611,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <div class="fc-translation" data-sec="translation">Vasudeva was very much disturbed by fear of becoming a liar by breaking his promise. Thus with great pain he delivered his first-born son, named Kīrtimān, into the hands of Kaṁsa.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -19938,7 +19930,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
     </section>
 
     <div class="fc-translation" data-sec="translation">What is painful for saintly persons who strictly adhere to the truth? How could there not be independence for pure devotees who know the Supreme Lord as the substance? What deeds are forbidden for persons of the lowest character? And what cannot be given up for the sake of Lord Kṛṣṇa by those who have fully surrendered at His lotus feet?</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -20328,7 +20319,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
     </section>
 
     <div class="fc-translation" data-sec="translation">My dear King Parīkṣit, when Kaṁsa saw that Vasudeva, being situated in truthfulness, was completely equipoised in giving him the child, he was very happy. Therefore, with a smiling face, he spoke as follows.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -20733,7 +20723,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
     <div class="fc-translation" data-sec="translation">O Vasudeva, you may take back your child and go home. I have no fear of your first child. It is the eighth child of you and Devakī I am concerned with because that is the child by whom I am destined to be killed.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -21038,7 +21027,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
     </section>
 
     <div class="fc-translation" data-sec="translation">Vasudeva agreed and took his child back home, but because Kaṁsa had no character and no self-control, Vasudeva knew that he could not rely on Kaṁsa’s word.</div>
-
 
 
     <section class="fc-section" data-sec="gaudiya">
@@ -21501,7 +21489,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <div class="fc-translation" data-sec="translation">The inhabitants of Vṛndāvana, headed by Nanda Mahārāja and including his associate cowherd men and their wives, were none but denizens of the heavenly planets, O Mahārāja Parīkṣit, best of the descendants of Bharata, and so too were the descendants of the Vṛṣṇi dynasty, headed by Vasudeva and Devakī and the other women of the dynasty of Yadu. The friends, relatives and well-wishers of both Nanda Mahārāja and Vasudeva and even those who externally appeared to be followers of Kaṁsa were all demigods.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -21799,7 +21786,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
     </section>
 
     <div class="fc-translation" data-sec="translation">Once the great saint Nārada approached Kaṁsa and informed him of how the demoniac persons who were a great burden on the earth were going to be killed. Thus Kaṁsa was placed into great fear and doubt.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -22284,7 +22270,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <div class="fc-translation" data-sec="translation">After the departure of the great saint Nārada, Kaṁsa thought that all the members of the Yadu dynasty were demigods and that any of the children born from the womb of Devakī might be Viṣṇu. Fearing his death, Kaṁsa arrested Vasudeva and Devakī and chained them with iron shackles. Suspecting each of the children to be Viṣṇu, Kaṁsa killed them one after another because of the prophecy that Viṣṇu would kill him.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -22640,7 +22625,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <div class="fc-translation" data-sec="translation">Kings greedy for sense gratification on this earth almost always kill their enemies indiscriminately. To satisfy their own whims, they may kill anyone, even their mothers, fathers, brothers or friends.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -22971,7 +22955,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
     </section>
 
     <div class="fc-translation" data-sec="translation">In his previous birth, Kaṁsa had been a great demon named Kālanemi and been killed by Viṣṇu. Upon learning this information from Nārada, Kaṁsa became envious of everyone connected with the Yadu dynasty.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -23325,7 +23308,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
     </section>
 
     <div class="fc-translation" data-sec="translation">Kaṁsa, the most powerful son of Ugrasena, even imprisoned his own father, the King of the Yadu, Bhoja and Andhaka dynasties, and personally ruled the states known as Śūrasena.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>

@@ -25,19 +25,25 @@
     <link rel="icon" href="../../../assets/icons/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="../../../assets/icons/icon.svg">
     <link rel="stylesheet" href="../../../assets/css/site.css">
+    <link rel="alternate" hreflang="te-IN" href="../../../te/sb/2/5/">
+    <link rel="alternate" hreflang="x-default" href="../../../">
     <script>window.FC_TO_ROOT = "../../../";</script>
     <script src="../../../assets/js/toggle.js"></script>
 </head>
 <body class="has-sidebar" data-chapter="5">
 <header class="fc-site-header">
     <button type="button" class="fc-mobile-trigger fc-mobile-trigger-left" data-overlay="left" aria-label="Open settings drawer">⚙</button>
-<a class="fc-brand" href="../../../">FolioCorpus<span class="fc-sub">Śrīmad-Bhāgavatam</span></a>
+    <a class="fc-brand" href="../../../">FolioCorpus<span class="fc-sub">Bhagavad-gītā</span></a>
     <nav class="fc-site-nav">
         <a href="../../../">Home</a>
         <a href="../../../bg/">Bhagavad-gītā</a>
         <a href="../../../sb/">Śrīmad-Bhāgavatam</a>
         <a href="../../../search/" title="Search across all integrated works">🔍 Search</a>
         <button type="button" id="fc-random-verse" class="fc-nav-btn" title="Jump to a random verse">🎲 Random</button>
+        <span class="fc-lang-switch" aria-label="Script">
+            <a class="active" href="#" title="Devanāgarī edition">EN</a>
+            <a class="" href="../../../te/sb/2/5/" title="Telugu lipi edition">తె</a>
+        </span>
     </nav>
     <button type="button" class="fc-mobile-trigger fc-mobile-trigger-right" data-overlay="right" aria-label="Open chapter index drawer">📚</button>
 </header>
@@ -46,8 +52,8 @@
     <button class="fc-sb-collapse" type="button" data-sb="left" title="Collapse left sidebar" aria-label="Collapse"></button>
 
     <div class="fc-sb-body">
-        <details class="fc-sb-section" data-sbsec="reading" open>
-            <summary class="fc-sb-title">Reading</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Reading</div>
             <div class="fc-sb-sub">Theme</div>
             <div class="fc-segmented" data-setting="theme">
                 <button type="button" data-val="light">Light</button>
@@ -73,10 +79,10 @@
                 <button type="button" data-val="single">Single</button>
                 <button type="button" data-val="side">Side-by-side</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="display" open>
-            <summary class="fc-sb-title">Display</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Display</div>
             <div class="fc-sb-grid">
                 <label><input type="checkbox" data-section="devanagari" checked> Devanāgarī</label>
                 <label><input type="checkbox" data-section="iast" checked> IAST transliteration</label>
@@ -99,10 +105,33 @@
                 <button type="button" data-action="expand-all">Expand all</button>
                 <button type="button" data-action="collapse-all">Collapse all</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="tools" open>
-            <summary class="fc-sb-title">Tools</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Find your starting point</div>
+            <div class="fc-persona-links">
+                <a class="fc-persona-link" href="../../../daily/">🌅 Daily (one value a week)</a>
+                <a class="fc-persona-link" href="../../../householder/">🏠 Householder (family & work)</a>
+                <a class="fc-persona-link" href="../../../parenting/">👨‍👩‍👧 Parenting (stories for kids)</a>
+                <a class="fc-persona-link" href="../../../themes/">📚 All themes</a>
+                <a class="fc-persona-link" href="../../../values/" style="background:#F0F6F2;border-left-color:#1F4632;">ॐ Vedic Value System ↗</a>
+                <a class="fc-persona-link" href="../../../vidya/" style="background:#FBF6E4;border-left-color:#C8860B;">📚 Vidyā Karaṇa (kids, multi-lang) ↗</a>
+            </div>
+        </div>
+
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Audience</div>
+            <div class="fc-audience-filter">
+                <label><input type="radio" name="fc-audience" value="all" checked> All levels</label>
+                <label><input type="radio" name="fc-audience" value="primary"> Primary (children)</label>
+                <label><input type="radio" name="fc-audience" value="middle"> Middle (teens)</label>
+                <label><input type="radio" name="fc-audience" value="senior"> Senior (adults)</label>
+                <label><input type="radio" name="fc-audience" value="college"> College / scholar</label>
+            </div>
+        </div>
+
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Tools</div>
             <div class="fc-sb-tools">
                 <button type="button" id="fc-presentation-toggle" class="fc-tool-btn"><span>🖥 Presentation</span><kbd class="fc-kbd">F</kbd></button>
                 <button type="button" id="fc-pen-toggle" class="fc-tool-btn"><span>✏️ Pen mode</span><kbd class="fc-kbd">P</kbd></button>
@@ -117,10 +146,26 @@
                 <button type="button" id="fc-clear-highlights" class="fc-tool-btn">🩷 Clear highlights (page)</button>
                 <button type="button" id="fc-notes-modal-open" class="fc-tool-btn">📓 My annotations</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="progress" id="fc-progress-section" open>
-            <summary class="fc-sb-title">Progress</summary>
+        <div class="fc-sb-section" id="fc-tts-controls" hidden>
+            <div class="fc-sb-title">
+                Read-aloud
+                <label class="fc-tts-master">
+                    <input type="checkbox" id="fc-tts-enabled" checked>
+                    <span class="fc-tts-master-label">On</span>
+                </label>
+            </div>
+            <div class="fc-tts-inner">
+                <div class="fc-sb-sub">Voice</div>
+                <select id="fc-tts-voice" class="fc-tts-select" aria-label="TTS voice"></select>
+                <div class="fc-sb-sub">Rate <span class="fc-tts-rate-val">1.0×</span></div>
+                <input type="range" id="fc-tts-rate" min="0.5" max="2" step="0.1" value="1" class="fc-tts-rate" aria-label="Reading rate">
+            </div>
+        </div>
+
+        <div class="fc-sb-section" id="fc-progress-section">
+            <div class="fc-sb-title">Progress</div>
             <div class="fc-progress-row">
                 <span class="fc-progress-num" id="fc-progress-num">0</span>
                 <span class="fc-progress-divider">/</span>
@@ -135,29 +180,29 @@
                 <span class="fc-progress-spacer"></span>
                 <button type="button" class="fc-progress-reset" id="fc-progress-reset" title="Reset progress">↺</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="bookmarks" open>
-            <summary class="fc-sb-title">Bookmarks <span class="fc-sb-count" id="fc-bookmarks-count">0</span></summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Bookmarks <span class="fc-sb-count" id="fc-bookmarks-count">0</span></div>
             <ul class="fc-bookmark-list" id="fc-bookmarks-list">
                 <li class="fc-sb-empty">No bookmarks yet — click ☆ on any verse.</li>
             </ul>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="notes" open>
-            <summary class="fc-sb-title">Notes <span class="fc-sb-count" id="fc-notes-count">0</span></summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Notes <span class="fc-sb-count" id="fc-notes-count">0</span></div>
             <ul class="fc-bookmark-list" id="fc-notes-list">
                 <li class="fc-sb-empty">No notes yet — open any verse and write in the 📝 block.</li>
             </ul>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="export">
-            <summary class="fc-sb-title">Export</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Export</div>
             <div class="fc-sb-tools">
                 <button type="button" id="fc-export-md" class="fc-tool-btn">📥 Download Markdown</button>
                 <button type="button" id="fc-export-json" class="fc-tool-btn">💾 Download JSON backup</button>
             </div>
-        </details>
+        </div>
     </div>
 </aside>    <main class="fc-container">
 <nav class="fc-breadcrumbs">
@@ -175,7 +220,7 @@
         <h1 class="fc-verse-heading">2.5 · The Cause of All Causes</h1>
         <span class="fc-ribbon-meta">
             38 verses
- · <a class="fc-ribbon-link" href="class-prep/">🖨 Class prep</a>        </span>
+        </span>
         <input type="search" class="fc-search" id="fc-search" placeholder="🔍 Search in this chapter" aria-label="Search verses in this chapter">
         <span class="fc-ribbon-current" id="fc-ribbon-current" aria-live="polite"></span>
     </div>
@@ -455,7 +500,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <div class="fc-translation" data-sec="translation">Śrī Nārada Muni asked Brahmājī: O chief amongst the demigods, O firstborn living entity, I beg to offer my respectful obeisances unto you. Please tell me that transcendental knowledge which specifically directs one to the truth of the individual soul and the Supersoul.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -552,18 +596,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">True spiritual knowledge flows through a living disciplic chain. Approach a qualified teacher with humility, honest questions, and willingness to serve — not as a customer paying for a product. Knowledge bought is shallow; knowledge received through sincere service transforms.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where in my life am I trying to &#39;buy&#39; wisdom rather than earn it through service and humility?</li><li>Who in my life embodies a teacher I could approach with the openness Nārada models here?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -795,7 +827,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <div class="fc-translation" data-sec="translation">My dear father, please describe factually the symptoms of this manifest world. What is its background? How is it created? How is it conserved? And under whose control is all this being done?</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -887,18 +918,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Reasonable inquiry asks not just &#39;how&#39; but &#39;who is behind this&#39;. The symmetry of the world points to intelligence, not accident. Genuine seeking looks for the actual cause, not for a clever theory that flatters the seeker.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Do my questions about life look for truth, or for answers that confirm what I already want to believe?</li><li>When I look at nature&#39;s order, do I let it raise the question of a designer, or do I quickly explain it away?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -1085,7 +1104,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <div class="fc-translation" data-sec="translation">My dear father, all this is known to you scientifically because whatever was created in the past, whatever will be created in the future, or whatever is being created at present, as well as everything within the universe, is within your grip, just like a walnut.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1166,18 +1184,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Someone close to the creative process knows what is happening past, present, and future. We can trust those who have direct, lived knowledge — not just theorists. Seek the practitioner, not just the commentator.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>In matters of the soul, am I learning from someone with direct realization or just intellectual familiarity?</li><li>What &#39;walnut in my palm&#39; — what I truly know from experience — am I qualified to share with others?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -1355,7 +1361,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <div class="fc-translation" data-sec="translation">My dear father, what is the source of your knowledge? Under whose protection are you standing? And under whom are you working? What is your real position? Do you alone create all entities with material elements by your personal energy?</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1416,18 +1421,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Even great achievements rest on capacities given to us. Scientists use brains they didn&#39;t make; we discover what was already arranged. Recognizing that nothing in us is fully self-made is the beginning of humility before God.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What gifts have I been mistaking for self-made achievements?</li><li>Who or what is the ultimate source behind the abilities I am most proud of?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -1596,7 +1589,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <div class="fc-translation" data-sec="translation">As the spider very easily creates the network of its cobweb and manifests its power of creation without being defeated by others, so also you yourself, by employment of your self-sufficient energy, create without any other’s help.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1652,18 +1644,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The spider spins her web from her own substance — beautifully self-sufficient in appearance. But every creator works with energy received from a higher source. Apparent self-sufficiency in this world is always borrowed power.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where do I confuse fluent capacity with true self-sufficiency?</li><li>How does it change my work when I see my energy as on loan from a Source?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -1904,7 +1884,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <div class="fc-translation" data-sec="translation">Whatever we can understand by the nomenclature, characteristics and features of a particular thing — superior, inferior or equal, eternal or temporary — is not created from any source other than that of Your Lordship, thou so great.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1985,18 +1964,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Every kind of being — superior, inferior, equal, lasting, fleeting — traces back to one Source. The endless variety of beings doesn&#39;t disprove a single origin; it expresses one. Diversity and unity are not opposites.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Do I see the variety of beings around me as evidence of one Source, or as fragments without connection?</li><li>How would my treatment of others change if I held them all as expressions of one origin?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -2192,7 +2159,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <div class="fc-translation" data-sec="translation">Yet we are moved to wonder about the existence of someone more powerful than you when we think of your great austerities in perfect discipline, although your good self is so powerful in the matter of creation.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2263,18 +2229,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">A teacher should be respected like God, but never accepted as God Himself. When even the most powerful being is seen worshiping a higher authority, the sincere student notices and asks honest questions. Real teachers point past themselves.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Am I tempted to make my teachers (or myself) bigger than they really are?</li><li>Does my own spiritual practice point past me, or is it quietly building me up as the center?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -2470,7 +2424,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <div class="fc-translation" data-sec="translation">My dear father, you know everything, and you are the controller of all. Therefore, may all that I have inquired from you be kindly instructed to me so that I may be able to understand it as your student.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2526,18 +2479,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Sincere inquiry serves not only the inquirer but everyone who comes after. When we ask publicly and humbly, the answers become a gift for future seekers in the same lineage.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What honest question of mine, if asked openly, could benefit others walking a similar path?</li><li>Am I willing to look like a beginner so the next generation has better answers?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -2740,7 +2681,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <div class="fc-translation" data-sec="translation">Lord Brahmā said: My dear boy Nārada, being merciful to all (including me) you have asked all these questions because I have been inspired to see into the prowess of the Almighty Personality of Godhead.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2801,18 +2741,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Devotees come alive when asked about the Lord — that aliveness is itself a sign of pure devotion. Sharing what one has received purifies both the speaker and the listener. Mission begins not as duty but as natural overflow.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What spiritual topic lights me up so much that I want to share it?</li><li>When was the last time I let myself be visibly enlivened by talk of the Divine?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -3044,7 +2972,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <div class="fc-translation" data-sec="translation">Whatever you have spoken about me is not false because unless and until one is aware of the Personality of Godhead, who is the ultimate truth beyond me, one is sure to be illusioned by observing my powerful activities.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3117,18 +3044,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Without knowing the true Supreme, we naturally mistake powerful beings — or powerful humans — for God. The &#39;frog in the well&#39; cannot conceive the ocean. Until we know the actual Source, every assessment of greatness is provisional.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which powerful figure or idea in my life have I quietly elevated to the place of God?</li><li>Where is my &#39;well&#39; — the boundary of what I currently can imagine being possible?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -3333,7 +3248,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <div class="fc-translation" data-sec="translation">I create after the Lord’s creation by His personal effulgence [known as the brahmajyoti], just as when the sun manifests its fire, the moon, the firmament, the influential planets and the twinkling stars also manifest their brightness.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3414,18 +3328,6 @@ tam eva bhāntam anu bhāti sarvaṁ
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Even the highest secondary creator works under the original light of the Supreme — like the moon and stars borrowing the sun&#39;s brightness. Acknowledging this hierarchy is not weakness; it is accuracy. We shine by reflected light.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where in my work am I claiming brightness that is actually reflected light?</li><li>How does seeing myself as a &#39;moon&#39; instead of a &#39;sun&#39; change how I show up?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -3603,7 +3505,6 @@ tam eva bhāntam anu bhāti sarvaṁ
 
     <div class="fc-translation" data-sec="translation">I offer my obeisances and meditate upon Lord Kṛṣṇa [Vāsudeva], the Personality of Godhead, whose invincible potency influences them [the less intelligent class of men] to call me the supreme controller.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3682,18 +3583,6 @@ tam eva bhāntam anu bhāti sarvaṁ
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">A truly responsible person refuses worship that doesn&#39;t belong to them and directs it to its proper object — Kṛṣṇa. The illusory potency tempts followers to inflate their leaders; integrity is to bow lower, not stand taller.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>When others praise me beyond what I deserve, do I redirect it or quietly accept it?</li><li>Whom do I bow to when no one is watching?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -3860,7 +3749,6 @@ tam eva bhāntam anu bhāti sarvaṁ
 
     <div class="fc-translation" data-sec="translation">The illusory energy of the Lord cannot take precedence, being ashamed of her position, but those who are bewildered by her always talk nonsense, being absorbed in thoughts of “It is I” and “It is mine.”</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3926,18 +3814,6 @@ tam eva bhāntam anu bhāti sarvaṁ
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The signature of bewilderment is obsessive &#39;I&#39; and &#39;mine&#39; talk. Those surrendered to the Lord lose this constriction and stop posing as either God or God&#39;s competitor. Watch your speech for the markers of illusion.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>How much of my recent talk has revolved around &#39;I&#39; and &#39;mine&#39;?</li><li>What practice could loosen the grip of &#39;me-and-mine&#39; on my attention today?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -4169,7 +4045,6 @@ tam eva bhāntam anu bhāti sarvaṁ
 
     <div class="fc-translation" data-sec="translation">The five elementary ingredients of creation, the interaction thereof set up by eternal time, and the intuition or nature of the individual living beings are all differentiated parts and parcels of the Personality of Godhead, Vāsudeva, and in truth there is no other value in them.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -4275,18 +4150,6 @@ tam eva bhāntam anu bhāti sarvaṁ
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Elements, time, and the inner nature of beings are all expressions of one Person — Vāsudeva. The world is not a heap of independent forces; it is one Being&#39;s energies in play. Nothing here is finally separate from Him.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Do I experience matter, time, and my own nature as scattered, or as connected to one Person?</li><li>What changes when I treat every element around me as belonging to Vāsudeva?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -4464,7 +4327,6 @@ tam eva bhāntam anu bhāti sarvaṁ
 
     <div class="fc-translation" data-sec="translation">The Vedic literatures are made by and are meant for the Supreme Lord, the demigods are also meant for serving the Lord as parts of His body, the different planets are also meant for the sake of the Lord, and different sacrifices are performed just to please Him.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -4545,18 +4407,6 @@ tam eva bhāntam anu bhāti sarvaṁ
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Scripture, demigods, planets, and sacrifices all exist for the Supreme Lord&#39;s service. Knowledge that does not point toward Him is, by this standard, not real knowledge. Every legitimate worship is part of one orientation.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which &#39;knowledge&#39; in my life points me toward the Lord, and which simply distracts?</li><li>What would it mean to make my work, study, or worship part of one centered orientation?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -4698,7 +4548,6 @@ tam eva bhāntam anu bhāti sarvaṁ
 
     <div class="fc-translation" data-sec="translation">All different types of meditation or mysticism are means for realizing Nārāyaṇa. All austerities are aimed at achieving Nārāyaṇa. Culture of transcendental knowledge is for getting a glimpse of Nārāyaṇa, and ultimately salvation is entering the kingdom of Nārāyaṇa.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -4754,18 +4603,6 @@ tam eva bhāntam anu bhāti sarvaṁ
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Meditation, austerity, learning, and liberation are all aimed — knowingly or not — at Nārāyaṇa. Even impersonal practices ultimately rest on Him. The goal is not just to escape matter, but to enter loving association with the Person.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Am I content with merging or quieting, or do I want personal relationship with the Source?</li><li>If every practice I do points toward Nārāyaṇa, what should I adjust today?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -4952,7 +4789,6 @@ tam eva bhāntam anu bhāti sarvaṁ
 
     <div class="fc-translation" data-sec="translation">Inspired by Him only, I discover what is already created by Him [Nārāyaṇa] under His vision as the all-pervading Supersoul, and I also am created by Him only.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -5047,18 +4883,6 @@ sākṣī cetā kevalo nirguṇaś ca ||</p>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Even Brahmā admits he only rearranges what the Lord already arranged. Discoverers don&#39;t create what they find. Our most original work is actually inspired participation in something pre-existing.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What &#39;discovery&#39; or achievement of mine was actually a gift I was permitted to receive?</li><li>How could I work today as one who is inspired rather than as the originator?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -5236,7 +5060,6 @@ sākṣī cetā kevalo nirguṇaś ca ||</p>
 
     <div class="fc-translation" data-sec="translation">The Supreme Lord is pure, spiritual form, transcendental to all material qualities, yet for the sake of the creation of the material world and its maintenance and annihilation, He accepts through His external energy the material modes of nature called goodness, passion and ignorance.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -5294,18 +5117,6 @@ sākṣī cetā kevalo nirguṇaś ca ||</p>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The Lord uses goodness, passion, and ignorance to run the world without being touched by them — like the sun creating clouds it isn&#39;t dimmed by. We get tangled in the modes because we identify with them; He doesn&#39;t.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which of the three modes is currently running my day, and do I know I am not it?</li><li>How does it help to remember that the One operating the modes is untouched by them?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -5483,7 +5294,6 @@ sākṣī cetā kevalo nirguṇaś ca ||</p>
 
     <div class="fc-translation" data-sec="translation">These three modes of material nature, being further manifested as matter, knowledge and activities, put the eternally transcendental living entity under conditions of cause and effect and make him responsible for such activities.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -5534,18 +5344,6 @@ sākṣī cetā kevalo nirguṇaś ca ||</p>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Wanting to be the lord of matter is exactly what binds us to matter. The modes condition us not because we are weak but because we mistake ourselves for the controller. Letting go of the lording wish is the first untangling.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where am I trying hardest to lord it over circumstances, and what is it costing me?</li><li>What would &#39;not the controller, but a servant&#39; look like in my next decision?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -5741,7 +5539,6 @@ sākṣī cetā kevalo nirguṇaś ca ||</p>
 
     <div class="fc-translation" data-sec="translation">O Brāhmaṇa Nārada, the Superseer, the transcendent Lord, is beyond the perception of the material senses of the living entities because of the above-mentioned three modes of nature. But He is the controller of everyone, including me.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -5819,18 +5616,6 @@ prakāśate yasya ca yena vā guṇaḥ</p>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The Lord is veiled by His own yoga-māyā and so is hidden from ordinary perception. His form is not invented later for our convenience; it is always there, hidden by a curtain only surrender can lift. Senses alone won&#39;t find Him.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What in me wants the Lord to be only impersonal so I don&#39;t have to relate personally?</li><li>What &#39;curtain&#39; in my own life is asking to be lifted by surrender rather than effort?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -6017,7 +5802,6 @@ prakāśate yasya ca yena vā guṇaḥ</p>
 
     <div class="fc-translation" data-sec="translation">The Lord, who is the controller of all energies, thus creates, by His own potency, eternal time, the fate of all living entities, and their particular nature, for which they were created, and He again merges them independently.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -6130,18 +5914,6 @@ prakāśate yasya ca yena vā guṇaḥ</p>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Creation is rhythmic — manifested, dissolved, manifested again — like the rainy season. Our incarnations are not the random; they reflect the desires we held at the last dissolution. What we want shapes what we become.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>If my current desires were to shape my next existence, where would they take me?</li><li>What small desire could I begin to redirect today toward what truly lasts?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -6292,7 +6064,6 @@ prakāśate yasya ca yena vā guṇaḥ</p>
 
     <div class="fc-translation" data-sec="translation">After the incarnation of the first puruṣa [Kāraṇārṇavaśāyī Viṣṇu], the mahat-tattva, or the principles of material creation, take place, and then time is manifested, and in course of time the three qualities appear. Nature means the three qualitative appearances. They transform into activities.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -6353,18 +6124,6 @@ prakāśate yasya ca yena vā guṇaḥ</p>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Time itself is a manifestation of the Lord&#39;s energy, not a neutral backdrop. Through time, nature&#39;s qualities unfold into activities. To respect time is to respect the Lord&#39;s quiet operation behind every change.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>How do I treat time — as my possession, or as the Lord&#39;s medium of work?</li><li>What activity have I been treating as merely mine that is actually time doing its work?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -6551,7 +6310,6 @@ prakāśate yasya ca yena vā guṇaḥ</p>
 
     <div class="fc-translation" data-sec="translation">Material activities are caused by the mahat-tattva’s being agitated. At first there is transformation of the modes of goodness and passion, and later — due to the mode of ignorance — matter, its knowledge, and different activities of material knowledge come into play.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -6592,18 +6350,6 @@ prakāśate yasya ca yena vā guṇaḥ</p>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Material creation depends mostly on the mode of passion. As civilization &#39;advances&#39; in Kali, passion intensifies and ignorance follows. Producing endless &#39;necessities&#39; is itself a symptom — not progress, but increasing entanglement.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where in my life is passion masquerading as progress?</li><li>What &#39;necessity&#39; I am pursuing is actually a deepening of ignorance, not a step toward freedom?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -6858,7 +6604,6 @@ prakāśate yasya ca yena vā guṇaḥ</p>
 
     <div class="fc-translation" data-sec="translation">The self-centered materialistic ego, thus being transformed into three features, becomes known as the modes of goodness, passion and ignorance in three divisions, namely the powers that evolve matter, knowledge of material creations, and the intelligence that guides such materialistic activities. Nārada, you are quite competent to understand this.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -6932,18 +6677,6 @@ prakāśate yasya ca yena vā guṇaḥ</p>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Self-centered ego — identifying with matter — keeps the conditioned soul bound. Even sharp impersonalists, without grasping the Personality of the Lord, stay in this trap. Sharp intellect alone is not the same as clear vision.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Is my spiritual study going somewhere real, or is it polishing the ego I am supposed to be transcending?</li><li>What would soften my self-centered identification with my body and mind today?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -7139,7 +6872,6 @@ prakāśate yasya ca yena vā guṇaḥ</p>
 
     <div class="fc-translation" data-sec="translation">From the darkness of false ego, the first of the five elements, namely the sky, is generated. Its subtle form is the quality of sound, exactly as the seer is in relationship with the seen.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -7201,18 +6933,6 @@ prakāśate yasya ca yena vā guṇaḥ</p>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">From the darkness of false ego comes sky, whose subtle form is sound. The whole material display is the shadow generated when a tiny being wants to play &#39;enjoyer&#39;. The cosmos is what our wanting-to-be-the-enjoyer produces.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>How much of what I see around me is the shadow of my wanting to be the enjoyer?</li><li>What changes if I notice sound itself as the first echo of my ego&#39;s wish?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -7817,7 +7537,6 @@ prakāśate yasya ca yena vā guṇaḥ</p>
 
     <div class="fc-translation" data-sec="translation">Because the sky is transformed, the air is generated with the quality of touch, and by previous succession the air is also full of sound and the basic principles of duration of life: sense perception, mental power and bodily strength. When the air is transformed in course of time and nature’s course, fire is generated, taking shape with the sense of touch and sound. Since fire is also transformed, there is a manifestation of water, full of juice and taste. As previously, it also has form and touch and is also full of sound. And water, being transformed from all variegatedness on earth, appears odorous and, as previously, becomes qualitatively full of juice, touch, sound and form respectively.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -7875,18 +7594,6 @@ prakāśate yasya ca yena vā guṇaḥ</p>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Creation evolves step by step — sky to air to fire to water to earth — each element adding a quality, all rooted ultimately in Mahā-Viṣṇu. The variety around us is not random; it is a careful, ordered unfolding from one cause.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Do I see the sensory world as a chaotic clutter, or as an ordered unfolding from one Source?</li><li>How does it help me to know that even taste, smell, and touch trace back to the Lord?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -8100,7 +7807,6 @@ prakāśate yasya ca yena vā guṇaḥ</p>
 
     <div class="fc-translation" data-sec="translation">From the mode of goodness the mind is generated and becomes manifest, as also the ten demigods controlling the bodily movements. Such demigods are known as the controller of directions, the controller of air, the sun-god, the father of Dakṣa Prajāpati, the Aśvinī-kumāras, the fire-god, the King of heaven, the worshipable deity in heaven, the chief of the Ādityas, and Brahmājī, the Prajāpati. All come into existence.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -8187,18 +7893,6 @@ prakāśate yasya ca yena vā guṇaḥ</p>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">From goodness arise the mind and the demigods who quietly direct our bodies. Factories and &#39;necessities of life&#39; beyond actual need are summit-stage darkness, not progress. Use of the senses for purification, not aggravation, is the human aim.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which of my &#39;needs&#39; are real, and which are manufactured demands of the mode of darkness?</li><li>What is one sense I am currently aggravating that I could begin to purify?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -8479,7 +8173,6 @@ prakāśate yasya ca yena vā guṇaḥ</p>
 
     <div class="fc-translation" data-sec="translation">By further transformation of the mode of passion, the sense organs like the ear, skin, nose, eyes, tongue, mouth, hands, genitals, legs, and the outlet for evacuating, together with intelligence and living energy, are all generated.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -8545,18 +8238,6 @@ prakāśate yasya ca yena vā guṇaḥ</p>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The senses, intelligence, and life-energy by which we hustle through life are products of the mode of passion. Even our striving and surviving are passion at work. Recognize the mode you are operating in before judging the outcomes.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>How much of today&#39;s energy is passion&#39;s struggle, and how much is goodness&#39;s clarity?</li><li>What would shift if I stopped identifying my drive with my self?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -8739,7 +8420,6 @@ prakāśate yasya ca yena vā guṇaḥ</p>
 
     <div class="fc-translation" data-sec="translation">O Nārada, best of the transcendentalists, the forms of the body cannot take place as long as these created parts, namely the elements, senses, mind and modes of nature, are not assembled.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -8811,18 +8491,6 @@ prakāśate yasya ca yena vā guṇaḥ</p>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">A body is an assembly — elements, senses, mind, and modes brought together by higher will. We are seated in this &#39;car&#39; but are not it. Knowing you are not the vehicle is the start of using it well.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where in my day do I forget I am the rider and act as if I am the car?</li><li>What would I do differently if I lived as a soul driving a temporary vehicle?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -9018,7 +8686,6 @@ prakāśate yasya ca yena vā guṇaḥ</p>
 
     <div class="fc-translation" data-sec="translation">Thus when all these became assembled by force of the energy of the Supreme Personality of Godhead, this universe certainly came into being by accepting both the primary and secondary causes of creation.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -9076,18 +8743,6 @@ prakāśate yasya ca yena vā guṇaḥ</p>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The universe arises through the Lord&#39;s energies, not through Him directly transforming into matter. He remains who He is while energies do the work. We can act through our own energies similarly — engaged, but not consumed.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Am I trying to be my work, or to act through my energies while remaining myself?</li><li>How does it free me to know the Lord engages without being consumed?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -9265,7 +8920,6 @@ prakāśate yasya ca yena vā guṇaḥ</p>
 
     <div class="fc-translation" data-sec="translation">Thus all the universes remained thousands of aeons within the water [the Causal Ocean], and the Lord of living beings, entering in each of them, caused them to be fully animated.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -9331,18 +8985,6 @@ prakāśate yasya ca yena vā guṇaḥ</p>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The Lord enters every universe to animate it — like a father with His sons. Material nature seems to be our mother, but the Lord is the actual Father giving life. We are never orphans in this cosmos.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Do I live as if I were orphaned in the universe, or as a child of a present Father?</li><li>What would change if I treated material nature as a setting, and the Lord as parent?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -9547,7 +9189,6 @@ prakāśate yasya ca yena vā guṇaḥ</p>
 
     <div class="fc-translation" data-sec="translation">The Lord [Mahā-Viṣṇu], although lying in the Causal Ocean, came out of it, and dividing Himself as Hiraṇyagarbha, He entered into each universe and assumed the virāṭ-rūpa, with thousands of legs, arms, mouths, heads, etc.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -9618,18 +9259,6 @@ prakāśate yasya ca yena vā guṇaḥ</p>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The same Lord enters every universe and assumes the cosmic form with countless heads, hands, and limbs. The vast variety of the cosmos is one Body. Wonder at the universe and devotion to the Person can be the same act.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>When was the last time I let the sheer vastness of the cosmos move me toward devotion?</li><li>How does my view of &#39;nature&#39; change when I see it as one Body?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -9794,7 +9423,6 @@ prakāśate yasya ca yena vā guṇaḥ</p>
 
     <div class="fc-translation" data-sec="translation">Great philosophers imagine that the complete planetary systems in the universe are displays of the different upper and lower limbs of the universal body of the Lord.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -9840,18 +9468,6 @@ prakāśate yasya ca yena vā guṇaḥ</p>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Philosophers picture the planetary systems as parts of the Lord&#39;s cosmic body. It is partly imagined, but the point is real: nothing in creation is beyond His awareness or outside His control.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Is there a corner of my life I treat as outside His awareness?</li><li>How would my choices change if every action happened inside His body?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -10029,7 +9645,6 @@ prakāśate yasya ca yena vā guṇaḥ</p>
 
     <div class="fc-translation" data-sec="translation">The brāhmaṇas represent His mouth, the kṣatriyas His arms, the vaiśyas His thighs, and the śūdras are born of His legs.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -10110,18 +9725,6 @@ prakāśate yasya ca yena vā guṇaḥ</p>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Society&#39;s four classes — intellectual, administrative, mercantile, laboring — are parts of the Lord&#39;s body, each meant to serve the whole. Hierarchy here is not domination; mouth and feet are equally needed. Function differs; dignity is shared.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Do I respect the part of society I depend on but rarely thank?</li><li>Which &#39;limb&#39; of social life is my work, and am I serving the whole or just myself?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -10308,7 +9911,6 @@ prakāśate yasya ca yena vā guṇaḥ</p>
 
     <div class="fc-translation" data-sec="translation">The lower planetary systems, up to the limit of the earthly stratum, are said to be situated in His legs. The middle planetary systems, beginning from Bhuvarloka, are situated in His navel. And the still higher planetary systems, occupied by the demigods and highly cultured sages and saints, are situated in the chest of the Supreme Lord.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -10354,18 +9956,6 @@ prakāśate yasya ca yena vā guṇaḥ</p>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Lower worlds rest on the legs, middle worlds at the navel, higher worlds on the chest — everything is on Him. Nowhere in this universe is anyone outside relationship with the Lord. Geography is theology.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Do I think of my location and circumstances as outside the Lord, or held within Him?</li><li>What does it mean for me today that I cannot step outside of Him?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -10523,7 +10113,6 @@ prakāśate yasya ca yena vā guṇaḥ</p>
 
     <div class="fc-translation" data-sec="translation">From the forefront of the chest up to the neck of the universal form of the Lord are situated the planetary systems named Janaloka and Tapoloka, whereas Satyaloka, the topmost planetary system, is situated on the head of the form. The spiritual planets, however, are eternal.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -10581,18 +10170,6 @@ prakāśate yasya ca yena vā guṇaḥ</p>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The topmost universal planets are at His head, but the truly eternal spiritual planets exist beyond all this. The destination is not the highest material rung; it is the deathless realm where time and matter do not press.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Am I aiming for the highest material &#39;good&#39;, or for what is actually eternal?</li><li>What current ambition would I revise if I held the eternal as my real horizon?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -10904,7 +10481,6 @@ prakāśate yasya ca yena vā guṇaḥ</p>
 
     <div class="fc-translation" data-sec="translation">My dear son Nārada, know from me that there are seven lower planetary systems out of the total fourteen. The first planetary system, known as Atala, is situated on the waist; the second, Vitala, is situated on the thighs; the third, Sutala, on the knees; the fourth, Talātala, on the shanks; the fifth, Mahātala, on the ankles; the sixth, Rasātala, on the upper portion of the feet; and the seventh, Pātāla, on the soles of the feet. Thus the virāṭ form of the Lord is full of all planetary systems.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -10957,18 +10533,6 @@ prakāśate yasya ca yena vā guṇaḥ</p>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The cosmos has fourteen planetary systems, vast beyond what astronauts can probe. Recognizing the scale humbles our &#39;progress&#39; and reframes our &#39;exploration&#39; as a child wading at the ocean&#39;s edge.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Does my picture of &#39;the world&#39; come from a tiny patch of beach or from this vaster map?</li><li>How would humility before this scale change my sense of what is urgent?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -11155,7 +10719,6 @@ prakāśate yasya ca yena vā guṇaḥ</p>
 
     <div class="fc-translation" data-sec="translation">Others may divide the whole planetary system into three divisions, namely the lower planetary systems on the legs [up to the earth], the middle planetary systems on the navel, and the upper planetary systems [Svarloka] from the chest to the head of the Supreme Personality.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -11209,18 +10772,6 @@ Second Description of the Universal Form: Vibhūtis of the Lord</p>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Some divide the planetary systems in three (lower, middle, upper), others in fourteen. Different schemes; same Lord. Don&#39;t fight the map — use whichever clarifies that everything is on His body.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where do I argue about the map when I should be focusing on the territory?</li><li>Can I let differing descriptions point to the same reality and stop the quarrel?</li></ul>
-
-
-
-
-
-    </section>
 
 
 

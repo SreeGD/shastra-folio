@@ -31,7 +31,7 @@
 <body class="has-sidebar">
 <header class="fc-site-header">
     <button type="button" class="fc-mobile-trigger fc-mobile-trigger-left" data-overlay="left" aria-label="Open settings drawer">⚙</button>
-<a class="fc-brand" href="../../../">FolioCorpus<span class="fc-sub">Caitanya-caritāmṛta</span></a>
+    <a class="fc-brand" href="../../../">FolioCorpus<span class="fc-sub">Bhagavad-gītā</span></a>
     <nav class="fc-site-nav">
         <a href="../../../">Home</a>
         <a href="../../../bg/">Bhagavad-gītā</a>
@@ -46,8 +46,8 @@
     <button class="fc-sb-collapse" type="button" data-sb="left" title="Collapse left sidebar" aria-label="Collapse"></button>
 
     <div class="fc-sb-body">
-        <details class="fc-sb-section" data-sbsec="reading" open>
-            <summary class="fc-sb-title">Reading</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Reading</div>
             <div class="fc-sb-sub">Theme</div>
             <div class="fc-segmented" data-setting="theme">
                 <button type="button" data-val="light">Light</button>
@@ -73,10 +73,10 @@
                 <button type="button" data-val="single">Single</button>
                 <button type="button" data-val="side">Side-by-side</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="display" open>
-            <summary class="fc-sb-title">Display</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Display</div>
             <div class="fc-sb-grid">
                 <label><input type="checkbox" data-section="devanagari" checked> Devanāgarī</label>
                 <label><input type="checkbox" data-section="iast" checked> IAST transliteration</label>
@@ -98,10 +98,33 @@
                 <button type="button" data-action="expand-all">Expand all</button>
                 <button type="button" data-action="collapse-all">Collapse all</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="tools" open>
-            <summary class="fc-sb-title">Tools</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Find your starting point</div>
+            <div class="fc-persona-links">
+                <a class="fc-persona-link" href="../../../daily/">🌅 Daily (one value a week)</a>
+                <a class="fc-persona-link" href="../../../householder/">🏠 Householder (family & work)</a>
+                <a class="fc-persona-link" href="../../../parenting/">👨‍👩‍👧 Parenting (stories for kids)</a>
+                <a class="fc-persona-link" href="../../../themes/">📚 All themes</a>
+                <a class="fc-persona-link" href="../../../values/" style="background:#F0F6F2;border-left-color:#1F4632;">ॐ Vedic Value System ↗</a>
+                <a class="fc-persona-link" href="../../../vidya/" style="background:#FBF6E4;border-left-color:#C8860B;">📚 Vidyā Karaṇa (kids, multi-lang) ↗</a>
+            </div>
+        </div>
+
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Audience</div>
+            <div class="fc-audience-filter">
+                <label><input type="radio" name="fc-audience" value="all" checked> All levels</label>
+                <label><input type="radio" name="fc-audience" value="primary"> Primary (children)</label>
+                <label><input type="radio" name="fc-audience" value="middle"> Middle (teens)</label>
+                <label><input type="radio" name="fc-audience" value="senior"> Senior (adults)</label>
+                <label><input type="radio" name="fc-audience" value="college"> College / scholar</label>
+            </div>
+        </div>
+
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Tools</div>
             <div class="fc-sb-tools">
                 <button type="button" id="fc-presentation-toggle" class="fc-tool-btn"><span>🖥 Presentation</span><kbd class="fc-kbd">F</kbd></button>
                 <button type="button" id="fc-pen-toggle" class="fc-tool-btn"><span>✏️ Pen mode</span><kbd class="fc-kbd">P</kbd></button>
@@ -116,10 +139,26 @@
                 <button type="button" id="fc-clear-highlights" class="fc-tool-btn">🩷 Clear highlights (page)</button>
                 <button type="button" id="fc-notes-modal-open" class="fc-tool-btn">📓 My annotations</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="progress" id="fc-progress-section" open>
-            <summary class="fc-sb-title">Progress</summary>
+        <div class="fc-sb-section" id="fc-tts-controls" hidden>
+            <div class="fc-sb-title">
+                Read-aloud
+                <label class="fc-tts-master">
+                    <input type="checkbox" id="fc-tts-enabled" checked>
+                    <span class="fc-tts-master-label">On</span>
+                </label>
+            </div>
+            <div class="fc-tts-inner">
+                <div class="fc-sb-sub">Voice</div>
+                <select id="fc-tts-voice" class="fc-tts-select" aria-label="TTS voice"></select>
+                <div class="fc-sb-sub">Rate <span class="fc-tts-rate-val">1.0×</span></div>
+                <input type="range" id="fc-tts-rate" min="0.5" max="2" step="0.1" value="1" class="fc-tts-rate" aria-label="Reading rate">
+            </div>
+        </div>
+
+        <div class="fc-sb-section" id="fc-progress-section">
+            <div class="fc-sb-title">Progress</div>
             <div class="fc-progress-row">
                 <span class="fc-progress-num" id="fc-progress-num">0</span>
                 <span class="fc-progress-divider">/</span>
@@ -134,29 +173,29 @@
                 <span class="fc-progress-spacer"></span>
                 <button type="button" class="fc-progress-reset" id="fc-progress-reset" title="Reset progress">↺</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="bookmarks" open>
-            <summary class="fc-sb-title">Bookmarks <span class="fc-sb-count" id="fc-bookmarks-count">0</span></summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Bookmarks <span class="fc-sb-count" id="fc-bookmarks-count">0</span></div>
             <ul class="fc-bookmark-list" id="fc-bookmarks-list">
                 <li class="fc-sb-empty">No bookmarks yet — click ☆ on any verse.</li>
             </ul>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="notes" open>
-            <summary class="fc-sb-title">Notes <span class="fc-sb-count" id="fc-notes-count">0</span></summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Notes <span class="fc-sb-count" id="fc-notes-count">0</span></div>
             <ul class="fc-bookmark-list" id="fc-notes-list">
                 <li class="fc-sb-empty">No notes yet — open any verse and write in the 📝 block.</li>
             </ul>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="export">
-            <summary class="fc-sb-title">Export</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Export</div>
             <div class="fc-sb-tools">
                 <button type="button" id="fc-export-md" class="fc-tool-btn">📥 Download Markdown</button>
                 <button type="button" id="fc-export-json" class="fc-tool-btn">💾 Download JSON backup</button>
             </div>
-        </details>
+        </div>
     </div>
 </aside>    <main class="fc-container">
 <nav class="fc-breadcrumbs">
@@ -254,7 +293,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-15-1" data-note-label="BG 15.1" data-note-chapter="15" data-note-vlabel="1">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 15.1…" rows="4"></textarea>
@@ -293,7 +331,6 @@
 
 
     <div class="fc-translation" data-sec="translation">All glories to Lord Caitanya Mahāprabhu! All glories to Lord Nityānanda Prabhu! All glories to Advaita Ācārya! And all glories to all the devotees of Lord Caitanya!</div>
-
 
 
 
@@ -356,7 +393,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-15-3" data-note-label="BG 15.3" data-note-chapter="15" data-note-vlabel="3">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 15.3…" rows="4"></textarea>
@@ -407,7 +443,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-15-4" data-note-label="BG 15.4" data-note-chapter="15" data-note-vlabel="4">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 15.4…" rows="4"></textarea>
@@ -446,7 +481,6 @@
 
 
     <div class="fc-translation" data-sec="translation">When the Lord was studying grammar at the place of Gaṅgādāsa Paṇḍita, He would immediately learn grammatical rules and definitions by heart simply by hearing them once.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -505,7 +539,6 @@
 
     <div class="fc-translation" data-sec="translation">He soon became so expert in commenting on the Pañjī-ṭīkā that He could win victory over all the other students, although He was a neophyte.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -562,7 +595,6 @@
 
 
     <div class="fc-translation" data-sec="translation">In his book Caitanya-maṅgala [which later became Caitanya-bhāgavata], Śrīla Vṛndāvana dāsa Ṭhākura has very elaborately described the Lord’s pastimes of study.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -632,7 +664,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-15-8" data-note-label="BG 15.8" data-note-chapter="15" data-note-vlabel="8">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 15.8…" rows="4"></textarea>
@@ -671,7 +702,6 @@
 
 
     <div class="fc-translation" data-sec="translation">His mother replied, “My dear son, I will give You whatever You ask.” Then the Lord said, “My dear mother, please do not eat grains on the Ekādaśī day.”</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -729,7 +759,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Mother Śacī said, “You have spoken very nicely. I shall not eat grains on Ekādaśī.” From that day, she began to observe fasting on Ekādaśī.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -799,7 +828,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-15-11" data-note-label="BG 15.11" data-note-chapter="15" data-note-vlabel="11">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 15.11…" rows="4"></textarea>
@@ -838,7 +866,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Hearing of this, Viśvarūpa immediately left home and went away to accept sannyāsa and travel from one place of pilgrimage to another.</div>
-
 
 
 
@@ -901,7 +928,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-15-13" data-note-label="BG 15.13" data-note-chapter="15" data-note-vlabel="13">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 15.13…" rows="4"></textarea>
@@ -940,7 +966,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“My dear mother and father,” the Lord said, “it is very good that Viśvarūpa has accepted the sannyāsa order, for thus He has delivered both His father’s family and His mother’s family.”</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -1010,7 +1035,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-15-15" data-note-label="BG 15.15" data-note-chapter="15" data-note-vlabel="15">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 15.15…" rows="4"></textarea>
@@ -1049,7 +1073,6 @@
 
 
     <div class="fc-translation" data-sec="translation">One day Śrī Caitanya Mahāprabhu ate betel nuts offered to the Deity, but they acted as an intoxicant, and He fell down on the ground unconscious.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -1119,7 +1142,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-15-17" data-note-label="BG 15.17" data-note-chapter="15" data-note-vlabel="17">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 15.17…" rows="4"></textarea>
@@ -1158,7 +1180,6 @@
 
 
     <div class="fc-translation" data-sec="translation">The Lord said, “Viśvarūpa took Me away from here, and He requested Me to accept the sannyāsa order.</div>
-
 
 
 
@@ -1221,7 +1242,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-15-19" data-note-label="BG 15.19" data-note-chapter="15" data-note-vlabel="19">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 15.19…" rows="4"></textarea>
@@ -1260,7 +1280,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“ ‘Later I shall become a householder and thus serve My parents, for this action will very much satisfy Lord Nārāyaṇa and His wife, the goddess of fortune.’</div>
-
 
 
 
@@ -1323,7 +1342,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-15-21" data-note-label="BG 15.21" data-note-chapter="15" data-note-vlabel="21">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 15.21…" rows="4"></textarea>
@@ -1362,7 +1380,6 @@
 
 
     <div class="fc-translation" data-sec="translation">In this way Lord Caitanya Mahāprabhu performed various pastimes, but why He did so I cannot understand.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -1432,7 +1449,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-15-23" data-note-label="BG 15.23" data-note-chapter="15" data-note-vlabel="23">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 15.23…" rows="4"></textarea>
@@ -1471,7 +1487,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Friends and relatives came there to pacify Lord Caitanya and His mother. Then Lord Caitanya, even though He was the Supreme Personality of Godhead, executed the rituals for His dead father according to the Vedic system.</div>
-
 
 
 
@@ -1534,7 +1549,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-15-25" data-note-label="BG 15.25" data-note-chapter="15" data-note-vlabel="25">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 15.25…" rows="4"></textarea>
@@ -1573,7 +1587,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“Without a wife,” Lord Caitanya considered, “there is no meaning to householder life.” Thus the Lord decided to marry.</div>
-
 
 
 
@@ -1636,7 +1649,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-15-27" data-note-label="BG 15.27" data-note-chapter="15" data-note-vlabel="27">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 15.27…" rows="4"></textarea>
@@ -1687,7 +1699,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-15-28" data-note-label="BG 15.28" data-note-chapter="15" data-note-vlabel="28">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 15.28…" rows="4"></textarea>
@@ -1726,7 +1737,6 @@
 
 
     <div class="fc-translation" data-sec="translation">When the Lord and Lakṣmīdevī met, their relationship awakened, having already been settled, and coincidentally the marriage-maker Vanamālī came to see Śacīmātā.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -1796,7 +1806,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-15-30" data-note-label="BG 15.30" data-note-chapter="15" data-note-vlabel="30">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 15.30…" rows="4"></textarea>
@@ -1835,7 +1844,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Vṛndāvana dāsa Ṭhākura has elaborately described all these pastimes of the Lord’s early age. What I have given is but a condensed presentation of the same pastimes.</div>
-
 
 
 
@@ -1898,7 +1906,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-15-32" data-note-label="BG 15.32" data-note-chapter="15" data-note-vlabel="32">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 15.32…" rows="4"></textarea>
@@ -1949,7 +1956,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-15-33" data-note-label="BG 15.33" data-note-chapter="15" data-note-vlabel="33">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 15.33…" rows="4"></textarea>
@@ -1988,7 +1994,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Praying at the lotus feet of Śrī Rūpa and Śrī Raghunātha, always desiring their mercy, I, Kṛṣṇadāsa, narrate Śrī Caitanya-caritāmṛta, following in their footsteps.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>

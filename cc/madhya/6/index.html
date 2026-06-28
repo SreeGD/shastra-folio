@@ -31,7 +31,7 @@
 <body class="has-sidebar">
 <header class="fc-site-header">
     <button type="button" class="fc-mobile-trigger fc-mobile-trigger-left" data-overlay="left" aria-label="Open settings drawer">⚙</button>
-<a class="fc-brand" href="../../../">FolioCorpus<span class="fc-sub">Caitanya-caritāmṛta</span></a>
+    <a class="fc-brand" href="../../../">FolioCorpus<span class="fc-sub">Bhagavad-gītā</span></a>
     <nav class="fc-site-nav">
         <a href="../../../">Home</a>
         <a href="../../../bg/">Bhagavad-gītā</a>
@@ -46,8 +46,8 @@
     <button class="fc-sb-collapse" type="button" data-sb="left" title="Collapse left sidebar" aria-label="Collapse"></button>
 
     <div class="fc-sb-body">
-        <details class="fc-sb-section" data-sbsec="reading" open>
-            <summary class="fc-sb-title">Reading</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Reading</div>
             <div class="fc-sb-sub">Theme</div>
             <div class="fc-segmented" data-setting="theme">
                 <button type="button" data-val="light">Light</button>
@@ -73,10 +73,10 @@
                 <button type="button" data-val="single">Single</button>
                 <button type="button" data-val="side">Side-by-side</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="display" open>
-            <summary class="fc-sb-title">Display</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Display</div>
             <div class="fc-sb-grid">
                 <label><input type="checkbox" data-section="devanagari" checked> Devanāgarī</label>
                 <label><input type="checkbox" data-section="iast" checked> IAST transliteration</label>
@@ -98,10 +98,33 @@
                 <button type="button" data-action="expand-all">Expand all</button>
                 <button type="button" data-action="collapse-all">Collapse all</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="tools" open>
-            <summary class="fc-sb-title">Tools</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Find your starting point</div>
+            <div class="fc-persona-links">
+                <a class="fc-persona-link" href="../../../daily/">🌅 Daily (one value a week)</a>
+                <a class="fc-persona-link" href="../../../householder/">🏠 Householder (family & work)</a>
+                <a class="fc-persona-link" href="../../../parenting/">👨‍👩‍👧 Parenting (stories for kids)</a>
+                <a class="fc-persona-link" href="../../../themes/">📚 All themes</a>
+                <a class="fc-persona-link" href="../../../values/" style="background:#F0F6F2;border-left-color:#1F4632;">ॐ Vedic Value System ↗</a>
+                <a class="fc-persona-link" href="../../../vidya/" style="background:#FBF6E4;border-left-color:#C8860B;">📚 Vidyā Karaṇa (kids, multi-lang) ↗</a>
+            </div>
+        </div>
+
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Audience</div>
+            <div class="fc-audience-filter">
+                <label><input type="radio" name="fc-audience" value="all" checked> All levels</label>
+                <label><input type="radio" name="fc-audience" value="primary"> Primary (children)</label>
+                <label><input type="radio" name="fc-audience" value="middle"> Middle (teens)</label>
+                <label><input type="radio" name="fc-audience" value="senior"> Senior (adults)</label>
+                <label><input type="radio" name="fc-audience" value="college"> College / scholar</label>
+            </div>
+        </div>
+
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Tools</div>
             <div class="fc-sb-tools">
                 <button type="button" id="fc-presentation-toggle" class="fc-tool-btn"><span>🖥 Presentation</span><kbd class="fc-kbd">F</kbd></button>
                 <button type="button" id="fc-pen-toggle" class="fc-tool-btn"><span>✏️ Pen mode</span><kbd class="fc-kbd">P</kbd></button>
@@ -116,10 +139,26 @@
                 <button type="button" id="fc-clear-highlights" class="fc-tool-btn">🩷 Clear highlights (page)</button>
                 <button type="button" id="fc-notes-modal-open" class="fc-tool-btn">📓 My annotations</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="progress" id="fc-progress-section" open>
-            <summary class="fc-sb-title">Progress</summary>
+        <div class="fc-sb-section" id="fc-tts-controls" hidden>
+            <div class="fc-sb-title">
+                Read-aloud
+                <label class="fc-tts-master">
+                    <input type="checkbox" id="fc-tts-enabled" checked>
+                    <span class="fc-tts-master-label">On</span>
+                </label>
+            </div>
+            <div class="fc-tts-inner">
+                <div class="fc-sb-sub">Voice</div>
+                <select id="fc-tts-voice" class="fc-tts-select" aria-label="TTS voice"></select>
+                <div class="fc-sb-sub">Rate <span class="fc-tts-rate-val">1.0×</span></div>
+                <input type="range" id="fc-tts-rate" min="0.5" max="2" step="0.1" value="1" class="fc-tts-rate" aria-label="Reading rate">
+            </div>
+        </div>
+
+        <div class="fc-sb-section" id="fc-progress-section">
+            <div class="fc-sb-title">Progress</div>
             <div class="fc-progress-row">
                 <span class="fc-progress-num" id="fc-progress-num">0</span>
                 <span class="fc-progress-divider">/</span>
@@ -134,29 +173,29 @@
                 <span class="fc-progress-spacer"></span>
                 <button type="button" class="fc-progress-reset" id="fc-progress-reset" title="Reset progress">↺</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="bookmarks" open>
-            <summary class="fc-sb-title">Bookmarks <span class="fc-sb-count" id="fc-bookmarks-count">0</span></summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Bookmarks <span class="fc-sb-count" id="fc-bookmarks-count">0</span></div>
             <ul class="fc-bookmark-list" id="fc-bookmarks-list">
                 <li class="fc-sb-empty">No bookmarks yet — click ☆ on any verse.</li>
             </ul>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="notes" open>
-            <summary class="fc-sb-title">Notes <span class="fc-sb-count" id="fc-notes-count">0</span></summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Notes <span class="fc-sb-count" id="fc-notes-count">0</span></div>
             <ul class="fc-bookmark-list" id="fc-notes-list">
                 <li class="fc-sb-empty">No notes yet — open any verse and write in the 📝 block.</li>
             </ul>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="export">
-            <summary class="fc-sb-title">Export</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Export</div>
             <div class="fc-sb-tools">
                 <button type="button" id="fc-export-md" class="fc-tool-btn">📥 Download Markdown</button>
                 <button type="button" id="fc-export-json" class="fc-tool-btn">💾 Download JSON backup</button>
             </div>
-        </details>
+        </div>
     </div>
 </aside>    <main class="fc-container">
 <nav class="fc-breadcrumbs">
@@ -502,7 +541,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-6-1" data-note-label="BG 6.1" data-note-chapter="6" data-note-vlabel="1">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 6.1…" rows="4"></textarea>
@@ -541,7 +579,6 @@
 
 
     <div class="fc-translation" data-sec="translation">All glories to Lord Caitanya Mahāprabhu! All glories to Lord Nityānanda Prabhu! All glories to Advaita Ācārya! And all glories to all the devotees of Lord Caitanya!</div>
-
 
 
 
@@ -604,7 +641,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-6-3" data-note-label="BG 6.3" data-note-chapter="6" data-note-vlabel="3">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 6.3…" rows="4"></textarea>
@@ -643,7 +679,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Lord Śrī Caitanya Mahāprabhu went swiftly to embrace Lord Jagannātha, but when He entered the temple, He was so overwhelmed with love of Godhead that He fainted to the floor.</div>
-
 
 
 
@@ -706,7 +741,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-6-5" data-note-label="BG 6.5" data-note-chapter="6" data-note-vlabel="5">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 6.5…" rows="4"></textarea>
@@ -745,7 +779,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Sārvabhauma Bhaṭṭācārya was very surprised to see the personal beauty of Lord Caitanya Mahāprabhu, as well as the transcendental transformations wrought on His body due to love of Godhead.</div>
-
 
 
 
@@ -808,7 +841,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-6-7" data-note-label="BG 6.7" data-note-chapter="6" data-note-vlabel="7">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 6.7…" rows="4"></textarea>
@@ -847,7 +879,6 @@
 
 
     <div class="fc-translation" data-sec="translation">While Lord Caitanya Mahāprabhu was unconscious, Sārvabhauma Bhaṭṭācārya, with the help of the watchman and some disciples, carried Him to his home and laid Him down in a very sanctified room.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -917,7 +948,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-6-9" data-note-label="BG 6.9" data-note-chapter="6" data-note-vlabel="9">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 6.9…" rows="4"></textarea>
@@ -956,7 +986,6 @@
 
 
     <div class="fc-translation" data-sec="translation">The Bhaṭṭācārya then took a fine cotton swab and put it before the Lord’s nostrils. When he saw the cotton move very slightly, he became hopeful.</div>
-
 
 
 
@@ -1019,7 +1048,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-6-11" data-note-label="BG 6.11" data-note-chapter="6" data-note-vlabel="11">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 6.11…" rows="4"></textarea>
@@ -1058,7 +1086,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Upon seeing the sign of sūddīpta-sāttvika, Sārvabhauma Bhaṭṭācārya could immediately understand the transcendental ecstatic transformation in the body of Lord Caitanya Mahāprabhu. Such a sign takes place only in the bodies of eternally liberated devotees.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -1116,7 +1143,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Sārvabhauma Bhaṭṭācārya considered, “The uncommon ecstatic symptoms of adhirūḍha-bhāva are appearing in the body of Śrī Caitanya Mahāprabhu. This is very wonderful! How are they possible in the body of a human being?”</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -1186,7 +1212,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-6-14" data-note-label="BG 6.14" data-note-chapter="6" data-note-vlabel="14">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 6.14…" rows="4"></textarea>
@@ -1225,7 +1250,6 @@
 
 
     <div class="fc-translation" data-sec="translation">There the devotees heard the people talking about a mendicant who had come to Jagannātha Purī and seen the Deity of Jagannātha.</div>
-
 
 
 
@@ -1288,7 +1312,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-6-16" data-note-label="BG 6.16" data-note-chapter="6" data-note-vlabel="16">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 6.16…" rows="4"></textarea>
@@ -1339,7 +1362,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-6-17" data-note-label="BG 6.17" data-note-chapter="6" data-note-vlabel="17">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 6.17…" rows="4"></textarea>
@@ -1378,7 +1400,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Gopīnātha Ācārya was a resident of Nadia, the son-in-law of Viśārada and a devotee of Caitanya Mahāprabhu. He knew the true identity of His Lordship.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -1448,7 +1469,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-6-19" data-note-label="BG 6.19" data-note-chapter="6" data-note-vlabel="19">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 6.19…" rows="4"></textarea>
@@ -1487,7 +1507,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Mukunda Datta offered obeisances unto Gopīnātha Ācārya upon meeting him. Then the Ācārya embraced Mukunda Datta and inquired about news of Śrī Caitanya Mahāprabhu.</div>
-
 
 
 
@@ -1550,7 +1569,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-6-21" data-note-label="BG 6.21" data-note-chapter="6" data-note-vlabel="21">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 6.21…" rows="4"></textarea>
@@ -1589,7 +1607,6 @@
 
 
     <div class="fc-translation" data-sec="translation">As soon as Gopīnātha Ācārya saw Nityānanda Prabhu, he offered his obeisances unto Him. In this way, meeting all the devotees, he asked about news of Lord Caitanya Mahāprabhu again and again.</div>
-
 
 
 
@@ -1652,7 +1669,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-6-23" data-note-label="BG 6.23" data-note-chapter="6" data-note-vlabel="23">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 6.23…" rows="4"></textarea>
@@ -1691,7 +1707,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“Lord Caitanya Mahāprabhu left our company and walked ahead to see Lord Jagannātha. We have just arrived and are now looking for Him.</div>
-
 
 
 
@@ -1754,7 +1769,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-6-25" data-note-label="BG 6.25" data-note-chapter="6" data-note-vlabel="25">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 6.25…" rows="4"></textarea>
@@ -1793,7 +1807,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“Upon seeing Lord Jagannātha, Caitanya Mahāprabhu became ecstatic and fell unconscious, and Sārvabhauma Bhaṭṭācārya has taken Him to his home in this condition.</div>
-
 
 
 
@@ -1856,7 +1869,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-6-27" data-note-label="BG 6.27" data-note-chapter="6" data-note-vlabel="27">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 6.27…" rows="4"></textarea>
@@ -1895,7 +1907,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“First let us all go to the house of Sārvabhauma Bhaṭṭācārya and see Caitanya Mahāprabhu. Later we shall come to see Lord Jagannātha.”</div>
-
 
 
 
@@ -1958,7 +1969,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-6-29" data-note-label="BG 6.29" data-note-chapter="6" data-note-vlabel="29">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 6.29…" rows="4"></textarea>
@@ -1997,7 +2007,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Arriving at the home of Sārvabhauma Bhaṭṭācārya, everyone saw the Lord lying unconscious. Seeing Him in this condition, Gopīnātha Ācārya became very unhappy, but at the same time he was happy just to see the Lord.</div>
-
 
 
 
@@ -2060,7 +2069,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-6-31" data-note-label="BG 6.31" data-note-chapter="6" data-note-vlabel="31">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 6.31…" rows="4"></textarea>
@@ -2099,7 +2107,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Sārvabhauma met with all the devotees and offered them a proper welcome. They were all pleased to see Lord Caitanya Mahāprabhu.</div>
-
 
 
 
@@ -2162,7 +2169,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-6-33" data-note-label="BG 6.33" data-note-chapter="6" data-note-vlabel="33">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 6.33…" rows="4"></textarea>
@@ -2201,7 +2207,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Everyone was then very pleased to see the Deity of Lord Jagannātha. Lord Nityānanda in particular was overwhelmed with ecstasy.</div>
-
 
 
 
@@ -2264,7 +2269,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-6-35" data-note-label="BG 6.35" data-note-chapter="6" data-note-vlabel="35">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 6.35…" rows="4"></textarea>
@@ -2303,7 +2307,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Everyone was pleased to receive this garland worn by Lord Jagannātha. Afterwards they all returned to the place where Lord Śrī Caitanya Mahāprabhu was staying.</div>
-
 
 
 
@@ -2366,7 +2369,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-6-37" data-note-label="BG 6.37" data-note-chapter="6" data-note-vlabel="37">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 6.37…" rows="4"></textarea>
@@ -2405,7 +2407,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Caitanya Mahāprabhu got up and very loudly chanted, “Hari! Hari!” Sārvabhauma Bhaṭṭācārya was very pleased to see the Lord regain consciousness, and he took the dust of the Lord’s lotus feet.</div>
-
 
 
 
@@ -2468,7 +2469,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-6-39" data-note-label="BG 6.39" data-note-chapter="6" data-note-vlabel="39">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 6.39…" rows="4"></textarea>
@@ -2507,7 +2507,6 @@
 
 
     <div class="fc-translation" data-sec="translation">After bathing in the sea, Śrī Caitanya Mahāprabhu and His devotees returned very soon. The Lord then washed His feet and sat down on a carpet to take lunch.</div>
-
 
 
 
@@ -2570,7 +2569,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-6-41" data-note-label="BG 6.41" data-note-chapter="6" data-note-vlabel="41">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 6.41…" rows="4"></textarea>
@@ -2621,7 +2619,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-6-42" data-note-label="BG 6.42" data-note-chapter="6" data-note-vlabel="42">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 6.42…" rows="4"></textarea>
@@ -2660,7 +2657,6 @@
 
 
     <div class="fc-translation" data-sec="translation">While Sārvabhauma Bhaṭṭācārya personally distributed the prasādam, Lord Caitanya Mahāprabhu requested him, “Please give Me only boiled vegetables.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -2730,7 +2726,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-6-44" data-note-label="BG 6.44" data-note-chapter="6" data-note-vlabel="44">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 6.44…" rows="4"></textarea>
@@ -2769,7 +2764,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“Today, all of you please try to taste the lunch just as Lord Jagannātha accepted it.”</div>
-
 
 
 
@@ -2832,7 +2826,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-6-46" data-note-label="BG 6.46" data-note-chapter="6" data-note-vlabel="46">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 6.46…" rows="4"></textarea>
@@ -2883,7 +2876,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-6-47" data-note-label="BG 6.47" data-note-chapter="6" data-note-vlabel="47">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 6.47…" rows="4"></textarea>
@@ -2922,7 +2914,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Offering his obeisances to Caitanya Mahāprabhu, Sārvabhauma Bhaṭṭācārya said, “Namo nārāyaṇāya” [“I offer my obeisances to Nārāyaṇa”].</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -2992,7 +2983,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-6-49" data-note-label="BG 6.49" data-note-chapter="6" data-note-vlabel="49">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 6.49…" rows="4"></textarea>
@@ -3031,7 +3021,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Sārvabhauma then said to Gopīnātha Ācārya, “I want to know Caitanya Mahāprabhu’s previous situation.”</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -3101,7 +3090,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-6-51" data-note-label="BG 6.51" data-note-chapter="6" data-note-vlabel="51">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 6.51…" rows="4"></textarea>
@@ -3140,7 +3128,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“Lord Caitanya Mahāprabhu is the son of that Jagannātha Miśra, and His former name was Viśvambhara Miśra. He also happens to be the grandson of Nīlāmbara Cakravartī.”</div>
-
 
 
 
@@ -3203,7 +3190,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-6-53" data-note-label="BG 6.53" data-note-chapter="6" data-note-vlabel="53">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 6.53…" rows="4"></textarea>
@@ -3242,7 +3228,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“Jagannātha Miśra Purandara was respected by my father. Thus because of their relationship with my father, I respect both Jagannātha Miśra and Nīlāmbara Cakravartī.”</div>
-
 
 
 
@@ -3305,7 +3290,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-6-55" data-note-label="BG 6.55" data-note-chapter="6" data-note-vlabel="55">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 6.55…" rows="4"></textarea>
@@ -3344,7 +3328,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“You are naturally respectable. Besides, You are a sannyāsī; thus I wish to become Your personal servant.”</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -3414,7 +3397,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-6-57" data-note-label="BG 6.57" data-note-chapter="6" data-note-vlabel="57">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 6.57…" rows="4"></textarea>
@@ -3453,7 +3435,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“Because you are a teacher of Vedānta philosophy, you are the master of all the people in the world and their well-wisher as well. You are also the benefactor of all kinds of sannyāsīs.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -3523,7 +3504,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-6-59" data-note-label="BG 6.59" data-note-chapter="6" data-note-vlabel="59">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 6.59…" rows="4"></textarea>
@@ -3562,7 +3542,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“I have come here only to associate with you, and I am now taking shelter of you. Will you kindly maintain Me in all respects?</div>
-
 
 
 
@@ -3625,7 +3604,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-6-61" data-note-label="BG 6.61" data-note-chapter="6" data-note-vlabel="61">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 6.61…" rows="4"></textarea>
@@ -3664,7 +3642,6 @@
 
 
     <div class="fc-translation" data-sec="translation">The Bhaṭṭācārya replied, “Do not go alone to see the Deity at the Jagannātha temple. It is better that You go with me or my men.”</div>
-
 
 
 
@@ -3727,7 +3704,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-6-63" data-note-label="BG 6.63" data-note-chapter="6" data-note-vlabel="63">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 6.63…" rows="4"></textarea>
@@ -3766,7 +3742,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Sārvabhauma Bhaṭṭācārya then told Gopīnātha Ācārya, “Take Gosvāmījī and show Him Lord Jagannātha.</div>
-
 
 
 
@@ -3829,7 +3804,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-6-65" data-note-label="BG 6.65" data-note-chapter="6" data-note-vlabel="65">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 6.65…" rows="4"></textarea>
@@ -3868,7 +3842,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Thus Gopīnātha Ācārya took Lord Caitanya Mahāprabhu to His residential quarters and showed Him where to find water, tubs and waterpots. Indeed, he arranged everything.</div>
-
 
 
 
@@ -3931,7 +3904,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-6-67" data-note-label="BG 6.67" data-note-chapter="6" data-note-vlabel="67">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 6.67…" rows="4"></textarea>
@@ -3982,7 +3954,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-6-68" data-note-label="BG 6.68" data-note-chapter="6" data-note-vlabel="68">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 6.68…" rows="4"></textarea>
@@ -4021,7 +3992,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“The sannyāsī is very meek and humble by nature, and His person is very beautiful to see. Consequently my affection for Him increases.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -4091,7 +4061,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-6-70" data-note-label="BG 6.70" data-note-chapter="6" data-note-vlabel="70">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 6.70…" rows="4"></textarea>
@@ -4130,7 +4099,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Gopīnātha Ācārya replied, “The Lord’s name is Śrī Kṛṣṇa Caitanya, and His sannyāsa preceptor is the greatly fortunate Keśava Bhāratī.”</div>
-
 
 
 
@@ -4193,7 +4161,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-6-72" data-note-label="BG 6.72" data-note-chapter="6" data-note-vlabel="72">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 6.72…" rows="4"></textarea>
@@ -4232,7 +4199,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Gopīnātha Ācārya replied, “Śrī Kṛṣṇa Caitanya Mahāprabhu does not rely on any external formality. There is no need for Him to accept the sannyāsa order from a superior sampradāya.”</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -4302,7 +4268,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-6-74" data-note-label="BG 6.74" data-note-chapter="6" data-note-vlabel="74">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 6.74…" rows="4"></textarea>
@@ -4341,7 +4306,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“I shall continually recite Vedānta philosophy before Caitanya Mahāprabhu so that He may remain fixed in His renunciation and thus enter upon the path of monism.”</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -4399,7 +4363,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Sārvabhauma Bhaṭṭācārya then suggested, “If Śrī Caitanya Mahāprabhu would like, I could bring Him into a first-class sampradāya by offering Him saffron cloth and performing the reformatory process again.”</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -4469,7 +4432,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-6-77" data-note-label="BG 6.77" data-note-chapter="6" data-note-vlabel="77">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 6.77…" rows="4"></textarea>
@@ -4508,7 +4470,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“My dear Bhaṭṭācārya, you do not know the greatness of Lord Caitanya Mahāprabhu. All the symptoms of the Supreme Personality of Godhead are found in Him to the highest degree.”</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -4578,7 +4539,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-6-79" data-note-label="BG 6.79" data-note-chapter="6" data-note-vlabel="79">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 6.79…" rows="4"></textarea>
@@ -4617,7 +4577,6 @@
 
 
     <div class="fc-translation" data-sec="translation">The disciples of Sārvabhauma Bhaṭṭācārya retaliated, “By what evidence do you conclude that Śrī Caitanya Mahāprabhu is the Supreme Lord?”</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -4676,7 +4635,6 @@
 
     <div class="fc-translation" data-sec="translation">The disciples of the Bhaṭṭācārya said, “We derive knowledge of the Absolute Truth by logical hypothesis.”</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -4733,7 +4691,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Gopīnātha Ācārya continued, “One can understand the Supreme Personality of Godhead only by His mercy, not by guesswork or hypothesis.”</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -4803,7 +4760,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-6-83" data-note-label="BG 6.83" data-note-chapter="6" data-note-vlabel="83">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 6.83…" rows="4"></textarea>
@@ -4842,7 +4798,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“ ‘My Lord, if one is favored by even a slight trace of the mercy of Your lotus feet, he can understand the greatness of Your personality. But those who speculate in order to understand the Supreme Personality of Godhead are unable to know You, even though they continue to study the Vedas for many years.’ ”</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -4912,7 +4867,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-6-85-86" data-note-label="BG 6.85-86" data-note-chapter="6" data-note-vlabel="85-86">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 6.85-86…" rows="4"></textarea>
@@ -4951,7 +4905,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“It is not your fault; it is the verdict of the scriptures. You cannot understand the Supreme Personality of Godhead simply by scholarship.”</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -5021,7 +4974,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-6-88" data-note-label="BG 6.88" data-note-chapter="6" data-note-vlabel="88">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 6.88…" rows="4"></textarea>
@@ -5060,7 +5012,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Gopīnātha Ācārya replied, “Knowledge of the summum bonum, the Absolute Truth, is evidence of the mercy of the Supreme Lord.”</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -5130,7 +5081,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-6-90" data-note-label="BG 6.90" data-note-chapter="6" data-note-vlabel="90">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 6.90…" rows="4"></textarea>
@@ -5169,7 +5119,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“Despite directly perceiving the symptoms of the Supreme Lord in the body of Śrī Caitanya Mahāprabhu, you cannot understand Him. This is commonly called illusion.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -5227,7 +5176,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“A person influenced by the external energy is called bahirmukha jana, a mundane person, because despite his perception, he cannot understand the real substance.” Hearing Gopīnātha Ācārya say this, Sārvabhauma Bhaṭṭācārya smiled and began to speak as follows.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -5297,7 +5245,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-6-93" data-note-label="BG 6.93" data-note-chapter="6" data-note-vlabel="93">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 6.93…" rows="4"></textarea>
@@ -5348,7 +5295,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-6-94" data-note-label="BG 6.94" data-note-chapter="6" data-note-vlabel="94">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 6.94…" rows="4"></textarea>
@@ -5387,7 +5333,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“Another name for Lord Viṣṇu is Triyuga because there is no incarnation of Lord Viṣṇu in Kali-yuga. Indeed, this is the verdict of the revealed scriptures.”</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -5457,7 +5402,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-6-96" data-note-label="BG 6.96" data-note-chapter="6" data-note-vlabel="96">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 6.96…" rows="4"></textarea>
@@ -5496,7 +5440,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“Śrīmad-Bhāgavatam and the Mahābhārata are the two most important Vedic scriptures, but you have paid no attention to their statements.</div>
-
 
 
 
@@ -5559,7 +5502,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-6-98" data-note-label="BG 6.98" data-note-chapter="6" data-note-vlabel="98">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 6.98…" rows="4"></textarea>
@@ -5598,7 +5540,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“In this Age of Kali there is no līlā-avatāra of the Supreme Personality of Godhead; therefore He is known as Triyuga. That is one of His holy names.”</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -5668,7 +5609,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-6-100" data-note-label="BG 6.100" data-note-chapter="6" data-note-vlabel="100">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 6.100…" rows="4"></textarea>
@@ -5707,7 +5647,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“ ‘In the past, your son has had bodies of three different colors, according to the age. These colors were white, red and yellow. In this age [Dvāpara-yuga] He has accepted a blackish body.’</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -5766,7 +5705,6 @@
 
     <div class="fc-translation" data-sec="translation">“ ‘In the Age of Kali, as well as in Dvāpara-yuga, the people offer prayers to the Supreme Personality of Godhead by various mantras and observe the regulative principles of the supplementary Vedic literatures. Now please hear of this from me.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -5824,7 +5762,6 @@
 
     <div class="fc-translation" data-sec="translation">“ ‘In this Age of Kali, those who are intelligent perform the congregational chanting of the Hare Kṛṣṇa mahā-mantra, worshiping the Supreme Personality of Godhead, who appears in this age always describing the glories of Kṛṣṇa. That incarnation is yellowish in hue and is always associated with His plenary expansions [such as Śrī Nityānanda Prabhu] and personal expansions [such as Gadādhara], as well as His devotees and associates [such as Svarūpa Dāmodara].’</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -5881,7 +5818,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“ ‘The Lord [in the incarnation of Gaurasundara] has a golden complexion. Indeed, His entire body, which is very nicely constituted, is like molten gold. Sandalwood pulp is smeared all over His body. He will take the fourth order of spiritual life [sannyāsa] and will be very much self-controlled. He will be distinguished from Māyāvādī sannyāsīs in that He will be fixed in devotional service and will spread the saṅkīrtana movement.’ ”</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -5951,7 +5887,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-6-105" data-note-label="BG 6.105" data-note-chapter="6" data-note-vlabel="105">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 6.105…" rows="4"></textarea>
@@ -5990,7 +5925,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“When the Lord will be pleased with you, you will also understand these conclusions and will quote from the śāstras.</div>
-
 
 
 
@@ -6053,7 +5987,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-6-107" data-note-label="BG 6.107" data-note-chapter="6" data-note-vlabel="107">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 6.107…" rows="4"></textarea>
@@ -6092,7 +6025,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“ ‘I offer my respectful obeisances unto the Supreme Personality of Godhead, who is full of unlimited qualities and whose different potencies bring about agreement and disagreement between disputants. Thus the illusory energy again and again covers the self-realization of both disputants.’</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -6150,7 +6082,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“ ‘In almost all cases, whatever learned brāhmaṇas speak becomes accepted; nothing is impossible for one who takes shelter of My illusory energy and speaks under her influence.’ ”</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -6220,7 +6151,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-6-110" data-note-label="BG 6.110" data-note-chapter="6" data-note-vlabel="110">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 6.110…" rows="4"></textarea>
@@ -6259,7 +6189,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“Take jagannātha-prasādam and first give it to Caitanya Mahāprabhu and His associates. After that, come back here and teach me well.”</div>
-
 
 
 
@@ -6322,7 +6251,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-6-112" data-note-label="BG 6.112" data-note-chapter="6" data-note-vlabel="112">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 6.112…" rows="4"></textarea>
@@ -6361,7 +6289,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Śrīla Mukunda Datta felt very satisfied to hear the conclusive statements of Gopīnātha Ācārya, but he became very unhappy and angry to hear the statements put forward by Sārvabhauma Bhaṭṭācārya.</div>
-
 
 
 
@@ -6424,7 +6351,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-6-114" data-note-label="BG 6.114" data-note-chapter="6" data-note-vlabel="114">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 6.114…" rows="4"></textarea>
@@ -6463,7 +6389,6 @@
 
 
     <div class="fc-translation" data-sec="translation">The Bhaṭṭācārya’s statements were discussed before Śrī Caitanya Mahāprabhu. Gopīnātha Ācārya and Mukunda Datta disapproved of the Bhaṭṭācārya’s statements because they caused mental pain.</div>
-
 
 
 
@@ -6526,7 +6451,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-6-116" data-note-label="BG 6.116" data-note-chapter="6" data-note-vlabel="116">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 6.116…" rows="4"></textarea>
@@ -6565,7 +6489,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“Out of paternal affection for Me, he wants to protect Me and see that I follow the regulative principles of a sannyāsī. What fault is there in this?”</div>
-
 
 
 
@@ -6628,7 +6551,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-6-118" data-note-label="BG 6.118" data-note-chapter="6" data-note-vlabel="118">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 6.118…" rows="4"></textarea>
@@ -6679,7 +6601,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-6-119" data-note-label="BG 6.119" data-note-chapter="6" data-note-vlabel="119">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 6.119…" rows="4"></textarea>
@@ -6718,7 +6639,6 @@
 
 
     <div class="fc-translation" data-sec="translation">He then began to instruct Lord Caitanya Mahāprabhu on Vedānta philosophy, and out of affection and devotion, he spoke to the Lord as follows.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -6788,7 +6708,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-6-121" data-note-label="BG 6.121" data-note-chapter="6" data-note-vlabel="121">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 6.121…" rows="4"></textarea>
@@ -6827,7 +6746,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Lord Caitanya replied, “You are very merciful to Me, and therefore I think it is My duty to obey your order.”</div>
-
 
 
 
@@ -6890,7 +6808,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-6-123" data-note-label="BG 6.123" data-note-chapter="6" data-note-vlabel="123">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 6.123…" rows="4"></textarea>
@@ -6929,7 +6846,6 @@
 
 
     <div class="fc-translation" data-sec="translation">On the eighth day, Sārvabhauma Bhaṭṭācārya said to Caitanya Mahāprabhu, “You have been listening to Vedānta philosophy from me continually for seven days.</div>
-
 
 
 
@@ -6992,7 +6908,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-6-125" data-note-label="BG 6.125" data-note-chapter="6" data-note-vlabel="125">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 6.125…" rows="4"></textarea>
@@ -7043,7 +6958,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-6-126" data-note-label="BG 6.126" data-note-chapter="6" data-note-vlabel="126">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 6.126…" rows="4"></textarea>
@@ -7082,7 +6996,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“Only for the sake of executing the duties of the renounced order of sannyāsa do I listen. Unfortunately, I cannot in the least understand the meaning you are presenting.”</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -7152,7 +7065,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-6-128" data-note-label="BG 6.128" data-note-chapter="6" data-note-vlabel="128">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 6.128…" rows="4"></textarea>
@@ -7203,7 +7115,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-6-129" data-note-label="BG 6.129" data-note-chapter="6" data-note-vlabel="129">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 6.129…" rows="4"></textarea>
@@ -7242,7 +7153,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Śrī Caitanya Mahāprabhu then revealed His mind, saying, “I can understand the meaning of each sūtra very clearly, but your explanations have simply agitated My mind.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -7301,7 +7211,6 @@
 
     <div class="fc-translation" data-sec="translation">“The meaning of the aphorisms in the Vedānta-sūtra contain clear purports in themselves, but other purports you presented simply covered the meaning of the sūtras like a cloud.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -7359,7 +7268,6 @@
 
     <div class="fc-translation" data-sec="translation">“You do not explain the direct meaning of the Brahma-sūtras. Indeed, it appears that your business is to cover their real meaning.”</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -7416,7 +7324,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Caitanya Mahāprabhu continued, “The Vedānta-sūtra is the summary of all the Upaniṣads; therefore whatever direct meaning is there in the Upaniṣads is also recorded in the Vedānta-sūtra, or Vyāsa-sūtra.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -7486,7 +7393,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-6-134" data-note-label="BG 6.134" data-note-chapter="6" data-note-vlabel="134">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 6.134…" rows="4"></textarea>
@@ -7525,7 +7431,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“Although there is other evidence, the evidence given in the Vedic version must be taken as foremost. Vedic versions understood directly are first-class evidence.”</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -7584,7 +7489,6 @@
 
     <div class="fc-translation" data-sec="translation">Caitanya Mahāprabhu continued, “Conchshells and cow dung are nothing but the bones and the stool of some living entities, but according to the Vedic version they are both considered very pure.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -7641,7 +7545,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“The Vedic statements are self-evident. Whatever is stated there must be accepted. If we interpret according to our own imagination, the authority of the Vedas is immediately lost.”</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -7711,7 +7614,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-6-138" data-note-label="BG 6.138" data-note-chapter="6" data-note-vlabel="138">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 6.138…" rows="4"></textarea>
@@ -7750,7 +7652,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“All the Vedas and literature that strictly follows the Vedic principles explain that the Supreme Brahman is the Absolute Truth, the greatest of all, and a feature of the Supreme Lord.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -7809,7 +7710,6 @@
 
     <div class="fc-translation" data-sec="translation">“Actually, the Supreme Absolute Truth is a person, the Supreme Personality of Godhead, full with all opulences. You are trying to explain Him as impersonal and formless.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -7866,7 +7766,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“Wherever there is an impersonal description in the Vedas, the Vedas mean to establish that everything belonging to the Supreme Personality of Godhead is transcendental and free of mundane characteristics.”</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -7925,7 +7824,6 @@
 
     <div class="fc-translation" data-sec="translation">Śrī Caitanya Mahāprabhu continued, “ ‘Whatever Vedic mantras describe the Absolute Truth impersonally only prove in the end that the Absolute Truth is a person. The Supreme Lord is understood in two features — impersonal and personal. If one considers the Supreme Personality of Godhead in both features, he can actually understand the Absolute Truth. He knows that the personal understanding is stronger because we see that everything is full of variety. No one can see anything that is not full of variety.’</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -7982,7 +7880,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“Everything in the cosmic manifestation emanates from the Absolute Truth, remains in the Absolute Truth, and after annihilation again enters the Absolute Truth.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -8041,7 +7938,6 @@
 
     <div class="fc-translation" data-sec="translation">“The personal features of the Supreme Personality of Godhead are categorized in three cases — namely ablative, instrumental and locative.”</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -8099,7 +7995,6 @@
 
     <div class="fc-translation" data-sec="translation">Śrī Caitanya Mahāprabhu continued, “When the Supreme Personality of Godhead wished to become many, He glanced over the material energy. Before the creation there were no mundane eyes or mind; therefore the transcendental nature of the Absolute Truth’s mind and eyes is confirmed.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -8156,7 +8051,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“The word ‘Brahman’ indicates the complete Supreme Personality of Godhead, who is Śrī Kṛṣṇa. That is the verdict of all Vedic literature.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -8226,7 +8120,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-6-148" data-note-label="BG 6.148" data-note-chapter="6" data-note-vlabel="148">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 6.148…" rows="4"></textarea>
@@ -8265,7 +8158,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“ ‘How greatly fortunate are Nanda Mahārāja, the cowherd men and all the inhabitants of Vrajabhūmi! There is no limit to their fortune, because the Absolute Truth, the source of transcendental bliss, the eternal Supreme Brahman, has become their friend.’</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -8335,7 +8227,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-6-150" data-note-label="BG 6.150" data-note-chapter="6" data-note-vlabel="150">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 6.150…" rows="4"></textarea>
@@ -8374,7 +8265,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“All these mantras confirm that the Absolute Truth is personal, but the Māyāvādīs, throwing away the direct meaning, interpret the Absolute Truth as impersonal.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -8433,7 +8323,6 @@
 
     <div class="fc-translation" data-sec="translation">“Are you describing as formless that Supreme Personality of Godhead whose transcendental form is complete with six transcendental opulences?</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -8491,7 +8380,6 @@
 
     <div class="fc-translation" data-sec="translation">“The Supreme Personality of Godhead has three primary potencies. Are you trying to prove that He has no potencies?</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -8548,7 +8436,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“ ‘The internal potency of the Supreme Lord, Viṣṇu, is spiritual, as verified by the śāstras. There is another spiritual potency, known as kṣetra-jña, or the living entity. The third potency, which is known as nescience, makes the living entity godless and fills him with fruitive activity.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -8618,7 +8505,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-6-155" data-note-label="BG 6.155" data-note-chapter="6" data-note-vlabel="155">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 6.155…" rows="4"></textarea>
@@ -8657,7 +8543,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“ ‘This living entity, covered by the influence of nescience, exists in different forms in the material condition. O King, he is thus proportionately freed from the influence of material energy, to a greater or lesser degree.’</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -8727,7 +8612,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-6-157" data-note-label="BG 6.157" data-note-chapter="6" data-note-vlabel="157">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 6.157…" rows="4"></textarea>
@@ -8766,7 +8650,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“The Supreme Personality of Godhead in His original form is full of eternity, knowledge and bliss. The spiritual potency in these three portions [sat, cit and ānanda] assumes three different forms.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -8825,7 +8708,6 @@
 
     <div class="fc-translation" data-sec="translation">“The three portions of the spiritual potency are called hlādinī [the bliss portion], sandhinī [the eternity portion] and samvit [the knowledge portion]. We accept knowledge of these as full knowledge of the Supreme Personality of Godhead.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -8882,7 +8764,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“The spiritual potency of the Supreme Personality of Godhead also appears in three phases — internal, marginal and external. These are all engaged in His devotional service in love.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -8941,7 +8822,6 @@
 
     <div class="fc-translation" data-sec="translation">“In His spiritual potency, the Supreme Lord enjoys six kinds of opulences. You do not accept this spiritual potency, and this is due to your great impudence.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -8999,7 +8879,6 @@
 
     <div class="fc-translation" data-sec="translation">“The Lord is the master of the potencies, and the living entity is the servant of them. That is the difference between the Lord and the living entity. However, you declare that the Lord and the living entities are one and the same.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -9056,7 +8935,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“In the Bhagavad-gītā the living entity is established as the marginal potency of the Supreme Personality of Godhead. Yet you say that the living entity is completely different from the Lord.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -9126,7 +9004,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-6-164" data-note-label="BG 6.164" data-note-chapter="6" data-note-vlabel="164">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 6.164…" rows="4"></textarea>
@@ -9165,7 +9042,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“ ‘Besides these inferior energies, which are material, there is another energy, a spiritual energy, and this is the living being, O mighty-armed one. The entire material world is sustained by the living entities.’</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -9235,7 +9111,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-6-166" data-note-label="BG 6.166" data-note-chapter="6" data-note-vlabel="166">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 6.166…" rows="4"></textarea>
@@ -9274,7 +9149,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“One who does not accept the transcendental form of the Lord is certainly an agnostic. Such a person should be neither seen nor touched. Indeed, he is subject to be punished by Yamarāja.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -9333,7 +9207,6 @@
 
     <div class="fc-translation" data-sec="translation">“The Buddhists do not recognize the authority of the Vedas; therefore they are considered agnostics. However, those who have taken shelter of the Vedic scriptures yet preach agnosticism in accordance with the Māyāvāda philosophy are certainly more dangerous than the Buddhists.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -9390,7 +9263,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“Śrīla Vyāsadeva presented the Vedānta philosophy for the deliverance of conditioned souls, but if one hears the commentary of Śaṅkarācārya, everything is spoiled.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -9449,7 +9321,6 @@
 
     <div class="fc-translation" data-sec="translation">“The Vedānta-sūtra aims at establishing that the cosmic manifestation has come into being by the transformation of the inconceivable potency of the Supreme Personality of Godhead.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -9506,7 +9377,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“The touchstone, after touching iron, produces volumes of gold without being changed. Similarly, the Supreme Personality of Godhead manifests Himself as the cosmic manifestation by His inconceivable potency, yet He remains unchanged in His eternal, transcendental form.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -9565,7 +9435,6 @@
 
     <div class="fc-translation" data-sec="translation">“Śaṅkarācārya states that the theory of transformation presented in the Vedānta-sūtra implies that the Absolute Truth itself is transformed. In this way the Māyāvādī philosophers denigrate Śrīla Vyāsadeva by accusing him of error. They thus find fault in the Vedānta-sūtra and misinterpret it to try to establish the theory of illusion.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -9622,7 +9491,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“The theory of illusion can be applied only when the living entity identifies himself with the body. As far as the cosmic manifestation is concerned, it cannot be called false, although it is certainly temporary.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -9681,7 +9549,6 @@
 
     <div class="fc-translation" data-sec="translation">“The transcendental vibration oṁkāra is the sound form of the Supreme Personality of Godhead. All Vedic knowledge and this cosmic manifestation are produced from this sound representation of the Supreme Lord.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -9738,7 +9605,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“The subsidiary vibration tat tvam asi [“you are the same”] is meant for the understanding of the living entity, but the principal vibration is oṁkāra. Not caring for oṁkāra, Śaṅkarācārya has stressed the vibration tat tvam asi.”</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -9808,7 +9674,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-6-176" data-note-label="BG 6.176" data-note-chapter="6" data-note-vlabel="176">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 6.176…" rows="4"></textarea>
@@ -9847,7 +9712,6 @@
 
 
     <div class="fc-translation" data-sec="translation">The Bhaṭṭācārya presented various types of false arguments with pseudo logic and tried to defeat his opponent in many ways. However, Śrī Caitanya Mahāprabhu refuted all these arguments and established His own conviction.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -9906,7 +9770,6 @@
 
     <div class="fc-translation" data-sec="translation">Śrī Caitanya Mahāprabhu continued, “The Supreme Personality of Godhead is the central point of all relationships, acting in devotional service to Him is one’s real occupation, and the attainment of love of Godhead is the ultimate goal of life. These three subject matters are described in the Vedic literature.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -9963,7 +9826,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“If one tries to explain the Vedic literature in a different way, he is indulging in imagination. Any interpretation of the self-evident Vedic version is simply imaginary.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -10033,7 +9895,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-6-180" data-note-label="BG 6.180" data-note-chapter="6" data-note-vlabel="180">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 6.180…" rows="4"></textarea>
@@ -10072,7 +9933,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“[Addressing Lord Śiva, the Supreme Personality of Godhead said:] ‘Please make the general populace averse to Me by imagining your own interpretation of the Vedas. Also, cover Me in such a way that people will take more interest in advancing material civilization just to propagate a population bereft of spiritual knowledge.’</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -10130,7 +9990,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“[Lord Śiva informed goddess Durgā, the superintendent of the material world:] ‘In the Age of Kali I take the form of a brāhmaṇa and explain the Vedas through false scriptures in an atheistic way, similar to Buddhist philosophy.’ ”</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -10200,7 +10059,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-6-183" data-note-label="BG 6.183" data-note-chapter="6" data-note-vlabel="183">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 6.183…" rows="4"></textarea>
@@ -10239,7 +10097,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Lord Śrī Caitanya Mahāprabhu then told him, “Do not be astonished. Actually, devotional service unto the Supreme Personality of Godhead is the highest perfection of human activity.</div>
-
 
 
 
@@ -10302,7 +10159,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-6-185" data-note-label="BG 6.185" data-note-chapter="6" data-note-vlabel="185">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 6.185…" rows="4"></textarea>
@@ -10341,7 +10197,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“ ‘Those who are self-satisfied and unattracted by external material desires are also attracted to the loving service of Śrī Kṛṣṇa, whose qualities are transcendental and whose activities are wonderful. Hari, the Personality of Godhead, is called Kṛṣṇa because He has such transcendentally attractive features.’ ”</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -10411,7 +10266,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-6-187" data-note-label="BG 6.187" data-note-chapter="6" data-note-vlabel="187">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 6.187…" rows="4"></textarea>
@@ -10450,7 +10304,6 @@
 
 
     <div class="fc-translation" data-sec="translation">The Lord replied, “First let Me hear your explanation. After that, I shall try to explain what little I know.”</div>
-
 
 
 
@@ -10513,7 +10366,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-6-189" data-note-label="BG 6.189" data-note-chapter="6" data-note-vlabel="189">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 6.189…" rows="4"></textarea>
@@ -10552,7 +10404,6 @@
 
 
     <div class="fc-translation" data-sec="translation">The Bhaṭṭācārya explained the ātmārāma verse in nine different ways on the basis of scripture. After hearing his explanation, Śrī Caitanya Mahāprabhu, smiling a little, began to speak.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -10622,7 +10473,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-6-191" data-note-label="BG 6.191" data-note-chapter="6" data-note-vlabel="191">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 6.191…" rows="4"></textarea>
@@ -10661,7 +10511,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“My dear Bhaṭṭācārya, you have certainly explained this verse by the prowess of your vast learning, but you should know that, besides this scholarly explanation, there is another purport to this verse.”</div>
-
 
 
 
@@ -10724,7 +10573,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-6-193" data-note-label="BG 6.193" data-note-chapter="6" data-note-vlabel="193">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 6.193…" rows="4"></textarea>
@@ -10763,7 +10611,6 @@
 
 
     <div class="fc-translation" data-sec="translation">There are eleven words in the ātmārāma verse, and Śrī Caitanya Mahāprabhu explained each word, one after the other.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -10833,7 +10680,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-6-195" data-note-label="BG 6.195" data-note-chapter="6" data-note-vlabel="195">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 6.195…" rows="4"></textarea>
@@ -10884,7 +10730,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-6-196" data-note-label="BG 6.196" data-note-chapter="6" data-note-vlabel="196">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 6.196…" rows="4"></textarea>
@@ -10923,7 +10768,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“These three items attract the mind of a perfect student engaged in spiritual activities and overcome all other processes of spiritual activity.”</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -10981,7 +10825,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Śrī Caitanya Mahāprabhu explained the meaning of the verse by giving evidence concerning Śukadeva Gosvāmī and the four ṛṣis Sanaka, Sanat-kumāra, Sanātana and Sanandana. Thus the Lord gave various meanings and explanations.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -11051,7 +10894,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-6-199" data-note-label="BG 6.199" data-note-chapter="6" data-note-vlabel="199">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 6.199…" rows="4"></textarea>
@@ -11090,7 +10932,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“Caitanya Mahāprabhu is certainly Lord Kṛṣṇa Himself. Because I could not understand Him and was very proud of my own learning, I have committed many offenses.”</div>
-
 
 
 
@@ -11153,7 +10994,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-6-201" data-note-label="BG 6.201" data-note-chapter="6" data-note-vlabel="201">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 6.201…" rows="4"></textarea>
@@ -11192,7 +11032,6 @@
 
 
     <div class="fc-translation" data-sec="translation">To show him mercy, Śrī Caitanya Mahāprabhu allowed him to see His Viṣṇu form. Thus He immediately assumed four hands.</div>
-
 
 
 
@@ -11255,7 +11094,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-6-203" data-note-label="BG 6.203" data-note-chapter="6" data-note-vlabel="203">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 6.203…" rows="4"></textarea>
@@ -11294,7 +11132,6 @@
 
 
     <div class="fc-translation" data-sec="translation">When Sārvabhauma Bhaṭṭācārya saw the form of Lord Kṛṣṇa manifested in Caitanya Mahāprabhu, he immediately fell down flat to offer Him obeisances. Then he stood up and with folded hands began to offer prayers.</div>
-
 
 
 
@@ -11357,7 +11194,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-6-205" data-note-label="BG 6.205" data-note-chapter="6" data-note-vlabel="205">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 6.205…" rows="4"></textarea>
@@ -11396,7 +11232,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Sārvabhauma Bhaṭṭācārya composed one hundred verses in a very short time. Indeed, not even Bṛhaspati, the priest of the heavenly planets, could compose verses as quickly.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -11466,7 +11301,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-6-207" data-note-label="BG 6.207" data-note-chapter="6" data-note-vlabel="207">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 6.207…" rows="4"></textarea>
@@ -11505,7 +11339,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Out of ecstatic love of God, the Bhaṭṭācārya shed tears, and his body was stunned. He exhibited an ecstatic mood, and he perspired, shook and trembled. He sometimes danced, sometimes chanted, sometimes cried and sometimes fell down to touch the lotus feet of the Lord.</div>
-
 
 
 
@@ -11568,7 +11401,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-6-209" data-note-label="BG 6.209" data-note-chapter="6" data-note-vlabel="209">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 6.209…" rows="4"></textarea>
@@ -11607,7 +11439,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Gopīnātha Ācārya told Lord Caitanya Mahāprabhu, “Sir, You have brought all this upon Sārvabhauma Bhaṭṭācārya.”</div>
-
 
 
 
@@ -11670,7 +11501,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-6-211" data-note-label="BG 6.211" data-note-chapter="6" data-note-vlabel="211">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 6.211…" rows="4"></textarea>
@@ -11709,7 +11539,6 @@
 
 
     <div class="fc-translation" data-sec="translation">After this, Śrī Caitanya Mahāprabhu pacified the Bhaṭṭācārya, and when he was quieted, he offered many prayers to the Lord.</div>
-
 
 
 
@@ -11772,7 +11601,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-6-213" data-note-label="BG 6.213" data-note-chapter="6" data-note-vlabel="213">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 6.213…" rows="4"></textarea>
@@ -11811,7 +11639,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“I had become dull-headed due to reading too many books on logic. Consequently I had become like an iron bar. Nonetheless, You have melted me, and therefore Your influence is very great.”</div>
-
 
 
 
@@ -11874,7 +11701,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-6-215" data-note-label="BG 6.215" data-note-chapter="6" data-note-vlabel="215">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 6.215…" rows="4"></textarea>
@@ -11913,7 +11739,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Early the following morning, Śrī Caitanya Mahāprabhu went to see Lord Jagannātha in the temple, and He saw the Lord rise from His bed.</div>
-
 
 
 
@@ -11976,7 +11801,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-6-217" data-note-label="BG 6.217" data-note-chapter="6" data-note-vlabel="217">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 6.217…" rows="4"></textarea>
@@ -12015,7 +11839,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Carefully tying the prasādam and garlands in a cloth, Caitanya Mahāprabhu hastened to the house of Sārvabhauma Bhaṭṭācārya.</div>
-
 
 
 
@@ -12078,7 +11901,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-6-219" data-note-label="BG 6.219" data-note-chapter="6" data-note-vlabel="219">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 6.219…" rows="4"></textarea>
@@ -12117,7 +11939,6 @@
 
 
     <div class="fc-translation" data-sec="translation">As Sārvabhauma Bhaṭṭācārya arose from bed, he distinctly chanted, “Kṛṣṇa, Kṛṣṇa.” Lord Caitanya was very pleased to hear him chant the holy name of Kṛṣṇa.</div>
-
 
 
 
@@ -12180,7 +12001,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-6-221" data-note-label="BG 6.221" data-note-chapter="6" data-note-vlabel="221">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 6.221…" rows="4"></textarea>
@@ -12219,7 +12039,6 @@
 
 
     <div class="fc-translation" data-sec="translation">The Bhaṭṭācārya offered a carpet for the Lord to sit upon, and both of them sat there. Then Śrī Caitanya Mahāprabhu opened the prasādam and placed it in the hands of the Bhaṭṭācārya.</div>
-
 
 
 
@@ -12282,7 +12101,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-6-223" data-note-label="BG 6.223" data-note-chapter="6" data-note-vlabel="223">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 6.223…" rows="4"></textarea>
@@ -12321,7 +12139,6 @@
 
 
     <div class="fc-translation" data-sec="translation">By the mercy of Śrī Caitanya Mahāprabhu, all the dullness in the mind of Sārvabhauma Bhaṭṭācārya was eradicated. After reciting the following two verses, he ate the prasādam offered to him.</div>
-
 
 
 
@@ -12384,7 +12201,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-6-225" data-note-label="BG 6.225" data-note-chapter="6" data-note-vlabel="225">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 6.225…" rows="4"></textarea>
@@ -12423,7 +12239,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“ ‘The prasādam of Lord Kṛṣṇa is to be eaten by gentlemen as soon as it is received; there should be no hesitation. There are no regulative principles concerning time and place. This is the order of the Supreme Personality of Godhead.’ ”</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -12493,7 +12308,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-6-227" data-note-label="BG 6.227" data-note-chapter="6" data-note-vlabel="227">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 6.227…" rows="4"></textarea>
@@ -12532,7 +12346,6 @@
 
 
     <div class="fc-translation" data-sec="translation">The Lord and the servant embraced each other and began to dance. Simply by touching each other, they became ecstatic.</div>
-
 
 
 
@@ -12595,7 +12408,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-6-229" data-note-label="BG 6.229" data-note-chapter="6" data-note-vlabel="229">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 6.229…" rows="4"></textarea>
@@ -12634,7 +12446,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Śrī Caitanya Mahāprabhu said, “Today I have conquered the three worlds very easily. Today I have ascended to the spiritual world.”</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -12704,7 +12515,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-6-231" data-note-label="BG 6.231" data-note-chapter="6" data-note-vlabel="231">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 6.231…" rows="4"></textarea>
@@ -12743,7 +12553,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“Indeed, today you have undoubtedly taken shelter of the lotus feet of Kṛṣṇa, and Kṛṣṇa, without reservation, has become very merciful toward you.</div>
-
 
 
 
@@ -12806,7 +12615,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-6-233" data-note-label="BG 6.233" data-note-chapter="6" data-note-vlabel="233">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 6.233…" rows="4"></textarea>
@@ -12857,7 +12665,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-6-234" data-note-label="BG 6.234" data-note-chapter="6" data-note-vlabel="234">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 6.234…" rows="4"></textarea>
@@ -12896,7 +12703,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“ ‘When a person takes shelter of the lotus feet of the Supreme Personality of Godhead without reservation, the unlimited, merciful Lord bestows His causeless mercy upon him. Thus he can pass over the insurmountable ocean of nescience. Those whose intelligence is fixed in the bodily conception, who think, “I am this body,” are fit food for dogs and jackals. The Supreme Lord never bestows His mercy upon such people.’ ”</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -12966,7 +12772,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-6-236" data-note-label="BG 6.236" data-note-chapter="6" data-note-vlabel="236">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 6.236…" rows="4"></textarea>
@@ -13005,7 +12810,6 @@
 
 
     <div class="fc-translation" data-sec="translation">From that day on, Sārvabhauma Bhaṭṭācārya did not know anything but the lotus feet of Lord Caitanya Mahāprabhu, and from that day he could explain the revealed scriptures only in accordance with the process of devotional service.</div>
-
 
 
 
@@ -13068,7 +12872,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-6-238" data-note-label="BG 6.238" data-note-chapter="6" data-note-vlabel="238">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 6.238…" rows="4"></textarea>
@@ -13107,7 +12910,6 @@
 
 
     <div class="fc-translation" data-sec="translation">The next day, the Bhaṭṭācārya went to visit the temple of Lord Jagannātha, but before he reached the temple, he went to see Caitanya Mahāprabhu.</div>
-
 
 
 
@@ -13170,7 +12972,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-6-240" data-note-label="BG 6.240" data-note-chapter="6" data-note-vlabel="240">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 6.240…" rows="4"></textarea>
@@ -13209,7 +13010,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Then the Bhaṭṭācārya asked Caitanya Mahāprabhu, “Which item is most important in the execution of devotional service?” The Lord replied that the most important item was the chanting of the holy name of the Lord.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -13267,7 +13067,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“ ‘In this age of quarrel and hypocrisy, the only means of deliverance is the chanting of the holy names of the Lord. There is no other way. There is no other way. There is no other way.’ ”</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -13337,7 +13136,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-6-243" data-note-label="BG 6.243" data-note-chapter="6" data-note-vlabel="243">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 6.243…" rows="4"></textarea>
@@ -13376,7 +13174,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Gopīnātha Ācārya reminded Sārvabhauma Bhaṭṭācārya, “My dear Bhaṭṭācārya, what I foretold to you has now taken place.”</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -13446,7 +13243,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-6-245" data-note-label="BG 6.245" data-note-chapter="6" data-note-vlabel="245">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 6.245…" rows="4"></textarea>
@@ -13485,7 +13281,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“You are a first-class devotee, whereas I am in the darkness of logical arguments. Because of your relationship with the Lord, the Lord has bestowed His benediction upon me.”</div>
-
 
 
 
@@ -13548,7 +13343,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-6-247" data-note-label="BG 6.247" data-note-chapter="6" data-note-vlabel="247">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 6.247…" rows="4"></textarea>
@@ -13587,7 +13381,6 @@
 
 
     <div class="fc-translation" data-sec="translation">After visiting the temple of Lord Jagannātha, Sārvabhauma Bhaṭṭācārya returned home with Jagadānanda and Dāmodara.</div>
-
 
 
 
@@ -13650,7 +13443,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-6-249" data-note-label="BG 6.249" data-note-chapter="6" data-note-vlabel="249">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 6.249…" rows="4"></textarea>
@@ -13689,7 +13481,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Sārvabhauma Bhaṭṭācārya then composed two verses on the leaf of a palm tree. Giving the palm leaf to Jagadānanda Prabhu, the Bhaṭṭācārya requested him to deliver it to Śrī Caitanya Mahāprabhu.</div>
-
 
 
 
@@ -13752,7 +13543,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-6-251" data-note-label="BG 6.251" data-note-chapter="6" data-note-vlabel="251">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 6.251…" rows="4"></textarea>
@@ -13791,7 +13581,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Mukunda Datta then copied the two verses on the wall outside the room. After this, Jagadānanda took the palm leaf from Mukunda Datta and delivered it to Lord Caitanya Mahāprabhu.</div>
-
 
 
 
@@ -13854,7 +13643,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-6-253" data-note-label="BG 6.253" data-note-chapter="6" data-note-vlabel="253">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 6.253…" rows="4"></textarea>
@@ -13893,7 +13681,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“Let me take shelter of the Supreme Personality of Godhead, Śrī Kṛṣṇa, who has descended in the form of Lord Caitanya Mahāprabhu to teach us real knowledge, His devotional service and detachment from whatever does not foster Kṛṣṇa consciousness. He has descended because He is an ocean of transcendental mercy. Let me surrender unto His lotus feet.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -13951,7 +13738,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“Let my consciousness, which is like a honeybee, take shelter of the lotus feet of the Supreme Personality of Godhead, who has just now appeared as Śrī Kṛṣṇa Caitanya Mahāprabhu to teach the ancient system of devotional service to Himself. This system had almost been lost due to the influence of time.”</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -14021,7 +13807,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-6-256" data-note-label="BG 6.256" data-note-chapter="6" data-note-vlabel="256">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 6.256…" rows="4"></textarea>
@@ -14060,7 +13845,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Indeed, Sārvabhauma Bhaṭṭācārya became an unalloyed devotee of Caitanya Mahāprabhu; he did not know anything but the service of the Lord.</div>
-
 
 
 
@@ -14123,7 +13907,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-6-258" data-note-label="BG 6.258" data-note-chapter="6" data-note-vlabel="258">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 6.258…" rows="4"></textarea>
@@ -14162,7 +13945,6 @@
 
 
     <div class="fc-translation" data-sec="translation">One day Sārvabhauma Bhaṭṭācārya came before Caitanya Mahāprabhu and, after offering obeisances, began to recite a verse.</div>
-
 
 
 
@@ -14225,7 +14007,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-6-260" data-note-label="BG 6.260" data-note-chapter="6" data-note-vlabel="260">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 6.260…" rows="4"></textarea>
@@ -14264,7 +14045,6 @@
 
 
     <div class="fc-translation" data-sec="translation">The Bhaṭṭācārya recited, “ ‘One who seeks Your compassion and thus tolerates all kinds of adverse conditions due to the karma of his past deeds, who engages always in Your devotional service with his mind, words and body, and who always offers obeisances unto You is certainly a bona fide candidate for becoming Your unalloyed devotee.’ ”</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -14334,7 +14114,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-6-262" data-note-label="BG 6.262" data-note-chapter="6" data-note-vlabel="262">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 6.262…" rows="4"></textarea>
@@ -14373,7 +14152,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Sārvabhauma Bhaṭṭācārya replied, “The awakening of pure love of Godhead, which is the result of devotional service, far surpasses liberation from material bondage. For those averse to devotional service, merging into the Brahman effulgence is a kind of punishment.”</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -14443,7 +14221,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-6-264-265" data-note-label="BG 6.264-265" data-note-chapter="6" data-note-vlabel="264-265">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 6.264-265…" rows="4"></textarea>
@@ -14482,7 +14259,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“There are five kinds of liberation: sālokya, sāmīpya, sārūpya, sārṣṭi and sāyujya.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -14552,7 +14328,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-6-267" data-note-label="BG 6.267" data-note-chapter="6" data-note-vlabel="267">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 6.267…" rows="4"></textarea>
@@ -14591,7 +14366,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“A pure devotee does not like even to hear about sāyujya-mukti, which inspires him with fear and hatred. Indeed, the pure devotee would rather go to hell than merge into the effulgence of the Lord.”</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -14649,7 +14423,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Sārvabhauma Bhaṭṭācārya continued, “There are two kinds of sāyujya-mukti: merging into the Brahman effulgence and merging into the personal body of the Lord. Merging into the Lord’s body is even more abominable than merging into His effulgence.”</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -14719,7 +14492,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-6-270" data-note-label="BG 6.270" data-note-chapter="6" data-note-vlabel="270">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 6.270…" rows="4"></textarea>
@@ -14770,7 +14542,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-6-271" data-note-label="BG 6.271" data-note-chapter="6" data-note-vlabel="271">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 6.271…" rows="4"></textarea>
@@ -14809,7 +14580,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“All kinds of liberation exist under the feet of the Supreme Personality of Godhead; therefore He is known as mukti-pada. According to another meaning, mukti is the ninth subject, and the Supreme Personality of Godhead is the shelter of liberation.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -14867,7 +14637,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“Since I can understand Kṛṣṇa according to these two meanings,” Caitanya Mahāprabhu said, “what point is there in changing the verse?”Sārvabhauma Bhaṭṭācārya replied, “I was not able to give that reading to the verse.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -14937,7 +14706,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-6-274" data-note-label="BG 6.274" data-note-chapter="6" data-note-vlabel="274">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 6.274…" rows="4"></textarea>
@@ -14976,7 +14744,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“The word ‘mukti’ refers to five kinds of liberation. But its direct meaning usually conveys the idea of becoming one with the Lord.</div>
-
 
 
 
@@ -15039,7 +14806,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-6-276" data-note-label="BG 6.276" data-note-chapter="6" data-note-vlabel="276">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 6.276…" rows="4"></textarea>
@@ -15078,7 +14844,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Upon hearing this explanation, the Lord began to laugh and, with great pleasure, immediately embraced Sārvabhauma Bhaṭṭācārya very firmly.</div>
-
 
 
 
@@ -15141,7 +14906,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-6-278" data-note-label="BG 6.278" data-note-chapter="6" data-note-vlabel="278">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 6.278…" rows="4"></textarea>
@@ -15180,7 +14944,6 @@
 
 
     <div class="fc-translation" data-sec="translation">As long as it does not turn iron into gold by its touch, no one can recognize an unknown stone to be a touchstone.</div>
-
 
 
 
@@ -15243,7 +15006,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-6-280" data-note-label="BG 6.280" data-note-chapter="6" data-note-vlabel="280">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 6.280…" rows="4"></textarea>
@@ -15282,7 +15044,6 @@
 
 
     <div class="fc-translation" data-sec="translation">After this incident, all the inhabitants of Jagannātha Purī, headed by Kāśī Miśra, came to take shelter of the lotus feet of the Lord.</div>
-
 
 
 
@@ -15345,7 +15106,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-6-282" data-note-label="BG 6.282" data-note-chapter="6" data-note-vlabel="282">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 6.282…" rows="4"></textarea>
@@ -15384,7 +15144,6 @@
 
 
     <div class="fc-translation" data-sec="translation">I shall also describe in full detail how Sārvabhauma Bhaṭṭācārya perfectly rendered service to Śrī Caitanya Mahāprabhu by offering Him alms.</div>
-
 
 
 
@@ -15447,7 +15206,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-6-284-285" data-note-label="BG 6.284-285" data-note-chapter="6" data-note-vlabel="284-285">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 6.284-285…" rows="4"></textarea>
@@ -15486,7 +15244,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Praying at the lotus feet of Śrī Rūpa and Śrī Raghunātha, always desiring their mercy, I, Kṛṣṇadāsa, narrate Śrī Caitanya-caritāmṛta, following in their footsteps.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>

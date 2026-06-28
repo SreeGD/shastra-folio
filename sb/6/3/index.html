@@ -25,19 +25,25 @@
     <link rel="icon" href="../../../assets/icons/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="../../../assets/icons/icon.svg">
     <link rel="stylesheet" href="../../../assets/css/site.css">
+    <link rel="alternate" hreflang="te-IN" href="../../../te/sb/6/3/">
+    <link rel="alternate" hreflang="x-default" href="../../../">
     <script>window.FC_TO_ROOT = "../../../";</script>
     <script src="../../../assets/js/toggle.js"></script>
 </head>
 <body class="has-sidebar" data-chapter="3">
 <header class="fc-site-header">
     <button type="button" class="fc-mobile-trigger fc-mobile-trigger-left" data-overlay="left" aria-label="Open settings drawer">⚙</button>
-<a class="fc-brand" href="../../../">FolioCorpus<span class="fc-sub">Śrīmad-Bhāgavatam</span></a>
+    <a class="fc-brand" href="../../../">FolioCorpus<span class="fc-sub">Bhagavad-gītā</span></a>
     <nav class="fc-site-nav">
         <a href="../../../">Home</a>
         <a href="../../../bg/">Bhagavad-gītā</a>
         <a href="../../../sb/">Śrīmad-Bhāgavatam</a>
         <a href="../../../search/" title="Search across all integrated works">🔍 Search</a>
         <button type="button" id="fc-random-verse" class="fc-nav-btn" title="Jump to a random verse">🎲 Random</button>
+        <span class="fc-lang-switch" aria-label="Script">
+            <a class="active" href="#" title="Devanāgarī edition">EN</a>
+            <a class="" href="../../../te/sb/6/3/" title="Telugu lipi edition">తె</a>
+        </span>
     </nav>
     <button type="button" class="fc-mobile-trigger fc-mobile-trigger-right" data-overlay="right" aria-label="Open chapter index drawer">📚</button>
 </header>
@@ -46,8 +52,8 @@
     <button class="fc-sb-collapse" type="button" data-sb="left" title="Collapse left sidebar" aria-label="Collapse"></button>
 
     <div class="fc-sb-body">
-        <details class="fc-sb-section" data-sbsec="reading" open>
-            <summary class="fc-sb-title">Reading</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Reading</div>
             <div class="fc-sb-sub">Theme</div>
             <div class="fc-segmented" data-setting="theme">
                 <button type="button" data-val="light">Light</button>
@@ -73,10 +79,10 @@
                 <button type="button" data-val="single">Single</button>
                 <button type="button" data-val="side">Side-by-side</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="display" open>
-            <summary class="fc-sb-title">Display</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Display</div>
             <div class="fc-sb-grid">
                 <label><input type="checkbox" data-section="devanagari" checked> Devanāgarī</label>
                 <label><input type="checkbox" data-section="iast" checked> IAST transliteration</label>
@@ -99,10 +105,33 @@
                 <button type="button" data-action="expand-all">Expand all</button>
                 <button type="button" data-action="collapse-all">Collapse all</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="tools" open>
-            <summary class="fc-sb-title">Tools</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Find your starting point</div>
+            <div class="fc-persona-links">
+                <a class="fc-persona-link" href="../../../daily/">🌅 Daily (one value a week)</a>
+                <a class="fc-persona-link" href="../../../householder/">🏠 Householder (family & work)</a>
+                <a class="fc-persona-link" href="../../../parenting/">👨‍👩‍👧 Parenting (stories for kids)</a>
+                <a class="fc-persona-link" href="../../../themes/">📚 All themes</a>
+                <a class="fc-persona-link" href="../../../values/" style="background:#F0F6F2;border-left-color:#1F4632;">ॐ Vedic Value System ↗</a>
+                <a class="fc-persona-link" href="../../../vidya/" style="background:#FBF6E4;border-left-color:#C8860B;">📚 Vidyā Karaṇa (kids, multi-lang) ↗</a>
+            </div>
+        </div>
+
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Audience</div>
+            <div class="fc-audience-filter">
+                <label><input type="radio" name="fc-audience" value="all" checked> All levels</label>
+                <label><input type="radio" name="fc-audience" value="primary"> Primary (children)</label>
+                <label><input type="radio" name="fc-audience" value="middle"> Middle (teens)</label>
+                <label><input type="radio" name="fc-audience" value="senior"> Senior (adults)</label>
+                <label><input type="radio" name="fc-audience" value="college"> College / scholar</label>
+            </div>
+        </div>
+
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Tools</div>
             <div class="fc-sb-tools">
                 <button type="button" id="fc-presentation-toggle" class="fc-tool-btn"><span>🖥 Presentation</span><kbd class="fc-kbd">F</kbd></button>
                 <button type="button" id="fc-pen-toggle" class="fc-tool-btn"><span>✏️ Pen mode</span><kbd class="fc-kbd">P</kbd></button>
@@ -117,10 +146,26 @@
                 <button type="button" id="fc-clear-highlights" class="fc-tool-btn">🩷 Clear highlights (page)</button>
                 <button type="button" id="fc-notes-modal-open" class="fc-tool-btn">📓 My annotations</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="progress" id="fc-progress-section" open>
-            <summary class="fc-sb-title">Progress</summary>
+        <div class="fc-sb-section" id="fc-tts-controls" hidden>
+            <div class="fc-sb-title">
+                Read-aloud
+                <label class="fc-tts-master">
+                    <input type="checkbox" id="fc-tts-enabled" checked>
+                    <span class="fc-tts-master-label">On</span>
+                </label>
+            </div>
+            <div class="fc-tts-inner">
+                <div class="fc-sb-sub">Voice</div>
+                <select id="fc-tts-voice" class="fc-tts-select" aria-label="TTS voice"></select>
+                <div class="fc-sb-sub">Rate <span class="fc-tts-rate-val">1.0×</span></div>
+                <input type="range" id="fc-tts-rate" min="0.5" max="2" step="0.1" value="1" class="fc-tts-rate" aria-label="Reading rate">
+            </div>
+        </div>
+
+        <div class="fc-sb-section" id="fc-progress-section">
+            <div class="fc-sb-title">Progress</div>
             <div class="fc-progress-row">
                 <span class="fc-progress-num" id="fc-progress-num">0</span>
                 <span class="fc-progress-divider">/</span>
@@ -135,29 +180,29 @@
                 <span class="fc-progress-spacer"></span>
                 <button type="button" class="fc-progress-reset" id="fc-progress-reset" title="Reset progress">↺</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="bookmarks" open>
-            <summary class="fc-sb-title">Bookmarks <span class="fc-sb-count" id="fc-bookmarks-count">0</span></summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Bookmarks <span class="fc-sb-count" id="fc-bookmarks-count">0</span></div>
             <ul class="fc-bookmark-list" id="fc-bookmarks-list">
                 <li class="fc-sb-empty">No bookmarks yet — click ☆ on any verse.</li>
             </ul>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="notes" open>
-            <summary class="fc-sb-title">Notes <span class="fc-sb-count" id="fc-notes-count">0</span></summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Notes <span class="fc-sb-count" id="fc-notes-count">0</span></div>
             <ul class="fc-bookmark-list" id="fc-notes-list">
                 <li class="fc-sb-empty">No notes yet — open any verse and write in the 📝 block.</li>
             </ul>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="export">
-            <summary class="fc-sb-title">Export</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Export</div>
             <div class="fc-sb-tools">
                 <button type="button" id="fc-export-md" class="fc-tool-btn">📥 Download Markdown</button>
                 <button type="button" id="fc-export-json" class="fc-tool-btn">💾 Download JSON backup</button>
             </div>
-        </details>
+        </div>
     </div>
 </aside>    <main class="fc-container">
 <nav class="fc-breadcrumbs">
@@ -175,7 +220,7 @@
         <h1 class="fc-verse-heading">6.3 · Yamarāja Instructs His Messengers</h1>
         <span class="fc-ribbon-meta">
             33 verses
- · <a class="fc-ribbon-link" href="class-prep/">🖨 Class prep</a>        </span>
+        </span>
         <input type="search" class="fc-search" id="fc-search" placeholder="🔍 Search in this chapter" aria-label="Search verses in this chapter">
         <span class="fc-ribbon-current" id="fc-ribbon-current" aria-live="polite"></span>
     </div>
@@ -515,7 +560,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <div class="fc-translation" data-sec="translation">King Parīkṣit said: O my lord, O Śukadeva Gosvāmī, Yamarāja is the controller of all living entities in terms of their religious and irreligious activities, but his order had been foiled. When his servants, the Yamadūtas, informed him of their defeat by the Viṣṇudūtas, who had stopped them from arresting Ajāmila, what did he reply?</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -584,18 +628,6 @@ In the Third Chapter, the servants of Yama relate to Yama how the servants of Vi
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Parīkṣit asks how Yamarāja&#39;s order — the supposedly inviolable law of karma — could be overruled. The student&#39;s astonishment is itself a doorway: when expected laws bend before the holy name, deeper laws are being revealed.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where in my life have I assumed a rule was absolute when in fact mercy can override it?</li><li>Am I willing to be astonished, or do I keep filing surprises away as &#39;exceptions&#39;?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -830,7 +862,6 @@ In the Third Chapter, the servants of Yama relate to Yama how the servants of Vi
     <div class="fc-translation" data-sec="translation">O great sage, never before has it been heard anywhere that an order from Yamarāja has been baffled. Therefore I think that people will have doubts about this that no one but you can eradicate. Since that is my firm conviction, kindly explain the reasons for these events.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -871,18 +902,6 @@ O sage!  From no one (kutaścana) has it been heard previously. Etat should be e
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Parīkṣit says no one before has heard of Yama&#39;s order being thwarted and only Śukadeva can clear the doubt. Some questions about divine reality deserve a qualified teacher, not Google.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What spiritual question am I trying to answer for myself when I should bring it to a teacher?</li><li>Whom in my life is qualified to resolve doubts the world cannot?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -1041,7 +1060,6 @@ O sage!  From no one (kutaścana) has it been heard previously. Etat should be e
     <div class="fc-translation" data-sec="translation">Śrī Śukadeva Gosvāmī replied: My dear King, when the order carriers of Yamarāja were baffled and defeated by the order carriers of Viṣṇu, they approached their master, the controller of Saṁyamanī-purī and master of sinful persons, to tell him of this incident.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -1060,18 +1078,6 @@ O sage!  From no one (kutaścana) has it been heard previously. Etat should be e
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Defeated and confused, the Yamadūtas don&#39;t quit or rebel; they go straight to their master to report what happened. Honest reporting up the chain is part of mature service.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>When I am out of my depth, do I escalate cleanly or hide the confusion?</li><li>Whom do I owe an honest &#39;this is what actually happened&#39; conversation?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -1274,7 +1280,6 @@ O sage!  From no one (kutaścana) has it been heard previously. Etat should be e
 
     <div class="fc-translation" data-sec="translation">The Yamadūtas said: Our dear lord, how many controllers or rulers are there in this material world? How many causes are responsible for manifesting the various results of activities performed under the three modes of material nature [sattva-guṇa, rajo-guṇa and tamo-guṇa]?</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1328,18 +1333,6 @@ O sage!  From no one (kutaścana) has it been heard previously. Etat should be e
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The Yamadūtas ask whether there are many cosmic rulers, many causes of karmic results. Their question is sincere — they are willing to revise their entire model of the universe.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Am I willing to update my model of how things work when reality contradicts it?</li><li>Where am I holding onto a worldview just because it has been mine for a long time?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -1553,7 +1546,6 @@ O sage!  From no one (kutaścana) has it been heard previously. Etat should be e
 
     <div class="fc-translation" data-sec="translation">If in this universe there are many rulers and justices who disagree about punishment and reward, their contradictory actions will neutralize each other, and no one will be punished or rewarded. Otherwise, if their contradictory acts fail to neutralize each other, everyone will have to be both punished and rewarded.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1617,18 +1609,6 @@ O sage!  From no one (kutaścana) has it been heard previously. Etat should be e
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">If many controllers gave contradictory verdicts, justice would collapse — punishments and rewards would either cancel out or pile on absurdly. Real cosmic order requires a single highest authority.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where in my life do I let competing authorities cancel each other so I can do as I please?</li><li>Have I identified the single highest authority I will defer to when others disagree?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -1806,7 +1786,6 @@ O sage!  From no one (kutaścana) has it been heard previously. Etat should be e
 
     <div class="fc-translation" data-sec="translation">The Yamadūtas continued: Since there are many different karmīs, or workers, there may be different judges or rulers to give them justice, but just as one central emperor controls different departmental rulers, there must be one supreme controller to guide all the judges.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1865,18 +1844,6 @@ O sage!  From no one (kutaścana) has it been heard previously. Etat should be e
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Just as an emperor coordinates many regional governors, there must be one supreme controller behind the many cosmic administrators. The order of the universe argues for the One above the many.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Do I read order in the world as evidence of an underlying coordinator?</li><li>Whom do I treat as &#39;emperor&#39; in my inner life — Kṛṣṇa or some lesser sovereign?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -2035,7 +2002,6 @@ O sage!  From no one (kutaścana) has it been heard previously. Etat should be e
     <div class="fc-translation" data-sec="translation">The supreme judge must be one, not many. It was our understanding that you are that supreme judge and that you have jurisdiction even over the demigods. Our impression was that you are the master of all living entities, the supreme authority who discriminates between the pious and impious activities of all human beings.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -2069,18 +2035,6 @@ O sage!  From no one (kutaścana) has it been heard previously. Etat should be e
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The Yamadūtas had assumed Yamarāja himself was that supreme judge, with jurisdiction even over the demigods. Even well-meaning service can rest on a confused theology.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What hidden theological assumption is shaping how I serve?</li><li>Have I confused a powerful middle authority with the ultimate one?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -2276,7 +2230,6 @@ O sage!  From no one (kutaścana) has it been heard previously. Etat should be e
 
     <div class="fc-translation" data-sec="translation">But now we see that the punishment ordained under your authority is no longer effective, since your order has been transgressed by four wonderful and perfect persons.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2305,18 +2258,6 @@ Vipralambhitā means cheated or thwarted.</div>
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Now they admit their model is broken: four wonderful persons overrode Yamarāja&#39;s authority. Naming the breakdown out loud is the precondition of receiving a truer view.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which broken assumption in my life am I still afraid to name out loud?</li><li>Who would I have to speak to in order to name it?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -2476,7 +2417,6 @@ Vipralambhitā means cheated or thwarted.</div>
 
     <div class="fc-translation" data-sec="translation">We were bringing the most sinful Ajāmila toward the hellish planets, following your order, when those beautiful persons from Siddhaloka forcibly cut the knots of the ropes with which we were arresting him.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2535,18 +2475,6 @@ This verse explains how it happened. “If you, the controller, can bring those 
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">They describe sinful Ajāmila being escorted toward hell when the four beautiful Siddhaloka beings cut the ropes. Mercy interrupts even legally correct trajectories.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where in my life do I see only the legal/karmic trajectory and miss the mercy lying in wait?</li><li>Whose &#39;rope-cutting&#39; have I received that I haven&#39;t yet acknowledged?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -2760,7 +2688,6 @@ This verse explains how it happened. “If you, the controller, can bring those 
 
     <div class="fc-translation" data-sec="translation">As soon as the sinful Ajāmila uttered the name Nārāyaṇa, these four beautiful men immediately arrived and reassured him, saying, “Do not fear. Do not fear.” We wish to know about them from Your Lordship. If you think we are able to understand them, kindly describe who they are.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2809,18 +2736,6 @@ This verse explains how it happened. “If you, the controller, can bring those 
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">They report that the four arrived the instant Nārāyaṇa&#39;s name was uttered, reassuring Ajāmila not to fear. The connection between the name and the Lord&#39;s protectors is instantaneous.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Do I trust that calling the name actually summons help, or only as a metaphor?</li><li>What &#39;do not fear&#39; would I want to hear, and am I willing to call?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -3005,7 +2920,6 @@ This verse explains how it happened. “If you, the controller, can bring those 
 
     <div class="fc-translation" data-sec="translation">Śrī Śukadeva Gosvāmī said: Thus having been questioned, Lord Yamarāja, the supreme controller of the living entities, was very pleased with his order carriers because of hearing from them the holy name of Nārāyaṇa. He remembered the lotus feet of the Lord and began to reply.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3064,18 +2978,6 @@ Just by hearing the name of Nārāyaṇa from his servants he was pleased and be
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Hearing Nārāyaṇa&#39;s name on his servants&#39; lips, Yamarāja was pleased and remembered the Lord&#39;s lotus feet. Even authorities of punishment soften at the sound of the Lord&#39;s name.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What &#39;severe&#39; part of my own personality softens when I bring Kṛṣṇa to mind?</li><li>How might I lead difficult conversations by first remembering the Lord?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -3370,7 +3272,6 @@ Just by hearing the name of Nārāyaṇa from his servants he was pleased and be
 
     <div class="fc-translation" data-sec="translation">Yamarāja said: My dear servants, you have accepted me as the Supreme, but factually I am not. Above me, and above all the other demigods, including Indra and Candra, is the one supreme master and controller. The partial manifestations of His personality are Brahmā, Viṣṇu and Śiva, who are in charge of the creation, maintenance and annihilation of this universe. He is like the two threads that form the length and breadth of a woven cloth. The entire world is controlled by Him just as a bull is controlled by a rope in its nose.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3437,18 +3338,6 @@ You are great offenders!  What nonsense you are speaking!  Hear the truth. There
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Yamarāja confesses: &#39;You took me as Supreme, but I am not.&#39; Above him and every demigod stands one Lord, whose partial manifestations are Brahmā, Viṣṇu and Śiva. True teachers point past themselves.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>When honored, do I deflect the honor toward Kṛṣṇa or quietly accept it as mine?</li><li>Whom in my life is functioning as my &#39;Yamarāja&#39; — powerful but not ultimate?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -3689,7 +3578,6 @@ You are great offenders!  What nonsense you are speaking!  Hear the truth. There
 
     <div class="fc-translation" data-sec="translation">Just as the driver of a bullock cart ties ropes through the nostrils of his bulls to control them, the Supreme Personality of Godhead binds all men through the ropes of His words in the Vedas, which set forth the names and activities of the distinct orders of human society [brāhmaṇa, kṣatriya, vaiśya and śūdra]. In fear, the members of these orders all worship the Supreme Lord by offering Him presentations according to their respective activities.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3767,18 +3655,6 @@ This verse elaborates. Vaci refers to the Vedas.  All people are bound by the ch
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Just as a cart-driver controls bulls with nose-ropes, the Lord controls all humans through the Vedic words that prescribe varṇāśrama duties. The śāstras are not optional; they are how He steers us.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which &#39;rope&#39; of scripture am I trying to slip out of?</li><li>What would surrender to Vedic guidance look like in my decisions this week?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -4180,7 +4056,6 @@ This verse elaborates. Vaci refers to the Vedas.  All people are bound by the ch
 
     <div class="fc-translation" data-sec="translation">I, Yamarāja; Indra, the King of heaven; Nirṛti; Varuṇa; Candra, the moon-god; Agni; Lord Śiva; Pavana; Lord Brahmā; Sūrya, the sun-god; Viśvāsu; the eight Vasus; the Sādhyas; the Maruts; the Rudras; the Siddhas; and Marīci and the other great ṛṣis engaged in maintaining the departmental affairs of the universe, as well as the best of the demigods headed by Bṛhaspati, and the great sages headed by Bhṛgu are all certainly freed from the influence of the two base material modes of nature, namely passion and ignorance. Nevertheless, although we are in the mode of goodness, we cannot understand the activities of the Supreme Personality of Godhead. What, then, is to be said of others, who, under illusion, merely speculate to know God?</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -4260,18 +4135,6 @@ Though we are not influenced by rajas and tamas we are touched by sattva, which 
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Yama lists himself with Indra, Varuṇa, Candra, Agni, Śiva, Brahmā, Sūrya, the Vasus, Maruts, Rudras, Siddhas, and great ṛṣis — all engaged in carrying out the Lord&#39;s will. Even the highest beings are workers in His administration.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Do I think of greatness as autonomy or as faithful service within a larger order?</li><li>What is my place in the Lord&#39;s administration, and am I showing up?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -4541,7 +4404,6 @@ Though we are not influenced by rajas and tamas we are touched by sattva, which 
 
     <div class="fc-translation" data-sec="translation">As the different limbs of the body cannot see the eyes, the living entities cannot see the Supreme Lord, who is situated as the Supersoul in everyone’s heart. Not by the senses, by the mind, by the life air, by thoughts within the heart, or by the vibration of words can the living entities ascertain the real situation of the Supreme Lord.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -4615,18 +4477,6 @@ We cannot know him because he is beyond sense perception. Gobhiḥ means the kno
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">As limbs cannot see the eyes that direct them, conditioned souls cannot see the Supersoul who guides them. The Lord is closer than my own choices, yet invisible to ordinary sensing.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where am I trying to find Kṛṣṇa with the tools that by design cannot find Him?</li><li>What practice would let the eye behind my eyes become known?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -4851,7 +4701,6 @@ We cannot know him because he is beyond sense perception. Gobhiḥ means the kno
 
     <div class="fc-translation" data-sec="translation">The Supreme Personality of Godhead is self-sufficient and fully independent. He is the master of everyone and everything, including the illusory energy. He has His form, qualities and features; and similarly His order carriers, the Vaiṣṇavas, who are very beautiful, possess bodily features, transcendental qualities and a transcendental nature almost like His. They always wander within this world with full independence.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -4930,18 +4779,6 @@ We cannot know him because he is beyond sense perception. Gobhiḥ means the kno
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The Supreme Lord is self-sufficient and independent, with His own form and qualities, and His Vaiṣṇava order-carriers reflect Him. To meet a true devotee is to glimpse the Lord&#39;s character.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which devotee in my life is showing me what Kṛṣṇa is like?</li><li>What qualities of theirs would I want to learn to embody?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -5139,7 +4976,6 @@ We cannot know him because he is beyond sense perception. Gobhiḥ means the kno
 
     <div class="fc-translation" data-sec="translation">The order carriers of Lord Viṣṇu, who are worshiped even by the demigods, possess wonderful bodily features exactly like those of Viṣṇu and are very rarely seen. The Viṣṇudūtas protect the devotees of the Lord from the hands of enemies, from envious persons and even from my jurisdiction, as well as from natural disturbances.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -5213,18 +5049,6 @@ O fools!  They are worshipped even by the devatās.  You are not worshipped by a
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The Viṣṇudūtas, worshiped even by demigods, are rarely seen and protect devotees from enemies, envy, and natural calamity. Devotional life is not unprotected — invisible help is real.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where have I been protected and assumed it was luck?</li><li>Am I cultivating a life worth that protection?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -5485,7 +5309,6 @@ O fools!  They are worshipped even by the devatās.  You are not worshipped by a
 
     <div class="fc-translation" data-sec="translation">Real religious principles are enacted by the Supreme Personality of Godhead. Although fully situated in the mode of goodness, even the great ṛṣis who occupy the topmost planets cannot ascertain the real religious principles, nor can the demigods or the leaders of Siddhaloka, to say nothing of the asuras, ordinary human beings, Vidyādharas and Cāraṇas.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -5580,18 +5403,6 @@ O fools!  They are worshipped even by the devatās.  You are not worshipped by a
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Real religious principles are set by the Lord Himself; even great ṛṣis in goodness cannot determine them. Dharma is not a human invention to be debated but a revelation to be received.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where am I treating dharma as my opinion to construct rather than as a teaching to receive?</li><li>Whose authority would I trust on a question of genuine religious principle?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -5912,7 +5723,6 @@ O fools!  They are worshipped even by the devatās.  You are not worshipped by a
 
     <div class="fc-translation" data-sec="translation">Lord Brahmā, Bhagavān Nārada, Lord Śiva, the four Kumāras, Lord Kapila [the son of Devahūti], Svāyambhuva Manu, Prahlāda Mahārāja, Janaka Mahārāja, Grandfather Bhīṣma, Bali Mahārāja, Śukadeva Gosvāmī and I myself know the real religious principle. My dear servants, this transcendental religious principle, which is known as bhāgavata-dharma, or surrender unto the Supreme Lord and love for Him, is uncontaminated by the material modes of nature. It is very confidential and difficult for ordinary human beings to understand, but if by chance one fortunately understands it, he is immediately liberated, and thus he returns home, back to Godhead.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -5991,18 +5801,6 @@ O fools!  They are worshipped even by the devatās.  You are not worshipped by a
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Yama names twelve mahājanas — Brahmā, Nārada, Śiva, the Kumāras, Kapila, Manu, Prahlāda, Janaka, Bhīṣma, Bali, Śukadeva, and himself — as the authorities who know real dharma. When in doubt, follow the line of those who actually know.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which mahājana&#39;s example particularly speaks to my situation?</li><li>Whose footsteps am I actually following when I make spiritual decisions?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -6180,7 +5978,6 @@ O fools!  They are worshipped even by the devatās.  You are not worshipped by a
 
     <div class="fc-translation" data-sec="translation">Devotional service, beginning with the chanting of the holy name of the Lord, is the ultimate religious principle for the living entity in human society.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -6336,18 +6133,6 @@ O fools!  They are worshipped even by the devatās.  You are not worshipped by a
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The ultimate religious principle for humans is devotional service beginning with chanting the holy name. Of all possible duties, this is the one Yama himself underlines.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Have I let chanting move to the center of my religious life, or is it still peripheral?</li><li>What is the morning practice that names this principle as central?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -6512,7 +6297,6 @@ O fools!  They are worshipped even by the devatās.  You are not worshipped by a
 
     <div class="fc-translation" data-sec="translation">My dear servants, who are as good as my sons, just see how glorious is the chanting of the holy name of the Lord. The greatly sinful Ajāmila chanted only to call his son, not knowing that he was chanting the Lord’s holy name. Nevertheless, by chanting the holy name of the Lord, he remembered Nārāyaṇa, and thus he was immediately saved from the ropes of death.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -6593,18 +6377,6 @@ One does not have to search for proof. We have a direct example.</div>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Yama uses Ajāmila as proof: a great sinner chanted merely to call his son and yet attained liberation. The name&#39;s potency does not depend on the chanter&#39;s awareness of what he is doing.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What proof of the name&#39;s power have I already seen and forgotten?</li><li>What would it mean to chant boldly, trusting potency more than my own merit?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -6838,7 +6610,6 @@ One does not have to search for proof. We have a direct example.</div>
 
     <div class="fc-translation" data-sec="translation">Therefore it should be understood that one is easily relieved from all sinful reactions by chanting the holy name of the Lord and chanting of His qualities and activities. This is the only process recommended for relief from sinful reactions. Even if one chants the holy name of the Lord with improper pronunciation, he will achieve relief from material bondage if he chants without offenses. Ajāmila, for example, was extremely sinful, but while dying he merely chanted the holy name, and although calling his son, he achieved complete liberation because he remembered the name of Nārāyaṇa.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -6963,18 +6734,6 @@ O descendent of the Kurus! Please understand that intense chanting the Lord’s 
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Chanting the name, qualities, and activities of the Lord is the recommended method for relief from sin — even when accompanied by lapses. There is no rival process of equal force.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Am I comparing chanting fairly with my other coping strategies?</li><li>Where am I expecting therapy, busyness, or austerity to do the work only chanting can?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -7217,7 +6976,6 @@ O descendent of the Kurus! Please understand that intense chanting the Lord’s 
 
     <div class="fc-translation" data-sec="translation">Because they are bewildered by the illusory energy of the Supreme Personality of Godhead, Yājṣavalkya and Jaimini and other compilers of the religious scriptures cannot know the secret, confidential religious system of the twelve mahājanas. They cannot understand the transcendental value of performing devotional service or chanting the Hare Kṛṣṇa mantra. Because their minds are attracted to the ritualistic ceremonies mentioned in the Vedas — especially the Yajur Veda, Sāma Veda and Ṛg Veda — their intelligence has become dull. Thus they are busy collecting the ingredients for ritualistic ceremonies that yield only temporary benefits, such as elevation to Svargaloka for material happiness. They are not attracted to the saṅkīrtana movement; instead, they are interested in dharma, artha, kāma and mokṣa.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -7277,18 +7035,6 @@ O descendent of the Kurus! Please understand that intense chanting the Lord’s 
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Even Yājñavalkya, Jaimini, and other ritual-scripture compilers, bewildered by māyā, miss the confidential system of the twelve mahājanas. Scholarship without bhakti can illuminate everything except the central thing.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where is my knowledge expanding while my devotion stays flat?</li><li>Whom am I reading whose conclusions miss the heart of the matter?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -7567,7 +7313,6 @@ O descendent of the Kurus! Please understand that intense chanting the Lord’s 
 
     <div class="fc-translation" data-sec="translation">Considering all these points, therefore, intelligent men decide to solve all problems by adopting the devotional service of chanting the holy name of the Lord, who is situated in everyone’s heart and who is a mine of all auspicious qualities. Such persons are not within my jurisdiction for punishment. Generally they never commit sinful activities, but even if by mistake or because of bewilderment or illusion they sometimes commit sinful acts, they are protected from sinful reactions because they always chant the Hare Kṛṣṇa mantra.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -7654,18 +7399,6 @@ Thus, the knowers of scripture do not know the truth about the Lord, but those w
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Intelligent people, weighing it all, choose to chant the name of the Lord in the heart, the source of all auspiciousness. They are not punished — they are excluded from Yama&#39;s jurisdiction.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Am I treating chanting as the obviously intelligent choice or as the dutiful one?</li><li>What would change if I really believed chanting placed me beyond karma&#39;s tribunal?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -7935,7 +7668,6 @@ Thus, the knowers of scripture do not know the truth about the Lord, but those w
 
     <div class="fc-translation" data-sec="translation">My dear servants, please do not approach such devotees, for they have fully surrendered to the lotus feet of the Supreme Personality of Godhead. They are equal to everyone, and their narrations are sung by the demigods and the inhabitants of Siddhaloka. Please do not even go near them. They are always protected by the club of the Supreme Personality of Godhead, and therefore Lord Brahmā and I and even the time factor are not competent to chastise them.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -8004,18 +7736,6 @@ Whatever you have done up to this time can be left as it is by good fortune.  Fr
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Yama tells his servants: do not even approach surrendered devotees, who are equal to all and whose stories are sung even in higher worlds. The Lord&#39;s devotees are off-limits to the agents of karma.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Do I see myself as protected because I have taken shelter, or still expecting punishment?</li><li>How might equal-vision toward all beings be evidence of real surrender?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -8231,7 +7951,6 @@ Whatever you have done up to this time can be left as it is by good fortune.  Fr
 
     <div class="fc-translation" data-sec="translation">Paramahaṁsas are exalted persons who have no taste for material enjoyment and who drink the honey of the Lord’s lotus feet. My dear servants, bring to me for punishment only persons who are averse to the taste of that honey, who do not associate with paramahaṁsas and who are attached to family life and worldly enjoyment, which form the path to hell.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -8312,18 +8031,6 @@ Whatever you have done up to this time can be left as it is by good fortune.  Fr
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Paramahaṁsas drink the honey of the Lord&#39;s lotus feet and have no taste for enjoyment. Bring me only those, Yama says, who refuse that honey and avoid paramahaṁsa association.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Am I sustaining a taste for the Lord&#39;s honey, or merely refraining from grosser tastes?</li><li>Whose association am I avoiding because it would change me?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -8611,7 +8318,6 @@ Whatever you have done up to this time can be left as it is by good fortune.  Fr
 
     <div class="fc-translation" data-sec="translation">My dear servants, please bring to me only those sinful persons who do not use their tongues to chant the holy name and qualities of Kṛṣṇa, whose hearts do not remember the lotus feet of Kṛṣṇa even once, and whose heads do not bow down even once before Lord Kṛṣṇa. Send me those who do not perform their duties toward Viṣṇu, which are the only duties in human life. Please bring me all such fools and rascals.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -8682,18 +8388,6 @@ Those are called sat, or devotee, who have even once chanted the name of the Lor
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Bring me only those whose tongues never chant Kṛṣṇa, whose hearts never remember Him even once, whose heads never bow. The minimum threshold for safety is astonishingly low — and we still fall under it.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Have I chanted, remembered, or bowed even once today?</li><li>What tiny act of devotion could I do right now that places me on the other side?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -8954,7 +8648,6 @@ Those are called sat, or devotee, who have even once chanted the name of the Lor
 
     <div class="fc-translation" data-sec="translation">[Then Yamarāja, considering himself and his servants to be offenders, spoke as follows, begging pardon from the Lord.] O my Lord, my servants have surely committed a great offense by arresting a Vaiṣṇava such as Ajāmila. O Nārāyaṇa, O supreme and oldest person, please forgive us. Because of our ignorance, we failed to recognize Ajāmila as a servant of Your Lordship, and thus we have certainly committed a great offense. Therefore with folded hands we beg Your pardon. My Lord, since You are supremely merciful and are always full of good qualities, please pardon us. We offer our respectful obeisances unto You.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -9013,18 +8706,6 @@ According to the reasoning “punish the master for the offense of the servant�
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Yama himself begs pardon from the Lord for his servants&#39; offense in arresting a Vaiṣṇava. Even the lord of death apologizes when his agents touch a devotee — that is how protected they are.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Am I careful about how I speak of and treat devotees?</li><li>Where might I need to ask forgiveness from someone I have judged who is closer to Kṛṣṇa than I knew?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -9184,7 +8865,6 @@ According to the reasoning “punish the master for the offense of the servant�
 
     <div class="fc-translation" data-sec="translation">Śukadeva Gosvāmī continued: My dear King, the chanting of the holy name of the Lord is able to uproot even the reactions of the greatest sins. Therefore the chanting of the saṅkīrtana movement is the most auspicious activity in the entire universe. Please try to understand this so that others will take it seriously.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -9263,18 +8943,6 @@ On the evidence of the statements of Yama and Viṣṇu’s servants, a small am
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Śukadeva tells Parīkṣit: chanting the holy name uproots even the greatest sins, and saṅkīrtana is the most auspicious activity in the universe. Try to introduce this everywhere.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Am I treating saṅkīrtana as the most auspicious activity, or as one of many good ones?</li><li>How am I introducing chanting into spaces where it isn&#39;t yet?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -9461,7 +9129,6 @@ On the evidence of the statements of Yama and Viṣṇu’s servants, a small am
 
     <div class="fc-translation" data-sec="translation">One who constantly hears and chants the holy name of the Lord and hears and chants about His activities can very easily attain the platform of pure devotional service, which can cleanse the dirt from one’s heart. One cannot achieve such purification merely by observing vows and performing Vedic ritualistic ceremonies.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -9517,18 +9184,6 @@ Even those who chant with offense destroy their sins. By continuous chanting the
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Constant hearing and chanting of the Lord&#39;s name and pastimes cleanses the heart in a way austerity alone cannot. Devotional saturation, not just abstention, is the cleansing agent.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What is my daily intake of the Lord&#39;s name and stories?</li><li>What media am I displacing to make room for hari-kathā?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -9789,7 +9444,6 @@ Even those who chant with offense destroy their sins. By continuous chanting the
 
     <div class="fc-translation" data-sec="translation">Devotees who always lick the honey from the lotus feet of Lord Kṛṣṇa do not care at all for material activities, which are performed under the three modes of material nature and which bring only misery. Indeed, devotees never give up the lotus feet of Kṛṣṇa to return to material activities. Others, however, who are addicted to Vedic rituals because they have neglected the service of the Lord’s lotus feet and are enchanted by lusty desires, sometimes perform acts of atonement. Nevertheless, being incompletely purified, they return to sinful activities again and again.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -9860,18 +9514,6 @@ The smārta however performs atonements (karma) to purify his sin (rajaḥ). And
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Devotees who lick the honey of Kṛṣṇa&#39;s lotus feet have no interest in karmic activities and will not leave Him for any heavenly or liberating goal. The taste itself becomes their anchor.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What taste, if any, is currently anchoring me toward Kṛṣṇa more than away?</li><li>What competing &#39;tastes&#39; am I still feeding?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -10096,7 +9738,6 @@ The smārta however performs atonements (karma) to purify his sin (rajaḥ). And
 
     <div class="fc-translation" data-sec="translation">After hearing from the mouth of their master about the extraordinary glories of the Lord and His name, fame and attributes, the Yamadūtas were struck with wonder. Since then, as soon as they see a devotee, they fear him and dare not look at him again.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -10150,18 +9791,6 @@ To the phrase naivācyutāśraya-janaṁ the verb gacchanti should be added: “
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Hearing their master&#39;s words about the Lord&#39;s glories, the Yamadūtas were astonished, and since then fear devotees and won&#39;t even look at them. The right teaching rewires even severe servants of justice.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Whom have I been treating harshly that I should approach with reverence instead?</li><li>What teaching, properly received, would rewire my reflexes?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -10312,7 +9941,6 @@ To the phrase naivācyutāśraya-janaṁ the verb gacchanti should be added: “
 
     <div class="fc-translation" data-sec="translation">When the great sage Agastya, the son of Kumbha, was residing in the Malaya Hills and worshiping the Supreme Personality of Godhead, I approached him, and he explained to me this confidential history.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -10371,18 +9999,6 @@ Being very satisfied by the prayers of Dakṣa, Lord Viṣṇu appeared before D
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Yama tells Nārada that Agastya, residing in the Malaya Hills and worshiping the Lord, had originally explained this confidential history to him. Even the lord of death needed a teacher; sacred knowledge flows in lineage.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>From whom did the truths I rely on originally come?</li><li>Am I receiving knowledge through a living lineage or only through books?</li></ul>
-
-
-
-
-
-    </section>
 
 
 

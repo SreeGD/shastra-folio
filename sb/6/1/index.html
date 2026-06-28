@@ -25,19 +25,25 @@
     <link rel="icon" href="../../../assets/icons/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="../../../assets/icons/icon.svg">
     <link rel="stylesheet" href="../../../assets/css/site.css">
+    <link rel="alternate" hreflang="te-IN" href="../../../te/sb/6/1/">
+    <link rel="alternate" hreflang="x-default" href="../../../">
     <script>window.FC_TO_ROOT = "../../../";</script>
     <script src="../../../assets/js/toggle.js"></script>
 </head>
 <body class="has-sidebar" data-chapter="1">
 <header class="fc-site-header">
     <button type="button" class="fc-mobile-trigger fc-mobile-trigger-left" data-overlay="left" aria-label="Open settings drawer">⚙</button>
-<a class="fc-brand" href="../../../">FolioCorpus<span class="fc-sub">Śrīmad-Bhāgavatam</span></a>
+    <a class="fc-brand" href="../../../">FolioCorpus<span class="fc-sub">Bhagavad-gītā</span></a>
     <nav class="fc-site-nav">
         <a href="../../../">Home</a>
         <a href="../../../bg/">Bhagavad-gītā</a>
         <a href="../../../sb/">Śrīmad-Bhāgavatam</a>
         <a href="../../../search/" title="Search across all integrated works">🔍 Search</a>
         <button type="button" id="fc-random-verse" class="fc-nav-btn" title="Jump to a random verse">🎲 Random</button>
+        <span class="fc-lang-switch" aria-label="Script">
+            <a class="active" href="#" title="Devanāgarī edition">EN</a>
+            <a class="" href="../../../te/sb/6/1/" title="Telugu lipi edition">తె</a>
+        </span>
     </nav>
     <button type="button" class="fc-mobile-trigger fc-mobile-trigger-right" data-overlay="right" aria-label="Open chapter index drawer">📚</button>
 </header>
@@ -46,8 +52,8 @@
     <button class="fc-sb-collapse" type="button" data-sb="left" title="Collapse left sidebar" aria-label="Collapse"></button>
 
     <div class="fc-sb-body">
-        <details class="fc-sb-section" data-sbsec="reading" open>
-            <summary class="fc-sb-title">Reading</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Reading</div>
             <div class="fc-sb-sub">Theme</div>
             <div class="fc-segmented" data-setting="theme">
                 <button type="button" data-val="light">Light</button>
@@ -73,10 +79,10 @@
                 <button type="button" data-val="single">Single</button>
                 <button type="button" data-val="side">Side-by-side</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="display" open>
-            <summary class="fc-sb-title">Display</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Display</div>
             <div class="fc-sb-grid">
                 <label><input type="checkbox" data-section="devanagari" checked> Devanāgarī</label>
                 <label><input type="checkbox" data-section="iast" checked> IAST transliteration</label>
@@ -99,10 +105,33 @@
                 <button type="button" data-action="expand-all">Expand all</button>
                 <button type="button" data-action="collapse-all">Collapse all</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="tools" open>
-            <summary class="fc-sb-title">Tools</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Find your starting point</div>
+            <div class="fc-persona-links">
+                <a class="fc-persona-link" href="../../../daily/">🌅 Daily (one value a week)</a>
+                <a class="fc-persona-link" href="../../../householder/">🏠 Householder (family & work)</a>
+                <a class="fc-persona-link" href="../../../parenting/">👨‍👩‍👧 Parenting (stories for kids)</a>
+                <a class="fc-persona-link" href="../../../themes/">📚 All themes</a>
+                <a class="fc-persona-link" href="../../../values/" style="background:#F0F6F2;border-left-color:#1F4632;">ॐ Vedic Value System ↗</a>
+                <a class="fc-persona-link" href="../../../vidya/" style="background:#FBF6E4;border-left-color:#C8860B;">📚 Vidyā Karaṇa (kids, multi-lang) ↗</a>
+            </div>
+        </div>
+
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Audience</div>
+            <div class="fc-audience-filter">
+                <label><input type="radio" name="fc-audience" value="all" checked> All levels</label>
+                <label><input type="radio" name="fc-audience" value="primary"> Primary (children)</label>
+                <label><input type="radio" name="fc-audience" value="middle"> Middle (teens)</label>
+                <label><input type="radio" name="fc-audience" value="senior"> Senior (adults)</label>
+                <label><input type="radio" name="fc-audience" value="college"> College / scholar</label>
+            </div>
+        </div>
+
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Tools</div>
             <div class="fc-sb-tools">
                 <button type="button" id="fc-presentation-toggle" class="fc-tool-btn"><span>🖥 Presentation</span><kbd class="fc-kbd">F</kbd></button>
                 <button type="button" id="fc-pen-toggle" class="fc-tool-btn"><span>✏️ Pen mode</span><kbd class="fc-kbd">P</kbd></button>
@@ -117,10 +146,26 @@
                 <button type="button" id="fc-clear-highlights" class="fc-tool-btn">🩷 Clear highlights (page)</button>
                 <button type="button" id="fc-notes-modal-open" class="fc-tool-btn">📓 My annotations</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="progress" id="fc-progress-section" open>
-            <summary class="fc-sb-title">Progress</summary>
+        <div class="fc-sb-section" id="fc-tts-controls" hidden>
+            <div class="fc-sb-title">
+                Read-aloud
+                <label class="fc-tts-master">
+                    <input type="checkbox" id="fc-tts-enabled" checked>
+                    <span class="fc-tts-master-label">On</span>
+                </label>
+            </div>
+            <div class="fc-tts-inner">
+                <div class="fc-sb-sub">Voice</div>
+                <select id="fc-tts-voice" class="fc-tts-select" aria-label="TTS voice"></select>
+                <div class="fc-sb-sub">Rate <span class="fc-tts-rate-val">1.0×</span></div>
+                <input type="range" id="fc-tts-rate" min="0.5" max="2" step="0.1" value="1" class="fc-tts-rate" aria-label="Reading rate">
+            </div>
+        </div>
+
+        <div class="fc-sb-section" id="fc-progress-section">
+            <div class="fc-sb-title">Progress</div>
             <div class="fc-progress-row">
                 <span class="fc-progress-num" id="fc-progress-num">0</span>
                 <span class="fc-progress-divider">/</span>
@@ -135,29 +180,29 @@
                 <span class="fc-progress-spacer"></span>
                 <button type="button" class="fc-progress-reset" id="fc-progress-reset" title="Reset progress">↺</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="bookmarks" open>
-            <summary class="fc-sb-title">Bookmarks <span class="fc-sb-count" id="fc-bookmarks-count">0</span></summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Bookmarks <span class="fc-sb-count" id="fc-bookmarks-count">0</span></div>
             <ul class="fc-bookmark-list" id="fc-bookmarks-list">
                 <li class="fc-sb-empty">No bookmarks yet — click ☆ on any verse.</li>
             </ul>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="notes" open>
-            <summary class="fc-sb-title">Notes <span class="fc-sb-count" id="fc-notes-count">0</span></summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Notes <span class="fc-sb-count" id="fc-notes-count">0</span></div>
             <ul class="fc-bookmark-list" id="fc-notes-list">
                 <li class="fc-sb-empty">No notes yet — open any verse and write in the 📝 block.</li>
             </ul>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="export">
-            <summary class="fc-sb-title">Export</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Export</div>
             <div class="fc-sb-tools">
                 <button type="button" id="fc-export-md" class="fc-tool-btn">📥 Download Markdown</button>
                 <button type="button" id="fc-export-json" class="fc-tool-btn">💾 Download JSON backup</button>
             </div>
-        </details>
+        </div>
     </div>
 </aside>    <main class="fc-container">
 <nav class="fc-breadcrumbs">
@@ -175,7 +220,7 @@
         <h1 class="fc-verse-heading">6.1 · The History of the Life of Ajāmila</h1>
         <span class="fc-ribbon-meta">
             60 verses
- · <a class="fc-ribbon-link" href="class-prep/">🖨 Class prep</a>        </span>
+        </span>
         <input type="search" class="fc-search" id="fc-search" placeholder="🔍 Search in this chapter" aria-label="Search verses in this chapter">
         <span class="fc-ribbon-current" id="fc-ribbon-current" aria-live="polite"></span>
     </div>
@@ -486,7 +531,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <div class="fc-translation" data-sec="translation">Mahārāja Parīkṣit said: O my lord, O Śukadeva Gosvāmī, you have already described [in the Second Canto] the path of liberation [nivṛtti-mārga]. By following that path, one is certainly elevated gradually to the highest planetary system, Brahmaloka, from which one is promoted to the spiritual world along with Lord Brahmā. Thus one’s repetition of birth and death in the material world ceases.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -704,18 +748,6 @@ Those who are on Brahma-loka with exalted status at the time of dissolution go d
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Parīkṣit, having just heard of hellish destinations, urgently asks about the path of liberation. A Vaiṣṇava heart, even from the throne, turns immediately to compassion for suffering souls rather than dwelling on its own welfare.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>When I learn of others&#39; suffering, do I move toward concern for them or retreat into my own comfort?</li><li>What &#39;urgent question&#39; would I bring to a saint if I had only seven days left to live?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -891,7 +923,6 @@ Those who are on Brahma-loka with exalted status at the time of dissolution go d
 
     <div class="fc-translation" data-sec="translation">O great sage Śukadeva Gosvāmī, unless the living entity is freed from the infection of the material modes of nature, he receives different types of bodies in which to enjoy or suffer, and according to the body, he is understood to have various inclinations. By following these inclinations he traverses the path called pravṛtti-mārga, by which one may be elevated to the heavenly planets, as you have already described [in the Third Canto].</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -976,18 +1007,6 @@ With minds attached to this world, with faith in prescribed duties, they perform
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Driven by the modes of nature, conditioned souls keep climbing the ladder of pravṛtti-mārga — chasing heavens, ancestors, ghosts — and receive bodies matching those desires. Whatever we worship, we slowly become; only Kṛṣṇa-worship leads us home.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Looking at what I actually pursue daily, where am I heading — a higher heaven or back to Kṛṣṇa?</li><li>Which of my &#39;inclinations&#39; are inherited from past conditioning rather than chosen consciously?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -1157,7 +1176,6 @@ With minds attached to this world, with faith in prescribed duties, they perform
     <div class="fc-translation" data-sec="translation">You have also described [at the end of the Fifth Canto] the varieties of hellish life that result from impious activities, and you have described [in the Fourth Canto] the first manvantara, which was presided over by Svāyambhuva Manu, the son of Lord Brahmā.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -1203,18 +1221,6 @@ Yataḥ means “in which.”</div>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Parīkṣit recalls the earlier hellish descriptions and the orderly cosmos under Svāyambhuva Manu. The same universe contains both heavens and hells — and our choices, not chance, decide which we taste next.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Do I take seriously that hellish and heavenly states are real destinations and not metaphors?</li><li>Which everyday choices am I making that quietly steer me toward one or the other?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -1526,7 +1532,6 @@ Yataḥ means “in which.”</div>
 
     <div class="fc-translation" data-sec="translation">My dear lord, you have described the dynasties and characteristics of King Priyavrata and King Uttānapāda. The Supreme Personality of Godhead created this material world with various universes, planetary systems, planets and stars, with varied lands, seas, oceans, mountains, rivers, gardens and trees, all with different characteristics. These are divided among this planet earth, the luminaries in the sky and the lower planetary systems. You have very clearly described these planets and the living entities who live on them.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1577,18 +1582,6 @@ You have explained the islands just as the Lord created them.  You have explaine
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">All the dynasties, planets, oceans and stars sprang from one almighty Person. Material complexity does not arise from chance — it is the deliberate handiwork of an intelligent, omnipotent Lord, recognizing whom is the first step toward sanity.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>When I look at the natural world, do I see design and a Designer, or do I default to &#39;random&#39;?</li><li>What would change in my daily life if I lived as though Kṛṣṇa actually created and sustains everything I see?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -1782,7 +1775,6 @@ You have explained the islands just as the Lord created them.  You have explaine
 
     <div class="fc-translation" data-sec="translation">O greatly fortunate and opulent Śukadeva Gosvāmī, now kindly tell me how human beings may be saved from having to enter hellish conditions in which they suffer terrible pains.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1891,18 +1883,6 @@ Please explain how a person can avoid going to these hells which have terrible p
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Parīkṣit asks the question of a true devotee: not &#39;how do I escape hell?&#39; but &#39;how can humanity be saved from it?&#39; A Vaiṣṇava feels others&#39; pain as his own and lives to relieve it.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Whose suffering today weighs on me enough to act on, even slightly?</li><li>Am I praying mostly for my own deliverance, or also for those around me still entangled?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -2188,7 +2168,6 @@ Please explain how a person can avoid going to these hells which have terrible p
 
     <div class="fc-translation" data-sec="translation">Śukadeva Gosvāmī replied: My dear King, if before one’s next death whatever impious acts one has performed in this life with his mind, words and body are not counteracted through proper atonement according to the description of the Manu-saṁhitā and other dharma-śāstras, one will certainly enter the hellish planets after death and undergo terrible suffering, as I have previously described to you.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2280,18 +2259,6 @@ Testing the proficiency of his student Parīkṣit to understand his opinion on 
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Śukadeva first offers the conventional answer: atone for sins through dharma-śāstra rules before death overtakes you, or you will surely suffer. This is the karma-kāṇḍa path — real but limited — given to test the listener&#39;s depth.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where am I postponing genuine repentance, telling myself there is still plenty of time?</li><li>Do I expect rule-following alone to clean my heart, or do I sense something deeper is needed?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -2525,7 +2492,6 @@ Testing the proficiency of his student Parīkṣit to understand his opinion on 
 
     <div class="fc-translation" data-sec="translation">Therefore, before one’s next death comes, as long as one’s body is strong enough, one should quickly adopt the process of atonement according to śāstra; otherwise one’s time will be lost, and the reactions of his sins will increase. As an expert physician diagnoses and treats a disease according to its gravity, one should undergo atonement according to the severity of one’s sins.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2604,18 +2570,6 @@ Before death, quickly one should do this. Otherwise if there is much delay, one 
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Like a physician matching dosage to disease severity, scripture prescribes atonement proportional to one&#39;s sins, and urges that it be done while the body is still strong. Delay multiplies the reaction; act now while you still can.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which &#39;small&#39; habit do I keep planning to address &#39;someday&#39; when I have more time or energy?</li><li>If a wise doctor diagnosed my spiritual life today, what serious medicine would they prescribe?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -2827,7 +2781,6 @@ Before death, quickly one should do this. Otherwise if there is much delay, one 
 
     <div class="fc-translation" data-sec="translation">Mahārāja Parīkṣit said: One may know that sinful activity is injurious for him because he actually sees that a criminal is punished by the government and rebuked by people in general and because he hears from scriptures and learned scholars that one is thrown into hellish conditions in the next life for committing sinful acts. Nevertheless, in spite of such knowledge, one is forced to commit sins again and again, even after performing acts of atonement. Therefore, what is the value of such atonement?</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2901,18 +2854,6 @@ Parīkṣit criticizes atonement, saying it is unacceptable, in two verses.  One
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Parīkṣit objects: people see criminals punished, hear of hell in scripture, and still sin again and again — even after atoning. As long as the taste for enjoyment is alive in the heart, mere ritual atonement cannot stop the cycle.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which sin do I repeatedly resolve to give up and then return to — and what does that reveal?</li><li>Am I trying to manage my behavior while leaving the underlying desire untouched?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -3090,7 +3031,6 @@ Parīkṣit criticizes atonement, saying it is unacceptable, in two verses.  One
 
     <div class="fc-translation" data-sec="translation">Sometimes one who is very alert so as not to commit sinful acts is victimized by sinful life again. I therefore consider this process of repeated sinning and atoning to be useless. It is like the bathing of an elephant, for an elephant cleanses itself by taking a full bath, but then throws dust over its head and body as soon as it returns to the land.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3164,18 +3104,6 @@ Sometimes in youth one refrains from sin, but again one commits the sin in old a
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Parīkṣit compares ritual atonement to an elephant&#39;s bath: cleansed in the river, then dust thrown on the back the moment it leaves. Outward cleansings cannot help when the inner desire to sin is not uprooted.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What is my &#39;dust&#39; — the habit I throw back over myself right after every cleansing?</li><li>Where would I rather perform a ritual than face the inner desire driving my fall?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -3342,7 +3270,6 @@ Sometimes in youth one refrains from sin, but again one commits the sin in old a
 
     <div class="fc-translation" data-sec="translation">Śukadeva Gosvāmī, the son of Vedavyāsa, answered: My dear King, since acts meant to neutralize impious actions are also fruitive, they will not release one from the tendency to act fruitively. Persons who subject themselves to the rules and regulations of atonement are not at all intelligent. Indeed, they are in the mode of darkness. Unless one is freed from the mode of ignorance, trying to counteract one action through another is useless because this will not uproot one’s desires. Thus even though one may superficially seem pious, he will undoubtedly be prone to act impiously. Therefore real atonement is enlightenment in perfect knowledge, Vedānta, by which one understands the Supreme Absolute Truth.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3413,18 +3340,6 @@ By presenting a conclusion, Śukadeva again tests Parīkṣit who has passed the
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Śukadeva agrees: atonement that is itself fruitive cannot end fruitive desire. He moves the conversation to the platform of knowledge — real atonement is enlightenment in the Absolute Truth through proper study of Vedānta.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Am I trying to fix bad karma with more karma, or am I seeking actual understanding of who I am?</li><li>What would &#39;real knowledge&#39; look like in my life — and am I actually pursuing it, or just collecting information?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -3620,7 +3535,6 @@ By presenting a conclusion, Śukadeva again tests Parīkṣit who has passed the
 
     <div class="fc-translation" data-sec="translation">My dear King, if a diseased person eats the pure, uncontaminated food prescribed by a physician, he is gradually cured, and the infection of disease can no longer touch him. Similarly, if one follows the regulative principles of knowledge, he gradually progresses toward liberation from material contamination.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3709,18 +3623,6 @@ By presenting a conclusion, Śukadeva again tests Parīkṣit who has passed the
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Just as a patient eating the diet prescribed by a doctor is gradually cured, one who follows the regulative principles of knowledge is gradually freed from material contamination. Steady, prescribed discipline heals where panic and shortcuts cannot.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Am I willing to take the slow, prescribed &#39;diet&#39; for my soul, or do I keep looking for instant cures?</li><li>Which regulative principle, applied steadily, would most heal me this year?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -4014,7 +3916,6 @@ By presenting a conclusion, Śukadeva again tests Parīkṣit who has passed the
 
     <div class="fc-translation" data-sec="translation">To concentrate the mind, one must observe a life of celibacy and not fall down. One must undergo the austerity of voluntarily giving up sense enjoyment. One must then control the mind and senses, give charity, be truthful, clean and nonviolent, follow the regulative principles and regularly chant the holy name of the Lord. Thus a sober and faithful person who knows the religious principles is temporarily purified of all sins performed with his body, words and mind. These sins are like the dried leaves of creepers beneath a bamboo tree, which may be burned by fire although their roots remain to grow again at the first opportunity.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -4104,18 +4005,6 @@ Two verses elaborate on this. Tapasā means absence of enjoyment. Brahmacaryeṇ
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Real concentration requires brahmacarya, austerity, charity, truthfulness, cleanliness, nonviolence, regulation and constant chanting of the Lord&#39;s name. These burn the leaves of sin — yet the roots can sprout again if devotion is not cultivated.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Of these foundational disciplines, which one is most missing in my life right now?</li><li>Where am I content with surface-level purification while leaving the roots of desire intact?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -4274,7 +4163,6 @@ Two verses elaborate on this. Tapasā means absence of enjoyment. Brahmacaryeṇ
 
 
     <div class="fc-translation" data-sec="translation">Only a rare person who has adopted complete, unalloyed devotional service to Kṛṣṇa can uproot the weeds of sinful actions with no possibility that they will revive. He can do this simply by discharging devotional service, just as the sun can immediately dissipate fog by its rays.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -4440,18 +4328,6 @@ In the example of the fire destroying bamboo, it is possible that the bamboo can
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Only unalloyed devotional service uproots sin completely — as the sun dissolves fog in a moment. Where rules and knowledge weaken the weeds, bhakti pulls them out by the root, leaving no chance to grow back.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Am I willing to trust bhakti as the actual remedy, or do I still treat it as a supplement to other paths?</li><li>What &#39;fog&#39; in my life would dissolve if I gave even one hour a day to undistracted devotional practice?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -4611,7 +4487,6 @@ In the example of the fire destroying bamboo, it is possible that the bamboo can
 
     <div class="fc-translation" data-sec="translation">My dear King, if a sinful person engages in the service of a bona fide devotee of the Lord and thus learns how to dedicate his life unto the lotus feet of Kṛṣṇa, he can be completely purified. One cannot be purified merely by undergoing austerity, penance, brahmacarya and the other methods of atonement I have previously described.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -4686,18 +4561,6 @@ Bhakti-devī should not be used for the insignificant action of pacifying sin. �
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">A sinful person who simply serves a bona fide devotee and learns to offer his life to Kṛṣṇa is fully purified — something austerity alone cannot accomplish. Association with a sincere Vaiṣṇava does more than years of self-effort.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Who in my life is genuinely Kṛṣṇa-conscious, and how much time do I actually spend serving them?</li><li>Am I trying to purify myself in isolation when a guide is available to me?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -4866,7 +4729,6 @@ Bhakti-devī should not be used for the insignificant action of pacifying sin. �
 
     <div class="fc-translation" data-sec="translation">The path followed by pure devotees, who are well-behaved and fully endowed with the best qualifications, is certainly the most auspicious path in this material world. It is free from fear, and it is authorized by the śāstras.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -4932,18 +4794,6 @@ One should not say that bhakti-yoga is for those who are not capable of practici
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The path of pure devotees — well-behaved, scripturally authorized, and free from fear — is the most auspicious in this world. Bhakti is not the refuge of the weak or unlettered; it is the path the greatest scholars and saints actually walked.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Have I unconsciously absorbed the idea that devotion is for simpletons and &#39;real thinking&#39; lies elsewhere?</li><li>Whose footsteps am I actually following — the mahājanas&#39;, or those of current cultural trends?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -5085,7 +4935,6 @@ One should not say that bhakti-yoga is for those who are not capable of practici
 
     <div class="fc-translation" data-sec="translation">My dear King, as a pot containing liquor cannot be purified even if washed in the waters of many rivers, nondevotees cannot be purified by processes of atonement even if they perform them very well.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -5154,18 +5003,6 @@ Positive and negative statements are used to show that bhakti destroys all sin w
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">A pot that once held liquor cannot be cleaned by any river — a nondevotee cannot be purified by atonement no matter how scrupulously performed. Without even a drop of bhakti, all other purifications remain on the surface.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which of my &#39;purification&#39; practices may be like washing a liquor pot — sincere but missing the essential ingredient?</li><li>Where can I add even a small drop of devotion to make my efforts actually transformative?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -5408,7 +5245,6 @@ Positive and negative statements are used to show that bhakti destroys all sin w
 
     <div class="fc-translation" data-sec="translation">Although not having fully realized Kṛṣṇa, persons who have even once surrendered completely unto His lotus feet and who have become attracted to His name, form, qualities and pastimes are completely freed of all sinful reactions, for they have thus accepted the true method of atonement. Even in dreams, such surrendered souls do not see Yamarāja or his order carriers, who are equipped with ropes to bind the sinful.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -5525,18 +5361,6 @@ Even if the most sinful person worships me with no other desire than to please m
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Those who surrender once at Kṛṣṇa&#39;s lotus feet and become attracted to His name, form and pastimes are freed of all sin — they do not even see Yamarāja in dreams. A single, sincere surrender is the true atonement.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Have I ever actually surrendered, even once, with full sincerity — or only flirted with the idea?</li><li>What is one small surrender I can make today that I have been holding back?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -5723,7 +5547,6 @@ Even if the most sinful person worships me with no other desire than to please m
 
     <div class="fc-translation" data-sec="translation">In this regard, learned scholars and saintly persons describe a very old historical incident involving a discussion between the order carriers of Lord Viṣṇu and those of Yamarāja. Please hear of this from me.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -5804,18 +5627,6 @@ He narrates a story to show the meaning of his statement.  Hear from me that sto
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">To illustrate the power of even unconscious chanting, Śukadeva introduces the historical episode of Viṣṇudūtas and Yamadūtas. The Purāṇas are not myth — they are recorded history meant to teach us how grace actually works.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Do I quietly dismiss the Purāṇic narratives as legend, or do I let them instruct my life?</li><li>Which historical incident from śāstra has shaped how I live — and which should?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -5966,7 +5777,6 @@ He narrates a story to show the meaning of his statement.  Hear from me that sto
 
     <div class="fc-translation" data-sec="translation">In the city known as Kānyakubja there was a brāhmaṇa named Ajāmila who married a prostitute maidservant and lost all his brahminical qualities because of the association of that low-class woman.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -6070,18 +5880,6 @@ He narrates a story to show the meaning of his statement.  Hear from me that sto
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Ajāmila, born a qualified brāhmaṇa, lost all his good qualities through association with a prostitute. One wrong association can dismantle a lifetime of cultivation; companions silently shape destiny.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which current association is slowly eroding my spiritual cultivation without my noticing?</li><li>Whose company would I need to seek out to restore what has already begun to slip?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -6250,7 +6048,6 @@ He narrates a story to show the meaning of his statement.  Hear from me that sto
 
     <div class="fc-translation" data-sec="translation">This fallen brāhmaṇa, Ajāmila, gave trouble to others by arresting them, by cheating them in gambling or by directly plundering them. This was the way he earned his livelihood and maintained his wife and children.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -6349,18 +6146,6 @@ Bandī means making someone a prisoner. Akṣaiḥ means “by gambling.”  He 
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Driven by his attachment, the fallen Ajāmila began arresting, cheating and plundering to maintain his family. Illicit attachment does not stay isolated — it cascades into theft, deceit and a whole web of sin.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Is there a single area of compromise in my life that is quietly licensing other compromises?</li><li>What does my way of earning say about what I am actually willing to do for my attachments?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -6548,7 +6333,6 @@ Bandī means making someone a prisoner. Akṣaiḥ means “by gambling.”  He 
     <div class="fc-translation" data-sec="translation">My dear King, while he thus spent his time in abominable, sinful activities to maintain his family of many sons, eighty-eight years of his life passed by.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -6609,18 +6393,6 @@ Time related to age passed.  How much time?  Eighty years (samāḥ) passed.</di
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Eighty-eight years of life slipped by while Ajāmila was absorbed in sinful maintenance of his family. Time does not pause for our reckoning — most of a human life can be spent on what was never essential.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>If I add up the hours of my last week, how many went to what truly matters at death?</li><li>What am I assuming I will get around to &#39;later&#39; that the calendar may not allow?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -6825,7 +6597,6 @@ Time related to age passed.  How much time?  Eighty years (samāḥ) passed.</di
 
     <div class="fc-translation" data-sec="translation">That old man Ajāmila had ten sons, of whom the youngest was a baby named Nārāyaṇa. Since Nārāyaṇa was the youngest of all the sons, he was naturally very dear to both his father and his mother.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -6874,18 +6645,6 @@ Pravayasaḥ means old.</div>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">At eighty-eight, Ajāmila still had a baby, Nārāyaṇa — clear evidence of his fall from brahminical culture, which prescribes vānaprastha well before such an age. Yet through this child the holy name would find him again.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Am I still building new attachments at a stage of life meant for detachment?</li><li>Where might Kṛṣṇa be hiding a hook of grace inside something I consider merely material?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -7054,7 +6813,6 @@ Pravayasaḥ means old.</div>
 
     <div class="fc-translation" data-sec="translation">Because of the child’s broken language and awkward movements, old Ajāmila was very much attached to him. He always took care of the child and enjoyed the child’s activities.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -7123,18 +6881,6 @@ Jarathaḥ means old man.</div>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Ajāmila adored his baby&#39;s broken speech and clumsy steps, and so constantly called out &#39;Nārāyaṇa.&#39; Even unintentional chanting purifies, which is why parents traditionally named children after the Lord — to let the household be saved by speech.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What names and words fill my home daily — and what consciousness are they slowly cultivating?</li><li>Could I rearrange even one habit so the Lord&#39;s names are spoken naturally throughout my day?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -7312,7 +7058,6 @@ Jarathaḥ means old man.</div>
 
     <div class="fc-translation" data-sec="translation">When Ajāmila chewed food and ate it, he called the child to chew and eat, and when he drank he called the child to drink also. Always engaged in taking care of the child and calling his name, Nārāyaṇa, Ajāmila could not understand that his own time was now exhausted and that death was upon him.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -7381,18 +7126,6 @@ Khādan means chewing.</div>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Lost in caring for the child Nārāyaṇa, Ajāmila did not realize death was upon him — yet every utterance of that name was being recorded. The Lord lovingly counts even our absentminded chants, while we miss the warnings of mortality.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Am I so engrossed in caring for what I love that I have stopped noticing how close death may be?</li><li>What &#39;unknowing chanting&#39; is already going on in my life that I can make conscious and intentional?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -7552,7 +7285,6 @@ Khādan means chewing.</div>
 
     <div class="fc-translation" data-sec="translation">When the time of death arrived for the foolish Ajāmila, he began thinking exclusively of his son Nārāyaṇa.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -7642,18 +7374,6 @@ Khādan means chewing.</div>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">At the moment of death, Ajāmila&#39;s mind locked onto his son Nārāyaṇa — and through that name, on the Supreme Nārāyaṇa worshiped in his youth. Whatever has been deeply imprinted earlier in life rises up at the final hour.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What am I imprinting deeply now that will most likely rise on my mind at death?</li><li>Is there an early habit of devotion I have abandoned that I should consciously rebuild?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -7929,7 +7649,6 @@ Khādan means chewing.</div>
 
     <div class="fc-translation" data-sec="translation">Ajāmila then saw three awkward persons with deformed bodily features, fierce, twisted faces, and hair standing erect on their bodies. With ropes in their hands, they had come to take him away to the abode of Yamarāja. When he saw them he was extremely bewildered, and because of attachment to his child, who was playing a short distance away, Ajāmila began to call him loudly by his name. Thus with tears in his eyes he somehow or other chanted the holy name of Nārāyaṇa.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -7993,18 +7712,6 @@ Though he had committed unlimited sins, his sins could be classified in three ty
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Seeing three fierce Yamadūtas with ropes, Ajāmila in terror cried out &#39;Nārāyaṇa!&#39; — meaning his son, but uttering the Lord&#39;s name with tears. Helpless fear can become the doorway to grace if there is any thread of devotion in our past.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>When I am most afraid, whose name spontaneously rises on my lips?</li><li>What &#39;thread&#39; from my spiritual past can I deliberately strengthen now, before such a moment comes?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -8155,7 +7862,6 @@ Though he had committed unlimited sins, his sins could be classified in three ty
 
     <div class="fc-translation" data-sec="translation">My dear King, the order carriers of Viṣṇu, the Viṣṇudūtas, immediately arrived when they heard the holy name of their master from the mouth of the dying Ajāmila, who had certainly chanted without offense because he had chanted in complete anxiety.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -8229,18 +7935,6 @@ Hearing hari-kīrtana, the associates of Viṣṇu arrived. It came from the mou
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Hearing their master&#39;s name from the dying man, the Viṣṇudūtas instantly arrived — never pausing to question his motive. The holy name acts; it does not interrogate. Even anxiety-driven, unintentional chanting summons the Lord&#39;s protection.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Do I underestimate the holy name because I think my motives are not pure enough?</li><li>What might happen if I simply chanted now, anxiety and all, without waiting to feel worthy?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -8380,7 +8074,6 @@ Hearing hari-kīrtana, the associates of Viṣṇu arrived. It came from the mou
 
     <div class="fc-translation" data-sec="translation">The order carriers of Yamarāja were snatching the soul from the core of the heart of Ajāmila, the husband of the prostitute, but with resounding voices the messengers of Lord Viṣṇu, the Viṣṇudūtas, forbade them to do so.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -8463,18 +8156,6 @@ The servants of Viṣṇu forbad them saying, “If you want to live, do not dra
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The Yamadūtas were already pulling Ajāmila&#39;s soul from his heart when the Viṣṇudūtas thunderously forbade them. The Lord&#39;s messengers can override even Yamarāja&#39;s authority for one who has uttered His name with even a trace of surrender.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Do I really believe Kṛṣṇa&#39;s protection can reach me even at the very last moment?</li><li>Where in my life am I living as if death&#39;s agents have the final word over my soul?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -8643,7 +8324,6 @@ The servants of Viṣṇu forbad them saying, “If you want to live, do not dra
 
     <div class="fc-translation" data-sec="translation">When the order carriers of Yamarāja, the son of the sun-god, were thus forbidden, they replied: Who are you, sirs, that have the audacity to challenge the jurisdiction of Yamarāja?</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -8712,18 +8392,6 @@ Puraḥsarāḥ means servants.</div>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Astonished, the Yamadūtas ask who dares challenge Yamarāja&#39;s jurisdiction. Their amazement reveals the universe&#39;s normal order — and how startling it is when devotion breaks the rules of karma in someone&#39;s favor.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Am I expecting only fairness from life, or also the possibility of grace beyond what I deserve?</li><li>Whose &#39;jurisdiction&#39; over my future do I unconsciously accept that bhakti can actually overrule?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -8919,7 +8587,6 @@ Puraḥsarāḥ means servants.</div>
 
     <div class="fc-translation" data-sec="translation">Dear sirs, whose servants are you, where have you come from, and why are you forbidding us to touch the body of Ajāmila? Are you demigods from the heavenly planets, are you sub-demigods, or are you the best of devotees?</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -8975,18 +8642,6 @@ Why do you forbid us (taking him away)? The sentence should be completed.</div>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The Yamadūtas wonder if these brilliant strangers are demigods, sub-demigods or the best of devotees. The light shining from Vaiṣṇavas is so distinct that even the messengers of death cannot mistake it for anything earthly.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Does my conduct cast any light that distinguishes a devotee from ordinary worldly people?</li><li>Whom in my life do I recognize as a &#39;siddha-sattama,&#39; and am I taking shelter of that recognition?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -9414,7 +9069,6 @@ Why do you forbid us (taking him away)? The sentence should be completed.</div>
 
     <div class="fc-translation" data-sec="translation">The order carriers of Yamarāja said: Your eyes are just like the petals of lotus flowers. Dressed in yellow silken garments, decorated with garlands of lotuses, and wearing very attractive helmets on your heads and earrings on your ears, you all appear fresh and youthful. Your four long arms are decorated with bows and quivers of arrows and with swords, clubs, conchshells, discs and lotus flowers. Your effulgence has dissipated the darkness of this place with extraordinary illumination. Now, sirs, why are you obstructing us?</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -9484,18 +9138,6 @@ By your appearance you look most well behaved.  By your effulgence you defeat th
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The Yamadūtas describe the Viṣṇudūtas: lotus-petal eyes, yellow garments, four arms with conch, disc, club and lotus, dispelling all darkness. The Lord&#39;s servants resemble Him in form and effulgence — devotion gradually shapes us into His likeness.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Whose qualities am I gradually taking on through the company I keep — His servants&#39;, or māyā&#39;s?</li><li>What &#39;darkness&#39; around me could be dissipated if I lived more transparently as His servant?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -9680,7 +9322,6 @@ By your appearance you look most well behaved.  By your effulgence you defeat th
 
     <div class="fc-translation" data-sec="translation">Śukadeva Gosvāmī continued: Being thus addressed by the messengers of Yamarāja, the servants of Vāsudeva smiled and spoke the following words in voices as deep as the sound of rumbling clouds.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -9744,18 +9385,6 @@ They smiled.  “You do not know dharma. Because of fear of us, you say you are 
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The Viṣṇudūtas smiled and answered in voices like rumbling clouds. A true servant of God responds to challenge not with anger or fear but with composed authority — knowing the truth on whose strength he stands.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>When my values are challenged, do I react with anxiety or respond with calm clarity?</li><li>What inner foundation would I need to build to speak about Kṛṣṇa with such quiet confidence?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -9958,7 +9587,6 @@ They smiled.  “You do not know dharma. Because of fear of us, you say you are 
 
     <div class="fc-translation" data-sec="translation">The blessed messengers of Lord Viṣṇu, the Viṣṇudūtas, said: If you are actually servants of Yamarāja, you must explain to us the meaning of religious principles and the symptoms of irreligion.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -10010,18 +9638,6 @@ They smiled.  “You do not know dharma. Because of fear of us, you say you are 
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">If you really serve Yamarāja, the Viṣṇudūtas ask, explain to us the true symptoms of dharma and adharma. A servant who does not know his master&#39;s principles is no servant at all — and many who claim authority in our world fail this very test.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Whose values am I &#39;serving&#39; without ever having examined whether I truly understand them?</li><li>Could I articulate, in my own words, what genuine dharma and adharma look like in my context?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -10226,7 +9842,6 @@ They smiled.  “You do not know dharma. Because of fear of us, you say you are 
 
     <div class="fc-translation" data-sec="translation">What is the process of punishing others? Who are the actual candidates for punishment? Are all karmīs engaged in fruitive activities punishable, or only some of them?</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -10290,18 +9905,6 @@ They ask about the method of punishment, the reasons for punishment, the persons
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The Viṣṇudūtas press further: who exactly is punishable, and on what basis? They expose a sloppy assumption — that all karmīs are equally guilty — and force a serious inquiry into how judgment actually works.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>How quick am I to lump people into &#39;sinners&#39; without distinguishing intent, knowledge or surrender?</li><li>Do I judge others by external acts while excusing myself for inner motivations?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -10486,7 +10089,6 @@ They ask about the method of punishment, the reasons for punishment, the persons
 
     <div class="fc-translation" data-sec="translation">The Yamadūtas replied: That which is prescribed in the Vedas constitutes dharma, the religious principles, and the opposite of that is irreligion. The Vedas are directly the Supreme Personality of Godhead, Nārāyaṇa, and are self-born. This we have heard from Yamarāja.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -10560,18 +10162,6 @@ Dharma is what is prescribed in the Vedas. What is in the Vedas is the nature of
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The Yamadūtas answer that dharma is what the Vedas prescribe, adharma the opposite — and the Vedas are non-different from Nārāyaṇa Himself. They do not invent principles; they cite their authority, just as we must.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where am I manufacturing my own private definition of right and wrong rather than referring to śāstra?</li><li>Whom do I cite as authority when I make moral decisions — and is that authority actually trustworthy?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -10740,7 +10330,6 @@ Dharma is what is prescribed in the Vedas. What is in the Vedas is the nature of
 
     <div class="fc-translation" data-sec="translation">The supreme cause of all causes, Nārāyaṇa, is situated in His own abode in the spiritual world, but nevertheless He controls the entire cosmic manifestation according to the three modes of material nature — sattva-guṇa, rajo-guṇa and tamo-guṇa. In this way all living entities are awarded different qualities, different names [such as brāhmaṇa, kṣatriya and vaiśya], different duties according to the varṇāśrama institution, and different forms. Thus Nārāyaṇa is the cause of the entire cosmic manifestation.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -10826,18 +10415,6 @@ Who is Nārāyaṇa?  Situated in Vaikuṇṭha, the living entities (bhāvāḥ
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">From His own abode, the all-powerful Nārāyaṇa effortlessly governs the cosmos through the three modes of nature, assigning each soul its qualities, duties and forms. He does not need to act directly; His potencies do everything perfectly.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Am I living as if I am the doer, or as if a vast cosmic intelligence is arranging my situation?</li><li>Where can I cooperate with the role and duties I have been given rather than fighting them?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -11069,7 +10646,6 @@ Who is Nārāyaṇa?  Situated in Vaikuṇṭha, the living entities (bhāvāḥ
 
     <div class="fc-translation" data-sec="translation">The sun, fire, sky, air, demigods, moon, evening, day, night, directions, water, land and Supersoul Himself all witness the activities of the living entity.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -11146,18 +10722,6 @@ The sun, moon, air, fire, sky, earth, water, mind, Yama, day, night, dawn and tw
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The sun, fire, sky, air, demigods, moon, time, directions, water, earth and the Supersoul within all witness our every act. We may believe we sin in secret, but the universe itself is the courtroom — and the records are complete.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>How would I behave today if I truly remembered that everything I do is being observed?</li><li>Which &#39;private&#39; act of mine would I be ashamed of if it played back in front of all those witnesses?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -11327,7 +10891,6 @@ The sun, moon, air, fire, sky, earth, water, mind, Yama, day, night, dawn and tw
     <div class="fc-translation" data-sec="translation">The candidates for punishment are those who are confirmed by these many witnesses to have deviated from their prescribed regulative duties. Everyone engaged in fruitive activities is suitable to be subjected to punishment according to his sinful acts.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -11403,18 +10966,6 @@ The reason for punishment and the victims of punishment are mentioned.</div>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Those whose deviation from prescribed duty is confirmed by these many witnesses become candidates for punishment. Anyone engaged in fruitive activity — pious or impious — is subject to the law of consequence in proportion to their acts.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Do I take seriously that even &#39;pious&#39; fruitive activity binds me to future bodies and consequences?</li><li>Which of my prescribed duties am I currently neglecting in ways that would, in court, be undeniable?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -11601,7 +11152,6 @@ The reason for punishment and the victims of punishment are mentioned.</div>
 
     <div class="fc-translation" data-sec="translation">O inhabitants of Vaikuṇṭha, you are sinless, but those within this material world are all karmīs, whether acting piously or impiously. Both kinds of action are possible for them because they are contaminated by the three modes of nature and must act accordingly. One who has accepted a material body cannot be inactive, and sinful action is inevitable for one acting under the modes of material nature. Therefore all the living entities within this material world are punishable.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -11650,18 +11200,6 @@ This verse explains the reason why everyone is subject to punishment. Viparītā
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Within this world, the Yamadūtas explain, no embodied soul can avoid action — and acting under the modes inevitably involves some sin. So everyone here is punishable, except those freed by surrender to the Lord.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Do I imagine I can keep my hands clean by acting &#39;carefully&#39; while still on the material plane?</li><li>What does this verse imply about the urgency of getting onto the transcendental platform?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -11875,7 +11413,6 @@ This verse explains the reason why everyone is subject to punishment. Viparītā
 
     <div class="fc-translation" data-sec="translation">In proportion to the extent of one’s religious or irreligious actions in this life, one must enjoy or suffer the corresponding reactions of his karma in the next.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -11926,18 +11463,6 @@ How is punishment administered?  To the extent of adharma or dharma performed by
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Whatever religious or irreligious acts a person performs in this life, he must enjoy or suffer the matching results in the next. The accounting is exact; there is no random luck — only seeds maturing into their proper fruit.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which seeds am I planting this week that I would not want to harvest in my next body?</li><li>What would change if I treated every action as an investment in my next life?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -12097,7 +11622,6 @@ How is punishment administered?  To the extent of adharma or dharma performed by
 
     <div class="fc-translation" data-sec="translation">O best of the demigods, we can see three different varieties of life, which are due to the contamination of the three modes of nature. The living entities are thus known as peaceful, restless and foolish; as happy, unhappy or in-between; or as religious, irreligious and semireligious. We can deduce that in the next life these three kinds of material nature will similarly act.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -12158,18 +11682,6 @@ Notice with your eyes the association with the guṇas.  In this world, there ar
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Three kinds of beings — peaceful, restless, foolish; happy, sad, mixed; religious, irreligious, semireligious — show the three modes at work right now. The visible present is the strongest evidence of an invisible past and future under the same laws.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which mode dominates my normal day — sattva, rajas or tamas — and what is that producing?</li><li>What concrete step could I take this week to associate more with sattva and less with tamas?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -12345,7 +11857,6 @@ Notice with your eyes the association with the guṇas.  In this world, there ar
 
     <div class="fc-translation" data-sec="translation">Just as springtime in the present indicates the nature of springtimes in the past and future, so this life of happiness, distress or a mixture of both gives evidence concerning the religious and irreligious activities of one’s past and future lives.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -12404,18 +11915,6 @@ The present life gives understanding of the extent of dharma and adharma in the 
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Just as today&#39;s spring tells us what past and future springs look like, this life of mixed happiness and distress testifies to past karma and predicts future life. The present is both witness and forecast.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>If my current life is a &#39;spring&#39; of my past acts, what was I likely doing before?</li><li>What kind of &#39;future spring&#39; do I want, and what am I planting now to make it bloom?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -12584,7 +12083,6 @@ The present life gives understanding of the extent of dharma and adharma in the 
 
     <div class="fc-translation" data-sec="translation">The omnipotent Yamarāja is as good as Lord Brahmā, for while situated in his own abode or in everyone’s heart like the Paramātmā, he mentally observes the past activities of a living entity and thus understands how the living entity will act in future lives.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -12643,18 +12141,6 @@ This is the general method of knowing the adharma and dharma of others.  Yamarā
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Yamarāja, in cooperation with the Paramātmā within every heart, can see a soul&#39;s past and predict its future. His judgment is never arbitrary; it follows the Supersoul&#39;s witness of what we have actually done.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Am I living as though someone in my heart already knows the whole story of my acts?</li><li>How might my decisions sharpen if I consulted that inner witness before each one?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -12850,7 +12336,6 @@ This is the general method of knowing the adharma and dharma of others.  Yamarā
 
     <div class="fc-translation" data-sec="translation">As a sleeping person acts according to the body manifested in his dreams and accepts it to be himself, so one identifies with his present body, which he acquired because of his past religious or irreligious actions, and is unable to know his past or future lives.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -12956,18 +12441,6 @@ It is not surprising that the jīva has a tendency for sin, since he is not awar
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">As a sleeper identifies with the body in his dream, we identify with our current body and forget our past and future lives. Material identification is a kind of dream-state, and śāstra is the alarm clock meant to wake us.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which of my &#39;urgent&#39; problems are really just dream-anxieties of a temporary body?</li><li>What scripture-based reminder could I post where I will see it daily to break this dream-identification?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -13163,7 +12636,6 @@ It is not surprising that the jīva has a tendency for sin, since he is not awar
 
     <div class="fc-translation" data-sec="translation">Above the five senses of perception, the five working senses and the five objects of the senses is the mind, which is the sixteenth element. Above the mind is the seventeenth element, the soul, the living being himself, who, in cooperation with the other sixteen, enjoys the material world alone. The living being enjoys three kinds of situations, namely happy, distressful and mixed.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -13247,18 +12719,6 @@ By the five action senses one attains one’s desired objects.  By the five know
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Above five knowledge-senses, five working senses, and five sense-objects sits the mind, and above mind sits the soul itself — the seventeenth element. The soul, joined with these sixteen, alone tastes happiness, distress, or a mix in this world.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Do I treat myself as the body and mind, or as the seventeenth element using them?</li><li>Where in my routine could I practice a moment of remembering &#39;I am not these senses&#39;?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -13454,7 +12914,6 @@ By the five action senses one attains one’s desired objects.  By the five know
 
     <div class="fc-translation" data-sec="translation">The subtle body is endowed with sixteen parts — the five knowledge-acquiring senses, the five working senses, the five objects of sense gratification, and the mind. This subtle body is an effect of the three modes of material nature. It is composed of insurmountably strong desires, and therefore it causes the living entity to transmigrate from one body to another in human life, animal life and life as a demigod. When the living entity gets the body of a demigod, he is certainly very jubilant, when he gets a human body he is always in lamentation, and when he gets the body of an animal, he is always afraid. In all conditions, however, he is actually miserable. His miserable condition is called saṁsṛti, or transmigration in material life.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -13523,18 +12982,6 @@ Tat means “of the jīva.”  Liṅgam means the subtle body.  Śakti-trayam me
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The subtle body&#39;s sixteen parts, fueled by stubborn desires, push us through demigod, human and animal forms — joy as a demigod, lamentation as a human, fear as an animal — but always misery underneath. This whole transit is called saṁsṛti.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which of my current desires would I be embarrassed to learn are shaping my next body?</li><li>Am I still chasing &#39;better&#39; material situations, or do I want out of saṁsṛti altogether?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -13710,7 +13157,6 @@ Tat means “of the jīva.”  Liṅgam means the subtle body.  Śakti-trayam me
 
     <div class="fc-translation" data-sec="translation">The foolish embodied living entity, inept at controlling his senses and mind, is forced to act according to the influence of the modes of material nature, against his desires. He is like a silkworm that uses its own saliva to create a cocoon and then becomes trapped in it, with no possibility of getting out. The living entity traps himself in a network of his own fruitive activities and then can find no way to release himself. Thus he is always bewildered, and repeatedly he dies.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -13774,18 +13220,6 @@ Though sometimes the jīva does not want to do activities, he is forced to do so
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Unable to control his mind and senses, the embodied soul acts against his own better wishes — like a silkworm spinning a cocoon out of its own saliva and then dying inside it. We weave our own bondage from our own activity.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which &#39;cocoon&#39; am I currently spinning around myself with my own choices?</li><li>Without Kṛṣṇa&#39;s help, can I honestly believe I will untangle myself? What does that imply?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -13981,7 +13415,6 @@ Though sometimes the jīva does not want to do activities, he is forced to do so
 
     <div class="fc-translation" data-sec="translation">Not a single living entity can remain unengaged even for a moment. One must act by his natural tendency according to the three modes of material nature because this natural tendency forcibly makes him work in a particular way.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -14044,18 +13477,6 @@ Svābhāvikaiḥ means “arising from previous impressions.”</div>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Not a single moment can pass without action; the modes of nature force us to work according to our acquired tendencies. The only real freedom is to redirect that built-in tendency into devotional service.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Since I must act, which &#39;natural tendency&#39; of mine could become a vehicle of devotion?</li><li>Where am I trying to be inactive instead of being actively devoted?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -14215,7 +13636,6 @@ Svābhāvikaiḥ means “arising from previous impressions.”</div>
 
     <div class="fc-translation" data-sec="translation">The fruitive activities a living being performs, whether pious or impious, are the unseen cause for the fulfillment of his desires. This unseen cause is the root for the living entity’s different bodies. Because of his intense desire, the living entity takes birth in a particular family and receives a body which is either like that of his mother or like that of his father. The gross and subtle bodies are created according to his desire.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -14271,18 +13691,6 @@ Having attained the cause, his reactions of karma, the gross and subtle bodies a
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Past pious and impious acts become the unseen cause of future bodies; intense desire decides whether one inherits a body more like the mother&#39;s or the father&#39;s. Our gross body is the precipitate of our subtle desires.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What kind of subtle body am I building each day through my dominant thoughts and longings?</li><li>If body follows desire, which desire most needs to be retrained right now?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -14451,7 +13859,6 @@ Having attained the cause, his reactions of karma, the gross and subtle bodies a
 
     <div class="fc-translation" data-sec="translation">Since the living entity is associated with material nature, he is in an awkward position, but if in the human form of life he is taught how to associate with the Supreme Personality of Godhead or His devotee, this position can be overcome.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -14540,18 +13947,6 @@ By association with prakṛti one is in bondage, and by association with the Lor
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Bound to material nature, the soul is in an awkward position — but human life is precisely the chance to learn how to associate with the Lord and His devotee, and so escape. The human form is not for enjoying but for re-association.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Am I using my human form for what it is designed to do, or just for what an animal could do?</li><li>Whose association — devotee or non-devotee — most shapes the hours of my week?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -14850,7 +14245,6 @@ By association with prakṛti one is in bondage, and by association with the Lor
 
     <div class="fc-translation" data-sec="translation">In the beginning this brāhmaṇa named Ajāmila studied all the Vedic literatures. He was a reservoir of good character, good conduct and good qualities. Firmly established in executing all the Vedic injunctions, he was very mild and gentle, and he kept his mind and senses under control. Furthermore, he was always truthful, he knew how to chant the Vedic mantras, and he was also very pure. Ajāmila was very respectful to his spiritual master, the fire-god, guests, and the elderly members of his household. Indeed, he was free from false prestige. He was upright, benevolent to all living entities, and well-behaved. He would never speak nonsense or envy anyone.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -14949,18 +14343,6 @@ Having spoken of the natures of dharma and adharma, the servants of Yama now ill
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The Yamadūtas recall Ajāmila&#39;s earlier life: a perfect brāhmaṇa — Veda-learned, truthful, clean, controlled, respectful, free from envy and false pride. Even an exalted résumé can fall apart if the underlying senses are not actually conquered.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which spiritual qualities have I cultivated that I quietly take for granted as permanent?</li><li>Where am I assuming past sādhana will protect me without ongoing vigilance?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -15388,7 +14770,6 @@ Having spoken of the natures of dharma and adharma, the servants of Yama now ill
 
     <div class="fc-translation" data-sec="translation">Once this brāhmaṇa Ajāmila, following the order of his father, went to the forest to collect fruit, flowers and two kinds of grass, called samit and kuśa. On the way home, he came upon a śūdra, a very lusty, fourth-class man, who was shamelessly embracing and kissing a prostitute. The śūdra was smiling, singing and enjoying as if this were proper behavior. Both the śūdra and the prostitute were drunk. The prostitute’s eyes were rolling in intoxication, and her dress had become loose. Such was the condition in which Ajāmila saw them.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -15437,18 +14818,6 @@ Bhujiṣyayā means with a maid servant whom he was enjoying. Maitreyam is a liq
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Sent by his father to gather forest items, Ajāmila encounters a drunk śūdra publicly embracing an intoxicated prostitute — clothing loose, eyes rolling. A single visual exposure to vice can ambush even a perfect brahmacārī.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What sights am I voluntarily ingesting daily that even strong sādhakas would avoid?</li><li>How might I redesign my routine so chance exposures to vice are minimized?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -15617,7 +14986,6 @@ Bhujiṣyayā means with a maid servant whom he was enjoying. Maitreyam is a liq
 
     <div class="fc-translation" data-sec="translation">The śūdra, his arm decorated with turmeric powder, was embracing the prostitute. When Ajāmila saw her, the dormant lusty desires in his heart awakened, and in illusion he fell under their control.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -15676,18 +15044,6 @@ The śudra had his arm anointed with turmeric juice to incite lust.</div>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Seeing the embracing couple, dormant lusty desires awakened in Ajāmila&#39;s heart and overwhelmed him. Buried tendencies, never fully uprooted, only sleep — and the right (or wrong) stimulus is enough to revive them.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which &#39;dormant&#39; desires of mine are simply waiting for the right trigger to wake?</li><li>What protective practices keep my deeper tendencies from being awakened in the first place?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -15847,7 +15203,6 @@ The śudra had his arm anointed with turmeric juice to incite lust.</div>
 
     <div class="fc-translation" data-sec="translation">As far as possible he patiently tried to remember the instructions of the śāstras not even to see a woman. With the help of this knowledge and his intellect, he tried to control his lusty desires, but because of the force of Cupid within his heart, he failed to control his mind.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -15891,18 +15246,6 @@ The śudra had his arm anointed with turmeric juice to incite lust.</div>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Ajāmila tried to remember scriptural injunctions and rein in his lust with intellect, but Cupid&#39;s force in the heart was stronger. Knowledge and willpower alone cannot defeat lust — only shelter in devotional service can.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where am I relying purely on willpower against an enemy that has already defeated stronger people?</li><li>What devotional shelter could I take that would actually neutralize the force of desire, not just oppose it?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -16062,7 +15405,6 @@ The śudra had his arm anointed with turmeric juice to incite lust.</div>
 
     <div class="fc-translation" data-sec="translation">In the same way that the sun and moon are eclipsed by a low planet, the brāhmaṇa lost all his good sense. Taking advantage of this situation, he always thought of the prostitute, and within a short time he took her as a servant in his house and abandoned all the regulative principles of a brāhmaṇa.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -16121,18 +15463,6 @@ He could not protect himself from falling by jṣāna and by his steadiness in d
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">As an eclipse darkens sun and moon, the prostitute eclipsed Ajāmila&#39;s good sense; he installed her at home and abandoned all brahminical regulations. One untreated attachment can collapse a whole edifice of sādhana in a short time.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which single attachment has the potential to eclipse my entire spiritual life if I let it grow?</li><li>What &#39;regulative principles&#39; have I already begun quietly abandoning that I should restore today?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -16310,7 +15640,6 @@ He could not protect himself from falling by jṣāna and by his steadiness in d
 
     <div class="fc-translation" data-sec="translation">Thus Ajāmila began spending whatever money he had inherited from his father to satisfy the prostitute with various material presentations so that she would remain pleased with him. He gave up all his brahminical activities to satisfy the prostitute.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -16349,18 +15678,6 @@ As long as the money lasted he satisfied her.   He acted in such a way to please
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Ajāmila spent his inherited wealth showering gifts on the prostitute to keep her pleased, abandoning all brahminical activities. Attachment converts every resource — money, time, talent — into fuel for its own object.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where does my money actually go each month, and what does that say about my real master?</li><li>What inherited gifts (wealth, body, intelligence) am I spending on something Kṛṣṇa never intended them for?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -16529,7 +15846,6 @@ As long as the money lasted he satisfied her.   He acted in such a way to please
 
     <div class="fc-translation" data-sec="translation">Because his intelligence was pierced by the lustful glance of the prostitute, the victimized brāhmaṇa Ajāmila engaged in sinful acts in her association. He even gave up the company of his very beautiful young wife, who came from a very respectable brāhmaṇa family.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -16578,18 +15894,6 @@ Lambhitām means she was given by her father’s decision.  The sandhi in svairi
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Pierced by the prostitute&#39;s lustful glance, Ajāmila even abandoned his beautiful, chaste young wife from a respectable brāhmaṇa family. Illicit attraction makes the legitimate look unattractive; this distortion alone reveals its power.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What lawful goods in my life have started to feel boring because I am secretly drawn elsewhere?</li><li>Where is my perception itself being distorted by a desire I have not yet faced?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -16766,7 +16070,6 @@ Lambhitām means she was given by her father’s decision.  The sandhi in svairi
     <div class="fc-translation" data-sec="translation">Although born of a brāhmaṇa family, this rascal, bereft of intelligence because of the prostitute’s association, earned money somehow or other, regardless of whether properly or improperly, and used it to maintain the prostitute’s sons and daughters.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -16800,18 +16103,6 @@ Lambhitām means she was given by her father’s decision.  The sandhi in svairi
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Bereft of intelligence, Ajāmila earned money by any means — proper or improper — to maintain the prostitute&#39;s children. Once attachment takes the steering wheel, ethics in earning is the first thing thrown out the window.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Have I quietly relaxed my standards of how I earn or spend in order to maintain an attachment?</li><li>Which &#39;children&#39; (literal or symbolic) am I supporting at any moral cost — and why?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -16971,7 +16262,6 @@ Lambhitām means she was given by her father’s decision.  The sandhi in svairi
 
     <div class="fc-translation" data-sec="translation">This brāhmaṇa irresponsibly spent his long lifetime transgressing all the rules and regulations of the holy scripture, living extravagantly and eating food prepared by a prostitute. Therefore he is full of sins. He is unclean and is addicted to forbidden activities.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -17015,18 +16305,6 @@ His whole life was sin or he lived for sinning (aghāyuḥ).  He was contaminate
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Ajāmila wasted his long life transgressing scripture, living extravagantly, and eating food prepared by a prostitute — making him unclean and addicted to forbidden activities. What enters the mouth shapes consciousness more than we admit.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Whose hands prepare the food I eat, and what consciousness does that food carry into me?</li><li>What single change in my eating could most align my body with my spiritual aspirations?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -17186,7 +16464,6 @@ His whole life was sin or he lived for sinning (aghāyuḥ).  He was contaminate
 
     <div class="fc-translation" data-sec="translation">This man Ajāmila did not undergo atonement. Therefore because of his sinful life, we must take him into the presence of Yamarāja for punishment. There, according to the extent of his sinful acts, he will be punished and thus purified.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -17241,18 +16518,6 @@ The Servants of Viṣṇu Speak</div>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Since Ajāmila never atoned, the Yamadūtas insist he must come to Yamarāja for purifying punishment. From a karmic standpoint they are right — and yet, as we are about to see, the holy name has already rewritten the verdict.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Am I trusting in karmic accounting alone, or in the Lord&#39;s capacity to overwrite even hardened verdicts?</li><li>Where in my life do I need to stop arguing with the Yamadūtas of my own conscience and simply chant?</li></ul>
-
-
-
-
-
-    </section>
 
 
 

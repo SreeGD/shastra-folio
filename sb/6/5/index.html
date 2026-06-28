@@ -25,19 +25,25 @@
     <link rel="icon" href="../../../assets/icons/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="../../../assets/icons/icon.svg">
     <link rel="stylesheet" href="../../../assets/css/site.css">
+    <link rel="alternate" hreflang="te-IN" href="../../../te/sb/6/5/">
+    <link rel="alternate" hreflang="x-default" href="../../../">
     <script>window.FC_TO_ROOT = "../../../";</script>
     <script src="../../../assets/js/toggle.js"></script>
 </head>
 <body class="has-sidebar" data-chapter="5">
 <header class="fc-site-header">
     <button type="button" class="fc-mobile-trigger fc-mobile-trigger-left" data-overlay="left" aria-label="Open settings drawer">⚙</button>
-<a class="fc-brand" href="../../../">FolioCorpus<span class="fc-sub">Śrīmad-Bhāgavatam</span></a>
+    <a class="fc-brand" href="../../../">FolioCorpus<span class="fc-sub">Bhagavad-gītā</span></a>
     <nav class="fc-site-nav">
         <a href="../../../">Home</a>
         <a href="../../../bg/">Bhagavad-gītā</a>
         <a href="../../../sb/">Śrīmad-Bhāgavatam</a>
         <a href="../../../search/" title="Search across all integrated works">🔍 Search</a>
         <button type="button" id="fc-random-verse" class="fc-nav-btn" title="Jump to a random verse">🎲 Random</button>
+        <span class="fc-lang-switch" aria-label="Script">
+            <a class="active" href="#" title="Devanāgarī edition">EN</a>
+            <a class="" href="../../../te/sb/6/5/" title="Telugu lipi edition">తె</a>
+        </span>
     </nav>
     <button type="button" class="fc-mobile-trigger fc-mobile-trigger-right" data-overlay="right" aria-label="Open chapter index drawer">📚</button>
 </header>
@@ -46,8 +52,8 @@
     <button class="fc-sb-collapse" type="button" data-sb="left" title="Collapse left sidebar" aria-label="Collapse"></button>
 
     <div class="fc-sb-body">
-        <details class="fc-sb-section" data-sbsec="reading" open>
-            <summary class="fc-sb-title">Reading</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Reading</div>
             <div class="fc-sb-sub">Theme</div>
             <div class="fc-segmented" data-setting="theme">
                 <button type="button" data-val="light">Light</button>
@@ -73,10 +79,10 @@
                 <button type="button" data-val="single">Single</button>
                 <button type="button" data-val="side">Side-by-side</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="display" open>
-            <summary class="fc-sb-title">Display</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Display</div>
             <div class="fc-sb-grid">
                 <label><input type="checkbox" data-section="devanagari" checked> Devanāgarī</label>
                 <label><input type="checkbox" data-section="iast" checked> IAST transliteration</label>
@@ -99,10 +105,33 @@
                 <button type="button" data-action="expand-all">Expand all</button>
                 <button type="button" data-action="collapse-all">Collapse all</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="tools" open>
-            <summary class="fc-sb-title">Tools</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Find your starting point</div>
+            <div class="fc-persona-links">
+                <a class="fc-persona-link" href="../../../daily/">🌅 Daily (one value a week)</a>
+                <a class="fc-persona-link" href="../../../householder/">🏠 Householder (family & work)</a>
+                <a class="fc-persona-link" href="../../../parenting/">👨‍👩‍👧 Parenting (stories for kids)</a>
+                <a class="fc-persona-link" href="../../../themes/">📚 All themes</a>
+                <a class="fc-persona-link" href="../../../values/" style="background:#F0F6F2;border-left-color:#1F4632;">ॐ Vedic Value System ↗</a>
+                <a class="fc-persona-link" href="../../../vidya/" style="background:#FBF6E4;border-left-color:#C8860B;">📚 Vidyā Karaṇa (kids, multi-lang) ↗</a>
+            </div>
+        </div>
+
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Audience</div>
+            <div class="fc-audience-filter">
+                <label><input type="radio" name="fc-audience" value="all" checked> All levels</label>
+                <label><input type="radio" name="fc-audience" value="primary"> Primary (children)</label>
+                <label><input type="radio" name="fc-audience" value="middle"> Middle (teens)</label>
+                <label><input type="radio" name="fc-audience" value="senior"> Senior (adults)</label>
+                <label><input type="radio" name="fc-audience" value="college"> College / scholar</label>
+            </div>
+        </div>
+
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Tools</div>
             <div class="fc-sb-tools">
                 <button type="button" id="fc-presentation-toggle" class="fc-tool-btn"><span>🖥 Presentation</span><kbd class="fc-kbd">F</kbd></button>
                 <button type="button" id="fc-pen-toggle" class="fc-tool-btn"><span>✏️ Pen mode</span><kbd class="fc-kbd">P</kbd></button>
@@ -117,10 +146,26 @@
                 <button type="button" id="fc-clear-highlights" class="fc-tool-btn">🩷 Clear highlights (page)</button>
                 <button type="button" id="fc-notes-modal-open" class="fc-tool-btn">📓 My annotations</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="progress" id="fc-progress-section" open>
-            <summary class="fc-sb-title">Progress</summary>
+        <div class="fc-sb-section" id="fc-tts-controls" hidden>
+            <div class="fc-sb-title">
+                Read-aloud
+                <label class="fc-tts-master">
+                    <input type="checkbox" id="fc-tts-enabled" checked>
+                    <span class="fc-tts-master-label">On</span>
+                </label>
+            </div>
+            <div class="fc-tts-inner">
+                <div class="fc-sb-sub">Voice</div>
+                <select id="fc-tts-voice" class="fc-tts-select" aria-label="TTS voice"></select>
+                <div class="fc-sb-sub">Rate <span class="fc-tts-rate-val">1.0×</span></div>
+                <input type="range" id="fc-tts-rate" min="0.5" max="2" step="0.1" value="1" class="fc-tts-rate" aria-label="Reading rate">
+            </div>
+        </div>
+
+        <div class="fc-sb-section" id="fc-progress-section">
+            <div class="fc-sb-title">Progress</div>
             <div class="fc-progress-row">
                 <span class="fc-progress-num" id="fc-progress-num">0</span>
                 <span class="fc-progress-divider">/</span>
@@ -135,29 +180,29 @@
                 <span class="fc-progress-spacer"></span>
                 <button type="button" class="fc-progress-reset" id="fc-progress-reset" title="Reset progress">↺</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="bookmarks" open>
-            <summary class="fc-sb-title">Bookmarks <span class="fc-sb-count" id="fc-bookmarks-count">0</span></summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Bookmarks <span class="fc-sb-count" id="fc-bookmarks-count">0</span></div>
             <ul class="fc-bookmark-list" id="fc-bookmarks-list">
                 <li class="fc-sb-empty">No bookmarks yet — click ☆ on any verse.</li>
             </ul>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="notes" open>
-            <summary class="fc-sb-title">Notes <span class="fc-sb-count" id="fc-notes-count">0</span></summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Notes <span class="fc-sb-count" id="fc-notes-count">0</span></div>
             <ul class="fc-bookmark-list" id="fc-notes-list">
                 <li class="fc-sb-empty">No notes yet — open any verse and write in the 📝 block.</li>
             </ul>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="export">
-            <summary class="fc-sb-title">Export</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Export</div>
             <div class="fc-sb-tools">
                 <button type="button" id="fc-export-md" class="fc-tool-btn">📥 Download Markdown</button>
                 <button type="button" id="fc-export-json" class="fc-tool-btn">💾 Download JSON backup</button>
             </div>
-        </details>
+        </div>
     </div>
 </aside>    <main class="fc-container">
 <nav class="fc-breadcrumbs">
@@ -175,7 +220,7 @@
         <h1 class="fc-verse-heading">6.5 · Nārada Muni Cursed by Prajāpati Dakṣa</h1>
         <span class="fc-ribbon-meta">
             40 verses
- · <a class="fc-ribbon-link" href="class-prep/">🖨 Class prep</a>        </span>
+        </span>
         <input type="search" class="fc-search" id="fc-search" placeholder="🔍 Search in this chapter" aria-label="Search verses in this chapter">
         <span class="fc-ribbon-current" id="fc-ribbon-current" aria-live="polite"></span>
     </div>
@@ -454,7 +499,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
     <div class="fc-translation" data-sec="translation">Śrīla Śukadeva Gosvāmī continued: Impelled by the illusory energy of Lord Viṣṇu, Prajāpati Dakṣa begot ten thousand sons in the womb of Pāṣcajanī [Asiknī]. My dear King, these sons were called the Haryaśvas.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -535,18 +579,6 @@ The Fifth Chapter describes how Nārada makes the Haryaśvas and Śavalāśvas i
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Impelled by the Lord&#39;s illusory energy, Dakṣa begot ten thousand Haryaśvas in Asiknī&#39;s womb. Even great mission-driven generativity proceeds under māyā&#39;s impulse — the work is never quite as autonomous as it feels.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where am I taking credit for productivity that is really the Lord&#39;s illusory current carrying me?</li><li>How might recognizing māyā&#39;s hand make me less anxious about results?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -725,7 +757,6 @@ The Fifth Chapter describes how Nārada makes the Haryaśvas and Śavalāśvas i
     <div class="fc-translation" data-sec="translation">My dear King, all the sons of Prajāpati Dakṣa were alike in being very gentle and obedient to the orders of their father. When their father ordered them to beget children, they all went in the western direction.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -769,18 +800,6 @@ The Fifth Chapter describes how Nārada makes the Haryaśvas and Śavalāśvas i
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Gentle and obedient, the Haryaśvas went west when told to beget children. Obedient sons follow the surface of the instruction; they have not yet asked what their father actually intended.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where am I obeying the letter of an instruction without understanding its spirit?</li><li>What would it look like to inquire into intent before executing the command?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -941,7 +960,6 @@ The Fifth Chapter describes how Nārada makes the Haryaśvas and Śavalāśvas i
     <div class="fc-translation" data-sec="translation">In the west, where the river Sindhu meets the sea, there is a great place of pilgrimage known as Nārāyaṇa-saras. Many sages and others advanced in spiritual consciousness live there.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -962,18 +980,6 @@ In the west (tatra), there is a great holy place called Nārāyaṇa Saras where
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">They reached Nārāyaṇa-saras at the meeting of the Sindhu and the sea, a holy place full of advanced sages. Where you go to do your work decides who shapes that work — pilgrimage sites attract pilgrims.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What environments am I choosing to do my work in, and whom do those environments attract?</li><li>Could a holier setting reshape what I think I came to accomplish?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -1275,7 +1281,6 @@ In the west (tatra), there is a great holy place called Nārāyaṇa Saras where
     <div class="fc-translation" data-sec="translation">In that holy place, the Haryaśvas began regularly touching the lake’s waters and bathing in them. Gradually becoming very much purified, they became inclined toward the activities of paramahaṁsas. Nevertheless, because their father had ordered them to increase the population, they performed severe austerities to fulfill his desires. One day, when the great sage Nārada saw those boys performing such fine austerities to increase the population, Nārada approached them.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -1296,18 +1301,6 @@ Yattān means “endeavoring.”</div>
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Bathing in the holy lake purified them and inclined them toward paramahaṁsa life, though they meant to follow their father&#39;s order to procreate. Holy contact changes the destination of the journey, not just the journey.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where has association with holy things quietly altered what I now want?</li><li>Am I open to a redirected mission, or holding onto the original plan?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -1789,7 +1782,6 @@ Yattān means “endeavoring.”</div>
 
     <div class="fc-translation" data-sec="translation">The great sage Nārada said: My dear Haryaśvas, you have not seen the extremities of the earth. There is a kingdom where only one man lives and where there is a hole from which, having entered, no one emerges. A woman there who is extremely unchaste adorns herself with various attractive dresses, and the man who lives there is her husband. In that kingdom, there is a river flowing in both directions, a wonderful home made of twenty-five materials, a swan that vibrates various sounds, and an automatically revolving object made of sharp razors and thunderbolts. You have not seen all this, and therefore you are inexperienced boys without advanced knowledge. How, then, will you create progeny?</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1859,18 +1851,6 @@ O Haryaśvas!  How will you create progeny when you have not seen the end of the
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Nārada appears with enigmatic riddles — a kingdom with one man, an unreturning hole, a prostitute, a two-way river, a 25-element house, a swan, a razor-and-thunderbolt object. Spiritual instruction often comes wrapped to provoke thought rather than declared flat.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What enigmatic instruction have I received that I am refusing to sit with?</li><li>Where am I demanding plain answers when the riddle is the teaching?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -2031,7 +2011,6 @@ O Haryaśvas!  How will you create progeny when you have not seen the end of the
     <div class="fc-translation" data-sec="translation">Alas, your father is omniscient, but you do not know his actual order. Without knowing the actual purpose of your father, how will you create progeny?</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -2072,18 +2051,6 @@ Vipaścitaḥ means omniscient.</div>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Nārada asks: your father is omniscient but you don&#39;t know his real order — how will you actually create progeny? Surface compliance without grasp of underlying purpose produces nothing.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Whose &#39;real order&#39; am I executing without understanding?</li><li>What clarifying question have I been avoiding asking?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -2287,7 +2254,6 @@ Vipaścitaḥ means omniscient.</div>
     <div class="fc-translation" data-sec="translation">Śrī Śukadeva Gosvāmī said: Hearing these enigmatic words of Nārada Muni, the Haryaśvas considered them with their natural intelligence, without help from others.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -2323,18 +2289,6 @@ Vacaḥ kūtam means “words which appeared to have another meaning.”</div>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Hearing Nārada&#39;s enigma, the Haryaśvas reflected with their natural intelligence, unaided. When a real teaching arrives, the student must do their own inner work; mentors prompt but do not pre-digest.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where am I waiting for a teacher to spell out what I am meant to figure out?</li><li>What riddle is mine to chew on right now?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -2512,7 +2466,6 @@ Vacaḥ kūtam means “words which appeared to have another meaning.”</div>
 
     <div class="fc-translation" data-sec="translation">[The Haryaśvas understood the meaning of Nārada’s words as follows.] The word “bhūḥ” [“the earth”] refers to the field of activities. The material body, which is a result of the living being’s actions, is his field of activities, and it gives him false designations. Since time immemorial, he has received various types of material bodies, which are the roots of bondage to the material world. If one foolishly engages in temporary fruitive activities and does not look toward the cessation of this bondage, what will be the benefit of his actions?</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2552,18 +2505,6 @@ The ten items mentioned by Nārada are explained in ten verses to understand the
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">They decode &#39;bhūḥ&#39; (the earth) as the field of activities — the material body where karma is sown and reaped. The first move of inner work is recognizing the body as field, not as the self that farms it.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Do I see my body as the field of my karma or as my actual identity?</li><li>What &#39;crop&#39; am I planting in this field right now?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -2759,7 +2700,6 @@ The ten items mentioned by Nārada are explained in ten verses to understand the
 
     <div class="fc-translation" data-sec="translation">[Nārada Muni had said that there is a kingdom where there is only one male. The Haryaśvas realized the purport of this statement.] The only enjoyer is the Supreme Personality of Godhead, who observes everything, everywhere. He is full of six opulences and fully independent of everyone else. He is never subject to the three modes of material nature, for He is always transcendental to this material creation. If the members of human society do not understand Him, the Supreme, through their advancement in knowledge and activities, but simply work very hard like cats and dogs all day and night for temporary happiness, what will be the benefit of their activities?</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2802,18 +2742,6 @@ This verse explains “one kingdom with one person.” Turyaḥ refers to that f
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The &#39;one man&#39; is the Supreme Lord — the only enjoyer, observing everywhere, served by all energies. Misreading any other being as the real enjoyer is the basic disorientation of conditioned life.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Whom do I act as if I am working for — and is that really the one enjoyer?</li><li>What changes when I admit that only Kṛṣṇa truly enjoys?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -3014,7 +2942,6 @@ This verse explains “one kingdom with one person.” Turyaḥ refers to that f
 
     <div class="fc-translation" data-sec="translation">[Nārada Muni had described that there is a bila, or hole, from which, having entered, one does not return. The Haryaśvas understood the meaning of this allegory.] Hardly once has a person who has entered the lower planetary system called Pātāla been seen to return. Similarly, if one enters the Vaikuṇṭha-dhāma [pratyag-dhāma], he does not return to this material world. If there is such a place, from which, having gone, one does not return to the miserable material condition of life, what is the use of jumping like monkeys in the temporary material world and not seeing or understanding that place? What will be the profit?</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3073,18 +3000,6 @@ This verse explains the hole from which one does not return.  Having gone to the
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The bila (hole) from which none returns is the lower planetary system. Some descents really do close behind you; not all explorations have a return ticket.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which &#39;just trying it once&#39; choice am I underestimating?</li><li>Where am I assuming I can always come back, when the door may shut?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -3253,7 +3168,6 @@ This verse explains the hole from which one does not return.  Having gone to the
 
     <div class="fc-translation" data-sec="translation">[Nārada Muni had described a woman who is a professional prostitute. The Haryaśvas understood the identity of this woman.] Mixed with the mode of passion, the unsteady intelligence of every living entity is like a prostitute who changes dresses just to attract one’s attention. If one fully engages in temporary fruitive activities, not understanding how this is taking place, what does he actually gain?</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3318,18 +3232,6 @@ This verse explains the woman with many forms.  The intelligence is absorbed in 
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The prostitute is the wavering intelligence under passion — never steady, always changing dress. Untrained intelligence cannot be trusted as the master of one&#39;s life.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>How often does my intelligence change clothes to flatter my latest desire?</li><li>What practice would steady my intelligence?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -3480,7 +3382,6 @@ This verse explains the woman with many forms.  The intelligence is absorbed in 
 
     <div class="fc-translation" data-sec="translation">[Nārada Muni had also spoken of a man who is the husband of the prostitute. The Haryaśvas understood this as follows.] If one becomes the husband of a prostitute, he loses all independence. Similarly, if a living entity has polluted intelligence, he prolongs his materialistic life. Frustrated by material nature, he must follow the movements of the intelligence, which brings various conditions of happiness and distress. If one performs fruitive activities under such conditions, what will be the benefit?</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3569,18 +3470,6 @@ This verse explains the man who is attached to the woman. The jīva in the mater
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Marrying that prostitute means losing all independence; soul polluted by such intelligence becomes its puppet. We don&#39;t merely use a wayward intelligence — we marry into it.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What &#39;marriage&#39; to my fickle mind am I quietly maintaining?</li><li>What would divorce look like — and what would replace it?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -3740,7 +3629,6 @@ This verse explains the man who is attached to the woman. The jīva in the mater
 
     <div class="fc-translation" data-sec="translation">[Nārada Muni had said that there is a river flowing in both directions. The Haryaśvas understood the purport of this statement.] Material nature functions in two ways — by creation and dissolution. Thus the river of material nature flows both ways. A living entity who unknowingly falls in this river is submerged in its waves, and since the current is swifter near the banks of the river, he is unable to get out. What will be the benefit of performing fruitive activities in that river of māyā?</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3818,18 +3706,6 @@ This verse explains the river flowing in both directions.  Māyā causes creatio
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The river flowing both ways is material nature — creating and dissolving, building up and tearing down. The current cuts both ways and crossing it is the whole point.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where am I trying to stay still in a current that is by nature two-directional?</li><li>What does it mean to cross, rather than ride, this river?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -3971,7 +3847,6 @@ This verse explains the river flowing in both directions.  Māyā causes creatio
 
     <div class="fc-translation" data-sec="translation">[Nārada Muni had said that there is a house made of twenty-five elements. The Haryaśvas understood this analogy.] The Supreme Lord is the reservoir of the twenty-five elements, and as the Supreme Being, the conductor of cause and effect, He causes their manifestation. If one engages in temporary fruitive activities, not knowing that Supreme Person, what benefit will he derive?</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -4041,18 +3916,6 @@ This verse explains the house made of twenty-five elements.  Viṣṇu is an ast
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The house of twenty-five elements is the Lord Himself, source and conductor of every cause and effect. Reality is not built atop Him — it is Him.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Do I treat the Lord as one element among twenty-five, or as the house containing them all?</li><li>What act would acknowledge His all-inclusive presence?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -4203,7 +4066,6 @@ This verse explains the house made of twenty-five elements.  Viṣṇu is an ast
 
     <div class="fc-translation" data-sec="translation">[Nārada Muni had spoken of a swan. That swan is explained in this verse.] The Vedic literatures [śāstras] vividly describe how to understand the Supreme Lord, the source of all material and spiritual energy. Indeed, they elaborately explain these two energies. The swan [haṁsa] is one who discriminates between matter and spirit, who accepts the essence of everything, and who explains the means of bondage and the means of liberation. The words of scriptures consist of variegated vibrations. If a foolish rascal leaves aside the study of these śāstras to engage in temporary activities, what will be the result?</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -4293,18 +4155,6 @@ This verse explains the meaning of the swan who speaks. The swan refers to scrip
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The swan represents how the śāstras describe the Supreme Lord, distinguishing real spirit from material energy. The right teaching helps us separate milk from water in our own experience.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which śāstra is currently teaching me to discriminate spirit from matter?</li><li>Where do I most need that discrimination this week?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -4464,7 +4314,6 @@ This verse explains the meaning of the swan who speaks. The swan refers to scrip
 
     <div class="fc-translation" data-sec="translation">[Nārada Muni had spoken of a physical object made of sharp blades and thunderbolts. The Haryaśvas understood this allegory as follows.] Eternal time moves very sharply, as if made of razors and thunderbolts. Uninterrupted and fully independent, it drives the activities of the entire world. If one does not try to study the eternal element of time, what benefit can he derive from performing temporary material activities?</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -4560,18 +4409,6 @@ This verse explains the rotating object with razors and thunderbolts.  The wheel
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The razor-and-thunderbolt object is eternal time, cutting through every state without warning. Time is not a backdrop; it is a blade that does not rest.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where am I living as if time will spare me?</li><li>What would I do today if I really felt time&#39;s blade?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -4738,7 +4575,6 @@ This verse explains the rotating object with razors and thunderbolts.  The wheel
 
     <div class="fc-translation" data-sec="translation">[Nārada Muni had asked how one could ignorantly defy one’s own father. The Haryaśvas understood the meaning of this question.] One must accept the original instructions of the śāstra. According to Vedic civilization, one is offered a sacred thread as a sign of second birth. One takes his second birth by dint of having received instructions in the śāstra from a bona fide spiritual master. Therefore, śāstra, scripture, is the real father. All the śāstras instruct that one should end his material way of life. If one does not know the purpose of the father’s orders, the śāstras, he is ignorant. The words of a material father who endeavors to engage his son in material activities are not the real instructions of the father.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -4812,18 +4648,6 @@ This verse explains “You do not know the order of your father.”  The father 
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The original instruction comes from the śāstras themselves — defying the supreme father (Kṛṣṇa) by absorbing only material orders is the actual disobedience. The deepest filial duty is to Kṛṣṇa.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Whose order am I executing when it conflicts with the supreme Father&#39;s?</li><li>How can I honor my parents and ancestors without dishonoring Kṛṣṇa?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -4983,7 +4807,6 @@ This verse explains “You do not know the order of your father.”  The father 
 
     <div class="fc-translation" data-sec="translation">Śukadeva Gosvāmī continued: My dear King, after hearing the instructions of Nārada, the Haryaśvas, the sons of Prajāpati Dakṣa, were firmly convinced. They all believed in his instructions and reached the same conclusion. Having accepted him as their spiritual master, they circumambulated that great sage and followed the path by which one never returns to this world.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -5050,18 +4873,6 @@ Vyavasitā means they were entirely convinced. They all had the same opinion. �
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Convinced by Nārada, the Haryaśvas followed the path of liberation, never to return. Right instruction received with faith can redirect a life — and then the redirection is final.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Whose instruction am I avoiding because I sense it would change everything?</li><li>Am I ready for an irreversible turn?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -5221,7 +5032,6 @@ Vyavasitā means they were entirely convinced. They all had the same opinion. �
 
     <div class="fc-translation" data-sec="translation">The seven musical notes — ṣa, ṛ, gā, ma, pa, dha and ni — are used in musical instruments, but originally they come from the Sāma Veda. The great sage Nārada vibrates sounds describing the pastimes of the Supreme Lord. By such transcendental vibrations, such as Hare Kṛṣṇa, Hare Kṛṣṇa, Kṛṣṇa Kṛṣṇa, Hare Hare/ Hare Rāma, Hare Rāma, Rāma Rāma, Hare Hare, he fixes his mind at the lotus feet of the Lord. Thus he directly perceives Hṛṣīkeśa, the master of the senses. After delivering the Haryaśvas, Nārada Muni continued traveling throughout the planetary systems, his mind always fixed at the lotus feet of the Lord.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -5321,18 +5131,6 @@ Nārada drowned in an ocean of bliss “Oh! All these persons were delivered fro
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Nārada vibrates the Lord&#39;s pastimes through musical notes, liberating those who follow. Even the body&#39;s sound, properly directed, becomes a vehicle of liberation.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What sounds dominate my day — and what do they point me toward?</li><li>How could I introduce more hari-kathā into my soundscape?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -5501,7 +5299,6 @@ Nārada drowned in an ocean of bliss “Oh! All these persons were delivered fro
 
     <div class="fc-translation" data-sec="translation">The Haryaśvas, the sons of Prajāpati Dakṣa, were very well-behaved, cultured sons, but unfortunately, because of the instructions of Nārada Muni, they deviated from the order of their father. When Dakṣa heard this news, which was brought to him by Nārada Muni, he began to lament. Although he was the father of such good sons, he had lost them all. Certainly this was lamentable.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -5585,18 +5382,6 @@ For the householder, becoming a Vaiṣṇava is a loss. Dakṣa (kaḥ) then lam
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Cultured though they were, the Haryaśvas &#39;deviated&#39; from their father&#39;s order, leaving Dakṣa devastated. From a worldly father&#39;s view, even spiritual elevation can look like betrayal.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Whose disappointment have I had to bear in order to follow a higher call?</li><li>How do I hold love for family with loyalty to the supreme Father?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -5756,7 +5541,6 @@ For the householder, becoming a Vaiṣṇava is a loss. Dakṣa (kaḥ) then lam
 
     <div class="fc-translation" data-sec="translation">When Prajāpati Dakṣa was lamenting for his lost children, Lord Brahmā pacified him with instructions, and thereafter Dakṣa begot one thousand more children in the womb of his wife, Pāṣcajanī. This time his sons were known as the Savalāśvas.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -5820,18 +5604,6 @@ They were known as Śavalāśvas and numbered one thousand.</div>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Pacified by Brahmā, Dakṣa begot a thousand more sons — the Savalāśvas. Loss in one direction does not stop the cosmic plan; it simply re-routes.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where have I tried to stop a plan that the Lord simply moved around me?</li><li>What &#39;second cohort&#39; is being born from my lament?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -6000,7 +5772,6 @@ They were known as Śavalāśvas and numbered one thousand.</div>
 
     <div class="fc-translation" data-sec="translation">In accordance with their father’s order to beget children, the second group of sons also went to Nārāyaṇa-saras, the same place where their brothers had previously attained perfection by following the instructions of Nārada. Undertaking great vows of austerity, the Savalāśvas remained at that holy place.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -6062,18 +5833,6 @@ They were known as Śavalāśvas and numbered one thousand.</div>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The Savalāśvas, told to beget children, went to the same Nārāyaṇa-saras where their brothers had attained perfection. The Lord uses the same scenery to invite the same realization.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which &#39;same place&#39; is being offered to me again with a new chance?</li><li>Am I noticing the pattern, or just walking past?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -6251,7 +6010,6 @@ They were known as Śavalāśvas and numbered one thousand.</div>
 
     <div class="fc-translation" data-sec="translation">At Nārāyaṇa-saras, the second group of sons performed penances in the same way as the first. They bathed in the holy water, and by its touch all the dirty material desires in their hearts were cleansed away. They murmured mantras beginning with oṁkāra and underwent a severe course of austerities.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -6305,18 +6063,6 @@ The mantra will be mentioned next.</div>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">They bathed in the holy water; touch alone cleansed material desires from their hearts. The geography of grace matters — tīrthas are not symbolic; they actually purify.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Do I treat holy places as tourism or as actual cleansing?</li><li>What &#39;tīrtha&#39; is geographically or practically available to me?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -6556,7 +6302,6 @@ The mantra will be mentioned next.</div>
 
     <div class="fc-translation" data-sec="translation">For a few months the sons of Prajāpati Dakṣa drank only water and ate only air. Thus undergoing great austerities, they recited this mantra: “Let us offer our respectful obeisances unto Nārāyaṇa, the Supreme Personality of Godhead, who is always situated in His transcendental abode. Since He is the Supreme Person [paramahaṁsa], let us offer our respectful obeisances unto Him.”</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -6633,18 +6378,6 @@ The mantra will be mentioned next.</div>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">For months they drank only water and ate only air, reciting prayers to Nārāyaṇa. Severe austerity, paired with the holy name, is the classical preparation for divine encounter.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where could I voluntarily simplify intake in order to deepen prayer?</li><li>What &#39;months&#39; of practice am I willing to commit to a single mantra?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -6823,7 +6556,6 @@ The mantra will be mentioned next.</div>
     <div class="fc-translation" data-sec="translation">O King Parīkṣit, Nārada Muni approached these sons of Prajāpati Dakṣa, who were engaged in tapasya to beget children, and spoke enigmatic words to them just as he had spoken to their elder brothers.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -6862,18 +6594,6 @@ The mantra will be mentioned next.</div>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Nārada approached this second group too with the same enigmatic teaching. The mercy of the spiritual master is repetitive on purpose — he tells the same truth to whomever can receive it.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What truth keeps being offered to me that I haven&#39;t yet received?</li><li>Whose patience am I underestimating?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -7024,7 +6744,6 @@ The mantra will be mentioned next.</div>
 
     <div class="fc-translation" data-sec="translation">O sons of Dakṣa, please hear my words of instruction attentively. You are all very affectionate to your elder brothers, the Haryaśvas. Therefore you should follow their path.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -7072,18 +6791,6 @@ Nigamam means instruction.</div>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Nārada tells them: you love your elder brothers — follow their path. Affection within family becomes a hint toward the path of liberation, not a chain against it.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Whose path within my family or community could I rightly follow?</li><li>Where am I treating family bonds as obstacles when they could be guides?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -7259,7 +6966,6 @@ Nigamam means instruction.</div>
 
     <div class="fc-translation" data-sec="translation">A brother aware of the principles of religion follows in the footsteps of his elder brothers. Because of being highly elevated, such a pious brother gets the opportunity to associate and enjoy with demigods like the Maruts, who are all affectionate to their brothers.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -7333,18 +7039,6 @@ You will enjoy with the Maruts who were affectionate to their brothers.  This ex
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">A religiously aware younger brother follows the elder&#39;s footsteps and enjoys elevated association with Maruts in higher planets. There is dignity, not weakness, in walking behind one who has already walked.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Whose footsteps am I too proud to follow?</li><li>What humility would allow me to inherit a real path?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -7532,7 +7226,6 @@ You will enjoy with the Maruts who were affectionate to their brothers.  This ex
     <div class="fc-translation" data-sec="translation">Śukadeva Gosvāmī continued: O best of the advanced Āryans, after saying this much to the sons of Prajāpati Dakṣa, Nārada Muni, whose merciful glance never goes in vain, left as he had planned. The sons of Dakṣa followed their elder brothers. Not attempting to produce children, they engaged themselves in Kṛṣṇa consciousness.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -7578,18 +7271,6 @@ Mārṣa means “O respectable one!”</div>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Saying so much, Nārada left as planned, and the Savalāśvas followed their elder brothers to liberation. The instructor&#39;s job is to deposit the seed and walk on; the rest is the disciple&#39;s.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Have I given up something prematurely because the teacher &#39;moved on&#39;?</li><li>Am I expecting more contact when the seed has already been planted?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -7768,7 +7449,6 @@ Mārṣa means “O respectable one!”</div>
     <div class="fc-translation" data-sec="translation">The Savalāśvas took to the correct path, which is obtainable by a mode of life meant to achieve devotional service, or the mercy of the Supreme Personality of Godhead. Like nights that have gone to the west, they have not returned even until now.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -7789,18 +7469,6 @@ Having taken to the proper (sadhrīcīnam) path of bhakti (anupatham), the favor
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Like nights gone west and never returning, the Savalāśvas walked the path of devotional service and did not come back. Some departures are graduations, not losses.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Whom have I mourned who actually graduated?</li><li>Where am I clinging to a returning when the journey is one-way?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -7970,7 +7638,6 @@ Having taken to the proper (sadhrīcīnam) path of bhakti (anupatham), the favor
     <div class="fc-translation" data-sec="translation">At this time, Prajāpati Dakṣa observed many inauspicious signs, and he heard from various sources that his second group of sons, the Savalāśvas, had followed the path of their elder brothers in accordance with the instructions of Nārada.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -7989,18 +7656,6 @@ Having taken to the proper (sadhrīcīnam) path of bhakti (anupatham), the favor
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Dakṣa observed inauspicious omens and heard his second cohort had also left. When the same loss repeats, the inner work calls louder than the external explanation.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What omens am I dismissing because I prefer the surface story?</li><li>What pattern in my life is repeating to get my attention?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -8169,7 +7824,6 @@ Having taken to the proper (sadhrīcīnam) path of bhakti (anupatham), the favor
 
     <div class="fc-translation" data-sec="translation">When he heard that the Savalāśvas had also left this world to engage in devotional service, Dakṣa was angry at Nārada, and he almost fainted due to lamentation. When Dakṣa met Nārada, Dakṣa’s lips began trembling in anger, and he spoke as follows.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -8213,18 +7867,6 @@ Nārada considered as follows. “The dynasty of Svāyambhuva Manu, Priyavrata, 
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Hearing the news, Dakṣa nearly fainted from sorrow, then met Nārada with trembling lips and angry words. Grief unprocessed surfaces as rage at whoever is nearby.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where is my anger really displaced grief?</li><li>Who has been blamed for what is actually my loss to mourn?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -8400,7 +8042,6 @@ Nārada considered as follows. “The dynasty of Svāyambhuva Manu, Priyavrata, 
 
     <div class="fc-translation" data-sec="translation">Prajāpati Dakṣa said: Alas, Nārada Muni, you wear the dress of a saintly person, but you are not actually a saint. Indeed, although I am now in gṛhastha life, I am a saintly person. By showing my sons the path of renunciation, you have done me an abominable injustice.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -8503,18 +8144,6 @@ By wearing the dress of a saintly person, you are causing great deception. We ar
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Dakṣa charges Nārada with being a fake saint who wrecked his household sons. Even great souls misread the saint when their own attachment is touched.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Whom have I miscategorized as a &#39;fake&#39; because they crossed my plans?</li><li>Where is my judgment of others driven by what I lost rather than by truth?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -8683,7 +8312,6 @@ By wearing the dress of a saintly person, you are causing great deception. We ar
 
     <div class="fc-translation" data-sec="translation">Prajāpati Dakṣa said: My sons were not at all freed from their three debts. Indeed, they did not properly consider their obligations. O Nārada Muni, O personality of sinful action, you have obstructed their progress toward good fortune in this world and the next because they are still indebted to the saintly persons, the demigods and their father.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -8780,18 +8408,6 @@ Having paid one’s three debts, the mind should enter into liberation. Not payi
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Dakṣa says his sons hadn&#39;t paid their three debts to sages, demigods and ancestors — Nārada obstructed their good fortune. Pious frameworks can be used to argue against genuine bhakti.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which &#39;three debts&#39; framework am I using to delay deeper surrender?</li><li>Where am I confusing duty with destination?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -8951,7 +8567,6 @@ Having paid one’s three debts, the mind should enter into liberation. Not payi
 
     <div class="fc-translation" data-sec="translation">Prajāpati Dakṣa continued: Thus committing violence against other living entities and yet claiming to be an associate of Lord Viṣṇu, you are defaming the Supreme Personality of Godhead. You needlessly created a mentality of renunciation in innocent boys, and therefore you are shameless and devoid of compassion. How could you travel with the personal associates of the Supreme Lord?</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -9025,18 +8640,6 @@ Having paid one’s three debts, the mind should enter into liberation. Not payi
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Dakṣa accuses Nārada of defaming Viṣṇu by inducing premature renunciation. When we lose to grace, we can shoot at the wrong target.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where have I attacked devotion in others because I felt threatened by their progress?</li><li>Whom owe I an apology I haven&#39;t admitted?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -9196,7 +8799,6 @@ Having paid one’s three debts, the mind should enter into liberation. Not payi
 
     <div class="fc-translation" data-sec="translation">All the devotees of the Lord but you are very kind to the conditioned souls and are eager to benefit others. Although you wear the dress of a devotee, you create enmity with people who are not your enemies, or you break friendship and create enmity between friends. Are you not ashamed of posing as a devotee while performing these abominable actions?</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -9259,18 +8861,6 @@ Having paid one’s three debts, the mind should enter into liberation. Not payi
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Dakṣa contrasts other devotees who are kind to conditioned souls with Nārada, whom he sees as creating enmity. From an angry vantage, even Nārada&#39;s mercy looks malicious.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What perspective has been distorting my reading of someone&#39;s actions?</li><li>Could the very person I&#39;m angry with be the one trying to liberate me?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -9446,7 +9036,6 @@ Having paid one’s three debts, the mind should enter into liberation. Not payi
 
     <div class="fc-translation" data-sec="translation">Prajāpati Dakṣa continued: If you think that simply awakening the sense of renunciation will detach one from the material world, I must say that unless full knowledge is awakened, simply changing dresses as you have done cannot possibly bring detachment.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -9546,18 +9135,6 @@ It is true that detachment is possible by the mercy of great devotees. Though yo
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Dakṣa says merely changing one&#39;s dress (sense of renunciation) doesn&#39;t detach you — full knowledge is needed first. There is real wisdom here, but used to justify staying put.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where am I using a partial truth to avoid an action I sense is required?</li><li>Do I treat &#39;first I need full knowledge&#39; as honest or as deflection?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -9735,7 +9312,6 @@ It is true that detachment is possible by the mercy of great devotees. Though yo
 
     <div class="fc-translation" data-sec="translation">Material enjoyment is indeed the cause of all unhappiness, but one cannot give it up unless one has personally experienced how much suffering it is. Therefore one should be allowed to remain in so-called material enjoyment while simultaneously advancing in knowledge to experience the misery of this false material happiness. Then, without help from others, one will find material enjoyment detestful. Those whose minds are changed by others do not become as renounced as those who have personal experience.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -9794,18 +9370,6 @@ Therefore you have no knowledge. Hear from me the royal path of detachment. With
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Dakṣa argues one must experience material enjoyment&#39;s suffering personally before giving it up; theoretical knowledge is not enough. Lived disillusionment, he claims, is the only true detachment.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where have I learned by suffering more thoroughly than I could have learned by hearing?</li><li>Is there a current illusion I can actually drop now, without needing the proof?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -9974,7 +9538,6 @@ Therefore you have no knowledge. Hear from me the royal path of detachment. With
 
     <div class="fc-translation" data-sec="translation">Although I live in household life with my wife and children, I honestly follow the Vedic injunctions by engaging in fruitive activities to enjoy life without sinful reactions. I have performed all kinds of yajṣas, including the deva-yajṣa, ṛṣi-yajṣa, pitṛ-yajṣa and nṛ-yajṣa. Because these yajṣas are called vratas [vows], I am known as a gṛhavrata. Unfortunately, you have given me great displeasure by misguiding my sons, for no reason, to the path of renunciation. This can be tolerated once.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -10033,18 +9596,6 @@ I can give four times the result for whatever causeless enmity you have shown to
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Dakṣa defends his household life as faithful Vedic practice — yajñas, demigod worship, fruitive activities without sinful reactions. Religion-as-management can feel righteous even while missing the heart.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where do I take pride in keeping the rules without being changed by them?</li><li>What in my householder life is bhakti and what is just well-run karma?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -10249,7 +9800,6 @@ I can give four times the result for whatever causeless enmity you have shown to
 
     <div class="fc-translation" data-sec="translation">You have made me lose my sons once, and now you have again done the same inauspicious thing. Therefore you are a rascal who does not know how to behave toward others. You may travel all over the universe, but I curse you to have no residence anywhere.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -10293,18 +9843,6 @@ You will also have misfortune.  O person who causes separation from children! Yo
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Dakṣa curses Nārada to have no permanent home — endless wandering across the universe. Anger turned on a saint backfires; Nārada accepts the curse with gladness as a kind of liberation.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What curse have I tried to lay on someone whose detachment I envied?</li><li>What &#39;wandering&#39; might actually be my freedom in disguise?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -10489,7 +10027,6 @@ You will also have misfortune.  O person who causes separation from children! Yo
 
     <div class="fc-translation" data-sec="translation">Śrī Śukadeva Gosvāmī continued: My dear King, since Nārada Muni is an approved saintly person, when cursed by Prajāpati Dakṣa he replied, “tad bāḍham: Yes, what you have said is good. I accept this curse.” He could have cursed Prajāpati Dakṣa in return, but because he is a tolerant and merciful sādhu, he took no action.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -10564,18 +10101,6 @@ Descendents of Dakṣa’s Daughters</div>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Nārada simply replied &#39;tad bāḍham — yes, what you said is good&#39; and accepted the curse. The mark of a real saint is to receive even an unjust word as part of the Lord&#39;s arrangement.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Could I accept an unfair word with &#39;yes, it is good&#39;?</li><li>What practice would soften my reflex to defend?</li></ul>
-
-
-
-
-
-    </section>
 
 
 

@@ -31,7 +31,7 @@
 <body class="has-sidebar">
 <header class="fc-site-header">
     <button type="button" class="fc-mobile-trigger fc-mobile-trigger-left" data-overlay="left" aria-label="Open settings drawer">⚙</button>
-<a class="fc-brand" href="../../../">FolioCorpus<span class="fc-sub">Caitanya-caritāmṛta</span></a>
+    <a class="fc-brand" href="../../../">FolioCorpus<span class="fc-sub">Bhagavad-gītā</span></a>
     <nav class="fc-site-nav">
         <a href="../../../">Home</a>
         <a href="../../../bg/">Bhagavad-gītā</a>
@@ -46,8 +46,8 @@
     <button class="fc-sb-collapse" type="button" data-sb="left" title="Collapse left sidebar" aria-label="Collapse"></button>
 
     <div class="fc-sb-body">
-        <details class="fc-sb-section" data-sbsec="reading" open>
-            <summary class="fc-sb-title">Reading</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Reading</div>
             <div class="fc-sb-sub">Theme</div>
             <div class="fc-segmented" data-setting="theme">
                 <button type="button" data-val="light">Light</button>
@@ -73,10 +73,10 @@
                 <button type="button" data-val="single">Single</button>
                 <button type="button" data-val="side">Side-by-side</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="display" open>
-            <summary class="fc-sb-title">Display</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Display</div>
             <div class="fc-sb-grid">
                 <label><input type="checkbox" data-section="devanagari" checked> Devanāgarī</label>
                 <label><input type="checkbox" data-section="iast" checked> IAST transliteration</label>
@@ -98,10 +98,33 @@
                 <button type="button" data-action="expand-all">Expand all</button>
                 <button type="button" data-action="collapse-all">Collapse all</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="tools" open>
-            <summary class="fc-sb-title">Tools</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Find your starting point</div>
+            <div class="fc-persona-links">
+                <a class="fc-persona-link" href="../../../daily/">🌅 Daily (one value a week)</a>
+                <a class="fc-persona-link" href="../../../householder/">🏠 Householder (family & work)</a>
+                <a class="fc-persona-link" href="../../../parenting/">👨‍👩‍👧 Parenting (stories for kids)</a>
+                <a class="fc-persona-link" href="../../../themes/">📚 All themes</a>
+                <a class="fc-persona-link" href="../../../values/" style="background:#F0F6F2;border-left-color:#1F4632;">ॐ Vedic Value System ↗</a>
+                <a class="fc-persona-link" href="../../../vidya/" style="background:#FBF6E4;border-left-color:#C8860B;">📚 Vidyā Karaṇa (kids, multi-lang) ↗</a>
+            </div>
+        </div>
+
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Audience</div>
+            <div class="fc-audience-filter">
+                <label><input type="radio" name="fc-audience" value="all" checked> All levels</label>
+                <label><input type="radio" name="fc-audience" value="primary"> Primary (children)</label>
+                <label><input type="radio" name="fc-audience" value="middle"> Middle (teens)</label>
+                <label><input type="radio" name="fc-audience" value="senior"> Senior (adults)</label>
+                <label><input type="radio" name="fc-audience" value="college"> College / scholar</label>
+            </div>
+        </div>
+
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Tools</div>
             <div class="fc-sb-tools">
                 <button type="button" id="fc-presentation-toggle" class="fc-tool-btn"><span>🖥 Presentation</span><kbd class="fc-kbd">F</kbd></button>
                 <button type="button" id="fc-pen-toggle" class="fc-tool-btn"><span>✏️ Pen mode</span><kbd class="fc-kbd">P</kbd></button>
@@ -116,10 +139,26 @@
                 <button type="button" id="fc-clear-highlights" class="fc-tool-btn">🩷 Clear highlights (page)</button>
                 <button type="button" id="fc-notes-modal-open" class="fc-tool-btn">📓 My annotations</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="progress" id="fc-progress-section" open>
-            <summary class="fc-sb-title">Progress</summary>
+        <div class="fc-sb-section" id="fc-tts-controls" hidden>
+            <div class="fc-sb-title">
+                Read-aloud
+                <label class="fc-tts-master">
+                    <input type="checkbox" id="fc-tts-enabled" checked>
+                    <span class="fc-tts-master-label">On</span>
+                </label>
+            </div>
+            <div class="fc-tts-inner">
+                <div class="fc-sb-sub">Voice</div>
+                <select id="fc-tts-voice" class="fc-tts-select" aria-label="TTS voice"></select>
+                <div class="fc-sb-sub">Rate <span class="fc-tts-rate-val">1.0×</span></div>
+                <input type="range" id="fc-tts-rate" min="0.5" max="2" step="0.1" value="1" class="fc-tts-rate" aria-label="Reading rate">
+            </div>
+        </div>
+
+        <div class="fc-sb-section" id="fc-progress-section">
+            <div class="fc-sb-title">Progress</div>
             <div class="fc-progress-row">
                 <span class="fc-progress-num" id="fc-progress-num">0</span>
                 <span class="fc-progress-divider">/</span>
@@ -134,29 +173,29 @@
                 <span class="fc-progress-spacer"></span>
                 <button type="button" class="fc-progress-reset" id="fc-progress-reset" title="Reset progress">↺</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="bookmarks" open>
-            <summary class="fc-sb-title">Bookmarks <span class="fc-sb-count" id="fc-bookmarks-count">0</span></summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Bookmarks <span class="fc-sb-count" id="fc-bookmarks-count">0</span></div>
             <ul class="fc-bookmark-list" id="fc-bookmarks-list">
                 <li class="fc-sb-empty">No bookmarks yet — click ☆ on any verse.</li>
             </ul>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="notes" open>
-            <summary class="fc-sb-title">Notes <span class="fc-sb-count" id="fc-notes-count">0</span></summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Notes <span class="fc-sb-count" id="fc-notes-count">0</span></div>
             <ul class="fc-bookmark-list" id="fc-notes-list">
                 <li class="fc-sb-empty">No notes yet — open any verse and write in the 📝 block.</li>
             </ul>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="export">
-            <summary class="fc-sb-title">Export</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Export</div>
             <div class="fc-sb-tools">
                 <button type="button" id="fc-export-md" class="fc-tool-btn">📥 Download Markdown</button>
                 <button type="button" id="fc-export-json" class="fc-tool-btn">💾 Download JSON backup</button>
             </div>
-        </details>
+        </div>
     </div>
 </aside>    <main class="fc-container">
 <nav class="fc-breadcrumbs">
@@ -488,7 +527,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-1" data-note-label="BG 3.1" data-note-chapter="3" data-note-vlabel="1">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.1…" rows="4"></textarea>
@@ -527,7 +565,6 @@
 
 
     <div class="fc-translation" data-sec="translation">All glories to Śrī Caitanya Mahāprabhu! All glories to Nityānanda Prabhu! All glories to Advaita Ācārya! And all glories to all the devotees of Śrī Caitanya Mahāprabhu!</div>
-
 
 
 
@@ -590,7 +627,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-3" data-note-label="BG 3.3" data-note-chapter="3" data-note-vlabel="3">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.3…" rows="4"></textarea>
@@ -629,7 +665,6 @@
 
 
     <div class="fc-translation" data-sec="translation">The boy came daily to Śrī Caitanya Mahāprabhu and offered Him respectful obeisances. He was free to talk with Śrī Caitanya Mahāprabhu because the Lord was his life and soul, but the boy’s intimacy with the Lord and the Lord’s mercy toward him were intolerable for Dāmodara Paṇḍita.</div>
-
 
 
 
@@ -692,7 +727,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-6" data-note-label="BG 3.6" data-note-chapter="3" data-note-vlabel="6">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.6…" rows="4"></textarea>
@@ -731,7 +765,6 @@
 
 
     <div class="fc-translation" data-sec="translation">The boy came every day to Śrī Caitanya Mahāprabhu, who treated him with great affection. It is the nature of any boy to go see a man who loves him.</div>
-
 
 
 
@@ -794,7 +827,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-8" data-note-label="BG 3.8" data-note-chapter="3" data-note-vlabel="8">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.8…" rows="4"></textarea>
@@ -833,7 +865,6 @@
 
 
     <div class="fc-translation" data-sec="translation">One day when the boy came to Śrī Caitanya Mahāprabhu, the Lord very affectionately inquired from him about all kinds of news.</div>
-
 
 
 
@@ -896,7 +927,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-10" data-note-label="BG 3.10" data-note-chapter="3" data-note-vlabel="10">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.10…" rows="4"></textarea>
@@ -935,7 +965,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Dāmodara Paṇḍita impudently said to the Lord, “Everyone says that You are a great teacher because of Your instructions to others, but now we shall find out what kind of teacher You are.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -1005,7 +1034,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-12" data-note-label="BG 3.12" data-note-chapter="3" data-note-vlabel="12">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.12…" rows="4"></textarea>
@@ -1044,7 +1072,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Although Śrī Caitanya Mahāprabhu knew that Dāmodara Paṇḍita was a pure and simple devotee, upon hearing this impudent talk the Lord said, “My dear Dāmodara, what nonsense are you speaking?”</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -1114,7 +1141,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-14" data-note-label="BG 3.14" data-note-chapter="3" data-note-vlabel="14">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.14…" rows="4"></textarea>
@@ -1153,7 +1179,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“Dear Lord, You are a learned teacher. Why then don’t You consider that this boy is the son of a widowed brāhmaṇī? Why are You so affectionate to him?</div>
-
 
 
 
@@ -1216,7 +1241,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-16" data-note-label="BG 3.16" data-note-chapter="3" data-note-vlabel="16">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.16…" rows="4"></textarea>
@@ -1255,7 +1279,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“And You, my dear Lord, are a handsome, attractive young man. Therefore certainly people will whisper about You. Why should You give them such an opportunity?”</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -1325,7 +1348,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-18" data-note-label="BG 3.18" data-note-chapter="3" data-note-vlabel="18">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.18…" rows="4"></textarea>
@@ -1364,7 +1386,6 @@
 
 
     <div class="fc-translation" data-sec="translation">[Śrī Caitanya Mahāprabhu thought:] “This impudence is also a sign of pure love for Me. I have no other intimate friend like Dāmodara Paṇḍita.”</div>
-
 
 
 
@@ -1427,7 +1448,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-20" data-note-label="BG 3.20" data-note-chapter="3" data-note-vlabel="20">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.20…" rows="4"></textarea>
@@ -1466,7 +1486,6 @@
 
 
     <div class="fc-translation" data-sec="translation">The Lord said, “My dear friend Dāmodara, you had better go to Nadia and stay with My mother.</div>
-
 
 
 
@@ -1529,7 +1548,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-22" data-note-label="BG 3.22" data-note-chapter="3" data-note-vlabel="22">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.22…" rows="4"></textarea>
@@ -1568,7 +1586,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“You are the most neutral among My associates. This is very good, for without being neutral one cannot protect religious principles.</div>
-
 
 
 
@@ -1631,7 +1648,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-24" data-note-label="BG 3.24" data-note-chapter="3" data-note-vlabel="24">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.24…" rows="4"></textarea>
@@ -1670,7 +1686,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“It is best for you to go to the shelter of My mother’s lotus feet, for no one will be able to behave independently in front of you.</div>
-
 
 
 
@@ -1733,7 +1748,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-26" data-note-label="BG 3.26" data-note-chapter="3" data-note-vlabel="26">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.26…" rows="4"></textarea>
@@ -1772,7 +1786,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“Offer My mother millions of My obeisances. Please speak to her about My happiness here and thus give her happiness.</div>
-
 
 
 
@@ -1835,7 +1848,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-28" data-note-label="BG 3.28" data-note-chapter="3" data-note-vlabel="28">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.28…" rows="4"></textarea>
@@ -1874,7 +1886,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“Speaking in this way, satisfy the mind of mother Śacī. Also, remind her of one most confidential incident with this message from Me.</div>
-
 
 
 
@@ -1937,7 +1948,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-30" data-note-label="BG 3.30" data-note-chapter="3" data-note-vlabel="30">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.30…" rows="4"></textarea>
@@ -1976,7 +1986,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“ ‘You know that I come and eat the offerings, but because of external separation, you consider this a dream.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -2046,7 +2055,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-32" data-note-label="BG 3.32" data-note-chapter="3" data-note-vlabel="32">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.32…" rows="4"></textarea>
@@ -2085,7 +2093,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“ ‘You offered the food to Lord Kṛṣṇa, and while you were in meditation I suddenly appeared, and your eyes filled with tears.</div>
-
 
 
 
@@ -2148,7 +2155,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-34" data-note-label="BG 3.34" data-note-chapter="3" data-note-vlabel="34">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.34…" rows="4"></textarea>
@@ -2187,7 +2193,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“ ‘In a moment, after you had wiped your eyes, you saw that the plate you had offered Me was empty. Then you thought, “I dreamt as if Nimāi were eating everything.”</div>
-
 
 
 
@@ -2250,7 +2255,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-36" data-note-label="BG 3.36" data-note-chapter="3" data-note-vlabel="36">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.36…" rows="4"></textarea>
@@ -2289,7 +2293,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“ ‘Then you went to see the cooking pots and found that every pot was filled with food. Therefore you again offered the food, after cleansing the place for the offering.</div>
-
 
 
 
@@ -2352,7 +2355,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-38" data-note-label="BG 3.38" data-note-chapter="3" data-note-vlabel="38">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.38…" rows="4"></textarea>
@@ -2391,7 +2393,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“ ‘Only by your order am I living in Nīlācala [Jagannātha Purī]. Nevertheless, you still pull Me near you because of your great love for Me.’ ”</div>
-
 
 
 
@@ -2454,7 +2455,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-40" data-note-label="BG 3.40" data-note-chapter="3" data-note-vlabel="40">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.40…" rows="4"></textarea>
@@ -2493,7 +2493,6 @@
 
 
     <div class="fc-translation" data-sec="translation">After saying this, Śrī Caitanya Mahāprabhu ordered that varieties of prasādam offered to Lord Jagannātha be brought. The Lord then gave him the prasādam, separately packed, to offer to various Vaiṣṇavas and His mother.</div>
-
 
 
 
@@ -2556,7 +2555,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-42" data-note-label="BG 3.42" data-note-chapter="3" data-note-vlabel="42">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.42…" rows="4"></textarea>
@@ -2595,7 +2593,6 @@
 
 
     <div class="fc-translation" data-sec="translation">He delivered all the prasādam to such great Vaiṣṇavas as Advaita Ācārya. Thus he stayed there and behaved according to the order of Śrī Caitanya Mahāprabhu.</div>
-
 
 
 
@@ -2658,7 +2655,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-44" data-note-label="BG 3.44" data-note-chapter="3" data-note-vlabel="44">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.44…" rows="4"></textarea>
@@ -2697,7 +2693,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Dāmodara Paṇḍita would verbally chastise every devotee of Śrī Caitanya Mahāprabhu whom he found deviating even slightly from proper behavior. Thus he established the standard etiquette.</div>
-
 
 
 
@@ -2760,7 +2755,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-46" data-note-label="BG 3.46" data-note-chapter="3" data-note-vlabel="46">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.46…" rows="4"></textarea>
@@ -2799,7 +2793,6 @@
 
 
     <div class="fc-translation" data-sec="translation">The pastimes of Śrī Caitanya Mahāprabhu are deeper than millions of seas and oceans. Therefore no one can understand what He does or why He does it.</div>
-
 
 
 
@@ -2862,7 +2855,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-48" data-note-label="BG 3.48" data-note-chapter="3" data-note-vlabel="48">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.48…" rows="4"></textarea>
@@ -2913,7 +2905,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-49" data-note-label="BG 3.49" data-note-chapter="3" data-note-vlabel="49">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.49…" rows="4"></textarea>
@@ -2952,7 +2943,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“My dear Ṭhākura Haridāsa, in this Age of Kali most people are bereft of Vedic culture, and therefore they are called yavanas. They are concerned only with killing cows and brahminical culture. In this way they all engage in sinful acts.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -3011,7 +3001,6 @@
 
     <div class="fc-translation" data-sec="translation">“How will these yavanas be delivered? To My great unhappiness, I do not see any way.”</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3068,7 +3057,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Haridāsa Ṭhākura replied, “My dear Lord, do not be in anxiety. Do not be unhappy to see the condition of the yavanas in material existence.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -3138,7 +3126,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-53" data-note-label="BG 3.53" data-note-chapter="3" data-note-vlabel="53">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.53…" rows="4"></textarea>
@@ -3177,7 +3164,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“A devotee in advanced ecstatic love exclaims, ‘O my Lord Rāmacandra! O my Lord Rāmacandra!’ But the yavanas also chant, ‘hā rāma, hā rāma!’ Just see their good fortune!”</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -3247,7 +3233,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-55" data-note-label="BG 3.55" data-note-chapter="3" data-note-vlabel="55">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.55…" rows="4"></textarea>
@@ -3286,7 +3271,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“ ‘Even a mleccha who is being killed by the tusk of a boar and who cries in distress again and again, “hā rāma, hā rāma” attains liberation. What then to speak of those who chant the holy name with veneration and faith?’</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -3356,7 +3340,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-57" data-note-label="BG 3.57" data-note-chapter="3" data-note-vlabel="57">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.57…" rows="4"></textarea>
@@ -3407,7 +3390,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-58" data-note-label="BG 3.58" data-note-chapter="3" data-note-vlabel="58">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.58…" rows="4"></textarea>
@@ -3446,7 +3428,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“The letters of the holy name have so much spiritual potency that they act even when uttered improperly.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -3504,7 +3485,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“ ‘If a devotee once utters the holy name of the Lord, or if it penetrates his mind or enters his ear, which is the channel of aural reception, that holy name will certainly deliver him from material bondage, whether vibrated properly or improperly, with correct or incorrect grammar, or properly joined or vibrated in separate parts. O brāhmaṇa, the potency of the holy name is therefore certainly great. However, if one uses the vibration of the holy name for the benefit of the material body, for material wealth and followers, or under the influence of greed or atheism — in other words, if one utters the name with offenses — such chanting will not produce the desired result very soon. Therefore one should diligently avoid offenses in chanting the holy name of the Lord.’ ”</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -3574,7 +3554,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-61" data-note-label="BG 3.61" data-note-chapter="3" data-note-vlabel="61">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.61…" rows="4"></textarea>
@@ -3613,7 +3592,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“ ‘O reservoir of all good qualities, just worship Śrī Kṛṣṇa, the purifier of all purifiers, the most exalted of the personalities worshiped by choice poetry. Worship Him with a faithful, unflinching mind, without duplicity and in a highly elevated manner. Thus worship the Lord, whose name is like the sun, for just as a slight appearance of the sun dissipates the darkness of night, so a slight appearance of the holy name of Kṛṣṇa can drive away all the darkness of ignorance that arises in the heart due to greatly sinful activities performed in previous lives.’</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -3683,7 +3661,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-63" data-note-label="BG 3.63" data-note-chapter="3" data-note-vlabel="63">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.63…" rows="4"></textarea>
@@ -3722,7 +3699,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“ ‘While dying, Ajāmila chanted the holy name of the Lord, intending to call his son Nārāyaṇa. Nevertheless, he attained the spiritual world. What then to speak of those who chant the holy name with faith and reverence?’</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -3792,7 +3768,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-65" data-note-label="BG 3.65" data-note-chapter="3" data-note-vlabel="65">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.65…" rows="4"></textarea>
@@ -3831,7 +3806,6 @@
 
 
     <div class="fc-translation" data-sec="translation">As Śrī Caitanya Mahāprabhu heard this from Haridāsa Ṭhākura, the happiness within His heart increased, but as a matter of course, He still inquired further.</div>
-
 
 
 
@@ -3894,7 +3868,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-67" data-note-label="BG 3.67" data-note-chapter="3" data-note-vlabel="67">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.67…" rows="4"></textarea>
@@ -3933,7 +3906,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Haridāsa Ṭhākura replied, “My dear Lord, the deliverance of all moving and nonmoving living entities takes place only by Your mercy. You have already granted this mercy and delivered them.</div>
-
 
 
 
@@ -3996,7 +3968,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-69" data-note-label="BG 3.69" data-note-chapter="3" data-note-vlabel="69">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.69…" rows="4"></textarea>
@@ -4035,7 +4006,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“My Lord, the moving entities who have heard Your loud saṅkīrtana have already been delivered from bondage to the material world, and after the nonmoving living entities like trees hear it, there is an echo.</div>
-
 
 
 
@@ -4098,7 +4068,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-71" data-note-label="BG 3.71" data-note-chapter="3" data-note-vlabel="71">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.71…" rows="4"></textarea>
@@ -4137,7 +4106,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“When loud chanting of the Hare Kṛṣṇa mantra is performed all over the world by those who follow in Your footsteps, all living entities, moving and nonmoving, dance in ecstatic devotional love.</div>
-
 
 
 
@@ -4200,7 +4168,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-73" data-note-label="BG 3.73" data-note-chapter="3" data-note-vlabel="73">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.73…" rows="4"></textarea>
@@ -4239,7 +4206,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“When Your devotee Vāsudeva Datta submitted his plea at Your lotus feet for the deliverance of all living entities, You accepted that request.</div>
-
 
 
 
@@ -4302,7 +4268,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-75" data-note-label="BG 3.75" data-note-chapter="3" data-note-vlabel="75">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.75…" rows="4"></textarea>
@@ -4341,7 +4306,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“You have preached the loud chanting of the Hare Kṛṣṇa mahā-mantra and in this way freed all moving and nonmoving living entities from material bondage.”</div>
-
 
 
 
@@ -4404,7 +4368,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-77" data-note-label="BG 3.77" data-note-chapter="3" data-note-vlabel="77">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.77…" rows="4"></textarea>
@@ -4455,7 +4418,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-78-79" data-note-label="BG 3.78-79" data-note-chapter="3" data-note-vlabel="78-79">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.78-79…" rows="4"></textarea>
@@ -4494,7 +4456,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“In this way all moving and nonmoving living entities will come into existence, and the entire universe will be filled as it was previously.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -4564,7 +4525,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-81" data-note-label="BG 3.81" data-note-chapter="3" data-note-vlabel="81">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.81…" rows="4"></textarea>
@@ -4603,7 +4563,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“My dear Lord, You have set a plan in motion by descending to the material world, but no one can understand how You are acting.</div>
-
 
 
 
@@ -4666,7 +4625,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-83" data-note-label="BG 3.83" data-note-chapter="3" data-note-vlabel="83">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.83…" rows="4"></textarea>
@@ -4705,7 +4663,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“Kṛṣṇa, the unborn Supreme Personality of Godhead, master of all masters of mystic power, delivers all living entities, moving and nonmoving. Nothing is astonishing in the activities of the Lord.’</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -4763,7 +4720,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“ ‘Although the Supreme Personality of Godhead may be seen, glorified or remembered with an attitude of envy, He nevertheless awards the most confidential liberation, which is rarely achieved by the demigods and demons. What, then, can be said of those who are already fully engaged in devotional service to the Lord?’</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -4833,7 +4789,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-86" data-note-label="BG 3.86" data-note-chapter="3" data-note-vlabel="86">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.86…" rows="4"></textarea>
@@ -4872,7 +4827,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“One may say that he understands the glories of Śrī Caitanya Mahāprabhu. He may know whatever he may know, but as far as I am concerned, this is my conclusion.</div>
-
 
 
 
@@ -4935,7 +4889,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-88" data-note-label="BG 3.88" data-note-chapter="3" data-note-vlabel="88">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.88…" rows="4"></textarea>
@@ -4974,7 +4927,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Hearing all this, Śrī Caitanya Mahāprabhu was astonished. “These are actually My confidential pastimes,” He thought. “How could Haridāsa have understood them?”</div>
-
 
 
 
@@ -5037,7 +4989,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-90" data-note-label="BG 3.90" data-note-chapter="3" data-note-vlabel="90">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.90…" rows="4"></textarea>
@@ -5088,7 +5039,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-91" data-note-label="BG 3.91" data-note-chapter="3" data-note-vlabel="91">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.91…" rows="4"></textarea>
@@ -5127,7 +5077,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“O my Lord, everything within material nature is limited by time, space and thought. Your characteristics, however, being unequaled and unsurpassed, are always transcendental to such limitations. You sometimes cover such characteristics by Your own energy, but nevertheless Your unalloyed devotees are always able to see You under all circumstances.”</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -5197,7 +5146,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-93" data-note-label="BG 3.93" data-note-chapter="3" data-note-vlabel="93">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.93…" rows="4"></textarea>
@@ -5236,7 +5184,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Śrī Caitanya Mahāprabhu derives great pleasure from glorifying His devotees, and among the devotees, Haridāsa Ṭhākura is the foremost.</div>
-
 
 
 
@@ -5299,7 +5246,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-95" data-note-label="BG 3.95" data-note-chapter="3" data-note-vlabel="95">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.95…" rows="4"></textarea>
@@ -5338,7 +5284,6 @@
 
 
     <div class="fc-translation" data-sec="translation">In the Caitanya-maṅgala, Śrīla Vṛndāvana dāsa Ṭhākura has described the attributes of Haridāsa Ṭhākura to some extent.</div>
-
 
 
 
@@ -5401,7 +5346,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-97" data-note-label="BG 3.97" data-note-chapter="3" data-note-vlabel="97">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.97…" rows="4"></textarea>
@@ -5440,7 +5384,6 @@
 
 
     <div class="fc-translation" data-sec="translation">O devotees of Śrī Caitanya Mahāprabhu, please hear something about the qualities of Haridāsa Ṭhākura that Śrīla Vṛndāvana dāsa Ṭhākura has not described in detail.</div>
-
 
 
 
@@ -5503,7 +5446,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-99" data-note-label="BG 3.99" data-note-chapter="3" data-note-vlabel="99">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.99…" rows="4"></textarea>
@@ -5542,7 +5484,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Haridāsa Ṭhākura constructed a cottage in a solitary forest. There he planted a tulasī plant, and in front of the tulasī he would chant the holy name of the Lord 300,000 times daily. He chanted throughout the entire day and night.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -5600,7 +5541,6 @@
 
 
     <div class="fc-translation" data-sec="translation">For his bodily maintenance he would go to a brāhmaṇa’s house and beg some food. He was spiritually so influential that all the neighboring people worshiped him.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -5670,7 +5610,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-102" data-note-label="BG 3.102" data-note-chapter="3" data-note-vlabel="102">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.102…" rows="4"></textarea>
@@ -5721,7 +5660,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-103" data-note-label="BG 3.103" data-note-chapter="3" data-note-vlabel="103">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.103…" rows="4"></textarea>
@@ -5760,7 +5698,6 @@
 
 
     <div class="fc-translation" data-sec="translation">By no means could he find any fault in the character of Haridāsa Ṭhākura. Therefore he called for local prostitutes and began a plan to discredit His Holiness.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -5818,7 +5755,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Rāmacandra Khān said to the prostitutes, “There is a mendicant named Haridāsa Ṭhākura. All of you devise a way to deviate him from his vows of austerity.”</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -5888,7 +5824,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-106" data-note-label="BG 3.106" data-note-chapter="3" data-note-vlabel="106">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.106…" rows="4"></textarea>
@@ -5927,7 +5862,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Rāmacandra Khān said to the prostitute, “My constable will go with you so that as soon as he sees you with Haridāsa Ṭhākura, immediately he will arrest him and bring both of you to me.”</div>
-
 
 
 
@@ -5990,7 +5924,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-108" data-note-label="BG 3.108" data-note-chapter="3" data-note-vlabel="108">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.108…" rows="4"></textarea>
@@ -6029,7 +5962,6 @@
 
 
     <div class="fc-translation" data-sec="translation">At night the prostitute, after dressing herself most attractively, went to the cottage of Haridāsa Ṭhākura with great jubilation.</div>
-
 
 
 
@@ -6092,7 +6024,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-110" data-note-label="BG 3.110" data-note-chapter="3" data-note-vlabel="110">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.110…" rows="4"></textarea>
@@ -6131,7 +6062,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Exposing part of her body to his view, she sat down on the threshold of the door and spoke to him in very sweet words.</div>
-
 
 
 
@@ -6194,7 +6124,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-112" data-note-label="BG 3.112" data-note-chapter="3" data-note-vlabel="112">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.112…" rows="4"></textarea>
@@ -6233,7 +6162,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“I am eager to be united with you. My mind is greedy for this. If I don’t obtain you, I shall not be able to keep my body and soul together.”</div>
-
 
 
 
@@ -6296,7 +6224,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-114-115" data-note-label="BG 3.114-115" data-note-chapter="3" data-note-vlabel="114-115">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.114-115…" rows="4"></textarea>
@@ -6335,7 +6262,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Hearing this, the prostitute remained sitting there while Haridāsa Ṭhākura chanted on his beads until the light of morning appeared.</div>
-
 
 
 
@@ -6398,7 +6324,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-117" data-note-label="BG 3.117" data-note-chapter="3" data-note-vlabel="117">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.117…" rows="4"></textarea>
@@ -6437,7 +6362,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“Today Haridāsa Ṭhākura has promised to enjoy with me. Tomorrow certainly I shall have union with him.”</div>
-
 
 
 
@@ -6500,7 +6424,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-119" data-note-label="BG 3.119" data-note-chapter="3" data-note-vlabel="119">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.119…" rows="4"></textarea>
@@ -6539,7 +6462,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“Last night you were disappointed. Please excuse my offense. I shall certainly accept you.</div>
-
 
 
 
@@ -6602,7 +6524,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-121" data-note-label="BG 3.121" data-note-chapter="3" data-note-vlabel="121">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.121…" rows="4"></textarea>
@@ -6641,7 +6562,6 @@
 
 
     <div class="fc-translation" data-sec="translation">After offering her obeisances to the tulasī plant and Haridāsa Ṭhākura, she sat down at the door. Hearing Haridāsa Ṭhākura chanting the Hare Kṛṣṇa mantra, she also chanted, “O my Lord Hari, O my Lord Hari.”</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -6711,7 +6631,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-123" data-note-label="BG 3.123" data-note-chapter="3" data-note-vlabel="123">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.123…" rows="4"></textarea>
@@ -6750,7 +6669,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“I have vowed to chant ten million names in a month. I have taken this vow, but now it is nearing its end.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -6820,7 +6738,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-125" data-note-label="BG 3.125" data-note-chapter="3" data-note-vlabel="125">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.125…" rows="4"></textarea>
@@ -6859,7 +6776,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“Tomorrow I will surely finish, and my vow will be fulfilled. Then it will be possible for me to enjoy with you in full freedom.”</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -6929,7 +6845,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-127" data-note-label="BG 3.127" data-note-chapter="3" data-note-vlabel="127">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.127…" rows="4"></textarea>
@@ -6968,7 +6883,6 @@
 
 
     <div class="fc-translation" data-sec="translation">After offering obeisances to the tulasī plant and Haridāsa Ṭhākura, she sat down on the threshold of the room. Thus she began to hear Haridāsa Ṭhākura’s chanting, and she also personally chanted “Hari, Hari,” the holy name of the Lord.</div>
-
 
 
 
@@ -7031,7 +6945,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-129" data-note-label="BG 3.129" data-note-chapter="3" data-note-vlabel="129">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.129…" rows="4"></textarea>
@@ -7070,7 +6983,6 @@
 
 
     <div class="fc-translation" data-sec="translation">The night ended while Haridāsa Ṭhākura was chanting, but by his association the mind of the prostitute had changed.</div>
-
 
 
 
@@ -7133,7 +7045,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-131" data-note-label="BG 3.131" data-note-chapter="3" data-note-vlabel="131">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.131…" rows="4"></textarea>
@@ -7172,7 +7083,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“Because I have taken the profession of a prostitute,” she said, “I have performed unlimited sinful acts. My lord, be merciful to me. Deliver my fallen soul.”</div>
-
 
 
 
@@ -7235,7 +7145,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-133" data-note-label="BG 3.133" data-note-chapter="3" data-note-vlabel="133">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.133…" rows="4"></textarea>
@@ -7274,7 +7183,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“On the very day Rāmacandra Khān was planning his intrigue against me, I would have left this place immediately, but because you came to me I stayed here for three days to deliver you.”</div>
-
 
 
 
@@ -7337,7 +7245,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-135" data-note-label="BG 3.135" data-note-chapter="3" data-note-vlabel="135">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.135…" rows="4"></textarea>
@@ -7376,7 +7283,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Haridāsa Ṭhākura replied, “Immediately go home and distribute to the brāhmaṇas whatever property you have. Then come back to this room and stay here forever in Kṛṣṇa consciousness.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -7434,7 +7340,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“Chant the Hare Kṛṣṇa mantra continuously and render service to the tulasī plant by watering her and offering prayers to her. In this way you will very soon get the opportunity to be sheltered at the lotus feet of Kṛṣṇa.”</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -7504,7 +7409,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-138" data-note-label="BG 3.138" data-note-chapter="3" data-note-vlabel="138">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.138…" rows="4"></textarea>
@@ -7543,7 +7447,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Thereafter, the prostitute distributed to the brāhmaṇas whatever household possessions she had, following the order of her spiritual master.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -7613,7 +7516,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-140" data-note-label="BG 3.140" data-note-chapter="3" data-note-vlabel="140">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.140…" rows="4"></textarea>
@@ -7664,7 +7566,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-141" data-note-label="BG 3.141" data-note-chapter="3" data-note-vlabel="141">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.141…" rows="4"></textarea>
@@ -7703,7 +7604,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Thus the prostitute became a celebrated devotee. She became very advanced in spiritual life, and many stalwart Vaiṣṇavas would come to see her.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -7761,7 +7661,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Seeing the sublime character of the prostitute, everyone was astonished. Everyone glorified the influence of Haridāsa Ṭhākura and offered him obeisances.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -7831,7 +7730,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-144" data-note-label="BG 3.144" data-note-chapter="3" data-note-vlabel="144">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.144…" rows="4"></textarea>
@@ -7870,7 +7768,6 @@
 
 
     <div class="fc-translation" data-sec="translation">This offense at the lotus feet of an exalted devotee has resulted in a wonderful narration. Taking advantage of the opportunity afforded by these incidents, I shall explain what happened. O devotees, please listen.</div>
-
 
 
 
@@ -7933,7 +7830,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-146" data-note-label="BG 3.146" data-note-chapter="3" data-note-vlabel="146">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.146…" rows="4"></textarea>
@@ -7972,7 +7868,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Because of blaspheming the cult of Vaiṣṇavism and insulting the devotees for a long time, he now received the results of his offensive activities.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -8042,7 +7937,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-148" data-note-label="BG 3.148" data-note-chapter="3" data-note-vlabel="148">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.148…" rows="4"></textarea>
@@ -8081,7 +7975,6 @@
 
 
     <div class="fc-translation" data-sec="translation">For two purposes — to spread the cult of bhakti and to defeat and subdue the atheists — Lord Nityānanda, the most dedicated devotee of the Lord, moved throughout the country.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -8140,7 +8033,6 @@
 
     <div class="fc-translation" data-sec="translation">Lord Nityānanda, who is omniscient because He is the Supreme Personality of Godhead, came to the house of Rāmacandra Khān and sat down on the altar of the Durgā-maṇḍapa.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -8197,7 +8089,6 @@
 
 
     <div class="fc-translation" data-sec="translation">When the Durgā-maṇḍapa and courtyard became filled with crowds of men, Rāmacandra Khān, who was inside the house, sent his servant to Lord Nityānanda.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -8267,7 +8158,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-152" data-note-label="BG 3.152" data-note-chapter="3" data-note-vlabel="152">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.152…" rows="4"></textarea>
@@ -8306,7 +8196,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“You might go to the house of a milkman, for the cowshed is spacious, whereas the space here in the Durgā-maṇḍapa is insufficient because You have many followers with You.”</div>
-
 
 
 
@@ -8369,7 +8258,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-154" data-note-label="BG 3.154" data-note-chapter="3" data-note-vlabel="154">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.154…" rows="4"></textarea>
@@ -8408,7 +8296,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“Rāmacandra Khān has spoken rightly. This place is unfit for Me. It is fit for cow-killing meat-eaters.”</div>
-
 
 
 
@@ -8471,7 +8358,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-156" data-note-label="BG 3.156" data-note-chapter="3" data-note-vlabel="156">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.156…" rows="4"></textarea>
@@ -8510,7 +8396,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Rāmacandra Khān ordered the servant to dig up the dirt in the place where Nityānanda Prabhu had sat.</div>
-
 
 
 
@@ -8573,7 +8458,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-158" data-note-label="BG 3.158" data-note-chapter="3" data-note-vlabel="158">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.158…" rows="4"></textarea>
@@ -8612,7 +8496,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Rāmacandra Khān’s business was questionable, for he tried to avoid paying income tax to the government. Therefore the government’s minister of finance was angry and came to his residence.</div>
-
 
 
 
@@ -8675,7 +8558,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-160" data-note-label="BG 3.160" data-note-chapter="3" data-note-vlabel="160">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.160…" rows="4"></textarea>
@@ -8714,7 +8596,6 @@
 
 
     <div class="fc-translation" data-sec="translation">He arrested Rāmacandra Khān, along with his wife and sons, and then he continuously plundered the house and village for three days.</div>
-
 
 
 
@@ -8777,7 +8658,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-162" data-note-label="BG 3.162" data-note-chapter="3" data-note-vlabel="162">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.162…" rows="4"></textarea>
@@ -8816,7 +8696,6 @@
 
 
     <div class="fc-translation" data-sec="translation">The Muslim minister took away Rāmacandra Khān’s position, wealth and followers. For many days the village remained deserted.</div>
-
 
 
 
@@ -8879,7 +8758,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-164" data-note-label="BG 3.164" data-note-chapter="3" data-note-vlabel="164">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.164…" rows="4"></textarea>
@@ -8918,7 +8796,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Haridāsa Ṭhākura walked until he came to the village known as Cāndapura. There he stayed at the house of Balarāma Ācārya.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -8976,7 +8853,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Hiraṇya and Govardhana were the two governmental treasurers in that division of the country. Their priest was named Balarāma Ācārya.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -9046,7 +8922,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-167" data-note-label="BG 3.167" data-note-chapter="3" data-note-vlabel="167">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.167…" rows="4"></textarea>
@@ -9085,7 +8960,6 @@
 
 
     <div class="fc-translation" data-sec="translation">In the village, Haridāsa Ṭhākura was given a solitary thatched cottage, where he performed the chanting of the Hare Kṛṣṇa mahā-mantra. He accepted prasādam at the house of Balarāma Ācārya.</div>
-
 
 
 
@@ -9148,7 +9022,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-169" data-note-label="BG 3.169" data-note-chapter="3" data-note-vlabel="169">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.169…" rows="4"></textarea>
@@ -9187,7 +9060,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Naturally Haridāsa Ṭhākura was merciful toward him, and because of the merciful benediction of this Vaiṣṇava, he later attained the shelter of Śrī Caitanya Mahāprabhu’s lotus feet.</div>
-
 
 
 
@@ -9250,7 +9122,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-171" data-note-label="BG 3.171" data-note-chapter="3" data-note-vlabel="171">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.171…" rows="4"></textarea>
@@ -9289,7 +9160,6 @@
 
 
     <div class="fc-translation" data-sec="translation">One day Balarāma Ācārya requested Haridāsa Ṭhākura with great humility to come to the assembly of the Majumadāras, Hiraṇya and Govardhana. Thus Balarāma Ācārya went there with Haridāsa Ṭhākura.</div>
-
 
 
 
@@ -9352,7 +9222,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-173" data-note-label="BG 3.173" data-note-chapter="3" data-note-vlabel="173">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.173…" rows="4"></textarea>
@@ -9391,7 +9260,6 @@
 
 
     <div class="fc-translation" data-sec="translation">In that assembly were many learned scholars, brāhmaṇas and respectable gentlemen. The two brothers Hiraṇya and Govardhana were also greatly learned.</div>
-
 
 
 
@@ -9454,7 +9322,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-175" data-note-label="BG 3.175" data-note-chapter="3" data-note-vlabel="175">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.175…" rows="4"></textarea>
@@ -9505,7 +9372,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-176" data-note-label="BG 3.176" data-note-chapter="3" data-note-vlabel="176">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.176…" rows="4"></textarea>
@@ -9544,7 +9410,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Some of them said, “By chanting the holy name of the Lord, one is freed from the reactions of all sinful life.”</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -9614,7 +9479,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-178" data-note-label="BG 3.178" data-note-chapter="3" data-note-vlabel="178">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.178…" rows="4"></textarea>
@@ -9653,7 +9517,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“ ‘When a person is actually advanced and takes pleasure in chanting the holy name of the Lord, who is very dear to him, he is agitated and loudly chants the holy name. He also laughs, cries, becomes agitated and chants just like a madman, not caring for outsiders.’</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -9723,7 +9586,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-180" data-note-label="BG 3.180" data-note-chapter="3" data-note-vlabel="180">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.180…" rows="4"></textarea>
@@ -9762,7 +9624,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“ ‘As the rising sun immediately dissipates all the world’s darkness, which is deep like an ocean, so the holy name of the Lord, if chanted once without offenses, dissipates all the reactions of a living being’s sinful life. All glories to that holy name of the Lord, which is auspicious for the entire world.’ ”</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -9820,7 +9681,6 @@
 
 
     <div class="fc-translation" data-sec="translation">After reciting this verse, Haridāsa Ṭhākura said, “O learned scholars, please explain the meaning of this verse.”</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -9890,7 +9750,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-183" data-note-label="BG 3.183" data-note-chapter="3" data-note-vlabel="183">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.183…" rows="4"></textarea>
@@ -9929,7 +9788,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“With the first glimpse of sunlight, fear of thieves, ghosts and demons immediately disappears, and when the sun is actually visible, everything is manifest, and everyone begins performing his religious activities and regulative duties.</div>
-
 
 
 
@@ -9992,7 +9850,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-185" data-note-label="BG 3.185" data-note-chapter="3" data-note-vlabel="185">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.185…" rows="4"></textarea>
@@ -10043,7 +9900,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-186" data-note-label="BG 3.186" data-note-chapter="3" data-note-vlabel="186">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.186…" rows="4"></textarea>
@@ -10082,7 +9938,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“ ‘While dying, Ajāmila chanted the holy name of the Lord, intending to call his son Nārāyaṇa. Nevertheless, he attained the spiritual world. What then to speak of those who chant the holy name with faith and reverence?’</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -10152,7 +10007,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-188" data-note-label="BG 3.188" data-note-chapter="3" data-note-vlabel="188">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.188…" rows="4"></textarea>
@@ -10191,7 +10045,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“ ‘My devotees do not accept sālokya, sārṣṭi, sārūpya, sāmīpya or oneness with Me — even if I offer these liberations — in preference to serving Me.’ ”</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -10261,7 +10114,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-190" data-note-label="BG 3.190" data-note-chapter="3" data-note-vlabel="190">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.190…" rows="4"></textarea>
@@ -10312,7 +10164,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-191" data-note-label="BG 3.191" data-note-chapter="3" data-note-vlabel="191">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.191…" rows="4"></textarea>
@@ -10351,7 +10202,6 @@
 
 
     <div class="fc-translation" data-sec="translation">He had handsome bodily features, and he was learned and youthful, but he could not tolerate the statement that simply by glimpsing the awakening of the Lord’s holy name one can attain liberation.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -10421,7 +10271,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-193" data-note-label="BG 3.193" data-note-chapter="3" data-note-vlabel="193">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.193…" rows="4"></textarea>
@@ -10460,7 +10309,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“After many millions upon millions of births, when one is complete in absolute knowledge, one still may not attain liberation, yet this man says that one may attain it simply by the awakening of a glimpse of the holy name.”</div>
-
 
 
 
@@ -10523,7 +10371,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-195" data-note-label="BG 3.195" data-note-chapter="3" data-note-vlabel="195">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.195…" rows="4"></textarea>
@@ -10574,7 +10421,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-196" data-note-label="BG 3.196" data-note-chapter="3" data-note-vlabel="196">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.196…" rows="4"></textarea>
@@ -10613,7 +10459,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“ ‘My dear Lord, O master of the universe, since I have directly seen You, my transcendental bliss has taken the shape of a great ocean. Being situated in that ocean, I now realize all other so-called happiness, including even brahmānanda, to be like the water contained in the hoofprint of a calf.’ ”</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -10683,7 +10528,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-198" data-note-label="BG 3.198" data-note-chapter="3" data-note-vlabel="198">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.198…" rows="4"></textarea>
@@ -10722,7 +10566,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Then Haridāsa Ṭhākura accepted the challenge offered by Gopāla Cakravartī. “If by nāmābhāsa liberation is not available,” he said, “certainly I shall cut off my nose.”</div>
-
 
 
 
@@ -10785,7 +10628,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-200" data-note-label="BG 3.200" data-note-chapter="3" data-note-vlabel="200">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.200…" rows="4"></textarea>
@@ -10824,7 +10666,6 @@
 
 
     <div class="fc-translation" data-sec="translation">The priest named Balarāma Ācārya also chastised Gopāla Cakravartī. “You are a foolish logician,” he said. “What do you know about the devotional service of the Lord?</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -10894,7 +10735,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-202" data-note-label="BG 3.202" data-note-chapter="3" data-note-vlabel="202">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.202…" rows="4"></textarea>
@@ -10933,7 +10773,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Then Haridāsa Ṭhākura got up to leave, and the Majumadāras, the masters of Gopāla Cakravartī, immediately kicked him out and dismissed him from their service.</div>
-
 
 
 
@@ -10996,7 +10835,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-204" data-note-label="BG 3.204" data-note-chapter="3" data-note-vlabel="204">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.204…" rows="4"></textarea>
@@ -11035,7 +10873,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“None of you are at fault,” he said. “Indeed, even this ignorant so-called brāhmaṇa is not at fault, for he is accustomed to dry speculation and logic.</div>
-
 
 
 
@@ -11098,7 +10935,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-206" data-note-label="BG 3.206" data-note-chapter="3" data-note-vlabel="206">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.206…" rows="4"></textarea>
@@ -11137,7 +10973,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“All of you may now go to your homes. May Lord Kṛṣṇa bestow His blessings upon you all. Do not be sorry because of my being insulted.”</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -11207,7 +11042,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-208" data-note-label="BG 3.208" data-note-chapter="3" data-note-vlabel="208">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.208…" rows="4"></textarea>
@@ -11246,7 +11080,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Within three days that brāhmaṇa was attacked by leprosy, and as a result his highly raised nose melted away and fell off.</div>
-
 
 
 
@@ -11309,7 +11142,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-210" data-note-label="BG 3.210" data-note-chapter="3" data-note-vlabel="210">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.210…" rows="4"></textarea>
@@ -11348,7 +11180,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Seeing the condition of Gopāla Cakravartī, everyone was astonished. Everyone praised the influence of Haridāsa Ṭhākura and offered him obeisances.</div>
-
 
 
 
@@ -11411,7 +11242,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-212" data-note-label="BG 3.212" data-note-chapter="3" data-note-vlabel="212">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.212…" rows="4"></textarea>
@@ -11450,7 +11280,6 @@
 
 
     <div class="fc-translation" data-sec="translation">A characteristic of a pure devotee is that he excuses any offense by an ignorant rascal. A characteristic of Kṛṣṇa, however, is that He cannot tolerate blasphemy of His devotees.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -11520,7 +11349,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-214" data-note-label="BG 3.214" data-note-chapter="3" data-note-vlabel="214">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.214…" rows="4"></textarea>
@@ -11559,7 +11387,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Upon meeting Advaita Ācārya, Haridāsa Ṭhākura offered Him respect and obeisances. Advaita Ācārya embraced him and showed respect to him in return.</div>
-
 
 
 
@@ -11622,7 +11449,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-216" data-note-label="BG 3.216" data-note-chapter="3" data-note-vlabel="216">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.216…" rows="4"></textarea>
@@ -11661,7 +11487,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Haridāsa Ṭhākura accepted food daily at the house of Advaita Ācārya. Meeting together, the two of them would taste the nectar of discourses on the subject matter of Kṛṣṇa.</div>
-
 
 
 
@@ -11724,7 +11549,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-218" data-note-label="BG 3.218" data-note-chapter="3" data-note-vlabel="218">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.218…" rows="4"></textarea>
@@ -11775,7 +11599,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-219" data-note-label="BG 3.219" data-note-chapter="3" data-note-vlabel="219">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.219…" rows="4"></textarea>
@@ -11814,7 +11637,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“My dear Sir, Your behavior is uncommon. Indeed, sometimes I am afraid to speak to You. But please favor me by protecting me from the behavior of society.”</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -11873,7 +11695,6 @@
 
     <div class="fc-translation" data-sec="translation">Advaita Ācārya replied, “My dear Haridāsa, do not be afraid. I shall behave strictly according to the principles of the revealed scriptures.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -11931,7 +11752,6 @@
 
     <div class="fc-translation" data-sec="translation">“Feeding you is equal to feeding ten million brāhmaṇas,” Advaita Ācārya said. “Therefore, accept this śrāddha-pātra.” Thus Advaita Ācārya made him eat.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -11988,7 +11808,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Advaita Ācārya was always absorbed in thoughts of how to deliver the fallen souls of the entire world. “The entire world is full of nondevotees,” He thought. “How will they be delivered?”</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -12058,7 +11877,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-224" data-note-label="BG 3.224" data-note-chapter="3" data-note-vlabel="224">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.224…" rows="4"></textarea>
@@ -12097,7 +11915,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Similarly, Haridāsa Ṭhākura chanted in his cave on the bank of the Ganges with the intention of causing Kṛṣṇa’s descent.</div>
-
 
 
 
@@ -12160,7 +11977,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-226" data-note-label="BG 3.226" data-note-chapter="3" data-note-vlabel="226">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.226…" rows="4"></textarea>
@@ -12199,7 +12015,6 @@
 
 
     <div class="fc-translation" data-sec="translation">There is another incident concerning Haridāsa Ṭhākura’s uncommon behavior. One will be astonished to hear about it.</div>
-
 
 
 
@@ -12262,7 +12077,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-228" data-note-label="BG 3.228" data-note-chapter="3" data-note-vlabel="228">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.228…" rows="4"></textarea>
@@ -12301,7 +12115,6 @@
 
 
     <div class="fc-translation" data-sec="translation">One day Haridāsa Ṭhākura was sitting in his cave, reciting the holy name of the Lord very loudly.</div>
-
 
 
 
@@ -12364,7 +12177,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-230" data-note-label="BG 3.230" data-note-chapter="3" data-note-vlabel="230">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.230…" rows="4"></textarea>
@@ -12403,7 +12215,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Thus everyone who saw the beauty of the cave, with the tulasī plant on a clean altar, was astonished and satisfied at heart.</div>
-
 
 
 
@@ -12466,7 +12277,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-232" data-note-label="BG 3.232" data-note-chapter="3" data-note-vlabel="232">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.232…" rows="4"></textarea>
@@ -12505,7 +12315,6 @@
 
 
     <div class="fc-translation" data-sec="translation">The scent of her body perfumed all directions, and the tinkling of her ornaments startled the ear.</div>
-
 
 
 
@@ -12568,7 +12377,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-234" data-note-label="BG 3.234" data-note-chapter="3" data-note-vlabel="234">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.234…" rows="4"></textarea>
@@ -12607,7 +12415,6 @@
 
 
     <div class="fc-translation" data-sec="translation">With folded hands she offered obeisances at the lotus feet of Haridāsa Ṭhākura. Sitting at the door, she then spoke in a very sweet voice.</div>
-
 
 
 
@@ -12670,7 +12477,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-236" data-note-label="BG 3.236" data-note-chapter="3" data-note-vlabel="236">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.236…" rows="4"></textarea>
@@ -12709,7 +12515,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“My dear sir, kindly accept me and be merciful toward me, for it is a characteristic of all saintly persons to be kind toward the poor and fallen.”</div>
-
 
 
 
@@ -12772,7 +12577,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-238" data-note-label="BG 3.238" data-note-chapter="3" data-note-vlabel="238">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.238…" rows="4"></textarea>
@@ -12811,7 +12615,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Haridāsa Ṭhākura was immovable, for he was deeply determined. He began to speak to her, being very merciful toward her.</div>
-
 
 
 
@@ -12874,7 +12677,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-240" data-note-label="BG 3.240" data-note-chapter="3" data-note-vlabel="240">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.240…" rows="4"></textarea>
@@ -12913,7 +12715,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“As long as the vow to chant is unfulfilled, I do not desire anything else. When I finish my chanting, then I have an opportunity to do anything.</div>
-
 
 
 
@@ -12976,7 +12777,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-242" data-note-label="BG 3.242" data-note-chapter="3" data-note-vlabel="242">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.242…" rows="4"></textarea>
@@ -13015,7 +12815,6 @@
 
 
     <div class="fc-translation" data-sec="translation">After saying this, Haridāsa Ṭhākura continued to chant the holy name of the Lord. Thus the woman sitting before him began to hear the chanting of the holy name.</div>
-
 
 
 
@@ -13078,7 +12877,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-244" data-note-label="BG 3.244" data-note-chapter="3" data-note-vlabel="244">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.244…" rows="4"></textarea>
@@ -13117,7 +12915,6 @@
 
 
     <div class="fc-translation" data-sec="translation">For three days she approached Haridāsa Ṭhākura in this way, exhibiting various feminine postures that would bewilder the mind of even Lord Brahmā.</div>
-
 
 
 
@@ -13180,7 +12977,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-246" data-note-label="BG 3.246" data-note-chapter="3" data-note-vlabel="246">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.246…" rows="4"></textarea>
@@ -13219,7 +13015,6 @@
 
 
     <div class="fc-translation" data-sec="translation">At the end of the night of the third day, the woman spoke to Haridāsa Ṭhākura as follows.</div>
-
 
 
 
@@ -13282,7 +13077,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-248" data-note-label="BG 3.248" data-note-chapter="3" data-note-vlabel="248">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.248…" rows="4"></textarea>
@@ -13333,7 +13127,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-249" data-note-label="BG 3.249" data-note-chapter="3" data-note-vlabel="249">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.249…" rows="4"></textarea>
@@ -13372,7 +13165,6 @@
 
 
     <div class="fc-translation" data-sec="translation">After offering obeisances to Haridāsa Ṭhākura, the woman said, “I am the illusory energy of the Supreme Personality of Godhead. I came here to test you.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -13430,7 +13222,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“I have previously captivated the mind of even Brahmā, what to speak of others. Your mind alone have I failed to attract.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -13500,7 +13291,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-252-253" data-note-label="BG 3.252-253" data-note-chapter="3" data-note-vlabel="252-253">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.252-253…" rows="4"></textarea>
@@ -13551,7 +13341,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-254" data-note-label="BG 3.254" data-note-chapter="3" data-note-vlabel="254">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.254…" rows="4"></textarea>
@@ -13590,7 +13379,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“Anyone who does not float in this inundation is most condemned. Such a person cannot be delivered for millions of kalpas.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -13660,7 +13448,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-256" data-note-label="BG 3.256" data-note-chapter="3" data-note-vlabel="256">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.256…" rows="4"></textarea>
@@ -13699,7 +13486,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“The holy name of Lord Rāma certainly gives liberation, but the holy name of Kṛṣṇa transports one to the other side of the ocean of nescience and at last gives one ecstatic love of Kṛṣṇa.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -13769,7 +13555,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-258" data-note-label="BG 3.258" data-note-chapter="3" data-note-vlabel="258">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.258…" rows="4"></textarea>
@@ -13808,7 +13593,6 @@
 
 
     <div class="fc-translation" data-sec="translation">After speaking in this way, Māyā worshiped the lotus feet of Haridāsa Ṭhākura, who initiated her by saying, “Just perform chanting of the Hare Kṛṣṇa mahā-mantra.”</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -13878,7 +13662,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-260" data-note-label="BG 3.260" data-note-chapter="3" data-note-vlabel="260">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.260…" rows="4"></textarea>
@@ -13917,7 +13700,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Therefore I shall explain the reasons why people should have faith. Everyone who hears this will be faithful.</div>
-
 
 
 
@@ -13980,7 +13762,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-262" data-note-label="BG 3.262" data-note-chapter="3" data-note-vlabel="262">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.262…" rows="4"></textarea>
@@ -14019,7 +13800,6 @@
 
 
     <div class="fc-translation" data-sec="translation">All of them, including the great sage Nārada and devotees like Prahlāda, came here in the guise of human beings, chanting the holy names of Lord Kṛṣṇa together and dancing and floating in the inundation of love of Godhead.</div>
-
 
 
 
@@ -14082,7 +13862,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-264" data-note-label="BG 3.264" data-note-chapter="3" data-note-vlabel="264">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.264…" rows="4"></textarea>
@@ -14121,7 +13900,6 @@
 
 
     <div class="fc-translation" data-sec="translation">What to speak of others, even Kṛṣṇa, the son of Nanda Mahārāja, personally descends to taste the nectar of love of Godhead in the form of the chanting of Hare Kṛṣṇa.</div>
-
 
 
 
@@ -14184,7 +13962,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-266" data-note-label="BG 3.266" data-note-chapter="3" data-note-vlabel="266">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.266…" rows="4"></textarea>
@@ -14223,7 +14000,6 @@
 
 
     <div class="fc-translation" data-sec="translation">In the activities of Lord Śrī Caitanya Mahāprabhu, the three worlds dance and chant, having come in touch with love of Godhead. This is the characteristic of His pastimes.</div>
-
 
 
 
@@ -14286,7 +14062,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-268" data-note-label="BG 3.268" data-note-chapter="3" data-note-vlabel="268">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.268…" rows="4"></textarea>
@@ -14325,7 +14100,6 @@
 
 
     <div class="fc-translation" data-sec="translation">I have heard from the mouth of Raghunātha dāsa Gosvāmī all that Svarūpa Dāmodara Gosvāmī recorded in his notes about the pastimes of Śrī Caitanya Mahāprabhu.</div>
-
 
 
 
@@ -14388,7 +14162,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-270" data-note-label="BG 3.270" data-note-chapter="3" data-note-vlabel="270">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.270…" rows="4"></textarea>
@@ -14439,7 +14212,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-271" data-note-label="BG 3.271" data-note-chapter="3" data-note-vlabel="271">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.271…" rows="4"></textarea>
@@ -14478,7 +14250,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Praying at the lotus feet of Śrī Rūpa and Śrī Raghunātha, always desiring their mercy, I, Kṛṣṇadāsa, narrate Śrī Caitanya-caritāmṛta, following in their footsteps.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>

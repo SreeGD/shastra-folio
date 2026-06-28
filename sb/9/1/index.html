@@ -25,19 +25,25 @@
     <link rel="icon" href="../../../assets/icons/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="../../../assets/icons/icon.svg">
     <link rel="stylesheet" href="../../../assets/css/site.css">
+    <link rel="alternate" hreflang="te-IN" href="../../../te/sb/9/1/">
+    <link rel="alternate" hreflang="x-default" href="../../../">
     <script>window.FC_TO_ROOT = "../../../";</script>
     <script src="../../../assets/js/toggle.js"></script>
 </head>
 <body class="has-sidebar" data-chapter="1">
 <header class="fc-site-header">
     <button type="button" class="fc-mobile-trigger fc-mobile-trigger-left" data-overlay="left" aria-label="Open settings drawer">⚙</button>
-<a class="fc-brand" href="../../../">FolioCorpus<span class="fc-sub">Śrīmad-Bhāgavatam</span></a>
+    <a class="fc-brand" href="../../../">FolioCorpus<span class="fc-sub">Bhagavad-gītā</span></a>
     <nav class="fc-site-nav">
         <a href="../../../">Home</a>
         <a href="../../../bg/">Bhagavad-gītā</a>
         <a href="../../../sb/">Śrīmad-Bhāgavatam</a>
         <a href="../../../search/" title="Search across all integrated works">🔍 Search</a>
         <button type="button" id="fc-random-verse" class="fc-nav-btn" title="Jump to a random verse">🎲 Random</button>
+        <span class="fc-lang-switch" aria-label="Script">
+            <a class="active" href="#" title="Devanāgarī edition">EN</a>
+            <a class="" href="../../../te/sb/9/1/" title="Telugu lipi edition">తె</a>
+        </span>
     </nav>
     <button type="button" class="fc-mobile-trigger fc-mobile-trigger-right" data-overlay="right" aria-label="Open chapter index drawer">📚</button>
 </header>
@@ -46,8 +52,8 @@
     <button class="fc-sb-collapse" type="button" data-sb="left" title="Collapse left sidebar" aria-label="Collapse"></button>
 
     <div class="fc-sb-body">
-        <details class="fc-sb-section" data-sbsec="reading" open>
-            <summary class="fc-sb-title">Reading</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Reading</div>
             <div class="fc-sb-sub">Theme</div>
             <div class="fc-segmented" data-setting="theme">
                 <button type="button" data-val="light">Light</button>
@@ -73,10 +79,10 @@
                 <button type="button" data-val="single">Single</button>
                 <button type="button" data-val="side">Side-by-side</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="display" open>
-            <summary class="fc-sb-title">Display</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Display</div>
             <div class="fc-sb-grid">
                 <label><input type="checkbox" data-section="devanagari" checked> Devanāgarī</label>
                 <label><input type="checkbox" data-section="iast" checked> IAST transliteration</label>
@@ -99,10 +105,33 @@
                 <button type="button" data-action="expand-all">Expand all</button>
                 <button type="button" data-action="collapse-all">Collapse all</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="tools" open>
-            <summary class="fc-sb-title">Tools</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Find your starting point</div>
+            <div class="fc-persona-links">
+                <a class="fc-persona-link" href="../../../daily/">🌅 Daily (one value a week)</a>
+                <a class="fc-persona-link" href="../../../householder/">🏠 Householder (family & work)</a>
+                <a class="fc-persona-link" href="../../../parenting/">👨‍👩‍👧 Parenting (stories for kids)</a>
+                <a class="fc-persona-link" href="../../../themes/">📚 All themes</a>
+                <a class="fc-persona-link" href="../../../values/" style="background:#F0F6F2;border-left-color:#1F4632;">ॐ Vedic Value System ↗</a>
+                <a class="fc-persona-link" href="../../../vidya/" style="background:#FBF6E4;border-left-color:#C8860B;">📚 Vidyā Karaṇa (kids, multi-lang) ↗</a>
+            </div>
+        </div>
+
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Audience</div>
+            <div class="fc-audience-filter">
+                <label><input type="radio" name="fc-audience" value="all" checked> All levels</label>
+                <label><input type="radio" name="fc-audience" value="primary"> Primary (children)</label>
+                <label><input type="radio" name="fc-audience" value="middle"> Middle (teens)</label>
+                <label><input type="radio" name="fc-audience" value="senior"> Senior (adults)</label>
+                <label><input type="radio" name="fc-audience" value="college"> College / scholar</label>
+            </div>
+        </div>
+
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Tools</div>
             <div class="fc-sb-tools">
                 <button type="button" id="fc-presentation-toggle" class="fc-tool-btn"><span>🖥 Presentation</span><kbd class="fc-kbd">F</kbd></button>
                 <button type="button" id="fc-pen-toggle" class="fc-tool-btn"><span>✏️ Pen mode</span><kbd class="fc-kbd">P</kbd></button>
@@ -117,10 +146,26 @@
                 <button type="button" id="fc-clear-highlights" class="fc-tool-btn">🩷 Clear highlights (page)</button>
                 <button type="button" id="fc-notes-modal-open" class="fc-tool-btn">📓 My annotations</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="progress" id="fc-progress-section" open>
-            <summary class="fc-sb-title">Progress</summary>
+        <div class="fc-sb-section" id="fc-tts-controls" hidden>
+            <div class="fc-sb-title">
+                Read-aloud
+                <label class="fc-tts-master">
+                    <input type="checkbox" id="fc-tts-enabled" checked>
+                    <span class="fc-tts-master-label">On</span>
+                </label>
+            </div>
+            <div class="fc-tts-inner">
+                <div class="fc-sb-sub">Voice</div>
+                <select id="fc-tts-voice" class="fc-tts-select" aria-label="TTS voice"></select>
+                <div class="fc-sb-sub">Rate <span class="fc-tts-rate-val">1.0×</span></div>
+                <input type="range" id="fc-tts-rate" min="0.5" max="2" step="0.1" value="1" class="fc-tts-rate" aria-label="Reading rate">
+            </div>
+        </div>
+
+        <div class="fc-sb-section" id="fc-progress-section">
+            <div class="fc-sb-title">Progress</div>
             <div class="fc-progress-row">
                 <span class="fc-progress-num" id="fc-progress-num">0</span>
                 <span class="fc-progress-divider">/</span>
@@ -135,29 +180,29 @@
                 <span class="fc-progress-spacer"></span>
                 <button type="button" class="fc-progress-reset" id="fc-progress-reset" title="Reset progress">↺</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="bookmarks" open>
-            <summary class="fc-sb-title">Bookmarks <span class="fc-sb-count" id="fc-bookmarks-count">0</span></summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Bookmarks <span class="fc-sb-count" id="fc-bookmarks-count">0</span></div>
             <ul class="fc-bookmark-list" id="fc-bookmarks-list">
                 <li class="fc-sb-empty">No bookmarks yet — click ☆ on any verse.</li>
             </ul>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="notes" open>
-            <summary class="fc-sb-title">Notes <span class="fc-sb-count" id="fc-notes-count">0</span></summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Notes <span class="fc-sb-count" id="fc-notes-count">0</span></div>
             <ul class="fc-bookmark-list" id="fc-notes-list">
                 <li class="fc-sb-empty">No notes yet — open any verse and write in the 📝 block.</li>
             </ul>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="export">
-            <summary class="fc-sb-title">Export</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Export</div>
             <div class="fc-sb-tools">
                 <button type="button" id="fc-export-md" class="fc-tool-btn">📥 Download Markdown</button>
                 <button type="button" id="fc-export-json" class="fc-tool-btn">💾 Download JSON backup</button>
             </div>
-        </details>
+        </div>
     </div>
 </aside>    <main class="fc-container">
 <nav class="fc-breadcrumbs">
@@ -175,7 +220,7 @@
         <h1 class="fc-verse-heading">9.1 · King Sudyumna Becomes a Woman</h1>
         <span class="fc-ribbon-meta">
             38 verses
- · <a class="fc-ribbon-link" href="class-prep/">🖨 Class prep</a>        </span>
+        </span>
         <input type="search" class="fc-search" id="fc-search" placeholder="🔍 Search in this chapter" aria-label="Search verses in this chapter">
         <span class="fc-ribbon-current" id="fc-ribbon-current" aria-live="polite"></span>
     </div>
@@ -482,7 +527,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
     <div class="fc-translation" data-sec="translation">King Parīkṣit said: My lord, Śukadeva Gosvāmī, you have elaborately described all the periods of the various Manus and, within those periods, the wonderful activities of the Supreme Personality of Godhead, who has unlimited potency. I am fortunate to have heard all of this from you.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -559,18 +603,6 @@ Having heard that Satyavrata, a great devotee, became Manu by the mercy of Matys
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Parīkṣit gratefully marks the transition from cosmic descriptions to dynastic histories — gratitude for what one has already heard is itself a doorway to deeper hearing.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>When was the last time I paused to thank the source from whom I have received spiritual knowledge?</li><li>What &#39;wonderful activities of the Lord&#39; from my past hearing do I still carry, and what have I let fade?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -868,7 +900,6 @@ Having heard that Satyavrata, a great devotee, became Manu by the mercy of Matys
     <div class="fc-translation" data-sec="translation">Satyavrata, the saintly king of Draviḍadeśa who received spiritual knowledge at the end of the last millennium by the grace of the Supreme, later became Vaivasvata Manu, the son of Vivasvān, in the next manvantara [period of Manu]. I have received this knowledge from you. I also understand that such kings as Ikṣvāku were his sons, as you have already explained.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -899,18 +930,6 @@ Atīta-kalpānte means at the end of the last Manvantara (Cākṣuṣa).</div>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Satyavrata&#39;s service to the Lord during one age earned him the post of Manu in the next. Quiet devotion in obscurity ripens into great responsibility in due course.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What service am I rendering now that will shape who I become in the next chapter of life?</li><li>Do I trust that sincere puruṣa-sevā is being recorded even when no one notices?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -1080,7 +1099,6 @@ Atīta-kalpānte means at the end of the last Manvantara (Cākṣuṣa).</div>
     <div class="fc-translation" data-sec="translation">O greatly fortunate Śukadeva Gosvāmī, O great brāhmaṇa, kindly describe to us separately the dynasties and characteristics of all those kings, for we are always eager to hear such topics from you.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -1114,18 +1132,6 @@ Atīta-kalpānte means at the end of the last Manvantara (Cākṣuṣa).</div>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Parīkṣit asks Śukadeva to describe the dynasties not as data but because hearing of devotee kings shapes the listener. Hunger to hear is itself a qualification.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where is my hunger to hear about the Lord&#39;s devotees right now — lukewarm or alive?</li><li>Whose biographies am I most eager to hear, and what does that reveal about my values?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -1331,7 +1337,6 @@ Atīta-kalpānte means at the end of the last Manvantara (Cākṣuṣa).</div>
     <div class="fc-translation" data-sec="translation">Kindly tell us about the abilities of all the celebrated kings born in the dynasty of Vaivasvata Manu, including those who have already passed, those who may appear in the future, and those who exist at present.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -1360,18 +1365,6 @@ Atīta-kalpānte means at the end of the last Manvantara (Cākṣuṣa).</div>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Parīkṣit wants to hear of past, present, and future kings — pious souls form a continuous lineage across time. We are not isolated; we stand inside a current of devotee history.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Whose example from the past actually shapes how I act today?</li><li>What kind of ancestor in spirit am I becoming for those who come after me?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -1548,7 +1541,6 @@ Atīta-kalpānte means at the end of the last Manvantara (Cākṣuṣa).</div>
     <div class="fc-translation" data-sec="translation">Sūta Gosvāmī said: When Śukadeva Gosvāmī, the greatest knower of religious principles, was thus requested by Mahārāja Parīkṣit in the assembly of all the scholars learned in Vedic knowledge, he then proceeded to speak.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -1567,18 +1559,6 @@ Atīta-kalpānte means at the end of the last Manvantara (Cākṣuṣa).</div>
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Śukadeva responds only after being formally requested in an assembly of scholars. Spiritual knowledge flows through proper inquiry, not through casual demand.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Am I approaching teachers with the seriousness Parīkṣit modeled, or treating darśana like a podcast?</li><li>What &#39;assembly&#39; do I sit in regularly — and is it raising or lowering my standard?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -1746,7 +1726,6 @@ Atīta-kalpānte means at the end of the last Manvantara (Cākṣuṣa).</div>
     <div class="fc-translation" data-sec="translation">Śukadeva Gosvāmī continued: O King, subduer of your enemies, now hear from me in great detail about the dynasty of Manu. I shall explain as much as possible, although one could not say everything about it, even in hundreds of years.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -1765,18 +1744,6 @@ Atīta-kalpānte means at the end of the last Manvantara (Cākṣuṣa).</div>
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Śukadeva admits even centuries cannot exhaust the dynasty&#39;s glories. The honest teacher acknowledges limits; the honest student stops expecting completion in a sitting.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where am I demanding a complete answer when the subject deserves a lifetime of inquiry?</li><li>How would my hearing change if I assumed I will return to this verse for years?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -1981,7 +1948,6 @@ Atīta-kalpānte means at the end of the last Manvantara (Cākṣuṣa).</div>
 
     <div class="fc-translation" data-sec="translation">The transcendental Supreme Person, the Supersoul of all living entities, who are in different statuses of life, high and low, existed at the end of the millennium, when neither this manifested cosmos nor anything else but Him existed.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2020,18 +1986,6 @@ In order to understand the topic, he relates in five verses the dynasty of Manu 
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Before time and matter, only the Supreme Person existed — and He still does, as the Supersoul of every being. Behind every story lies the One who never stopped being.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>When I trace my life back, do I terminate at parents and circumstances, or at the puruṣa from whom even those came?</li><li>What changes today if I remember that the Lord is the witness within me as I act?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -2192,7 +2146,6 @@ In order to understand the topic, he relates in five verses the dynasty of Manu 
     <div class="fc-translation" data-sec="translation">O King Parīkṣit, from the navel of the Supreme Personality of Godhead was generated a golden lotus, on which the four-faced Lord Brahmā took his birth.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -2226,18 +2179,6 @@ In order to understand the topic, he relates in five verses the dynasty of Manu 
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Brahmā appears from a golden lotus on Viṣṇu&#39;s navel — even the creator is born from the Lord, not independent. Every architect of this world is itself shaped by a deeper hand.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What &#39;creative&#39; role am I taking credit for that actually rests on a Source I did not author?</li><li>How does seeing even Brahmā as dependent reframe my own claims to independence?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -2407,7 +2348,6 @@ In order to understand the topic, he relates in five verses the dynasty of Manu 
     <div class="fc-translation" data-sec="translation">From the mind of Lord Brahmā, Marīci took birth, from the semen of Marīci, Kaśyapa appeared, and from Kaśyapa, by the womb of Dakṣa’s daughter Aditi, Vivasvān took birth.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -2426,18 +2366,6 @@ In order to understand the topic, he relates in five verses the dynasty of Manu 
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The chain Brahmā → Marīci → Kaśyapa → Vivasvān shows that lineage and discipleship carry weight. We inherit not only DNA but spiritual transmission.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What lineage — biological and spiritual — am I actually living from?</li><li>Whom am I transmitting to next, and what specifically am I passing on?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -2685,7 +2613,6 @@ In order to understand the topic, he relates in five verses the dynasty of Manu 
     <div class="fc-translation" data-sec="translation">O King, best of the Bhārata dynasty, from Vivasvān, by the womb of Saṁjṣā, Śrāddhadeva Manu was born. Śrāddhadeva Manu, having conquered his senses, begot ten sons in the womb of his wife, Śraddhā. The names of these sons were Ikṣvāku, Nṛga, Śaryāti, Diṣṭa, Dhṛṣṭa, Karūṣaka, Nariṣyanta, Pṛṣadhra, Nabhaga and Kavi.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -2714,18 +2641,6 @@ In order to understand the topic, he relates in five verses the dynasty of Manu 
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Vaivasvata Manu, master of his senses, fathered ten sons including Ikṣvāku. Sense control is not the opposite of fruitful family life — it is the very root of a wholesome one.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where in my family life is my lack of sense control quietly distorting outcomes?</li><li>What would change in my household if I followed Manu&#39;s example of ātmavān — self-mastered — in even one area?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -2895,7 +2810,6 @@ In order to understand the topic, he relates in five verses the dynasty of Manu 
     <div class="fc-translation" data-sec="translation">Manu at first had no sons. Therefore, in order to get a son for him, the great saint Vasiṣṭha, who was very powerful in spiritual knowledge, performed a sacrifice to satisfy the demigods Mitra and Varuṇa.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -2926,18 +2840,6 @@ This was previous to the birth of Ikṣvāku and other sons.</div>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Childless Manu does not despair but engages a brāhmaṇa to perform sacrifice. When natural means fail, the Vedic answer is not panic but proper yajña under qualified guidance.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where am I trying brute effort when I should be turning to qualified spiritual help?</li><li>Whom do I trust enough to act as Vasiṣṭha in my life — and have I actually asked them?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -3098,7 +3000,6 @@ This was previous to the birth of Ikṣvāku and other sons.</div>
     <div class="fc-translation" data-sec="translation">During that sacrifice, Śraddhā, Manu’s wife, who was observing the vow of subsisting only by drinking milk, approached the priest offering the sacrifice, offered obeisances to him and begged for a daughter.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -3129,18 +3030,6 @@ Please perform a sacrifice so that I get a daughter.</div>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Queen Śraddhā, on a milk vow, secretly asks the priest for a daughter instead of a son. Personal desire injected into a shared sacrifice quietly bends its result.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What private agenda am I smuggling into projects that were meant for a higher purpose?</li><li>Where has my own &#39;side-prayer&#39; overridden what the larger plan was supposed to produce?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -3310,7 +3199,6 @@ Please perform a sacrifice so that I get a daughter.</div>
     <div class="fc-translation" data-sec="translation">Told by the chief priest “Now offer oblations,” the person in charge of oblations took clarified butter to offer. He then remembered the request of Manu’s wife and performed the sacrifice while chanting the word “vaṣaṭ.”</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -3331,18 +3219,6 @@ When ordered by the advaryu, “Perform the sacrifice” the hota, when the obla
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The priest, distracted by the queen&#39;s request, performs the mantra correctly outwardly but with shifted intention. Ritual without exact intention reshapes the outcome.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where am I going through the motions of practice while my mind is bargaining for something else?</li><li>How can I bring my attention back to what the action was actually meant to accomplish?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -3547,7 +3423,6 @@ When ordered by the advaryu, “Perform the sacrifice” the hota, when the obla
 
     <div class="fc-translation" data-sec="translation">Manu had begun that sacrifice for the sake of getting a son, but because the priest was diverted by the request of Manu’s wife, a daughter named Ilā was born. Upon seeing the daughter, Manu was not very satisfied. Thus he spoke to his guru, Vasiṣṭha, as follows.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3576,18 +3451,6 @@ It should be understood that the King was joyful at her birth and therefore gave
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">A daughter Ilā is born — initial joy gives way to dissatisfaction, because the original prayer was not fulfilled. Compromise outcomes rarely settle the heart for long.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where have I accepted a &#39;close enough&#39; outcome that still nags at me?</li><li>Am I willing to speak honestly to my teacher about a result I am not at peace with?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -3754,7 +3617,6 @@ It should be understood that the King was joyful at her birth and therefore gave
 
     <div class="fc-translation" data-sec="translation">My lord, all of you are expert in chanting the Vedic mantras. How then has the result been opposite to the one desired? This is a matter for lamentation. There should not have been such a reversal of the results of the Vedic mantras.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3818,18 +3680,6 @@ Brahma-vikiryā means the mantras should not produce wrong results.</div>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Manu laments that expert chanters produced the opposite of what was prayed for. Even powerful mantra fails when the chanter&#39;s mind drifts — in this age, congregational kīrtana is the safer yajña.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>How often do I chant the holy name while my mind is busy elsewhere?</li><li>What would shift if I treated each round of japa as a yajña whose result depends on my attention?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -3989,7 +3839,6 @@ Brahma-vikiryā means the mantras should not produce wrong results.</div>
 
     <div class="fc-translation" data-sec="translation">You are all self-controlled, well balanced in mind, and aware of the Absolute Truth. And because of austerities and penances you are completely cleansed of all material contamination. Your words, like those of the demigods, are never baffled. Then how is it possible that your determination has failed?</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -4051,18 +3900,6 @@ Brahma-vikiryā means the mantras should not produce wrong results.</div>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Tapasya burns away contamination, and a purified person&#39;s words come true like the demigods&#39;. The weight of speech rises in proportion to inner cleansing.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Are my words landing with weight, or have I cheapened them through carelessness?</li><li>What austerity would actually purify the speech that leaves my mouth this week?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -4214,7 +4051,6 @@ Brahma-vikiryā means the mantras should not produce wrong results.</div>
     <div class="fc-translation" data-sec="translation">The most powerful great-grandfather Vasiṣṭha, after hearing these words of Manu, understood the discrepancy on the part of the priest. Thus he spoke as follows to the son of the sun-god.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -4265,18 +4101,6 @@ Prapitāmahaḥ means Vasiṣṭha.</div>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Vasiṣṭha listens before responding and identifies the priest&#39;s lapse. A guru first diagnoses the cause before prescribing the remedy — devotees should bring problems honestly.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>When something goes wrong spiritually, do I take it to a senior or quietly explain it away?</li><li>Am I willing to hear an accurate diagnosis even when it implicates my own request?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -4437,7 +4261,6 @@ Prapitāmahaḥ means Vasiṣṭha.</div>
     <div class="fc-translation" data-sec="translation">This discrepancy in the objective is due to your priest’s deviation from the original purpose. However, by my own prowess I shall give you a good son.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -4456,18 +4279,6 @@ Prapitāmahaḥ means Vasiṣṭha.</div>
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Rather than scolding, Vasiṣṭha takes responsibility and promises to fix the outcome by his own spiritual power. A mature guide repairs more than blames.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>When others&#39; lapses affect me, do I look for repair or for someone to blame?</li><li>What &#39;own prowess&#39; — sādhana, integrity, intercession — can I bring to restore a situation I did not cause?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -4628,7 +4439,6 @@ Prapitāmahaḥ means Vasiṣṭha.</div>
     <div class="fc-translation" data-sec="translation">Śukadeva Gosvāmī said: O King Parīkṣit, after the most famous and powerful Vasiṣṭha made this decision, he offered prayers to the Supreme Person, Viṣṇu, to transform Ilā into a male.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -4647,18 +4457,6 @@ Prapitāmahaḥ means Vasiṣṭha.</div>
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Vasiṣṭha turns to Viṣṇu in prayer, because even a great sage&#39;s prowess depends on the Lord&#39;s grace. The strongest devotee is the one who asks the loudest.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where am I trying to fix things sideways instead of going straight to the Lord in prayer?</li><li>What specific prayer have I been postponing because I think I should manage on my own?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -4828,7 +4626,6 @@ Prapitāmahaḥ means Vasiṣṭha.</div>
     <div class="fc-translation" data-sec="translation">The Supreme Personality of Godhead, the supreme controller, being pleased with Vasiṣṭha, gave him the benediction he desired. Thus Ilā was transformed into a very fine male named Sudyumna.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -4847,18 +4644,6 @@ Prapitāmahaḥ means Vasiṣṭha.</div>
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Pleased with Vasiṣṭha&#39;s prayer, the Lord grants the benediction and Ilā becomes Sudyumna. The Supreme is moved not by ritual scale but by the devotee&#39;s sincerity.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Do I treat the Lord as a mechanism to satisfy with formulas, or as a person who responds to sincere love?</li><li>Whose sincere prayers on my behalf have shaped outcomes I credited to my own effort?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -5153,7 +4938,6 @@ Prapitāmahaḥ means Vasiṣṭha.</div>
     <div class="fc-translation" data-sec="translation">O King Parīkṣit, that hero Sudyumna, accompanied by a few ministers and associates and riding on a horse brought from Sindhupradeśa, once went into the forest to hunt. He wore armor and was decorated with bows and arrows, and he was very beautiful. While following the animals and killing them, he reached the northern part of the forest.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -5172,18 +4956,6 @@ Prapitāmahaḥ means Vasiṣṭha.</div>
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Sudyumna goes hunting in the forest, far from his kingdom. Roaming in restless pursuit of pleasure — even royally equipped — often leads us into terrain we never intended to enter.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What &#39;hunt&#39; am I currently on that is taking me farther from my responsibilities than I notice?</li><li>Which forests am I about to enter where the rules suddenly change?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -5335,7 +5107,6 @@ Prapitāmahaḥ means Vasiṣṭha.</div>
     <div class="fc-translation" data-sec="translation">There in the north, at the bottom of Mount Meru, is a forest known as Sukumāra where Lord Śiva always enjoys with Umā. Sudyumna entered that forest.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -5354,18 +5125,6 @@ Prapitāmahaḥ means Vasiṣṭha.</div>
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Sudyumna unknowingly enters Sukumāra, Śiva&#39;s private forest with Umā. Ignorance of sacred boundaries does not protect us from their consequences.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What sacred spaces — temple, sādhu&#39;s room, another&#39;s marriage — have I treated casually because I did not know better?</li><li>Where am I overdue to ask what the protocol actually is before barging in?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -5544,7 +5303,6 @@ Prapitāmahaḥ means Vasiṣṭha.</div>
     <div class="fc-translation" data-sec="translation">O King Parīkṣit, as soon as Sudyumna, who was expert in subduing enemies, entered the forest, he saw himself transformed into a female and his horse transformed into a mare.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -5563,18 +5321,6 @@ Prapitāmahaḥ means Vasiṣṭha.</div>
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Sudyumna&#39;s body and even his horse&#39;s body transform on the spot. The material body, far from being our identity, can change drastically under higher arrangement.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>How tightly do I cling to my current body as &#39;me&#39; — and what would loosening that grip free up?</li><li>If body and gender can shift in this very story, what is the constant in me that has not changed?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -5726,7 +5472,6 @@ Prapitāmahaḥ means Vasiṣṭha.</div>
     <div class="fc-translation" data-sec="translation">When his followers also saw their identities transformed and their sex reversed, they were all very morose and just looked at one another.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -5745,18 +5490,6 @@ Prapitāmahaḥ means Vasiṣṭha.</div>
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The companions, too, are transformed — they look at each other in shock. We rarely notice how much of our identity rests on the bodies around us until they shift.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>How much of my self-image is propped up by the people who currently surround me?</li><li>When a shared circumstance suddenly inverts, do I look to the Lord or only to my peers?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -5978,7 +5711,6 @@ Prapitāmahaḥ means Vasiṣṭha.</div>
     <div class="fc-translation" data-sec="translation">Mahārāja Parīkṣit said: O most powerful brāhmaṇa, why was this place so empowered, and who made it so powerful? Kindly answer this question, for I am very eager to hear about this.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -6007,18 +5739,6 @@ Prapitāmahaḥ means Vasiṣṭha.</div>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Parīkṣit pauses the narrative to ask the cause of this strange place. Genuine curiosity about why things are the way they are is the engine of spiritual hearing.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What &#39;why&#39; am I sitting on that I should be asking a teacher this week?</li><li>Do I let mysteries pass or do I press in like Parīkṣit until I understand?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -6195,7 +5915,6 @@ Prapitāmahaḥ means Vasiṣṭha.</div>
     <div class="fc-translation" data-sec="translation">Śukadeva Gosvāmī answered: Great saintly persons who strictly observed the spiritual rules and regulations and whose own effulgence dissipated all the darkness of all directions once came to see Lord Śiva in that forest.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -6216,18 +5935,6 @@ Vitimirābhāsāḥ means “having effulgence which destroyed darkness.”</div
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Effulgent sages once entered to see Śiva — pure souls move toward higher darśana naturally, lighting up wherever they go.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where am I drawn to go for darśana, and how does that direction shape my day?</li><li>What &#39;darkness&#39; around me would lift if I cultivated even a fraction of such tapasya?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -6415,7 +6122,6 @@ Vitimirābhāsāḥ means “having effulgence which destroyed darkness.”</div
     <div class="fc-translation" data-sec="translation">When the goddess Ambikā saw the great saintly persons, she was very much ashamed because at that time she was naked. She immediately got up from the lap of her husband and tried to cover her breast.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -6444,18 +6150,6 @@ Vitimirābhāsāḥ means “having effulgence which destroyed darkness.”</div
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Pārvatī, unclothed, leaps up in modesty before the sages. Even the goddess models lajjā — natural shyness — as a feminine ornament worth preserving.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where has modern culture eroded my sense of modesty around sacred company?</li><li>How would I behave if I assumed sages might walk in at any moment?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -6616,7 +6310,6 @@ Vitimirābhāsāḥ means “having effulgence which destroyed darkness.”</div
     <div class="fc-translation" data-sec="translation">Seeing Lord Śiva and Pārvatī engaged in sexual affairs, all the great saintly persons immediately desisted from going further and departed for the āśrama of Nara-Nārāyaṇa.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -6635,18 +6328,6 @@ Vitimirābhāsāḥ means “having effulgence which destroyed darkness.”</div
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The sages quietly leave when they see Śiva and Pārvatī in intimacy — a model of respecting another&#39;s private space without comment or judgement.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Do I look away from what is not mine to see, or do I linger out of curiosity?</li><li>Where do I owe someone the gift of leaving quietly?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -6852,7 +6533,6 @@ Vitimirābhāsāḥ means “having effulgence which destroyed darkness.”</div
     <div class="fc-translation" data-sec="translation">Thereupon, just to please his wife, Lord Śiva said, “Any male entering this place shall immediately become a female!”</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -6871,18 +6551,6 @@ Vitimirābhāsāḥ means “having effulgence which destroyed darkness.”</div
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Śiva, to please Pārvatī, decrees that any male entering will become female. Even great lords curve circumstances to honor their beloved — devotion is partial in this gentle sense.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What does my beloved (spouse, teacher, deity) need that I have not yet bent the world to provide?</li><li>Where do I see the Lord&#39;s affection rearranging laws to please His devotees?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -7060,7 +6728,6 @@ Vitimirābhāsāḥ means “having effulgence which destroyed darkness.”</div
 
     <div class="fc-translation" data-sec="translation">Since that time, no male had entered that forest. But now King Sudyumna, having been transformed into a female, began to walk with his associates from one forest to another.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -7092,18 +6759,6 @@ After the related story has been finished, the main story continues about King S
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Prabhupāda compares the body to clothing — Sudyumna&#39;s outfit was changed but the soul stayed the same. A wise person sees through the costume of every body, including their own.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>How much of my distress this week is about my body&#39;s costume rather than the soul wearing it?</li><li>What changes if I greet every person today as a soul wearing a temporary garment?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -7273,7 +6928,6 @@ After the related story has been finished, the main story continues about King S
     <div class="fc-translation" data-sec="translation">Sudyumna had been transformed into the best of beautiful women who excite sexual desire and was surrounded by other women. Upon seeing this beautiful woman loitering near his āśrama, Budha, the son of the moon, immediately desired to enjoy her.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -7322,18 +6976,6 @@ After the related story has been finished, the main story continues about King S
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Budha, son of the moon, is captivated by the transformed Sudyumna. Even great souls can be swayed by attraction — vigilance about whom we let our heart fix on is universal.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where is desire pulling me sideways from the direction my higher self chose?</li><li>Whom am I letting my heart fix on without examining the consequences?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -7512,7 +7154,6 @@ After the related story has been finished, the main story continues about King S
     <div class="fc-translation" data-sec="translation">The beautiful woman also desired to accept Budha, the son of the king of the moon, as her husband. Thus Budha begot in her womb a son named Purūravā.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -7531,18 +7172,6 @@ After the related story has been finished, the main story continues about King S
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">From their union Purūravā is born — a great dynasty begins from a single unplanned attraction. Small choices ripple into long lineages.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What chain am I starting today that may run for generations?</li><li>Where do I underestimate the future weight of a present &#39;small&#39; decision?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -7712,7 +7341,6 @@ After the related story has been finished, the main story continues about King S
     <div class="fc-translation" data-sec="translation">I heard from reliable sources that King Sudyumna, the son of Manu, having thus achieved femininity, remembered his familial spiritual master, Vasiṣṭha.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -7731,18 +7359,6 @@ After the related story has been finished, the main story continues about King S
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Caught in distress, Sudyumna remembers his family guru. Crisis is meant to remind us where shelter lies, not to leave us scrambling for new solutions.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>When suffering hits, do I instinctively call my teacher, or scroll for distraction first?</li><li>Have I built a strong enough bond with a guide that I would naturally remember them in trouble?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -7921,7 +7537,6 @@ After the related story has been finished, the main story continues about King S
     <div class="fc-translation" data-sec="translation">Upon seeing Sudyumna’s deplorable condition, Vasiṣṭha was very much aggrieved. Desiring for Sudyumna to regain his maleness, Vasiṣṭha again began to worship Lord Śaṅkara [Śiva].</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -7942,18 +7557,6 @@ After the related story has been finished, the main story continues about King S
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Vasiṣṭha, grieved for his disciple, returns to worship Śiva for relief. A real guru carries the disciple&#39;s burden as his own and acts on it personally.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Whose distress am I carrying in my heart enough to act for, even at personal cost?</li><li>Do I let my teachers carry my burdens, or do I hide my real condition from them?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -8292,7 +7895,6 @@ After the related story has been finished, the main story continues about King S
 
     <div class="fc-translation" data-sec="translation">O King Parīkṣit, Lord Śiva was pleased with Vasiṣṭha. Therefore, to satisfy him and to keep his own word to Pārvatī, Lord Śiva said to that saintly person, “Your disciple Sudyumna may remain a male for one month and a female for the next. In this way he may rule the world as he likes.”</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -8331,18 +7933,6 @@ Prītam āvahan means “being pleased.”</div>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Śiva grants a compromise — Sudyumna alternates male and female monthly. Where two principles conflict, even the Lord arranges a middle path that honors both promises.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where am I demanding all-or-nothing when a wise alternation would serve better?</li><li>How do I respond when life gives me a &#39;half&#39; that protects a deeper commitment?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -8502,7 +8092,6 @@ Prītam āvahan means “being pleased.”</div>
 
     <div class="fc-translation" data-sec="translation">Thus being favored by the spiritual master, according to the words of Lord Śiva, Sudyumna regained his desired maleness every alternate month and in this way ruled the kingdom, although the citizens were not satisfied with this.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -8566,18 +8155,6 @@ The citizens were not happy because every other month the King would disappear w
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Sudyumna rules, but the citizens are not satisfied with a part-time king. Outward arrangements that leave a core duty unfulfilled never fully please those who depend on us.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where are the people who depend on me sensing that I am only &#39;half present&#39;?</li><li>What full presence is being asked of me that I keep negotiating down?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -8747,7 +8324,6 @@ The citizens were not happy because every other month the King would disappear w
     <div class="fc-translation" data-sec="translation">O King, Sudyumna had three very pious sons, named Utkala, Gaya and Vimala, who became the kings of the Dakṣiṇā-patha.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -8783,18 +8359,6 @@ Tasya means “of Sudymna.”</div>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Despite his turbulent life, Sudyumna fathers three pious sons who become kings of southern lands. The Lord can still produce excellent fruit from a complicated tree.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where am I writing off my contribution because my own story feels complicated?</li><li>What good might still come through me that I am underestimating?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -8954,7 +8518,6 @@ Tasya means “of Sudymna.”</div>
 
     <div class="fc-translation" data-sec="translation">Thereafter, when the time was ripe, when Sudyumna, the king of the world, was sufficiently old, he delivered the entire kingdom to his son Purūravā and entered the forest.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -8999,18 +8562,6 @@ Other Descendents of Vaivasvata Manu</div>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">At fifty, Sudyumna hands the kingdom to his son and enters the forest — the Vedic system marks an end to householder life as part of normal spiritual maturation.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What in my life is reaching the season for handover, and to whom should I be passing it?</li><li>How am I preparing now for the inner &#39;forest&#39; phase ahead, even if I am decades from it?</li></ul>
-
-
-
-
-
-    </section>
 
 
 

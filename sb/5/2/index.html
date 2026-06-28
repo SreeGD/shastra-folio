@@ -25,19 +25,25 @@
     <link rel="icon" href="../../../assets/icons/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="../../../assets/icons/icon.svg">
     <link rel="stylesheet" href="../../../assets/css/site.css">
+    <link rel="alternate" hreflang="te-IN" href="../../../te/sb/5/2/">
+    <link rel="alternate" hreflang="x-default" href="../../../">
     <script>window.FC_TO_ROOT = "../../../";</script>
     <script src="../../../assets/js/toggle.js"></script>
 </head>
 <body class="has-sidebar" data-chapter="2">
 <header class="fc-site-header">
     <button type="button" class="fc-mobile-trigger fc-mobile-trigger-left" data-overlay="left" aria-label="Open settings drawer">⚙</button>
-<a class="fc-brand" href="../../../">FolioCorpus<span class="fc-sub">Śrīmad-Bhāgavatam</span></a>
+    <a class="fc-brand" href="../../../">FolioCorpus<span class="fc-sub">Bhagavad-gītā</span></a>
     <nav class="fc-site-nav">
         <a href="../../../">Home</a>
         <a href="../../../bg/">Bhagavad-gītā</a>
         <a href="../../../sb/">Śrīmad-Bhāgavatam</a>
         <a href="../../../search/" title="Search across all integrated works">🔍 Search</a>
         <button type="button" id="fc-random-verse" class="fc-nav-btn" title="Jump to a random verse">🎲 Random</button>
+        <span class="fc-lang-switch" aria-label="Script">
+            <a class="active" href="#" title="Devanāgarī edition">EN</a>
+            <a class="" href="../../../te/sb/5/2/" title="Telugu lipi edition">తె</a>
+        </span>
     </nav>
     <button type="button" class="fc-mobile-trigger fc-mobile-trigger-right" data-overlay="right" aria-label="Open chapter index drawer">📚</button>
 </header>
@@ -46,8 +52,8 @@
     <button class="fc-sb-collapse" type="button" data-sb="left" title="Collapse left sidebar" aria-label="Collapse"></button>
 
     <div class="fc-sb-body">
-        <details class="fc-sb-section" data-sbsec="reading" open>
-            <summary class="fc-sb-title">Reading</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Reading</div>
             <div class="fc-sb-sub">Theme</div>
             <div class="fc-segmented" data-setting="theme">
                 <button type="button" data-val="light">Light</button>
@@ -73,10 +79,10 @@
                 <button type="button" data-val="single">Single</button>
                 <button type="button" data-val="side">Side-by-side</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="display" open>
-            <summary class="fc-sb-title">Display</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Display</div>
             <div class="fc-sb-grid">
                 <label><input type="checkbox" data-section="devanagari" checked> Devanāgarī</label>
                 <label><input type="checkbox" data-section="iast" checked> IAST transliteration</label>
@@ -99,10 +105,33 @@
                 <button type="button" data-action="expand-all">Expand all</button>
                 <button type="button" data-action="collapse-all">Collapse all</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="tools" open>
-            <summary class="fc-sb-title">Tools</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Find your starting point</div>
+            <div class="fc-persona-links">
+                <a class="fc-persona-link" href="../../../daily/">🌅 Daily (one value a week)</a>
+                <a class="fc-persona-link" href="../../../householder/">🏠 Householder (family & work)</a>
+                <a class="fc-persona-link" href="../../../parenting/">👨‍👩‍👧 Parenting (stories for kids)</a>
+                <a class="fc-persona-link" href="../../../themes/">📚 All themes</a>
+                <a class="fc-persona-link" href="../../../values/" style="background:#F0F6F2;border-left-color:#1F4632;">ॐ Vedic Value System ↗</a>
+                <a class="fc-persona-link" href="../../../vidya/" style="background:#FBF6E4;border-left-color:#C8860B;">📚 Vidyā Karaṇa (kids, multi-lang) ↗</a>
+            </div>
+        </div>
+
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Audience</div>
+            <div class="fc-audience-filter">
+                <label><input type="radio" name="fc-audience" value="all" checked> All levels</label>
+                <label><input type="radio" name="fc-audience" value="primary"> Primary (children)</label>
+                <label><input type="radio" name="fc-audience" value="middle"> Middle (teens)</label>
+                <label><input type="radio" name="fc-audience" value="senior"> Senior (adults)</label>
+                <label><input type="radio" name="fc-audience" value="college"> College / scholar</label>
+            </div>
+        </div>
+
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Tools</div>
             <div class="fc-sb-tools">
                 <button type="button" id="fc-presentation-toggle" class="fc-tool-btn"><span>🖥 Presentation</span><kbd class="fc-kbd">F</kbd></button>
                 <button type="button" id="fc-pen-toggle" class="fc-tool-btn"><span>✏️ Pen mode</span><kbd class="fc-kbd">P</kbd></button>
@@ -117,10 +146,26 @@
                 <button type="button" id="fc-clear-highlights" class="fc-tool-btn">🩷 Clear highlights (page)</button>
                 <button type="button" id="fc-notes-modal-open" class="fc-tool-btn">📓 My annotations</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="progress" id="fc-progress-section" open>
-            <summary class="fc-sb-title">Progress</summary>
+        <div class="fc-sb-section" id="fc-tts-controls" hidden>
+            <div class="fc-sb-title">
+                Read-aloud
+                <label class="fc-tts-master">
+                    <input type="checkbox" id="fc-tts-enabled" checked>
+                    <span class="fc-tts-master-label">On</span>
+                </label>
+            </div>
+            <div class="fc-tts-inner">
+                <div class="fc-sb-sub">Voice</div>
+                <select id="fc-tts-voice" class="fc-tts-select" aria-label="TTS voice"></select>
+                <div class="fc-sb-sub">Rate <span class="fc-tts-rate-val">1.0×</span></div>
+                <input type="range" id="fc-tts-rate" min="0.5" max="2" step="0.1" value="1" class="fc-tts-rate" aria-label="Reading rate">
+            </div>
+        </div>
+
+        <div class="fc-sb-section" id="fc-progress-section">
+            <div class="fc-sb-title">Progress</div>
             <div class="fc-progress-row">
                 <span class="fc-progress-num" id="fc-progress-num">0</span>
                 <span class="fc-progress-divider">/</span>
@@ -135,29 +180,29 @@
                 <span class="fc-progress-spacer"></span>
                 <button type="button" class="fc-progress-reset" id="fc-progress-reset" title="Reset progress">↺</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="bookmarks" open>
-            <summary class="fc-sb-title">Bookmarks <span class="fc-sb-count" id="fc-bookmarks-count">0</span></summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Bookmarks <span class="fc-sb-count" id="fc-bookmarks-count">0</span></div>
             <ul class="fc-bookmark-list" id="fc-bookmarks-list">
                 <li class="fc-sb-empty">No bookmarks yet — click ☆ on any verse.</li>
             </ul>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="notes" open>
-            <summary class="fc-sb-title">Notes <span class="fc-sb-count" id="fc-notes-count">0</span></summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Notes <span class="fc-sb-count" id="fc-notes-count">0</span></div>
             <ul class="fc-bookmark-list" id="fc-notes-list">
                 <li class="fc-sb-empty">No notes yet — open any verse and write in the 📝 block.</li>
             </ul>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="export">
-            <summary class="fc-sb-title">Export</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Export</div>
             <div class="fc-sb-tools">
                 <button type="button" id="fc-export-md" class="fc-tool-btn">📥 Download Markdown</button>
                 <button type="button" id="fc-export-json" class="fc-tool-btn">💾 Download JSON backup</button>
             </div>
-        </details>
+        </div>
     </div>
 </aside>    <main class="fc-container">
 <nav class="fc-breadcrumbs">
@@ -175,7 +220,7 @@
         <h1 class="fc-verse-heading">5.2 · The Activities of Mahārāja Āgnīdhra</h1>
         <span class="fc-ribbon-meta">
             23 verses
- · <a class="fc-ribbon-link" href="class-prep/">🖨 Class prep</a>        </span>
+        </span>
         <input type="search" class="fc-search" id="fc-search" placeholder="🔍 Search in this chapter" aria-label="Search verses in this chapter">
         <span class="fc-ribbon-current" id="fc-ribbon-current" aria-live="polite"></span>
     </div>
@@ -451,7 +496,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <div class="fc-translation" data-sec="translation">Śrī Śukadeva Gosvāmī continued: After his father, Mahārāja Priyavrata, departed to follow the path of spiritual life by undergoing austerities, King Āgnīdhra completely obeyed his order. Strictly observing the principles of religion, he gave full protection to the inhabitants of Jambūdvīpa as if they were his own begotten sons.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -546,18 +590,6 @@ The Second Chapter describes how Āgnīdhra obtained the Apsarā Pūrvacitti, an
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Leadership rooted in dharma protects people the way a good father protects his children. The duty of authority is not just to manage outcomes but to safeguard the spiritual conditions in which souls can advance.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Whom are you responsible for, and are you protecting their spiritual welfare or only their material comfort?</li><li>What dharmic principle in your own role have you been neglecting because it is inconvenient?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -770,7 +802,6 @@ The Second Chapter describes how Āgnīdhra obtained the Apsarā Pūrvacitti, an
 
     <div class="fc-translation" data-sec="translation">Desiring to get a perfect son and become an inhabitant of Pitṛloka, Mahārāja Āgnīdhra once worshiped Lord Brahmā, the master of those in charge of material creation. He went to a valley of Mandara Hill, where the damsels of the heavenly planets come down to stroll. There he collected garden flowers and other necessary paraphernalia and then engaged in severe austerities and worship.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -851,18 +882,6 @@ Carrying items of worship like flowers, desiring sons (pitraloka-kāmaḥ) he wo
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Goals shape destinations: Āgnīdhra wanted Pitṛloka, so he worshiped accordingly. Whatever object the mind fixes on as &#39;the prize&#39; is the place the soul will travel toward. Choose the aim with care.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What is the destination your daily desires are actually pointed toward?</li><li>If you traced your worship — your time, attention, longing — where would it say you want to end up?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -1003,7 +1022,6 @@ Carrying items of worship like flowers, desiring sons (pitraloka-kāmaḥ) he wo
 
     <div class="fc-translation" data-sec="translation">Understanding King Āgnīdhra’s desire, the first and most powerful created being of this universe, Lord Brahmā, selected the best of the dancing girls in his assembly, whose name was Pūrvacitti, and sent her to the King.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1075,18 +1093,6 @@ Carrying items of worship like flowers, desiring sons (pitraloka-kāmaḥ) he wo
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Higher authorities can read our hidden desires and arrange precisely the test or gift they require. What arrives in our life is rarely random; often it is a tailored response to what we have silently asked for.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What &#39;arrival&#39; in your life recently might actually be a tailored response to a private desire you forgot you had?</li><li>Would you ask differently if you knew unseen authorities were listening?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -1417,7 +1423,6 @@ Carrying items of worship like flowers, desiring sons (pitraloka-kāmaḥ) he wo
     <div class="fc-translation" data-sec="translation">The Apsarā sent by Lord Brahmā began strolling in a beautiful park near the place where the King was meditating and worshiping. The park was beautiful because of its dense green foliage and golden creepers. There were pairs of varied birds such as peacocks, and in a lake there were ducks and swans, all vibrating very sweet sounds. Thus the park was magnificently beautiful because of the foliage, the clear water, the lotus flowers and the sweet singing of various kinds of birds.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -1488,18 +1493,6 @@ She began to wander about the garden of the hermitage.  The hermitage had lakes 
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Beauty in nature can serve worship or it can serve distraction, depending on the heart of the one looking. The same garden becomes either a sanctuary or a trap; the difference is the mood we bring into it.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What beautiful settings in your life have shifted from places of worship to places of distraction?</li><li>How could you re-consecrate one such setting today?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -1766,7 +1759,6 @@ She began to wander about the garden of the hermitage.  The hermitage had lakes 
 
     <div class="fc-translation" data-sec="translation">As Pūrvacitti passed by on the road in a very beautiful style and mood of her own, the pleasing ornaments on her ankles tinkled with her every step. Although Prince Āgnīdhra was controlling his senses, practicing yoga with half-open eyes, he could see her with his lotuslike eyes, and when he heard the sweet tinkling of her bangles, he opened his eyes slightly more and could see that she was just nearby.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1813,18 +1805,6 @@ The movements of her body and her footsteps as she walked gracefully attracted h
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Even a serious meditator can be derailed when the senses are not fully closed off. Half-open eyes can become wide-open desire. Genuine yoga requires more than posture — it requires guarded attention.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where are your spiritual practices currently leaving the door cracked just enough for distraction to walk in?</li><li>What single sense input most reliably pulls you out of meditation, and how could you manage it?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -2370,7 +2350,6 @@ The movements of her body and her footsteps as she walked gracefully attracted h
 
     <div class="fc-translation" data-sec="translation">Like a honeybee, the Apsarā smelled the beautiful and attractive flowers. She could attract the minds and vision of both humans and demigods by her playful movements, her shyness and humility, her glances, the very pleasing sounds that poured from her mouth as she spoke, and the motion of her limbs. By all these qualities, she opened for Cupid, who bears an arrow of flowers, a path of aural reception into the minds of men. When she spoke, nectar seemed to flow from her mouth. As she breathed, the bees, mad for the taste of her breath, tried to hover about her beautiful lotuslike eyes. Disturbed by the bees, she tried to move hastily, but as she raised her feet to walk quickly, her hair, the belt on her hips, and her breasts, which were like water jugs, also moved in a way that made her extremely beautiful and attractive. Indeed, she seemed to be making a path for the entrance of Cupid, who is most powerful. Therefore the prince, completely subdued by seeing her, spoke to her as follows.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2446,18 +2425,6 @@ Becoming bewildered on seeing her, he speaks the next ten verses.  He appeared t
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The senses are remarkably easy to capture through small, refined inputs — a sound, a gesture, a glance. Knowing how subtly attraction works is the beginning of not being caught by it.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which subtle &#39;arrows&#39; in your environment — sounds, images, scents — most reliably bypass your defenses?</li><li>What would it look like to design your daily inputs as carefully as you design your meals?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -2734,7 +2701,6 @@ Becoming bewildered on seeing her, he speaks the next ten verses.  He appeared t
 
     <div class="fc-translation" data-sec="translation">The Prince mistakenly addressed the Apsarā: O best of saintly persons, who are you? Why are you on this hill, and what do you want to do? Are you one of the illusory potencies of the Supreme Personality of Godhead? You seem to be carrying two bows without strings. What is the reason you carry these bows? Is it for some purpose of your own or for the sake of a friend? Perhaps you carry them to kill the mad animals in this forest.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2804,18 +2770,6 @@ Asking who she is, he is confused. He indicates that he does not know the differ
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Lust does not just inflame the heart; it scrambles intelligence so badly that we cannot read situations clearly. When attraction takes over, even basic discernment fails. Notice the fog before it becomes the storm.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>When has lust or longing recently caused you to misread a person or situation?</li><li>What signs in your own behavior tell you that your intelligence is being clouded?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -3056,7 +3010,6 @@ Asking who she is, he is confused. He indicates that he does not know the differ
 
     <div class="fc-translation" data-sec="translation">Then Āgnīdhra observed the glancing eyes of Pūrvacitti and said: My dear friend, you have two very powerful arrows, namely your glancing eyes. Those arrows have feathers like the petals of a lotus flower. Although they have no shafts, they are very beautiful, and they have very sharp, piercing points. They appear very peaceful, and thus it seems that they will not be shot at anyone. You must be loitering in this forest to shoot those arrows at someone, but I cannot understand whom. My intelligence is dull, and I cannot combat you. Indeed, no one can equal you in prowess, and therefore I pray that your prowess will be for my good fortune.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3125,18 +3078,6 @@ On seeing her glance he speaks.  You have two arrows with lotus-petal feathers, 
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">A single charged glance can shoot deeper than any literal weapon. The eyes are powerful instruments of bondage and freedom alike, and most people use them with no awareness of their force.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where do your eyes habitually go when your discipline lapses, and what is that costing you?</li><li>What would it mean to use your eyes today as instruments of seeing the Lord rather than collecting objects?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -3387,7 +3328,6 @@ On seeing her glance he speaks.  You have two arrows with lotus-petal feathers, 
     <div class="fc-translation" data-sec="translation">Seeing the bumblebees following Pūrvacitti, Mahārāja Āgnīdhra said: My dear Lord, the bumblebees surrounding your body are like disciples surrounding your worshipable self. They are incessantly chanting the mantras of the Sāma Veda and the Upaniṣads, thus offering prayers to you. Just as great sages resort to the branches of Vedic literatures, the bumblebees are enjoying the showers of flowers falling from your hair.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -3423,18 +3363,6 @@ Seeing the bees surrounding her out of greed for her fragrance, he speaks. The b
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Even illusion can mimic devotional imagery — bees as disciples, sounds as mantras. Without sober discrimination, we can mistake aesthetic charm for spiritual substance. Not every honeyed thing is honey.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What in your life looks spiritual but may actually be aesthetic dressing on a material craving?</li><li>Whom do you trust to help you tell the difference?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -3675,7 +3603,6 @@ Seeing the bees surrounding her out of greed for her fragrance, he speaks. The b
 
     <div class="fc-translation" data-sec="translation">O brāhmaṇa, I can simply hear the tinkling of your ankle bells. Within those bells, tittiri birds seem to be chirping among themselves. Although I do not see their forms, I can hear how they are chirping. When I look at your beautiful circular hips, I see they are the lovely color of kadamba flowers, and your waist is encircled by a belt of burning cinders. Indeed, you seem to have forgotten to dress yourself.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3704,18 +3631,6 @@ Relishing the sound of her ankle bells he speaks.  I assume there are two partri
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">When lust looks at a person, it sees only parts to consume, not a soul to honor. Even a fully dressed person appears &#39;naked&#39; to a hungry eye. The problem is not the object; it is the gaze.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>How are you currently looking at people — as souls, or as parts?</li><li>What inner shift would let you see the full person where now you only see what you want?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -3992,7 +3907,6 @@ Relishing the sound of her ankle bells he speaks.  I assume there are two partri
 
     <div class="fc-translation" data-sec="translation">Āgnīdhra then praised Pūrvacitti’s raised breasts. He said: My dear brāhmaṇa your waist is very thin, yet with great difficulty you are carefully carrying two horns, to which my eyes have become attracted. What is filling those two beautiful horns? You seem to have spread fragrant red powder upon them, powder that is like the rising morning sun. O most fortunate one, I beg to inquire where you have gotten this fragrant powder that is perfuming my āśrama, my place of residence.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -4071,18 +3985,6 @@ Seeing her breasts he speaks.  O brāhmaṇa!  What valuable jewels are within t
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Lust narrows attention onto fragments and inflates their importance until you cannot see anything else. This bodily preoccupation steals the very intelligence we would need to see our way out.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What fragment of bodily reality has been inflated, in your mind, into something disproportionately important?</li><li>What practice helps you widen the frame again when this kind of fixation locks in?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -4323,7 +4225,6 @@ Seeing her breasts he speaks.  O brāhmaṇa!  What valuable jewels are within t
 
     <div class="fc-translation" data-sec="translation">O best friend, will you kindly show me the place where you reside? I cannot imagine how the residents of that place have gotten such wonderful bodily features as your raised breasts, which agitate the mind and eyes of a person like me who sees them. Judging by the sweet speech and kind smiles of those residents, I think that their mouths must contain nectar.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -4377,18 +4278,6 @@ If you say that in your place men have similar horns on their chest, I will go t
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Bewildered desire keeps inventing reasons to draw closer to the object that bewildered it — &#39;I just want to see where you live.&#39; The mind under lust is a brilliant lawyer making the worst possible case.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What clever-sounding &#39;next step&#39; is your mind currently proposing that would actually deepen an attachment you want to release?</li><li>When have you noticed yourself making sophisticated excuses for an obviously unwise move?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -4665,7 +4554,6 @@ If you say that in your place men have similar horns on their chest, I will go t
 
     <div class="fc-translation" data-sec="translation">My dear friend, what do you eat to maintain your body? Because you are chewing betel, a pleasing scent is emanating from your mouth. This proves that you always eat the remnants of food offered to Viṣṇu. Indeed, you must also be an expansion of Lord Viṣṇu’s body. Your face is as beautiful as a pleasing lake. Your jeweled earrings resemble two brilliant sharks with unblinking eyes like those of Viṣṇu, and your own eyes resemble two restless fish. Simultaneously, therefore, two sharks and two restless fish are swimming in the lake of your face. Besides them, the white rows of your teeth seem like rows of very beautiful swans in the water, and your scattered hair resembles swarms of bumblebees following the beauty of your face.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -4719,18 +4607,6 @@ What do people eat to maintain their lives in your place?  Noticing the astonish
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Devotees carry the fragrance of Viṣṇu because they eat what has been offered to Him. What we consume — physically and mentally — quietly reshapes what we radiate. Holiness is downstream of intake.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What does your current intake — food, media, conversation — say about the fragrance you are giving off?</li><li>What one input could you change this week to begin shifting that fragrance toward Viṣṇu?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -5021,7 +4897,6 @@ What do people eat to maintain their lives in your place?  Noticing the astonish
 
     <div class="fc-translation" data-sec="translation">My mind is already restless, and by playing with a ball, moving it all about with your lotuslike palm, you are also agitating my eyes. Your curling black hair is now scattered, but you are not attentive to arranging it. Are you not going to arrange it? Like a man attached to women, the most cunning wind is trying to take off your lower garment. Are you not mindful of it?</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -5085,18 +4960,6 @@ Seeing her play with a ball, he speaks.  The ball disturbs my eyes, and I have a
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Lust loves moving targets — the playful ball, the loose hair, the slipping dress. Restlessness in the object inflames restlessness in the observer. Stillness within is the only real shelter.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What &#39;moving targets&#39; in your environment keep your inner eye darting after them?</li><li>How could you cultivate enough inner stillness that small movements no longer hijack your attention?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -5373,7 +5236,6 @@ Seeing her play with a ball, he speaks.  The ball disturbs my eyes, and I have a
 
     <div class="fc-translation" data-sec="translation">O best among those performing austerities, where did you get this wonderful beauty that dismantles the austerities performed by others? Where have you learned this art? What austerity have you undergone to achieve this beauty, my dear friend? I desire that you join me to perform austerity and penance, for it may be that the creator of the universe, Lord Brahmā, being pleased with me, has sent you to become my wife.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -5457,18 +5319,6 @@ Perhaps you have been sent to join me in performing austerities. O wealth of aus
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Even a fallen mind will rationalize attraction as providence — &#39;Brahmā must have sent her to me.&#39; We dress up our wants in spiritual language, but the wanting is what it is. Be honest about what is happening.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where in your life have you draped a desire in spiritual language to make it feel acceptable?</li><li>What would it cost you to call that desire by its plainer name?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -5754,7 +5604,6 @@ Perhaps you have been sent to join me in performing austerities. O wealth of aus
 
     <div class="fc-translation" data-sec="translation">Lord Brahmā, who is worshiped by the brāhmaṇas, has very mercifully given you to me, and that is why I have met you. I do not want to give up your company, for my mind and eyes are fixed upon you and cannot be drawn away. O woman with beautiful raised breasts, I am your follower. You may take me wherever you like, and your friends may also follow me.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -5818,18 +5667,6 @@ He fears that she will say, “What is the benefit for me in obeying you?  I am 
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Surrender to lust looks the same on the outside as surrender to God — both involve giving up control. The difference lies entirely in where the surrender goes. Pick the recipient with care.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Whom or what have you been surrendering to in practice, regardless of whom you say you serve?</li><li>What surrender would actually free you rather than further entangle you?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -5986,7 +5823,6 @@ He fears that she will say, “What is the benefit for me in obeying you?  I am 
 
     <div class="fc-translation" data-sec="translation">Śukadeva Gosvāmī continued: Mahārāja Āgnīdhra, whose intelligence was like that of a demigod, knew the art of flattering women to win them to his side. He therefore pleased that celestial girl with his lusty words and gained her favor.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -6055,18 +5891,6 @@ He fears that she will say, “What is the benefit for me in obeying you?  I am 
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Even good intelligence can be conscripted into the service of lust through flattery and clever speech. Skill misused this way is worse than no skill at all. Devotional intelligence is intelligence aimed at the Lord.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where are you using your real talents to chase outcomes you would rather not own up to?</li><li>What would your gifts produce if they were aimed entirely at devotional service?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -6333,7 +6157,6 @@ He fears that she will say, “What is the benefit for me in obeying you?  I am 
 
     <div class="fc-translation" data-sec="translation">Attracted by the intelligence, learning, youth, beauty, behavior, opulence and magnanimity of Āgnīdhra, the King of Jambūdvīpa and master of all heroes, Pūrvacitti lived with him for many thousands of years and luxuriously enjoyed both worldly and heavenly happiness.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -6387,18 +6210,6 @@ The list of qualities starting with buddhi is a dvandva compound indicating the 
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Material and even heavenly happiness can last a long time, but they end. Years pass, pleasures repeat, and the soul still has not arrived home. Duration is no substitute for direction.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What long-running comfort in your life is quietly substituting for actual spiritual progress?</li><li>Where would you be on the path home if you had spent that time differently?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -6621,7 +6432,6 @@ The list of qualities starting with buddhi is a dvandva compound indicating the 
     <div class="fc-translation" data-sec="translation">In the womb of Pūrvacitti, Mahārāja Āgnīdhra, the best of kings, begot nine sons, named Nābhi, Kiṁpuruṣa, Harivarṣa, Ilāvṛta, Ramyaka, Hiraṇmaya, Kuru, Bhadrāśva and Ketumāla.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -6670,18 +6480,6 @@ The list of qualities starting with buddhi is a dvandva compound indicating the 
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Family expansion happens almost automatically once the household path is entered; what matters is whether that expansion is consecrated to higher purposes. Many children, or many projects, are not in themselves an achievement.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What is multiplying in your life right now — relationships, projects, possessions — and are you sanctifying that growth or just accumulating?</li><li>What would it look like to dedicate each new addition to Kṛṣṇa from the start?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -6867,7 +6665,6 @@ The list of qualities starting with buddhi is a dvandva compound indicating the 
 
     <div class="fc-translation" data-sec="translation">Pūrvacitti gave birth to these nine sons, one each year, but after they grew up she left them at home and again approached Lord Brahmā to worship him.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -6916,18 +6713,6 @@ She left the children in the house of the King, since she was an Apsarā. She ga
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Some relationships are meant to fulfill a specific purpose and then end. When the assignment is complete, holding on can become its own form of suffering. Knowing when to let someone go is also spiritual.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What relationship in your life may have already fulfilled its purpose, even though you are still gripping it?</li><li>Can you release the form of a bond while still honoring the gift it was?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -7122,7 +6907,6 @@ She left the children in the house of the King, since she was an Apsarā. She ga
 
     <div class="fc-translation" data-sec="translation">Because of drinking the breast milk of their mother, the nine sons of Āgnīdhra naturally had strong, well-built bodies. Their father gave them each a kingdom in a different part of Jambūdvīpa. The kingdoms were named according to the names of the sons. Thus the sons of Āgnīdhra ruled the kingdoms they received from their father.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -7191,18 +6975,6 @@ Because of drinking milk directly from her breast, the sons had naturally long l
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Children inherit not only physical traits but the consciousness of those who nurture them. What we transmit through care is as formative as anything written into the genes. Pay attention to the consciousness you carry around your children.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What consciousness — calm or anxious, devotional or distracted — are you actually transmitting to those who depend on you?</li><li>How could you raise the quality of what you &#39;feed&#39; the young in your life beyond just material care?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -7397,7 +7169,6 @@ Because of drinking milk directly from her breast, the sons had naturally long l
 
     <div class="fc-translation" data-sec="translation">After Pūrvacitti’s departure, King Āgnīdhra, his lusty desires not at all satisfied, always thought of her. Therefore, in accordance with the Vedic injunctions, the King, after his death, was promoted to the same planet as his celestial wife. That planet, which is called Pitṛloka, is where the pitās, the forefathers, live in great delight.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -7460,18 +7231,6 @@ He thought of her with great desire (kāmānām).  By performing actions accordi
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Whatever the mind dwells on at death is where the soul travels. The thoughts you rehearse today are practice for the thought that will carry you across at the end. Don&#39;t underestimate today&#39;s mental diet.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>If you died absorbed in what currently most occupies your mind, where would that destination be?</li><li>What practice would help you steer the mind, even a little more each day, toward Kṛṣṇa?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -7675,7 +7434,6 @@ He thought of her with great desire (kāmānām).  By performing actions accordi
 
     <div class="fc-translation" data-sec="translation">After the departure of their father, the nine brothers married the nine daughters of Meru named Merudevī, Pratirūpā, Ugradaṁṣṭrī, Latā, Ramyā, Śyāmā, Nārī, Bhadrā and Devavīti.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -7722,18 +7480,6 @@ In this chapter the spotless character of King Nābhi, the oldest son of Āgnīd
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The cycle continues: one generation marries, the next inherits and marries in turn. Whether this wheel produces saints or sleepers depends entirely on the consciousness with which each round is lived.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What spiritual orientation are you handing down through the ordinary act of starting a family or community?</li><li>Are you living your round of this wheel as a sleeper or as someone helping the next round wake up?</li></ul>
-
-
-
-
-
-    </section>
 
 
 

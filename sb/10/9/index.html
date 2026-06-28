@@ -25,19 +25,25 @@
     <link rel="icon" href="../../../assets/icons/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="../../../assets/icons/icon.svg">
     <link rel="stylesheet" href="../../../assets/css/site.css">
+    <link rel="alternate" hreflang="te-IN" href="../../../te/sb/10/9/">
+    <link rel="alternate" hreflang="x-default" href="../../../">
     <script>window.FC_TO_ROOT = "../../../";</script>
     <script src="../../../assets/js/toggle.js"></script>
 </head>
 <body class="has-sidebar" data-chapter="9">
 <header class="fc-site-header">
     <button type="button" class="fc-mobile-trigger fc-mobile-trigger-left" data-overlay="left" aria-label="Open settings drawer">⚙</button>
-<a class="fc-brand" href="../../../">FolioCorpus<span class="fc-sub">Śrīmad-Bhāgavatam</span></a>
+    <a class="fc-brand" href="../../../">FolioCorpus<span class="fc-sub">Bhagavad-gītā</span></a>
     <nav class="fc-site-nav">
         <a href="../../../">Home</a>
         <a href="../../../bg/">Bhagavad-gītā</a>
         <a href="../../../sb/">Śrīmad-Bhāgavatam</a>
         <a href="../../../search/" title="Search across all integrated works">🔍 Search</a>
         <button type="button" id="fc-random-verse" class="fc-nav-btn" title="Jump to a random verse">🎲 Random</button>
+        <span class="fc-lang-switch" aria-label="Script">
+            <a class="active" href="#" title="Devanāgarī edition">EN</a>
+            <a class="" href="../../../te/sb/10/9/" title="Telugu lipi edition">తె</a>
+        </span>
     </nav>
     <button type="button" class="fc-mobile-trigger fc-mobile-trigger-right" data-overlay="right" aria-label="Open chapter index drawer">📚</button>
 </header>
@@ -46,8 +52,8 @@
     <button class="fc-sb-collapse" type="button" data-sb="left" title="Collapse left sidebar" aria-label="Collapse"></button>
 
     <div class="fc-sb-body">
-        <details class="fc-sb-section" data-sbsec="reading" open>
-            <summary class="fc-sb-title">Reading</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Reading</div>
             <div class="fc-sb-sub">Theme</div>
             <div class="fc-segmented" data-setting="theme">
                 <button type="button" data-val="light">Light</button>
@@ -73,10 +79,10 @@
                 <button type="button" data-val="single">Single</button>
                 <button type="button" data-val="side">Side-by-side</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="display" open>
-            <summary class="fc-sb-title">Display</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Display</div>
             <div class="fc-sb-grid">
                 <label><input type="checkbox" data-section="devanagari" checked> Devanāgarī</label>
                 <label><input type="checkbox" data-section="iast" checked> IAST transliteration</label>
@@ -99,10 +105,33 @@
                 <button type="button" data-action="expand-all">Expand all</button>
                 <button type="button" data-action="collapse-all">Collapse all</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="tools" open>
-            <summary class="fc-sb-title">Tools</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Find your starting point</div>
+            <div class="fc-persona-links">
+                <a class="fc-persona-link" href="../../../daily/">🌅 Daily (one value a week)</a>
+                <a class="fc-persona-link" href="../../../householder/">🏠 Householder (family & work)</a>
+                <a class="fc-persona-link" href="../../../parenting/">👨‍👩‍👧 Parenting (stories for kids)</a>
+                <a class="fc-persona-link" href="../../../themes/">📚 All themes</a>
+                <a class="fc-persona-link" href="../../../values/" style="background:#F0F6F2;border-left-color:#1F4632;">ॐ Vedic Value System ↗</a>
+                <a class="fc-persona-link" href="../../../vidya/" style="background:#FBF6E4;border-left-color:#C8860B;">📚 Vidyā Karaṇa (kids, multi-lang) ↗</a>
+            </div>
+        </div>
+
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Audience</div>
+            <div class="fc-audience-filter">
+                <label><input type="radio" name="fc-audience" value="all" checked> All levels</label>
+                <label><input type="radio" name="fc-audience" value="primary"> Primary (children)</label>
+                <label><input type="radio" name="fc-audience" value="middle"> Middle (teens)</label>
+                <label><input type="radio" name="fc-audience" value="senior"> Senior (adults)</label>
+                <label><input type="radio" name="fc-audience" value="college"> College / scholar</label>
+            </div>
+        </div>
+
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Tools</div>
             <div class="fc-sb-tools">
                 <button type="button" id="fc-presentation-toggle" class="fc-tool-btn"><span>🖥 Presentation</span><kbd class="fc-kbd">F</kbd></button>
                 <button type="button" id="fc-pen-toggle" class="fc-tool-btn"><span>✏️ Pen mode</span><kbd class="fc-kbd">P</kbd></button>
@@ -117,10 +146,26 @@
                 <button type="button" id="fc-clear-highlights" class="fc-tool-btn">🩷 Clear highlights (page)</button>
                 <button type="button" id="fc-notes-modal-open" class="fc-tool-btn">📓 My annotations</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="progress" id="fc-progress-section" open>
-            <summary class="fc-sb-title">Progress</summary>
+        <div class="fc-sb-section" id="fc-tts-controls" hidden>
+            <div class="fc-sb-title">
+                Read-aloud
+                <label class="fc-tts-master">
+                    <input type="checkbox" id="fc-tts-enabled" checked>
+                    <span class="fc-tts-master-label">On</span>
+                </label>
+            </div>
+            <div class="fc-tts-inner">
+                <div class="fc-sb-sub">Voice</div>
+                <select id="fc-tts-voice" class="fc-tts-select" aria-label="TTS voice"></select>
+                <div class="fc-sb-sub">Rate <span class="fc-tts-rate-val">1.0×</span></div>
+                <input type="range" id="fc-tts-rate" min="0.5" max="2" step="0.1" value="1" class="fc-tts-rate" aria-label="Reading rate">
+            </div>
+        </div>
+
+        <div class="fc-sb-section" id="fc-progress-section">
+            <div class="fc-sb-title">Progress</div>
             <div class="fc-progress-row">
                 <span class="fc-progress-num" id="fc-progress-num">0</span>
                 <span class="fc-progress-divider">/</span>
@@ -135,29 +180,29 @@
                 <span class="fc-progress-spacer"></span>
                 <button type="button" class="fc-progress-reset" id="fc-progress-reset" title="Reset progress">↺</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="bookmarks" open>
-            <summary class="fc-sb-title">Bookmarks <span class="fc-sb-count" id="fc-bookmarks-count">0</span></summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Bookmarks <span class="fc-sb-count" id="fc-bookmarks-count">0</span></div>
             <ul class="fc-bookmark-list" id="fc-bookmarks-list">
                 <li class="fc-sb-empty">No bookmarks yet — click ☆ on any verse.</li>
             </ul>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="notes" open>
-            <summary class="fc-sb-title">Notes <span class="fc-sb-count" id="fc-notes-count">0</span></summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Notes <span class="fc-sb-count" id="fc-notes-count">0</span></div>
             <ul class="fc-bookmark-list" id="fc-notes-list">
                 <li class="fc-sb-empty">No notes yet — open any verse and write in the 📝 block.</li>
             </ul>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="export">
-            <summary class="fc-sb-title">Export</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Export</div>
             <div class="fc-sb-tools">
                 <button type="button" id="fc-export-md" class="fc-tool-btn">📥 Download Markdown</button>
                 <button type="button" id="fc-export-json" class="fc-tool-btn">💾 Download JSON backup</button>
             </div>
-        </details>
+        </div>
     </div>
 </aside>    <main class="fc-container">
 <nav class="fc-breadcrumbs">
@@ -590,7 +635,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
     </section>
 
     <div class="fc-translation" data-sec="translation">Śrī Śukadeva Gosvāmī continued: One day when mother Yaśodā saw that all the maidservants were engaged in other household affairs, she personally began to churn the yogurt. While churning, she remembered the childish activities of Kṛṣṇa, and in her own way she composed songs and enjoyed singing to herself about all those activities.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -1103,7 +1147,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <div class="fc-translation" data-sec="translation">Dressed in a saffron-yellow sari, with a belt tied about her full hips, mother Yaśodā pulled on the churning rope, laboring considerably, her bangles and earrings moving and vibrating and her whole body shaking. Because of her intense love for her child, her breasts were wet with milk. Her face, with its very beautiful eyebrows, was wet with perspiration, and mālatī flowers were falling from her hair.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1435,7 +1478,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
     </section>
 
     <div class="fc-translation" data-sec="translation">While mother Yaśodā was churning butter, Lord Kṛṣṇa, desiring to drink the milk of her breast, appeared before her, and in order to increase her transcendental pleasure, He caught hold of the churning rod and began to prevent her from churning.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -1797,7 +1839,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <div class="fc-translation" data-sec="translation">Mother Yaśodā then embraced Kṛṣṇa, allowed Him to sit down on her lap, and began to look upon the face of the Lord with great love and affection. Because of her intense affection, milk was flowing from her breast. But when she saw that the milk pan on the oven was boiling over, she immediately left her son to take care of the overflowing milk, although the child was not yet fully satisfied with drinking the milk of His mother’s breast.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2146,7 +2187,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
     </section>
 
     <div class="fc-translation" data-sec="translation">Being very angry and biting His reddish lips with His teeth, Kṛṣṇa, with false tears in His eyes, broke the container of yogurt with a piece of stone. Then He entered a room and began to eat the freshly churned butter in a solitary place.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -2576,7 +2616,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <div class="fc-translation" data-sec="translation">Mother Yaśodā, after taking down the hot milk from the oven, returned to the churning spot, and when she saw that the container of yogurt was broken and that Kṛṣṇa was not present, she concluded that the breaking of the pot was the work of Kṛṣṇa.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2953,7 +2992,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
     </section>
 
     <div class="fc-translation" data-sec="translation">Kṛṣṇa, at that time, was sitting on an upside-down wooden mortar for grinding spices and was distributing milk preparations such as yogurt and butter to the monkeys as He liked. Because of having stolen, He was looking all around with great anxiety, suspecting that He might be chastised by His mother. Mother Yaśodā, upon seeing Him, very cautiously approached Him from behind.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -3351,7 +3389,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <div class="fc-translation" data-sec="translation">When Lord Śrī Kṛṣṇa saw His mother, stick in hand, He very quickly got down from the top of the mortar and began to flee as if very much afraid. Although yogīs try to capture Him as Paramātmā by meditation, desiring to enter into the effulgence of the Lord with great austerities and penances, they fail to reach Him. But mother Yaśodā, thinking that same Personality of Godhead, Kṛṣṇa, to be her son, began following Kṛṣṇa to catch Him.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3678,7 +3715,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
     </section>
 
     <div class="fc-translation" data-sec="translation">While following Kṛṣṇa, mother Yaśodā, her thin waist overburdened by her heavy breasts, naturally had to reduce her speed. Because of following Kṛṣṇa very swiftly, her hair became loose, and the flowers in her hair were falling after her. Yet she did not fail to capture her son, Kṛṣṇa.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -4019,7 +4055,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <div class="fc-translation" data-sec="translation">When caught by mother Yaśodā, Kṛṣṇa became more and more afraid and admitted to being an offender. As she looked upon Him, she saw that He was crying, His tears mixing with the black ointment around His eyes, and as He rubbed His eyes with His hands, He smeared the ointment all over His face. Mother Yaśodā, catching her beautiful son by the hand, mildly began to chastise Him.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -4351,7 +4386,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
     </section>
 
     <div class="fc-translation" data-sec="translation">Mother Yaśodā was always overwhelmed by intense love for Kṛṣṇa, not knowing who Kṛṣṇa was or how powerful He was. Because of maternal affection for Kṛṣṇa, she never even cared to know who He was. Therefore, when she saw that her son had become excessively afraid, she threw the stick away and desired to bind Him so that He would not commit any further naughty activities.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -4881,7 +4915,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <div class="fc-translation" data-sec="translation">The Supreme Personality of Godhead has no beginning and no end, no exterior and no interior, no front and no rear. In other words, He is all-pervading. Because He is not under the influence of the element of time, for Him there is no difference between past, present and future; He exists in His own transcendental form at all times. Being absolute, beyond relativity, He is free from distinctions between cause and effect, although He is the cause and effect of everything. That unmanifested person, who is beyond the perception of the senses, had now appeared as a human child, and mother Yaśodā, considering Him her own ordinary child, bound Him to the wooden mortar with a rope.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -5289,7 +5322,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <div class="fc-translation" data-sec="translation">When mother Yaśodā was trying to bind the offending child, she saw that the binding rope was short by a distance the width of two fingers. Thus she brought another rope to join to it.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -5628,7 +5660,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
     <div class="fc-translation" data-sec="translation">This new rope also was short by a measurement of two fingers, and when another rope was joined to it, it was still two fingers too short. As many ropes as she joined, all of them failed; their shortness could not be overcome.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -5900,7 +5931,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
     </section>
 
     <div class="fc-translation" data-sec="translation">Thus mother Yaśodā joined whatever ropes were available in the household, but still she failed in her attempt to bind Kṛṣṇa. Mother Yaśodā’s friends, the elderly gopīs in the neighborhood, were smiling and enjoying the fun. Similarly, mother Yaśodā, although laboring in that way, was also smiling. All of them were struck with wonder.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -6225,7 +6255,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
     </section>
 
     <div class="fc-translation" data-sec="translation">Because of mother Yaśodā’s hard labor, her whole body became covered with perspiration, and the flowers and comb were falling from her hair. When child Kṛṣṇa saw His mother thus fatigued, He became merciful to her and agreed to be bound.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -6619,7 +6648,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
     </section>
 
     <div class="fc-translation" data-sec="translation">O Mahārāja Parīkṣit, this entire universe, with its great, exalted demigods like Lord Śiva, Lord Brahmā and Lord Indra, is under the control of the Supreme Personality of Godhead. Yet the Supreme Lord has one transcendental attribute: He comes under the control of His devotees. This was now exhibited by Kṛṣṇa in this pastime.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -7057,7 +7085,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <div class="fc-translation" data-sec="translation">Neither Lord Brahmā, nor Lord Śiva, nor even the goddess of fortune, who is always the better half of the Supreme Lord, can obtain from the Supreme Personality of Godhead, the deliverer from this material world, such mercy as received by mother Yaśodā.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -7463,7 +7490,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <div class="fc-translation" data-sec="translation">The Supreme Personality of Godhead, Kṛṣṇa, the son of mother Yaśodā, is accessible to devotees engaged in spontaneous loving service, but He is not as easily accessible to mental speculators, to those striving for self-realization by severe austerities and penances, or to those who consider the body the same as the self.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -7830,7 +7856,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
     <div class="fc-translation" data-sec="translation">While mother Yaśodā was very busy with household affairs, the Supreme Lord, Kṛṣṇa, observed twin trees known as yamala-arjuna, which in a former millennium had been the demigod sons of Kuvera.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -8102,7 +8127,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
     </section>
 
     <div class="fc-translation" data-sec="translation">In their former birth, these two sons, known as Nalakūvara and Maṇigrīva, were extremely opulent and fortunate. But because of pride and false prestige, they did not care about anyone, and thus Nārada Muni cursed them to become trees.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>

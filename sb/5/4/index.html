@@ -25,19 +25,25 @@
     <link rel="icon" href="../../../assets/icons/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="../../../assets/icons/icon.svg">
     <link rel="stylesheet" href="../../../assets/css/site.css">
+    <link rel="alternate" hreflang="te-IN" href="../../../te/sb/5/4/">
+    <link rel="alternate" hreflang="x-default" href="../../../">
     <script>window.FC_TO_ROOT = "../../../";</script>
     <script src="../../../assets/js/toggle.js"></script>
 </head>
 <body class="has-sidebar" data-chapter="4">
 <header class="fc-site-header">
     <button type="button" class="fc-mobile-trigger fc-mobile-trigger-left" data-overlay="left" aria-label="Open settings drawer">⚙</button>
-<a class="fc-brand" href="../../../">FolioCorpus<span class="fc-sub">Śrīmad-Bhāgavatam</span></a>
+    <a class="fc-brand" href="../../../">FolioCorpus<span class="fc-sub">Bhagavad-gītā</span></a>
     <nav class="fc-site-nav">
         <a href="../../../">Home</a>
         <a href="../../../bg/">Bhagavad-gītā</a>
         <a href="../../../sb/">Śrīmad-Bhāgavatam</a>
         <a href="../../../search/" title="Search across all integrated works">🔍 Search</a>
         <button type="button" id="fc-random-verse" class="fc-nav-btn" title="Jump to a random verse">🎲 Random</button>
+        <span class="fc-lang-switch" aria-label="Script">
+            <a class="active" href="#" title="Devanāgarī edition">EN</a>
+            <a class="" href="../../../te/sb/5/4/" title="Telugu lipi edition">తె</a>
+        </span>
     </nav>
     <button type="button" class="fc-mobile-trigger fc-mobile-trigger-right" data-overlay="right" aria-label="Open chapter index drawer">📚</button>
 </header>
@@ -46,8 +52,8 @@
     <button class="fc-sb-collapse" type="button" data-sb="left" title="Collapse left sidebar" aria-label="Collapse"></button>
 
     <div class="fc-sb-body">
-        <details class="fc-sb-section" data-sbsec="reading" open>
-            <summary class="fc-sb-title">Reading</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Reading</div>
             <div class="fc-sb-sub">Theme</div>
             <div class="fc-segmented" data-setting="theme">
                 <button type="button" data-val="light">Light</button>
@@ -73,10 +79,10 @@
                 <button type="button" data-val="single">Single</button>
                 <button type="button" data-val="side">Side-by-side</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="display" open>
-            <summary class="fc-sb-title">Display</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Display</div>
             <div class="fc-sb-grid">
                 <label><input type="checkbox" data-section="devanagari" checked> Devanāgarī</label>
                 <label><input type="checkbox" data-section="iast" checked> IAST transliteration</label>
@@ -99,10 +105,33 @@
                 <button type="button" data-action="expand-all">Expand all</button>
                 <button type="button" data-action="collapse-all">Collapse all</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="tools" open>
-            <summary class="fc-sb-title">Tools</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Find your starting point</div>
+            <div class="fc-persona-links">
+                <a class="fc-persona-link" href="../../../daily/">🌅 Daily (one value a week)</a>
+                <a class="fc-persona-link" href="../../../householder/">🏠 Householder (family & work)</a>
+                <a class="fc-persona-link" href="../../../parenting/">👨‍👩‍👧 Parenting (stories for kids)</a>
+                <a class="fc-persona-link" href="../../../themes/">📚 All themes</a>
+                <a class="fc-persona-link" href="../../../values/" style="background:#F0F6F2;border-left-color:#1F4632;">ॐ Vedic Value System ↗</a>
+                <a class="fc-persona-link" href="../../../vidya/" style="background:#FBF6E4;border-left-color:#C8860B;">📚 Vidyā Karaṇa (kids, multi-lang) ↗</a>
+            </div>
+        </div>
+
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Audience</div>
+            <div class="fc-audience-filter">
+                <label><input type="radio" name="fc-audience" value="all" checked> All levels</label>
+                <label><input type="radio" name="fc-audience" value="primary"> Primary (children)</label>
+                <label><input type="radio" name="fc-audience" value="middle"> Middle (teens)</label>
+                <label><input type="radio" name="fc-audience" value="senior"> Senior (adults)</label>
+                <label><input type="radio" name="fc-audience" value="college"> College / scholar</label>
+            </div>
+        </div>
+
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Tools</div>
             <div class="fc-sb-tools">
                 <button type="button" id="fc-presentation-toggle" class="fc-tool-btn"><span>🖥 Presentation</span><kbd class="fc-kbd">F</kbd></button>
                 <button type="button" id="fc-pen-toggle" class="fc-tool-btn"><span>✏️ Pen mode</span><kbd class="fc-kbd">P</kbd></button>
@@ -117,10 +146,26 @@
                 <button type="button" id="fc-clear-highlights" class="fc-tool-btn">🩷 Clear highlights (page)</button>
                 <button type="button" id="fc-notes-modal-open" class="fc-tool-btn">📓 My annotations</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="progress" id="fc-progress-section" open>
-            <summary class="fc-sb-title">Progress</summary>
+        <div class="fc-sb-section" id="fc-tts-controls" hidden>
+            <div class="fc-sb-title">
+                Read-aloud
+                <label class="fc-tts-master">
+                    <input type="checkbox" id="fc-tts-enabled" checked>
+                    <span class="fc-tts-master-label">On</span>
+                </label>
+            </div>
+            <div class="fc-tts-inner">
+                <div class="fc-sb-sub">Voice</div>
+                <select id="fc-tts-voice" class="fc-tts-select" aria-label="TTS voice"></select>
+                <div class="fc-sb-sub">Rate <span class="fc-tts-rate-val">1.0×</span></div>
+                <input type="range" id="fc-tts-rate" min="0.5" max="2" step="0.1" value="1" class="fc-tts-rate" aria-label="Reading rate">
+            </div>
+        </div>
+
+        <div class="fc-sb-section" id="fc-progress-section">
+            <div class="fc-sb-title">Progress</div>
             <div class="fc-progress-row">
                 <span class="fc-progress-num" id="fc-progress-num">0</span>
                 <span class="fc-progress-divider">/</span>
@@ -135,29 +180,29 @@
                 <span class="fc-progress-spacer"></span>
                 <button type="button" class="fc-progress-reset" id="fc-progress-reset" title="Reset progress">↺</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="bookmarks" open>
-            <summary class="fc-sb-title">Bookmarks <span class="fc-sb-count" id="fc-bookmarks-count">0</span></summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Bookmarks <span class="fc-sb-count" id="fc-bookmarks-count">0</span></div>
             <ul class="fc-bookmark-list" id="fc-bookmarks-list">
                 <li class="fc-sb-empty">No bookmarks yet — click ☆ on any verse.</li>
             </ul>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="notes" open>
-            <summary class="fc-sb-title">Notes <span class="fc-sb-count" id="fc-notes-count">0</span></summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Notes <span class="fc-sb-count" id="fc-notes-count">0</span></div>
             <ul class="fc-bookmark-list" id="fc-notes-list">
                 <li class="fc-sb-empty">No notes yet — open any verse and write in the 📝 block.</li>
             </ul>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="export">
-            <summary class="fc-sb-title">Export</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Export</div>
             <div class="fc-sb-tools">
                 <button type="button" id="fc-export-md" class="fc-tool-btn">📥 Download Markdown</button>
                 <button type="button" id="fc-export-json" class="fc-tool-btn">💾 Download JSON backup</button>
             </div>
-        </details>
+        </div>
     </div>
 </aside>    <main class="fc-container">
 <nav class="fc-breadcrumbs">
@@ -175,7 +220,7 @@
         <h1 class="fc-verse-heading">5.4 · The Characteristics of Ṛṣabhadeva, the Supreme Personality of Godhead</h1>
         <span class="fc-ribbon-meta">
             18 verses
- · <a class="fc-ribbon-link" href="class-prep/">🖨 Class prep</a>        </span>
+        </span>
         <input type="search" class="fc-search" id="fc-search" placeholder="🔍 Search in this chapter" aria-label="Search verses in this chapter">
         <span class="fc-ribbon-current" id="fc-ribbon-current" aria-live="polite"></span>
     </div>
@@ -536,7 +581,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <div class="fc-translation" data-sec="translation">Śrī Śukadeva Gosvāmī said: As soon as the Lord was born as the son of Mahārāja Nābhi, He manifested symptoms of the Supreme Lord, such as marks on the bottoms of His feet [the flag, thunderbolt, etc.]. This son was equal to everyone and very peaceful. He could control His senses and His mind, and, possessing all opulence, He did not hanker for material enjoyment. Endowed with all these attributes, the son of Mahārāja Nābhi became more powerful day after day. Due to this, the citizens, learned brāhmaṇas, demigods and ministers wanted Ṛṣabhadeva to be appointed ruler of the earth.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -605,18 +649,6 @@ The Fourth Chapter describes how Ṛṣabhadeva produced a hundred sons headed b
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">A true incarnation shows real symptoms: equanimity, sense control, no thirst for enjoyment, and all opulences naturally present. In an age of self-styled gurus, knowing the genuine signs protects us from cheap imitations.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Whom have you been trusting as spiritual authority, and what genuine qualities can you actually observe in them?</li><li>What standards of authenticity do you apply, and where might you have lowered them out of convenience?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -838,7 +870,6 @@ The Fourth Chapter describes how Ṛṣabhadeva produced a hundred sons headed b
 
     <div class="fc-translation" data-sec="translation">When the son of Mahārāja Nābhi became visible, He evinced all good qualities described by the great poets — namely, a well-built body with all the symptoms of the Godhead, prowess, strength, beauty, name, fame, influence and enthusiasm. When the father, Mahārāja Nābhi, saw all these qualities, he thought his son to be the best of human beings or the supreme being. Therefore he gave Him the name Ṛṣabha.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -877,18 +908,6 @@ The word varṣmaṇā (body) is modified by varīyaṣa and bṛhad-ślokena. V
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">When all six opulences — wealth, strength, knowledge, beauty, fame, renunciation — gather in one person, that is the supreme being. We notice these qualities partially in many places, but only fully in the Lord.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where have you settled for partial greatness in something or someone, when fullness is available in the Lord?</li><li>Which of these six opulences are you most easily impressed by, and is it pulling you toward the Lord or away?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -1101,7 +1120,6 @@ The word varṣmaṇā (body) is modified by varīyaṣa and bṛhad-ślokena. V
 
     <div class="fc-translation" data-sec="translation">Indra, the King of heaven, who is very materially opulent, became envious of King Ṛṣabhadeva. Consequently he stopped pouring water on the planet known as Bhārata-varṣa. At that time the Supreme Lord, Ṛṣabhadeva, the master of all mystic power, understood King Indra’s purpose and smiled a little. Then, by His own prowess, through yoga-māyā [His internal potency], He profusely poured water upon His own place, which was known as Ajanābha.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1165,18 +1183,6 @@ The country was called Ajanābha after Ṛṣabhadeva (aja) and his father King 
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">When the world&#39;s powers withhold their gifts out of envy, the Lord supplies what we need from His own internal potency. Real security never depended on the Indras of this world; it always rested in Kṛṣṇa.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What &#39;rain&#39; have you been begging from someone who is currently withholding it out of envy?</li><li>How could you let the Lord become your supply line instead of staying anxious about that human source?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -1461,7 +1467,6 @@ The country was called Ajanābha after Ṛṣabhadeva (aja) and his father King 
 
     <div class="fc-translation" data-sec="translation">Due to getting a perfect son according to his desire, King Nābhi was always overwhelmed with transcendental bliss and was very affectionate to his son. It was with ecstasy and a faltering voice that he addressed Him, “My dear son, my darling.” This mentality was brought about by yoga-māyā, whereby he accepted the Supreme Lord, the supreme father, as his own son. Out of His supreme good will, the Lord became his son and dealt with everyone as if He were an ordinary human being. Thus King Nābhi began to raise his transcendental son with great affection, and he was overwhelmed with transcendental bliss, joy and devotion.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1515,18 +1520,6 @@ Avaruddhya means attaining.  He thought of the Lord as his son (māyā-vilasita-
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Sometimes the Lord lets His own devotees relate to Him as parent, child, or friend — this &#39;illusion&#39; is the very fabric of intimate love. Without it, no closeness is possible; with it, even the Supreme becomes touchable.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>In what mood do you actually relate to the Lord — distant majesty, or some intimate role you have allowed yourself to inhabit?</li><li>What relational role with Him could you let yourself enter more fully?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -1793,7 +1786,6 @@ Avaruddhya means attaining.  He thought of the Lord as his son (māyā-vilasita-
 
     <div class="fc-translation" data-sec="translation">King Nābhi understood that his son, Ṛṣabhadeva, was very popular among the citizens and among government officers and ministers. Understanding the popularity of his son, Mahārāja Nābhi enthroned Him as the emperor of the world to give protection to the general populace in terms of the Vedic religious system. To do this, he entrusted Him into the hands of learned brāhmaṇas, who would guide Him in administrating the government. Then Mahārāja Nābhi and his wife, Merudevī, went to Badarikāśrama in the Himālaya Mountains, where the King engaged Himself very expertly in austerities and penances with great jubilation. In full samādhi he worshiped the Supreme Personality of Godhead, Nara-Nārāyaṇa, who is Kṛṣṇa in His plenary expansion. By doing so, in course of time Mahārāja Nābhi was elevated to the spiritual world known as Vaikuṇṭha.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1863,18 +1855,6 @@ Avaruddhya means attaining.  He thought of the Lord as his son (māyā-vilasita-
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Leadership at its best is shared with learned advisors, not hoarded. Nābhi placed his son under the brāhmaṇas&#39; guidance before any throne. Even great talent needs wise voices around it to flourish.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What wise voices are you currently shutting out of your decisions because you trust your own talent too much?</li><li>Whom are you raising up, and have you placed them under genuine spiritual guidance?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -2129,7 +2109,6 @@ Avaruddhya means attaining.  He thought of the Lord as his son (māyā-vilasita-
 
     <div class="fc-translation" data-sec="translation">O Mahārāja Parīkṣit, to glorify Mahārāja Nābhi the old sages composed two verses. One of them is this: “Who can attain the perfection of Mahārāja Nābhi? Who can attain his activities? Because of his devotional service, the Supreme Personality of Godhead agreed to become his son.”</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2228,18 +2207,6 @@ Avaruddhya means attaining.  He thought of the Lord as his son (māyā-vilasita-
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Work done purely for the Lord&#39;s satisfaction transcends the modes; everything else, even good work, leaves karmic residue. Purity of motive is what makes activity &#39;pure,&#39; not the activity itself.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which of today&#39;s activities can you genuinely say are aimed only at the Lord&#39;s satisfaction?</li><li>Where is your work picking up karmic residue you have not noticed?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -2406,7 +2373,6 @@ Avaruddhya means attaining.  He thought of the Lord as his son (māyā-vilasita-
 
     <div class="fc-translation" data-sec="translation">[The second prayer is this.] “Who is a better worshiper of brāhmaṇas than Mahārāja Nābhi? Because he worshiped the qualified brāhmaṇas to their full satisfaction, the brāhmaṇas, by their brahminical prowess, showed Mahārāja Nābhi the Supreme Personality of Godhead, Nārāyaṇa, in person.”</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2482,18 +2448,6 @@ The brāhmaṇas were pleased by his donations and other acts so that auspicious
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Honoring qualified brāhmaṇas and devotees draws the Lord Himself near. Reverence for those who truly know the Lord is a shortcut to the Lord; disrespect for them closes a door we did not know we had open.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Whom in your life are you under-honoring whose connection with the Lord deserves more reverence?</li><li>What concrete act of honoring a qualified devotee could you offer this week?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -2787,7 +2741,6 @@ The brāhmaṇas were pleased by his donations and other acts so that auspicious
 
     <div class="fc-translation" data-sec="translation">After Nābhi Mahārāja departed for Badarikāśrama, the Supreme Lord, Ṛṣabhadeva, understood that His kingdom was His field of activities. He therefore showed Himself as an example and taught the duties of a householder by first accepting brahmacarya under the direction of spiritual masters. He also went to live at the spiritual masters’ place, gurukula. After His education was finished, He gave gifts (guru-dakṣiṇā) to His spiritual masters and then accepted the life of a householder. He took a wife named Jayantī and begot one hundred sons who were as powerful and qualified as He Himself. His wife Jayantī had been offered to Him by Indra, the King of heaven. Ṛṣabhadeva and Jayantī performed householder life in an exemplary way, carrying out ritualistic activities ordained by the śruti and smṛti śāstra.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2858,18 +2811,6 @@ Anumanyamānaḥ means knowing.  He showed others that they should accept guruku
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Even the Lord submits Himself to gurukula and education when He descends, to model how it should be done. If the Supreme accepts disciplined study under teachers, no one else has a real excuse to bypass it.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What stage of spiritual education have you skipped because you considered it beneath you?</li><li>Whose feet have you sat at long enough to actually be shaped by their guidance?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -3037,7 +2978,6 @@ Anumanyamānaḥ means knowing.  He showed others that they should accept guruku
 
     <div class="fc-translation" data-sec="translation">Of Ṛṣabhadeva’s one hundred sons, the eldest, named Bharata, was a great, exalted devotee qualified with the best attributes. In his honor, this planet has become known as Bhārata-varṣa.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3106,18 +3046,6 @@ Anumanyamānaḥ means knowing.  He showed others that they should accept guruku
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">To be born in a land made holy by devotees is itself a great gift. Bhārata-bhūmi exists not for indulgence but for spiritual seriousness; with that birth comes responsibility, not entitlement.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What inherited spiritual advantages — geographic, familial, cultural — are you currently taking for granted?</li><li>What responsibility comes with the access you already have, and how are you fulfilling it?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -3304,7 +3232,6 @@ Anumanyamānaḥ means knowing.  He showed others that they should accept guruku
     <div class="fc-translation" data-sec="translation">Following Bharata, there were ninety-nine other sons. Among these were nine elderly sons, named Kuśāvarta, Ilāvarta, Brahmāvarta, Malaya, Ketu, Bhadrasena, Indraspṛk, Vidarbha and Kīkaṭa.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -3365,18 +3292,6 @@ Younger than Bharata (tam anu), were nine sons older than the others (pradhānā
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Spiritual lineages branch into many roles — rulers, teachers, mystics, ordinary householders. There is no single &#39;right&#39; position; the right position is the one you can fulfill with integrity.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Have you been envying someone else&#39;s role when your own assigned one would suit you better?</li><li>What position has the Lord clearly placed you in, and are you honoring it fully?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -3641,7 +3556,6 @@ Younger than Bharata (tam anu), were nine sons older than the others (pradhānā
     <div class="fc-translation" data-sec="translation">In addition to these sons were Kavi, Havi, Antarikṣa, Prabuddha, Pippalāyana, Āvirhotra, Drumila, Camasa and Karabhājana. These were all very exalted, advanced devotees and authorized preachers of Śrīmad-Bhāgavatam. These devotees were glorified due to their strong devotion to Vāsudeva, the Supreme Personality of Godhead. Therefore they were very exalted. To satisfy the mind perfectly, I [Śukadeva Gosvāmī] shall hereafter describe the characteristics of these nine devotees when I discuss the conversation between Nārada and Vasudeva.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -3662,18 +3576,6 @@ Upariṣṭāt means later, in the Eleventh Canto.</div>
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Of all the offices a soul can hold, being an authorized preacher of the Bhāgavatam — speaking Kṛṣṇa&#39;s glories to others — is among the most exalted. The nine Yogendras show that devotional teaching is itself a destination, not a step on the way to one.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Whose hearing of Kṛṣṇa&#39;s name and pastimes is currently in your power to influence?</li><li>Where have you stayed silent about what you know, when even a small word would have helped someone?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -3823,7 +3725,6 @@ Upariṣṭāt means later, in the Eleventh Canto.</div>
 
     <div class="fc-translation" data-sec="translation">In addition to these nineteen sons mentioned above, there were eighty-one younger ones, all born of Ṛṣabhadeva and Jayantī. According to the order of their father, they became well-cultured, well-behaved, very pure in their activities and expert in Vedic knowledge and the performance of Vedic rituals. Thus they all became perfectly qualified brāhmaṇas.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3852,18 +3753,6 @@ Mahāśālināḥ means very humble or well-behaved.</div>
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Quality and work, not birth, determine real social position. Even the sons of a kṣatriya king became brāhmaṇas through training and character. Where you were born is the start; where you arrive depends on what you cultivate.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What &#39;birth labels&#39; (background, family, profession) are you still hiding behind instead of growing past?</li><li>Which qualities are you actually cultivating that would justify a higher position than your background granted?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -4238,7 +4127,6 @@ Mahāśālināḥ means very humble or well-behaved.</div>
 
     <div class="fc-translation" data-sec="translation">Being an incarnation of the Supreme Personality of Godhead, Lord Ṛṣabhadeva was fully independent because His form was spiritual, eternal and full of transcendental bliss. He eternally had nothing to do with the four principles of material misery [birth, death, old age and disease]. Nor was He materially attached. He was always equipoised, and He saw everyone on the same level. He was unhappy to see others unhappy, and He was the well-wisher of all living entities. Although He was a perfect personality, the Supreme Lord and controller of all, He nonetheless acted as if He were an ordinary conditioned soul. Therefore He strictly followed the principles of varṇāśrama-dharma and acted accordingly. In due course of time, the principles of varṇāśrama-dharma had become neglected; therefore through His personal characteristics and behavior, He taught the ignorant public how to perform duties within the varṇāśrama-dharma. In this way He regulated the general populace in householder life, enabling them to develop religion and economic well-being and to attain reputations, sons and daughters, material pleasure and finally eternal life. By His instructions, He showed how people could remain householders and at the same time become perfect by following the principles of varṇāśrama-dharma.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -4304,18 +4192,6 @@ Viparītvat means like the jīva, who is not independent.  The accusative case s
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Though Ṛṣabhadeva had no material attachment Himself, He felt others&#39; unhappiness as His own and worked to relieve it. Real spiritual elevation does not produce distance from suffering; it produces deeper compassion for it.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Whose suffering have you stopped feeling because you&#39;ve become &#39;too spiritual&#39; to be moved by it?</li><li>How could your inner peace be put to work for someone else&#39;s relief today?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -4420,7 +4296,6 @@ Viparītvat means like the jīva, who is not independent.  The accusative case s
 
     <div class="fc-translation" data-sec="translation">Whatever action is performed by a great man, common men follow.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -4499,18 +4374,6 @@ Viparītvat means like the jīva, who is not independent.  The accusative case s
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Whatever a great person does, the masses imitate. This makes leadership a heavy responsibility: every casual habit becomes a template. Live as if you were already being watched, because you are.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which of your habits, if multiplied across everyone who admires you, would you be proud of?</li><li>Where would you tighten your own conduct if you fully accepted that others are copying it?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -4660,7 +4523,6 @@ Viparītvat means like the jīva, who is not independent.  The accusative case s
 
     <div class="fc-translation" data-sec="translation">Although Lord Ṛṣabhadeva knew everything about confidential Vedic knowledge, which includes information about all types of occupational duties, He still maintained Himself as a kṣatriya and followed the instructions of the brāhmaṇas as they related to mind control, sense control, tolerance and so forth. Thus He ruled the people according to the system of varṇāśrama-dharma, which enjoins that the brāhmaṇas instruct the kṣatriyas and the kṣatriyas administer to the state through the vaiśyas and śūdras.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -4729,18 +4591,6 @@ Though he knew the secret explained in the Vedas which included all, he taught t
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Even one who knows everything still defers to wise counsel, because order depends on the visible practice of deference. Pulling rank because you can know-better is itself a failure of leadership.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where are you &#39;know-bettering&#39; someone whose role is to advise you?</li><li>What does humble visible deference look like in your current sphere of authority?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -4917,7 +4767,6 @@ Though he knew the secret explained in the Vedas which included all, he taught t
 
     <div class="fc-translation" data-sec="translation">Lord Ṛṣabhadeva performed all kinds of sacrifices one hundred times according to the instructions of the Vedic literatures. Thus He satisfied Lord Viṣṇu in every respect. All the rituals were enriched by first-class ingredients. They were executed in holy places according to the proper time by priests who were all young and faithful. In this way Lord Viṣṇu was worshiped, and the prasāda was offered to all the demigods. Thus the functions and festivals were all successful.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -4988,18 +4837,6 @@ He worshipped by sacrifices filled with (upacita) abundant ingredients etc. Age 
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Sacrifice with first-class ingredients, in holy places, at proper times, performed by young and faithful priests, is what truly pleases the Lord. Excellence in spiritual practice is not optional decoration; it is its own form of devotion.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where have you let the quality of your spiritual practice quietly slip?</li><li>What single &#39;ingredient&#39; in your devotional life could you upgrade from second-rate to first-rate this month?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -5248,7 +5085,6 @@ He worshipped by sacrifices filled with (upacita) abundant ingredients etc. Age 
 
     <div class="fc-translation" data-sec="translation">No one likes to possess anything that is like a will-o’-the-wisp or a flower in the sky, for everyone knows very well that such things do not exist. When Lord Ṛṣabhadeva ruled this planet of Bhāratavarṣa, even common men did not want to ask for anything, at any time or by any means. No one ever asks for a will-o’-the-wisp. In other words, everyone was completely satisfied, and therefore there was no chance of anyone’s asking for anything. The people were absorbed in great affection for the King. Since this affection was always expanding, they were not inclined to ask for anything.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -5297,18 +5133,6 @@ While the planet was protected by Ṛṣabhadeva, no one had any desire for anyt
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Under truly good leadership, people stop chasing imaginary improvements because real needs are met. Satisfaction, not stimulation, is the mark of a healthy society — and of a healthy soul.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What &#39;flower in the sky&#39; are you still chasing because you have not stopped to notice you are already supplied?</li><li>Where would contentment, rather than more pursuit, actually serve your spiritual life better?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -5539,7 +5363,6 @@ While the planet was protected by Ṛṣabhadeva, no one had any desire for anyt
 
     <div class="fc-translation" data-sec="translation">Once while touring the world, Lord Ṛṣabhadeva, the Supreme Lord, reached a place known as Brahmāvarta. There was a great conference of learned brāhmaṇas at that place, and all the King’s sons attentively heard the instructions of the brāhmaṇas there. At that assembly, within the hearing of the citizens, Ṛṣabhadeva instructed His sons, although they were already very well-behaved, devoted and qualified. He instructed them so that in the future they could rule the world very perfectly. Thus he spoke as follows.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -5572,18 +5395,6 @@ Chapter Five
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Even well-behaved children deserve instruction — and instructing them in front of the citizens lets everyone benefit. Public family teaching is itself a form of social service.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What instruction are you withholding from those close to you because you assume they already know?</li><li>How might openly instructing your family also help others overhearing you?</li></ul>
-
-
-
-
-
-    </section>
 
 
 

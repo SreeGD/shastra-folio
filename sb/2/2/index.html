@@ -25,19 +25,25 @@
     <link rel="icon" href="../../../assets/icons/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="../../../assets/icons/icon.svg">
     <link rel="stylesheet" href="../../../assets/css/site.css">
+    <link rel="alternate" hreflang="te-IN" href="../../../te/sb/2/2/">
+    <link rel="alternate" hreflang="x-default" href="../../../">
     <script>window.FC_TO_ROOT = "../../../";</script>
     <script src="../../../assets/js/toggle.js"></script>
 </head>
 <body class="has-sidebar" data-chapter="2">
 <header class="fc-site-header">
     <button type="button" class="fc-mobile-trigger fc-mobile-trigger-left" data-overlay="left" aria-label="Open settings drawer">⚙</button>
-<a class="fc-brand" href="../../../">FolioCorpus<span class="fc-sub">Śrīmad-Bhāgavatam</span></a>
+    <a class="fc-brand" href="../../../">FolioCorpus<span class="fc-sub">Bhagavad-gītā</span></a>
     <nav class="fc-site-nav">
         <a href="../../../">Home</a>
         <a href="../../../bg/">Bhagavad-gītā</a>
         <a href="../../../sb/">Śrīmad-Bhāgavatam</a>
         <a href="../../../search/" title="Search across all integrated works">🔍 Search</a>
         <button type="button" id="fc-random-verse" class="fc-nav-btn" title="Jump to a random verse">🎲 Random</button>
+        <span class="fc-lang-switch" aria-label="Script">
+            <a class="active" href="#" title="Devanāgarī edition">EN</a>
+            <a class="" href="../../../te/sb/2/2/" title="Telugu lipi edition">తె</a>
+        </span>
     </nav>
     <button type="button" class="fc-mobile-trigger fc-mobile-trigger-right" data-overlay="right" aria-label="Open chapter index drawer">📚</button>
 </header>
@@ -46,8 +52,8 @@
     <button class="fc-sb-collapse" type="button" data-sb="left" title="Collapse left sidebar" aria-label="Collapse"></button>
 
     <div class="fc-sb-body">
-        <details class="fc-sb-section" data-sbsec="reading" open>
-            <summary class="fc-sb-title">Reading</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Reading</div>
             <div class="fc-sb-sub">Theme</div>
             <div class="fc-segmented" data-setting="theme">
                 <button type="button" data-val="light">Light</button>
@@ -73,10 +79,10 @@
                 <button type="button" data-val="single">Single</button>
                 <button type="button" data-val="side">Side-by-side</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="display" open>
-            <summary class="fc-sb-title">Display</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Display</div>
             <div class="fc-sb-grid">
                 <label><input type="checkbox" data-section="devanagari" checked> Devanāgarī</label>
                 <label><input type="checkbox" data-section="iast" checked> IAST transliteration</label>
@@ -99,10 +105,33 @@
                 <button type="button" data-action="expand-all">Expand all</button>
                 <button type="button" data-action="collapse-all">Collapse all</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="tools" open>
-            <summary class="fc-sb-title">Tools</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Find your starting point</div>
+            <div class="fc-persona-links">
+                <a class="fc-persona-link" href="../../../daily/">🌅 Daily (one value a week)</a>
+                <a class="fc-persona-link" href="../../../householder/">🏠 Householder (family & work)</a>
+                <a class="fc-persona-link" href="../../../parenting/">👨‍👩‍👧 Parenting (stories for kids)</a>
+                <a class="fc-persona-link" href="../../../themes/">📚 All themes</a>
+                <a class="fc-persona-link" href="../../../values/" style="background:#F0F6F2;border-left-color:#1F4632;">ॐ Vedic Value System ↗</a>
+                <a class="fc-persona-link" href="../../../vidya/" style="background:#FBF6E4;border-left-color:#C8860B;">📚 Vidyā Karaṇa (kids, multi-lang) ↗</a>
+            </div>
+        </div>
+
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Audience</div>
+            <div class="fc-audience-filter">
+                <label><input type="radio" name="fc-audience" value="all" checked> All levels</label>
+                <label><input type="radio" name="fc-audience" value="primary"> Primary (children)</label>
+                <label><input type="radio" name="fc-audience" value="middle"> Middle (teens)</label>
+                <label><input type="radio" name="fc-audience" value="senior"> Senior (adults)</label>
+                <label><input type="radio" name="fc-audience" value="college"> College / scholar</label>
+            </div>
+        </div>
+
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Tools</div>
             <div class="fc-sb-tools">
                 <button type="button" id="fc-presentation-toggle" class="fc-tool-btn"><span>🖥 Presentation</span><kbd class="fc-kbd">F</kbd></button>
                 <button type="button" id="fc-pen-toggle" class="fc-tool-btn"><span>✏️ Pen mode</span><kbd class="fc-kbd">P</kbd></button>
@@ -117,10 +146,26 @@
                 <button type="button" id="fc-clear-highlights" class="fc-tool-btn">🩷 Clear highlights (page)</button>
                 <button type="button" id="fc-notes-modal-open" class="fc-tool-btn">📓 My annotations</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="progress" id="fc-progress-section" open>
-            <summary class="fc-sb-title">Progress</summary>
+        <div class="fc-sb-section" id="fc-tts-controls" hidden>
+            <div class="fc-sb-title">
+                Read-aloud
+                <label class="fc-tts-master">
+                    <input type="checkbox" id="fc-tts-enabled" checked>
+                    <span class="fc-tts-master-label">On</span>
+                </label>
+            </div>
+            <div class="fc-tts-inner">
+                <div class="fc-sb-sub">Voice</div>
+                <select id="fc-tts-voice" class="fc-tts-select" aria-label="TTS voice"></select>
+                <div class="fc-sb-sub">Rate <span class="fc-tts-rate-val">1.0×</span></div>
+                <input type="range" id="fc-tts-rate" min="0.5" max="2" step="0.1" value="1" class="fc-tts-rate" aria-label="Reading rate">
+            </div>
+        </div>
+
+        <div class="fc-sb-section" id="fc-progress-section">
+            <div class="fc-sb-title">Progress</div>
             <div class="fc-progress-row">
                 <span class="fc-progress-num" id="fc-progress-num">0</span>
                 <span class="fc-progress-divider">/</span>
@@ -135,29 +180,29 @@
                 <span class="fc-progress-spacer"></span>
                 <button type="button" class="fc-progress-reset" id="fc-progress-reset" title="Reset progress">↺</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="bookmarks" open>
-            <summary class="fc-sb-title">Bookmarks <span class="fc-sb-count" id="fc-bookmarks-count">0</span></summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Bookmarks <span class="fc-sb-count" id="fc-bookmarks-count">0</span></div>
             <ul class="fc-bookmark-list" id="fc-bookmarks-list">
                 <li class="fc-sb-empty">No bookmarks yet — click ☆ on any verse.</li>
             </ul>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="notes" open>
-            <summary class="fc-sb-title">Notes <span class="fc-sb-count" id="fc-notes-count">0</span></summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Notes <span class="fc-sb-count" id="fc-notes-count">0</span></div>
             <ul class="fc-bookmark-list" id="fc-notes-list">
                 <li class="fc-sb-empty">No notes yet — open any verse and write in the 📝 block.</li>
             </ul>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="export">
-            <summary class="fc-sb-title">Export</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Export</div>
             <div class="fc-sb-tools">
                 <button type="button" id="fc-export-md" class="fc-tool-btn">📥 Download Markdown</button>
                 <button type="button" id="fc-export-json" class="fc-tool-btn">💾 Download JSON backup</button>
             </div>
-        </details>
+        </div>
     </div>
 </aside>    <main class="fc-container">
 <nav class="fc-breadcrumbs">
@@ -175,7 +220,7 @@
         <h1 class="fc-verse-heading">2.2 · The Lord in the Heart</h1>
         <span class="fc-ribbon-meta">
             37 verses
- · <a class="fc-ribbon-link" href="class-prep/">🖨 Class prep</a>        </span>
+        </span>
         <input type="search" class="fc-search" id="fc-search" placeholder="🔍 Search in this chapter" aria-label="Search verses in this chapter">
         <span class="fc-ribbon-current" id="fc-ribbon-current" aria-live="polite"></span>
     </div>
@@ -514,7 +559,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <div class="fc-translation" data-sec="translation">Śrī Śukadeva Gosvāmī said: Formerly, prior to the manifestation of the cosmos, Lord Brahmā, by meditating on the virāṭ-rūpa, regained his lost consciousness by appeasing the Lord. Thus he was able to rebuild the creation as it was before.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -701,18 +745,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Even Brahmā forgot — and recovered consciousness by meditating on the universal form. Forgetfulness of our spiritual identity is not unique to us; the medicine is the same in every age: turning attention back to the Lord.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where in my life do I sense I have forgotten something essential about who I am?</li><li>What simple act of meditation could begin to restore that lost consciousness this week?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -946,7 +978,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <div class="fc-translation" data-sec="translation">The way of presentation of the Vedic sounds is so bewildering that it directs the intelligence of the people to meaningless things like the heavenly kingdoms. The conditioned souls hover in dreams of such heavenly illusory pleasures, but actually they do not relish any tangible happiness in such places.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1092,18 +1123,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Scriptural promises of heavenly enjoyment can pull the intelligence into dreams that deliver no real happiness. Heaven is just another waiting room in the cycle — the actual goal is to step off the wheel altogether.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What &#39;heaven&#39; am I quietly chasing — career peak, perfect retirement, life upgrade — that may be just another dream?</li><li>How would my priorities shift if I stopped equating elevation with liberation?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -1328,7 +1347,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <div class="fc-translation" data-sec="translation">For this reason the enlightened person should endeavor only for the minimum necessities of life while in the world of names. He should be intelligently fixed and never endeavor for unwanted things, being competent to perceive practically that all such endeavors are merely hard labor for nothing.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1470,18 +1488,6 @@ jīvasya tattva-jijṣāsā nārtho yaś ceha karmabhiḥ ||</p>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The enlightened person works only for the minimum needs and refuses to chase the unwanted. Most of our hardship is self-inflicted — labor for things that, once obtained, do not give what we hoped.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What &#39;unwanted&#39; things am I currently working hard to acquire or maintain?</li><li>What would my life look like if I reduced effort to the minimum needed and gave the rest to inner work?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -1742,7 +1748,6 @@ jīvasya tattva-jijṣāsā nārtho yaś ceha karmabhiḥ ||</p>
 
     <div class="fc-translation" data-sec="translation">When there are ample earthly flats to lie on, what is the necessity of cots and beds? When one can use his own arms, what is the necessity of a pillow? When one can use the palms of his hands, what is the necessity of varieties of utensils? When there is ample covering, or the skins of trees, what is the necessity of clothing?</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1828,18 +1833,6 @@ jīvasya tattva-jijṣāsā nārtho yaś ceha karmabhiḥ ||</p>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Earth for a bed, arm for a pillow, palm for a plate, bark for clothing — the verse names how little is actually required. The message is not poverty but freedom from manufactured needs.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which of my &#39;necessities&#39; would I not miss if I lost them tomorrow?</li><li>Where am I confusing comfort with requirement?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -2145,7 +2138,6 @@ jīvasya tattva-jijṣāsā nārtho yaś ceha karmabhiḥ ||</p>
 
     <div class="fc-translation" data-sec="translation">Are there no torn clothes lying on the common road? Do the trees, which exist for maintaining others, no longer give alms in charity? Do the rivers, being dried up, no longer supply water to the thirsty? Are the caves of the mountains now closed? Or above all, does the Almighty Lord not protect the fully surrendered souls? Why then do the learned sages go to flatter those who are intoxicated by hard-earned wealth?</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2281,18 +2273,6 @@ jīvasya tattva-jijṣāsā nārtho yaś ceha karmabhiḥ ||</p>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Why flatter the wealthy when nature, alms, and the Almighty Himself sustain the surrendered? Real renunciation is not begging — it is the confidence that the universe maintains those who maintain inner integrity.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where do I compromise my truth to win favor from those with money or power?</li><li>Do I actually trust that the Lord maintains the surrendered — and where does my behavior reveal otherwise?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -2535,7 +2515,6 @@ jīvasya tattva-jijṣāsā nārtho yaś ceha karmabhiḥ ||</p>
 
     <div class="fc-translation" data-sec="translation">Thus being fixed, one must render service unto the Supersoul situated in one’s own heart by His omnipotency. Because He is the Almighty Personality of Godhead, eternal and unlimited, He is the ultimate goal of life, and by worshiping Him one can end the cause of the conditioned state of existence.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2668,18 +2647,6 @@ jīvasya tattva-jijṣāsā nārtho yaś ceha karmabhiḥ ||</p>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The point of every spiritual practice is to serve the Supersoul in your own heart. He is the unlimited, eternal goal — worshipping Him ends the conditioning that keeps recycling our suffering.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Have I made contact with the Lord in my own heart, or do I keep Him at scriptural distance?</li><li>What service offered to that inner Lord could I start tomorrow morning?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -2904,7 +2871,6 @@ jīvasya tattva-jijṣāsā nārtho yaś ceha karmabhiḥ ||</p>
 
     <div class="fc-translation" data-sec="translation">Who else but the gross materialists will neglect such transcendental thought and take to the nonpermanent names only, seeing the mass of people fallen in the river of suffering as the consequence of accruing the result of their own work?</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3021,18 +2987,6 @@ jīvasya tattva-jijṣāsā nārtho yaś ceha karmabhiḥ ||</p>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Only the gross materialist looks at humanity drowning in suffering and still pursues temporary names instead of transcendent truth. Seeing the river of pain itself is meant to wake us up.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>When I look honestly at the suffering around me, does it move me toward depth or distract me into more striving?</li><li>What &#39;temporary name&#39; am I still chasing in spite of clear evidence it cannot save?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -3221,7 +3175,6 @@ jīvasya tattva-jijṣāsā nārtho yaś ceha karmabhiḥ ||</p>
 
     <div class="fc-translation" data-sec="translation">Others conceive of the Personality of Godhead residing within the body in the region of the heart and measuring only eight inches, with four hands carrying a lotus, a wheel of a chariot, a conchshell and a club respectively.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3331,18 +3284,6 @@ dyubhir hata-dhvānta-yugānta-toye</p>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The Lord resides as a four-armed form, about eight inches tall, in the heart of every being. He is not abstract or distant — He is local, personal, present, and waiting to be perceived.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Does my picture of the Supreme feel near and personal, or remote and conceptual?</li><li>How might my day feel different if I held the Lord as actually present in my heart all day?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -3559,7 +3500,6 @@ dyubhir hata-dhvānta-yugānta-toye</p>
     <div class="fc-translation" data-sec="translation">His mouth expresses His happiness. His eyes spread like the petals of a lotus, and His garments, yellowish like the saffron of a kadamba flower, are bedecked with valuable jewels. His ornaments are all made of gold, set with jewels, and He wears a glowing headdress and earrings.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -3697,18 +3637,6 @@ dyubhir hata-dhvānta-yugānta-toye</p>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The Lord&#39;s eyes are lotus petals, His garments saffron, His ornaments gold and jewels — these are not mythic embellishments but the actual shining personhood of the Supreme. Meditation is meant to rest on this real beauty.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Have I let myself imagine the Lord&#39;s personal beauty, or have I treated such descriptions as decorative?</li><li>What would change in my devotion if I trusted that His form is real, not symbolic?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -3924,7 +3852,6 @@ dyubhir hata-dhvānta-yugānta-toye</p>
 
     <div class="fc-translation" data-sec="translation">His lotus feet are placed over the whorls of the lotuslike hearts of great mystics. On His chest is the Kaustubha jewel, engraved with a beautiful calf, and there are other jewels on His shoulders. His complete torso is garlanded with fresh flowers.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -4005,18 +3932,6 @@ dyubhir hata-dhvānta-yugānta-toye</p>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">His feet rest on the lotuslike hearts of great mystics, and His chest bears the Kaustubha jewel. To meditate on Him is to recognize that everything He wears is part of His transcendental body, not imported finery.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Am I willing to offer my own heart as a place where His feet might rest?</li><li>Where am I still treating spiritual reality as material symbolism in disguise?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -4223,7 +4138,6 @@ dyubhir hata-dhvānta-yugānta-toye</p>
 
     <div class="fc-translation" data-sec="translation">He is well decorated with an ornamental wreath about His waist and rings studded with valuable jewels on His fingers. His leglets, His bangles, His oiled hair, curling with a bluish tint, and His beautiful smiling face are all very pleasing.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -4269,18 +4183,6 @@ dyubhir hata-dhvānta-yugānta-toye</p>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The Lord is the most beautiful person who exists — His ornaments, oiled curling hair, and smiling face are described to disabuse us of the idea that personality is somehow lower than impersonality.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where in my spiritual life have I quietly accepted that impersonal is &#39;higher&#39; than personal?</li><li>What changes if I trust that the Source has a smile?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -4503,7 +4405,6 @@ dyubhir hata-dhvānta-yugānta-toye</p>
 
     <div class="fc-translation" data-sec="translation">The Lord’s magnanimous pastimes and the glowing glancing of His smiling face are all indications of His extensive benedictions. One must therefore concentrate on this transcendental form of the Lord, as long as the mind can be fixed on Him by meditation.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -4566,18 +4467,6 @@ dyubhir hata-dhvānta-yugānta-toye</p>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The Lord&#39;s magnanimous pastimes and smiling glance carry vast benedictions. Concentrate on this transcendental form for as long as the mind can hold it; the longer the gaze, the deeper the gift.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>How long can I currently hold my mind on the Lord&#39;s form before it wanders — and what does that reveal?</li><li>What would daily training of that gaze look like over a month?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -4793,7 +4682,6 @@ dyubhir hata-dhvānta-yugānta-toye</p>
 
     <div class="fc-translation" data-sec="translation">The process of meditation should begin from the lotus feet of the Lord and progress to His smiling face. The meditation should be concentrated upon the lotus feet, then the calves, then the thighs, and in this way higher and higher. The more the mind becomes fixed upon the different parts of the limbs, one after another, the more the intelligence becomes purified.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -4852,18 +4740,6 @@ dyubhir hata-dhvānta-yugānta-toye</p>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Meditation moves from lotus feet upward — feet, calves, thighs, chest, finally smiling face. We don&#39;t leap to the highest pastimes; we earn them by patient attention to the lower limbs first.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Have I been jumping to advanced topics without serving the feet?</li><li>What does &#39;starting at the feet&#39; mean concretely in my own current practice?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -5079,7 +4955,6 @@ dyubhir hata-dhvānta-yugānta-toye</p>
 
     <div class="fc-translation" data-sec="translation">Unless the gross materialist develops a sense of loving service unto the Supreme Lord, the seer of both the transcendental and material worlds, he should remember or meditate upon the universal form of the Lord at the end of his prescribed duties.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -5140,18 +5015,6 @@ dyubhir hata-dhvānta-yugānta-toye</p>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">If the heart has not yet developed loving service, at least meditate on the universal form at the end of each day&#39;s duties. Some contact is far better than none, and the contact itself ripens into love.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Do I close my day with any contact with the Lord, or only with screens and sleep?</li><li>What minimum-viable evening meditation could I commit to starting tonight?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -5421,7 +5284,6 @@ dyubhir hata-dhvānta-yugānta-toye</p>
 
     <div class="fc-translation" data-sec="translation">O King, whenever the yogī desires to leave this planet of human beings, he should not be perplexed about the proper time or place, but should comfortably sit without being disturbed and, regulating the life air, should control the senses by the mind.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -5477,18 +5339,6 @@ dyubhir hata-dhvānta-yugānta-toye</p>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The yogī leaves the body not by anxious calculation of time and place but by quiet, regulated breath and mind. Real readiness is the calm that comes from years of practice, not last-minute strategy.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Am I cultivating the kind of inner steadiness that would let me leave the body without panic?</li><li>Where is my mind today most anxious about timing rather than rooted in practice?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -5704,7 +5554,6 @@ dyubhir hata-dhvānta-yugānta-toye</p>
 
     <div class="fc-translation" data-sec="translation">Thereafter, the yogī should merge his mind, by his unalloyed intelligence, into the living entity, and then merge the living entity into the Superself. And by doing this, the fully satisfied living entity becomes situated in the supreme stage of satisfaction, so that he ceases from all other activities.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -5755,18 +5604,6 @@ dyubhir hata-dhvānta-yugānta-toye</p>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The mind is folded into the soul and the soul into the Supersoul, and the living being becomes completely satisfied. We are servants of circumstance until we redirect intelligence toward the Lord — then activity ceases to feel like servitude.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What circumstances am I most a servant to right now — desire, anger, anxiety?</li><li>Where could intelligence step in to redirect those forces into service?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -6059,7 +5896,6 @@ dyubhir hata-dhvānta-yugānta-toye</p>
 
     <div class="fc-translation" data-sec="translation">In that transcendental state of labdhopaśānti, there is no supremacy of devastating time, which controls even the celestial demigods who are empowered to rule over mundane creatures. (And what to speak of the demigods themselves?) Nor is there the mode of material goodness, nor passion, nor ignorance, nor even the false ego, nor the material Causal Ocean, nor the material nature.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -6101,18 +5937,6 @@ dyubhir hata-dhvānta-yugānta-toye</p>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">In the transcendental state, time, false ego, and the modes of nature lose their grip. The devotee&#39;s fearlessness is not denial of death — it is the simple fact that he has stepped beyond what death can touch.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which of time&#39;s pressures — aging, deadlines, mortality — most rules my days?</li><li>What practice could begin loosening that grip rather than just managing the anxiety?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -6355,7 +6179,6 @@ dyubhir hata-dhvānta-yugānta-toye</p>
 
     <div class="fc-translation" data-sec="translation">The transcendentalists desire to avoid everything godless, for they know that supreme situation in which everything is related with the Supreme Lord Viṣṇu. Therefore a pure devotee who is in absolute harmony with the Lord does not create perplexities, but worships the lotus feet of the Lord at every moment, taking them into his heart.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -6417,18 +6240,6 @@ dyubhir hata-dhvānta-yugānta-toye</p>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Pure devotees don&#39;t waste energy on godless concepts or theological debates — they take the Lord&#39;s lotus feet into the heart and rest there. Harmony with the Lord makes mental complications unnecessary.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where am I creating intellectual perplexity instead of taking the simple shelter of His feet?</li><li>What debates have I outgrown — and which am I still entangled in?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -6662,7 +6473,6 @@ dyubhir hata-dhvānta-yugānta-toye</p>
 
     <div class="fc-translation" data-sec="translation">By the strength of scientific knowledge, one should be well situated in absolute realization and thus be able to extinguish all material desires. One should then give up the material body by blocking the air hole [through which stool is evacuated] with the heel of one’s foot and by lifting the life air from one place to another in the six primary places.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -6719,18 +6529,6 @@ dyubhir hata-dhvānta-yugānta-toye</p>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">True self-realization extinguishes material desires rather than coexisting with them. Anyone claiming to be Brahman while still hungry for lordship is mistaken — the real realization makes one a willing servant.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Do my &#39;spiritual realizations&#39; actually weaken my material desires, or do they sit alongside them?</li><li>Where am I still trying to lord it over nature while calling myself a devotee?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -6964,7 +6762,6 @@ dyubhir hata-dhvānta-yugānta-toye</p>
 
     <div class="fc-translation" data-sec="translation">The meditative devotee should slowly push up the life air from the navel to the heart, from there to the chest, and from there to the root of the palate. He should search out the proper places with intelligence.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -7035,18 +6832,6 @@ dyubhir hata-dhvānta-yugānta-toye</p>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The advanced practitioner moves the life-air upward through inner centers in a deliberate, intelligent way. The point isn&#39;t mechanical mystery but the willingness to direct inner energy toward higher ends.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where is my inner energy currently leaking — into worry, scrolling, fantasy?</li><li>What would &#39;pushing my energy upward&#39; look like in my ordinary day?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -7278,7 +7063,6 @@ dyubhir hata-dhvānta-yugānta-toye</p>
 
     <div class="fc-translation" data-sec="translation">Thereafter the bhakti-yogī should push the life air up between the eyebrows, and then, blocking the seven outlets of the life air, he should maintain his aim for going back home, back to Godhead. If he is completely free from all desires for material enjoyment, he should then reach the cerebral hole and give up his material connections, having gone to the Supreme.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -7340,18 +7124,6 @@ dyubhir hata-dhvānta-yugānta-toye</p>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Final liberation depends on being completely free from material desires — then the life-air reaches the cerebral hole and goes to the Supreme. Half-cooked detachment leaves us in the cycle; total surrender ends it.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What desire would I be most reluctant to relinquish at the moment of death?</li><li>What practice today could loosen that desire&#39;s grip before it has to be pried away?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -7567,7 +7339,6 @@ dyubhir hata-dhvānta-yugānta-toye</p>
 
     <div class="fc-translation" data-sec="translation">However, O King, if a yogī maintains a desire for improved material enjoyments, like transference to the topmost planet, Brahmaloka, or the achievement of the eightfold perfections, travel in outer space with the Vaihāyasas, or a situation in one of the millions of planets, then he has to take away with him the materially molded mind and senses.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -7669,18 +7440,6 @@ dyubhir hata-dhvānta-yugānta-toye</p>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">If even subtle material enjoyment is retained — a wish for Brahmaloka, mystic powers, or space travel — the yogī carries his mind and senses along into the next playground. Spiritual freedom requires letting go of every upgrade.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What subtle &#39;spiritual upgrade&#39; am I secretly hoping my practice will deliver — powers, recognition, special status?</li><li>Am I willing to drop even those for direct devotion?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -7914,7 +7673,6 @@ dyubhir hata-dhvānta-yugānta-toye</p>
 
     <div class="fc-translation" data-sec="translation">The transcendentalists are concerned with the spiritual body. As such, by the strength of their devotional service, austerities, mystic power and transcendental knowledge, their movements are unrestricted, within and beyond the material worlds. The fruitive workers, or the gross materialists, can never move in such an unrestricted manner.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -7980,18 +7738,6 @@ dyubhir hata-dhvānta-yugānta-toye</p>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Transcendentalists move freely within and beyond the material worlds by the strength of devotion, austerity, mystic power, and knowledge. The materialist&#39;s space programs cannot match the spiritualist&#39;s freedom.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where am I trying to extend reach through purely material means — money, technology, status?</li><li>What in me actually moves freely across realms, and what is still bolted down?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -8216,7 +7962,6 @@ dyubhir hata-dhvānta-yugānta-toye</p>
 
     <div class="fc-translation" data-sec="translation">O King, when such a mystic passes over the Milky Way by the illuminating Suṣumṇā to reach the highest planet, Brahmaloka, he goes first to Vaiśvānara, the planet of the deity of fire, wherein he becomes completely cleansed of all contaminations, and thereafter he still goes higher, to the circle of Śiśumāra, to relate with Lord Hari, the Personality of Godhead.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -8307,18 +8052,6 @@ dyubhir hata-dhvānta-yugānta-toye</p>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The mystic ascends the Milky Way to the planet of fire, where contamination is burned away, and then reaches the Lord&#39;s local abode. The journey upward is also a cleansing — each stage strips off another residue.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What contamination in my life would need burning off before I could rise to the next level of practice?</li><li>Am I willing to let that burning happen, or am I protecting what should be released?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -8535,7 +8268,6 @@ dyubhir hata-dhvānta-yugānta-toye</p>
     <div class="fc-translation" data-sec="translation">This Śiśumāra is the pivot for the turning of the complete universe, and it is called the navel of Viṣṇu [Garbhodakaśāyī Viṣṇu]. The yogī alone goes beyond this circle of Śiśumāra and attains the planet [Maharloka] where purified saints like Bhṛgu enjoy a duration of life of 4,300,000,000 solar years. This planet is worshipable even for saints who are transcendentally situated.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -8573,18 +8305,6 @@ dyubhir hata-dhvānta-yugānta-toye</p>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Beyond the universal pivot lies Maharloka, where purified saints live for billions of years. The verse trains the mind to imagine scales of time and purity that dwarf the personal lifespan we are so anxious about.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>How does my anxiety about my own short life look in the light of these vast scales?</li><li>What aspect of my life would feel less urgent if I held it within a larger time horizon?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -8782,7 +8502,6 @@ dyubhir hata-dhvānta-yugānta-toye</p>
 
     <div class="fc-translation" data-sec="translation">At the time of the final devastation of the complete universe [the end of the duration of Brahmā’s life], a flame of fire emanates from the mouth of Ananta [from the bottom of the universe]. The yogī sees all the planets of the universe burning to ashes, and thus he leaves for Satyaloka by airplanes used by the great purified souls. The duration of life in Satyaloka is calculated to be 15,480,000,000,000 years.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -8833,18 +8552,6 @@ dyubhir hata-dhvānta-yugānta-toye</p>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Even Maharloka eventually faces cosmic devastation, and the yogī climbs higher to Satyaloka. There is no permanent material residence anywhere — the lesson is to seek what burns the modes rather than what is consumed by them.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What &#39;permanent&#39; arrangements am I building that this verse exposes as temporary?</li><li>Where could I redirect energy from preserving the perishable to seeking the imperishable?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -9130,7 +8837,6 @@ dyubhir hata-dhvānta-yugānta-toye</p>
 
     <div class="fc-translation" data-sec="translation">In that planet of Satyaloka, there is neither bereavement, nor old age nor death. There is no pain of any kind, and therefore there are no anxieties, save that sometimes, due to consciousness, there is a feeling of compassion for those unaware of the process of devotional service, who are subjected to unsurpassable miseries in the material world.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -9224,18 +8930,6 @@ dyubhir hata-dhvānta-yugānta-toye</p>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">In Satyaloka there is no bereavement, age, or death — yet even there, awakened beings feel compassion for those still trapped below. Real spiritual elevation does not isolate us; it deepens concern for those still struggling.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>As I make even small spiritual progress, am I becoming more compassionate or more aloof?</li><li>Who in my life is &#39;still in the river&#39; that my growth could quietly serve?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -9478,7 +9172,6 @@ dyubhir hata-dhvānta-yugānta-toye</p>
 
     <div class="fc-translation" data-sec="translation">After reaching Satyaloka, the devotee is specifically able to be incorporated fearlessly by the subtle body in an identity similar to that of the gross body, and one after another he gradually attains stages of existence from earthly to watery, fiery, glowing and airy, until he reaches the ethereal stage.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -9541,18 +9234,6 @@ dyubhir hata-dhvānta-yugānta-toye</p>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">From Satyaloka the devotee passes upward through earthly, watery, fiery, glowing, and airy coverings into ether — each layer of identification released in turn. Liberation is a sequence of letting-goes, not a single jump.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which &#39;covering&#39; of identity am I currently most stuck inside — body, emotion, intellect, ego?</li><li>What practice could loosen the next layer for me?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -9804,7 +9485,6 @@ dyubhir hata-dhvānta-yugānta-toye</p>
 
     <div class="fc-translation" data-sec="translation">The devotee thus surpasses the subtle objects of different senses like aroma by smelling, the palate by tasting, vision by seeing forms, touch by contacting, the vibrations of the ear by ethereal identification, and the sense organs by material activities.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -9850,18 +9530,6 @@ dyubhir hata-dhvānta-yugānta-toye</p>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The devotee surpasses smell, taste, sight, touch, and sound at the subtle level — all sense activity is dissolved back into its source. We are not anti-sense; we are returning the senses to where they came from.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which sense am I most enslaved by — and what would freedom from it feel like?</li><li>How can I direct that sense toward the Lord rather than away from Him?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -10086,7 +9754,6 @@ dyubhir hata-dhvānta-yugānta-toye</p>
 
     <div class="fc-translation" data-sec="translation">The devotee, thus surpassing the gross and the subtle forms of coverings, enters the plane of egoism. And in that status he merges the material modes of nature [ignorance and passion] in this point of neutralization and thus reaches egoism in goodness. After this, all egoism is merged in the mahat-tattva, and he comes to the point of pure self-realization.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -10154,18 +9821,6 @@ dyubhir hata-dhvānta-yugānta-toye</p>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Even ego itself is purified — passion and ignorance are dissolved into goodness, and goodness merges into the total material principle, leaving pure self-realization. Realization is the slow unmaking of every false identity.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What false identity (role, achievement, persona) most defines me — and would I survive its dissolving?</li><li>Where can I begin loosening it through practice rather than crisis?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -10417,7 +10072,6 @@ dyubhir hata-dhvānta-yugānta-toye</p>
 
     <div class="fc-translation" data-sec="translation">Only the purified soul can attain the perfection of associating with the Personality of Godhead in complete bliss and satisfaction in his constitutional state. Whoever is able to renovate such devotional perfection is never again attracted by this material world, and he never returns.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -10483,18 +10137,6 @@ dyubhir hata-dhvānta-yugānta-toye</p>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Only the fully purified soul attains personal association with the Lord in complete bliss — and once attained, never returns. The aim is not impersonal merging but loving company that never ends.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Is my deepest aspiration impersonal peace or personal loving relationship — and how honest am I about it?</li><li>What in me still hesitates at the idea of an eternal devotional life?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -10737,7 +10379,6 @@ dyubhir hata-dhvānta-yugānta-toye</p>
 
     <div class="fc-translation" data-sec="translation">Your Majesty Mahārāja Parīkṣit, know that all that I have described in reply to your proper inquiry is just according to the version of the Vedas, and it is eternal truth. This was described personally by Lord Kṛṣṇa unto Brahmā, with whom the Lord was satisfied upon being properly worshiped.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -10828,18 +10469,6 @@ atha martyo’mṛto bhavaty atra brahma samaśnute ||</p>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">What Śukadeva describes is not personal opinion — it descends from Kṛṣṇa to Brahmā and through the chain of teachers. Truth doesn&#39;t get invented in each generation; it gets received.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which spiritual teachings have I been treating as opinion rather than received truth?</li><li>Whose disciplic line am I actually drinking from — and how carefully have I checked its source?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -11035,7 +10664,6 @@ atha martyo’mṛto bhavaty atra brahma samaśnute ||</p>
 
     <div class="fc-translation" data-sec="translation">For those who are wandering in the material universe, there is no more auspicious means of deliverance than what is aimed at in the direct devotional service of Lord Kṛṣṇa.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -11120,18 +10748,6 @@ atha martyo’mṛto bhavaty atra brahma samaśnute ||</p>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Of all means of deliverance for those wandering in the material universe, none is more auspicious than direct devotional service to Kṛṣṇa. Other paths help, but bhakti is the shortest and most reliable road home.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What indirect paths have I been combining instead of committing to direct bhakti?</li><li>What would single-pointed devotion look like for the next thirty days?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -11318,7 +10934,6 @@ atha martyo’mṛto bhavaty atra brahma samaśnute ||</p>
 
     <div class="fc-translation" data-sec="translation">The great personality Brahmā, with great attention and concentration of the mind, studied the Vedas three times, and after scrutinizingly examining them, he ascertained that attraction for the Supreme Personality of Godhead Śrī Kṛṣṇa is the highest perfection of religion.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -11391,18 +11006,6 @@ ity asyā hṛdayaṁ loke nānyo mad veda kaścana ||</p>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">After studying the Vedas three times, Brahmā concluded that the highest religion is attraction for Śrī Kṛṣṇa. The most learned authority chose the most loving conclusion — knowledge ripens into love, not the reverse.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where in my own search does knowledge keep growing without ripening into attraction?</li><li>What would help my study become attraction rather than information?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -11571,7 +11174,6 @@ ity asyā hṛdayaṁ loke nānyo mad veda kaścana ||</p>
 
     <div class="fc-translation" data-sec="translation">The Personality of Godhead Lord Śrī Kṛṣṇa is in every living being along with the individual soul. And this fact is perceived and hypothesized in our acts of seeing and taking help from the intelligence.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -11669,18 +11271,6 @@ sakhā guruḥ suhṛdo daivam iṣṭam</p>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Kṛṣṇa is present alongside the individual soul in every living being — and this is perceived through the very faculty of intelligence we use to see. The Lord&#39;s presence is closer than we suspect, available through the very instrument that doubts Him.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What in me sees and knows — and whose presence makes that knowing possible?</li><li>Where am I using intelligence to deny what it could perceive if turned the right way?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -11867,7 +11457,6 @@ sakhā guruḥ suhṛdo daivam iṣṭam</p>
 
     <div class="fc-translation" data-sec="translation">O King, it is therefore essential that every human being hear about, glorify and remember the Supreme Lord, the Personality of Godhead, always and everywhere.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -11974,18 +11563,6 @@ sakhā guruḥ suhṛdo daivam iṣṭam</p>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Hear about, glorify, and remember the Lord — always and everywhere. The instruction is not for special moments but for the texture of an entire human life: keep coming back to Him.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Across an average hour, where could hearing, glorifying, or remembering quietly slip in?</li><li>What habit currently fills that space, and what would replacing it cost me?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -12201,7 +11778,6 @@ sakhā guruḥ suhṛdo daivam iṣṭam</p>
 
     <div class="fc-translation" data-sec="translation">Those who drink through aural reception, fully filled with the nectarean message of Lord Kṛṣṇa, the beloved of the devotees, purify the polluted aim of life known as material enjoyment and thus go back to Godhead, to the lotus feet of Him [the Personality of Godhead].</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -12305,18 +11881,6 @@ Worship of Devatās</p>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Those who drink in Kṛṣṇa&#39;s message through the ears purify the polluted aim of material enjoyment and return to His lotus feet. Auditory devotion is not passive — it actively dissolves the wrong goal of life.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What am I letting my ears drink in daily — and what is it forming in me?</li><li>Where could nectarean hearing replace some of the noise I currently consume?</li></ul>
-
-
-
-
-
-    </section>
 
 
 

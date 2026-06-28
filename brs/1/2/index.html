@@ -31,7 +31,7 @@
 <body class="has-sidebar">
 <header class="fc-site-header">
     <button type="button" class="fc-mobile-trigger fc-mobile-trigger-left" data-overlay="left" aria-label="Open settings drawer">⚙</button>
-<a class="fc-brand" href="../../../">FolioCorpus<span class="fc-sub">Bhakti-rasāmṛta-sindhu</span></a>
+    <a class="fc-brand" href="../../../">FolioCorpus<span class="fc-sub">Bhagavad-gītā</span></a>
     <nav class="fc-site-nav">
         <a href="../../../">Home</a>
         <a href="../../../bg/">Bhagavad-gītā</a>
@@ -46,8 +46,8 @@
     <button class="fc-sb-collapse" type="button" data-sb="left" title="Collapse left sidebar" aria-label="Collapse"></button>
 
     <div class="fc-sb-body">
-        <details class="fc-sb-section" data-sbsec="reading" open>
-            <summary class="fc-sb-title">Reading</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Reading</div>
             <div class="fc-sb-sub">Theme</div>
             <div class="fc-segmented" data-setting="theme">
                 <button type="button" data-val="light">Light</button>
@@ -73,10 +73,10 @@
                 <button type="button" data-val="single">Single</button>
                 <button type="button" data-val="side">Side-by-side</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="display" open>
-            <summary class="fc-sb-title">Display</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Display</div>
             <div class="fc-sb-grid">
                 <label><input type="checkbox" data-section="devanagari" checked> Devanāgarī</label>
                 <label><input type="checkbox" data-section="iast" checked> IAST transliteration</label>
@@ -98,10 +98,33 @@
                 <button type="button" data-action="expand-all">Expand all</button>
                 <button type="button" data-action="collapse-all">Collapse all</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="tools" open>
-            <summary class="fc-sb-title">Tools</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Find your starting point</div>
+            <div class="fc-persona-links">
+                <a class="fc-persona-link" href="../../../daily/">🌅 Daily (one value a week)</a>
+                <a class="fc-persona-link" href="../../../householder/">🏠 Householder (family & work)</a>
+                <a class="fc-persona-link" href="../../../parenting/">👨‍👩‍👧 Parenting (stories for kids)</a>
+                <a class="fc-persona-link" href="../../../themes/">📚 All themes</a>
+                <a class="fc-persona-link" href="../../../values/" style="background:#F0F6F2;border-left-color:#1F4632;">ॐ Vedic Value System ↗</a>
+                <a class="fc-persona-link" href="../../../vidya/" style="background:#FBF6E4;border-left-color:#C8860B;">📚 Vidyā Karaṇa (kids, multi-lang) ↗</a>
+            </div>
+        </div>
+
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Audience</div>
+            <div class="fc-audience-filter">
+                <label><input type="radio" name="fc-audience" value="all" checked> All levels</label>
+                <label><input type="radio" name="fc-audience" value="primary"> Primary (children)</label>
+                <label><input type="radio" name="fc-audience" value="middle"> Middle (teens)</label>
+                <label><input type="radio" name="fc-audience" value="senior"> Senior (adults)</label>
+                <label><input type="radio" name="fc-audience" value="college"> College / scholar</label>
+            </div>
+        </div>
+
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Tools</div>
             <div class="fc-sb-tools">
                 <button type="button" id="fc-presentation-toggle" class="fc-tool-btn"><span>🖥 Presentation</span><kbd class="fc-kbd">F</kbd></button>
                 <button type="button" id="fc-pen-toggle" class="fc-tool-btn"><span>✏️ Pen mode</span><kbd class="fc-kbd">P</kbd></button>
@@ -116,10 +139,26 @@
                 <button type="button" id="fc-clear-highlights" class="fc-tool-btn">🩷 Clear highlights (page)</button>
                 <button type="button" id="fc-notes-modal-open" class="fc-tool-btn">📓 My annotations</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="progress" id="fc-progress-section" open>
-            <summary class="fc-sb-title">Progress</summary>
+        <div class="fc-sb-section" id="fc-tts-controls" hidden>
+            <div class="fc-sb-title">
+                Read-aloud
+                <label class="fc-tts-master">
+                    <input type="checkbox" id="fc-tts-enabled" checked>
+                    <span class="fc-tts-master-label">On</span>
+                </label>
+            </div>
+            <div class="fc-tts-inner">
+                <div class="fc-sb-sub">Voice</div>
+                <select id="fc-tts-voice" class="fc-tts-select" aria-label="TTS voice"></select>
+                <div class="fc-sb-sub">Rate <span class="fc-tts-rate-val">1.0×</span></div>
+                <input type="range" id="fc-tts-rate" min="0.5" max="2" step="0.1" value="1" class="fc-tts-rate" aria-label="Reading rate">
+            </div>
+        </div>
+
+        <div class="fc-sb-section" id="fc-progress-section">
+            <div class="fc-sb-title">Progress</div>
             <div class="fc-progress-row">
                 <span class="fc-progress-num" id="fc-progress-num">0</span>
                 <span class="fc-progress-divider">/</span>
@@ -134,29 +173,29 @@
                 <span class="fc-progress-spacer"></span>
                 <button type="button" class="fc-progress-reset" id="fc-progress-reset" title="Reset progress">↺</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="bookmarks" open>
-            <summary class="fc-sb-title">Bookmarks <span class="fc-sb-count" id="fc-bookmarks-count">0</span></summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Bookmarks <span class="fc-sb-count" id="fc-bookmarks-count">0</span></div>
             <ul class="fc-bookmark-list" id="fc-bookmarks-list">
                 <li class="fc-sb-empty">No bookmarks yet — click ☆ on any verse.</li>
             </ul>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="notes" open>
-            <summary class="fc-sb-title">Notes <span class="fc-sb-count" id="fc-notes-count">0</span></summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Notes <span class="fc-sb-count" id="fc-notes-count">0</span></div>
             <ul class="fc-bookmark-list" id="fc-notes-list">
                 <li class="fc-sb-empty">No notes yet — open any verse and write in the 📝 block.</li>
             </ul>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="export">
-            <summary class="fc-sb-title">Export</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Export</div>
             <div class="fc-sb-tools">
                 <button type="button" id="fc-export-md" class="fc-tool-btn">📥 Download Markdown</button>
                 <button type="button" id="fc-export-json" class="fc-tool-btn">💾 Download JSON backup</button>
             </div>
-        </details>
+        </div>
     </div>
 </aside>    <main class="fc-container">
 <nav class="fc-breadcrumbs">
@@ -518,7 +557,6 @@
 
     <div class="fc-translation" data-sec="translation">There are three types of bhakti: sādhana, bhāva and prema.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -600,7 +638,6 @@ There is rarity of prema among those who have practiced sādhana-bhakti, because
 
     <div class="fc-translation" data-sec="translation">Now sādhana-bhakti will be defined: Action of the senses, which produces the stage of bhāva, is called sādhana-bhakti. This attained state of bhāva-bhakti (sādhyatā) is an eternal sthāyi-bhāva which is not created, but simply manifests within the soul by the spiritual energy of the Lord.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -676,7 +713,6 @@ A doubt may arise that since this state is achieved (sādhya), implying that it 
     <div class="fc-translation" data-sec="translation">Nārada speaks of sādhana-bhakti along with items that seem to be bhakti in the Seventh Canto.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -749,7 +785,6 @@ Though this statement was made before Kṛṣṇa’s appearance, one should und
 
     <div class="fc-translation" data-sec="translation">There it is also said: Therefore, one may somehow think of Kṛṣṇa, by any of the favorable methods. SB 7.1.32</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -821,7 +856,6 @@ Though this statement was made before Kṛṣṇa’s appearance, one should und
 
     <div class="fc-translation" data-sec="translation">There are two types of sādhana-bhakti: vaidhi and rāgānuga.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -886,7 +920,6 @@ Though this statement was made before Kṛṣṇa’s appearance, one should und
 
 
     <div class="fc-translation" data-sec="translation">Now, here is the definition of vaidhi-bhakti: [Note: Vaidhi bhakti topic starts here] Where the actions of bhakti arise, not from the attainment of rāga, but by the teachings of scriptures, it is called vaidhi-bhakti.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -966,7 +999,6 @@ Though this statement was made before Kṛṣṇa’s appearance, one should und
 
     <div class="fc-translation" data-sec="translation">This is illustrated in the Second Canto: O descendant of King Bharata, one who desires to be free from all miseries must hear about, glorify and also remember the Personality of Godhead, who is the Supersoul, the controller and the savior from all miseries. SB 2.1.5</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1034,7 +1066,6 @@ Suppose one does not develop Kṛṣṇa consciousness in this human form of lif
 
 
     <div class="fc-translation" data-sec="translation">In the Padma Purāṇa it is said: One should always remember Viṣṇu and never forget Him. All injunctions and prohibitions are dependent on these two principles.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -1112,7 +1143,6 @@ If this injunction is followed, then all other rules and regulations will automa
 
 
     <div class="fc-translation" data-sec="translation">Thus, everyone within and outside the varṇāśrama system should always follow this rule concerning worship of the Lord. Though it is always to be followed as a daily duty according to the scriptures, the scriptures also ascribe attractive material results for observing it, as in the case of the Ekādaśī vrata.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -1203,7 +1233,6 @@ If this injunction is followed, then all other rules and regulations will automa
 
     <div class="fc-translation" data-sec="translation">In the Eleventh Canto is expressed clearly that vaidhi-bhakti should be followed by all varṇas and āśramas: Each of the four social orders, headed by the brāhmaṇas, was born through different combinations of the modes of nature, from the face, arms, thighs and feet of the Supreme Lord in His universal form. Thus, the four spiritual orders were also generated. If any of the members of the four varṇas and four āśramas fail to worship or intentionally disrespect the Personality of Godhead, who is the source of their own creation, they will fall down from their position into a hellish state of life. SB 11.5.2-3</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1282,7 +1311,6 @@ Lord Śrī Kṛṣṇa instructed Uddhava that by following the injunctions of t
 
     <div class="fc-translation" data-sec="translation">In the Eleventh Canto is expressed clearly that vaidhi-bhakti should be followed by all varṇas and āśramas: Each of the four social orders, headed by the brāhmaṇas, was born through different combinations of the modes of nature, from the face, arms, thighs and feet of the Supreme Lord in His universal form. Thus, the four spiritual orders were also generated. If any of the members of the four varṇas and four āśramas fail to worship or intentionally disrespect the Personality of Godhead, who is the source of their own creation, they will fall down from their position into a hellish state of life. SB 11.5.2-3</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1352,7 +1380,6 @@ Lord Śrī Kṛṣṇa instructed Uddhava that by following the injunctions of t
 
 
     <div class="fc-translation" data-sec="translation">The results of vaidhi-bhakti are stated: By worshiping Me through the various methods prescribed in the Vedas and tantras, one will gain from Me his desired perfection both in this life and the next. [Note: Siddhi is taken here to mean a material result.] SB 11.27.49</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -1436,7 +1463,6 @@ Whether one is without desire [the condition of the devotees], or is desirous of
 
     <div class="fc-translation" data-sec="translation">In the paṣcarātra it says: O Devarṣi, all activities prescribed in the scriptures with the Lord as the object are called vaidhi-bhakti. By this performance of bhakti, one attains prema-bhakti.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1514,7 +1540,6 @@ Whether one is without desire [the condition of the devotees], or is desirous of
 
 
     <div class="fc-translation" data-sec="translation">The qualified person is described as follows: The person who has developed faith in serving the Lord by impressions arising from previous association with devotees, who is not too attached to material objects, and who is not too detached, is qualified for vaidhi-bhakti.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -1596,7 +1621,6 @@ This attraction for Kṛṣṇa consciousness in association with pure devotees 
 
     <div class="fc-translation" data-sec="translation">In the Eleventh Canto it is said: If somehow or other by good fortune one develops faith in hearing and chanting My glories, such a person, being neither very disgusted with nor attached to material life, should achieve perfection through the path of loving devotion to Me. SB 11.20.8</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1673,7 +1697,6 @@ In the verse (SB 11.20.28) quoted above, the word tataḥ means “starting from
 
     <div class="fc-translation" data-sec="translation">There are three types of persons qualified for vaidhi-sādhana-bhakti: the uttama, the madhyama and the kaniṣṭha.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1738,7 +1761,6 @@ In the verse (SB 11.20.28) quoted above, the word tataḥ means “starting from
 
 
     <div class="fc-translation" data-sec="translation">The uttamādhikārī is defined as follows: The person who is skillful in scripture and logic, completely firm in his belief, with deep faith, is considered qualified as uttama in vaidhi-bhakti.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -1818,7 +1840,6 @@ A person who is qualified as above, and has deep faith, is the uttamādhikārī.
 
     <div class="fc-translation" data-sec="translation">The mādhyamādhikārī is defined as follows: The person who is not fully conversant with scriptures like the uttamādhikārī but has firm conviction in them is known as the madhyamādhikārī.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1892,7 +1913,6 @@ A person who is qualified as above, and has deep faith, is the uttamādhikārī.
 
 
     <div class="fc-translation" data-sec="translation">The definition of the kaniṣṭhādhikārī is as follows: He who has weak faith because of even less knowledge of scriptures than the madhyamādhikārī is called the kaniṣṭha.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -1975,7 +1995,6 @@ A person who is qualified as above, and has deep faith, is the uttamādhikārī.
 
 
     <div class="fc-translation" data-sec="translation">Among the four types of persons qualified for bhakti mentioned in the Gītā, when they receive the mercy of the Lord or His devotee and eradicate those tendencies, they become qualified for pure bhakti. Examples of this are Gajendra, Śaunaka and the sages, Dhruva and also the four Kumāras.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -2097,7 +2116,6 @@ The Lord then describes the faith achieved by the first three types after many b
 
     <div class="fc-translation" data-sec="translation">Among the four types of persons qualified for bhakti mentioned in the Gītā, when they receive the mercy of the Lord or His devotee and eradicate those tendencies, they become qualified for pure bhakti. Examples of this are Gajendra, Śaunaka and the sages, Dhruva and also the four Kumāras.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2210,7 +2228,6 @@ The Lord then describes the faith achieved by the first three types after many b
 
     <div class="fc-translation" data-sec="translation">How can the happiness of bhakti arise in the heart when the witch of desire for enjoyment and liberation remains there?</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2285,7 +2302,6 @@ However, the perfect spiritual concept of life is complete knowledge of one’s 
 
 
     <div class="fc-translation" data-sec="translation">By prema, the bhakti processes such as hearing take possession of the mind and senses of persons who do not desire the goal of liberation at all.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -2374,7 +2390,6 @@ The attention of a pure devotee is so much attracted to glorification of the Lor
 
     <div class="fc-translation" data-sec="translation">In the Third Canto it is said: Bhakti steals away the mind and senses of the persons who do not desire liberation, by the prema arising from realizing the attractive limbs, pastimes, charming words, glances and playful smiles of the generous Lord. SB 3.25.36</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2450,7 +2465,6 @@ This evidence from Śrīmad-Bhāgavatam gives assurance to the pure devotee of b
 
     <div class="fc-translation" data-sec="translation">Devotees who are absorbed in the bliss of service to the lotus feet of Kṛṣṇa should never desire liberation.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2524,7 +2538,6 @@ This evidence from Śrīmad-Bhāgavatam gives assurance to the pure devotee of b
 
     <div class="fc-translation" data-sec="translation">Uddhava also states this: O my Lord, devotees who are engaged in the transcendental loving service of Your lotus feet have no difficulty in achieving anything within the realm of the four principles of religiosity, economic development, sense gratification and liberation. Nevertheless, O great one, as far as I am concerned, I have preferred only to engage in the loving service of Your lotus feet. SB 3.4.15</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2597,7 +2610,6 @@ This evidence from Śrīmad-Bhāgavatam gives assurance to the pure devotee of b
 
 
     <div class="fc-translation" data-sec="translation">And Kapila states the same: A pure devotee, who is attached to the activities of devotional service and who always engages in the service of My lotus feet, never desires to become one with Me. Such a devotee, who is unflinchingly engaged, always glorifies My pastimes and activities. SB 3.25.34</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -2676,7 +2688,6 @@ This evidence from Śrīmad-Bhāgavatam gives assurance to the pure devotee of b
 
 
     <div class="fc-translation" data-sec="translation">Kapila also says: A pure devotee does not accept any kind of liberation—sālokya, sārṣṭi, sāmīpya, sārūpya or ekatva—even though they are offered by the Supreme Personality of Godhead SB—if they are not accompanied by service 3.29.13</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -2764,7 +2775,6 @@ This evidence from Śrīmad-Bhāgavatam gives assurance to the pure devotee of b
 
     <div class="fc-translation" data-sec="translation">In the Fourth Canto, Dhruva says: My Lord, the transcendental bliss derived from meditating upon Your lotus feet or hearing about Your glories from pure devotees is so unlimited that it is far beyond the stage of brahmānanda, wherein one thinks himself merged in the impersonal brahman as one with the Supreme. Since brahmānanda is also defeated by the transcendental bliss derived from devotional service, then what to speak of the temporary blissfulness of elevating oneself to the heavenly planets, which is ended by the separating sword of time? Although one may be elevated to the heavenly planets, he falls down in due course of time. SB 4.9.10</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2850,7 +2860,6 @@ This evidence from Śrīmad-Bhāgavatam gives assurance to the pure devotee of b
 
 
     <div class="fc-translation" data-sec="translation">Concerning this Pṛthu also speaks: My dear Lord, I therefore do not wish to have the benediction of merging into Your existence, a benediction in which there is no existence of the nectarean beverage of Your lotus feet. I want the benediction of at least one million ears, for thus I may be able to hear about the glories of Your lotus feet from the mouths of Your pure devotees. SB 4.20.24</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -2941,7 +2950,6 @@ The impersonalists desire to merge into the existence of the Supreme, but withou
 
     <div class="fc-translation" data-sec="translation">In the Fifth Canto Śuka says: The king gave up everything that was difficult for others to give up. He gave up his kingdom, his wife and his family. His opulence was so great that even the demigods envied it, yet he gave up that wealth endowed with attractive glances. It was quite befitting for great devotees whose minds are attracted to the service of the enemy of the Madhu demon. Indeed, even liberation is considered insignificant for those whose minds are attracted to the loving service of the Lord. SB 5.14.44</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3028,7 +3036,6 @@ The impersonalists desire to merge into the existence of the Supreme, but withou
 
     <div class="fc-translation" data-sec="translation">In the Sixth Canto Vṛtra says: O my Lord, source of all opportunities, I do not desire to enjoy in Dhruvaloka, the heavenly planets or the planet where Lord Brahmā resides, nor do I want to be the supreme ruler of all the earthly planets or the lower planetary systems. I do not desire the perfection of aṣṭāṅga-yoga, nor do I want liberation if I have to give up Your lotus feet. SB 6.11.25</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3107,7 +3114,6 @@ The impersonalists desire to merge into the existence of the Supreme, but withou
 
     <div class="fc-translation" data-sec="translation">Lord Śiva also speaks on this subject: Devotees solely engaged in the devotional service of the Supreme Personality of Godhead, Nārāyaṇa, never fear any condition of life. For them the heavenly planets, liberation and the hellish planets are all the same, for such devotees are interested only in the service of the Lord. SB 6.17.28</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3185,7 +3191,6 @@ The impersonalists desire to merge into the existence of the Supreme, but withou
 
 
     <div class="fc-translation" data-sec="translation">Concerning this, Indra has also spoken: Those who are interested only in worshipping the Supreme Personality of Godhead, who do not desire anything material from the Lord and do not even want liberation, are expert at understanding what is most beneficial for themselves. SB 6.18.74</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -3273,7 +3278,6 @@ The impersonalists desire to merge into the existence of the Supreme, but withou
 
     <div class="fc-translation" data-sec="translation">In the Seventh Canto, Prahlāda speaks: Nothing is unobtainable for devotees who have satisfied the Supreme Personality of Godhead, who is the cause of all causes, the original source of everything. The Lord is the reservoir of unlimited spiritual qualities. For devotees, therefore, who are transcendental to the modes of material nature, what is the use of following the principles of religion, economic development, sense gratification and liberation, which are all automatically obtainable under the influence of the modes of nature? We devotees always glorify the lotus feet of the Lord, and therefore we need not ask for anything in terms of dharma, kāma, artha and mokṣa. SB 7.6.25</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3360,7 +3364,6 @@ The impersonalists desire to merge into the existence of the Supreme, but withou
 
     <div class="fc-translation" data-sec="translation">There also Indra speaks: O Supreme Lord, You are our deliverer and protector. Our shares of sacrifices, which are actually Yours, have been recovered from the demon by You. Because the demoniac king Hiraṇyakaśipu was most fearsome, our hearts, which are Your permanent abode, were all overtaken by him. Now, by Your presence, the gloom and darkness in our hearts have been dissipated. O Lord, for those who always engage in Your service, which is more exalted than liberation, all material opulence is insignificant. They do not even care for liberation, not to speak of the benefits of kāma, artha and dharma. SB 7.8.42</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3435,7 +3438,6 @@ The purport of this statement by Indra is that beginning from Brahmā down to th
 
     <div class="fc-translation" data-sec="translation">In the Eighth Canto, Gajendra speaks: Unalloyed devotees, who have no desire other than to serve the Lord, worship Him in full surrender and always hear and chant about His activities, which are most wonderful and auspicious. Thus, they always merge in an ocean of transcendental bliss. SB 8.3.20</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3500,7 +3502,6 @@ The purport of this statement by Indra is that beginning from Brahmā down to th
 
 
     <div class="fc-translation" data-sec="translation">In the Ninth Canto, the Lord of Vaikuṇṭha speaks: My devotees, who are always satisfied to be engaged in My loving service, are not interested even in the four principles of liberation, sālokya, sārūpya, sāmīpya and sārṣṭi, although these are automatically achieved by their service. What then is to be said of such perishable happiness as elevation to the higher planetary systems? SB 9.4.67</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -3574,7 +3575,6 @@ The purport of this statement by Indra is that beginning from Brahmā down to th
 
 
     <div class="fc-translation" data-sec="translation">In the Tenth Canto the wives of Kāliya speak: Those who have attained the dust of Your lotus feet never hanker for the kingship of Dhruva-loka, limitless sovereignty, the position of Brahmā or rulership over the earth. They are not interested even in the perfections of yoga or in liberation itself. SB 10.16.37</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -3662,7 +3662,6 @@ The purport of this statement by Indra is that beginning from Brahmā down to th
 
     <div class="fc-translation" data-sec="translation">The personified Vedas pray as follows: My Lord, some fortunate souls have gotten relief from the fatigue of material life by diving into the vast nectar ocean of Your pastimes, which You enact when You manifest Your personal forms to propagate the unfathomable science of the self. These rare souls, indifferent even to liberation, renounce the happiness of home and family because of their association with devotees who are like flocks of swans enjoying at the lotus of Your feet. SB 10.87.21</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3742,7 +3741,6 @@ In explaining this verse it should be noted that spiritual knowledge means under
 
     <div class="fc-translation" data-sec="translation">In the Eleventh Canto the Lord speaks: Because My devotees possess saintly behavior and deep intelligence, they completely dedicate themselves to Me and do not desire anything besides Me. Indeed, even if I offer them liberation from birth and death, they do not accept it. SB 11.20.34</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3815,7 +3813,6 @@ In explaining this verse it should be noted that spiritual knowledge means under
 
 
     <div class="fc-translation" data-sec="translation">Also in the Eleventh Canto it is said: The devotee who has offered his soul to Me does not want anything if it is separate from Me—not the position of the supreme demigod of the universe, Brahmā, nor that of Lord Indra, nor kingship over the entire earth or over the lower planetary systems, nor the mystic perfections of yoga, nor even freedom from the cycle of rebirth. SB 11.14.14</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -3895,7 +3892,6 @@ In explaining this verse it should be noted that spiritual knowledge means under
 
     <div class="fc-translation" data-sec="translation">In the Twelfth Canto Śiva speaks: Surely, this saintly brāhmaṇa does not desire any benediction, not even liberation itself, for he has attained pure devotional service unto the inexhaustible Personality of Godhead. SB 12.10.6</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3968,7 +3964,6 @@ In explaining this verse it should be noted that spiritual knowledge means under
 
 
     <div class="fc-translation" data-sec="translation">In the Padma Purāṇa, Kārtika-māhātmya it is said: O Lord, I do not accept liberation or anything leading up to liberation from the Lord who awards benedictions. May Your form as the young cowherd boy remain in my mind and nothing else.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -4052,7 +4047,6 @@ In explaining this verse it should be noted that spiritual knowledge means under
 
     <div class="fc-translation" data-sec="translation">Bound up by mother Yaśodā with the ropes of devotion, You freed the sons of Kuvera, and bound them with bhakti. In the same way, please bestow on me prema-bhakti. O Dāmodara, I do not accept liberation.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -4130,7 +4124,6 @@ The story behind this verse is that the two sons of Kuvera (the treasurer of the
 
 
     <div class="fc-translation" data-sec="translation">The Nārāyaṇa-vyūha-stava in the Hayaśīrṣa-paṣcarātra says: O Lord! Bestower of benedictions! I do not pray for dharma, kāma, artha or mokṣa. I desire only service at Your lotus feet. I offer my respects to Prahlāda, who asked only for devotion. He did not pray to Viṣṇu for liberation though Viṣṇu wanted to give many benedictions.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -4223,7 +4216,6 @@ In the same Hayaśīrṣa Paṣcarātra, after Nṛsiṁhadeva wanted to give be
 
     <div class="fc-translation" data-sec="translation">The Nārāyaṇa-vyūha-stava in the Hayaśīrṣa-paṣcarātra says: O Lord! Bestower of benedictions! I do not pray for dharma, kāma, artha or mokṣa. I desire only service at Your lotus feet. I offer my respects to Prahlāda, who asked only for devotion. He did not pray to Viṣṇu for liberation though Viṣṇu wanted to give many benedictions.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -4299,7 +4291,6 @@ In the same Hayaśīrṣa Paṣcarātra, after Nṛsiṁhadeva wanted to give be
 
     <div class="fc-translation" data-sec="translation">I offer my respects to Hanumān, who did not want liberation, which Rāma could easily give, but instead wanted servitude.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -4364,7 +4355,6 @@ In the same Hayaśīrṣa Paṣcarātra, after Nṛsiṁhadeva wanted to give be
 
 
     <div class="fc-translation" data-sec="translation">Hanumān’s statement is also famous: I do not desire liberation that cuts the bondage of material life, because in that state of liberation, awareness that You are the master and I am the servant disappears.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -4439,7 +4429,6 @@ In the same Hayaśīrṣa Paṣcarātra, after Nṛsiṁhadeva wanted to give be
 
     <div class="fc-translation" data-sec="translation">In the Jitanta-stotra of the Nārada-paṣcarātra it is said: I do not have the desire at all for dharma, artha, kāma or mokṣa. Please make my life completely dependent upon Your lotus feet. I do not pray for liberation, sālokya or sārūpya, O upholder of the earth. Most distinguished Lord, true to Your vows, I desire only Your mercy.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -4513,7 +4502,6 @@ In the same Hayaśīrṣa Paṣcarātra, after Nṛsiṁhadeva wanted to give be
 
     <div class="fc-translation" data-sec="translation">In the Jitanta-stotra of the Nārada-paṣcarātra it is said: I do not have the desire at all for dharma, artha, kāma or mokṣa. Please make my life completely dependent upon Your lotus feet. I do not pray for liberation, sālokya or sārūpya, O upholder of the earth. Most distinguished Lord, true to Your vows, I desire only Your mercy.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -4578,7 +4566,6 @@ In the same Hayaśīrṣa Paṣcarātra, after Nṛsiṁhadeva wanted to give be
 
 
     <div class="fc-translation" data-sec="translation">In the Sixth Canto, it says: O great sage! Among many millions who are liberated and perfect in knowledge of liberation, one may be a devotee of Lord Nārāyaṇa, or Kṛṣṇa. Such a devotee, who is fully peaceful, is extremely rare. SB 6.14.5</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -4659,7 +4646,6 @@ In the above verses, the most important thing to be noted is that there may be m
 
     <div class="fc-translation" data-sec="translation">In the First Canto, Kuntī prays: You Yourself descend to propagate the transcendental science of devotional service unto the hearts of the advanced transcendentalists and mental speculators, who are purified by being able to discriminate between matter and spirit. How, then, can we women know You perfectly? SB 1.8.20</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -4738,7 +4724,6 @@ In the above verses, the most important thing to be noted is that there may be m
 
     <div class="fc-translation" data-sec="translation">On this subject Sūta also speaks: All different varieties of ātmārāmas (those who take pleasure in ātmā, or spirit self), especially those established on the path of self-realization, and those freed from all the rules and prohibitions of the scriptures, desire to render unalloyed devotional service unto the Personality of Godhead. This means that the Lord possesses transcendental qualities and therefore can attract everyone, including liberated souls. SB 1.7.10</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -4812,7 +4797,6 @@ In the above verses, the most important thing to be noted is that there may be m
 
 
     <div class="fc-translation" data-sec="translation">Though the five types of mukti have been described as worthy of rejection, sālokya, sārṣṭi, sāmīpya and sārūpya are not so contradictory to bhakti.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -4888,7 +4872,6 @@ In the above verses, the most important thing to be noted is that there may be m
 
     <div class="fc-translation" data-sec="translation">There are two varieties of these four types of liberation: one, predominated by the desire for happiness and power, and the other, predominated by the desire for prema. The first variety is not accepted by those who are inclined to serve the Lord.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -4962,7 +4945,6 @@ In the above verses, the most important thing to be noted is that there may be m
 
 
     <div class="fc-translation" data-sec="translation">But the devotees solely attached to the Lord who relish the sweetness of prema never accept the five types of liberation at all (even prema-uttara).</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -5041,7 +5023,6 @@ The devotees do not desire the happiness and powers attained through those four 
 
     <div class="fc-translation" data-sec="translation">Among the devotees who are dedicated solely to serving the Lord in prema, the devotees whose hearts have been stolen by Govinda are the best. Even the kindness of the Nārāyaṇa or other forms of Kṛṣṇa cannot steal their hearts.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -5115,7 +5096,6 @@ The devotees do not desire the happiness and powers attained through those four 
 
 
     <div class="fc-translation" data-sec="translation">Though the forms of Viṣṇu and Kṛṣṇa are non-different according to the statements of scripture, Kṛṣṇa’s form is shown to be superior because of His rasas, which are endowed with the highest type of prema. The very nature of His rasas shows Kṛṣṇa’s form to be superior.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -5262,7 +5242,6 @@ Therefore, it is proper to say that the devotees (including the gopīs) whose he
 
     <div class="fc-translation" data-sec="translation">Furthermore, the following should be understood: The scriptures say that any human being is qualified for bhakti, just as everyone is qualified to take a bath during the month of Māgha. Vaśiṣṭha while speaking to the king has given that example concerning devotion to the Lord.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -5340,7 +5319,6 @@ It is on the basis of his position that anyone can now become a Gauḍīya Vai�
 
     <div class="fc-translation" data-sec="translation">In the Padma Purāṇa it is said: All are qualified for hari-bhakti, O king.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -5405,7 +5383,6 @@ It is on the basis of his position that anyone can now become a Gauḍīya Vai�
 
 
     <div class="fc-translation" data-sec="translation">In the Kāśī-khaṇḍa it is said: In that country, the outcastes, receiving Vaiṣṇava initiation, wearing the marks of the conch and disk, shine like sacrificial priests.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -5493,7 +5470,6 @@ Thus a Vaiṣṇava automatically becomes a brāhmaṇa. This idea is also suppo
 
 
     <div class="fc-translation" data-sec="translation">And, moreover, it is said: The person qualified for bhakti is at fault for failing to perform all of the important aṅgas of bhakti. But he is not at fault for failing to perform the duties of varṇa and āśrama. If he, by chance, happens to commit some sin, there is no atonement prescribed for him. This is the opinion of those who know the secret of Vaiṣṇava scriptures.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -5584,7 +5560,6 @@ In response to this doubt, the author then answers with this verse, introducing 
 
     <div class="fc-translation" data-sec="translation">And, moreover, it is said: The person qualified for bhakti is at fault for failing to perform all of the important aṅgas of bhakti. But he is not at fault for failing to perform the duties of varṇa and āśrama. If he, by chance, happens to commit some sin, there is no atonement prescribed for him. This is the opinion of those who know the secret of Vaiṣṇava scriptures.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -5665,7 +5640,6 @@ In response to this doubt, the author then answers with this verse, introducing 
 
 
     <div class="fc-translation" data-sec="translation">Thus, in the Eleventh Canto it is said: Steadiness in one’s own position is declared to be actual piety, whereas deviation from one’s position is considered impiety. In this way the two are definitely ascertained. SB 11.21.2</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -5766,7 +5740,6 @@ Those qualified for jṣāna and karma are persons without such faith in bhakti.
 
     <div class="fc-translation" data-sec="translation">In the First Canto it is said: If someone gives up his occupational duties and works in Kṛṣṇa consciousness and then falls down on account of not completing his work, what loss is there on his part? Moreover, what can one gain if one performs his occupational duties perfectly but does not worship the Lord. SB 1.5.17</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -5845,7 +5818,6 @@ In the Fifth Canto of Śrīmad-Bhāgavatam it is clearly stated by Ṛṣabhadev
 
 
     <div class="fc-translation" data-sec="translation">In the Eleventh Canto it is said: He perfectly understands that the ordinary religious duties prescribed by Me in various Vedic scriptures possess favorable qualities that purify the performer, and he knows that neglect of such duties constitutes a discrepancy in one’s life. Having taken complete shelter at My lotus feet, however, a saintly person ultimately renounces such ordinary religious duties and worships Me alone. He is thus considered the best among all living entities. SB 11.11.32</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -5934,7 +5906,6 @@ Even though he does not possess those qualities, and though understanding that t
 
     <div class="fc-translation" data-sec="translation">It is also stated there: Anyone who has taken shelter of the lotus feet of Mukunda, the giver of liberation, giving up all kinds of obligations, and has taken to the path in all seriousness, owes neither duties nor obligations to the demigods, sages, general living entities, family members, humankind or forefathers. SB 11.5.41</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -6015,7 +5986,6 @@ In this way, we are indebted to the demigods, to the forefathers, to the sages, 
 
     <div class="fc-translation" data-sec="translation">In the Bhagavad-gītā it is said: Giving up all dharmas, surrender to Me alone. I will deliver you from all sins. Do not worry. BG 18.66</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -6093,7 +6063,6 @@ In this way, we are indebted to the demigods, to the forefathers, to the sages, 
 
 
     <div class="fc-translation" data-sec="translation">In the Agastya-saṁhitā it is said: Just as the rules and prohibitions of the smṛti scriptures do not approach a liberated person, the rules and prohibitions applicable to vaidika or tāntrika worship also do not touch the worshipper of Rāma.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -6181,7 +6150,6 @@ In this way, we are indebted to the demigods, to the forefathers, to the sages, 
 
     <div class="fc-translation" data-sec="translation">And in the Eleventh Canto it is said: One who has thus given up all other engagements and has taken full shelter at the lotus feet of Hari, the Supreme Personality of Godhead, is very dear to the Lord. Indeed, if such a surrendered soul accidentally commits some sinful activity, the Supreme Personality of Godhead, who is seated within everyone’s heart, immediately takes away the reaction to such sin. SB 11.5.42</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -6256,7 +6224,6 @@ In this way, we are indebted to the demigods, to the forefathers, to the sages, 
 
     <div class="fc-translation" data-sec="translation">In the Hari-bhakti-vilāsa innumerable aṅgas of bhakti are mentioned. Among those, the most famous ones will be explained to the best of my judgment.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -6322,7 +6289,6 @@ In this way, we are indebted to the demigods, to the forefathers, to the sages, 
 
 
     <div class="fc-translation" data-sec="translation">In bhakti, the characteristics of an aṅga are as follows: The learned define an aṅga of bhakti as a complex of devotional actions with internal divisions or only one action of bhakti which does not have clearly defined differences within it.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -6402,7 +6368,6 @@ In this way, we are indebted to the demigods, to the forefathers, to the sages, 
 
     <div class="fc-translation" data-sec="translation">The list of aṅgas is as follows: Taking shelter of guru; then after initiation, acquiring knowledge [Note: This comment echoes the traditional Vedic system of initiation, in which a person receives Vedic initiation (upanayana) with Vedic gāyatrī-mantra. This qualifies him to study the Vedas. This tradition continued even with paṣcaratric initiation and study. However when nāma-saṅkīrtana become predominant, the requirement of dīkṣa before sikṣa does not have the same importance.] service to guru with respect; following the rules according to the scriptures as approved by the ācāryas.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -6478,7 +6443,6 @@ In the phrase kṛṣṇa-dīkṣādi-sikṣaṇam the word ādi has the sense o
 
     <div class="fc-translation" data-sec="translation">Inquiry about the real duties of life; renunciation of enjoyment to gain Kṛṣṇa’s mercy; residing in Dvārakā or other holy places, or near the Gaṅgā.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -6553,7 +6517,6 @@ In the phrase kṛṣṇa-dīkṣādi-sikṣaṇam the word ādi has the sense o
 
     <div class="fc-translation" data-sec="translation">Accepting only what is necessary in dealing with the body; observing the Ekādaśī vrata; giving respect to the āmalakī, aśvattha and other items.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -6610,7 +6573,6 @@ In the phrase kṛṣṇa-dīkṣādi-sikṣaṇam the word ādi has the sense o
 
 
     <div class="fc-translation" data-sec="translation">Preliminary bhakti should consist of these ten aṅgas.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -6696,7 +6658,6 @@ In the phrase kṛṣṇa-dīkṣādi-sikṣaṇam the word ādi has the sense o
 
 
     <div class="fc-translation" data-sec="translation">Giving up the association of those opposed to the Lord; not being attached to making disciples; not being enthusiastic for huge undertakings; avoiding the study of useless books in order to earn a living or to defeat others in useless arguments; not feeling miserable in any material circumstances; not being subject to lamentation or other extreme emotions; not showing disrespect to devatās; not giving disturbance to other living beings; not committing of sevā-aparādha or nāma-aparādha; not tolerating the criticism of Kṛṣṇa and His devotees by those who hate them. These ten aṅgas should be observed by avoidance.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -6784,7 +6745,6 @@ Without following the above-mentioned ten principles, one cannot properly elevat
 
     <div class="fc-translation" data-sec="translation">Giving up the association of those opposed to the Lord; not being attached to making disciples; not being enthusiastic for huge undertakings; avoiding the study of useless books in order to earn a living or to defeat others in useless arguments; not feeling miserable in any material circumstances; not being subject to lamentation or other extreme emotions; not showing disrespect to devatās; not giving disturbance to other living beings; not committing of sevā-aparādha or nāma-aparādha; not tolerating the criticism of Kṛṣṇa and His devotees by those who hate them. These ten aṅgas should be observed by avoidance.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -6870,7 +6830,6 @@ Without following the above-mentioned ten principles, one cannot properly elevat
 
 
     <div class="fc-translation" data-sec="translation">Giving up the association of those opposed to the Lord; not being attached to making disciples; not being enthusiastic for huge undertakings; avoiding the study of useless books in order to earn a living or to defeat others in useless arguments; not feeling miserable in any material circumstances; not being subject to lamentation or other extreme emotions; not showing disrespect to devatās; not giving disturbance to other living beings; not committing of sevā-aparādha or nāma-aparādha; not tolerating the criticism of Kṛṣṇa and His devotees by those who hate them. These ten aṅgas should be observed by avoidance.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -6958,7 +6917,6 @@ Without following the above-mentioned ten principles, one cannot properly elevat
 
     <div class="fc-translation" data-sec="translation">Giving up the association of those opposed to the Lord; not being attached to making disciples; not being enthusiastic for huge undertakings; avoiding the study of useless books in order to earn a living or to defeat others in useless arguments; not feeling miserable in any material circumstances; not being subject to lamentation or other extreme emotions; not showing disrespect to devatās; not giving disturbance to other living beings; not committing of sevā-aparādha or nāma-aparādha; not tolerating the criticism of Kṛṣṇa and His devotees by those who hate them. These ten aṅgas should be observed by avoidance.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -7045,7 +7003,6 @@ Without following the above-mentioned ten principles, one cannot properly elevat
 
     <div class="fc-translation" data-sec="translation">Giving up the association of those opposed to the Lord; not being attached to making disciples; not being enthusiastic for huge undertakings; avoiding the study of useless books in order to earn a living or to defeat others in useless arguments; not feeling miserable in any material circumstances; not being subject to lamentation or other extreme emotions; not showing disrespect to devatās; not giving disturbance to other living beings; not committing of sevā-aparādha or nāma-aparādha; not tolerating the criticism of Kṛṣṇa and His devotees by those who hate them. These ten aṅgas should be observed by avoidance.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -7107,7 +7064,6 @@ Without following the above-mentioned ten principles, one cannot properly elevat
 
 
     <div class="fc-translation" data-sec="translation">These twenty aṅgas serve as the door for entering bhakti. The first three aṅgas — taking shelter of the feet of guru, receiving teachings after initiation, and serving the guru with respect — are said to be the principal ones.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -7230,7 +7186,6 @@ Without following the above-mentioned ten principles, one cannot properly elevat
 
     <div class="fc-translation" data-sec="translation">1. marking the body with the Vaiṣṇava symbols 2. marking the body with the syllables of the Lord’s names 3. wearing the garlands, flowers and sandalwood offered to the deity 4. dancing before the deity 5. offering respects on the ground 6. rising up to see the Lord 7. following behind the Lord’s procession 8. going to the Lord’s residence 9. circumambulating the Lord or His dhāma 10. performing arcana 11. performing menial service to the deity 12. singing for the deity 13. singing in a group 14. performing japa 15. offering words or sentiments 16. reciting prayers 17. tasting food offered to the Lord 18. tasting the foot water of the Lord 19. smelling the incense and flowers offered to the Lord 20. touching the deity 21. seeing the deity 22. seeing the ārātrika and festivals 23. hearing the name, form, qualities and pastimes of the Lord 24. accepting the mercy of the Lord 25. remembrance of the Lord 26. meditating on the Lord 27. acting as a servant of the Lord 28. thinking of the Lord as a friend 29. offering oneself to the Lord 30. offering the best items to the Lord 31. making full efforts for the Lord 32. surrendering to the Lord 33. serving tulasī 34. studying the scriptures 35. living in Mathurā 36. serving the devotees 37. holding festivals according one’s means with the devotees 38. observing Kārtika vrata 39. observing Janmāṣṭamī and other special occasions 40. having faith and great affection for serving the deity 41. relishing Bhāgavatam in association of devotees 42. associating with like-minded, affectionate, superior devotees 43. nāma-saṅkīrtana 44. living in the area of Mathurā</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -7351,7 +7306,6 @@ Without following the above-mentioned ten principles, one cannot properly elevat
 
 
     <div class="fc-translation" data-sec="translation">1. marking the body with the Vaiṣṇava symbols 2. marking the body with the syllables of the Lord’s names 3. wearing the garlands, flowers and sandalwood offered to the deity 4. dancing before the deity 5. offering respects on the ground 6. rising up to see the Lord 7. following behind the Lord’s procession 8. going to the Lord’s residence 9. circumambulating the Lord or His dhāma 10. performing arcana 11. performing menial service to the deity 12. singing for the deity 13. singing in a group 14. performing japa 15. offering words or sentiments 16. reciting prayers 17. tasting food offered to the Lord 18. tasting the foot water of the Lord 19. smelling the incense and flowers offered to the Lord 20. touching the deity 21. seeing the deity 22. seeing the ārātrika and festivals 23. hearing the name, form, qualities and pastimes of the Lord 24. accepting the mercy of the Lord 25. remembrance of the Lord 26. meditating on the Lord 27. acting as a servant of the Lord 28. thinking of the Lord as a friend 29. offering oneself to the Lord 30. offering the best items to the Lord 31. making full efforts for the Lord 32. surrendering to the Lord 33. serving tulasī 34. studying the scriptures 35. living in Mathurā 36. serving the devotees 37. holding festivals according one’s means with the devotees 38. observing Kārtika vrata 39. observing Janmāṣṭamī and other special occasions 40. having faith and great affection for serving the deity 41. relishing Bhāgavatam in association of devotees 42. associating with like-minded, affectionate, superior devotees 43. nāma-saṅkīrtana 44. living in the area of Mathurā</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -7474,7 +7428,6 @@ Without following the above-mentioned ten principles, one cannot properly elevat
 
     <div class="fc-translation" data-sec="translation">1. marking the body with the Vaiṣṇava symbols 2. marking the body with the syllables of the Lord’s names 3. wearing the garlands, flowers and sandalwood offered to the deity 4. dancing before the deity 5. offering respects on the ground 6. rising up to see the Lord 7. following behind the Lord’s procession 8. going to the Lord’s residence 9. circumambulating the Lord or His dhāma 10. performing arcana 11. performing menial service to the deity 12. singing for the deity 13. singing in a group 14. performing japa 15. offering words or sentiments 16. reciting prayers 17. tasting food offered to the Lord 18. tasting the foot water of the Lord 19. smelling the incense and flowers offered to the Lord 20. touching the deity 21. seeing the deity 22. seeing the ārātrika and festivals 23. hearing the name, form, qualities and pastimes of the Lord 24. accepting the mercy of the Lord 25. remembrance of the Lord 26. meditating on the Lord 27. acting as a servant of the Lord 28. thinking of the Lord as a friend 29. offering oneself to the Lord 30. offering the best items to the Lord 31. making full efforts for the Lord 32. surrendering to the Lord 33. serving tulasī 34. studying the scriptures 35. living in Mathurā 36. serving the devotees 37. holding festivals according one’s means with the devotees 38. observing Kārtika vrata 39. observing Janmāṣṭamī and other special occasions 40. having faith and great affection for serving the deity 41. relishing Bhāgavatam in association of devotees 42. associating with like-minded, affectionate, superior devotees 43. nāma-saṅkīrtana 44. living in the area of Mathurā</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -7595,7 +7548,6 @@ Without following the above-mentioned ten principles, one cannot properly elevat
 
 
     <div class="fc-translation" data-sec="translation">1. marking the body with the Vaiṣṇava symbols 2. marking the body with the syllables of the Lord’s names 3. wearing the garlands, flowers and sandalwood offered to the deity 4. dancing before the deity 5. offering respects on the ground 6. rising up to see the Lord 7. following behind the Lord’s procession 8. going to the Lord’s residence 9. circumambulating the Lord or His dhāma 10. performing arcana 11. performing menial service to the deity 12. singing for the deity 13. singing in a group 14. performing japa 15. offering words or sentiments 16. reciting prayers 17. tasting food offered to the Lord 18. tasting the foot water of the Lord 19. smelling the incense and flowers offered to the Lord 20. touching the deity 21. seeing the deity 22. seeing the ārātrika and festivals 23. hearing the name, form, qualities and pastimes of the Lord 24. accepting the mercy of the Lord 25. remembrance of the Lord 26. meditating on the Lord 27. acting as a servant of the Lord 28. thinking of the Lord as a friend 29. offering oneself to the Lord 30. offering the best items to the Lord 31. making full efforts for the Lord 32. surrendering to the Lord 33. serving tulasī 34. studying the scriptures 35. living in Mathurā 36. serving the devotees 37. holding festivals according one’s means with the devotees 38. observing Kārtika vrata 39. observing Janmāṣṭamī and other special occasions 40. having faith and great affection for serving the deity 41. relishing Bhāgavatam in association of devotees 42. associating with like-minded, affectionate, superior devotees 43. nāma-saṅkīrtana 44. living in the area of Mathurā</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -7718,7 +7670,6 @@ Without following the above-mentioned ten principles, one cannot properly elevat
 
     <div class="fc-translation" data-sec="translation">1. marking the body with the Vaiṣṇava symbols 2. marking the body with the syllables of the Lord’s names 3. wearing the garlands, flowers and sandalwood offered to the deity 4. dancing before the deity 5. offering respects on the ground 6. rising up to see the Lord 7. following behind the Lord’s procession 8. going to the Lord’s residence 9. circumambulating the Lord or His dhāma 10. performing arcana 11. performing menial service to the deity 12. singing for the deity 13. singing in a group 14. performing japa 15. offering words or sentiments 16. reciting prayers 17. tasting food offered to the Lord 18. tasting the foot water of the Lord 19. smelling the incense and flowers offered to the Lord 20. touching the deity 21. seeing the deity 22. seeing the ārātrika and festivals 23. hearing the name, form, qualities and pastimes of the Lord 24. accepting the mercy of the Lord 25. remembrance of the Lord 26. meditating on the Lord 27. acting as a servant of the Lord 28. thinking of the Lord as a friend 29. offering oneself to the Lord 30. offering the best items to the Lord 31. making full efforts for the Lord 32. surrendering to the Lord 33. serving tulasī 34. studying the scriptures 35. living in Mathurā 36. serving the devotees 37. holding festivals according one’s means with the devotees 38. observing Kārtika vrata 39. observing Janmāṣṭamī and other special occasions 40. having faith and great affection for serving the deity 41. relishing Bhāgavatam in association of devotees 42. associating with like-minded, affectionate, superior devotees 43. nāma-saṅkīrtana 44. living in the area of Mathurā</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -7839,7 +7790,6 @@ Without following the above-mentioned ten principles, one cannot properly elevat
 
 
     <div class="fc-translation" data-sec="translation">1. marking the body with the Vaiṣṇava symbols 2. marking the body with the syllables of the Lord’s names 3. wearing the garlands, flowers and sandalwood offered to the deity 4. dancing before the deity 5. offering respects on the ground 6. rising up to see the Lord 7. following behind the Lord’s procession 8. going to the Lord’s residence 9. circumambulating the Lord or His dhāma 10. performing arcana 11. performing menial service to the deity 12. singing for the deity 13. singing in a group 14. performing japa 15. offering words or sentiments 16. reciting prayers 17. tasting food offered to the Lord 18. tasting the foot water of the Lord 19. smelling the incense and flowers offered to the Lord 20. touching the deity 21. seeing the deity 22. seeing the ārātrika and festivals 23. hearing the name, form, qualities and pastimes of the Lord 24. accepting the mercy of the Lord 25. remembrance of the Lord 26. meditating on the Lord 27. acting as a servant of the Lord 28. thinking of the Lord as a friend 29. offering oneself to the Lord 30. offering the best items to the Lord 31. making full efforts for the Lord 32. surrendering to the Lord 33. serving tulasī 34. studying the scriptures 35. living in Mathurā 36. serving the devotees 37. holding festivals according one’s means with the devotees 38. observing Kārtika vrata 39. observing Janmāṣṭamī and other special occasions 40. having faith and great affection for serving the deity 41. relishing Bhāgavatam in association of devotees 42. associating with like-minded, affectionate, superior devotees 43. nāma-saṅkīrtana 44. living in the area of Mathurā</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -7962,7 +7912,6 @@ Without following the above-mentioned ten principles, one cannot properly elevat
 
     <div class="fc-translation" data-sec="translation">1. marking the body with the Vaiṣṇava symbols 2. marking the body with the syllables of the Lord’s names 3. wearing the garlands, flowers and sandalwood offered to the deity 4. dancing before the deity 5. offering respects on the ground 6. rising up to see the Lord 7. following behind the Lord’s procession 8. going to the Lord’s residence 9. circumambulating the Lord or His dhāma 10. performing arcana 11. performing menial service to the deity 12. singing for the deity 13. singing in a group 14. performing japa 15. offering words or sentiments 16. reciting prayers 17. tasting food offered to the Lord 18. tasting the foot water of the Lord 19. smelling the incense and flowers offered to the Lord 20. touching the deity 21. seeing the deity 22. seeing the ārātrika and festivals 23. hearing the name, form, qualities and pastimes of the Lord 24. accepting the mercy of the Lord 25. remembrance of the Lord 26. meditating on the Lord 27. acting as a servant of the Lord 28. thinking of the Lord as a friend 29. offering oneself to the Lord 30. offering the best items to the Lord 31. making full efforts for the Lord 32. surrendering to the Lord 33. serving tulasī 34. studying the scriptures 35. living in Mathurā 36. serving the devotees 37. holding festivals according one’s means with the devotees 38. observing Kārtika vrata 39. observing Janmāṣṭamī and other special occasions 40. having faith and great affection for serving the deity 41. relishing Bhāgavatam in association of devotees 42. associating with like-minded, affectionate, superior devotees 43. nāma-saṅkīrtana 44. living in the area of Mathurā</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -8083,7 +8032,6 @@ Without following the above-mentioned ten principles, one cannot properly elevat
 
 
     <div class="fc-translation" data-sec="translation">1. marking the body with the Vaiṣṇava symbols 2. marking the body with the syllables of the Lord’s names 3. wearing the garlands, flowers and sandalwood offered to the deity 4. dancing before the deity 5. offering respects on the ground 6. rising up to see the Lord 7. following behind the Lord’s procession 8. going to the Lord’s residence 9. circumambulating the Lord or His dhāma 10. performing arcana 11. performing menial service to the deity 12. singing for the deity 13. singing in a group 14. performing japa 15. offering words or sentiments 16. reciting prayers 17. tasting food offered to the Lord 18. tasting the foot water of the Lord 19. smelling the incense and flowers offered to the Lord 20. touching the deity 21. seeing the deity 22. seeing the ārātrika and festivals 23. hearing the name, form, qualities and pastimes of the Lord 24. accepting the mercy of the Lord 25. remembrance of the Lord 26. meditating on the Lord 27. acting as a servant of the Lord 28. thinking of the Lord as a friend 29. offering oneself to the Lord 30. offering the best items to the Lord 31. making full efforts for the Lord 32. surrendering to the Lord 33. serving tulasī 34. studying the scriptures 35. living in Mathurā 36. serving the devotees 37. holding festivals according one’s means with the devotees 38. observing Kārtika vrata 39. observing Janmāṣṭamī and other special occasions 40. having faith and great affection for serving the deity 41. relishing Bhāgavatam in association of devotees 42. associating with like-minded, affectionate, superior devotees 43. nāma-saṅkīrtana 44. living in the area of Mathurā</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -8206,7 +8154,6 @@ Without following the above-mentioned ten principles, one cannot properly elevat
 
     <div class="fc-translation" data-sec="translation">1. marking the body with the Vaiṣṇava symbols 2. marking the body with the syllables of the Lord’s names 3. wearing the garlands, flowers and sandalwood offered to the deity 4. dancing before the deity 5. offering respects on the ground 6. rising up to see the Lord 7. following behind the Lord’s procession 8. going to the Lord’s residence 9. circumambulating the Lord or His dhāma 10. performing arcana 11. performing menial service to the deity 12. singing for the deity 13. singing in a group 14. performing japa 15. offering words or sentiments 16. reciting prayers 17. tasting food offered to the Lord 18. tasting the foot water of the Lord 19. smelling the incense and flowers offered to the Lord 20. touching the deity 21. seeing the deity 22. seeing the ārātrika and festivals 23. hearing the name, form, qualities and pastimes of the Lord 24. accepting the mercy of the Lord 25. remembrance of the Lord 26. meditating on the Lord 27. acting as a servant of the Lord 28. thinking of the Lord as a friend 29. offering oneself to the Lord 30. offering the best items to the Lord 31. making full efforts for the Lord 32. surrendering to the Lord 33. serving tulasī 34. studying the scriptures 35. living in Mathurā 36. serving the devotees 37. holding festivals according one’s means with the devotees 38. observing Kārtika vrata 39. observing Janmāṣṭamī and other special occasions 40. having faith and great affection for serving the deity 41. relishing Bhāgavatam in association of devotees 42. associating with like-minded, affectionate, superior devotees 43. nāma-saṅkīrtana 44. living in the area of Mathurā</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -8279,7 +8226,6 @@ Without following the above-mentioned ten principles, one cannot properly elevat
 
 
     <div class="fc-translation" data-sec="translation">The last five items were mentioned previously. They have been again mentioned to point out their superiority among all aṅgas. Thus, sixty-four methods of worship involving the body, senses and the internal organ have been presented sequentially, some being separate items and some containing additional items within them. Next, examples of each item will be cited according to traditional authority.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -8355,7 +8301,6 @@ The sixty-four items of devotional service should include all of our activities 
 
     <div class="fc-translation" data-sec="translation">The last five items were mentioned previously. They have been again mentioned to point out their superiority among all aṅgas. Thus, sixty-four methods of worship involving the body, senses and the internal organ have been presented sequentially, some being separate items and some containing additional items within them. Next, examples of each item will be cited according to traditional authority.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -8429,7 +8374,6 @@ The sixty-four items of devotional service should include all of our activities 
 
 
     <div class="fc-translation" data-sec="translation">The last five items were mentioned previously. They have been again mentioned to point out their superiority among all aṅgas. Thus, sixty-four methods of worship involving the body, senses and the internal organ have been presented sequentially, some being separate items and some containing additional items within them. Next, examples of each item will be cited according to traditional authority.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -8505,7 +8449,6 @@ The sixty-four items of devotional service should include all of our activities 
 
     <div class="fc-translation" data-sec="translation">The last five items were mentioned previously. They have been again mentioned to point out their superiority among all aṅgas. Thus, sixty-four methods of worship involving the body, senses and the internal organ have been presented sequentially, some being separate items and some containing additional items within them. Next, examples of each item will be cited according to traditional authority.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -8571,7 +8514,6 @@ The sixty-four items of devotional service should include all of our activities 
 
 
     <div class="fc-translation" data-sec="translation">Taking shelter of the lotus feet of guru (verse 74), from the Eleventh Canto: Therefore, any person who seriously desires real happiness must seek a spiritual master, who is conversant with the bhakti scriptures, accomplished in hearing and chanting about the Lord, and fully tranquil. SB 11.3.21</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -8641,7 +8583,6 @@ The purport is that one should not accept as a spiritual master someone who is f
 
     <div class="fc-translation" data-sec="translation">Acquiring knowledge after initiation (verse 74), also from the Eleventh Canto: Accepting the bona fide spiritual master as one’s life and soul and worshipable deity, the disciple should learn from him the process of pure bhakti by sincere service. By that pure bhakti the Lord, the supreme soul, will be satisfied, and give Himself to that devotee. SB 11.3.22</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -8709,7 +8650,6 @@ The attitude of the disciple should be to satisfy the bona fide spiritual master
 
     <div class="fc-translation" data-sec="translation">Serving the guru with reverence (verse 74), from the Eleventh Canto: One should know the ācārya as Myself and never disrespect him in any way. One should not envy him, thinking him an ordinary man, for he is the representative of all the demigods. SB 11.17.27</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -8775,7 +8715,6 @@ Regarding serving the spiritual master, in the Eleventh Canto of Śrīmad-Bhāga
 
 
     <div class="fc-translation" data-sec="translation">Following the scriptural rules (verse 74), from the Skanda Purāṇa: One should follow the scriptural rules which give the highest benefit and are devoid of hardship, by which the previous devotees easily progressed.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -8856,7 +8795,6 @@ In the Skanda Purāṇa it is advised that a devotee follow the past ācāryas a
 
     <div class="fc-translation" data-sec="translation">Also, evidence from the Brahma-yāmala: Even if a person seems to have attained steadiness in practicing pure bhakti to the Lord, that bhakti is a misfortune if it rejects the rules of śruti, smṛti, purāṇa and paṣcarātra due to lack of faith in them.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -8930,7 +8868,6 @@ In the Skanda Purāṇa it is advised that a devotee follow the past ācāryas a
 
 
     <div class="fc-translation" data-sec="translation">This type of bhakti appears to be pure only because of misjudging the facts. Actually, it is not aikāntiki-bhakti at all, because lack of scriptural obedience is seen in it.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -9012,7 +8949,6 @@ Lord Buddha is accepted as an incarnation of Kṛṣṇa in the Śrīmad-Bhāgav
 
     <div class="fc-translation" data-sec="translation">Inquiry into bhakti (verse 75), from Nāradīya Purāṇa: Those whose minds are attached to understanding bhakti to the Lord quickly attain all their desired goals.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -9078,7 +9014,6 @@ In the Nāradīya Purāṇa it is said, “If one is actually very serious about
 
 
     <div class="fc-translation" data-sec="translation">Renouncing enjoyment for pleasing Kṛṣṇa (verse 75), from Padma Purāṇa: When you give up enjoyable objects at the time of enjoying, aiming at the pleasure of the Lord, the permanent wealth situated in Viṣṇu-loka awaits you.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -9159,7 +9094,6 @@ In the Padma Purāṇa it is stated, “For one who has given up his material se
 
     <div class="fc-translation" data-sec="translation">Living in Dvārakā or other holy places (verse 75), from the Skanda Purāṇa: Anyone who lives in Dvārakā for one year, six months, one month or even half a month, whether man or woman, attains a four-handed form in the spiritual sky.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -9225,7 +9159,6 @@ In the Skanda Purāṇa it is also said that for a person who has lived in Dvār
 
 
     <div class="fc-translation" data-sec="translation">The word ādi indicates Puri as well, as illustrated from the Brahma Purāṇa: The glory of Puri with its surrounding area of 80 miles is inconceivable. The devatās see everyone residing there as having four arms.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -9300,7 +9233,6 @@ In the Skanda Purāṇa it is also said that for a person who has lived in Dvār
 
     <div class="fc-translation" data-sec="translation">Living near the Gaṅgā (verse 75), from the First Canto: The river Ganges, by which the King sat to fast, carries the most auspicious water, which is mixed with the dust of the lotus feet of the Lord and tulasī leaves. Therefore, that water sanctifies the three worlds in the present and future and even sanctifies Lord Śiva and other demigods. Consequently, everyone who is destined to die must take shelter of this river. SB 1.19.6</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -9365,7 +9297,6 @@ In the Skanda Purāṇa it is also said that for a person who has lived in Dvār
 
 
     <div class="fc-translation" data-sec="translation">Living with minimal material needs (verse 76), from Naradīya Purāṇa: The person with wisdom concerning material objects accepts as much as is necessary for maintenance of bhakti. By accepting more or less than that, the person will fail to attain the highest goal.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -9446,7 +9377,6 @@ In the Nāradīya Purāṇa it is directed, “One should not accept more than n
 
     <div class="fc-translation" data-sec="translation">Respecting the day of the Lord (verse 76), from Brahma-vaivarta Purāṇa: By fasting on Ekādaśī, a person destroys all sins, gains abundant pious credits and attains remembrance of the Lord.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -9512,7 +9442,6 @@ In the Brahma-vaivarta Purāṇa it is said that one who observes fasting on Ek�
 
 
     <div class="fc-translation" data-sec="translation">Respecting the āmalakī, aśvattha and other things (verse 76), from Skanda Purāṇa: Human beings destroy sin by worshipping, respecting, and contemplating the aśvattha tree, tulasī tree, āmalakī tree, the cow, the brāhmaṇa and the Vaiṣṇava.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -9600,7 +9529,6 @@ One should tickle the cows, feed them and circumambulate them. Gopāla is please
 
     <div class="fc-translation" data-sec="translation">Giving up the association of those opposed to Kṛṣṇa (verse 78), from Kātyāyana-saṁhitā: It is preferable to remain within a cage of blazing fire than to have the misfortune of living in association with persons who are opposed to thinking of the Lord.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -9681,7 +9609,6 @@ In the Kātyāyana-saṁhitā it is stated that even if one is forced to live wi
 
     <div class="fc-translation" data-sec="translation">Also, from the Viṣṇu-rahasya: I consider it preferable to embrace a snake, a tiger or a crocodile than to associate with those who worship devatās. They are bearers of spears piercing me with their deviant desires.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -9761,7 +9688,6 @@ The Māyāvādīs (impersonalists) say that one may worship any form of the Lord
 
 
     <div class="fc-translation" data-sec="translation">Attachment to disciples and the following two items (verses 78 &amp;79), illustrated in the Seventh Canto: A sannyāsī must not be eager to make unqualified disciples, nor should he unnecessarily read books that disrespect the Lord, or give discourses as a means of livelihood. [Note: Mukunda in his commentary says that na vyākhyām upayuṣjita is a representative statement, which indicates also learning in order to defeat others in arguments] He should not engage in big projects, which distract him from his spiritual goals. SB 7.13.8</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -9847,7 +9773,6 @@ The injunction that one should not study many scriptures means that one should n
 
     <div class="fc-translation" data-sec="translation">Not feeling miserable and not performing degrading acts in distressing circumstan­ces (verse 80), il­lustrated in the Padma Purāṇa: Being undisturbed when one does not attain food or clothing or when these things are lost, one should remember the Lord with one’s intelligence.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -9927,7 +9852,6 @@ There is a statement in the Padma Purāṇa: “Persons who are engaged in Kṛ�
 
     <div class="fc-translation" data-sec="translation">Not being controlled by lamentation or other emotions (verse 80), also illustrated in the Padma Purāṇa: How it is possible for Mukunda to appear in the mind of a person whose mind is af­flicted with lamentation, anger or other emotions?</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -9992,7 +9916,6 @@ There is a statement in the Padma Purāṇa: “Persons who are engaged in Kṛ�
 
 
     <div class="fc-translation" data-sec="translation">Not disrespecting the devatās (verse 81), illustrated in Padma Purāṇa: One should always worship Hari, the Lord of the masters of all the devatās. On the other hand, one should never disrespect Brahmā, Śiva and others.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -10061,7 +9984,6 @@ In the Padma Purāṇa it is said, “Kṛṣṇa, or Hari, is the master of all
 
     <div class="fc-translation" data-sec="translation">Not inflicting pain on other living entities (verse 81), from Mahābhārata: That pure person, who does not inflict pain on others, being merciful like a father to his son, quickly pleases the master of the senses.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -10128,7 +10050,6 @@ In so-called civilized society there is sometimes agitation against cruelty to a
 
 
     <div class="fc-translation" data-sec="translation">Avoiding sevā and nāma aparādhas (verse 81), illustrated in the Varāha Purāṇa: The devotees should avoid the offenses in deity worship described by Me, O earth, at all times and with great care.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -10202,7 +10123,6 @@ In so-called civilized society there is sometimes agitation against cruelty to a
 
 
     <div class="fc-translation" data-sec="translation">This is also described in the Padma Purāṇa: A person who commits all offenses is freed from all those offenses by taking complete shelter of Hari. But the two-legged animal who commits offense against Hari is freed from those offenses by taking shelter of Hari’s name. However, though the name is the friend of all, by committing an offense against the name, a person falls to the lower regions.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -10381,7 +10301,6 @@ All of these offenses with scriptural references should be examined in the Hari-
 
     <div class="fc-translation" data-sec="translation">This is also described in the Padma Purāṇa: A person who commits all offenses is freed from all those offenses by taking complete shelter of Hari. But the two-legged animal who commits offense against Hari is freed from those offenses by taking shelter of Hari’s name. However, though the name is the friend of all, by committing an offense against the name, a person falls to the lower regions.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -10551,7 +10470,6 @@ All of these offenses with scriptural references should be examined in the Hari-
 
     <div class="fc-translation" data-sec="translation">Not tolerating criticism of the Lord or His devotee (verse 82), shown in the Tenth Canto: Anyone who fails to leave that place immediately where he hears criticism of the Su­preme Lord or His faithful devotee will certainly fall down bereft of his pious credit. SB 10.74.40</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -10629,7 +10547,6 @@ There are three ways of dealing with such insults. If someone is heard blasphemi
 
     <div class="fc-translation" data-sec="translation">Wearing the marks of the Vaiṣṇava (verse 84), shown in the Padma Purāṇa: Those Vaiṣṇavas who have tulasī beads, lotus seed beads and japa beads around their necks, who have their shoulders marked with the signs of conch and cakra, and who have tilaka on their foreheads quickly purify the earth.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -10695,7 +10612,6 @@ In the Padma Purāṇa there is a statement describing how a Vaiṣṇava should
 
 
     <div class="fc-translation" data-sec="translation">Wearing the syllables of the name (verse 84), shown in the Skanda Purāṇa: The servants of Yama will not touch those who have the names of Hari on their body, who have gopī-candana-tilaka on their foreheads and who have tulasī beads on their chests.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -10775,7 +10691,6 @@ In the Padma Purāṇa there is a statement describing how a Vaiṣṇava should
 
     <div class="fc-translation" data-sec="translation">It is said in the Padma Purāṇa as well: He who has the syllables of Kṛṣṇa’s names marked on his body with candana, after purifying this world, attains the planet of the Lord.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -10840,7 +10755,6 @@ In the Padma Purāṇa there is a statement describing how a Vaiṣṇava should
 
 
     <div class="fc-translation" data-sec="translation">Wearing the garlands used by the Lord (verse 84), shown in the Eleventh Canto: Simply by decorating ourselves with the garlands, fragrant oils, clothes and ornaments that You have already enjoyed, and by eating the remnants of Your meals, we, Your servants, will indeed conquer Your illusory energy. SB 11.6.46</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -10928,7 +10842,6 @@ Tariṣyāmaḥ here means “we can cross over.”</p>
 
     <div class="fc-translation" data-sec="translation">It is also said in the Skanda Purāṇa: O sage Nārada, whoever touches the garlands offered to Kṛṣṇa with his body becomes freed from all diseases and all sins.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -10993,7 +10906,6 @@ Tariṣyāmaḥ here means “we can cross over.”</p>
 
 
     <div class="fc-translation" data-sec="translation">Dancing before the deity (verse 84), shown in the Dvārakā-māhātmya: He who joyfully dances with many emotions before the Lord burns up sins, which have been committed for the duration of many hundreds of manvantara periods. [Note: A manvantara lasts 71.43 yuga cycles.]</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -11074,7 +10986,6 @@ In the Dvārakā-māhātmya the importance of dancing before the Deity is stated
 
     <div class="fc-translation" data-sec="translation">It is also said by Nārada: All the birds of sin situated in the body fly away for those who dance before the Lord with vigorous clapping of the hands.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -11148,7 +11059,6 @@ In the Dvārakā-māhātmya the importance of dancing before the Deity is stated
 
     <div class="fc-translation" data-sec="translation">Offering obeisances (verse 84), from the Naradīya Purāṇa: The purificatory rites performed during ten horse sacrifices cannot equal even one praṇāma offered to Kṛṣṇa. A person who performs ten horse sacrifices takes birth again. The person offering praṇāmas to Kṛṣṇa does not take birth again.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -11215,7 +11125,6 @@ In the Nāradīya Purāṇa there is a statement about bowing down and offering 
 
     <div class="fc-translation" data-sec="translation">Rising when the deity approaches (verse 85), from Brahmāṇḍa Purāṇa: The person who rises up on seeing the Lord approaching on a palanquin will have all sins destroyed.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -11281,7 +11190,6 @@ In the Brahmāṇḍa Purāṇa it is said, “A person who sees the Lord’s Ra
 
 
     <div class="fc-translation" data-sec="translation">Following after the Lord’s processions (verse 85), from Bhaviṣyottara Purāṇa: All the outcastes who go along with the chariot— beside, behind or in front of it—become similar to Viṣṇu.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -11358,7 +11266,6 @@ A similar statement is there in the Bhaviṣya Purāṇa, in which it is said, �
 
     <div class="fc-translation" data-sec="translation">Going to the places of the Lord (verse 85): Sthānam means tīrtha or temple. First going to the tīrtha is illustrated.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -11423,7 +11330,6 @@ A similar statement is there in the Bhaviṣya Purāṇa, in which it is said, �
 
 
     <div class="fc-translation" data-sec="translation">In another purāṇa it is said: The two feet, which go to the tīrtha of the Lord, are praiseworthy, since they enable one to cross over the dangerous desert of saṁsāra.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -11490,7 +11396,6 @@ A similar statement is there in the Bhaviṣya Purāṇa, in which it is said, �
 
     <div class="fc-translation" data-sec="translation">Going to the temple is illustrated in Hari-bhakti-sudhodaya: The intelligent person who enters the temple of Viṣṇu with devotion to see the Lord does not again enter the prison of a mother’s womb.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -11555,7 +11460,6 @@ A similar statement is there in the Bhaviṣya Purāṇa, in which it is said, �
 
 
     <div class="fc-translation" data-sec="translation">Circumambulation (verse 85), from Hari-bhakti-sudhodaya: If a person circumambulates Viṣṇu and returns to the same spot, that returning guarantees that he does not return to another birth.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -11622,7 +11526,6 @@ It is said in the Hari-bhakti-sudhodaya, “A person who is circumambulating the
 
 
     <div class="fc-translation" data-sec="translation">In the Skanda Purāṇa, Caturmāsya-māhātmya, it is said: O best of the brāhmaṇas, those who circumambulate the Lord four times surpass the world of moving and non-moving creatures. This surpasses going to tīrthas.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -11702,7 +11605,6 @@ It is said in the Hari-bhakti-sudhodaya, “A person who is circumambulating the
 
     <div class="fc-translation" data-sec="translation">Deity worship (verse 85): Arcana means “offering items with mantra after introductory activities such as bhūta-śuddhi and nyāsa.”</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -11781,7 +11683,6 @@ Arcana means worship of the Deity in the temple. By executing this process one c
 
 
     <div class="fc-translation" data-sec="translation">This is illustrated in the Tenth Canto: Worship of the Lord’s lotus feet is the root cause of all the perfections a person can find in heaven, in liberation, in the subterranean regions and on earth. SB 10.81.19</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -11880,7 +11781,6 @@ Let me offer my respectful obeisances unto the all-auspicious Lord Śrī Kṛṣ
 
     <div class="fc-translation" data-sec="translation">In the Viṣṇu-rahasya also it is said: Those men who perform arcana of Viṣṇu on this earth go to the eternal, supreme place of Viṣṇu, which is full of bliss</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -11947,7 +11847,6 @@ It is stated in the Viṣṇu-rahasya, “Any person who can arrange for service
 
 
     <div class="fc-translation" data-sec="translation">Service to the deity (verse 85): Paricaryā consists of decorating the Lord with different items and worshipping the Lord with cāmara, umbrella, music and other items. [Note: This can be considered part of arcana, but is listed separately since these services can be performed without the preliminary rites of purification (purvāṅga-karma) mentioned in verse 137.]</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -12029,7 +11928,6 @@ It is stated in the Viṣṇu-rahasya, “Any person who can arrange for service
 
     <div class="fc-translation" data-sec="translation">It is said in the Nāradīya Purāṇa: If one remains in the temple of the Lord for one muhūrta (48 minutes approximately) or even half of a muhūrta, he goes to the supreme abode. What then to speak of the person engaged in the paricaryā of the Lord?</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -12100,7 +11998,6 @@ The conclusion is that those who are rich men in society should construct beauti
 
     <div class="fc-translation" data-sec="translation">In the Fourth Canto, it is said: By the inclination to serve the lotus feet of the Supreme Personality of Godhead, suffering humanity can immediately cleanse the dirt that has accumulated in their minds during innumerable births. Like the Ganges water, which emanates from the toes of the lotus feet of the Lord, such a process immediately cleanses the mind, and thus spiritual or Kṛṣṇa consciousness gradually increases. SB 4.21.31</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -12161,7 +12058,6 @@ The conclusion is that those who are rich men in society should construct beauti
 
 
     <div class="fc-translation" data-sec="translation">There are various aṅgas of deity worship and paricaryā. These have not been described here for fear of making the book too long. [Note: Detailed descriptions of the aṅgas within arcana are described in Hari-bhakti-vilāsa.]</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -12227,7 +12123,6 @@ The conclusion is that those who are rich men in society should construct beauti
 
 
     <div class="fc-translation" data-sec="translation">Next, singing (verse 85), illustrated in the Liṅga Purāṇa: Even the brāhmaṇa who sings continuously in front of Vāsudeva attains the planet of Viṣṇu. This singing is greater than Śiva himself singing.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -12304,7 +12199,6 @@ In the Liṅga Purāṇa there is a statement about glorifying and singing about
 
     <div class="fc-translation" data-sec="translation">Chanting (verse 85): Kīrtana is defined as the loud chanting of the names, pastimes and qualities of the Lord.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -12370,7 +12264,6 @@ When a person loudly chants the glories of the Lord’s activities, qualities, f
 
 
     <div class="fc-translation" data-sec="translation">Chanting the name of the Lord (nāma-kīrtanam), is illustrated in Viṣṇu-dharma: O king, he who chants the auspicious name of Kṛṣṇa turns to ashes ten million of the worst sins.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -12457,7 +12350,6 @@ When a person loudly chants the glories of the Lord’s activities, qualities, f
 
 
     <div class="fc-translation" data-sec="translation">Līlā-kīrtanam is illustrated in the Seventh Canto: O my Lord Nṛsiṁhadeva, by engaging in Your transcendental loving service in the association of devotees who are liberated souls [haṁsas], I shall become completely uncontaminated by the association of the three modes of material nature and be able to chant the pastimes of Your Lordship, who are so dear to me. I shall chant Your pastimes, following exactly in the footsteps of Lord Brahmā and his disciplic succession. In this way, I shall undoubtedly be able to cross the ocean of nescience. SB 7.9.18</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -12546,7 +12438,6 @@ There are many songs about the Lord’s activities. For example, there is the Br
 
     <div class="fc-translation" data-sec="translation">Guṇa-kīrtana is illustrated in the First Canto: Learned circles have positively concluded that the infallible cause of success for knowledge, austerities, study of the Vedas, sacrifice, chanting of hymns and charity, is the transcendental descriptions of the qualities of the Lord, who is defined in choice poetry. SB 1.5.22</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -12607,7 +12498,6 @@ There are many songs about the Lord’s activities. For example, there is the Br
 
 
     <div class="fc-translation" data-sec="translation">Next, japa (verse 85) is defined: Japa is defined as a very soft chanting of mantra.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -12675,7 +12565,6 @@ Chanting a mantra or hymn softly and slowly is called japa, and chanting the sam
 
     <div class="fc-translation" data-sec="translation">Padma Purāṇa illustrates this: Chanting very softly the mantra, “kṛṣṇāya namaḥ”, produces all benefits. O king, Svarga and liberation are bestowed to the devotees who perform japa of this mantra.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -12741,7 +12630,6 @@ Chanting a mantra or hymn softly and slowly is called japa, and chanting the sam
 
     <div class="fc-translation" data-sec="translation">Entreaty (verse 86) is illustrated in the Skanda Purāṇa: By making entreaties to the Lord with words, the bolt on the door of liberation is released.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -12803,7 +12691,6 @@ In the Skanda Purāṇa there is a statement about submission unto the lotus fee
 
 
     <div class="fc-translation" data-sec="translation">The wise have explained that there are various types of entreaties to Kṛṣṇa, such as prayers, admission of incompetence and expressions of longing.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -12870,7 +12757,6 @@ In the Skanda Purāṇa there is a statement about submission unto the lotus fee
 
     <div class="fc-translation" data-sec="translation">Prayer (samprārthanātmika-vijṣapti) is illustrated in the Padma Purāṇa: Just as the minds of young women are attracted to a young man, and the minds of young men are attracted to a young woman, may my mind be attracted to You!</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -12935,7 +12821,6 @@ In the Skanda Purāṇa there is a statement about submission unto the lotus fee
 
 
     <div class="fc-translation" data-sec="translation">Admission of worthlessness (dainya-bodhikā-vijṣapti), in the Padma Purāṇa: O Supreme Lord! There is no one as sinful as me, no one who has committed so many offenses. What can I say? I am very ashamed to ask You to remove those sins.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -13002,7 +12887,6 @@ In the Skanda Purāṇa there is a statement about submission unto the lotus fee
 
     <div class="fc-translation" data-sec="translation">Longing (lālasāmayī-vijṣapti) is illustrated in the Nārada-paṣcarātra: O master of the universe, when will you, accompanied by Lakṣmī, say with a deep voice to me, eager to serve You with cāmara, “Please come here”?</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -13067,7 +12951,6 @@ In the Skanda Purāṇa there is a statement about submission unto the lotus fee
 
 
     <div class="fc-translation" data-sec="translation">Another example is presented: O lotus-eyed Lord, when will I dance on the bank of the Yamunā with tears in my eyes while singing Your names?</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -13143,7 +13026,6 @@ In other words, one should learn how to cry for the Lord. One should learn this 
 
 
     <div class="fc-translation" data-sec="translation">Reciting compositions of praise (verse 86): The wise consider that the Gītā and the stava-rāja contained in the Gautamīya-tantra are examples of stavas.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -13224,7 +13106,6 @@ According to great learned scholars, the whole Bhagavad-gītā contains many aut
 
     <div class="fc-translation" data-sec="translation">The Skanda Purāṇa says: The perfected sages and the devatās respect those whose tongues are ornamented with the abundance of jewel-like verses of praise of Kṛṣṇa.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -13290,7 +13171,6 @@ Those who are less intelligent want to worship different demigods for some mater
 
 
     <div class="fc-translation" data-sec="translation">In the Narasiṁha Purāṇa it is said: He who praises Madhusūdana with stotras and stavas in front of His deity form is freed from all sins and attains the planet of Viṣṇu.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -13378,7 +13258,6 @@ Those who are less intelligent want to worship different demigods for some mater
 
     <div class="fc-translation" data-sec="translation">Tasting the food remnants of the deity (verse 86), from Padma Purāṇa: He, who always eats outside the inner sanctum, the remnants of the Lord’s food sprinkled with water from the Lord’s feet mixed with tulasī, achieves the results of one hundred billion sacrifices.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -13458,7 +13337,6 @@ There is this specific statement in the Padma Purāṇa: “A person who honors 
 
     <div class="fc-translation" data-sec="translation">Tasting the foot water of the Lord (verse 86), from Padma Purāṇa: Those who drink the foot water of the Lord achieve the supreme goal, even though they have not performed charity, sacrifices, Vedic study or deity worship.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -13524,7 +13402,6 @@ Caraṇāmṛta is obtained in the morning while the Lord is being washed before
 
 
     <div class="fc-translation" data-sec="translation">Smelling incense offered to the Lord (verse 86), from Hari-bhakti-sudhodaya: The action of the nose—smelling the incense offered to the Lord—fully destroys the poison of karma inflicted on those bitten by the snake of material existence.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -13593,7 +13470,6 @@ Any devotee coming into the temple should always offer something to the Deity—
 
     <div class="fc-translation" data-sec="translation">Smelling the garlands offered to the Lord (verse 86), from a tantra: When the fragrance of the garlands of the Lord enters the nostrils, immediately the bondage created by piles of sin is destroyed.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -13659,7 +13535,6 @@ It is confirmed in Śrīmad-Bhāgavatam, “One who has not washed off all react
 
 
     <div class="fc-translation" data-sec="translation">From Agastya-saṁhitā: It is said that the nose smelling flowers and gandha offered to the infinite Lord is the cause of complete purification in this world.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -13738,7 +13613,6 @@ It is confirmed in Śrīmad-Bhāgavatam, “One who has not washed off all react
 
 
     <div class="fc-translation" data-sec="translation">Touching the deity (verse 86), from Viṣṇu-dharmottara: The pure, faithful person who touches the deity of Viṣṇu becomes freed from the bondage of sin and attains all desires.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -13820,7 +13694,6 @@ But anyway, the present law is the law of all scripture—that if anyone is puri
 
     <div class="fc-translation" data-sec="translation">Seeing the deity (verse 86), from Varāha Purāṇa: O Earth! Those who see Govinda in Vṛndāvana do not go to the city of Yama, but achieve pure bhakti, the goal of all puṇya.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -13899,7 +13772,6 @@ In the Varāha Purāṇa there is a statement praising the seeing of the Deity o
 
 
     <div class="fc-translation" data-sec="translation">Seeing the ārātrika of the Lord (verse 87), from Skanda Purāṇa: The face of Viṣṇu lit by the light from the ārātrika lamp burns up ten million sins of killing brāhmaṇas and ten million sins committed in the past and to be committed in the future.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -13980,7 +13852,6 @@ In the Skanda Purāṇa there is the following description of the result of seei
 
     <div class="fc-translation" data-sec="translation">Seeing the festivals (verse 87), from Bhaviṣyottara: The dog-eaters and other low persons who joyfully see Keśava on His chariot all become associates of the Lord.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -14059,7 +13930,6 @@ In the Skanda Purāṇa there is the following description of the result of seei
 
     <div class="fc-translation" data-sec="translation">The word ādi (verse 87) refers to seeing the worship, as illustrated in Agni Purāṇa: He who sees the Lord with devotion, faith and joy, after He is worshipped or while He is being worshipped, attains eternal service to the Lord</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -14120,7 +13990,6 @@ In the Skanda Purāṇa there is the following description of the result of seei
 
 
     <div class="fc-translation" data-sec="translation">Next, hearing (verse 87): Hearing means listening to the name, pastimes and qualities of the Lord.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -14188,7 +14057,6 @@ The beginning of Kṛṣṇa consciousness and devotional service is hearing, in
 
 
     <div class="fc-translation" data-sec="translation">Hearing the name of the Lord (verse 87), from Garuḍa Purāṇa: Hearing the Vaiṣṇava mantra ‘Kṛṣṇa’, which is the only effective medicine to counteract the bite of the snake of saṁsāra, a man becomes liberated.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -14262,7 +14130,6 @@ The beginning of Kṛṣṇa consciousness and devotional service is hearing, in
 
 
     <div class="fc-translation" data-sec="translation">Hearing the pastimes (verse 87), from Fourth Canto: In that assembly, excellent streams of nectar of the pastimes of the Lord emanating from the mouths of the saintly devotees flow everywhere. Those who drink that nectar with eager ears, with constant thirst, O King, will forget the necessities of life — namely hunger and thirst — and become immune to all kinds of fear, lamentation and illusion. SB 4.29.40</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -14352,7 +14219,6 @@ As stated in Bhagavad-gītā, “A materialistic person can give up his material
 
     <div class="fc-translation" data-sec="translation">Hearing the qualities of the Lord (verse 87), from the Twelfth Canto: The person who desires pure devotional service to Lord Kṛṣṇa should hear the narrations of Lord Uttamaḥśloka’s glorious qualities, the constant chanting of which destroys everything inauspicious. The devotee should engage in such listening in regular daily assemblies and should continue his hearing throughout the day. SB 12.3.15</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -14439,7 +14305,6 @@ As stated in Bhagavad-gītā, “A materialistic person can give up his material
 
     <div class="fc-translation" data-sec="translation">Expecting the Lord’s mercy (verse 87), from the Tenth Canto: My dear Lord, one who earnestly waits for You to bestow Your causeless mercy upon him, all the while patiently suffering the reactions of his past misdeeds and offering You respectful obeisances with his heart, words and body, is surely eligible for You, the shelter of liberation, for that is his rightful claim. SB 10.14.8</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -14516,7 +14381,6 @@ This statement of Śrīmad-Bhāgavatam should be the guide of all devotees. A de
 
     <div class="fc-translation" data-sec="translation">Remembrance (verse 87): Somehow or other connecting the mind to the Lord is called remembrance.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -14583,7 +14447,6 @@ Some way or other, if someone establishes in his mind his continuous relationshi
 
     <div class="fc-translation" data-sec="translation">This is illustrated in the Viṣṇu-purāṇa (5.17.17): I surrender to the unborn, eternal person Hari, by remembrance of whom one takes possession of all auspiciousness.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -14648,7 +14511,6 @@ Some way or other, if someone establishes in his mind his continuous relationshi
 
 
     <div class="fc-translation" data-sec="translation">Remembrance is also illustrated in the Padma Purāṇa: I offer my respects to the omniscient Lord. Remembrance of His name, while living or dying, immediately destroys heaps of sins committed by men.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -14724,7 +14586,6 @@ Some way or other, if someone establishes in his mind his continuous relationshi
 
     <div class="fc-translation" data-sec="translation">Meditation (verse 87): Meditation [Note: Meditation is absorption, skilful contemplation. Smṛti (verse 175) is thinking of the Lord somehow or other.] Meditation is absorption, skilful contemplation. Smṛti (verse 175) is thinking of the Lord somehow or other.] means to contemplate with absorption on the Lord’s form, qualities, pastimes and service.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -14790,7 +14651,6 @@ To meditate means to engage the mind in thinking of the form of the Lord, the qu
 
 
     <div class="fc-translation" data-sec="translation">Meditation on the form, from Narasiṁha Purāṇa: Meditation on the two feet of the Lord is considered the means of attaining freedom from the dualities of this world. Even a sinner who casually meditates attains the highest benefit.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -14870,7 +14730,6 @@ To meditate means to engage the mind in thinking of the form of the Lord, the qu
 
     <div class="fc-translation" data-sec="translation">Meditation on the qualities of the Lord, from Viṣṇu-dharma: Those who constantly meditate on the qualities of the Lord with devotion, having destroyed all contaminations, enter the abode of the Lord.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -14936,7 +14795,6 @@ To meditate means to engage the mind in thinking of the form of the Lord, the qu
 
     <div class="fc-translation" data-sec="translation">Meditation on the pastimes of the Lord, from the Padma Purāṇa: He who meditates on the sweetest, most astonishing, charming pastimes of the Lord attains liberation.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -15001,7 +14859,6 @@ To meditate means to engage the mind in thinking of the form of the Lord, the qu
 
 
     <div class="fc-translation" data-sec="translation">Meditation on one’s service, from another purāṇa: Constantly serving the Lord with items produced in the mind, some devotees have directly attained the Lord, who is not approachable for others by words or mind.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -15080,7 +14937,6 @@ taking bath in the Godāvarī, becoming peaceful in mind, he would sit down in a
 
 
     <div class="fc-translation" data-sec="translation">Acting as a servant (verse 87): Dāsyam is defined as offering the results of prescribed duties and acting as a menial servant of the Lord. [Note: This dāsya is distinct from the dāsya-sthāyi-bhāva and dāsya-rasa that appear after sādhana-bhakti, though related.]</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -15169,7 +15025,6 @@ The dāsyam mentioned by Śrīdāma means “being in the position of a servant�
 
     <div class="fc-translation" data-sec="translation">The first type (offering prescribed duties) is described in the Skanda Purāṇa: Prescribed duties, according to one’s nature, offered to that Lord become bhāgavata-dharma. What to speak then of actions of bhakti dedicated to the Lord alone?</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -15243,7 +15098,6 @@ The dāsyam mentioned by Śrīdāma means “being in the position of a servant�
 
 
     <div class="fc-translation" data-sec="translation">There are two categories of this varṇāśrama-dāsyam offered by the Vaiṣṇavas to Kṛṣṇa: offering the auspicious among the prescribed actions according to one’s nature and offering only actions such as japa, meditation and deity worship.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -15319,7 +15173,6 @@ The dāsyam mentioned by Śrīdāma means “being in the position of a servant�
 
 
     <div class="fc-translation" data-sec="translation">Some persons say that this offering of duties by a person with weak faith in bhakti and a slight qualification for prescribed duties is called dāsya.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -15405,7 +15258,6 @@ Hearing and chanting about the transcendental holy name, form, qualities, paraph
 
     <div class="fc-translation" data-sec="translation">The second type of dāsyam is illustrated in the Nāradīya Purāṇa: He who has the desire to serve the Lord with actions, mind and words in this world is called a liberated jīva in all circumstances.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -15479,7 +15331,6 @@ Hearing and chanting about the transcendental holy name, form, qualities, paraph
 
 
     <div class="fc-translation" data-sec="translation">Friendship (verse 87): There are two types of sakhyam: trust and being friendly.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -15563,7 +15414,6 @@ To identify with such a position of friendship is called sakhyam.</p>
 
 
     <div class="fc-translation" data-sec="translation">The first type, trust, is described in Mahābhārata: O Govinda, remembering again and again Your promise that Your devotee will never perish, I maintain my life.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -15651,7 +15501,6 @@ To identify with such a position of friendship is called sakhyam.</p>
 
     <div class="fc-translation" data-sec="translation">Trust in the Lord is also illustrated in the Eleventh Canto: The lotus feet of the Supreme Personality of Godhead are sought even by the greatest of demigods, such as Brahmā and Śiva, who have all accepted the Supreme Personality of Godhead as their life and soul. A pure devotee of the Lord can never forget those lotus feet in any circumstance. He will not give up his shelter at the lotus feet of the Lord even for a single moment — indeed, not even for half a moment — even in exchange for the benediction of ruling the entire universe or taking the post of a devatā. Such a devotee of the Lord is to be considered the best of the Vaiṣṇavas. SB 11.2.53</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -15725,7 +15574,6 @@ To identify with such a position of friendship is called sakhyam.</p>
 
 
     <div class="fc-translation" data-sec="translation">The cause of qualification for bhakti is śraddhā alone. The particular element viśvāsa to Keśava may be considered an aṅga of that.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -15805,7 +15653,6 @@ To identify with such a position of friendship is called sakhyam.</p>
 
     <div class="fc-translation" data-sec="translation">The second type of friendship is illustrated in the Agastya-saṁhitā: A person who is dedicated to serving the Lord, and out of friendship sees and treats Him as a human, lies down in the Lord’s temple.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -15866,7 +15713,6 @@ To identify with such a position of friendship is called sakhyam.</p>
 
 
     <div class="fc-translation" data-sec="translation">The last example should be classed as rāgānuga-sādhana, because of disregard for vaidhi-sādhana. However, attraction for feelings of friendship is cultivated in both rāgānuga-sādhana and vaidhi-sādhana.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -15954,7 +15800,6 @@ To identify with such a position of friendship is called sakhyam.</p>
 
     <div class="fc-translation" data-sec="translation">Offering the self (verse 87), illustrated in the Eleventh Canto: A person who gives up all prescribed activities and offers himself entirely unto Me, becomes the object of My special desires. He achieves liberation from birth and death and is promoted to the status of sharing My own opulences. SB 11.29.34</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -16030,7 +15875,6 @@ This self-surrender is called ātma-nivedana.</p>
 
 
     <div class="fc-translation" data-sec="translation">The learned say that ātmā (mentioned in verse 194) has two meanings: some say ātmā refers to the soul having the identity of “I”, while others say that ātmā refers to the body, since it belongs to the soul.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -16118,7 +15962,6 @@ This self-surrender is called ātma-nivedana.</p>
 
     <div class="fc-translation" data-sec="translation">Offering the soul is illustrated in a stotra of Yāmunācārya: Whoever I may be, either a soul inhabiting the body and other material elements, or a deva or a human body made of the guṇas, today I offer that ”I” to Your lotus feet.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -16197,7 +16040,6 @@ This self-surrender is called ātma-nivedana.</p>
 
     <div class="fc-translation" data-sec="translation">Offering the body as ātmā is illustrated in Bhakti-viveka: Just as one does not worry about an animal that has been sold, one should offer this body to the Lord and be disinterested in its maintenance.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -16258,7 +16100,6 @@ This self-surrender is called ātma-nivedana.</p>
 
 
     <div class="fc-translation" data-sec="translation">Friendship and offering the self and body are rare because of the difficulty of execution during the state of sādhana. However, some wise men have considered that these two qualify as part of sādhana.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -16342,7 +16183,6 @@ In addition, it should be understood that sakhya and other rasas could also mix 
 
     <div class="fc-translation" data-sec="translation">Offering articles dear to oneself (verse 88), illustrated in Eleventh Canto: Whatever is most desired by one within this material world, and whatever is most dear to oneself (and also dear to Me) — one should offer that very thing to Me. Such an offer­ing qualifies one for eternal life. SB 11.11.41</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -16422,7 +16262,6 @@ In the Eleventh Canto of Śrīmad-Bhāgavatam, Eleventh Chapter, verse 41, Lord 
 
     <div class="fc-translation" data-sec="translation">Making full efforts for the Lord (verse 88), illustrated in the Paṣcarātra: O sage! Among all the Vedic and routine actions that are performed, the person desiring bhakti should perform those which are favorable for service to the Lord.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -16489,7 +16328,6 @@ In the Nārada Paṣcarātra there is a statement of how one can act in all sphe
 
     <div class="fc-translation" data-sec="translation">Accepting the Lord’s protection (śaraṇāpatti, verse 88), illustrated from Hari-bhakti-vilāsa: He who, while saying “I am Yours,” accepts the protection of the Lord, feels bliss. Hari bhakti vilāsa 11.677</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -16555,7 +16393,6 @@ In the Hari-bhakti-vilāsa there is the following statement about self-surrender
 
 
     <div class="fc-translation" data-sec="translation">Also, it is said in the Narasiṁha Purāṇa: I deliver from suffering that person who takes shelter of Me saying, “Lord of lords, exciter of all beings, I have taken You as my protector.”</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -16642,7 +16479,6 @@ In the Hari-bhakti-vilāsa there is the following statement about self-surrender
 
 
     <div class="fc-translation" data-sec="translation">Service to things related to the Lord (verse 88), service to tulasī (verse 89), from Skanda Purāṇa: Seeing tulasī destroys all sins. Touching her purifies the body. Bowing to her destroys all sufferings. Sprinkling her with water delivers one from death. Planting her bestows attachment of the mind to Lord Kṛṣṇa. Offering her to Kṛṣṇa’s lotus feet bestows special liberation in the form of prema. I offer my respects to tulasī.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -16732,7 +16568,6 @@ In India all Hindus, even those not belonging to the Vaiṣṇava group, take sp
 
     <div class="fc-translation" data-sec="translation">Also from the Skanda Purāṇa: Those who worship auspicious tulasī daily by nine processes — namely, seeing, touching, meditating, glorifying, offering obeisances, praising, planting, serving, and worshipping her — live in the Lord’s house for ten billion yugas.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -16806,7 +16641,6 @@ In India all Hindus, even those not belonging to the Vaiṣṇava group, take sp
 
     <div class="fc-translation" data-sec="translation">Also from the Skanda Purāṇa: Those who worship auspicious tulasī daily by nine processes — namely, seeing, touching, meditating, glorifying, offering obeisances, praising, planting, serving, and worshipping her — live in the Lord’s house for ten billion yugas.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -16867,7 +16701,6 @@ In India all Hindus, even those not belonging to the Vaiṣṇava group, take sp
 
 
     <div class="fc-translation" data-sec="translation">Service to the scriptures (verse 89): Scripture here refers to those scriptures which present bhakti.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -16952,7 +16785,6 @@ According to Śrīla Rūpa Gosvāmī, any book which gives enlightenment in the 
 
     <div class="fc-translation" data-sec="translation">From Skanda Purāṇa: O Nārada, fortunate are those people in this world who hear and read the Vaiṣṇava scriptures. Kṛṣṇa is pleased with them. Those who worship the Vaiṣṇava scriptures in their houses become free of all sins and are praised by the devatās. The Supreme Lord Nārāyaṇa Himself lives in the house where the written Vaiṣṇava scriptures have appeared.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -17034,7 +16866,6 @@ It is also said to Nārada Muni, “My dear Nārada, a person who writes Vaiṣ�
 
 
     <div class="fc-translation" data-sec="translation">From Skanda Purāṇa: O Nārada, fortunate are those people in this world who hear and read the Vaiṣṇava scriptures. Kṛṣṇa is pleased with them. Those who worship the Vaiṣṇava scriptures in their houses become free of all sins and are praised by the devatās. The Supreme Lord Nārāyaṇa Himself lives in the house where the written Vaiṣṇava scriptures have appeared.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -17118,7 +16949,6 @@ It is also said to Nārada Muni, “My dear Nārada, a person who writes Vaiṣ�
 
     <div class="fc-translation" data-sec="translation">From Skanda Purāṇa: O Nārada, fortunate are those people in this world who hear and read the Vaiṣṇava scriptures. Kṛṣṇa is pleased with them. Those who worship the Vaiṣṇava scriptures in their houses become free of all sins and are praised by the devatās. The Supreme Lord Nārāyaṇa Himself lives in the house where the written Vaiṣṇava scriptures have appeared.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -17185,7 +17015,6 @@ It is also said to Nārada Muni, “My dear Nārada, a person who writes Vaiṣ�
 
     <div class="fc-translation" data-sec="translation">Also in the Twelfth Canto, service to the scriptures is illustrated: Śrīmad-Bhāgavatam is declared as the essence of all Vedānta philosophy. One who has felt satisfaction from its nectarean mellow will never be attracted to any other literature. SB 12.13.15</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -17250,7 +17079,6 @@ It is also said to Nārada Muni, “My dear Nārada, a person who writes Vaiṣ�
 
 
     <div class="fc-translation" data-sec="translation">Serving Mathurā and other holy places (verse 89), illustrated in the Varāha Purāṇa: The fool who gives up Mathurā and develops attraction for some other place wanders in the material world birth after birth, bewildered by My māyā.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -17317,7 +17145,6 @@ In the Varāha Purāṇa there is a statement praising the residential quarters 
 
 
     <div class="fc-translation" data-sec="translation">This is also illustrated in the Brahmāṇḍa Purāṇa: The bliss at the stage of prema, which is rarely obtained even by serving all the holy places in the three worlds, is available just by touching Mathurā</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -17397,7 +17224,6 @@ In the Varāha Purāṇa there is a statement praising the residential quarters 
 
     <div class="fc-translation" data-sec="translation">Hearing about, remembering, glorifying, desiring, seeing, visiting, touching, taking shelter, and serving Mathurā fulfills all the desires of human beings. This has been described in all the Purāṇas. I have not elaborated this here for fear of increasing the volume of the book.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -17476,7 +17302,6 @@ In the Varāha Purāṇa there is a statement praising the residential quarters 
 
     <div class="fc-translation" data-sec="translation">Service to Vaiṣṇavas (verse 89), from Padma Purāṇa (6.253.176): Of all types of worship, worship of Viṣṇu is supreme. O Devī, worship of His devotees, however, is even superior to that.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -17542,7 +17367,6 @@ In the Padma Purāṇa, there is a nice statement praising the service of the Va
 
 
     <div class="fc-translation" data-sec="translation">In the Third Canto, it is said: By serving the devotee, one will develop a fixed manifestation of bhāva for the feet of the Personality of Godhead, possessed of an eternal form, the enemy of the Madhu demon. That bhāva vanquishes one’s material distresses. SB 3.7.19</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -17622,7 +17446,6 @@ In the Padma Purāṇa, there is a nice statement praising the service of the Va
 
     <div class="fc-translation" data-sec="translation">Also, the Skanda Purāṇa says: Where sin is for the person who has seen a Vaiṣṇava whose body is marked with conch and disk, who has tulasī maṣjarīs on his head and whose limbs are smeared with gopī-candana?</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -17687,7 +17510,6 @@ In the Padma Purāṇa, there is a nice statement praising the service of the Va
 
 
     <div class="fc-translation" data-sec="translation">The First Canto says: Simply by our remembering You, our houses become instantly sanctified. And what to speak of seeing You, touching You, washing Your holy feet and offering You a seat in our home? SB 1.19.33</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -17754,7 +17576,6 @@ In the Padma Purāṇa, there is a nice statement praising the service of the Va
 
     <div class="fc-translation" data-sec="translation">Ādī-purāṇa says: Those who claim to be My devotees are not My devotees. Those who are the devotees of My devotees, I consider them to be My best devotees.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -17815,7 +17636,6 @@ In the Padma Purāṇa, there is a nice statement praising the service of the Va
 
 
     <div class="fc-translation" data-sec="translation">All the aṅgas of bhakti described in relation to the Lord are also aṅgas in relation to the devotees of the Lord. This is the conclusion of the wise.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -17882,7 +17702,6 @@ In the Padma Purāṇa, there is a nice statement praising the service of the Va
 
     <div class="fc-translation" data-sec="translation">Observing festivals according to one’s wealth (verse 89), illustrated from the Padma Purāṇa: O king, he who performs a festival for the temple of the Lord experiences for eternity a festival in the planet of the Lord.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -17948,7 +17767,6 @@ In the Padma Purāṇa there is a statement that one should perform the ceremoni
 
 
     <div class="fc-translation" data-sec="translation">Observing Ūrja-vrata (verse 90), from the Padma Purāṇa: Just as men know that Dāmodara is affectionate to His devotee, the Dāmodara month is also affectionate to the devotee. Even a little service performed during that month yields great results.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -18037,7 +17855,6 @@ One of the most important of these ceremonial functions is called Ūrja-vrata. �
 
     <div class="fc-translation" data-sec="translation">Respecting the Dāmodara-vrata in Mathurā is glorified in the Padma Purāṇa: The Lord, being worshipped elsewhere, awards material enjoyment and liberation to those worshippers. He does not give bhakti because bhakti controls the Lord. However, men can achieve bhakti to the Lord very easily by serving Dāmodara during Kārtika month in Mathurā just once.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -18112,7 +17929,6 @@ In the Padma Purāṇa it is said, “The Lord may offer liberation or material 
 
     <div class="fc-translation" data-sec="translation">Respecting the Dāmodara-vrata in Mathurā is glorified in the Padma Purāṇa: The Lord, being worshipped elsewhere, awards material enjoyment and liberation to those worshippers. He does not give bhakti because bhakti controls the Lord. However, men can achieve bhakti to the Lord very easily by serving Dāmodara during Kārtika month in Mathurā just once.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -18183,7 +17999,6 @@ In the Padma Purāṇa it is said, “The Lord may offer liberation or material 
 
     <div class="fc-translation" data-sec="translation">Observing the appearance day of the Lord (verse 90), from the Bhaviṣyottara Purāṇa: O Janārdana, tell us the day that Devakī gave birth to You. O Vaikuṇṭha, we will perform a festival on that day. O Keśava, may You be pleased with that festival performed by those who are completely surrendered to You.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -18250,7 +18065,6 @@ This statement of the Bhaviṣya Purāṇa gives evidence that by observing diff
 
 
     <div class="fc-translation" data-sec="translation">Attachment to serving the lotus feet of the deity (verse 90), from Ādi Purāṇa: I give bhakti, and never liberation, to the person who is always engaged in chanting My name and serving Me as the goal in his life.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -18339,7 +18153,6 @@ Mukti means liberation from material contamination; when liberated, one does not
 
 
     <div class="fc-translation" data-sec="translation">Relishing Bhāgavatam (verse 91), from the First Canto: O expert and thoughtful men, relish Śrīmad-Bhāgavatam, the mature fruit of the desire tree of Vedic literatures. It emanated from the lips of Śrī Śukadeva Gosvāmī. Therefore, this fruit has become even more tasteful, although its nectarean juice was already relishable for all, including liberated souls. SB 1.1.3</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -18466,7 +18279,6 @@ My dear Vyāsa, even though a devotee of Lord Kṛṣṇa sometimes falls down s
 
     <div class="fc-translation" data-sec="translation">In a similar way, it is said in the Second Canto: O saintly King, I was certainly situated perfectly in transcendence, yet I was still attracted by the delineation of the pastimes of the Lord, who is described by enlightened verses. SB 2.1.9</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -18544,7 +18356,6 @@ My dear Vyāsa, even though a devotee of Lord Kṛṣṇa sometimes falls down s
 
 
     <div class="fc-translation" data-sec="translation">Association with like-minded, affectionate devotees (verse 91), illustrated in the First Canto: The value of a moment’s association with the devotee of the Lord cannot be compared even to the attainment of heavenly planets or liberation from matter. What, then, to speak of worldly benedictions in the form of material prosperity, which are meant for those who are destined to die. SB 1.18.13</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -18628,7 +18439,6 @@ If one, by chance, associates with a devotee, even for a fraction of a moment, h
 
     <div class="fc-translation" data-sec="translation">It is also said in the Hari-bhakti-sudhodaya: A man will attain the qualities of the person with whom he associates, just as a crystal takes up the color of the object next to it. Therefore, the wise man will take shelter of those who have qualities like his own for the prosperity of his family.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -18706,7 +18516,6 @@ If one, by chance, associates with a devotee, even for a fraction of a moment, h
 
 
     <div class="fc-translation" data-sec="translation">Chanting the name of the Lord (verse 92), from the Second Canto: O King, constant chanting of the holy name of the Lord after the ways of the great authorities is the doubtless and fearless way of success for all, including those who are free from all material desires, those who are desirous of all material enjoyment, and also those who are self-satisfied by dint of transcendental knowledge. SB 2.1.11</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -18787,7 +18596,6 @@ The importance of chanting Hare Kṛṣṇa, Hare Kṛṣṇa, Kṛṣṇa Kṛ�
 
     <div class="fc-translation" data-sec="translation">In the Ādi Purāṇa it is said: By singing My names, a person will attain a position close to Me. I make this promise. That person, O Arjuna, purchases me.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -18852,7 +18660,6 @@ The importance of chanting Hare Kṛṣṇa, Hare Kṛṣṇa, Kṛṣṇa Kṛ�
 
 
     <div class="fc-translation" data-sec="translation">In the Padma Purāṇa, it is said: The names of the Lord remain constantly in the mouth of that person who serves Vāsudeva for a thousand births.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -18932,7 +18739,6 @@ The importance of chanting Hare Kṛṣṇa, Hare Kṛṣṇa, Kṛṣṇa Kṛ�
 
     <div class="fc-translation" data-sec="translation">It is also said in the Padma Purāṇa: The name of the Lord fulfills all desires like cintāmaṇi. It is the very form of Kṛṣṇa. It is full of consciousness and rasa. It is complete, pure, and eternally liberated. This is because of the non-difference of the name and Kṛṣṇa.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -19010,7 +18816,6 @@ The importance of chanting Hare Kṛṣṇa, Hare Kṛṣṇa, Kṛṣṇa Kṛ�
 
 
     <div class="fc-translation" data-sec="translation">Also from the Padma Purāṇa: Kṛṣṇa and His names cannot be grasped by the material senses, but when a person develops the tendency to accept the Lord’s name and form, Kṛṣṇa then spontaneously appears on the tongue and in the other senses.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -19114,7 +18919,6 @@ Thereafter, the King of the elephants, Gajendra, fixed his mind in his heart wit
 
     <div class="fc-translation" data-sec="translation">Residing in Mathurā (verse 92), illustrated in the Padma Purāṇa: Liberation is the greatest result that can be obtained at other holy places, but devotion to the Lord, which is desired by the liberated souls, can be attained at Mathurā. Mathurā bestows dharma, artha, kāma to those who have material desires. It awards liberation to those desiring liberation. It awards bhakti to those desiring bhakti. What intelligent person will not take shelter of Mathurā? Oh, Mathurā is most auspicious, and greater than Vaikuṇṭha (Goloka)! [Note: It will be explained later in the commentary on 1.2.303 that Vaikuṇṭha means Goloka, a part of Vraja filled with aiśvarya. Mathurā here means Gokula.] By staying only one day in Mathurā, bhakti to the Lord appears.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -19197,7 +19001,6 @@ It is further said, “Who is that person who will not agree to worship the land
 
 
     <div class="fc-translation" data-sec="translation">Residing in Mathurā (verse 92), illustrated in the Padma Purāṇa: Liberation is the greatest result that can be obtained at other holy places, but devotion to the Lord, which is desired by the liberated souls, can be attained at Mathurā. Mathurā bestows dharma, artha, kāma to those who have material desires. It awards liberation to those desiring liberation. It awards bhakti to those desiring bhakti. What intelligent person will not take shelter of Mathurā? Oh, Mathurā is most auspicious, and greater than Vaikuṇṭha (Goloka)! [Note: It will be explained later in the commentary on 1.2.303 that Vaikuṇṭha means Goloka, a part of Vraja filled with aiśvarya. Mathurā here means Gokula.] By staying only one day in Mathurā, bhakti to the Lord appears.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -19282,7 +19085,6 @@ It is further said, “Who is that person who will not agree to worship the land
 
     <div class="fc-translation" data-sec="translation">Residing in Mathurā (verse 92), illustrated in the Padma Purāṇa: Liberation is the greatest result that can be obtained at other holy places, but devotion to the Lord, which is desired by the liberated souls, can be attained at Mathurā. Mathurā bestows dharma, artha, kāma to those who have material desires. It awards liberation to those desiring liberation. It awards bhakti to those desiring bhakti. What intelligent person will not take shelter of Mathurā? Oh, Mathurā is most auspicious, and greater than Vaikuṇṭha (Goloka)! [Note: It will be explained later in the commentary on 1.2.303 that Vaikuṇṭha means Goloka, a part of Vraja filled with aiśvarya. Mathurā here means Gokula.] By staying only one day in Mathurā, bhakti to the Lord appears.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -19345,7 +19147,6 @@ It is further said, “Who is that person who will not agree to worship the land
 
 
     <div class="fc-translation" data-sec="translation">The last five items (verses 90-92) have inconceivable and astonishing power. What to speak of having faith in these items, if there is just a little relationship with these items, persons who are devoid of offenses can attain the level of bhāva.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -19434,7 +19235,6 @@ Rūpa Gosvāmī has stated that five kinds of devotional activities—namely res
 
     <div class="fc-translation" data-sec="translation">The power of serving the deity: O my friend, if you desire to enjoy with your friends and relatives, then do not look upon the form of the Lord called Govinda wandering near Keśī-tīrtha on the bank of the Yamunā river, with a slight smile on His lips, posed with three bends in His body, eyes glancing everywhere in a crooked fashion, flute placed on His red lower lip like a tender bud, and shining gloriously with a peacock feather.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -19521,7 +19321,6 @@ The purport of this verse is that if someone becomes attached to the śrī-mūrt
 
 
     <div class="fc-translation" data-sec="translation">The power of hearing Bhāgavatam: O idiots, how unfortunate you are! I think that you must have been hearing all the syllables, one by one, of the verses of the Tenth Canto of Bhāgavatam, because your ears are now denouncing the most auspicious goals of dharma, artha and kāma, and even decrying the fourth goal of liberation which is most blissful.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -19616,7 +19415,6 @@ Moreover, in the previous verse, because the intention is to praise the form of 
 
     <div class="fc-translation" data-sec="translation">The power of association with the devotee of Kṛṣṇa: Ever since I saw a certain person whose body was washed with his own tears, whose hairs were standing on end, and who stumbled around with a joyous heart, while quivering to the extreme, my mind has for some reason become so attached to the form of Kṛṣṇa that I have no attachment to my family.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -19702,7 +19500,6 @@ Moreover, in the previous verse, because the intention is to praise the form of 
 
 
     <div class="fc-translation" data-sec="translation">The power of chanting the name of the Lord: Ever since I have heard Nārada singing the names of Kṛṣṇa, which pacify the ears, my heart has become completely blissful, fixed in an unprecedented state of prema.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -19790,7 +19587,6 @@ Moreover, in the previous verse, because the intention is to praise the form of 
 
     <div class="fc-translation" data-sec="translation">The power of residing in the district of Mathurā: The splendor of Mathurā’s forest [Note: Mathurā refers to Vraja as well as the city of Mathurā.] made beautiful by being situated on the bank of the Yamunā, where buzzing bees take shelter of newly blooming kadamba trees, ornamented with unlimited sweetness, produces an extraordinary state of bhāva in my mind.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -19864,7 +19660,6 @@ Moreover, in the previous verse, because the intention is to praise the form of 
 
 
     <div class="fc-translation" data-sec="translation">The inconceivable power of these extraordinary five aṅgas is such that it will manifest the state of bhāva and its object, Kṛṣṇa, at the same time.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -19964,7 +19759,6 @@ One achieves the highest bliss just by touching Mathurā. (Verse 212 of this cha
 
     <div class="fc-translation" data-sec="translation">In some of the verses quoted from the scriptures, material results are attributed to the aṅgas for attracting persons possessing material consciousness. However, the main result of these aṅgas is rati (bhāva).</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -20047,7 +19841,6 @@ However, for those persons with material inclinations, material results are ment
 
     <div class="fc-translation" data-sec="translation">The consensus of those knowledgeable of bhakti is that karma (varṇāśrama duties) is not an aṅga of bhakti.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -20112,7 +19905,6 @@ However, for those persons with material inclinations, material results are ment
 
 
     <div class="fc-translation" data-sec="translation">In the Eleventh Canto it is explained: One should continue to perform the daily and periodic varṇāśrama activities until one actually becomes detached from material sense gratification and develops faith for hearing and chanting about Me. SB 11.20.9</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -20192,7 +19984,6 @@ If even for a moment the remembrance of Vāsudeva, the Supreme Personality of Go
 
     <div class="fc-translation" data-sec="translation">Jṣāna and vairāgya are suitable for entering bhakti, being somewhat useful in the beginning of bhakti, but they are not considered aṅgas of bhakti.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -20269,7 +20060,6 @@ This is confirmed in Bhagavad-gītā by the Lord Himself: “One can understand 
 
 
     <div class="fc-translation" data-sec="translation">Because jṣāna and vairāgya generally make the heart harsh, the authoritative devotees have concluded that bhakti alone, whose nature is very tender, is the cause of entering into bhakti.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -20365,7 +20155,6 @@ In the second verse quoted, the word karma (namaḥ stuti-karma-pūjāḥ) refer
 
     <div class="fc-translation" data-sec="translation">In the Bhāgavatam, it is also said: Therefore, for a devotee engaged in My loving service, with mind fixed on Me, the cultivation of knowledge (impersonal) and renunciation is generally not the means of achieving the highest perfection within this world. SB 11.20.31</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -20422,7 +20211,6 @@ In the second verse quoted, the word karma (namaḥ stuti-karma-pūjāḥ) refer
 
 
     <div class="fc-translation" data-sec="translation">However, the goals of jṣāna, vairāgya and other processes are achieved by bhakti alone.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -20509,7 +20297,6 @@ In the second verse quoted, the word karma (namaḥ stuti-karma-pūjāḥ) refer
 
 
     <div class="fc-translation" data-sec="translation">Thus, it is said in Bhāgavatam: Everything that can be achieved by fruitive activities, penance, knowledge, detachment, mystic yoga, charity, religious duties and all other means of perfecting life is easily achieved by My devotee through loving service unto Me. If somehow or other My devotee desires promotion to heaven, liberation, or residence in My abode (for service), he easily achieves such benedictions. SB 11.20.32-33</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -20611,7 +20398,6 @@ I am afraid of the terrible suffering (kadanād) of the wheel of saṁsāra, bec
 
     <div class="fc-translation" data-sec="translation">Thus, it is said in Bhāgavatam: Everything that can be achieved by fruitive activities, penance, knowledge, detachment, mystic yoga, charity, religious duties and all other means of perfecting life is easily achieved by My devotee through loving service unto Me. If somehow or other My devotee desires promotion to heaven, liberation, or residence in My abode (for service), he easily achieves such benedictions. SB 11.20.32-33</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -20700,7 +20486,6 @@ I am afraid of the terrible suffering (kadanād) of the wheel of saṁsāra, bec
 
     <div class="fc-translation" data-sec="translation">If a person has a taste for worshipping the Lord, even if he has strong material attractions, those attractions will be for the most part destroyed during sādhana without resorting to vairāgya.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -20782,7 +20567,6 @@ By rendering devotional service unto the Personality of Godhead, Śrī Kṛṣ�
 
     <div class="fc-translation" data-sec="translation">The vairāgya of that person who employs objects suitable for devotional development, while remaining detached from them, is said to be suitable for bhakti. The objects should be persistently related to Kṛṣṇa.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -20858,7 +20642,6 @@ One should not give up anything which can be utilized in the service of the Lord
 
 
     <div class="fc-translation" data-sec="translation">Rejection of things related to the Lord by persons desiring liberation, who think that these things are simply material objects, is called useless vairāgya.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -20947,7 +20730,6 @@ The Vaiṣṇava should never refuse the prasāda of Viṣṇu. Quoted in Hari-b
     <div class="fc-translation" data-sec="translation">The daily and periodic duties of varṇāśrama and the impersonal aspect of jṣāna (the obstructive portions of karma and jṣāna) have already been rejected as aṅgas of bhakti by using the stated definition of uttama-bhakti obtained through the bhakti scriptures. However, in order to make the point clear, the false type of vairāgya (the obstructive portion) has been again rejected as an aṅga of bhakti.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -21021,7 +20803,6 @@ The Vaiṣṇava should never refuse the prasāda of Viṣṇu. Quoted in Hari-b
 
 
     <div class="fc-translation" data-sec="translation">The daily and periodic duties of varṇāśrama and the impersonal aspect of jṣāna (the obstructive portions of karma and jṣāna) have already been rejected as aṅgas of bhakti by using the stated definition of uttama-bhakti obtained through the bhakti scriptures. However, in order to make the point clear, the false type of vairāgya (the obstructive portion) has been again rejected as an aṅga of bhakti.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -21097,7 +20878,6 @@ The Vaiṣṇava should never refuse the prasāda of Viṣṇu. Quoted in Hari-b
 
     <div class="fc-translation" data-sec="translation">That bhakti which is accomplished by dependence on wealth, followers or other objects cannot be considered as an aṅga of uttama-bhakti because it destroys the pure nature of that bhakti. It is situated far away from uttama-bhakti.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -21172,7 +20952,6 @@ The Vaiṣṇava should never refuse the prasāda of Viṣṇu. Quoted in Hari-b
 
     <div class="fc-translation" data-sec="translation">Discrimination and other material qualities cannot be considered as aṅgas of uttama-bhakti, since on their own they take shelter of the excellent condition of persons practicing uttama-bhakti.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -21234,7 +21013,6 @@ There are many other instances showing that a devotee needn’t practice anythin
 
 
     <div class="fc-translation" data-sec="translation">Basic rules of conduct (yamāḥ), rules of cleanliness and other actions appear automatically in those who are extremely dedicated to Kṛṣṇa. Thus, they are not included as aṅgas of bhakti.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -21318,7 +21096,6 @@ Nonviolence, truthfulness, not coveting or stealing the property of others, deta
 
     <div class="fc-translation" data-sec="translation">Thus in the Skanda Purāṇa it is said: O hunter! These qualities such as non-violence are not astonishing, because the persons who engage in devotion to the Lord will never cause affliction to others.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -21383,7 +21160,6 @@ Nonviolence, truthfulness, not coveting or stealing the property of others, deta
 
 
     <div class="fc-translation" data-sec="translation">Also in the Skanda Purāṇa, it is said: Internal and external purity, austerity (sense control), peacefulness and other qualities take shelter of persons who desire to serve the Lord.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -21459,7 +21235,6 @@ Nonviolence, truthfulness, not coveting or stealing the property of others, deta
 
     <div class="fc-translation" data-sec="translation">Bhakti, taking shelter of one principal aṅga or many aṅgas according to one’s desire, and practiced with steadiness, brings about the desired result (bhāva and prema).</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -21532,7 +21307,6 @@ Nonviolence, truthfulness, not coveting or stealing the property of others, deta
 
 
     <div class="fc-translation" data-sec="translation">Examples of practicing one aṅga are illustrated in another work: Parīkṣit is an example of hearing about the Lord and Śukadeva is an example of chanting the glories of the Lord. Prahlāda is an example of remembering the Lord and Lakṣmī is an example of serving the lotus feet of the Lord. Pṛthu is an example of performing deity worship of the Lord. Akrūra is an example of attaining perfection by offering prayers to the Lord. Hanumān is an example of service with the attitude of a servant of the Lord. Arjuna is an example of friendship with the Lord. Bali is an example of offering the self to the Lord. They achieved Kṛṣṇa by following principally one aṅga.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -21652,7 +21426,6 @@ Nonviolence, truthfulness, not coveting or stealing the property of others, deta
 
     <div class="fc-translation" data-sec="translation">An example of practicing many aṅgas equally is found in the Ninth Canto: Mahārāja Ambarīṣa always engaged his mind in meditating upon the lotus feet of Kṛṣṇa, his words in describing the glories of the Lord, his hands in cleansing the Lord’s temple, and his ears in hearing the words spoken by Kṛṣṇa or about Kṛṣṇa. He engaged his eyes in seeing the Deity of Kṛṣṇa, Kṛṣṇa’s temples and Kṛṣṇa’s places like Mathurā and Vṛndāvana, he engaged his sense of touch in touching the bodies of the Lord’s devotees, he engaged his sense of smell in smelling the fragrance of tulasī offered to the Lord, and he engaged his tongue in tasting the Lord’s prasāda. He engaged his legs in walking to the holy places and temples of the Lord, his head in bowing down before the Lord, and all his desires in serving the Lord, twenty-four hours a day. Indeed, Mahārāja Ambarīṣa never desired anything for his own sense gratification. He engaged all his senses in devotional service, in various engagements related to the Lord. This is the way to increase attachment for the Lord and be completely free from all material desires. SB 9.4.18-20</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -21770,7 +21543,6 @@ Nonviolence, truthfulness, not coveting or stealing the property of others, deta
 
 
     <div class="fc-translation" data-sec="translation">An example of practicing many aṅgas equally is found in the Ninth Canto: Mahārāja Ambarīṣa always engaged his mind in meditating upon the lotus feet of Kṛṣṇa, his words in describing the glories of the Lord, his hands in cleansing the Lord’s temple, and his ears in hearing the words spoken by Kṛṣṇa or about Kṛṣṇa. He engaged his eyes in seeing the Deity of Kṛṣṇa, Kṛṣṇa’s temples and Kṛṣṇa’s places like Mathurā and Vṛndāvana, he engaged his sense of touch in touching the bodies of the Lord’s devotees, he engaged his sense of smell in smelling the fragrance of tulasī offered to the Lord, and he engaged his tongue in tasting the Lord’s prasāda. He engaged his legs in walking to the holy places and temples of the Lord, his head in bowing down before the Lord, and all his desires in serving the Lord, twenty-four hours a day. Indeed, Mahārāja Ambarīṣa never desired anything for his own sense gratification. He engaged all his senses in devotional service, in various engagements related to the Lord. This is the way to increase attachment for the Lord and be completely free from all material desires. SB 9.4.18-20</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -21890,7 +21662,6 @@ Nonviolence, truthfulness, not coveting or stealing the property of others, deta
 
     <div class="fc-translation" data-sec="translation">An example of practicing many aṅgas equally is found in the Ninth Canto: Mahārāja Ambarīṣa always engaged his mind in meditating upon the lotus feet of Kṛṣṇa, his words in describing the glories of the Lord, his hands in cleansing the Lord’s temple, and his ears in hearing the words spoken by Kṛṣṇa or about Kṛṣṇa. He engaged his eyes in seeing the Deity of Kṛṣṇa, Kṛṣṇa’s temples and Kṛṣṇa’s places like Mathurā and Vṛndāvana, he engaged his sense of touch in touching the bodies of the Lord’s devotees, he engaged his sense of smell in smelling the fragrance of tulasī offered to the Lord, and he engaged his tongue in tasting the Lord’s prasāda. He engaged his legs in walking to the holy places and temples of the Lord, his head in bowing down before the Lord, and all his desires in serving the Lord, twenty-four hours a day. Indeed, Mahārāja Ambarīṣa never desired anything for his own sense gratification. He engaged all his senses in devotional service, in various engagements related to the Lord. This is the way to increase attachment for the Lord and be completely free from all material desires. SB 9.4.18-20</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -21965,7 +21736,6 @@ Nonviolence, truthfulness, not coveting or stealing the property of others, deta
 
     <div class="fc-translation" data-sec="translation">Some persons call vaidhi-bhakti the path of rules (maryādā-mārga), since it is bound by strong limitation of the rules mentioned in the scriptures.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -22031,7 +21801,6 @@ Nonviolence, truthfulness, not coveting or stealing the property of others, deta
 
     <div class="fc-translation" data-sec="translation">Rāgānuga-bhakti is defined as that bhakti which follows after the rāgātmika-bhakti found distinctively in the inhabitants of Vraja. [Note: Rāgānuga-bhakti topic starts here]</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -22089,7 +21858,6 @@ Examples of spontaneous devotional service can be easily seen in Kṛṣṇa’s
 
 
     <div class="fc-translation" data-sec="translation">In order to define rāgānuga-bhakti first rāgātmika-bhakti should be discussed.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -22152,7 +21920,6 @@ Examples of spontaneous devotional service can be easily seen in Kṛṣṇa’s
 
 
     <div class="fc-translation" data-sec="translation">Rāga is defined as spontaneous, deep thirst for the object of love. Bhakti that is impelled exclusively by such a thirst is called rāgātmika-bhakti.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -22223,7 +21990,6 @@ Examples of spontaneous devotional service can be easily seen in Kṛṣṇa’s
 
 
     <div class="fc-translation" data-sec="translation">There are two types of rāgātmika-bhakti: that impelled by conjugal feelings (kāma-rūpā) and that impelled by other relationships (sambandha-rūpā).</div>
-
 
 
     <section class="fc-section" data-sec="gaudiya">
@@ -22299,7 +22065,6 @@ Examples of spontaneous devotional service can be easily seen in Kṛṣṇa’s
 
 
     <div class="fc-translation" data-sec="translation">These two types of rāgātmika-bhakti are illustrated in the Seventh Canto: Just as by vaidhi-bhakti one can attain one’s spiritual goals, many persons have attained suitable forms, according to their type of absorption, after absorbing their minds in the Lord out of lust, hatred, fear and affection, and after giving up their sinful mentality (in the case of hatred and fear). SB 7.1.30 My dear King Yudhiṣṭhira, the gopīs by their conjugal desires, Kaṁsa by his fear, Śiśupāla and other kings by envy, the Vṛṣṇis of Vraja (see footnote 115) by their relationship with Kṛṣṇa, you Pāṇḍavas by your great affection for Kṛṣṇa, and we (Nārada), by our vaidhi-bhakti, have obtained the mercy of Kṛṣṇa. SB 7.1.31</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -22396,7 +22161,6 @@ This statement praises the kāma of the gopīs, showing how it is superior, even
 
     <div class="fc-translation" data-sec="translation">These two types of rāgātmika-bhakti are illustrated in the Seventh Canto: Just as by vaidhi-bhakti one can attain one’s spiritual goals, many persons have attained suitable forms, according to their type of absorption, after absorbing their minds in the Lord out of lust, hatred, fear and affection, and after giving up their sinful mentality (in the case of hatred and fear). SB 7.1.30 My dear King Yudhiṣṭhira, the gopīs by their conjugal desires, Kaṁsa by his fear, Śiśupāla and other kings by envy, the Vṛṣṇis of Vraja (see footnote 115) by their relationship with Kṛṣṇa, you Pāṇḍavas by your great affection for Kṛṣṇa, and we (Nārada), by our vaidhi-bhakti, have obtained the mercy of Kṛṣṇa. SB 7.1.31</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -22491,7 +22255,6 @@ This statement praises the kāma of the gopīs, showing how it is superior, even
 
 
     <div class="fc-translation" data-sec="translation">Because fear and hatred are not favorable, they are rejected as modes of bhakti. Affection (sneha) of the Pāṇḍavas, if it means friendliness (sakhya), belongs to vaidhi-bhakti (because the sakhya is predominated by veneration). If sneha means prema or a stage of prema, it still could not be admitted here, as the topic is sādhana-bhakti. In the phrase “bhaktyā vayam” (and we, the sages (Nārada), attained befitting goals by bhakti), bhakti refers to vaidhi-bhakti.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -22591,7 +22354,6 @@ Purusam here refers to the Lord. The meaning is “any of these five persons wil
 
     <div class="fc-translation" data-sec="translation">Because fear and hatred are not favorable, they are rejected as modes of bhakti. Affection (sneha) of the Pāṇḍavas, if it means friendliness (sakhya), belongs to vaidhi-bhakti (because the sakhya is predominated by veneration). If sneha means prema or a stage of prema, it still could not be admitted here, as the topic is sādhana-bhakti. In the phrase “bhaktyā vayam” (and we, the sages (Nārada), attained befitting goals by bhakti), bhakti refers to vaidhi-bhakti.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -22682,7 +22444,6 @@ Purusam here refers to the Lord. The meaning is “any of these five persons wil
 
     <div class="fc-translation" data-sec="translation">When it is said that the enemies and the dear friends of the Lord attained the same end, it means the same end only in the sense that brahman and the personal form of Kṛṣṇa are one entity, in the manner that the rays of the sun and the sun are one.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -22767,7 +22528,6 @@ Bhagavad-gītā also says brahmaṇo hi pratiṣṭhāham: I am the shelter of t
 
     <div class="fc-translation" data-sec="translation">The enemies of the Lord generally merge into the impersonal brahman. Some of them, even though they attain semblance of a form similar to the Lord’s (sārūpyābhāsam), remain absorbed in the happiness of brahman.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -22849,7 +22609,6 @@ Sometimes an impersonalist may gradually elevate himself to the personal concept
 
     <div class="fc-translation" data-sec="translation">Moreover, it says in the Brahmāṇḍa Purāṇa: Siddha-loka (the spiritual world) is beyond prakṛti. There, demons killed by the Lord and some sages dwell, merged in the happiness of brahman.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -22923,7 +22682,6 @@ Sometimes an impersonalist may gradually elevate himself to the personal concept
 
 
     <div class="fc-translation" data-sec="translation">Those persons most devoted to the Lord, who are the very form of prema and who worship Him with intense, spontaneous absorption, attain the nectar of His lotus feet.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -23011,7 +22769,6 @@ Sometimes an impersonalist may gradually elevate himself to the personal concept
 
     <div class="fc-translation" data-sec="translation">Thus, it says in the Tenth Canto: Simply by constantly thinking of Him, the enemies of the Lord attained the same Brahman that sages fixed in yoga worship by controlling their breath, mind and senses. Similarly, we śrutis, adopting a mood similar to the gopīs, and finally attaining similar bodies, will achieve the same nectar from Your lotus feet that Your consorts are able to relish because of their loving attraction to Your mighty, serpentine arms. SB 10.87.23</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -23092,7 +22849,6 @@ In the previous verse, the attainment of the Lord’s feet also applies, in gene
 
     <div class="fc-translation" data-sec="translation">Here is the definition of kāmarūpa-rāgātmika-bhakti: That type of bhakti with full absorption in the beloved is called kāma-rūpa-bhakti which produces an intrinsic thirst for a conjugal relationship with the Lord in the ātmā. It is called bhakti because in that condition there is only eagerness for giving pleasure to Kṛṣṇa.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -23170,7 +22926,6 @@ In the previous verse, the attainment of the Lord’s feet also applies, in gene
 
 
     <div class="fc-translation" data-sec="translation">This very famous kāma-rūpa-bhakti appears with brilliance in the women of Vraja. They have a particular type of prema which has a special sweet-ness. It is called kāma by the wise because it is the cause of various amorous actions.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -23254,7 +23009,6 @@ However, even though this kāma-rūpa is composed of action, this action will pr
 
     <div class="fc-translation" data-sec="translation">Thus, in a tantra it is said: The kāma-rūpa-bhakti of the gopīs has become famous simply as prema.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -23311,7 +23065,6 @@ However, even though this kāma-rūpa is composed of action, this action will pr
 
 
     <div class="fc-translation" data-sec="translation">And, because it is a form of exalted prema, persons such as Uddhava, dear to the Lord, desire that aspect of it.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -23388,7 +23141,6 @@ The word etam indicates prema similar to theirs (etādṛśa), similar to their 
 
 
     <div class="fc-translation" data-sec="translation">But the wise agree that the attraction to Kṛṣṇa seen in Kubjā is essentially due to kāma only.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -23482,7 +23234,6 @@ However, she is said to have rati to a small degree, because the object of her a
 
     <div class="fc-translation" data-sec="translation">Next sambandha-rūpa-rāgātmika-bhakti will be discussed: Sambandha-rūpa-rāgātmika-bhakti is that bhakti inspired by great absorption arising from identifying oneself as the parent, friend or servant of Govinda. This refers to the bhakti of the cowherd people, which is indicated by the word, sambandhād vṛṣṇayaḥ, quoted in verse 275 as an example of sambandha. This is because these other relationships in Vraja also have a predominance of intense affection (rāga), caused by a lack of awareness of Kṛṣṇa as God.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -23560,7 +23311,6 @@ The cowherds exhibit a predominance of rāga, without a mixture of reverence for
 
     <div class="fc-translation" data-sec="translation">Since kāma-rūpa and sambandha-rūpa-bhakti, which are caused by prema alone, take shelter of the nitya-siddhas, they have not been discussed in this section thoroughly.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -23635,7 +23385,6 @@ The cowherds exhibit a predominance of rāga, without a mixture of reverence for
 
     <div class="fc-translation" data-sec="translation">From these two types of rāgātmika-bhakti (siddha-bhakti), two types of rāgānuga-bhakti (sādhana-bhakti), called kāmānuga and sambandhānuga-bhakti, are derived.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -23701,7 +23450,6 @@ The cowherds exhibit a predominance of rāga, without a mixture of reverence for
 
     <div class="fc-translation" data-sec="translation">The qualification for rāgānuga-bhakti is as follows: That person who is greedy for attaining a bhāva similar to that of the inhabitants of Vraja—who are fixed solely in rāgātmika-bhakti—is qualified for rāgānuga-bhakti.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -23763,7 +23511,6 @@ Persons desiring to follow in the footsteps of such eternal devotees of the Lord
 
 
     <div class="fc-translation" data-sec="translation">The appearance of that greed is indicated when the intelligence does not depend on rules of scripture and logic, after realizing to some degree the sweetness of their (inhabitants of Vraja) love through the process of hearing from the scriptures.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -23839,7 +23586,6 @@ We must always remember, however, that such eagerness to follow in the footsteps
 
 
     <div class="fc-translation" data-sec="translation">Those qualified for vaidhi-bhakti are dependent on the rules of scripture and favorable use of logic until the appearance of bhāva-bhakti.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -23918,7 +23664,6 @@ Material piety and sin, which arise from the good and evil of this world (rules 
 
     <div class="fc-translation" data-sec="translation">Remembering the Vṛndāvana form of Kṛṣṇa and His dear associates who have inclinations for service similar to one’s own, absorbing oneself in hearing topics related to them, one should always live in Vraja.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -23992,7 +23737,6 @@ Material piety and sin, which arise from the good and evil of this world (rules 
 
 
     <div class="fc-translation" data-sec="translation">Following after the inhabitants of Vraja, one should perform service in one’s physical body and in one’s siddha body, with a desire for a particular bhāva.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -24069,7 +23813,6 @@ In this connection, we should be careful about the so-called siddha-praṇālī.
 
 
     <div class="fc-translation" data-sec="translation">The discriminating practitioners should accept the aṅgas which were mentioned in vaidhi-bhakti such as hearing and chanting as the aṅgas of rāgānuga-bhakti.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -24151,7 +23894,6 @@ In this connection, we should be careful about the so-called siddha-praṇālī.
 
     <div class="fc-translation" data-sec="translation">The elements of kāmānuga will be described: That rāgānuga-sādhana-bhakti which is filled with longing and which follows after the kāma-rūpa-rāgātmika-bhakti of the siddha-bhaktas, is called kāmānuga-bhakti. There are two types: sambhogecchā-mayī and tad-tad-bhāvecchātmā.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -24231,7 +23973,6 @@ Devotional service following in the footsteps of the gopīs of Vṛndāvana or t
 
     <div class="fc-translation" data-sec="translation">The elements of kāmānuga will be described: That rāgānuga-sādhana-bhakti which is filled with longing and which follows after the kāma-rūpa-rāgātmika-bhakti of the siddha-bhaktas, is called kāmānuga-bhakti. There are two types: sambhogecchā-mayī and tad-tad-bhāvecchātmā.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -24306,7 +24047,6 @@ Devotional service following in the footsteps of the gopīs of Vṛndāvana or t
 
 
     <div class="fc-translation" data-sec="translation">Sambhogecchā-mayī-bhakti is characterized by enjoying conjugally with Kṛṣṇa. Tad-bhāvecchātmika-bhakti is characterized by desiring the sweet mood of love of the kāma-rūpa-siddha devotees.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -24389,7 +24129,6 @@ Sambhoga means conjugal enjoyment. Keli means the same thing. Sambhogecchā-may�
 
 
     <div class="fc-translation" data-sec="translation">Those who develop longing for the bhāva of the gopīs after seeing the sweetness in the deity of Kṛṣṇa and the gopīs, or after hearing about His pastimes with the gopīs, are qualified for sādhana of either of these types of kāmānuga-bhakti. In the Padma Purāṇa, it is said that even men can attain this bhakti.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -24477,7 +24216,6 @@ This development of conjugal love for Kṛṣṇa is not manifested in women onl
 
 
     <div class="fc-translation" data-sec="translation">Examples of males becoming gopīs are as follows: Previously, all the sages living in Daṇḍakāraṇya forest, who after seeing Lord Rāma, desired enjoyment with His form, attained forms of women and appeared in Gokula. Attaining the Lord by that kāma, they became liberated from the ocean of the material world.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -24571,7 +24309,6 @@ Some of the gopīs, however, could not manage to get out of their houses, and in
 
     <div class="fc-translation" data-sec="translation">Examples of males becoming gopīs are as follows: Previously, all the sages living in Daṇḍakāraṇya forest, who after seeing Lord Rāma, desired enjoyment with His form, attained forms of women and appeared in Gokula. Attaining the Lord by that kāma, they became liberated from the ocean of the material world.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -24652,7 +24389,6 @@ Some of the gopīs, however, could not manage to get out of their houses, and in
 
     <div class="fc-translation" data-sec="translation">A person who serves on the path of vaidhi-bhakti with a desire for a conjugal relationship with the Lord and a high position, but without desire for the gopis’ type of love, after some time becomes a queen in Dvārakā.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -24730,7 +24466,6 @@ Some of the gopīs, however, could not manage to get out of their houses, and in
 
 
     <div class="fc-translation" data-sec="translation">Thus, it says in the Mahā-kurma Purāṇa: The saintly sons of Agni attained bodies of women by the path of vaidhi-bhakti, and attained as their husband (not lover), the unborn, powerful Vāsudeva, source of the universe.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -24810,7 +24545,6 @@ Some of the gopīs, however, could not manage to get out of their houses, and in
 
     <div class="fc-translation" data-sec="translation">Sambandhānuga-bhakti is defined as follows: The devotees define sambandhānuga-bhakti as that bhakti in which there is a constant contemplation of oneself as a parent, friend or servant of Kṛṣṇa, and identification with the role.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -24884,7 +24618,6 @@ Some of the gopīs, however, could not manage to get out of their houses, and in
 
 
     <div class="fc-translation" data-sec="translation">Practicing devotees greedy for parental, friendly or servant relationships perform this bhakti with indications of the behavior and mood of Nanda (parent), Subala (friend), and others.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -24964,7 +24697,6 @@ In the development of becoming either the father or friend of the Lord, there ar
 
 
     <div class="fc-translation" data-sec="translation">It is said in the scriptures that some old carpenter living in Hastināpura worshipped a deity form of Kṛṣṇa as his son, on the instructions of Nārada, and attained the perfection of having Kṛṣṇa as his son.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -25051,7 +24783,6 @@ Then, the Lord Himself said, “I have become your son.”</p>
 
     <div class="fc-translation" data-sec="translation">It is said in the Nārāyaṇa-vyūha-stava: I pay my respects repeatedly to those who constantly and eagerly meditate upon the Lord as their husband, son, well-wisher, brother, father or friend.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -25127,7 +24858,6 @@ Because the devotees accept Me as their son, friend, preceptor, benefactor and S
 
 
     <div class="fc-translation" data-sec="translation">The mercy of Kṛṣṇa and His devotees is the only cause of attaining rāgānuga-bhakti. Some call this type of devotion puṣṭi-mārga. [Note: This is the name given by the followers of Vallabhācārya.]</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>

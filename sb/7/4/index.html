@@ -25,19 +25,25 @@
     <link rel="icon" href="../../../assets/icons/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="../../../assets/icons/icon.svg">
     <link rel="stylesheet" href="../../../assets/css/site.css">
+    <link rel="alternate" hreflang="te-IN" href="../../../te/sb/7/4/">
+    <link rel="alternate" hreflang="x-default" href="../../../">
     <script>window.FC_TO_ROOT = "../../../";</script>
     <script src="../../../assets/js/toggle.js"></script>
 </head>
 <body class="has-sidebar" data-chapter="4">
 <header class="fc-site-header">
     <button type="button" class="fc-mobile-trigger fc-mobile-trigger-left" data-overlay="left" aria-label="Open settings drawer">⚙</button>
-<a class="fc-brand" href="../../../">FolioCorpus<span class="fc-sub">Śrīmad-Bhāgavatam</span></a>
+    <a class="fc-brand" href="../../../">FolioCorpus<span class="fc-sub">Bhagavad-gītā</span></a>
     <nav class="fc-site-nav">
         <a href="../../../">Home</a>
         <a href="../../../bg/">Bhagavad-gītā</a>
         <a href="../../../sb/">Śrīmad-Bhāgavatam</a>
         <a href="../../../search/" title="Search across all integrated works">🔍 Search</a>
         <button type="button" id="fc-random-verse" class="fc-nav-btn" title="Jump to a random verse">🎲 Random</button>
+        <span class="fc-lang-switch" aria-label="Script">
+            <a class="active" href="#" title="Devanāgarī edition">EN</a>
+            <a class="" href="../../../te/sb/7/4/" title="Telugu lipi edition">తె</a>
+        </span>
     </nav>
     <button type="button" class="fc-mobile-trigger fc-mobile-trigger-right" data-overlay="right" aria-label="Open chapter index drawer">📚</button>
 </header>
@@ -46,8 +52,8 @@
     <button class="fc-sb-collapse" type="button" data-sb="left" title="Collapse left sidebar" aria-label="Collapse"></button>
 
     <div class="fc-sb-body">
-        <details class="fc-sb-section" data-sbsec="reading" open>
-            <summary class="fc-sb-title">Reading</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Reading</div>
             <div class="fc-sb-sub">Theme</div>
             <div class="fc-segmented" data-setting="theme">
                 <button type="button" data-val="light">Light</button>
@@ -73,10 +79,10 @@
                 <button type="button" data-val="single">Single</button>
                 <button type="button" data-val="side">Side-by-side</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="display" open>
-            <summary class="fc-sb-title">Display</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Display</div>
             <div class="fc-sb-grid">
                 <label><input type="checkbox" data-section="devanagari" checked> Devanāgarī</label>
                 <label><input type="checkbox" data-section="iast" checked> IAST transliteration</label>
@@ -99,10 +105,33 @@
                 <button type="button" data-action="expand-all">Expand all</button>
                 <button type="button" data-action="collapse-all">Collapse all</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="tools" open>
-            <summary class="fc-sb-title">Tools</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Find your starting point</div>
+            <div class="fc-persona-links">
+                <a class="fc-persona-link" href="../../../daily/">🌅 Daily (one value a week)</a>
+                <a class="fc-persona-link" href="../../../householder/">🏠 Householder (family & work)</a>
+                <a class="fc-persona-link" href="../../../parenting/">👨‍👩‍👧 Parenting (stories for kids)</a>
+                <a class="fc-persona-link" href="../../../themes/">📚 All themes</a>
+                <a class="fc-persona-link" href="../../../values/" style="background:#F0F6F2;border-left-color:#1F4632;">ॐ Vedic Value System ↗</a>
+                <a class="fc-persona-link" href="../../../vidya/" style="background:#FBF6E4;border-left-color:#C8860B;">📚 Vidyā Karaṇa (kids, multi-lang) ↗</a>
+            </div>
+        </div>
+
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Audience</div>
+            <div class="fc-audience-filter">
+                <label><input type="radio" name="fc-audience" value="all" checked> All levels</label>
+                <label><input type="radio" name="fc-audience" value="primary"> Primary (children)</label>
+                <label><input type="radio" name="fc-audience" value="middle"> Middle (teens)</label>
+                <label><input type="radio" name="fc-audience" value="senior"> Senior (adults)</label>
+                <label><input type="radio" name="fc-audience" value="college"> College / scholar</label>
+            </div>
+        </div>
+
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Tools</div>
             <div class="fc-sb-tools">
                 <button type="button" id="fc-presentation-toggle" class="fc-tool-btn"><span>🖥 Presentation</span><kbd class="fc-kbd">F</kbd></button>
                 <button type="button" id="fc-pen-toggle" class="fc-tool-btn"><span>✏️ Pen mode</span><kbd class="fc-kbd">P</kbd></button>
@@ -117,10 +146,26 @@
                 <button type="button" id="fc-clear-highlights" class="fc-tool-btn">🩷 Clear highlights (page)</button>
                 <button type="button" id="fc-notes-modal-open" class="fc-tool-btn">📓 My annotations</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="progress" id="fc-progress-section" open>
-            <summary class="fc-sb-title">Progress</summary>
+        <div class="fc-sb-section" id="fc-tts-controls" hidden>
+            <div class="fc-sb-title">
+                Read-aloud
+                <label class="fc-tts-master">
+                    <input type="checkbox" id="fc-tts-enabled" checked>
+                    <span class="fc-tts-master-label">On</span>
+                </label>
+            </div>
+            <div class="fc-tts-inner">
+                <div class="fc-sb-sub">Voice</div>
+                <select id="fc-tts-voice" class="fc-tts-select" aria-label="TTS voice"></select>
+                <div class="fc-sb-sub">Rate <span class="fc-tts-rate-val">1.0×</span></div>
+                <input type="range" id="fc-tts-rate" min="0.5" max="2" step="0.1" value="1" class="fc-tts-rate" aria-label="Reading rate">
+            </div>
+        </div>
+
+        <div class="fc-sb-section" id="fc-progress-section">
+            <div class="fc-sb-title">Progress</div>
             <div class="fc-progress-row">
                 <span class="fc-progress-num" id="fc-progress-num">0</span>
                 <span class="fc-progress-divider">/</span>
@@ -135,29 +180,29 @@
                 <span class="fc-progress-spacer"></span>
                 <button type="button" class="fc-progress-reset" id="fc-progress-reset" title="Reset progress">↺</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="bookmarks" open>
-            <summary class="fc-sb-title">Bookmarks <span class="fc-sb-count" id="fc-bookmarks-count">0</span></summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Bookmarks <span class="fc-sb-count" id="fc-bookmarks-count">0</span></div>
             <ul class="fc-bookmark-list" id="fc-bookmarks-list">
                 <li class="fc-sb-empty">No bookmarks yet — click ☆ on any verse.</li>
             </ul>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="notes" open>
-            <summary class="fc-sb-title">Notes <span class="fc-sb-count" id="fc-notes-count">0</span></summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Notes <span class="fc-sb-count" id="fc-notes-count">0</span></div>
             <ul class="fc-bookmark-list" id="fc-notes-list">
                 <li class="fc-sb-empty">No notes yet — open any verse and write in the 📝 block.</li>
             </ul>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="export">
-            <summary class="fc-sb-title">Export</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Export</div>
             <div class="fc-sb-tools">
                 <button type="button" id="fc-export-md" class="fc-tool-btn">📥 Download Markdown</button>
                 <button type="button" id="fc-export-json" class="fc-tool-btn">💾 Download JSON backup</button>
             </div>
-        </details>
+        </div>
     </div>
 </aside>    <main class="fc-container">
 <nav class="fc-breadcrumbs">
@@ -175,7 +220,7 @@
         <h1 class="fc-verse-heading">7.4 · Hiraṇyakaśipu Terrorizes the Universe</h1>
         <span class="fc-ribbon-meta">
             38 verses
- · <a class="fc-ribbon-link" href="class-prep/">🖨 Class prep</a>        </span>
+        </span>
         <input type="search" class="fc-search" id="fc-search" placeholder="🔍 Search in this chapter" aria-label="Search verses in this chapter">
         <span class="fc-ribbon-current" id="fc-ribbon-current" aria-live="polite"></span>
     </div>
@@ -489,7 +534,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
     <div class="fc-translation" data-sec="translation">Nārada Muni continued: Lord Brahmā was very much satisfied by Hiraṇyakaśipu’s austerities, which were difficult to perform. Therefore, when solicited for benedictions, he indeed granted them, although they were rarely to be achieved.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -575,18 +619,6 @@ The Fourth Chapter describes how Hiraṇyakaśipu, in hatred of Viṣṇu, defea
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Brahma, satisfied by Hiranyakasipu&#39;s austerities, granted the rare benedictions requested. The universe honors hard-won effort even when the requester&#39;s heart is wrong. Be careful what you earn the right to receive.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What blessing might you receive that your heart is not yet ready to hold wisely?</li><li>Where are you working hard to qualify for what you may not actually want?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -798,7 +830,6 @@ The Fourth Chapter describes how Hiraṇyakaśipu, in hatred of Viṣṇu, defea
 
     <div class="fc-translation" data-sec="translation">Lord Brahmā said: O Hiraṇyakaśipu, these benedictions for which you have asked are difficult to obtain for most men. Nonetheless, O my son, I shall grant you them although they are generally not available.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -847,18 +878,6 @@ Though those boons are rarely attained, I will grant those difficult boons, if y
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Brahma warns that material benedictions, once granted, are difficult to maintain — a blessing can become a curse. Acquiring opulence and keeping it both demand great effort. Increase in possessions is rarely an increase in peace.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which of your recent &#39;wins&#39; is now requiring more energy to maintain than it gives back?</li><li>What &#39;benediction&#39; in your life turned out to need more vigilance than gratitude?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -1019,7 +1038,6 @@ Though those boons are rarely attained, I will grant those difficult boons, if y
     <div class="fc-translation" data-sec="translation">Then Lord Brahmā, who awards infallible benedictions, departed, being worshiped by the best of the demons, Hiraṇyakaśipu, and being praised by great sages and saintly persons.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -1068,18 +1086,6 @@ Though those boons are rarely attained, I will grant those difficult boons, if y
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Brahma departs after granting the boons, worshiped by the demon and praised by sages. The cosmic order does its assigned work and moves on; it is up to us to use the boon wisely or destroy ourselves with it.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where has the universe finished its part of the bargain and left the next move to you?</li><li>What gift have you been holding without acting on?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -1248,7 +1254,6 @@ Though those boons are rarely attained, I will grant those difficult boons, if y
 
     <div class="fc-translation" data-sec="translation">The demon Hiraṇyakaśipu, having thus been blessed by Lord Brahmā and having acquired a lustrous golden body, continued to remember the death of his brother and therefore be envious of Lord Viṣṇu.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1290,18 +1295,6 @@ Though those boons are rarely attained, I will grant those difficult boons, if y
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Even with a lustrous golden body and unstoppable powers, Hiranyakasipu still broods on his brother&#39;s death and stays envious of Visnu. Demoniac envy is not soothed by acquisition. No opulence can fill a heart that refuses the Lord.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which old wound is your acquisition strategy failing to heal?</li><li>What in you would be quieted only by surrender, not by accumulation?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -1746,7 +1739,6 @@ Though those boons are rarely attained, I will grant those difficult boons, if y
 
     <div class="fc-translation" data-sec="translation">Hiraṇyakaśipu became the conqueror of the entire universe. Indeed, that great demon conquered all the planets in the three worlds — upper, middle and lower — including the planets of the human beings, the Gandharvas, the Garuḍas, the great serpents, the Siddhas, Cāraṇas and Vidyādharas, the great saints, Yamarāja, the Manus, the Yakṣas, the Rākṣasas, the Piśācas and their masters, and the masters of the ghosts and Bhūtas. He defeated the rulers of all the other planets where there are living entities and brought them under his control. Conquering the abodes of all, he seized their power and influence.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1805,18 +1797,6 @@ Garuḍāḥ means birds which were of Garuḍa’s species.</div>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Hiranyakasipu conquers all three worlds — humans, Gandharvas, Garudas, serpents, Siddhas, sages, even Yamaraja and the Manus. Demonic power can reach planes our scientists do not even imagine exist. Universal dominance does not equal universal welfare.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where in your life are you confusing dominance with welfare?</li><li>Whose &#39;conquest&#39; of a domain in your circle is actually impoverishing it?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -2016,7 +1996,6 @@ Garuḍāḥ means birds which were of Garuḍa’s species.</div>
 
     <div class="fc-translation" data-sec="translation">Hiraṇyakaśipu, who possessed all opulence, began residing in heaven, with its famous Nandana garden, which is enjoyed by the demigods. In fact, he resided in the most opulent palace of Indra, the King of heaven. The palace had been directly constructed by the demigod architect Viśvakarmā and was as beautifully made as if the goddess of fortune of the entire universe resided there.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2085,18 +2064,6 @@ The steps of King Indra&#39;s residence were made of coral, the floors were bede
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Hiranyakasipu takes up residence in Indra&#39;s palace, constructed by Visvakarma, beautiful as the goddess of fortune&#39;s own dwelling. The most opulent address in the universe still cannot make the resident peaceful. Address upgrades do not solve heart problems.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What address upgrade are you currently chasing as if it would resolve an inner issue?</li><li>Where would even the best &#39;palace&#39; leave the same person inside?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -2660,7 +2627,6 @@ The steps of King Indra&#39;s residence were made of coral, the floors were bede
 
     <div class="fc-translation" data-sec="translation">The steps of King Indra’s residence were made of coral, the floor was bedecked with invaluable emeralds, the walls were of crystal, and the columns of vaidūrya stone. The wonderful canopies were beautifully decorated, the seats were bedecked with rubies, and the silk bedding, as white as foam, was decorated with pearls. The ladies of the palace, who were blessed with beautiful teeth and the most wonderfully beautiful faces, walked here and there in the palace, their ankle bells tinkling melodiously, and saw their own beautiful reflections in the gems. The demigods, however, being very much oppressed, had to bow down and offer obeisances at the feet of Hiraṇyakaśipu, who chastised the demigods very severely and for no reason. Thus Hiraṇyakaśipu lived in the palace and severely ruled everyone.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2727,18 +2693,6 @@ The steps of King Indra&#39;s residence were made of coral, the floors were bede
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Coral steps, emerald floors, crystal walls, ruby seats, pearl bedding — and demigods bowing in fear. Hiranyakasipu rules everyone except Brahma, Siva, and Visnu. Notice the architecture of fear: lavish on the outside, terrorized on the inside.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which beautiful space in your life is sustained by quiet fear in those who serve it?</li><li>Where do you mistake compliance under fear for genuine respect?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -2972,7 +2926,6 @@ The steps of King Indra&#39;s residence were made of coral, the floors were bede
 
     <div class="fc-translation" data-sec="translation">O my dear King, Hiraṇyakaśipu was always drunk on strong-smelling wines and liquors, and therefore his coppery eyes were always rolling. Nonetheless, because he had powerfully executed great austerities in mystic yoga, although he was abominable, all but the three principal demigods — Lord Brahmā, Lord Śiva and Lord Viṣṇu — personally worshiped him to please him by bringing him various presentations with their own hands.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3036,18 +2989,6 @@ He was worshipped by devatās, who brought gifts, but by not Brahmā, Viṣṇu 
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Drunk on strong wine, eyes coppery and rolling, the demon king still receives the worship of nearly all demigods. Power earned by austerity can be deployed in a state of intoxication. Discipline that produces power without producing wisdom is a danger.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where in your life has hard-won power been deployed under the influence of some &#39;intoxication&#39;?</li><li>How does your tradition train wisdom to keep pace with growing power?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -3272,7 +3213,6 @@ He was worshipped by devatās, who brought gifts, but by not Brahmā, Viṣṇu 
 
     <div class="fc-translation" data-sec="translation">O Mahārāja Yudhiṣṭhira, descendant of Pāṇḍu, by dint of his personal power, Hiraṇyakaśipu, being situated on the throne of King Indra, controlled the inhabitants of all the other planets. The two Gandharvas Viśvāvasu and Tumburu, I myself and the Vidyādharas, Apsarās and sages all offered prayers to him again and again just to glorify him.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3324,18 +3264,6 @@ He was worshipped by devatās, who brought gifts, but by not Brahmā, Viṣṇu 
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Even Narada and the great Gandharvas and Vidyadharas offer prayers to glorify Hiranyakasipu — sometimes great devotees are outwardly controlled by demonic power. Apparent submission to evil does not always reveal real allegiance. Outer compliance can preserve inner freedom.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where is outward compliance protecting an inner freedom you must guard?</li><li>Whose praise of a dubious power should you read as survival, not endorsement?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -3505,7 +3433,6 @@ He was worshipped by devatās, who brought gifts, but by not Brahmā, Viṣṇu 
     <div class="fc-translation" data-sec="translation">Being worshiped by sacrifices offered with great gifts by those who strictly followed the principles of varṇa and āśrama, Hiraṇyakaśipu, instead of offering shares of the oblations to the demigods, accepted them himself.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -3549,18 +3476,6 @@ He was worshipped by devatās, who brought gifts, but by not Brahmā, Viṣṇu 
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Hiranyakasipu pockets the offerings meant for the demigods, accepting them himself. Demonic rule does not just take obedience — it intercepts the flow of sacrifice itself. Be alert to where offerings meant for higher purposes are being skimmed off.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where are &#39;offerings&#39; in your community being skimmed by an intermediary?</li><li>What in your own giving needs to bypass the wrong recipient and reach the real one?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -3730,7 +3645,6 @@ He was worshipped by devatās, who brought gifts, but by not Brahmā, Viṣṇu 
     <div class="fc-translation" data-sec="translation">As if in fear of Hiraṇyakaśipu, the planet earth, which consists of seven islands, delivered food grains without being plowed. Thus it resembled cows like the surabhi of the spiritual world or the kāma-dughā of heaven. The earth yielded sufficient food grains, the cows supplied abundant milk, and outer space was beautifully decorated with wonderful phenomena.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -3749,18 +3663,6 @@ He was worshipped by devatās, who brought gifts, but by not Brahmā, Viṣṇu 
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The seven-island earth, as if in fear, delivers grain unplowed; cows give abundant milk; the sky is wondrously decorated. Nature herself responds to power, even ill-gotten. But abundance under tyranny is not the same as flourishing.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where is nature or productivity in your sphere giving freely under pressure that hides real distress?</li><li>What looks like flourishing in your life that is actually compliance under fear?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -3965,7 +3867,6 @@ He was worshipped by devatās, who brought gifts, but by not Brahmā, Viṣṇu 
 
     <div class="fc-translation" data-sec="translation">By the flowing of their waves, the various oceans of the universe, along with their tributaries, the rivers, which are compared to their wives, supplied various kinds of gems and jewels for Hiraṇyakaśipu’s use. These oceans were the oceans of salt water, sugarcane juice, wine, clarified butter, milk, yogurt, and sweet water.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3994,18 +3895,6 @@ Tat-patnyaḥ means the rivers.  The various oceans are described.</div>
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The universe&#39;s seven oceans — of salt, sugarcane juice, wine, ghee, milk, yogurt, sweet water — supply gems and jewels to Hiranyakasipu. The cosmos is vastly more diverse than modern science admits. Even cosmic abundance flows toward demonic centers when those centers hold power.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What &#39;flow of jewels&#39; in your life is currently moving toward a center you would not endorse if you examined it?</li><li>Where might your worldview be too narrow to honor the diversity of what is real?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -4192,7 +4081,6 @@ Tat-patnyaḥ means the rivers.  The various oceans are described.</div>
 
     <div class="fc-translation" data-sec="translation">The valleys between the mountains became fields of pleasure for Hiraṇyakaśipu, by whose influence all the trees and plants produced fruits and flowers profusely in all seasons. The qualities of pouring water, drying and burning, which are all qualities of the three departmental heads of the universe — namely Indra, Vāyu and Agni — were all directed by Hiraṇyakaśipu alone, without assistance from the demigods.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -4256,18 +4144,6 @@ Tat-patnyaḥ means the rivers.  The various oceans are described.</div>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Hiranyakasipu personally directs water, drying, and burning — the duties of Indra, Vayu, and Agni — without the demigods&#39; help. The asura concentrates many divine functions in one ego. Concentration of power over natural forces is dangerous when humility is absent.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which functions in your sphere are concentrated in one person whose humility you should examine?</li><li>Where are you tempted to centralize control in yourself for the sake of efficiency?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -4445,7 +4321,6 @@ Tat-patnyaḥ means the rivers.  The various oceans are described.</div>
 
     <div class="fc-translation" data-sec="translation">In spite of achieving the power to control in all directions and in spite of enjoying all types of dear sense gratification as much as possible, Hiraṇyakaśipu was dissatisfied because instead of controlling his senses he remained their servant.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -4492,18 +4367,6 @@ Tat-patnyaḥ means the rivers.  The various oceans are described.</div>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Despite total control and limitless sense gratification, Hiranyakasipu remains dissatisfied — instead of controlling his senses, he remains their servant. Material conquest leaves the inner master still enslaved. The materialist may have everything outside and nothing inside.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where do your sense gratifications still leave you dissatisfied — and what does that reveal?</li><li>What would &#39;mastering&#39; rather than &#39;serving&#39; your senses look like in one specific area?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -4654,7 +4517,6 @@ Tat-patnyaḥ means the rivers.  The various oceans are described.</div>
 
     <div class="fc-translation" data-sec="translation">Hiraṇyakaśipu thus passed a long time being very much proud of his opulences and transgressing the laws and regulations mentioned in the authoritative śāstras. He was therefore subjected to a curse by the four Kumāras, who were great brāhmaṇas.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -4732,18 +4594,6 @@ Tat-patnyaḥ means the rivers.  The various oceans are described.</div>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Proud and transgressing sastric law, Hiranyakasipu eventually incurs the curse of the four Kumaras. The Gita says that ignoring scripture leads neither to perfection nor happiness nor the supreme destination. Whim-based action eventually meets its limit.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where are you currently acting from whim instead of from scriptural guidance?</li><li>What &#39;curse&#39; from the wise is quietly building in your life that you have not yet noticed?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -4921,7 +4771,6 @@ Tat-patnyaḥ means the rivers.  The various oceans are described.</div>
 
     <div class="fc-translation" data-sec="translation">Everyone, including the rulers of the various planets, was extremely distressed because of the severe punishment inflicted upon them by Hiraṇyakaśipu. Fearful and disturbed, unable to find any other shelter, they at last surrendered to the Supreme Personality of Godhead, Viṣṇu.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -5005,18 +4854,6 @@ Tat-patnyaḥ means the rivers.  The various oceans are described.</div>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Rulers of every planet, distressed beyond bearing, finally surrender to Visnu — the well-wishing friend of every living being. When all other shelters fail, the soul turns naturally toward the Lord. Real distress often does what comfort never could.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What distress in your life is finally turning you toward genuine shelter?</li><li>Where have you held off surrender because lesser shelters still seemed available?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -5337,7 +5174,6 @@ Tat-patnyaḥ means the rivers.  The various oceans are described.</div>
 
     <div class="fc-translation" data-sec="translation">“Let us offer our respectful obeisances unto that direction where the Supreme Personality of Godhead is situated, where those purified souls in the renounced order of life, the great saintly persons, go, and from which, having gone, they never return.” Without sleep, fully controlling their minds, and living on only their breath, the predominating deities of the various planets began worshiping Hṛṣīkeśa with this meditation.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -5436,18 +5272,6 @@ We offer respects to the direction where the Lord exists.  Because the demon has
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The demigods meditate without sleep, living on breath alone, worshiping Hrsikesa in the direction where the renunciants who never return reside. Even Hiranyakasipu&#39;s influence cannot enter the Lord&#39;s dhamas. Some places remain inviolably the Lord&#39;s.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What inner dhama in your life remains untouched by the demonic forces of your day?</li><li>How do you protect and visit that place daily?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -5599,7 +5423,6 @@ We offer respects to the direction where the Lord exists.  Because the demon has
     <div class="fc-translation" data-sec="translation">Then there appeared before them a transcendental sound vibration, emanating from a personality not visible to material eyes. The voice was as grave as the sound of a cloud, and it was very encouraging, driving away all fear.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -5678,18 +5501,6 @@ We offer respects to the direction where the Lord exists.  Because the demon has
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">A transcendental voice — grave as a cloud, encouraging, fear-dispelling — arises from a personality not visible to material eyes. The Lord answers, even when invisible. Some assurances come through hearing before they ever come through seeing.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What &#39;voice from beyond sight&#39; has steadied you in a recent crisis?</li><li>Where can you make yourself quiet enough this week to hear such a voice?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -5992,7 +5803,6 @@ We offer respects to the direction where the Lord exists.  Because the demon has
 
     <div class="fc-translation" data-sec="translation">The voice of the Lord vibrated as follows: O best of learned persons, do not fear! I wish all good fortune to you. Become My devotees by hearing and chanting about Me and offering Me prayers, for these are certainly meant to award benedictions to all living entities. I know all about the activities of Hiraṇyakaśipu and shall surely stop them very soon. Please wait patiently until that time.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -6051,18 +5861,6 @@ Mad-darśanam indicates “Until you see me coming from the pillar, you will suf
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The Lord tells the demigods to fear nothing — become devotees through hearing, chanting, and offering prayers, and wait patiently. He already knows everything Hiranyakasipu is doing and will act in time. Devotion is the assignment in the waiting.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What injustice in your life are you trying to fix while skipping the assignment of devotional practice?</li><li>Where could patient sravana-kirtana be your work right now?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -6259,7 +6057,6 @@ Mad-darśanam indicates “Until you see me coming from the pillar, you will suf
     <div class="fc-translation" data-sec="translation">When one is envious of the demigods, who represent the Supreme Personality of Godhead, of the Vedas, which give all knowledge, of the cows, brāhmaṇas, Vaiṣṇavas and religious principles, and ultimately of Me, the Supreme Personality of Godhead, he and his civilization will be vanquished without delay.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -6323,18 +6120,6 @@ Mad-darśanam indicates “Until you see me coming from the pillar, you will suf
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Envy toward demigods, Vedas, cows, brahmanas, Vaisnavas, religious principles, or the Lord vanquishes both the envious individual and their civilization. Hatred toward the gentle and the sacred is civilizational suicide. Take note of cultural hostility to the holy.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where in your life or culture is envy of the sacred quietly working toward collapse?</li><li>What small act of honor toward what is gentle and devotional could you offer this week?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -6494,7 +6279,6 @@ Mad-darśanam indicates “Until you see me coming from the pillar, you will suf
 
     <div class="fc-translation" data-sec="translation">When Hiraṇyakaśipu teases the great devotee Prahlāda, his own son, who is peaceful and sober and who has no enemy, I shall kill Hiraṇyakaśipu immediately, despite the benedictions of Brahmā.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -6538,18 +6322,6 @@ Mad-darśanam indicates “Until you see me coming from the pillar, you will suf
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The Lord declares: when Hiranyakasipu teases Prahlada — peaceful, sober, without enemies — I will kill him immediately, regardless of Brahma&#39;s benedictions. Offending a pure devotee is the line beyond which no boon can protect. Vaisnava-aparadha undoes everything.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Whom in your life are you mistreating who is actually a sincere devotee?</li><li>What &#39;benedictions&#39; in your life depend on never crossing the line of offending the gentle?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -6743,7 +6515,6 @@ Mad-darśanam indicates “Until you see me coming from the pillar, you will suf
 
     <div class="fc-translation" data-sec="translation">The great saint Nārada Muni continued: When the Supreme Personality of Godhead, the spiritual master of everyone, thus reassured all the demigods living in the heavenly planets, they offered their respectful obeisances unto Him and returned, confident that the demon Hiraṇyakaśipu was now practically dead.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -6802,18 +6573,6 @@ Mad-darśanam indicates “Until you see me coming from the pillar, you will suf
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The demigods return reassured, confident Hiranyakasipu is practically dead. Even demigods, when in crisis, approach the Supreme Lord — so the worshipers of demigods might consider going directly to the Source. Why ask the messengers when you can address the Sender?</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Whose intermediation are you relying on when you could approach the Source directly?</li><li>Where might prayer &#39;over the heads&#39; of usual channels be more honest?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -6982,7 +6741,6 @@ Mad-darśanam indicates “Until you see me coming from the pillar, you will suf
 
     <div class="fc-translation" data-sec="translation">Hiraṇyakaśipu had four wonderful, well-qualified sons, of whom the one named Prahlāda was the best. Indeed, Prahlāda was a reservoir of all transcendental qualities because he was an unalloyed devotee of the Personality of Godhead.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -7087,18 +6845,6 @@ Mad-darśanam indicates “Until you see me coming from the pillar, you will suf
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Hiranyakasipu had four sons; Prahlada — an unalloyed devotee of the Lord — was the best, a reservoir of every transcendental quality. Where bhakti is, all good qualities naturally cluster. Devotion is not one virtue among many — it is the field on which they all grow.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which virtues in your life are you trying to grow without first deepening the devotional soil?</li><li>Who in your circle radiates &#39;all good qualities&#39; because their devotion is unalloyed?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -7441,7 +7187,6 @@ Mad-darśanam indicates “Until you see me coming from the pillar, you will suf
 
     <div class="fc-translation" data-sec="translation">[The qualities of Mahārāja Prahlāda, the son of Hiraṇyakaśipu, are described herewith.] He was completely cultured as a qualified brāhmaṇa, having very good character and being determined to understand the Absolute Truth. He had full control of his senses and mind. Like the Supersoul, he was kind to every living entity and was the best friend of everyone. To respectable persons he acted exactly like a menial servant, to the poor he was like a father, to his equals he was attached like a sympathetic brother, and he considered his teachers, spiritual masters and older Godbrothers to be as good as the Supreme Personality of Godhead. He was completely free from unnatural pride that might have arisen from his good education, riches, beauty, aristocracy and so on.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -7535,18 +7280,6 @@ Sannatāryāṅghriḥ means that he was completely submissive to the feet of th
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Prahlada was a perfect brahmana — kind to all, a servant to elders, a father to the poor, a brother to equals, free from pride about education, riches, beauty, or birth. The marks of a Vaisnava cross every social tier with the right tone. Holiness adapts without losing itself.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where do you struggle to adapt your tone across different social tiers while keeping your integrity?</li><li>Which &#39;pride from education or birth&#39; has crept in that Prahlada&#39;s example exposes?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -7798,7 +7531,6 @@ Sannatāryāṅghriḥ means that he was completely submissive to the feet of th
 
     <div class="fc-translation" data-sec="translation">Although Prahlāda Mahārāja was born in a family of asuras, he himself was not an asura but a great devotee of Lord Viṣṇu. Unlike the other asuras, he was never envious of Vaiṣṇavas. He was not agitated when put into danger, and he was neither directly nor indirectly interested in the fruitive activities described in the Vedas. Indeed, he considered everything material to be useless, and therefore he was completely devoid of material desires. He always controlled his senses and life air, and being of steady intelligence and determination, he subdued all lusty desires.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -7877,18 +7609,6 @@ He has devoid of demonic qualities, such as envy.</div>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Born to a demon, Prahlada was not himself a demon — he was a great devotee, unagitated by danger, uninterested in fruitive activity, free from material desire. Birth does not determine spiritual capacity; sincerity does. Anyone, anywhere, can become a qualified brahmana.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What in your birth or background do you cite as a limit that Prahlada&#39;s example dissolves?</li><li>Whose unlikely sanctity in your life proves the same point?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -8075,7 +7795,6 @@ He has devoid of demonic qualities, such as envy.</div>
 
     <div class="fc-translation" data-sec="translation">O King, Prahlāda Mahārāja’s good qualities are still glorified by learned saints and Vaiṣṇavas. As all good qualities are always found existing in the Supreme Personality of Godhead, they also exist forever in His devotee Prahlāda Mahārāja.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -8144,18 +7863,6 @@ The great qualities of Lord such as forbearance and inscrutability are spiritual
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Prahlada&#39;s good qualities are still glorified by sages and Vaisnavas, and he simultaneously lives in Vaikuntha and on the planet Sutala. Pure devotees acquire something of the Lord&#39;s own simultaneity. To be glorified by saints across ages is a real measure of a life.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Whose life across centuries still inspires you — and what habit of theirs would you adopt?</li><li>What would it mean to live so the saints of future generations cite you?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -8325,7 +8032,6 @@ The great qualities of Lord such as forbearance and inscrutability are spiritual
     <div class="fc-translation" data-sec="translation">In any assembly where there are discourses about saints and devotees, O King Yudhiṣṭhira, even the enemies of the demons, namely the demigods, what to speak of you, would cite Prahlāda Mahārāja as an example of a great devotee.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -8386,18 +8092,6 @@ Pratimānam means an example. In praising a devotee they would say, “This devo
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">In any assembly discussing saints, even the demigods — enemies of the demons — cite Prahlada. A demon&#39;s son becomes the universal example of devotion. The Lord makes paragons out of unlikely soil to encourage everyone.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Whose &#39;unlikely&#39; devotion in your circle deserves to be cited more often as an example?</li><li>Where is your own unlikely beginning actually qualifying you to encourage others?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -8566,7 +8260,6 @@ Pratimānam means an example. In praising a devotee they would say, “This devo
 
     <div class="fc-translation" data-sec="translation">Who could list the innumerable transcendental qualities of Prahlāda Mahārāja? He had unflinching faith in Vāsudeva, Lord Kṛṣṇa [the son of Vasudeva], and unalloyed devotion to Him. His attachment to Lord Kṛṣṇa was natural because of his previous devotional service. Although his good qualities cannot be enumerated, they prove that he was a great soul [mahātmā].</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -8622,18 +8315,6 @@ The number of qualities cannot be counted.  Thus who can say enough?  Who else c
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Prahlada had unflinching faith in Vasudeva and unalloyed attachment, natural because of previous devotional service. The Gita calls such a soul a rare mahatma arriving after many births. Some devotion you carry today was begun in lives you do not remember.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What attachments in your life feel rooted in something older than this lifetime?</li><li>How does it change your effort to suspect your devotion has been many lives in the making?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -8802,7 +8483,6 @@ The number of qualities cannot be counted.  Thus who can say enough?  Who else c
 
     <div class="fc-translation" data-sec="translation">From the very beginning of his childhood, Prahlāda Mahārāja was uninterested in childish playthings. Indeed, he gave them up altogether and remained silent and dull, being fully absorbed in Kṛṣṇa consciousness. Since his mind was always affected by Kṛṣṇa consciousness, he could not understand how the world goes on being fully absorbed in the activities of sense gratification.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -8891,18 +8571,6 @@ His natural attraction is described in six verses.  Though a boy, he gave up chi
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">From childhood, Prahlada gave up toys, remaining silent and dull, absorbed in Krsna-consciousness. He could not understand why the world chased sense gratification. A truly absorbed devotee finds the world&#39;s preoccupations bewildering.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which &#39;toys&#39; from your earlier life still claim a share of your attention?</li><li>Where could a holy bewilderment at the world&#39;s priorities help you set down something?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -9071,7 +8739,6 @@ His natural attraction is described in six verses.  Though a boy, he gave up chi
 
     <div class="fc-translation" data-sec="translation">Prahlāda Mahārāja was always absorbed in thought of Kṛṣṇa. Thus, being always embraced by the Lord, he did not know how his bodily necessities, such as sitting, walking, eating, lying down, drinking and talking, were being automatically performed.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -9145,18 +8812,6 @@ He did not know his sitting, walking, eating, sleeping, drinking or talking. Why
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Prahlada was so absorbed in Krsna that the necessities of body — sitting, walking, eating, speaking — happened automatically, as a child cared for by its mother. Govinda Himself maintained him. Surrendered devotional life is mothered by the Lord at every moment.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where in your day could you let the body&#39;s needs be &#39;mothered&#39; rather than micromanaged?</li><li>What practice helps you remember the Lord is currently maintaining your every breath?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -9316,7 +8971,6 @@ He did not know his sitting, walking, eating, sleeping, drinking or talking. Why
 
     <div class="fc-translation" data-sec="translation">Because of advancement in Kṛṣṇa consciousness, he sometimes cried, sometimes laughed, sometimes expressed jubilation and sometimes sang loudly.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -9385,18 +9039,6 @@ Just as child, not seeing the mother, cries when the mother puts him down on the
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Prahlada sometimes cried, sometimes laughed, sometimes shouted in jubilation, sometimes sang loudly — all from devotional intensity. Like a child who feels the mother&#39;s leaving and returning, an advanced devotee feels separation and reunion. Devotion permits the whole emotional range.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where have you flattened your spiritual emotions out of decorum?</li><li>What feeling in you might be the Lord&#39;s coming or going, asking to be expressed?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -9574,7 +9216,6 @@ Just as child, not seeing the mother, cries when the mother puts him down on the
 
     <div class="fc-translation" data-sec="translation">Sometimes, upon seeing the Supreme Personality of Godhead, Prahlāda Mahārāja would loudly call in full anxiety. He sometimes lost his shyness in jubilation and began dancing in ecstasy, and sometimes, being fully absorbed in thoughts of Kṛṣṇa, he felt oneness and imitated the pastimes of the Lord.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -9658,18 +9299,6 @@ When Prahlāda would see the Lord suddenly appear at a great distance, with inte
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Seeing the Lord, Prahlada would lose shyness and dance; absorbed in oneness, he sometimes imitated the Lord&#39;s pastimes. The devotee&#39;s progression moves from impersonal Brahman to Paramatma to the Supreme Person. Spiritual maturity grows more, not less, personal.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where in your spiritual life have you stalled at the impersonal when the personal is calling?</li><li>What &#39;losing shyness&#39; before the Lord might mean for you this week?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -9829,7 +9458,6 @@ When Prahlāda would see the Lord suddenly appear at a great distance, with inte
 
     <div class="fc-translation" data-sec="translation">Sometimes, feeling the touch of the Lord’s lotus hands, he became spiritually jubilant and remained silent, his hairs standing on end and tears gliding down from his half-closed eyes because of his love for the Lord.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -9918,18 +9546,6 @@ His hairs would sometimes stand on end.  He would think “Where shall I go? Whe
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Feeling the touch of the Lord&#39;s lotus hands, Prahlada fell silent, hair on end, tears flowing from half-closed eyes. The body of an advanced devotee shows symptoms of ecstasy that impersonalism cannot account for. Real contact leaves real traces.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What &#39;trace&#39; has real spiritual contact left on you that you can still feel?</li><li>Where do you discount your own bodily responses to the sacred as embarrassing?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -10136,7 +9752,6 @@ His hairs would sometimes stand on end.  He would think “Where shall I go? Whe
 
     <div class="fc-translation" data-sec="translation">Because of his association with perfect, unalloyed devotees who had nothing to do with anything material, Prahlāda Mahārāja constantly engaged in the service of the Lord’s lotus feet. By seeing his bodily features when he was in perfect ecstasy, persons very poor in spiritual understanding became purified. In other words, Prahlāda Mahārāja bestowed upon them transcendental bliss.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -10210,18 +9825,6 @@ How could Prahlāda have such steady bhakti in the bad of association of Hiraṇ
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Through association with pure devotees, Prahlada&#39;s ecstatic features purified even those very poor in spiritual understanding. Bhakti is unconditional — Hiranyakasipu&#39;s torture did not disturb it. The sight of a real devotee in ecstasy is itself a transmission.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Whose unfeigned ecstasy in your life has wordlessly purified you?</li><li>What would it mean to seek the company that produces such transmission?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -10372,7 +9975,6 @@ How could Prahlāda have such steady bhakti in the bad of association of Hiraṇ
 
     <div class="fc-translation" data-sec="translation">My dear King Yudhiṣṭhira, the demon Hiraṇyakaśipu tormented this exalted, fortunate devotee, although Prahlāda was his own son.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -10439,18 +10041,6 @@ How could Prahlāda have such steady bhakti in the bad of association of Hiraṇ
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">His own father Hiranyakasipu — despite tremendous austerity — turned to tormenting his exalted son. Persecuting a pure devotee causes the persecutor&#39;s opulences to wither. The line at which great power begins to collapse is the line of vaisnava-aparadha.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where is your strength quietly eroding because of how you treat someone gentle in your life?</li><li>What single act of repair could halt that erosion?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -10662,7 +10252,6 @@ How could Prahlāda have such steady bhakti in the bad of association of Hiraṇ
 
     <div class="fc-translation" data-sec="translation">Mahārāja Yudhiṣṭhira said: O best of the saints among the demigods, O best of spiritual leaders, how did Hiraṇyakaśipu give so much trouble to Prahlāda Mahārāja, the pure and exalted saint, although Prahlāda was his own son? I wish to know about this subject from you.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -10726,18 +10315,6 @@ The King asks in great astonishment what he asked at the end of the First Chapte
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Yudhisthira asks Narada — a fit authority — how a father could so torment a noble son. Transcendental subjects must be inquired into from the right person, not from a layperson. Choose your spiritual confidants carefully.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which deep spiritual question are you asking the wrong people?</li><li>Who in your life is actually qualified to answer it, and have you approached them?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -10916,7 +10493,6 @@ The King asks in great astonishment what he asked at the end of the First Chapte
     <div class="fc-translation" data-sec="translation">A father and mother are always affectionate to their children. When the children are disobedient the parents chastise them, not due to enmity but only for the child’s instruction and welfare. How did Hiraṇyakaśipu, the father of Prahlāda Mahārāja, chastise such a noble son? This is what I am eager to know.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -10947,18 +10523,6 @@ They do not give suffering as an enemy (aparaḥ) would.</div>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Parents chastise children for the child&#39;s welfare, not out of enmity. Yudhisthira cannot square this norm with a father&#39;s intent to kill an obedient and noble son. The question itself models the obligation to press past easy explanations when they do not fit.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where are you accepting an &#39;easy explanation&#39; for cruelty in your life that doesn&#39;t actually fit?</li><li>What harder truth might you need to face about the pattern you are explaining away?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -11194,7 +10758,6 @@ They do not give suffering as an enemy (aparaḥ) would.</div>
 
     <div class="fc-translation" data-sec="translation">Mahārāja Yudhiṣṭhira further inquired: How was it possible for a father to be so violent toward an exalted son who was obedient, well-behaved and respectful to his father? O brāhmaṇa, O master, I have never heard of such a contradiction as an affectionate father’s punishing his noble son with the intention of killing him. Kindly dissipate our doubts in this regard.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -11228,18 +10791,6 @@ Hiraṇyakaśipu Attacks Prahlāda</div>
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Yudhisthira repeats: it is rare in human society for an affectionate father to punish a noble son with intent to kill. The contradiction must be dissipated. When something genuinely does not make sense, do not pretend; ask until the doubt clears.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which &#39;contradiction&#39; in your spiritual life have you stopped questioning?</li><li>What would it mean to keep asking until your doubt is genuinely dissipated?</li></ul>
-
-
-
-
-
-    </section>
 
 
 

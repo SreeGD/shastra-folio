@@ -25,19 +25,25 @@
     <link rel="icon" href="../../../assets/icons/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="../../../assets/icons/icon.svg">
     <link rel="stylesheet" href="../../../assets/css/site.css">
+    <link rel="alternate" hreflang="te-IN" href="../../../te/sb/12/9/">
+    <link rel="alternate" hreflang="x-default" href="../../../">
     <script>window.FC_TO_ROOT = "../../../";</script>
     <script src="../../../assets/js/toggle.js"></script>
 </head>
 <body class="has-sidebar" data-chapter="9">
 <header class="fc-site-header">
     <button type="button" class="fc-mobile-trigger fc-mobile-trigger-left" data-overlay="left" aria-label="Open settings drawer">⚙</button>
-<a class="fc-brand" href="../../../">FolioCorpus<span class="fc-sub">Śrīmad-Bhāgavatam</span></a>
+    <a class="fc-brand" href="../../../">FolioCorpus<span class="fc-sub">Bhagavad-gītā</span></a>
     <nav class="fc-site-nav">
         <a href="../../../">Home</a>
         <a href="../../../bg/">Bhagavad-gītā</a>
         <a href="../../../sb/">Śrīmad-Bhāgavatam</a>
         <a href="../../../search/" title="Search across all integrated works">🔍 Search</a>
         <button type="button" id="fc-random-verse" class="fc-nav-btn" title="Jump to a random verse">🎲 Random</button>
+        <span class="fc-lang-switch" aria-label="Script">
+            <a class="active" href="#" title="Devanāgarī edition">EN</a>
+            <a class="" href="../../../te/sb/12/9/" title="Telugu lipi edition">తె</a>
+        </span>
     </nav>
     <button type="button" class="fc-mobile-trigger fc-mobile-trigger-right" data-overlay="right" aria-label="Open chapter index drawer">📚</button>
 </header>
@@ -46,8 +52,8 @@
     <button class="fc-sb-collapse" type="button" data-sb="left" title="Collapse left sidebar" aria-label="Collapse"></button>
 
     <div class="fc-sb-body">
-        <details class="fc-sb-section" data-sbsec="reading" open>
-            <summary class="fc-sb-title">Reading</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Reading</div>
             <div class="fc-sb-sub">Theme</div>
             <div class="fc-segmented" data-setting="theme">
                 <button type="button" data-val="light">Light</button>
@@ -73,10 +79,10 @@
                 <button type="button" data-val="single">Single</button>
                 <button type="button" data-val="side">Side-by-side</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="display" open>
-            <summary class="fc-sb-title">Display</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Display</div>
             <div class="fc-sb-grid">
                 <label><input type="checkbox" data-section="devanagari" checked> Devanāgarī</label>
                 <label><input type="checkbox" data-section="iast" checked> IAST transliteration</label>
@@ -99,10 +105,33 @@
                 <button type="button" data-action="expand-all">Expand all</button>
                 <button type="button" data-action="collapse-all">Collapse all</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="tools" open>
-            <summary class="fc-sb-title">Tools</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Find your starting point</div>
+            <div class="fc-persona-links">
+                <a class="fc-persona-link" href="../../../daily/">🌅 Daily (one value a week)</a>
+                <a class="fc-persona-link" href="../../../householder/">🏠 Householder (family & work)</a>
+                <a class="fc-persona-link" href="../../../parenting/">👨‍👩‍👧 Parenting (stories for kids)</a>
+                <a class="fc-persona-link" href="../../../themes/">📚 All themes</a>
+                <a class="fc-persona-link" href="../../../values/" style="background:#F0F6F2;border-left-color:#1F4632;">ॐ Vedic Value System ↗</a>
+                <a class="fc-persona-link" href="../../../vidya/" style="background:#FBF6E4;border-left-color:#C8860B;">📚 Vidyā Karaṇa (kids, multi-lang) ↗</a>
+            </div>
+        </div>
+
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Audience</div>
+            <div class="fc-audience-filter">
+                <label><input type="radio" name="fc-audience" value="all" checked> All levels</label>
+                <label><input type="radio" name="fc-audience" value="primary"> Primary (children)</label>
+                <label><input type="radio" name="fc-audience" value="middle"> Middle (teens)</label>
+                <label><input type="radio" name="fc-audience" value="senior"> Senior (adults)</label>
+                <label><input type="radio" name="fc-audience" value="college"> College / scholar</label>
+            </div>
+        </div>
+
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Tools</div>
             <div class="fc-sb-tools">
                 <button type="button" id="fc-presentation-toggle" class="fc-tool-btn"><span>🖥 Presentation</span><kbd class="fc-kbd">F</kbd></button>
                 <button type="button" id="fc-pen-toggle" class="fc-tool-btn"><span>✏️ Pen mode</span><kbd class="fc-kbd">P</kbd></button>
@@ -117,10 +146,26 @@
                 <button type="button" id="fc-clear-highlights" class="fc-tool-btn">🩷 Clear highlights (page)</button>
                 <button type="button" id="fc-notes-modal-open" class="fc-tool-btn">📓 My annotations</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="progress" id="fc-progress-section" open>
-            <summary class="fc-sb-title">Progress</summary>
+        <div class="fc-sb-section" id="fc-tts-controls" hidden>
+            <div class="fc-sb-title">
+                Read-aloud
+                <label class="fc-tts-master">
+                    <input type="checkbox" id="fc-tts-enabled" checked>
+                    <span class="fc-tts-master-label">On</span>
+                </label>
+            </div>
+            <div class="fc-tts-inner">
+                <div class="fc-sb-sub">Voice</div>
+                <select id="fc-tts-voice" class="fc-tts-select" aria-label="TTS voice"></select>
+                <div class="fc-sb-sub">Rate <span class="fc-tts-rate-val">1.0×</span></div>
+                <input type="range" id="fc-tts-rate" min="0.5" max="2" step="0.1" value="1" class="fc-tts-rate" aria-label="Reading rate">
+            </div>
+        </div>
+
+        <div class="fc-sb-section" id="fc-progress-section">
+            <div class="fc-sb-title">Progress</div>
             <div class="fc-progress-row">
                 <span class="fc-progress-num" id="fc-progress-num">0</span>
                 <span class="fc-progress-divider">/</span>
@@ -135,29 +180,29 @@
                 <span class="fc-progress-spacer"></span>
                 <button type="button" class="fc-progress-reset" id="fc-progress-reset" title="Reset progress">↺</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="bookmarks" open>
-            <summary class="fc-sb-title">Bookmarks <span class="fc-sb-count" id="fc-bookmarks-count">0</span></summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Bookmarks <span class="fc-sb-count" id="fc-bookmarks-count">0</span></div>
             <ul class="fc-bookmark-list" id="fc-bookmarks-list">
                 <li class="fc-sb-empty">No bookmarks yet — click ☆ on any verse.</li>
             </ul>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="notes" open>
-            <summary class="fc-sb-title">Notes <span class="fc-sb-count" id="fc-notes-count">0</span></summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Notes <span class="fc-sb-count" id="fc-notes-count">0</span></div>
             <ul class="fc-bookmark-list" id="fc-notes-list">
                 <li class="fc-sb-empty">No notes yet — open any verse and write in the 📝 block.</li>
             </ul>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="export">
-            <summary class="fc-sb-title">Export</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Export</div>
             <div class="fc-sb-tools">
                 <button type="button" id="fc-export-md" class="fc-tool-btn">📥 Download Markdown</button>
                 <button type="button" id="fc-export-json" class="fc-tool-btn">💾 Download JSON backup</button>
             </div>
-        </details>
+        </div>
     </div>
 </aside>    <main class="fc-container">
 <nav class="fc-breadcrumbs">
@@ -175,7 +220,7 @@
         <h1 class="fc-verse-heading">12.9 · Mārkaṇḍeya Ṛṣi Sees the Illusory Potency of the Lord</h1>
         <span class="fc-ribbon-meta">
             27 verses
- · <a class="fc-ribbon-link" href="class-prep/">🖨 Class prep</a>        </span>
+        </span>
         <input type="search" class="fc-search" id="fc-search" placeholder="🔍 Search in this chapter" aria-label="Search verses in this chapter">
         <span class="fc-ribbon-current" id="fc-ribbon-current" aria-live="polite"></span>
     </div>
@@ -442,7 +487,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
     <div class="fc-translation" data-sec="translation">Sūta Gosvāmī said: The Supreme Lord Nārāyaṇa, the friend of Nara, was satisfied by the proper glorification offered by the intelligent sage Mārkaṇḍeya. Thus the Lord addressed that excellent descendant of Bhṛgu.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -473,18 +517,6 @@ The Ninth Chapter describes how Mārkaṇḍeya, saddened by seeing māyā, ente
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The Lord, satisfied with Markandeya&#39;s prayers, is ready to grant his wish. Sincere praise opens the channel; the Lord, ever responsive, replies. Our prayers are not lost into vacuum.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Do I expect my prayer to be heard, or does pessimism muffle it?</li><li>What would faithful, attentive prayer look like today?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -679,7 +711,6 @@ The Ninth Chapter describes how Mārkaṇḍeya, saddened by seeing māyā, ente
     <div class="fc-translation" data-sec="translation">The Supreme Personality of Godhead said: My dear Mārkaṇḍeya, you are indeed the best of all learned brāhmaṇas. You have perfected your life by practicing fixed meditation upon the Supreme Soul, as well as by focusing upon Me your undeviating devotional service, your austerities, your study of the Vedas and your strict adherence to regulative principles.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -698,18 +729,6 @@ The Ninth Chapter describes how Mārkaṇḍeya, saddened by seeing māyā, ente
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The Lord praises Markandeya as the best of brahmanas — his life is perfected through practice and pure attachment. The Lord names what He sees in His devotees; we should not refuse to receive His honest assessment of our goodness.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where am I unable to receive God&#39;s positive sight of me?</li><li>What changes when I accept that He knows my virtues too?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -905,7 +924,6 @@ The Ninth Chapter describes how Mārkaṇḍeya, saddened by seeing māyā, ente
 
     <div class="fc-translation" data-sec="translation">We are perfectly satisfied with your practice of lifelong celibacy. Please choose whatever benediction you desire, since I can grant your wish. May you enjoy all good fortune.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -934,18 +952,6 @@ The plural number is used because later it will be seen that Śiva and Umā were
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">&#39;We are satisfied with your celibacy — choose any benediction.&#39; Real austerity attracts an offer of grace. Yet the question of what we ask for then becomes the truer test of where our heart actually points.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>If I were offered any benediction, what would I really ask?</li><li>What does that ask reveal about where my heart points?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -1149,7 +1155,6 @@ The plural number is used because later it will be seen that Śiva and Umā were
     <div class="fc-translation" data-sec="translation">The sage said: O Lord of lords, all glories to You! O Lord Acyuta, You remove all distress for the devotees who surrender unto You. That you have allowed me to see You is all the benediction I want.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -1170,18 +1175,6 @@ Jitam te means “you have all excellent qualities.”</div>
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Markandeya praises Acyuta who removes distress for those who surrender. Even the giver of benediction is Himself the highest benediction. The gift and the Giver are not finally separable.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Am I more interested in gifts from the Lord or in the Lord Himself?</li><li>What helps me hold both as one without losing either?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -1368,7 +1361,6 @@ Jitam te means “you have all excellent qualities.”</div>
 
     <div class="fc-translation" data-sec="translation">Such demigods as Lord Brahmā achieved their exalted positions simply by seeing Your beautiful lotus feet after their minds had become mature in yoga practice. And now, my Lord, You have personally appeared before me.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1397,18 +1389,6 @@ Having seen your lotus feet, Brahmā and others became successful. The verb shou
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Even Brahma achieved his exalted post by seeing the Lord&#39;s lotus feet after mature yoga. The highest beings ascended by seeing — not by power-acquisition. Sight of the Lord is the only true elevation.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Am I trying to climb by power, or by deepening my sight of Him?</li><li>What practice purifies the eye that sees Him?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -1595,7 +1575,6 @@ Having seen your lotus feet, Brahmā and others became successful. The verb shou
 
     <div class="fc-translation" data-sec="translation">O lotus-eyed Lord, O crest jewel of renowned personalities, although I am satisfied simply by seeing You, I do wish to see Your illusory potency, by whose influence the entire world, together with its ruling demigods, considers reality to be materially variegated.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1624,18 +1603,6 @@ I desire to see (drakṣye).  Sad-bhidam means “the various effects arising fr
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Markandeya, satisfied with seeing the Lord, asks one bold thing: to see the Lord&#39;s illusory potency by which the cosmos appears. He wants to understand the mechanism, not just feel safe. Spiritual life can ask hard questions.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Have I asked the Lord for understanding — not just comfort — about how maya works on me?</li><li>What hard question am I willing to bring Him today?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -1834,7 +1801,6 @@ I desire to see (drakṣye).  Sad-bhidam means “the various effects arising fr
 
     <div class="fc-translation" data-sec="translation">Sūta Gosvāmī said: O wise Śaunaka, thus satisfied by Mārkaṇḍeya’s praise and worship, the Supreme Personality of Godhead, smiling, replied, “So be it,” and then departed for His hermitage at Badarikāśrama.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1878,18 +1844,6 @@ The Lord smiled.  Seeing māyā is only a cause of experiencing grief.  If you w
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Satisfied with Markandeya&#39;s praise, the Lord smiles and says, &#39;So be it.&#39; Even the granting of difficult requests can come with a smile. The Lord enjoys our boldness when it is honest.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Do I dare to bring bold requests, trusting His smile rather than fearing His refusal?</li><li>Which timid request could I reframe more boldly?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -2246,7 +2200,6 @@ The Lord smiled.  Seeing māyā is only a cause of experiencing grief.  If you w
 
     <div class="fc-translation" data-sec="translation">Thinking always of his desire to see the Lord’s illusory energy, the sage remained in his āśrama, meditating constantly upon the Lord within fire, the sun, the moon, water, the earth, air, lightning and his own heart and worshiping Him with paraphernalia conceived in his mind. But sometimes, overwhelmed by waves of love for the Lord, Mārkaṇḍeya would forget to perform his regular worship.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2275,18 +2228,6 @@ He thought of seeing māyā (tam artham).  Bhāva-dravaiḥ means “with articl
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Markandeya remains in his asrama, meditating constantly on the Lord within fire, water, and his own heart, waiting for his wish to ripen. Even after grace is promised, sadhana continues. Promise is not delivery; persistence is the bridge.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Have I become slack on the assumption that promised grace is automatic?</li><li>What practice sustains my reach while I wait?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -2456,7 +2397,6 @@ He thought of seeing māyā (tam artham).  Bhāva-dravaiḥ means “with articl
     <div class="fc-translation" data-sec="translation">O brāhmaṇa Śaunaka, best of the Bhṛgus, one day while Mārkaṇḍeya was performing his evening worship on the bank of the Puṣpabhadrā, a great wind suddenly arose.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -2487,18 +2427,6 @@ The display of māyā begins.</div>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">One day, while performing evening worship on the riverbank, a great wind suddenly arose. Cosmic upheaval can begin in an ordinary moment of routine practice. The hour of test rarely announces itself in advance.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which ordinary moment of mine could become the doorway to a great test?</li><li>How does that possibility shape how I do the small things?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -2715,7 +2643,6 @@ The display of māyā begins.</div>
     <div class="fc-translation" data-sec="translation">That wind created a terrible sound and brought in its wake fearsome clouds that were accompanied by lightning and roaring thunder and that poured down on all sides torrents of rain as heavy as wagon wheels.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -2736,18 +2663,6 @@ The torrents were as heavy as wheels of a chariot.</div>
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The wind brought clouds with lightning, thunder, and torrential rain — a terrible sound everywhere. The Lord&#39;s display of maya can be overwhelming and beautiful at once. We should not assume revelation will always be gentle.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where do I limit my expectation of God to gentle experiences only?</li><li>How would I receive a &#39;thunderous&#39; instruction?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -2955,7 +2870,6 @@ The torrents were as heavy as wheels of a chariot.</div>
     <div class="fc-translation" data-sec="translation">Then the four great oceans appeared on all sides, swallowing up the surface of the earth with their wind-tossed waves. In these oceans were terrible sea monsters, fearful whirlpools and ominous rumblings.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -2974,18 +2888,6 @@ The torrents were as heavy as wheels of a chariot.</div>
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Four great oceans appear, swallowing the earth&#39;s surface, full of terrifying sea-creatures. Maya is not abstract; she has fangs. Knowing her power should sober our underestimation of her.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where have I been treating maya as harmless background noise?</li><li>What single area deserves a more serious posture of guard?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -3228,7 +3130,6 @@ The torrents were as heavy as wheels of a chariot.</div>
 
     <div class="fc-translation" data-sec="translation">The sage saw all the inhabitants of the universe, including himself, tormented within and without by the harsh winds, the bolts of lightning, and the great waves rising beyond the sky. As the whole earth flooded, he grew perplexed and fearful.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3257,18 +3158,6 @@ Ati-dyubhiḥ adbhiḥ means “by water reaching to the sky.” Kharaiḥ means
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The sage sees all beings, including himself, tormented by winds, lightning, and waves. Even devotees can be temporarily inside the storm; being chosen does not mean being exempt from the show. We must hold that paradox.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where do I expect spiritual life to keep me dry in every storm?</li><li>What grows in me when I am soaked and still walking?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -3503,7 +3392,6 @@ Ati-dyubhiḥ adbhiḥ means “by water reaching to the sky.” Kharaiḥ means
     <div class="fc-translation" data-sec="translation">Even as Mārkaṇḍeya looked on, the rain pouring down from the clouds filled the ocean more and more until that great sea, its waters violently whipped into terrifying waves by hurricanes, covered up all the earth’s islands, mountains and continents.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -3522,18 +3410,6 @@ Ati-dyubhiḥ adbhiḥ means “by water reaching to the sky.” Kharaiḥ means
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Even as Markandeya looks on, the rain fills the ocean until it overflows. Crisis has a slow-then-sudden quality. Bhagavatam captures it precisely so we can recognize the slow phase before the sudden one arrives.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What slow filling am I currently underestimating in my life?</li><li>How might I act now, before the sudden overflow?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -3795,7 +3671,6 @@ Ati-dyubhiḥ adbhiḥ means “by water reaching to the sky.” Kharaiḥ means
     <div class="fc-translation" data-sec="translation">The water inundated the earth, outer space, heaven and the celestial region. Indeed, the entire expanse of the universe was flooded in all directions, and out of all its inhabitants only Mārkaṇḍeya remained. His matted hair scattered, the great sage wandered about alone in the water as if dumb and blind.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -3816,18 +3691,6 @@ Sa-bhā-gaṇam means “with the planets.”</div>
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Water inundates earth, sky, heaven, and the celestial region — the entire universe flooded. No realm escapes the dissolution. Even the upper worlds are temporary. There is no horizontal escape; only vertical refuge.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which &#39;horizontal escape&#39; have I been pursuing — geographical, material, social?</li><li>What vertical refuge is available right where I stand?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -4071,7 +3934,6 @@ Sa-bhā-gaṇam means “with the planets.”</div>
     <div class="fc-translation" data-sec="translation">Tormented by hunger and thirst, attacked by monstrous makaras and timiṅgila fish and battered by the wind and waves, he moved aimlessly through the infinite darkness into which he had fallen. As he grew increasingly exhausted, he lost all sense of direction and could not tell the sky from the earth.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -4092,18 +3954,6 @@ He was beaten by wind with waves.  Īṣitaḥ means “attained.”  It comes f
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Tormented by hunger and thirst, attacked by makaras and timingilas, battered by wind, Markandeya wanders. Even the chosen are stretched to their limits. The point is not to escape limit but to walk through it with the Lord.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where have I been stretched to my limit lately?</li><li>Was the Lord more present or more absent in that stretching, when I look honestly?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -4435,7 +4285,6 @@ He was beaten by wind with waves.  Īṣitaḥ means “attained.”  It comes f
     <div class="fc-translation" data-sec="translation">At times he was engulfed by the great whirlpools, sometimes he was beaten by the mighty waves, and at other times the aquatic monsters threatened to devour him as they attacked one another. Sometimes he felt lamentation, bewilderment, misery, happiness or fear, and at other times he experienced such terrible illness and pain that he felt himself dying.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -4454,18 +4303,6 @@ He was beaten by wind with waves.  Īṣitaḥ means “attained.”  It comes f
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Engulfed by whirlpools, beaten by waves, threatened by monsters — Markandeya endures all of it. Spiritual endurance is not stoicism; it is the body&#39;s continuance while the soul keeps reaching. Both must be honored.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What is currently asking for endurance from my body and reach from my soul?</li><li>How do I keep both engaged rather than just one?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -4644,7 +4481,6 @@ He was beaten by wind with waves.  Īṣitaḥ means “attained.”  It comes f
     <div class="fc-translation" data-sec="translation">Countless millions of years passed as Mārkaṇḍeya wandered about in that deluge, his mind bewildered by the illusory energy of Lord Viṣṇu, the Supreme Personality of Godhead.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -4663,18 +4499,6 @@ He was beaten by wind with waves.  Īṣitaḥ means “attained.”  It comes f
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Countless millions of years pass as Markandeya wanders, his mind bewildered by the Lord&#39;s illusory energy. Asked questions sometimes get answered in vast, lived form. Be ready: the answer to what you asked may be a journey.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Have I asked anything of the Lord I am still receiving the answer to?</li><li>How would I act if I understood the long journey as the answer itself?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -4853,7 +4677,6 @@ He was beaten by wind with waves.  Īṣitaḥ means “attained.”  It comes f
     <div class="fc-translation" data-sec="translation">Once, while wandering in the water, the brāhmaṇa Mārkaṇḍeya discovered a small island, upon which stood a young banyan tree bearing blossoms and fruits.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -4872,18 +4695,6 @@ He was beaten by wind with waves.  Īṣitaḥ means “attained.”  It comes f
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">While wandering, Markandeya discovers a small island with a young banyan tree bearing flowers and fruits. In the middle of the flood, the Lord plants a particular island — a tiny relief and a sign. Grace can be small and very located.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What &#39;small island&#39; has the Lord planted in my current flood?</li><li>Have I noticed it, or am I still scanning the horizon?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -5053,7 +4864,6 @@ He was beaten by wind with waves.  Īṣitaḥ means “attained.”  It comes f
     <div class="fc-translation" data-sec="translation">Upon a branch of the northeast portion of that tree he saw an infant boy lying within a leaf. The child’s effulgence was swallowing up the darkness.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -5072,18 +4882,6 @@ He was beaten by wind with waves.  Īṣitaḥ means “attained.”  It comes f
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">On a northeast branch, in a leaf, lies a glowing infant boy whose effulgence swallows the darkness. The Lord arrives in unexpected smallness; we look for thunder, He gives a baby.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where am I missing the Lord because I expect Him bigger?</li><li>What &#39;glowing baby&#39; might He be presenting in my life right now?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -5667,7 +5465,6 @@ He was beaten by wind with waves.  Īṣitaḥ means “attained.”  It comes f
 
     <div class="fc-translation" data-sec="translation">The infant’s dark-blue complexion was the color of a flawless emerald, His lotus face shone with a wealth of beauty, and His throat bore marks like the lines on a conchshell. He had a broad chest, a finely shaped nose, beautiful eyebrows, and lovely ears that resembled pomegranate flowers and that had inner folds like a conchshell’s spirals. The corners of His eyes were reddish like the whorl of a lotus, and the effulgence of His corallike lips slightly reddened the nectarean, enchanting smile on His face. As He breathed, His splendid hair trembled and His deep navel became distorted by the moving folds of skin on His abdomen, which resembled a banyan leaf. The exalted brāhmaṇa watched with amazement as the infant took hold of one of His lotus feet with His graceful fingers, placed a toe within His mouth and began to suck.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -5696,18 +5493,6 @@ Kakudi means “on a raised area.”  He looked splendid with locks of hair trem
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The infant is described in lush detail — dark-blue, emerald-flawless, lotus face, throat marked. The Lord&#39;s beauty even in tiny form is exquisitely particular. Devotion delights in details; abstraction starves love.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Have I let myself notice particular details of the Lord&#39;s beauty in form?</li><li>Which detail most calls me lately?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -5923,7 +5708,6 @@ Kakudi means “on a raised area.”  He looked splendid with locks of hair trem
 
     <div class="fc-translation" data-sec="translation">As Mārkaṇḍeya beheld the child, all his weariness vanished. Indeed, so great was his pleasure that the lotus of his heart, along with his lotus eyes, fully blossomed and the hairs on his body stood on end. Confused as to the identity of the wonderful infant, the sage approached Him.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -5952,18 +5736,6 @@ He had doubt about that astonishing form (bhāva).   It could not be an ordinary
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Beholding the child, Markandeya&#39;s weariness vanishes; his heart-lotus and eyes open in delight. Sight of beauty can restore strength in a way nothing else does. The lord-as-beauty is not optional aesthetics; it is medicine.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What beauty most reliably restores me when I am weary?</li><li>How can I make space for that more often?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -6225,7 +5997,6 @@ He had doubt about that astonishing form (bhāva).   It could not be an ordinary
     <div class="fc-translation" data-sec="translation">Just then the child inhaled, drawing Mārkaṇḍeya within His body like a mosquito. There the sage found the entire universe arrayed as it had been before its dissolution. Seeing this, Mārkaṇḍeya was most astonished and perplexed.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -6246,18 +6017,6 @@ Adaḥ means the universe.  He saw everything as it was before the devastation (
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The infant inhales, drawing Markandeya within His body like a mosquito; inside, the sage finds the whole universe arrayed as before. Inside the Lord, what looked external is internal. Reality is nested differently than we think.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where might my &#39;external&#39; problem actually live inside something bigger that holds it?</li><li>What changes when I view it from that nested angle?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -6664,7 +6423,6 @@ Adaḥ means the universe.  He saw everything as it was before the devastation (
     <div class="fc-translation" data-sec="translation">The sage saw the entire universe: the sky, heavens and earth, the stars, mountains, oceans, great islands and continents, the expanses in every direction, the saintly and demoniac living beings, the forests, countries, rivers, cities and mines, the agricultural villages and cow pastures, and the occupational and spiritual activities of the various social divisions. He also saw the basic elements of creation along with all their by-products, as well as time itself, which regulates the progression of countless ages within the days of Brahmā. In addition, he saw everything else created for use in material life. All this he saw manifested before him as if it were real.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -6685,18 +6443,6 @@ He (saḥ) saw a bright world (avabhāsitam) in daylight (divā for divasaḥ).<
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Within the infant&#39;s body, the sage sees sky, earth, stars, mountains, oceans, islands, all directions. The Lord contains everything we thought we lived among. Devotional cosmology is not flat; it is nested in Him.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Do I imagine the Lord containing my world, or only being present in it?</li><li>How does the &#39;containing&#39; image change my prayer?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -6931,7 +6677,6 @@ He (saḥ) saw a bright world (avabhāsitam) in daylight (divā for divasaḥ).<
     <div class="fc-translation" data-sec="translation">He saw before him the Himālaya Mountains, the Puṣpabhadrā River, and his own hermitage, where he had had the audience of the sages Nara-Nārāyaṇa. Then, as Mārkaṇḍeya beheld the entire universe, the infant exhaled, expelling the sage from His body and casting him back into the ocean of dissolution.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -6952,18 +6697,6 @@ Puṣpavahām means the Puṣpabhadrā River.</div>
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">He sees before him the Himalayas, the Pushpabhadra River, and his own hermitage — where he had had Nara-Narayana&#39;s audience. Inside the Lord, everything is preserved exactly. Even our small life-locations are dear to Him.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which &#39;location&#39; of my own does the Lord hold dear, and have I honored it?</li><li>What small reverence could I bring to that place today?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -7323,7 +7056,6 @@ Puṣpavahām means the Puṣpabhadrā River.</div>
     <div class="fc-translation" data-sec="translation">In that vast sea he again saw the banyan tree growing on the tiny island and the infant boy lying within the leaf. The child glanced at him from the corner of His eyes with a smile imbued with the nectar of love, and Mārkaṇḍeya took Him into his heart through his eyes. Greatly agitated, the sage ran to embrace the transcendental Personality of Godhead.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -7342,18 +7074,6 @@ Puṣpavahām means the Puṣpabhadrā River.</div>
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">In the vast sea he sees again the banyan, the island, the infant — who glances at him from the corner of His eye. One look from the Lord re-centers the entire bewildering panorama. We can let one look be enough.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Have I waited for the &#39;corner-of-the-eye&#39; look from the Lord, or demanded a full gaze?</li><li>What would receiving that quiet look mean today?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -7541,7 +7261,6 @@ Puṣpavahām means the Puṣpabhadrā River.</div>
     <div class="fc-translation" data-sec="translation">At that moment the Supreme Personality of Godhead, who is the original master of all mysticism and who is hidden within everyone’s heart, became invisible to the sage, just as the achievements of an incompetent person can suddenly vanish.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -7562,18 +7281,6 @@ Again thrown into the ocean, he wandered about for millions of years, experienci
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">At that moment, the Lord, the original master of mysticism, hidden in every heart, becomes invisible. Grace can withdraw the visible after the gift of vision has been given. Internalize what was seen; don&#39;t cling to the seeing.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Did a past spiritual experience leave me clinging to the experience rather than its fruit?</li><li>What is the fruit I am invited to live from now?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -7760,7 +7467,6 @@ Again thrown into the ocean, he wandered about for millions of years, experienci
 
     <div class="fc-translation" data-sec="translation">After the Lord disappeared, O brāhmaṇa, the banyan tree, the great water and the dissolution of the universe all vanished as well, and in an instant Mārkaṇḍeya found himself back in his own hermitage, just as before.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -7802,18 +7508,6 @@ Those who chant and hear the story of Mārkaṇḍeya Ṛṣi will attain libera
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">After the Lord vanishes, the banyan, the water, and the dissolution all vanish too — and in an instant Markandeya is back in his asrama. The whole long ordeal turns out to be a teaching. Time inside maya can collapse the moment its purpose is served.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What &#39;long ordeal&#39; of mine may collapse the moment I see its lesson?</li><li>What is the Lord trying to show me through it?</li></ul>
-
-
-
-
-
-    </section>
 
 
 

@@ -31,7 +31,7 @@
 <body class="has-sidebar">
 <header class="fc-site-header">
     <button type="button" class="fc-mobile-trigger fc-mobile-trigger-left" data-overlay="left" aria-label="Open settings drawer">⚙</button>
-<a class="fc-brand" href="../../../">FolioCorpus<span class="fc-sub">Caitanya-caritāmṛta</span></a>
+    <a class="fc-brand" href="../../../">FolioCorpus<span class="fc-sub">Bhagavad-gītā</span></a>
     <nav class="fc-site-nav">
         <a href="../../../">Home</a>
         <a href="../../../bg/">Bhagavad-gītā</a>
@@ -46,8 +46,8 @@
     <button class="fc-sb-collapse" type="button" data-sb="left" title="Collapse left sidebar" aria-label="Collapse"></button>
 
     <div class="fc-sb-body">
-        <details class="fc-sb-section" data-sbsec="reading" open>
-            <summary class="fc-sb-title">Reading</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Reading</div>
             <div class="fc-sb-sub">Theme</div>
             <div class="fc-segmented" data-setting="theme">
                 <button type="button" data-val="light">Light</button>
@@ -73,10 +73,10 @@
                 <button type="button" data-val="single">Single</button>
                 <button type="button" data-val="side">Side-by-side</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="display" open>
-            <summary class="fc-sb-title">Display</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Display</div>
             <div class="fc-sb-grid">
                 <label><input type="checkbox" data-section="devanagari" checked> Devanāgarī</label>
                 <label><input type="checkbox" data-section="iast" checked> IAST transliteration</label>
@@ -98,10 +98,33 @@
                 <button type="button" data-action="expand-all">Expand all</button>
                 <button type="button" data-action="collapse-all">Collapse all</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="tools" open>
-            <summary class="fc-sb-title">Tools</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Find your starting point</div>
+            <div class="fc-persona-links">
+                <a class="fc-persona-link" href="../../../daily/">🌅 Daily (one value a week)</a>
+                <a class="fc-persona-link" href="../../../householder/">🏠 Householder (family & work)</a>
+                <a class="fc-persona-link" href="../../../parenting/">👨‍👩‍👧 Parenting (stories for kids)</a>
+                <a class="fc-persona-link" href="../../../themes/">📚 All themes</a>
+                <a class="fc-persona-link" href="../../../values/" style="background:#F0F6F2;border-left-color:#1F4632;">ॐ Vedic Value System ↗</a>
+                <a class="fc-persona-link" href="../../../vidya/" style="background:#FBF6E4;border-left-color:#C8860B;">📚 Vidyā Karaṇa (kids, multi-lang) ↗</a>
+            </div>
+        </div>
+
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Audience</div>
+            <div class="fc-audience-filter">
+                <label><input type="radio" name="fc-audience" value="all" checked> All levels</label>
+                <label><input type="radio" name="fc-audience" value="primary"> Primary (children)</label>
+                <label><input type="radio" name="fc-audience" value="middle"> Middle (teens)</label>
+                <label><input type="radio" name="fc-audience" value="senior"> Senior (adults)</label>
+                <label><input type="radio" name="fc-audience" value="college"> College / scholar</label>
+            </div>
+        </div>
+
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Tools</div>
             <div class="fc-sb-tools">
                 <button type="button" id="fc-presentation-toggle" class="fc-tool-btn"><span>🖥 Presentation</span><kbd class="fc-kbd">F</kbd></button>
                 <button type="button" id="fc-pen-toggle" class="fc-tool-btn"><span>✏️ Pen mode</span><kbd class="fc-kbd">P</kbd></button>
@@ -116,10 +139,26 @@
                 <button type="button" id="fc-clear-highlights" class="fc-tool-btn">🩷 Clear highlights (page)</button>
                 <button type="button" id="fc-notes-modal-open" class="fc-tool-btn">📓 My annotations</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="progress" id="fc-progress-section" open>
-            <summary class="fc-sb-title">Progress</summary>
+        <div class="fc-sb-section" id="fc-tts-controls" hidden>
+            <div class="fc-sb-title">
+                Read-aloud
+                <label class="fc-tts-master">
+                    <input type="checkbox" id="fc-tts-enabled" checked>
+                    <span class="fc-tts-master-label">On</span>
+                </label>
+            </div>
+            <div class="fc-tts-inner">
+                <div class="fc-sb-sub">Voice</div>
+                <select id="fc-tts-voice" class="fc-tts-select" aria-label="TTS voice"></select>
+                <div class="fc-sb-sub">Rate <span class="fc-tts-rate-val">1.0×</span></div>
+                <input type="range" id="fc-tts-rate" min="0.5" max="2" step="0.1" value="1" class="fc-tts-rate" aria-label="Reading rate">
+            </div>
+        </div>
+
+        <div class="fc-sb-section" id="fc-progress-section">
+            <div class="fc-sb-title">Progress</div>
             <div class="fc-progress-row">
                 <span class="fc-progress-num" id="fc-progress-num">0</span>
                 <span class="fc-progress-divider">/</span>
@@ -134,29 +173,29 @@
                 <span class="fc-progress-spacer"></span>
                 <button type="button" class="fc-progress-reset" id="fc-progress-reset" title="Reset progress">↺</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="bookmarks" open>
-            <summary class="fc-sb-title">Bookmarks <span class="fc-sb-count" id="fc-bookmarks-count">0</span></summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Bookmarks <span class="fc-sb-count" id="fc-bookmarks-count">0</span></div>
             <ul class="fc-bookmark-list" id="fc-bookmarks-list">
                 <li class="fc-sb-empty">No bookmarks yet — click ☆ on any verse.</li>
             </ul>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="notes" open>
-            <summary class="fc-sb-title">Notes <span class="fc-sb-count" id="fc-notes-count">0</span></summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Notes <span class="fc-sb-count" id="fc-notes-count">0</span></div>
             <ul class="fc-bookmark-list" id="fc-notes-list">
                 <li class="fc-sb-empty">No notes yet — open any verse and write in the 📝 block.</li>
             </ul>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="export">
-            <summary class="fc-sb-title">Export</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Export</div>
             <div class="fc-sb-tools">
                 <button type="button" id="fc-export-md" class="fc-tool-btn">📥 Download Markdown</button>
                 <button type="button" id="fc-export-json" class="fc-tool-btn">💾 Download JSON backup</button>
             </div>
-        </details>
+        </div>
     </div>
 </aside>    <main class="fc-container">
 <nav class="fc-breadcrumbs">
@@ -329,7 +368,6 @@
 
     <div class="fc-translation" data-sec="translation">I offer my obeisances to Sri Caitanya Mahāprabhu, by whose mercy even an ignorant child can swim across the ocean of conclusions about the ultimate truth, which is full of the crocodiles of various theories.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -386,7 +424,6 @@
 
 
     <div class="fc-translation" data-sec="translation">O my merciful Lord Caitanya, may the nectarean Ganges waters of Your transcendental activities flow on the surface of my desertlike tongue. Beautifying these waters are the lotus flowers of singing, dancing and loud chanting of Kṛṣṇa’s holy name, which are the pleasure abodes of unalloyed devotees. These devotees are compared to swans, ducks and bees. The river’s flowing produces a melodious sound that gladdens their ears.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -456,7 +493,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-2-3" data-note-label="BG 2.3" data-note-chapter="2" data-note-vlabel="3">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 2.3…" rows="4"></textarea>
@@ -507,7 +543,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-2-4" data-note-label="BG 2.4" data-note-chapter="2" data-note-vlabel="4">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 2.4…" rows="4"></textarea>
@@ -546,7 +581,6 @@
 
 
     <div class="fc-translation" data-sec="translation">What the Upaniṣads describe as the impersonal Brahman is but the effulgence of His body, and the Lord known as the Supersoul is but His localized plenary portion. Lord Caitanya is the Supreme Personality of Godhead, Kṛṣṇa Himself, full with six opulences. He is the Absolute Truth, and no other truth is greater than or equal to Him.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -616,7 +650,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-2-6" data-note-label="BG 2.6" data-note-chapter="2" data-note-vlabel="6">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 2.6…" rows="4"></textarea>
@@ -655,7 +688,6 @@
 
 
     <div class="fc-translation" data-sec="translation">A predicate always follows its subject. Now I shall explain the meaning of this verse according to the revealed scriptures.</div>
-
 
 
 
@@ -718,7 +750,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-2-8" data-note-label="BG 2.8" data-note-chapter="2" data-note-vlabel="8">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 2.8…" rows="4"></textarea>
@@ -757,7 +788,6 @@
 
 
     <div class="fc-translation" data-sec="translation">He whom Śrīmad-Bhāgavatam describes as the son of Nanda Mahārāja has descended to earth as Lord Caitanya.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -816,7 +846,6 @@
 
     <div class="fc-translation" data-sec="translation">In terms of His various manifestations, He is known in three features, called the impersonal Brahman, the localized Paramātmā and the original Personality of Godhead.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -874,7 +903,6 @@
 
     <div class="fc-translation" data-sec="translation">“Learned transcendentalists who know the Absolute Truth say that it is nondual knowledge and is called impersonal Brahman, the localized Paramātmā and the Personality of Godhead.”</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -931,7 +959,6 @@
 
 
     <div class="fc-translation" data-sec="translation">What the Upaniṣads call the transcendental, impersonal Brahman is the realm of the glowing effulgence of the same Supreme Person.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -1001,7 +1028,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-2-13" data-note-label="BG 2.13" data-note-chapter="2" data-note-vlabel="13">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 2.13…" rows="4"></textarea>
@@ -1040,7 +1066,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“I worship Govinda, the primeval Lord, who is endowed with great power. The glowing effulgence of His transcendental form is the impersonal Brahman, which is absolute, complete and unlimited and which displays the varieties of countless planets, with their different opulences, in millions and millions of universes.”</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -1110,7 +1135,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-2-15" data-note-label="BG 2.15" data-note-chapter="2" data-note-vlabel="15">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 2.15…" rows="4"></textarea>
@@ -1149,7 +1173,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“I worship Govinda. He is my Lord. Only by His grace am I empowered to create the universe.”</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -1208,7 +1231,6 @@
 
     <div class="fc-translation" data-sec="translation">“Naked saints and sannyāsīs who undergo severe physical penances, who can raise the semen to the brain, and who are completely equipoised in Brahman can live in the realm known as Brahmaloka.”</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1265,7 +1287,6 @@
 
 
     <div class="fc-translation" data-sec="translation">He who is described in the yoga-śāstras as the indwelling Supersoul [ātmā antar-yāmī] is also a plenary portion of Govinda’s personal expansion.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -1324,7 +1345,6 @@
 
     <div class="fc-translation" data-sec="translation">As the one sun appears reflected in countless jewels, so Govinda manifests Himself [as Paramātmā] in the hearts of all living beings.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1381,7 +1401,6 @@
 
 
     <div class="fc-translation" data-sec="translation">[The Personality of Godhead, Śrī Kṛṣṇa, said:] “What more shall I say to you? I live throughout this cosmic manifestation merely by My single plenary portion.”</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -1440,7 +1459,6 @@
 
     <div class="fc-translation" data-sec="translation">[Grandfather Bhīṣma said:] “As the one sun appears differently situated to different seers, so also do You, the unborn, appear differently represented as the Paramātmā in every living being. But when a seer knows himself to be one of Your own servitors, no longer does he maintain such duality. Thus I am now able to comprehend Your eternal forms, knowing well the Paramātmā to be only Your plenary portion.”</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1497,7 +1515,6 @@
 
 
     <div class="fc-translation" data-sec="translation">That Govinda personally appears as Caitanya Gosāñi. No other Lord is as merciful in delivering the fallen souls.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -1567,7 +1584,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-2-23" data-note-label="BG 2.23" data-note-chapter="2" data-note-vlabel="23">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 2.23…" rows="4"></textarea>
@@ -1606,7 +1622,6 @@
 
 
     <div class="fc-translation" data-sec="translation">The Personality of Godhead is He who is described as the Absolute Whole in the Vedas, Bhāgavatam, Upaniṣads and other transcendental literatures. No one is equal to Him.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -1665,7 +1680,6 @@
 
     <div class="fc-translation" data-sec="translation">Through their service, devotees see that Personality of Godhead, just as the denizens of heaven see the personality of the sun.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1722,7 +1736,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Those who walk the paths of knowledge and yoga worship only Him, for it is Him they perceive as the impersonal Brahman and localized Paramātmā.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -1792,7 +1805,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-2-27" data-note-label="BG 2.27" data-note-chapter="2" data-note-vlabel="27">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 2.27…" rows="4"></textarea>
@@ -1843,7 +1855,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-2-28" data-note-label="BG 2.28" data-note-chapter="2" data-note-vlabel="28">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 2.28…" rows="4"></textarea>
@@ -1882,7 +1893,6 @@
 
 
     <div class="fc-translation" data-sec="translation">This Personality of Godhead [Śrī Kṛṣṇa] has two hands and holds a flute, whereas the other [Nārāyaṇa] has four hands, with conch, wheel, mace and lotus.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -1940,7 +1950,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“O Lord of lords, You are the seer of all creation. You are indeed everyone’s dearest life. Are You not, therefore, my father, Nārāyaṇa? Nārāyaṇa refers to one whose abode is in the water born from Nara [Garbhodakaśāyī Viṣṇu], and that Nārāyaṇa is Your plenary portion. All Your plenary portions are transcendental. They are absolute and are not creations of māyā.”</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -2010,7 +2019,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-2-31" data-note-label="BG 2.31" data-note-chapter="2" data-note-vlabel="31">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 2.31…" rows="4"></textarea>
@@ -2049,7 +2057,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“I took birth from the lotus that grew from Your navel. Thus You are both my father and my mother, and I am Your son.</div>
-
 
 
 
@@ -2112,7 +2119,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-2-33" data-note-label="BG 2.33" data-note-chapter="2" data-note-vlabel="33">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 2.33…" rows="4"></textarea>
@@ -2151,7 +2157,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Śrī Kṛṣṇa said, “O Brahmā, your father is Nārāyaṇa. I am but a cowherd boy. How can you be My son?”</div>
-
 
 
 
@@ -2214,7 +2219,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-2-35" data-note-label="BG 2.35" data-note-chapter="2" data-note-vlabel="35">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 2.35…" rows="4"></textarea>
@@ -2253,7 +2257,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“All the living beings within the material and spiritual worlds are ultimately born of You, for You are the Supersoul of them all.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -2311,7 +2314,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“As the earth is the original cause and shelter of all pots made of earth, so You are the ultimate cause and shelter of all living beings.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -2381,7 +2383,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-2-38" data-note-label="BG 2.38" data-note-chapter="2" data-note-vlabel="38">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 2.38…" rows="4"></textarea>
@@ -2420,7 +2421,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“You are therefore the original Nārāyaṇa. This is one reason; please listen as I state the second.</div>
-
 
 
 
@@ -2483,7 +2483,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-2-40" data-note-label="BG 2.40" data-note-chapter="2" data-note-vlabel="40">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 2.40…" rows="4"></textarea>
@@ -2534,7 +2533,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-2-41" data-note-label="BG 2.41" data-note-chapter="2" data-note-vlabel="41">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 2.41…" rows="4"></textarea>
@@ -2573,7 +2571,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“Since You protect those who are the shelters of all living beings, You are the original Nārāyaṇa.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -2643,7 +2640,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-2-43" data-note-label="BG 2.43" data-note-chapter="2" data-note-vlabel="43">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 2.43…" rows="4"></textarea>
@@ -2682,7 +2678,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“Both in this material world and in the transcendental world, You see all the deeds of all living beings, in the past, present and future. Since You are the witness of all such deeds, You know the essence of everything.</div>
-
 
 
 
@@ -2745,7 +2740,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-2-45" data-note-label="BG 2.45" data-note-chapter="2" data-note-vlabel="45">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 2.45…" rows="4"></textarea>
@@ -2784,7 +2778,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“You oversee the wanderings of all living beings. For this reason also, You are the primeval Lord Nārāyaṇa.”</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -2854,7 +2847,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-2-47" data-note-label="BG 2.47" data-note-chapter="2" data-note-vlabel="47">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 2.47…" rows="4"></textarea>
@@ -2893,7 +2885,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Brahmā replied, “What I have said is true. The same Lord Nārāyaṇa who lives on the waters and in the hearts of all living beings is but a plenary portion of You.</div>
-
 
 
 
@@ -2956,7 +2947,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-2-49" data-note-label="BG 2.49" data-note-chapter="2" data-note-vlabel="49">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 2.49…" rows="4"></textarea>
@@ -2995,7 +2985,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“These three Viṣṇus lying in the water are the Supersoul of everything. The Supersoul of all the universes is known as the first puruṣa.</div>
-
 
 
 
@@ -3058,7 +3047,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-2-51" data-note-label="BG 2.51" data-note-chapter="2" data-note-vlabel="51">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 2.51…" rows="4"></textarea>
@@ -3097,7 +3085,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“Superficially we see that these puruṣas have a relationship with māyā, but above them, in the fourth dimension, is Lord Kṛṣṇa, who has no contact with the material energy.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -3155,7 +3142,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“ ‘In the material world the Lord is designated as virāṭ, hiraṇyagarbha and kāraṇa. But beyond these three designations, the Lord is ultimately in the fourth dimension.’</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -3225,7 +3211,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-2-54" data-note-label="BG 2.54" data-note-chapter="2" data-note-vlabel="54">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 2.54…" rows="4"></textarea>
@@ -3264,7 +3249,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“ ‘This is the opulence of the Lord: Although situated in the material nature, He is never affected by the modes of nature. Similarly, those who have surrendered to Him and fixed their intelligence upon Him are not influenced by the modes of nature.’</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -3322,7 +3306,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“You are the ultimate shelter of these three plenary portions. Thus there is not the slightest doubt that You are the primeval Nārāyaṇa.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -3392,7 +3375,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-2-57" data-note-label="BG 2.57" data-note-chapter="2" data-note-vlabel="57">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 2.57…" rows="4"></textarea>
@@ -3431,7 +3413,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Therefore according to the authority of Brahmā, the Nārāyaṇa who is the predominating Deity in the transcendental world is but the vilāsa feature of Kṛṣṇa. This has now been conclusively proved.</div>
-
 
 
 
@@ -3494,7 +3475,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-2-59" data-note-label="BG 2.59" data-note-chapter="2" data-note-vlabel="59">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 2.59…" rows="4"></textarea>
@@ -3545,7 +3525,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-2-60" data-note-label="BG 2.60" data-note-chapter="2" data-note-vlabel="60">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 2.60…" rows="4"></textarea>
@@ -3584,7 +3563,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Because Nārāyaṇa has four hands whereas Kṛṣṇa looks just like a man, they say that Nārāyaṇa is the original God whereas Kṛṣṇa is but an incarnation.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -3654,7 +3632,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-2-62" data-note-label="BG 2.62" data-note-chapter="2" data-note-vlabel="62">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 2.62…" rows="4"></textarea>
@@ -3693,7 +3670,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“Learned transcendentalists who know the Absolute Truth say that it is nondual knowledge and is called impersonal Brahman, the localized Paramātmā and the Personality of Godhead.”</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -3763,7 +3739,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-2-64" data-note-label="BG 2.64" data-note-chapter="2" data-note-vlabel="64">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 2.64…" rows="4"></textarea>
@@ -3802,7 +3777,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Lord Kṛṣṇa Himself is the one undivided Absolute Truth, the ultimate reality. He manifests Himself in three features — as Brahman, Paramātmā and Bhagavān.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -3872,7 +3846,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-2-66" data-note-label="BG 2.66" data-note-chapter="2" data-note-vlabel="66">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 2.66…" rows="4"></textarea>
@@ -3911,7 +3884,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“All these incarnations of Godhead are either plenary portions or parts of the plenary portions of the puruṣa-avatāras. But Kṛṣṇa is the Supreme Personality of Godhead Himself. In every age He protects the world through His different features when the world is disturbed by the enemies of Indra.”</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -3981,7 +3953,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-2-68" data-note-label="BG 2.68" data-note-chapter="2" data-note-vlabel="68">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 2.68…" rows="4"></textarea>
@@ -4020,7 +3991,6 @@
 
 
     <div class="fc-translation" data-sec="translation">This made Sūta Gosvāmī greatly apprehensive. Therefore he distinguished each incarnation by its specific symptoms.</div>
-
 
 
 
@@ -4083,7 +4053,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-2-70" data-note-label="BG 2.70" data-note-chapter="2" data-note-vlabel="70">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 2.70…" rows="4"></textarea>
@@ -4122,7 +4091,6 @@
 
 
     <div class="fc-translation" data-sec="translation">An opponent may say, “This is your interpretation, but actually the Supreme Lord is Nārāyaṇa, who is in the transcendental realm.</div>
-
 
 
 
@@ -4185,7 +4153,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-2-72" data-note-label="BG 2.72" data-note-chapter="2" data-note-vlabel="72">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 2.72…" rows="4"></textarea>
@@ -4236,7 +4203,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-2-73" data-note-label="BG 2.73" data-note-chapter="2" data-note-vlabel="73">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 2.73…" rows="4"></textarea>
@@ -4275,7 +4241,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“ ‘One should not state a predicate before its subject, for it cannot thus stand without proper support.’</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -4345,7 +4310,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-2-75" data-note-label="BG 2.75" data-note-chapter="2" data-note-vlabel="75">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 2.75…" rows="4"></textarea>
@@ -4384,7 +4348,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“The predicate of a sentence is what is unknown to the reader, whereas the subject is what is known to him.</div>
-
 
 
 
@@ -4447,7 +4410,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-2-77" data-note-label="BG 2.77" data-note-chapter="2" data-note-vlabel="77">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 2.77…" rows="4"></textarea>
@@ -4486,7 +4448,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“The man’s being a vipra is known, but his erudition is unknown. Therefore the person is identified first and his erudition later.</div>
-
 
 
 
@@ -4549,7 +4510,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-2-79" data-note-label="BG 2.79" data-note-chapter="2" data-note-vlabel="79">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 2.79…" rows="4"></textarea>
@@ -4588,7 +4548,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“First the word ‘ete’ [‘these’] establishes the subject [the incarnations]. Then ‘plenary portions of the puruṣa-avatāras’ follows as the predicate.</div>
-
 
 
 
@@ -4651,7 +4610,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-2-81" data-note-label="BG 2.81" data-note-chapter="2" data-note-vlabel="81">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 2.81…" rows="4"></textarea>
@@ -4690,7 +4648,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“Therefore first the word ‘kṛṣṇa’ appears as the subject, followed by the predicate, describing Him as the original Personality of Godhead.</div>
-
 
 
 
@@ -4753,7 +4710,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-2-83" data-note-label="BG 2.83" data-note-chapter="2" data-note-vlabel="83">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 2.83…" rows="4"></textarea>
@@ -4792,7 +4748,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“Had Kṛṣṇa been the plenary portion and Nārāyaṇa the primeval Lord, the statement of Sūta Gosvāmī would have been reversed.</div>
-
 
 
 
@@ -4855,7 +4810,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-2-85" data-note-label="BG 2.85" data-note-chapter="2" data-note-vlabel="85">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 2.85…" rows="4"></textarea>
@@ -4894,7 +4848,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“Mistakes, illusions, cheating and defective perception do not occur in the sayings of the authoritative sages.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -4964,7 +4917,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-2-87" data-note-label="BG 2.87" data-note-chapter="2" data-note-vlabel="87">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 2.87…" rows="4"></textarea>
@@ -5015,7 +4967,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-2-88" data-note-label="BG 2.88" data-note-chapter="2" data-note-vlabel="88">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 2.88…" rows="4"></textarea>
@@ -5054,7 +5005,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“When from one candle many others are lit, I consider that one the original.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -5124,7 +5074,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-2-90" data-note-label="BG 2.90" data-note-chapter="2" data-note-vlabel="90">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 2.90…" rows="4"></textarea>
@@ -5163,7 +5112,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“ ‘Here [in Śrīmad-Bhāgavatam] ten subjects are described: (1) the creation of the ingredients of the cosmos, (2) the creations of Brahmā, (3) the maintenance of the creation, (4) special favor given to the faithful, (5) impetuses for activity, (6) prescribed duties for law-abiding men, (7) a description of the incarnations of the Lord, (8) the winding up of the creation, (9) liberation from gross and subtle material existence, and (10) the ultimate shelter, the Supreme Personality of Godhead. The tenth item is the shelter of all the others. To distinguish this ultimate shelter from the other nine subjects, the mahājanas have described these nine, directly or indirectly, through prayers or direct explanations.’</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -5233,7 +5181,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-2-93" data-note-label="BG 2.93" data-note-chapter="2" data-note-vlabel="93">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 2.93…" rows="4"></textarea>
@@ -5284,7 +5231,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-2-94" data-note-label="BG 2.94" data-note-chapter="2" data-note-vlabel="94">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 2.94…" rows="4"></textarea>
@@ -5323,7 +5269,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“ ‘The Tenth Canto of Śrīmad-Bhāgavatam reveals the tenth object, the Supreme Personality of Godhead, who is the shelter of all surrendered souls. He is known as Śrī Kṛṣṇa, and He is the ultimate source of all the universes. Let me offer my obeisances unto Him.’</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -5382,7 +5327,6 @@
 
     <div class="fc-translation" data-sec="translation">“One who knows the real feature of Śrī Kṛṣṇa and His three different energies cannot remain ignorant about Him.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -5440,7 +5384,6 @@
 
     <div class="fc-translation" data-sec="translation">“The Personality of Godhead Śrī Kṛṣṇa enjoys Himself in six primary expansions. His two manifestations are prābhava and vaibhava.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -5497,7 +5440,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“His incarnations are of two kinds, namely partial and empowered. He appears in two ages — childhood and boyhood.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -5567,7 +5509,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-2-99" data-note-label="BG 2.99" data-note-chapter="2" data-note-vlabel="99">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 2.99…" rows="4"></textarea>
@@ -5606,7 +5547,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“In these six kinds of forms there are innumerable varieties. Although they are many, they are all one: there is no difference between them.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -5676,7 +5616,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-2-101" data-note-label="BG 2.101" data-note-chapter="2" data-note-vlabel="101">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 2.101…" rows="4"></textarea>
@@ -5727,7 +5666,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-2-102" data-note-label="BG 2.102" data-note-chapter="2" data-note-vlabel="102">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 2.102…" rows="4"></textarea>
@@ -5766,7 +5704,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“The marginal potency, which is between these two, consists of the numberless living beings. These are the three principal energies, which have unlimited categories and subdivisions.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -5836,7 +5773,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-2-104" data-note-label="BG 2.104" data-note-chapter="2" data-note-vlabel="104">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 2.104…" rows="4"></textarea>
@@ -5875,7 +5811,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“Although the three puruṣas are the shelter of all the universes, Lord Kṛṣṇa is the original source of the puruṣas.</div>
-
 
 
 
@@ -5938,7 +5873,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-2-106" data-note-label="BG 2.106" data-note-chapter="2" data-note-vlabel="106">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 2.106…" rows="4"></textarea>
@@ -5977,7 +5911,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“ ‘Kṛṣṇa, who is known as Govinda, is the supreme controller. He has an eternal, blissful, spiritual body. He is the origin of all. He has no other origin, for He is the prime cause of all causes.’</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -6035,7 +5968,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“You know all the conclusions of the scriptures very well. You create these logical arguments just to agitate me.”</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -6105,7 +6037,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-2-109" data-note-label="BG 2.109" data-note-chapter="2" data-note-vlabel="109">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 2.109…" rows="4"></textarea>
@@ -6144,7 +6075,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Therefore Lord Caitanya is the Supreme Absolute Truth. To call Him Kṣīrodakaśāyī Viṣṇu does not add to His glory.</div>
-
 
 
 
@@ -6207,7 +6137,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-2-111" data-note-label="BG 2.111" data-note-chapter="2" data-note-vlabel="111">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 2.111…" rows="4"></textarea>
@@ -6246,7 +6175,6 @@
 
 
     <div class="fc-translation" data-sec="translation">All other incarnations are situated in potential form in the original body of the primeval Lord. Thus according to one’s opinion, one may address Him as any one of the incarnations.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -6316,7 +6244,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-2-113" data-note-label="BG 2.113" data-note-chapter="2" data-note-vlabel="113">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 2.113…" rows="4"></textarea>
@@ -6355,7 +6282,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Some say that Kṛṣṇa is the incarnation of Kṣīrodakaśāyī Viṣṇu. None of these statements is impossible; each is as correct as the others.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -6425,7 +6351,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-2-115" data-note-label="BG 2.115" data-note-chapter="2" data-note-vlabel="115">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 2.115…" rows="4"></textarea>
@@ -6464,7 +6389,6 @@
 
 
     <div class="fc-translation" data-sec="translation">I offer my obeisances unto the feet of all who hear or read this discourse. Kindly hear with attention the conclusion of all these statements.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -6523,7 +6447,6 @@
 
     <div class="fc-translation" data-sec="translation">A sincere student should not neglect the discussion of such conclusions, considering them controversial, for such discussions strengthen the mind. Thus one’s mind becomes attached to Śrī Kṛṣṇa.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -6580,7 +6503,6 @@
 
 
     <div class="fc-translation" data-sec="translation">By such conclusive studies I know the glories of Lord Caitanya. Only by knowing these glories can one become strong and fixed in attachment to Him.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -6650,7 +6572,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-2-119" data-note-label="BG 2.119" data-note-chapter="2" data-note-vlabel="119">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 2.119…" rows="4"></textarea>
@@ -6701,7 +6622,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-2-120" data-note-label="BG 2.120" data-note-chapter="2" data-note-vlabel="120">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 2.120…" rows="4"></textarea>
@@ -6740,7 +6660,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Praying at the lotus feet of Śrī Rūpa and Śrī Raghunātha, always desiring their mercy, I, Kṛṣṇadāsa, narrate Śrī Caitanya-caritāmṛta, following in their footsteps.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>

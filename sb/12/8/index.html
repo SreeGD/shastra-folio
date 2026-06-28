@@ -25,19 +25,25 @@
     <link rel="icon" href="../../../assets/icons/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="../../../assets/icons/icon.svg">
     <link rel="stylesheet" href="../../../assets/css/site.css">
+    <link rel="alternate" hreflang="te-IN" href="../../../te/sb/12/8/">
+    <link rel="alternate" hreflang="x-default" href="../../../">
     <script>window.FC_TO_ROOT = "../../../";</script>
     <script src="../../../assets/js/toggle.js"></script>
 </head>
 <body class="has-sidebar" data-chapter="8">
 <header class="fc-site-header">
     <button type="button" class="fc-mobile-trigger fc-mobile-trigger-left" data-overlay="left" aria-label="Open settings drawer">⚙</button>
-<a class="fc-brand" href="../../../">FolioCorpus<span class="fc-sub">Śrīmad-Bhāgavatam</span></a>
+    <a class="fc-brand" href="../../../">FolioCorpus<span class="fc-sub">Bhagavad-gītā</span></a>
     <nav class="fc-site-nav">
         <a href="../../../">Home</a>
         <a href="../../../bg/">Bhagavad-gītā</a>
         <a href="../../../sb/">Śrīmad-Bhāgavatam</a>
         <a href="../../../search/" title="Search across all integrated works">🔍 Search</a>
         <button type="button" id="fc-random-verse" class="fc-nav-btn" title="Jump to a random verse">🎲 Random</button>
+        <span class="fc-lang-switch" aria-label="Script">
+            <a class="active" href="#" title="Devanāgarī edition">EN</a>
+            <a class="" href="../../../te/sb/12/8/" title="Telugu lipi edition">తె</a>
+        </span>
     </nav>
     <button type="button" class="fc-mobile-trigger fc-mobile-trigger-right" data-overlay="right" aria-label="Open chapter index drawer">📚</button>
 </header>
@@ -46,8 +52,8 @@
     <button class="fc-sb-collapse" type="button" data-sb="left" title="Collapse left sidebar" aria-label="Collapse"></button>
 
     <div class="fc-sb-body">
-        <details class="fc-sb-section" data-sbsec="reading" open>
-            <summary class="fc-sb-title">Reading</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Reading</div>
             <div class="fc-sb-sub">Theme</div>
             <div class="fc-segmented" data-setting="theme">
                 <button type="button" data-val="light">Light</button>
@@ -73,10 +79,10 @@
                 <button type="button" data-val="single">Single</button>
                 <button type="button" data-val="side">Side-by-side</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="display" open>
-            <summary class="fc-sb-title">Display</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Display</div>
             <div class="fc-sb-grid">
                 <label><input type="checkbox" data-section="devanagari" checked> Devanāgarī</label>
                 <label><input type="checkbox" data-section="iast" checked> IAST transliteration</label>
@@ -99,10 +105,33 @@
                 <button type="button" data-action="expand-all">Expand all</button>
                 <button type="button" data-action="collapse-all">Collapse all</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="tools" open>
-            <summary class="fc-sb-title">Tools</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Find your starting point</div>
+            <div class="fc-persona-links">
+                <a class="fc-persona-link" href="../../../daily/">🌅 Daily (one value a week)</a>
+                <a class="fc-persona-link" href="../../../householder/">🏠 Householder (family & work)</a>
+                <a class="fc-persona-link" href="../../../parenting/">👨‍👩‍👧 Parenting (stories for kids)</a>
+                <a class="fc-persona-link" href="../../../themes/">📚 All themes</a>
+                <a class="fc-persona-link" href="../../../values/" style="background:#F0F6F2;border-left-color:#1F4632;">ॐ Vedic Value System ↗</a>
+                <a class="fc-persona-link" href="../../../vidya/" style="background:#FBF6E4;border-left-color:#C8860B;">📚 Vidyā Karaṇa (kids, multi-lang) ↗</a>
+            </div>
+        </div>
+
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Audience</div>
+            <div class="fc-audience-filter">
+                <label><input type="radio" name="fc-audience" value="all" checked> All levels</label>
+                <label><input type="radio" name="fc-audience" value="primary"> Primary (children)</label>
+                <label><input type="radio" name="fc-audience" value="middle"> Middle (teens)</label>
+                <label><input type="radio" name="fc-audience" value="senior"> Senior (adults)</label>
+                <label><input type="radio" name="fc-audience" value="college"> College / scholar</label>
+            </div>
+        </div>
+
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Tools</div>
             <div class="fc-sb-tools">
                 <button type="button" id="fc-presentation-toggle" class="fc-tool-btn"><span>🖥 Presentation</span><kbd class="fc-kbd">F</kbd></button>
                 <button type="button" id="fc-pen-toggle" class="fc-tool-btn"><span>✏️ Pen mode</span><kbd class="fc-kbd">P</kbd></button>
@@ -117,10 +146,26 @@
                 <button type="button" id="fc-clear-highlights" class="fc-tool-btn">🩷 Clear highlights (page)</button>
                 <button type="button" id="fc-notes-modal-open" class="fc-tool-btn">📓 My annotations</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="progress" id="fc-progress-section" open>
-            <summary class="fc-sb-title">Progress</summary>
+        <div class="fc-sb-section" id="fc-tts-controls" hidden>
+            <div class="fc-sb-title">
+                Read-aloud
+                <label class="fc-tts-master">
+                    <input type="checkbox" id="fc-tts-enabled" checked>
+                    <span class="fc-tts-master-label">On</span>
+                </label>
+            </div>
+            <div class="fc-tts-inner">
+                <div class="fc-sb-sub">Voice</div>
+                <select id="fc-tts-voice" class="fc-tts-select" aria-label="TTS voice"></select>
+                <div class="fc-sb-sub">Rate <span class="fc-tts-rate-val">1.0×</span></div>
+                <input type="range" id="fc-tts-rate" min="0.5" max="2" step="0.1" value="1" class="fc-tts-rate" aria-label="Reading rate">
+            </div>
+        </div>
+
+        <div class="fc-sb-section" id="fc-progress-section">
+            <div class="fc-sb-title">Progress</div>
             <div class="fc-progress-row">
                 <span class="fc-progress-num" id="fc-progress-num">0</span>
                 <span class="fc-progress-divider">/</span>
@@ -135,29 +180,29 @@
                 <span class="fc-progress-spacer"></span>
                 <button type="button" class="fc-progress-reset" id="fc-progress-reset" title="Reset progress">↺</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="bookmarks" open>
-            <summary class="fc-sb-title">Bookmarks <span class="fc-sb-count" id="fc-bookmarks-count">0</span></summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Bookmarks <span class="fc-sb-count" id="fc-bookmarks-count">0</span></div>
             <ul class="fc-bookmark-list" id="fc-bookmarks-list">
                 <li class="fc-sb-empty">No bookmarks yet — click ☆ on any verse.</li>
             </ul>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="notes" open>
-            <summary class="fc-sb-title">Notes <span class="fc-sb-count" id="fc-notes-count">0</span></summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Notes <span class="fc-sb-count" id="fc-notes-count">0</span></div>
             <ul class="fc-bookmark-list" id="fc-notes-list">
                 <li class="fc-sb-empty">No notes yet — open any verse and write in the 📝 block.</li>
             </ul>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="export">
-            <summary class="fc-sb-title">Export</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Export</div>
             <div class="fc-sb-tools">
                 <button type="button" id="fc-export-md" class="fc-tool-btn">📥 Download Markdown</button>
                 <button type="button" id="fc-export-json" class="fc-tool-btn">💾 Download JSON backup</button>
             </div>
-        </details>
+        </div>
     </div>
 </aside>    <main class="fc-container">
 <nav class="fc-breadcrumbs">
@@ -175,7 +220,7 @@
         <h1 class="fc-verse-heading">12.8 · Mārkaṇḍeya&#39;s Prayers to Nara-Nārāyaṇa Ṛṣi</h1>
         <span class="fc-ribbon-meta">
             38 verses
- · <a class="fc-ribbon-link" href="class-prep/">🖨 Class prep</a>        </span>
+        </span>
         <input type="search" class="fc-search" id="fc-search" placeholder="🔍 Search in this chapter" aria-label="Search verses in this chapter">
         <span class="fc-ribbon-current" id="fc-ribbon-current" aria-live="polite"></span>
     </div>
@@ -486,7 +531,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <div class="fc-translation" data-sec="translation">Śrī Śaunaka said: O Sūta, may you live a long life! O saintly one, best of speakers, please continue speaking to us. Indeed, only you can show men the path out of the ignorance in which they are wandering.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -515,18 +559,6 @@ In the Eighth Chapter Mārkaṇḍeya performs austerity and the Apasarās attem
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Saunaka praises Suta and asks him to keep speaking — only such a teacher can show the way out of the wandering jiva&#39;s situation. Recognizing and honoring a competent speaker is itself spiritual progress.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Who in my life can speak to my deepest wandering, and am I letting them?</li><li>How do I honor good speech rather than only consuming it?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -1165,7 +1197,6 @@ In the Eighth Chapter Mārkaṇḍeya performs austerity and the Apasarās attem
 
     <div class="fc-translation" data-sec="translation">Authorities say that Mārkaṇḍeya Ṛṣi, the son of Mṛkaṇḍu, was an exceptionally long-lived sage who was the only survivor at the end of Brahmā’s day, when the entire universe was merged in the flood of annihilation. But this same Mārkaṇḍeya Ṛṣi, the foremost descendant of Bhṛgu, took birth in my own family during the current day of Brahmā, and we have not yet seen any total annihilation in this day of Brahmā. Also, it is well known that Mārkaṇḍeya, while wandering helplessly in the great ocean of annihilation, saw in those fearful waters a wonderful personality — an infant boy lying alone within the fold of a banyan leaf. O Sūta, I am most bewildered and curious about this great sage, Mārkaṇḍeya Ṛṣi. O great yogī, you are universally accepted as the authority on all the Purāṇas. Therefore kindly dispel my confusion.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1194,18 +1225,6 @@ Urvāritaḥ means “remaining.”  During the devastation by which (yena) the 
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Markandeya is described as a uniquely long-lived sage, the lone survivor of Brahma&#39;s day, child of Mrkandu. Some lives are arranged to bridge eras. Each of us is part of some unseen bridging too.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What &#39;bridge&#39; might my life be making between people or eras?</li><li>How does that view shape my present choices?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -1407,7 +1426,6 @@ Urvāritaḥ means “remaining.”  During the devastation by which (yena) the 
     <div class="fc-translation" data-sec="translation">Sūta Gosvāmī said: O great sage Śaunaka, your very question will help remove everyone’s illusion, for it leads to the topics of Lord Nārāyaṇa, which cleanse away the contamination of this Kali age.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -1426,18 +1444,6 @@ Urvāritaḥ means “remaining.”  During the devastation by which (yena) the 
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Suta says Saunaka&#39;s question itself removes illusion because it leads to topics of Narayana — which cleanse the cosmos. Good questions are not neutral; the right question is already medicine.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What is the highest question I could be asking in my life right now?</li><li>Whom can I ask it to?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -2130,7 +2136,6 @@ Urvāritaḥ means “remaining.”  During the devastation by which (yena) the 
     <div class="fc-translation" data-sec="translation">After being purified by his father’s performance of the prescribed rituals leading to Mārkaṇḍeya’s brahminical initiation, Mārkaṇḍeya studied the Vedic hymns and strictly observed the regulative principles. He became advanced in austerity and Vedic knowledge and remained a lifelong celibate. Appearing most peaceful with his matted hair and his clothing made of bark, he furthered his spiritual progress by carrying the mendicant’s waterpot, staff, sacred thread, brahmacārī belt, black deerskin, lotus-seed prayer beads and bundles of kuśa grass. At the sacred junctures of the day he regularly worshiped the Supreme Personality of Godhead in five forms — the sacrificial fire, the sun, his spiritual master, the brāhmaṇas and the Supersoul within his heart. Morning and evening he would go out begging, and upon returning he would present all the food he had collected to his spiritual master. Only when his spiritual master invited him would he silently take his one meal of the day; otherwise he would fast. Thus devoted to austerity and Vedic study, Mārkaṇḍeya Ṛṣi worshiped the supreme master of the senses, the Personality of Godhead, for countless millions of years, and in this way he conquered unconquerable death.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -2164,18 +2169,6 @@ Urvāritaḥ means “remaining.”  During the devastation by which (yena) the 
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Markandeya, after brahminical initiation by his father, undertakes Vedic study and strict vow. Foundations matter — a strong spiritual youth holds up a long, fruitful old age. Cutting foundational corners costs later.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which foundation in my sadhana am I tempted to cut corners on?</li><li>What would it cost me a decade from now if I did?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -2381,7 +2374,6 @@ Urvāritaḥ means “remaining.”  During the devastation by which (yena) the 
     <div class="fc-translation" data-sec="translation">Lord Brahmā, Bhṛgu Muni, Lord Śiva, Prajāpati Dakṣa, the great sons of Brahmā, and many others among the human beings, demigods, forefathers and ghostly spirits — all were astonished by the achievement of Mārkaṇḍeya Ṛṣi.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -2420,18 +2412,6 @@ Urvāritaḥ means “remaining.”  During the devastation by which (yena) the 
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Brahma, Bhrgu, Siva, Daksa, and many sages and forefathers are pleased by Markandeya&#39;s austerities and observances. A life of integrity earns broad blessing, even across cosmic strata. Reputation among the wise is not vanity.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Whose blessing — visible or invisible — would I want my life to attract?</li><li>Which current behavior would I quietly adjust to be worthy of it?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -2581,7 +2561,6 @@ Urvāritaḥ means “remaining.”  During the devastation by which (yena) the 
     <div class="fc-translation" data-sec="translation">In this way the devotional mystic Mārkaṇḍeya maintained rigid celibacy through penance, study of the Vedas and self-discipline. With his mind thus free of all disturbances, he turned it inward and meditated on the Supreme Personality of Godhead, who lies beyond the material senses.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -2602,18 +2581,6 @@ He meditated with a mind (antarātmanā) freed of all kleśas such as attachment
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Markandeya maintains rigid celibacy through penance, Vedic study, and self-discipline, freeing his mind from material concerns. Discipline doesn&#39;t shrink life; it opens space for higher attention.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which &#39;discipline gap&#39; in me currently shrinks the space I have for the Lord?</li><li>What single small discipline could open more inner room this week?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -2792,7 +2759,6 @@ He meditated with a mind (antarātmanā) freed of all kleśas such as attachment
     <div class="fc-translation" data-sec="translation">While the mystic sage thus concentrated his mind by powerful yoga practice, the tremendous period of six lifetimes of Manu passed by.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -2811,18 +2777,6 @@ He meditated with a mind (antarātmanā) freed of all kleśas such as attachment
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Six lifetimes of Manu pass while the sage&#39;s mind is concentrated. Deep absorption distorts time as we know it. Even a few minutes of real focus can feel out of time when entered fully.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>When was the last time I lost track of time in something good?</li><li>How might I invite more such moments?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -3010,7 +2964,6 @@ He meditated with a mind (antarātmanā) freed of all kleśas such as attachment
     <div class="fc-translation" data-sec="translation">O brāhmaṇa, during the seventh reign of Manu, the current age, Lord Indra came to know of Mārkaṇḍeya’s austerities and became fearful of his growing mystic potency. Thus he tried to impede the sage’s penance.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -3031,18 +2984,6 @@ Indra became fearful that by his austerity he would take Indra’s post.</div>
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">In the seventh reign of Manu — our current age — Indra notices Markandeya&#39;s growing power and becomes fearful. Real spiritual progress draws attention from heaven, sometimes friendly, sometimes anxious. Sincerity gets noticed.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Am I willing to be &#39;noticed&#39; for my sincerity, including by powers that may push back?</li><li>What helps me proceed despite that pushback?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -3194,7 +3135,6 @@ Indra became fearful that by his austerity he would take Indra’s post.</div>
     <div class="fc-translation" data-sec="translation">To ruin the sage’s spiritual practice, Lord Indra sent Cupid, beautiful celestial singers, dancing girls, the season of spring and the sandalwood-scented breeze from the Malaya Hills, along with greed and intoxication personified.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -3215,18 +3155,6 @@ He sent the son of passion, greed (rajas-toka) and intoxication.</div>
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Indra sends Cupid, celestial singers, dancing girls, spring, and a sandalwood breeze. Distraction comes packaged as beauty and pleasure, not as obvious evil. The most effective opposition to sadhana is the most charming.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which &#39;charming distraction&#39; is currently most effective at pulling me from practice?</li><li>What small structural change would lower its access?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -3423,7 +3351,6 @@ He sent the son of passion, greed (rajas-toka) and intoxication.</div>
     <div class="fc-translation" data-sec="translation">O most powerful Śaunaka, they went to Mārkaṇḍeya’s hermitage, on the northern side of the Himālaya Mountains where the Puṣpabhadrā River passes by the famous peak Citrā.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -3442,18 +3369,6 @@ He sent the son of passion, greed (rajas-toka) and intoxication.</div>
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The party of distraction arrives at Markandeya&#39;s asrama on the northern bank of the Pushpabhadra, by the Himalayas. Even the holiest setting is not exempt from incursion. Sacred space helps, but does not by itself protect.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where do I overestimate the protective power of setting alone?</li><li>What inner work is still required even in the right place?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -3918,7 +3833,6 @@ He sent the son of passion, greed (rajas-toka) and intoxication.</div>
     <div class="fc-translation" data-sec="translation">Groves of pious trees decorated the holy āśrama of Mārkaṇḍeya Ṛṣi, and many saintly brāhmaṇas lived there, enjoying the abundant pure, sacred ponds. The āśrama resounded with the buzzing of intoxicated bees and the cooing of excited cuckoos, while jubilant peacocks danced about. Indeed, many families of maddened birds crowded that hermitage. The springtime breeze sent by Lord Indra entered there, carrying cooling drops of spray from nearby waterfalls. Fragrant from the embrace of forest flowers, that breeze entered the hermitage and began evoking the lusty spirit of Cupid.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -3937,18 +3851,6 @@ He sent the son of passion, greed (rajas-toka) and intoxication.</div>
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Markandeya&#39;s holy asrama is lush with pious trees, ponds, and saintly brahmana neighbors. The right outer setting and the right company together support deep practice. Both matter; neither alone is enough.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which is currently weaker in my life — setting or company?</li><li>What single move would strengthen the weaker one?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -4145,7 +4047,6 @@ He sent the son of passion, greed (rajas-toka) and intoxication.</div>
     <div class="fc-translation" data-sec="translation">Springtime then appeared in Mārkaṇḍeya’s āśrama. Indeed, the evening sky, glowing with the light of the rising moon, became the very face of spring, and sprouts and fresh blossoms virtually covered the multitude of trees and creepers.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -4166,18 +4067,6 @@ Spring had night as its face with a rising moon.  The spring was endowed with a 
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Spring appears, intoxicating, the evening sky glowing with the rising moon. Even nature itself can be enlisted as part of the test. The world has beauty; we must learn to be moved by it without being captured.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where does beauty currently capture rather than uplift me?</li><li>What helps me let beauty point toward the Beautiful One instead of away from Him?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -4347,7 +4236,6 @@ Spring had night as its face with a rising moon.  The spring was endowed with a 
     <div class="fc-translation" data-sec="translation">Cupid, the master of many heavenly women, then came there holding his bow and arrows. He was followed by groups of Gandharvas playing musical instruments and singing.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -4368,18 +4256,6 @@ He came with persons who had groups of instrument players and singers. The suffi
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Cupid arrives bow in hand, followed by Gandharvas with instruments. Sound and image arrive together — the senses are jointly addressed. Sophisticated maya works through coordinated channels, not single ones.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where do multiple channels of distraction coordinate against me — say, scrolling plus snacking?</li><li>What single change disrupts the coordination?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -4558,7 +4434,6 @@ He came with persons who had groups of instrument players and singers. The suffi
     <div class="fc-translation" data-sec="translation">These servants of Indra found the sage sitting in meditation, having just offered his prescribed oblations into the sacrificial fire. His eyes closed in trance, he seemed invincible, like fire personified.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -4579,18 +4454,6 @@ They saw the sage sitting (samupāsīnam).</div>
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Indra&#39;s servants find Markandeya in meditation, eyes closed, having just offered his oblations. The right routine continues even when invasion arrives. Strong daily structure is itself a form of armor.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What routine do I most need to keep stable when life becomes turbulent?</li><li>How could I protect it more deliberately?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -4778,7 +4641,6 @@ They saw the sage sitting (samupāsīnam).</div>
     <div class="fc-translation" data-sec="translation">The women danced before the sage, and the celestial singers sang to the charming accompaniment of drums, cymbals and vīṇās.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -4797,18 +4659,6 @@ They saw the sage sitting (samupāsīnam).</div>
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The women dance and the singers sing with charming accompaniment. The display is real and well-produced. The opposition to spiritual life is rarely amateurish.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where do I dismiss opposition as &#39;silly&#39; when it is actually well-produced?</li><li>What more serious approach does it deserve from me?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -4978,7 +4828,6 @@ They saw the sage sitting (samupāsīnam).</div>
     <div class="fc-translation" data-sec="translation">While the son of passion [greed personified], spring and the other servants of Indra all tried to agitate Mārkaṇḍeya’s mind, Cupid drew his five-headed arrow and fixed it upon his bow.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -4999,18 +4848,6 @@ The five heads of the arrow are drying up, bewilderment, agitation, suffering, a
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Greed (the &#39;son of passion&#39;), spring, and the other servants try to agitate Markandeya&#39;s mind while Cupid draws his five-headed arrow. The whole array converges. Spiritual life sometimes has to weather coordinated attack.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Has there been a time when many disturbances converged on me at once?</li><li>What helped me through it — and is it still available?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -5305,7 +5142,6 @@ The five heads of the arrow are drying up, bewilderment, agitation, suffering, a
     <div class="fc-translation" data-sec="translation">The Apsarā Puṣjikasthalī made a show of playing with a number of toy balls. Her waist seemed weighed down by her heavy breasts, and the wreath of flowers in her hair became disheveled. As she ran about after the balls, glancing here and there, the belt of her thin garment loosened, and suddenly the wind blew her clothes away.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -5324,18 +5160,6 @@ The five heads of the arrow are drying up, bewilderment, agitation, suffering, a
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The Apsara Punjikasthali plays with toy balls, her waist heavy with jewels, her garland slipping. Bhagavatam describes the temptation in detail — not to titillate but to honor its real force. We should not pretend our temptations are small.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which temptation have I been minimizing rather than honestly facing?</li><li>What would honest naming change about my approach to it?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -5541,7 +5365,6 @@ The five heads of the arrow are drying up, bewilderment, agitation, suffering, a
     <div class="fc-translation" data-sec="translation">Cupid, thinking he had conquered the sage, then shot his arrow. But all these attempts to seduce Mārkaṇḍeya proved futile, just like the useless endeavors of an atheist.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -5562,18 +5385,6 @@ Anīśasya means “of a person with bad fortune.”</div>
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Thinking he has conquered the sage, Cupid shoots his arrow — but it proves useless, like trying to harm an enlightened one. Real inner steadiness is not impressive externally; it just doesn&#39;t move when struck.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where in my life have I mistaken being unmoved by something for being unaware?</li><li>Could quiet stability be one of my hidden strengths?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -5759,7 +5570,6 @@ Anīśasya means “of a person with bad fortune.”</div>
     <div class="fc-translation" data-sec="translation">O learned Śaunaka, while Cupid and his followers tried to harm the sage, they felt themselves being burned alive by his potency. Thus they stopped their mischief, just like children who have aroused a sleeping snake.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -5780,18 +5590,6 @@ They became frightened, thinking, “We do not know what will happen now.”  Fr
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Cupid and his followers feel themselves being burned alive by Markandeya&#39;s potency. Pure spiritual presence is not just defensive; it actively repels what tries to violate it. Light&#39;s nature is to expose darkness.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where might my presence, when grounded, be more &#39;exposing&#39; than I realize?</li><li>How can I be useful with that without becoming proud?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -5997,7 +5795,6 @@ They became frightened, thinking, “We do not know what will happen now.”  Fr
     <div class="fc-translation" data-sec="translation">O brāhmaṇa, the followers of Lord Indra had impudently attacked the saintly Mārkaṇḍeya, yet he did not succumb to any influence of false ego. For great souls such tolerance is not at all surprising.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -6018,18 +5815,6 @@ Ahamaḥ means “of ahaṅkāra.”</div>
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Despite the attack, Markandeya does not succumb to false ego — neither anger nor pride. Great souls absorb assault without the secondary harm of becoming small in return. Equanimity is the real victory.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>After my last conflict, did I keep my size, or did I shrink into reactivity?</li><li>What practice helps me stay &#39;large&#39; under attack?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -6208,7 +5993,6 @@ Ahamaḥ means “of ahaṅkāra.”</div>
     <div class="fc-translation" data-sec="translation">The mighty King Indra was most astonished when he heard of the mystic prowess of the exalted sage Mārkaṇḍeya and saw how Cupid and his associates had become powerless in his presence.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -6229,18 +6013,6 @@ Svarāṭ means Indra.</div>
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Indra is astonished by the report of Markandeya&#39;s prowess. The wise are sometimes surprised; even kings of heaven get to be humbled. We are all eventually humbled by someone&#39;s faithfulness.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Who has astonished me recently with their steadiness?</li><li>What did their example unlock in me?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -6410,7 +6182,6 @@ Svarāṭ means Indra.</div>
     <div class="fc-translation" data-sec="translation">Desiring to bestow His mercy upon the saintly Mārkaṇḍeya, who had perfectly fixed his mind in self-realization through penance, Vedic study and observance of regulative principles, the Supreme Personality of Godhead personally appeared before the sage in the forms of Nara and Nārāyaṇa.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -6429,18 +6200,6 @@ Svarāṭ means Indra.</div>
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Desiring to bestow mercy on Markandeya, the Lord Himself decides to appear. Sincere austerity ultimately draws not just attention but personal visit. The Lord doesn&#39;t merely send messengers to those who persist.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Am I willing to persist long enough that the Lord notices personally?</li><li>Where does my impatience cut the practice short of His visit?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -6865,7 +6624,6 @@ Svarāṭ means Indra.</div>
     <div class="fc-translation" data-sec="translation">One of Them was of a whitish complexion, the other blackish, and They both had four arms. Their eyes resembled the petals of blooming lotuses, and They wore garments of black deerskin and bark, along with the three-stranded sacred thread. In Their hands, which were most purifying, They carried the mendicant’s waterpot, straight bamboo staff and lotus-seed prayer beads, as well as the all-purifying Vedas in the symbolic form of bundles of darbha grass. Their bearing was tall and Their yellow effulgence the color of radiant lightning. Appearing as austerity personified, They were being worshiped by the foremost demigods.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -6886,18 +6644,6 @@ They wore skin of the black deer and bark for clothing and a sacred thread of ne
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Nara and Narayana appear together — one whitish, one blackish, both four-armed, eyes like lotus petals. Beauty does not contradict transcendence; it is part of His self-disclosure. The body of God is meant to be loved.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Does my devotion include loving the Lord&#39;s beautiful form, not just His abstract presence?</li><li>What deity-form most awakens that love in me?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -7085,7 +6831,6 @@ They wore skin of the black deer and bark for clothing and a sacred thread of ne
     <div class="fc-translation" data-sec="translation">These two sages, Nara and Nārāyaṇa, were the direct personal forms of the Supreme Lord. When Mārkaṇḍeya Ṛṣi saw Them, he immediately stood up and then with great respect offered Them obeisances by falling down flat on the ground like a stick.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -7104,18 +6849,6 @@ They wore skin of the black deer and bark for clothing and a sacred thread of ne
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Markandeya immediately stands, then falls prostrate. The sequence of standing-then-prostrating expresses respect and self-surrender together. Honoring the Lord involves the body, not just the mind.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>How does my body participate in my worship — or does it stay sidelined?</li><li>What small physical gesture could deepen my next prayer?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -7330,7 +7063,6 @@ They wore skin of the black deer and bark for clothing and a sacred thread of ne
     <div class="fc-translation" data-sec="translation">The ecstasy of seeing Them completely satisfied Mārkaṇḍeya’s body, mind and senses and caused the hairs on his body to stand on end and his eyes to fill with tears. Overwhelmed, Mārkaṇḍeya found it difficult to look at Them.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -7351,18 +7083,6 @@ Na sehe means “he could not.”</div>
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Ecstasy completely satisfies his body, mind, and senses; his hairs stand on end, his eyes fill with tears. Real spiritual touch is full-spectrum; nothing is left wanting. We can trust that genuine encounters will satisfy what mere pleasures never could.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>When have I tasted something even partly like this, and what did I learn from it?</li><li>What pseudo-satisfactions can I let go because I sense a higher kind exists?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -7550,7 +7270,6 @@ Na sehe means “he could not.”</div>
     <div class="fc-translation" data-sec="translation">Standing with his hands folded in supplication and his head bowed in humility, Mārkaṇḍeya felt such eagerness that he imagined he was embracing the two Lords. In a voice choked with ecstasy, he repeatedly said, “I offer You my humble obeisances.”</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -7571,18 +7290,6 @@ Pravhaḥ means “with humility.”</div>
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Standing with folded hands and bowed head, Markandeya feels such eagerness that he imagines he is embracing the two sages. Devotion fills in what circumstance withholds. Imagination, when devotional, is not a fantasy but a reach.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What devotional &#39;embrace&#39; could I imagine today as a sincere reach toward the Lord?</li><li>What guards that reach from collapsing into mere fantasy?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -7752,7 +7459,6 @@ Pravhaḥ means “with humility.”</div>
     <div class="fc-translation" data-sec="translation">He gave Them sitting places and washed Their feet, and then he worshiped Them with presentations of arghya, sandalwood pulp, fragrant oils, incense and flower garlands.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -7771,18 +7477,6 @@ Pravhaḥ means “with humility.”</div>
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Markandeya offers seats, washes Their feet, and worships with arghya, sandalwood, incense, and garlands. Hospitality offered to the Lord is the cleanest love language. We serve Him in the small acts we&#39;d do for any honored guest.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>When did I last care for the Lord in small concrete ways through the deity or guru?</li><li>What service could I offer today as a guest-welcome to Him?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -7961,7 +7655,6 @@ Pravhaḥ means “with humility.”</div>
     <div class="fc-translation" data-sec="translation">Mārkaṇḍeya Ṛṣi once again bowed down at the lotus feet of those two most worshipable sages, who were sitting at ease, ready to bestow all mercy upon him. He then addressed Them as follows.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -7980,18 +7673,6 @@ Pravhaḥ means “with humility.”</div>
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Markandeya bows again at the Lords&#39; feet, ready to receive Their mercy. The posture of bending precedes the gift of grace. Pride upright cannot catch what humility bowed can.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which area of my life would benefit from a deeper bow?</li><li>What pride is keeping that bow from happening?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -8285,7 +7966,6 @@ Pravhaḥ means “with humility.”</div>
     <div class="fc-translation" data-sec="translation">Śrī Mārkaṇḍeya said: O Almighty Lord, how can I possibly describe You? You awaken the vital air, which then impels the mind, senses and power of speech to act. This is true for all ordinary conditioned souls and even for great demigods like Brahmā and Śiva. So it is certainly true for me. Nevertheless, You become the intimate friend of those who worship You.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -8306,18 +7986,6 @@ By you, the life air is made to move, and the voice, mind and senses then act.  
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Markandeya prays: &#39;How can I describe You? You awaken the vital air that impels the mind, senses, and speech.&#39; Every faculty we use to praise the Lord is already His gift. Praise is a circle, not a transaction.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Have I thanked the Lord for the very capacity to thank Him?</li><li>What changes when I do?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -8606,7 +8274,6 @@ By you, the life air is made to move, and the voice, mind and senses then act.  
     <div class="fc-translation" data-sec="translation">O Supreme Personality of Godhead, these two personal forms of Yours have appeared to bestow the ultimate benefit for the three worlds — the cessation of material misery and the conquest of death. My Lord, although You create this universe and then assume many transcendental forms to protect it, You also swallow it up, just like a spider who spins and later withdraws its web.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -8627,18 +8294,6 @@ Therefore you appear in this world to allow us to worship you and to let yoursel
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">These two forms appear for the ultimate benefit of the three worlds — for the cessation of misery. The Lord&#39;s appearances are mercy on cosmic scale; even one devotee receiving Him is a public service.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Have I considered that my personal sadhana is, in some way, a public mercy?</li><li>How does that view change my motivation to continue?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -8889,7 +8544,6 @@ Therefore you appear in this world to allow us to worship you and to let yoursel
     <div class="fc-translation" data-sec="translation">Because You are the protector and the supreme controller of all moving and nonmoving beings, anyone who takes shelter of Your lotus feet can never be touched by the contamination of material work, material qualities or time. Great sages who have assimilated the essential meaning of the Vedas offer their prayers to You. To gain Your association, they bow down to You at every opportunity and constantly worship You and meditate upon You.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -8910,18 +8564,6 @@ I worship your lotus feet.  The verb occurs in verse 44.  The contamination of b
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Anyone who takes shelter of the Lord&#39;s lotus feet can never be defeated. Shelter is not the same as exemption — devotees still face trials — but they are never finally undone.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where am I confusing &#39;shelter&#39; with &#39;no trouble at all&#39;?</li><li>How does true shelter reshape my relationship to trouble?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -9192,7 +8834,6 @@ I worship your lotus feet.  The verb occurs in verse 44.  The contamination of b
     <div class="fc-translation" data-sec="translation">My dear Lord, even Lord Brahmā, who enjoys his exalted position for the entire duration of the universe, fears the passage of time. Then what to speak of those whom Brahmā creates, the conditioned souls. They encounter fearful dangers at every step of their lives. I do not know of any relief from this fear except shelter at Your lotus feet, which are the very form of liberation.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -9213,18 +8854,6 @@ I do not know any auspiciousness other than your lotus feet for persons fearing 
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Even Brahma, who enjoys his exalted position for the whole universe, fears the passage of time — what then of others? Time spares no one. Devotion is our only friend across time.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What fear about time am I currently holding?</li><li>How can I bring that fear into devotional shelter rather than handle it alone?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -9503,7 +9132,6 @@ I do not know any auspiciousness other than your lotus feet for persons fearing 
 
     <div class="fc-translation" data-sec="translation">Therefore I worship Your lotus feet, having renounced my identification with the material body and everything else that covers my true self. These useless, insubstantial and temporary coverings are merely presumed to be separate from You, whose intelligence encompasses all truth. By attaining You — the Supreme Godhead and the master of the soul — one attains everything desirable.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -9532,18 +9160,6 @@ I do not know any auspiciousness other than your lotus feet for persons fearing 
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Markandeya worships the Lord&#39;s feet, having renounced identification with the body and all that covers the true self. Coverings are not the self; we can let them be loved, used, and eventually released.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which &#39;covering&#39; do I most confuse with my self these days?</li><li>What practice helps me hold it lightly?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -9831,7 +9447,6 @@ I do not know any auspiciousness other than your lotus feet for persons fearing 
 
     <div class="fc-translation" data-sec="translation">O my Lord, O supreme friend of the conditioned soul, although for the creation, maintenance and annihilation of this world You accept the modes of goodness, passion and ignorance, which constitute Your illusory potency, You specifically employ the mode of goodness to liberate the conditioned souls. The other two modes simply bring them suffering, illusion and fear.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -9861,18 +9476,6 @@ I do not know any auspiciousness other than your lotus feet for persons fearing 
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Although the Lord accepts the modes of goodness, passion, and ignorance for creation, maintenance, and annihilation, He Himself is the supreme friend of the conditioned soul. Even His acts of dissolution are friendly when seen rightly.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which &#39;dissolving&#39; in my life right now might actually be friendly?</li><li>What helps me feel His friendship even there?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -10169,7 +9772,6 @@ I do not know any auspiciousness other than your lotus feet for persons fearing 
 
     <div class="fc-translation" data-sec="translation">O Lord, because fearlessness, spiritual happiness and the kingdom of God are all achieved through the mode of pure goodness, Your devotees consider this mode, but never passion and ignorance, to be a direct manifestation of You, the Supreme Personality of Godhead. Intelligent persons thus worship Your beloved transcendental form, composed of pure goodness, along with the spiritual forms of Your pure devotees.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -10208,18 +9810,6 @@ Therefore the wise give up the impure forms of Indra and others made of māyā a
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Fearlessness, spiritual happiness, and the kingdom of God are all achieved through the mode of pure goodness; devotees consider that mode the form of Vasudeva. Sattva is not the end, but it is the doorway.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which of my recent choices have raised me toward sattva, and which lowered me?</li><li>What sattvic step is most needed today?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -10427,7 +10017,6 @@ Therefore the wise give up the impure forms of Indra and others made of māyā a
     <div class="fc-translation" data-sec="translation">I offer my humble obeisances to Him, the Supreme Personality of Godhead. He is the all-pervading and all-inclusive form of the universe, as well as its spiritual master. I bow down to Lord Nārāyaṇa, the supremely worshipable Deity appearing as a sage, and also to the saintly Nara, the best of human beings, who is fixed in perfect goodness, fully in control of his speech, and the propagator of the Vedic literatures.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -10448,18 +10037,6 @@ Though you have a form of a human (puruṣāya), you are all pervading (bhumne),
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Markandeya offers obeisances to the all-pervading form of the universe and its source. We do well to bow to the Lord in His vast cosmic form sometimes — it puts our own stature in honest perspective.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Do I imagine the universe-form even briefly in my prayer life?</li><li>What would including it bring to my sense of scale?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -10757,7 +10334,6 @@ Though you have a form of a human (puruṣāya), you are all pervading (bhumne),
     <div class="fc-translation" data-sec="translation">A materialist, his intelligence perverted by the action of his deceptive senses, cannot recognize You at all, although You are always present within his own senses and heart and also among the objects of his perception. Yet even though one’s understanding has been covered by Your illusory potency, if one obtains Vedic knowledge from You, the supreme spiritual master of all, he can directly understand You.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -10778,18 +10354,6 @@ This verse explained that the Lord is difficult to realize.  A person with bewil
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">A materialist, whose intelligence is deceived by the senses, cannot recognize the Lord though He is always present within his heart. Inner blindness, not outer absence, is the problem. We are not separated from Him by distance.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where is my own &#39;inner blindness&#39; currently strongest?</li><li>What single practice clears it even a little?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -11050,7 +10614,6 @@ This verse explained that the Lord is difficult to realize.  A person with bewil
 
     <div class="fc-translation" data-sec="translation">My dear Lord, the Vedic literatures alone reveal confidential knowledge of Your supreme personality, and thus even such great scholars as Lord Brahmā himself are bewildered in their attempt to understand You through empirical methods. Each philosopher understands You according to his particular speculative conclusions. I worship that Supreme Person, knowledge of whom is hidden by the bodily designations covering the conditioned soul’s spiritual identity.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -11085,18 +10648,6 @@ Mārkaṇḍeya Sees Pralaya</div>
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The Vedic literatures alone reveal confidential knowledge of the Lord&#39;s supreme personality, and even great scholars like Brahma stand in awe. Scripture is not just informational; it is the only path to certain knowing.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Do I treat scripture as the unique source it claims to be?</li><li>What might shift if I read it with that conviction?</li></ul>
-
-
-
-
-
-    </section>
 
 
 

@@ -25,19 +25,25 @@
     <link rel="icon" href="../../../assets/icons/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="../../../assets/icons/icon.svg">
     <link rel="stylesheet" href="../../../assets/css/site.css">
+    <link rel="alternate" hreflang="te-IN" href="../../../te/sb/10/30/">
+    <link rel="alternate" hreflang="x-default" href="../../../">
     <script>window.FC_TO_ROOT = "../../../";</script>
     <script src="../../../assets/js/toggle.js"></script>
 </head>
 <body class="has-sidebar" data-chapter="30">
 <header class="fc-site-header">
     <button type="button" class="fc-mobile-trigger fc-mobile-trigger-left" data-overlay="left" aria-label="Open settings drawer">⚙</button>
-<a class="fc-brand" href="../../../">FolioCorpus<span class="fc-sub">Śrīmad-Bhāgavatam</span></a>
+    <a class="fc-brand" href="../../../">FolioCorpus<span class="fc-sub">Bhagavad-gītā</span></a>
     <nav class="fc-site-nav">
         <a href="../../../">Home</a>
         <a href="../../../bg/">Bhagavad-gītā</a>
         <a href="../../../sb/">Śrīmad-Bhāgavatam</a>
         <a href="../../../search/" title="Search across all integrated works">🔍 Search</a>
         <button type="button" id="fc-random-verse" class="fc-nav-btn" title="Jump to a random verse">🎲 Random</button>
+        <span class="fc-lang-switch" aria-label="Script">
+            <a class="active" href="#" title="Devanāgarī edition">EN</a>
+            <a class="" href="../../../te/sb/10/30/" title="Telugu lipi edition">తె</a>
+        </span>
     </nav>
     <button type="button" class="fc-mobile-trigger fc-mobile-trigger-right" data-overlay="right" aria-label="Open chapter index drawer">📚</button>
 </header>
@@ -46,8 +52,8 @@
     <button class="fc-sb-collapse" type="button" data-sb="left" title="Collapse left sidebar" aria-label="Collapse"></button>
 
     <div class="fc-sb-body">
-        <details class="fc-sb-section" data-sbsec="reading" open>
-            <summary class="fc-sb-title">Reading</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Reading</div>
             <div class="fc-sb-sub">Theme</div>
             <div class="fc-segmented" data-setting="theme">
                 <button type="button" data-val="light">Light</button>
@@ -73,10 +79,10 @@
                 <button type="button" data-val="single">Single</button>
                 <button type="button" data-val="side">Side-by-side</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="display" open>
-            <summary class="fc-sb-title">Display</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Display</div>
             <div class="fc-sb-grid">
                 <label><input type="checkbox" data-section="devanagari" checked> Devanāgarī</label>
                 <label><input type="checkbox" data-section="iast" checked> IAST transliteration</label>
@@ -99,10 +105,33 @@
                 <button type="button" data-action="expand-all">Expand all</button>
                 <button type="button" data-action="collapse-all">Collapse all</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="tools" open>
-            <summary class="fc-sb-title">Tools</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Find your starting point</div>
+            <div class="fc-persona-links">
+                <a class="fc-persona-link" href="../../../daily/">🌅 Daily (one value a week)</a>
+                <a class="fc-persona-link" href="../../../householder/">🏠 Householder (family & work)</a>
+                <a class="fc-persona-link" href="../../../parenting/">👨‍👩‍👧 Parenting (stories for kids)</a>
+                <a class="fc-persona-link" href="../../../themes/">📚 All themes</a>
+                <a class="fc-persona-link" href="../../../values/" style="background:#F0F6F2;border-left-color:#1F4632;">ॐ Vedic Value System ↗</a>
+                <a class="fc-persona-link" href="../../../vidya/" style="background:#FBF6E4;border-left-color:#C8860B;">📚 Vidyā Karaṇa (kids, multi-lang) ↗</a>
+            </div>
+        </div>
+
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Audience</div>
+            <div class="fc-audience-filter">
+                <label><input type="radio" name="fc-audience" value="all" checked> All levels</label>
+                <label><input type="radio" name="fc-audience" value="primary"> Primary (children)</label>
+                <label><input type="radio" name="fc-audience" value="middle"> Middle (teens)</label>
+                <label><input type="radio" name="fc-audience" value="senior"> Senior (adults)</label>
+                <label><input type="radio" name="fc-audience" value="college"> College / scholar</label>
+            </div>
+        </div>
+
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Tools</div>
             <div class="fc-sb-tools">
                 <button type="button" id="fc-presentation-toggle" class="fc-tool-btn"><span>🖥 Presentation</span><kbd class="fc-kbd">F</kbd></button>
                 <button type="button" id="fc-pen-toggle" class="fc-tool-btn"><span>✏️ Pen mode</span><kbd class="fc-kbd">P</kbd></button>
@@ -117,10 +146,26 @@
                 <button type="button" id="fc-clear-highlights" class="fc-tool-btn">🩷 Clear highlights (page)</button>
                 <button type="button" id="fc-notes-modal-open" class="fc-tool-btn">📓 My annotations</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="progress" id="fc-progress-section" open>
-            <summary class="fc-sb-title">Progress</summary>
+        <div class="fc-sb-section" id="fc-tts-controls" hidden>
+            <div class="fc-sb-title">
+                Read-aloud
+                <label class="fc-tts-master">
+                    <input type="checkbox" id="fc-tts-enabled" checked>
+                    <span class="fc-tts-master-label">On</span>
+                </label>
+            </div>
+            <div class="fc-tts-inner">
+                <div class="fc-sb-sub">Voice</div>
+                <select id="fc-tts-voice" class="fc-tts-select" aria-label="TTS voice"></select>
+                <div class="fc-sb-sub">Rate <span class="fc-tts-rate-val">1.0×</span></div>
+                <input type="range" id="fc-tts-rate" min="0.5" max="2" step="0.1" value="1" class="fc-tts-rate" aria-label="Reading rate">
+            </div>
+        </div>
+
+        <div class="fc-sb-section" id="fc-progress-section">
+            <div class="fc-sb-title">Progress</div>
             <div class="fc-progress-row">
                 <span class="fc-progress-num" id="fc-progress-num">0</span>
                 <span class="fc-progress-divider">/</span>
@@ -135,29 +180,29 @@
                 <span class="fc-progress-spacer"></span>
                 <button type="button" class="fc-progress-reset" id="fc-progress-reset" title="Reset progress">↺</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="bookmarks" open>
-            <summary class="fc-sb-title">Bookmarks <span class="fc-sb-count" id="fc-bookmarks-count">0</span></summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Bookmarks <span class="fc-sb-count" id="fc-bookmarks-count">0</span></div>
             <ul class="fc-bookmark-list" id="fc-bookmarks-list">
                 <li class="fc-sb-empty">No bookmarks yet — click ☆ on any verse.</li>
             </ul>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="notes" open>
-            <summary class="fc-sb-title">Notes <span class="fc-sb-count" id="fc-notes-count">0</span></summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Notes <span class="fc-sb-count" id="fc-notes-count">0</span></div>
             <ul class="fc-bookmark-list" id="fc-notes-list">
                 <li class="fc-sb-empty">No notes yet — open any verse and write in the 📝 block.</li>
             </ul>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="export">
-            <summary class="fc-sb-title">Export</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Export</div>
             <div class="fc-sb-tools">
                 <button type="button" id="fc-export-md" class="fc-tool-btn">📥 Download Markdown</button>
                 <button type="button" id="fc-export-json" class="fc-tool-btn">💾 Download JSON backup</button>
             </div>
-        </details>
+        </div>
     </div>
 </aside>    <main class="fc-container">
 <nav class="fc-breadcrumbs">
@@ -502,7 +547,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
     <div class="fc-translation" data-sec="translation">Śukadeva Gosvāmī said: When Lord Kṛṣṇa disappeared so suddenly, the gopīs felt great sorrow at losing sight of Him, like a group of female elephants who have lost their mate.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -602,10 +646,8 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <section class="fc-section" data-sec="personal_guidance">
         <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">When Kṛṣṇa hides, the gopīs do not look outward for distraction but inward for Him — they become so absorbed that imitation becomes worship. Separation reveals the depth of love that union concealed.</div>
 
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where in my life have I treated absence from God as a problem rather than as an invitation to deeper longing?</li><li>What does my heart do when the spiritual high fades — distract, complain, or search?</li></ul>
+
 
 
 
@@ -876,7 +918,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <div class="fc-translation" data-sec="translation">As the cowherd women remembered Lord Kṛṣṇa, their hearts were overwhelmed by His movements and loving smiles, His playful glances and enchanting talks, and by the many other pastimes He would enjoy with them. Thus absorbed in thoughts of Kṛṣṇa, the Lord of Ramā, the gopīs began acting out His various transcendental pastimes.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -964,10 +1005,8 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <section class="fc-section" data-sec="personal_guidance">
         <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The gopīs&#39; minds were so steeped in Kṛṣṇa that His every gesture replayed in them — His glance, walk, smile, words. Real remembrance is not effort but the natural overflow of a heart fully given.</div>
 
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What does my mind replay when it is idle, and what does that say about what I love most?</li><li>Could I let one of Kṛṣṇa&#39;s qualities — His humor, His sweetness — become the background music of my day?</li></ul>
+
 
 
 
@@ -1251,7 +1290,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <div class="fc-translation" data-sec="translation">Because the beloved gopīs were absorbed in thoughts of their beloved Kṛṣṇa, their bodies imitated His way of moving and smiling, His way of beholding them, His speech and His other distinctive features. Deeply immersed in thinking of Him and maddened by remembering His pastimes, they declared to one another, “I am Kṛṣṇa!”</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1359,10 +1397,8 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <section class="fc-section" data-sec="personal_guidance">
         <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Identifying with Kṛṣṇa rather than thinking of Him as separate is the gopīs&#39; secret. Their voices, gestures, and even names became His because the line between lover and beloved had dissolved.</div>
 
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Do I keep Kṛṣṇa at arm&#39;s length as an object of worship, or do I let Him reshape who I am?</li><li>What would change about my speech today if I let Kṛṣṇa speak through me?</li></ul>
+
 
 
 
@@ -1618,7 +1654,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <div class="fc-translation" data-sec="translation">Singing loudly of Kṛṣṇa, they searched for Him throughout the Vṛndāvana forest like a band of madwomen. They even asked the trees about Him, who as the Supersoul is present inside and outside of all created things, just like the sky.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1724,10 +1759,8 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <section class="fc-section" data-sec="personal_guidance">
         <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">When the beloved is hidden, the devotee searches everywhere, asking even trees and breezes. Madness in love for God is not failure of mind but its full surrender to the only thing worth knowing.</div>
 
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>When I cannot find Kṛṣṇa, do I keep searching or quietly give up and move on?</li><li>What would it look like to let my love for God look slightly foolish in others&#39; eyes?</li></ul>
+
 
 
 
@@ -1981,7 +2014,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
     <div class="fc-translation" data-sec="translation">[The gopīs said:] O aśvattha tree, O plakṣa, O nyagrodha, have you seen Kṛṣṇa? That son of Nanda Mahārāja has gone away after stealing our minds with His loving smiles and glances.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -2062,10 +2094,8 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <section class="fc-section" data-sec="personal_guidance">
         <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The gopīs address even the trees as conscious witnesses of Kṛṣṇa&#39;s passing. A heart in love sees Kṛṣṇa&#39;s footprints everywhere and treats all of creation as His messengers.</div>
 
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Can I look at a tree, a bird, a stranger today as one who has seen Kṛṣṇa more recently than I have?</li><li>How would my walk through the world change if I assumed creation knew Him intimately?</li></ul>
+
 
 
 
@@ -2249,7 +2279,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <div class="fc-translation" data-sec="translation">O kurabaka tree, O aśoka, O nāga, punnāga and campaka, has Balarāma’s younger brother, whose smile removes the audacity of all proud women, passed this way?</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2334,10 +2363,8 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <section class="fc-section" data-sec="personal_guidance">
         <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Asking the flowering trees for news of Kṛṣṇa, the gopīs treat nature as a network of devotees. Every fragrant thing is a hint of His presence; the world becomes a giant map of His path.</div>
 
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What in nature today reminds me that Kṛṣṇa passed this way?</li><li>Am I willing to slow down enough to ask creation what it has seen of God?</li></ul>
+
 
 
 
@@ -2577,7 +2604,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <div class="fc-translation" data-sec="translation">O most kind tulasī, to whom the feet of Govinda are so dear, have you seen that infallible one walk by, wearing you and encircled by swarms of bees?</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2684,10 +2710,8 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <section class="fc-section" data-sec="personal_guidance">
         <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Tulasī is so beloved of Kṛṣṇa that the gopīs naturally turn to her first. Devotion to Kṛṣṇa&#39;s intimate associates — His servants, His plant, His places — is itself a way to find Him.</div>
 
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Whom does Kṛṣṇa love that I have neglected to befriend?</li><li>Could caring for tulasī (or any sacred connection in my tradition) be a daily anchor of remembrance?</li></ul>
+
 
 
 
@@ -2928,7 +2952,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <div class="fc-translation" data-sec="translation">O mālati, O mallikā, O jāti and yūthikā, has Mādhava gone by here, giving you pleasure with the touch of His hand?</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3012,10 +3035,8 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <section class="fc-section" data-sec="personal_guidance">
         <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The gopīs assume Kṛṣṇa has touched every flower they pass. To live in such expectation is to live in constant readiness for grace — every fragrance becomes a clue, every breeze a love letter.</div>
 
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What ordinary detail of today could I read as a love-note from God?</li><li>How might my mood shift if I expected Kṛṣṇa&#39;s recent presence in every room I enter?</li></ul>
+
 
 
 
@@ -3329,7 +3350,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <div class="fc-translation" data-sec="translation">O cūta, O priyāla, O panasa, āsana and kovidāra, O jambu, O arka, O bilva, bakula and āmra, O kadamba and nīpa and all you other plants and trees living by the banks of the Yamunā who have dedicated your very existence to the welfare of others, we gopīs have lost our minds, so please tell us where Kṛṣṇa has gone.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3411,10 +3431,8 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <section class="fc-section" data-sec="personal_guidance">
         <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Even fruit trees and weeds are interrogated — no part of creation is too humble to have witnessed Kṛṣṇa. The seeker&#39;s love refuses any hierarchy of dignity when it comes to seeking Him.</div>
 
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Do I dismiss certain places, people, or moments as too ordinary to reveal God?</li><li>What humble corner of my life have I never asked to teach me about Kṛṣṇa?</li></ul>
+
 
 
 
@@ -3733,7 +3751,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <div class="fc-translation" data-sec="translation">O mother earth, what austerity did you perform to attain the touch of Lord Keśava’s lotus feet, which has brought you such great joy that your bodily hairs are standing on end? You appear very beautiful in this condition. Was it during the Lord’s current appearance that you acquired this ecstatic symptom, or was it perhaps much earlier, when He stepped upon you in His form of the dwarf Vāmanadeva, or even earlier, when He embraced you in His form of the boar Varāhadeva?</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3833,10 +3850,8 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <section class="fc-section" data-sec="personal_guidance">
         <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The gopīs envy the earth herself for receiving Kṛṣṇa&#39;s footprints. Healthy spiritual envy is not jealousy but a longing to belong as completely to God as the dust beneath His feet.</div>
 
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Whose closeness to God do I admire — and what could I learn from their path?</li><li>What austerity am I willing to undertake to feel Kṛṣṇa&#39;s touch on my own life?</li></ul>
+
 
 
 
@@ -4179,7 +4194,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <div class="fc-translation" data-sec="translation">O friend, wife of the deer, has Lord Acyuta been here with His beloved, bringing great joy to your eyes? Indeed, blowing this way is the fragrance of His garland of kunda flowers, which was smeared with the kuṅkuma from the breasts of His girlfriend when He embraced Her.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -4292,10 +4306,8 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <section class="fc-section" data-sec="personal_guidance">
         <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The doe is asked because she has seen the lover. The gopīs grant other beings their own relationships with Kṛṣṇa rather than monopolizing Him. True love wants Kṛṣṇa to be loved by everyone.</div>
 
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Do I rejoice when others love Kṛṣṇa, or do I quietly want to be the special one?</li><li>Whose devotion can I honor today as evidence that Kṛṣṇa is loved beyond my circle?</li></ul>
+
 
 
 
@@ -4596,7 +4608,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <div class="fc-translation" data-sec="translation">O trees, we see that you are bowing down. When the younger brother of Rāma walked by here, followed by intoxicated bees swarming around the tulasī mañjarīs decorating His garland, did He acknowledge your obeisances with His affectionate glances? He must have been resting His arm on the shoulder of His beloved and carrying a lotus flower in His free hand.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -4702,10 +4713,8 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <section class="fc-section" data-sec="personal_guidance">
         <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Even bowing branches become signs of Kṛṣṇa&#39;s having passed. The lover&#39;s eye reads reverence everywhere; the world is full of devotees bowing in their own way to the Lord who walked here.</div>
 
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What in my environment today is quietly bowing toward Kṛṣṇa, if I look for it?</li><li>How does my own posture — inner and outer — express recognition of His presence?</li></ul>
+
 
 
 
@@ -4936,7 +4945,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <div class="fc-translation" data-sec="translation">Let us ask these creepers about Kṛṣṇa. Even though they are embracing the arms of their husband, this tree, they certainly must have been touched by Kṛṣṇa’s fingernails, since out of joy they are manifesting eruptions on their skin.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -5034,10 +5042,8 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <section class="fc-section" data-sec="personal_guidance">
         <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Creepers clinging to trees recall Kṛṣṇa&#39;s touch. The gopīs read all intimacy as a memory of His. The world&#39;s relationships become metaphors of the one Relationship they cannot stop seeking.</div>
 
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What does the closeness I share with others teach me about my closeness with God?</li><li>Can I let human affection point beyond itself to the divine source it imitates?</li></ul>
+
 
 
 
@@ -5256,7 +5262,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
     <div class="fc-translation" data-sec="translation">Having spoken these words, the gopīs, distraught from searching for Kṛṣṇa, began to act out His various pastimes, fully absorbed in thoughts of Him.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -5329,10 +5334,8 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <section class="fc-section" data-sec="personal_guidance">
         <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Distraught from searching, the gopīs begin re-enacting Kṛṣṇa&#39;s pastimes — when we cannot have the Lord directly, dramatizing His līlā keeps Him present. Play is a serious form of devotion.</div>
 
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>When prayer feels far away, can I tell a story of Kṛṣṇa instead?</li><li>What pastime of His could I quietly act out in my heart today?</li></ul>
+
 
 
 
@@ -5537,7 +5540,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
     <div class="fc-translation" data-sec="translation">One gopī imitated Pūtanā, while another acted like infant Kṛṣṇa and pretended to suck her breast. Another gopī, crying in imitation of infant Kṛṣṇa, kicked a gopī who was taking the role of the cart demon, Śakaṭāsura.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -5608,10 +5610,8 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <section class="fc-section" data-sec="personal_guidance">
         <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Imitating even Pūtanā&#39;s poisoning shows how the gopīs hold every part of Kṛṣṇa&#39;s life as precious — even the dangers He overcame. No chapter of His story is too dark to remember with love.</div>
 
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Do I skip the difficult parts of God&#39;s story for the comforting ones?</li><li>What &#39;darker&#39; pastime or teaching of Kṛṣṇa might I sit with today?</li></ul>
+
 
 
 
@@ -5839,7 +5839,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <div class="fc-translation" data-sec="translation">One gopī took the role of Tṛṇāvarta and carried away another, who was acting like infant Kṛṣṇa, while yet another gopī crawled about, her ankle bells tinkling as she pulled her feet.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -5920,10 +5919,8 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <section class="fc-section" data-sec="personal_guidance">
         <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Re-enacting Tṛṇāvarta&#39;s whirlwind, the gopīs turn even demonic threats into devotional play. Threats that once terrified become beloved memories because Kṛṣṇa transformed them.</div>
 
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What past terror in my life could I now look back on as God&#39;s protection?</li><li>How does my fear shrink when I remember Kṛṣṇa&#39;s track record of rescue?</li></ul>
+
 
 
 
@@ -6165,7 +6162,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
     <div class="fc-translation" data-sec="translation">Two gopīs acted like Rāma and Kṛṣṇa in the midst of several others, who took the role of cowherd boys. One gopī enacted Kṛṣṇa’s killing of the demon Vatsāsura, represented by another gopī, and a pair of gopīs acted out the killing of Bakāsura.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -6211,10 +6207,8 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <section class="fc-section" data-sec="personal_guidance">
         <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Playing Rāma and Kṛṣṇa together, the gopīs honor the brothers&#39; bond. Spiritual life is not solo — the Lord comes with His associates, and we are invited into that family.</div>
 
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Whom in Kṛṣṇa&#39;s circle do I most overlook, and what might that relationship teach me?</li><li>Who are my Balarāmas — the steady ones who walk alongside Kṛṣṇa in my life?</li></ul>
+
 
 
 
@@ -6447,7 +6441,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
     <div class="fc-translation" data-sec="translation">When one gopī perfectly imitated how Kṛṣṇa would call the cows who had wandered far away, how He would play His flute and how He would engage in various sports, the others congratulated her with exclamations of “Well done! Well done!”</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -6514,10 +6507,8 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <section class="fc-section" data-sec="personal_guidance">
         <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Imitating Kṛṣṇa&#39;s call to lost cows, the gopīs become the shepherd themselves. The devotee gradually inherits the work of the beloved — calling others home in His voice.</div>
 
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Whom is Kṛṣṇa calling through me, and am I lending Him my voice?</li><li>What does it mean to call others home rather than just seek my own homecoming?</li></ul>
+
 
 
 
@@ -6760,7 +6751,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
     <div class="fc-translation" data-sec="translation">Another gopī, her mind fixed on Kṛṣṇa, walked about with her arm resting on the shoulder of a friend and declared, “I am Kṛṣṇa! Just see how gracefully I move!”</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -6828,10 +6818,8 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <section class="fc-section" data-sec="personal_guidance">
         <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Walking with an arm draped on a friend&#39;s shoulder, one gopī imitates Kṛṣṇa&#39;s casual grace. Even Kṛṣṇa&#39;s ordinary gestures are worth memorizing — divinity lives in His relaxed sweetness.</div>
 
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which of Kṛṣṇa&#39;s small, casual qualities most attracts me?</li><li>How might I let one of His unhurried gestures shape my own day?</li></ul>
+
 
 
 
@@ -7057,7 +7045,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <div class="fc-translation" data-sec="translation">“Don’t be afraid of the wind and rain,” said one gopī. “I will save you.” And with that she lifted her shawl above her head.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -7148,10 +7135,8 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <section class="fc-section" data-sec="personal_guidance">
         <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Re-enacting the Govardhana shelter, one gopī shields others from the rain. Imitating Kṛṣṇa&#39;s protective love is itself shelter — we become safe places for others by remembering His care.</div>
 
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>For whom can I be Govardhana today — a shelter when storms come?</li><li>What weight am I carrying that I should lift up to Kṛṣṇa instead?</li></ul>
+
 
 
 
@@ -7419,7 +7404,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <div class="fc-translation" data-sec="translation">[Śukadeva Gosvāmī continued:] O King, one gopī climbed on another’s shoulders and, putting her foot on the other’s head, said, “Go away from here, O wicked snake! You should know that I have taken birth in this world just to punish the envious.”</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -7509,10 +7493,8 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <section class="fc-section" data-sec="personal_guidance">
         <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">One gopī climbs another&#39;s shoulders to crush Kāliya. Reenacting Kṛṣṇa&#39;s victories rehearses our trust that He has conquered every poison — past, present, and future.</div>
 
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What &#39;Kāliya&#39; in me has Kṛṣṇa already begun to subdue?</li><li>Can I dance on the poison instead of fearing it?</li></ul>
+
 
 
 
@@ -7750,7 +7732,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
     <div class="fc-translation" data-sec="translation">Then another gopī spoke up: My dear cowherd boys, look at this raging forest fire! Quickly close your eyes and I will easily protect you.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -7818,10 +7799,8 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <section class="fc-section" data-sec="personal_guidance">
         <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Pretending a forest fire is raging, the gopīs replay how Kṛṣṇa swallowed flames to save the cowherds. When real fires come, the heart that has rehearsed His rescues will not panic.</div>
 
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What inner &#39;fire&#39; do I keep trying to put out alone instead of asking Him to swallow?</li><li>How does meditating on past divine rescues steady me for present trouble?</li></ul>
+
 
 
 
@@ -8139,7 +8118,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
     <div class="fc-translation" data-sec="translation">One gopī tied up her slender companion with a flower garland and said, “Now I will bind this boy who has broken the butter pots and stolen the butter.” The second gopī then covered her face and beautiful eyes, pretending to be afraid.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -8221,10 +8199,8 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <section class="fc-section" data-sec="personal_guidance">
         <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Tying a friend with a flower garland echoes Yaśodā binding Kṛṣṇa. Love that binds is sweeter than power that compels — Kṛṣṇa lets Himself be tied by affection alone.</div>
 
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What loving &#39;rope&#39; do I offer Kṛṣṇa that lets Him stay close?</li><li>Where am I trying to force what only tenderness can hold?</li></ul>
+
 
 
 
@@ -8439,7 +8415,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
     <div class="fc-translation" data-sec="translation">While the gopīs were thus imitating Kṛṣṇa’s pastimes and asking Vṛndāvana’s creepers and trees where Kṛṣṇa, the Supreme Soul, might be, they happened to see His footprints in a corner of the forest.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -8520,10 +8495,8 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <section class="fc-section" data-sec="personal_guidance">
         <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">After all the imitation and questioning, the gopīs find Kṛṣṇa&#39;s footprints. Sincere absorption eventually reveals concrete traces — devotion that does not give up finds tangible signs.</div>
 
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where have my consistent practices left tangible traces of God in my life?</li><li>Am I willing to keep searching long enough to find the footprints?</li></ul>
+
 
 
 
@@ -8741,7 +8714,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <div class="fc-translation" data-sec="translation">[The gopīs said:] The marks of a flag, lotus, thunderbolt, elephant goad, barleycorn and so forth on these footprints clearly distinguish them as belonging to that great soul, the son of Nanda Mahārāja.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -8886,10 +8858,8 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <section class="fc-section" data-sec="personal_guidance">
         <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Reading Kṛṣṇa&#39;s footprints — flag, lotus, thunderbolt — the gopīs recognize specific marks of His foot. Devotion grows when we learn to read the unique signature of God in our daily life.</div>
 
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What recurring &#39;sign&#39; do I now recognize as Kṛṣṇa&#39;s signature in my life?</li><li>How would I describe the unmistakable &#39;shape&#39; of God&#39;s presence to a friend?</li></ul>
+
 
 
 
@@ -9110,7 +9080,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
     <div class="fc-translation" data-sec="translation">The gopīs began following Kṛṣṇa’s path, as shown by His many footprints, but when they saw that these prints were thoroughly intermixed with those of His dearmost consort, they became perturbed and spoke as follows.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -9198,10 +9167,8 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <section class="fc-section" data-sec="personal_guidance">
         <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">When the gopīs see a second set of footprints alongside Kṛṣṇa&#39;s, jealousy and humility wrestle. Realizing He shares Himself with another devotee can sting before it teaches surrender.</div>
 
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>When have I felt spiritually &#39;replaced&#39; — and what did Kṛṣṇa want me to learn there?</li><li>Can I bless another&#39;s intimacy with God without diminishing my own?</li></ul>
+
 
 
 
@@ -9415,7 +9382,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
     <div class="fc-translation" data-sec="translation">[The gopīs said:] Here we see the footprints of some gopī who must have been walking along with the son of Nanda Mahārāja. He must have put His arm on Her shoulder, just as an elephant rests His trunk on the shoulder of an accompanying she-elephant.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -9482,10 +9448,8 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <section class="fc-section" data-sec="personal_guidance">
         <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The footprints reveal a special gopī walking with Him. The gopīs do not deny her existence; they study her devotion to understand what attracted Kṛṣṇa most.</div>
 
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Whose devotion attracts Kṛṣṇa visibly — and what could I learn by studying their way?</li><li>Am I willing to be a student of others&#39; love for God rather than a competitor?</li></ul>
+
 
 
 
@@ -9715,7 +9679,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
     </section>
 
     <div class="fc-translation" data-sec="translation">Certainly this particular gopī has perfectly worshiped the all-powerful Personality of Godhead, Govinda, since He was so pleased with Her that He abandoned the rest of us and brought Her to a secluded place.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -9952,10 +9915,8 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <section class="fc-section" data-sec="personal_guidance">
         <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">She must have worshipped the Lord so perfectly that He left even the gopīs to be with her. Pure devotion has a magnetism so total that even Kṛṣṇa&#39;s other lovers acknowledge it.</div>
 
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What quality of worship would make Kṛṣṇa drop everything for me — and am I cultivating it?</li><li>Whose example of single-pointed love do I want to imitate this week?</li></ul>
+
 
 
 
@@ -10210,7 +10171,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <div class="fc-translation" data-sec="translation">O girls! The dust of Govinda’s lotus feet is so sacred that even Brahmā, Śiva and the goddess Ramā take that dust upon their heads to dispel sinful reactions.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -10308,10 +10268,8 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <section class="fc-section" data-sec="personal_guidance">
         <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The dust of Kṛṣṇa&#39;s feet is so precious that even Brahmā and Śiva seek it. The footprints are not just romantic clues — they reveal the cosmos&#39;s central treasure: contact with His feet.</div>
 
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What &#39;dust of His feet&#39; is available to me today — a verse, a name, a service?</li><li>Do I treat humble contact with God as the small thing or the great thing?</li></ul>
+
 
 
 
@@ -10728,7 +10686,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
     <div class="fc-translation" data-sec="translation">These footprints of that special gopī greatly disturb us. Of all the gopīs, She alone was taken away to a secluded place, where She is enjoying the lips of Kṛṣṇa. Look, we can’t see Her footprints over here! It’s obvious that the grass and sprouts were hurting the tender soles of Her feet, and so the lover lifted up His beloved.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -10809,10 +10766,8 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <section class="fc-section" data-sec="personal_guidance">
         <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The gopīs feel disturbed because this special gopī has taken Kṛṣṇa away alone. Spiritual life forces us to confront our possessiveness — even of God, especially of God.</div>
 
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What part of God do I want to keep just for myself?</li><li>What would it take to truly want Kṛṣṇa to be loved more than I love Him?</li></ul>
+
 
 
 
@@ -11097,7 +11052,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <div class="fc-translation" data-sec="translation">Please observe, my dear gopīs, how in this place lusty Kṛṣṇa’s footprints are pressed more deeply into the ground. Carrying the weight of His beloved must have been difficult for Him. And over here that intelligent boy must have put Her down to gather some flowers.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -11174,10 +11128,8 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <section class="fc-section" data-sec="personal_guidance">
         <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The footprints become uneven, showing Kṛṣṇa adjusting His pace for Her. He moves at the speed of love, not of efficiency. God always adjusts His gait to the one He walks with.</div>
 
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where am I trying to keep up with God instead of trusting that He walks at my pace?</li><li>What gentleness of His have I been too rushed to notice?</li></ul>
+
 
 
 
@@ -11391,7 +11343,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
     <div class="fc-translation" data-sec="translation">Just see how in this place dear Kṛṣṇa collected flowers for His beloved. Here He has left the impression of only the front part of His feet because He was standing on His toes to reach the flowers.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -11467,10 +11418,8 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <section class="fc-section" data-sec="personal_guidance">
         <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Kṛṣṇa collected flowers for His beloved here — He performs small acts of romantic service. Divinity does not consider Itself above tender, particular gestures of love.</div>
 
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What small, personal gesture of Kṛṣṇa&#39;s love have I overlooked today?</li><li>Where could I imitate Him by performing one quiet, undemanded act of care?</li></ul>
+
 
 
 
@@ -11692,7 +11641,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <div class="fc-translation" data-sec="translation">Certainly Kṛṣṇa sat down here with His girlfriend to arrange Her hair. The lusty boy must have made a crown for that lusty girl out of the flowers He had collected.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -11768,10 +11716,8 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <section class="fc-section" data-sec="personal_guidance">
         <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Kṛṣṇa sat and arranged Her hair — even God is willing to play servant for the one He loves. Real greatness expresses itself in gentle, unnecessary attentions.</div>
 
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Who in my life deserves a gesture of attention I have postponed?</li><li>Does my idea of God include His willingness to do small things for me?</li></ul>
+
 
 
 
@@ -11998,7 +11944,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <div class="fc-translation" data-sec="translation">[Śukadeva Gosvāmī continued:] Lord Kṛṣṇa enjoyed with that gopī, although He enjoys only within, being self-satisfied and complete in Himself. Thus by contrast He showed the wretchedness of ordinary lusty men and hardhearted women.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -12132,10 +12077,8 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <section class="fc-section" data-sec="personal_guidance">
         <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Though Kṛṣṇa enjoyed every gopī equally, this one&#39;s pride that He was hers alone began to grow. Even the highest love must keep watch over the subtle creep of possessive pride.</div>
 
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where has spiritual privilege begun to feel like ownership in me?</li><li>How do I tell the difference between intimacy with God and entitlement to Him?</li></ul>
+
 
 
 
@@ -12541,7 +12484,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <div class="fc-translation" data-sec="translation">As the gopīs wandered about, their minds completely bewildered, they pointed out various signs of Kṛṣṇa’s pastimes. The particular gopī whom Kṛṣṇa had led into a secluded forest when He had abandoned all the other young girls began to think Herself the best of women. “My beloved has rejected all the other gopīs,” She thought, “even though they are driven by Cupid himself. He has chosen to reciprocate with Me alone.”</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -12640,10 +12582,8 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <section class="fc-section" data-sec="personal_guidance">
         <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Pointing out the disturbed paths of Kṛṣṇa and the special gopī, the others trace the story. The whole community participates in remembering the līlā — devotion is shared narration.</div>
 
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>With whom do I share my Kṛṣṇa stories, and how does telling deepen them?</li><li>Can I let another devotee&#39;s reading of God&#39;s footprints expand my own?</li></ul>
+
 
 
 
@@ -12899,7 +12839,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
     <div class="fc-translation" data-sec="translation">As the two lovers passed through one part of the Vṛndāvana forest, the special gopī began feeling proud of Herself. She told Lord Keśava, “I cannot walk any further. Please carry Me wherever You want to go.”</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -12977,10 +12916,8 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <section class="fc-section" data-sec="personal_guidance">
         <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The special gopī, proud of being chosen, asks Kṛṣṇa to carry her further. Pride blooms exactly where grace has been greatest — the highest gift can spawn the subtlest fall.</div>
 
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What gift from God has tempted me toward subtle pride?</li><li>How do I keep gratitude from quietly turning into entitlement?</li></ul>
+
 
 
 
@@ -13211,7 +13148,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <div class="fc-translation" data-sec="translation">Thus addressed, Lord Kṛṣṇa replied, “Just climb on My shoulder.” But as soon as He said this, He disappeared. His beloved consort then immediately felt great remorse.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -13307,10 +13243,8 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <section class="fc-section" data-sec="personal_guidance">
         <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Kṛṣṇa says &#39;climb on My shoulder&#39; — and then vanishes. The moment we think we have Him, He withdraws to remind us we never owned Him. His disappearances are corrections of love.</div>
 
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>When have I felt God &#39;vanish&#39; just as I felt closest — and what was that teaching?</li><li>Can I welcome the disappearance as a deeper invitation rather than punishment?</li></ul>
+
 
 
 
@@ -13542,7 +13476,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <div class="fc-translation" data-sec="translation">She cried out: O master! My lover! O dearmost, where are You? Where are You? Please, O mighty-armed one, O friend, show Yourself to Me, Your poor servant!</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -13640,10 +13573,8 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <section class="fc-section" data-sec="personal_guidance">
         <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Left alone, she cries out for her Lord — O master, where are You? The pride that led to abandonment also breaks open the deepest prayer. Loss is often the gateway to true calling.</div>
 
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What lost intimacy with God could become the seed of my deepest prayer?</li><li>Am I willing to cry out instead of pretending I am fine on my own?</li></ul>
+
 
 
 
@@ -13879,7 +13810,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
     <div class="fc-translation" data-sec="translation">Śukadeva Gosvāmī said: While continuing to search out Kṛṣṇa’s path, the gopīs discovered their unhappy friend close by. She was bewildered by separation from Her lover.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -13967,10 +13897,8 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <section class="fc-section" data-sec="personal_guidance">
         <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Searching Kṛṣṇa&#39;s path, the gopīs find her — alone and weeping. Devotional community gathers around the one who has fallen; we find each other in the dark woods of separation.</div>
 
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Who is alone and weeping in my devotional community right now?</li><li>Have I let myself be found when I have been the lost one?</li></ul>
+
 
 
 
@@ -14197,7 +14125,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <div class="fc-translation" data-sec="translation">She told them how Mādhava had given Her much respect, but how She then suffered dishonor because of Her misbehavior. The gopīs were extremely amazed to hear this.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -14275,10 +14202,8 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <section class="fc-section" data-sec="personal_guidance">
         <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">She tells them how Kṛṣṇa honored her, then how she suffered His disappearance because of her own arrogance. Honesty about our spiritual falls is itself an act of recovery.</div>
 
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What spiritual fall could I name aloud to a trusted friend this week?</li><li>How does telling the truth about my pride begin to dissolve it?</li></ul>
+
 
 
 
@@ -14500,7 +14425,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <div class="fc-translation" data-sec="translation">In search of Kṛṣṇa, the gopīs then entered the depths of the forest as far as the light of the moon shone. But when they found themselves engulfed in darkness, they decided to turn back.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -14588,10 +14512,8 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <section class="fc-section" data-sec="personal_guidance">
         <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The gopīs enter the depths of the forest seeking Him. When the moon&#39;s light fails, they keep going — devotion does not require visibility, only direction.</div>
 
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Am I willing to keep walking toward Kṛṣṇa even when the inner light dims?</li><li>What practice can sustain me when I cannot see the path clearly?</li></ul>
+
 
 
 
@@ -14805,7 +14727,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <div class="fc-translation" data-sec="translation">Their minds absorbed in thoughts of Him, they conversed about Him, acted out His pastimes and felt themselves filled with His presence. They completely forgot about their homes as they loudly sang the glories of Kṛṣṇa’s transcendental qualities.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -14907,10 +14828,8 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <section class="fc-section" data-sec="personal_guidance">
         <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Minds absorbed in Him, they spoke of Him, acted out His ways, and felt themselves to be Him. Total absorption is the only resting place when the beloved is hidden.</div>
 
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What would total absorption in Kṛṣṇa look like for one hour of my day?</li><li>Where does my mind currently rest when Kṛṣṇa feels far?</li></ul>
+
 
 
 
@@ -15110,7 +15029,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <div class="fc-translation" data-sec="translation">The gopīs again came to the bank of the Kālindī. Meditating on Kṛṣṇa and eagerly hoping He would come, they sat down together to sing of Him.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -15207,10 +15125,8 @@ The ecstatic sentiments for Lord Kṛṣṇa that the gopīs expressed may appea
 
     <section class="fc-section" data-sec="personal_guidance">
         <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The gopīs come back to the Yamunā, meditating and singing of Kṛṣṇa, waiting. Return to the familiar sacred place is itself prayer — sometimes faithfulness is just showing up again.</div>
 
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What &#39;Yamunā bank&#39; do I return to in my daily life as my place of meeting Kṛṣṇa?</li><li>Can I trust that showing up faithfully is itself a form of finding Him?</li></ul>
+
 
 
 

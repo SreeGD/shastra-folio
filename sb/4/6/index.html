@@ -25,19 +25,25 @@
     <link rel="icon" href="../../../assets/icons/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="../../../assets/icons/icon.svg">
     <link rel="stylesheet" href="../../../assets/css/site.css">
+    <link rel="alternate" hreflang="te-IN" href="../../../te/sb/4/6/">
+    <link rel="alternate" hreflang="x-default" href="../../../">
     <script>window.FC_TO_ROOT = "../../../";</script>
     <script src="../../../assets/js/toggle.js"></script>
 </head>
 <body class="has-sidebar" data-chapter="6">
 <header class="fc-site-header">
     <button type="button" class="fc-mobile-trigger fc-mobile-trigger-left" data-overlay="left" aria-label="Open settings drawer">⚙</button>
-<a class="fc-brand" href="../../../">FolioCorpus<span class="fc-sub">Śrīmad-Bhāgavatam</span></a>
+    <a class="fc-brand" href="../../../">FolioCorpus<span class="fc-sub">Bhagavad-gītā</span></a>
     <nav class="fc-site-nav">
         <a href="../../../">Home</a>
         <a href="../../../bg/">Bhagavad-gītā</a>
         <a href="../../../sb/">Śrīmad-Bhāgavatam</a>
         <a href="../../../search/" title="Search across all integrated works">🔍 Search</a>
         <button type="button" id="fc-random-verse" class="fc-nav-btn" title="Jump to a random verse">🎲 Random</button>
+        <span class="fc-lang-switch" aria-label="Script">
+            <a class="active" href="#" title="Devanāgarī edition">EN</a>
+            <a class="" href="../../../te/sb/4/6/" title="Telugu lipi edition">తె</a>
+        </span>
     </nav>
     <button type="button" class="fc-mobile-trigger fc-mobile-trigger-right" data-overlay="right" aria-label="Open chapter index drawer">📚</button>
 </header>
@@ -46,8 +52,8 @@
     <button class="fc-sb-collapse" type="button" data-sb="left" title="Collapse left sidebar" aria-label="Collapse"></button>
 
     <div class="fc-sb-body">
-        <details class="fc-sb-section" data-sbsec="reading" open>
-            <summary class="fc-sb-title">Reading</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Reading</div>
             <div class="fc-sb-sub">Theme</div>
             <div class="fc-segmented" data-setting="theme">
                 <button type="button" data-val="light">Light</button>
@@ -73,10 +79,10 @@
                 <button type="button" data-val="single">Single</button>
                 <button type="button" data-val="side">Side-by-side</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="display" open>
-            <summary class="fc-sb-title">Display</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Display</div>
             <div class="fc-sb-grid">
                 <label><input type="checkbox" data-section="devanagari" checked> Devanāgarī</label>
                 <label><input type="checkbox" data-section="iast" checked> IAST transliteration</label>
@@ -99,10 +105,33 @@
                 <button type="button" data-action="expand-all">Expand all</button>
                 <button type="button" data-action="collapse-all">Collapse all</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="tools" open>
-            <summary class="fc-sb-title">Tools</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Find your starting point</div>
+            <div class="fc-persona-links">
+                <a class="fc-persona-link" href="../../../daily/">🌅 Daily (one value a week)</a>
+                <a class="fc-persona-link" href="../../../householder/">🏠 Householder (family & work)</a>
+                <a class="fc-persona-link" href="../../../parenting/">👨‍👩‍👧 Parenting (stories for kids)</a>
+                <a class="fc-persona-link" href="../../../themes/">📚 All themes</a>
+                <a class="fc-persona-link" href="../../../values/" style="background:#F0F6F2;border-left-color:#1F4632;">ॐ Vedic Value System ↗</a>
+                <a class="fc-persona-link" href="../../../vidya/" style="background:#FBF6E4;border-left-color:#C8860B;">📚 Vidyā Karaṇa (kids, multi-lang) ↗</a>
+            </div>
+        </div>
+
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Audience</div>
+            <div class="fc-audience-filter">
+                <label><input type="radio" name="fc-audience" value="all" checked> All levels</label>
+                <label><input type="radio" name="fc-audience" value="primary"> Primary (children)</label>
+                <label><input type="radio" name="fc-audience" value="middle"> Middle (teens)</label>
+                <label><input type="radio" name="fc-audience" value="senior"> Senior (adults)</label>
+                <label><input type="radio" name="fc-audience" value="college"> College / scholar</label>
+            </div>
+        </div>
+
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Tools</div>
             <div class="fc-sb-tools">
                 <button type="button" id="fc-presentation-toggle" class="fc-tool-btn"><span>🖥 Presentation</span><kbd class="fc-kbd">F</kbd></button>
                 <button type="button" id="fc-pen-toggle" class="fc-tool-btn"><span>✏️ Pen mode</span><kbd class="fc-kbd">P</kbd></button>
@@ -117,10 +146,26 @@
                 <button type="button" id="fc-clear-highlights" class="fc-tool-btn">🩷 Clear highlights (page)</button>
                 <button type="button" id="fc-notes-modal-open" class="fc-tool-btn">📓 My annotations</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="progress" id="fc-progress-section" open>
-            <summary class="fc-sb-title">Progress</summary>
+        <div class="fc-sb-section" id="fc-tts-controls" hidden>
+            <div class="fc-sb-title">
+                Read-aloud
+                <label class="fc-tts-master">
+                    <input type="checkbox" id="fc-tts-enabled" checked>
+                    <span class="fc-tts-master-label">On</span>
+                </label>
+            </div>
+            <div class="fc-tts-inner">
+                <div class="fc-sb-sub">Voice</div>
+                <select id="fc-tts-voice" class="fc-tts-select" aria-label="TTS voice"></select>
+                <div class="fc-sb-sub">Rate <span class="fc-tts-rate-val">1.0×</span></div>
+                <input type="range" id="fc-tts-rate" min="0.5" max="2" step="0.1" value="1" class="fc-tts-rate" aria-label="Reading rate">
+            </div>
+        </div>
+
+        <div class="fc-sb-section" id="fc-progress-section">
+            <div class="fc-sb-title">Progress</div>
             <div class="fc-progress-row">
                 <span class="fc-progress-num" id="fc-progress-num">0</span>
                 <span class="fc-progress-divider">/</span>
@@ -135,29 +180,29 @@
                 <span class="fc-progress-spacer"></span>
                 <button type="button" class="fc-progress-reset" id="fc-progress-reset" title="Reset progress">↺</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="bookmarks" open>
-            <summary class="fc-sb-title">Bookmarks <span class="fc-sb-count" id="fc-bookmarks-count">0</span></summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Bookmarks <span class="fc-sb-count" id="fc-bookmarks-count">0</span></div>
             <ul class="fc-bookmark-list" id="fc-bookmarks-list">
                 <li class="fc-sb-empty">No bookmarks yet — click ☆ on any verse.</li>
             </ul>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="notes" open>
-            <summary class="fc-sb-title">Notes <span class="fc-sb-count" id="fc-notes-count">0</span></summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Notes <span class="fc-sb-count" id="fc-notes-count">0</span></div>
             <ul class="fc-bookmark-list" id="fc-notes-list">
                 <li class="fc-sb-empty">No notes yet — open any verse and write in the 📝 block.</li>
             </ul>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="export">
-            <summary class="fc-sb-title">Export</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Export</div>
             <div class="fc-sb-tools">
                 <button type="button" id="fc-export-md" class="fc-tool-btn">📥 Download Markdown</button>
                 <button type="button" id="fc-export-json" class="fc-tool-btn">💾 Download JSON backup</button>
             </div>
-        </details>
+        </div>
     </div>
 </aside>    <main class="fc-container">
 <nav class="fc-breadcrumbs">
@@ -175,7 +220,7 @@
         <h1 class="fc-verse-heading">4.6 · Brahmā Satisfies Lord Śiva</h1>
         <span class="fc-ribbon-meta">
             50 verses
- · <a class="fc-ribbon-link" href="class-prep/">🖨 Class prep</a>        </span>
+        </span>
         <input type="search" class="fc-search" id="fc-search" placeholder="🔍 Search in this chapter" aria-label="Search verses in this chapter">
         <span class="fc-ribbon-current" id="fc-ribbon-current" aria-live="polite"></span>
     </div>
@@ -588,7 +633,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
     <div class="fc-translation" data-sec="translation">All the priests and other members of the sacrificial assembly and all the demigods, having been defeated by the soldiers of Lord Śiva and injured by weapons like tridents and swords, approached Lord Brahmā with great fear. After offering him obeisances, they began to speak in detail of all the events which had taken place.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -631,18 +675,6 @@ Svayambhuve normally should be svayambhuvam.</div>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">After the chaos at Dakṣa&#39;s sacrifice, the wounded priests and demigods ran to Brahmā for help. When your strategies blow up in your face, the mature response isn&#39;t to double down — it&#39;s to seek out wiser counsel and tell the whole story honestly.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>When a plan I championed falls apart, do I hide the wreckage or carry it transparently to someone wiser?</li><li>Whom do I treat as my Brahmā — a trusted elder I run to when ego-driven moves backfire?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -829,7 +861,6 @@ Svayambhuve normally should be svayambhuvam.</div>
 
     <div class="fc-translation" data-sec="translation">Both Lord Brahmā and Viṣṇu had already known that such events would occur in the sacrificial arena of Dakṣa, and knowing beforehand, they did not go to the sacrifice.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -868,18 +899,6 @@ Kasya means of Dakṣa.  Knowing because they are omniscient, they did not go (n
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Viṣṇu and Brahmā stayed away from Dakṣa&#39;s doomed sacrifice because they already knew it would end badly. The wisest beings don&#39;t always intervene; sometimes they let karma run its course so the lesson can land.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Is there a situation where I&#39;m pushing to &#39;fix&#39; something that may need to play out on its own?</li><li>How do I distinguish between healthy non-interference and cowardly avoidance?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -1057,7 +1076,6 @@ Kasya means of Dakṣa.  Knowing because they are omniscient, they did not go (n
 
     <div class="fc-translation" data-sec="translation">When Lord Brahmā heard everything from the demigods and the members who had attended the sacrifice, he replied: You cannot be happy in executing a sacrifice if you blaspheme a great personality and thereby offend his lotus feet. You cannot have happiness in that way.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1086,18 +1104,6 @@ Vibhūḥ refers to Brahmā. Having committed offense (kṛtāgasi) to a great s
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Brahmā tells them: no ritual, no achievement, no success can give you happiness if you&#39;ve insulted a great soul. Offense to a devotee is a leak that drains every other merit you try to fill the bucket with.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Whose feet did I metaphorically step on, and how is that quiet offense undermining my peace today?</li><li>Am I willing to clean up a past insult to a sincere person before chasing my next &#39;sacrifice&#39;?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -1277,7 +1283,6 @@ Vibhūḥ refers to Brahmā. Having committed offense (kṛtāgasi) to a great s
 
     <div class="fc-translation" data-sec="translation">You have excluded Lord Śiva from taking part in the sacrificial results, and therefore you are all offenders at his lotus feet. Still, if you go without mental reservations and surrender unto him and fall down at his lotus feet, he will be very pleased.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1321,18 +1326,6 @@ However, if you want to live (athāpi), you who have committed offense, who excl
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Brahmā&#39;s prescription is simple: go without reservation, fall at Śiva&#39;s feet, and he&#39;ll be pleased. Real reconciliation requires dropping the mental &#39;but I was right too&#39; before you arrive at the door.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What &#39;mental reservation&#39; am I clinging to that&#39;s blocking a sincere apology I owe someone?</li><li>Whose forgiveness would unlock me, if I went without conditions?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -1558,7 +1551,6 @@ However, if you want to live (athāpi), you who have committed offense, who excl
     <div class="fc-translation" data-sec="translation">Lord Brahmā also advised them that Lord Śiva is so powerful that by his anger all the planets and their chief controllers can be destroyed immediately. Also, he said that Lord Śiva was especially sorry because he had recently lost his dear wife and was also very much afflicted by the unkind words of Dakṣa. Under the circumstances, Lord Brahmā suggested, it would behoove them to go at once and beg his pardon.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -1579,18 +1571,6 @@ When he is angry (yasmin kupite) the world and its protectors will not longer ex
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Śiva is both powerful and grieving — a dangerous combination. When you&#39;ve wronged someone who is also wounded, urgency matters; don&#39;t wait for resentment to harden into a destructive habit.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Is there someone I&#39;ve hurt who is also hurting from another loss right now?</li><li>What is my excuse for delaying the reconciliation, and is it actually a reason?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -1860,7 +1840,6 @@ When he is angry (yasmin kupite) the world and its protectors will not longer ex
 
     <div class="fc-translation" data-sec="translation">Lord Brahmā said that no one — not even himself, Indra, all the members assembled in the sacrificial arena or all the sages — could know how powerful Lord Śiva is. Under the circumstances, who would dare to commit an offense at his lotus feet?</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1890,18 +1869,6 @@ When he is angry (yasmin kupite) the world and its protectors will not longer ex
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Even Brahmā confesses that no one fully knows Śiva&#39;s power. True humility says: I cannot calculate the weight of the person I offended; I will not gamble on their tolerance.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Am I treating someone as &#39;just so-and-so&#39; while underestimating their depth and dignity?</li><li>Where has overconfidence in my own status made me reckless with another&#39;s heart?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -2135,7 +2102,6 @@ When he is angry (yasmin kupite) the world and its protectors will not longer ex
 
     <div class="fc-translation" data-sec="translation">After thus instructing all the demigods, the Pitās and the lords of the living entities, Lord Brahmā took them with him and left for the abode of Lord Śiva, known as the Kailāsa Hill.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2192,18 +2158,6 @@ When he is angry (yasmin kupite) the world and its protectors will not longer ex
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Brahmā doesn&#39;t just send the demigods to Kailāsa — he leads them there himself. Real leaders don&#39;t outsource the hard apology; they walk into the awkward room first.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Whom am I sending to make my apologies for me instead of going in person?</li><li>When was the last time I personally led a difficult conversation rather than delegating it?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -2382,7 +2336,6 @@ When he is angry (yasmin kupite) the world and its protectors will not longer ex
     <div class="fc-translation" data-sec="translation">The abode known as Kailāsa is full of different herbs and vegetables, and it is sanctified by Vedic hymns and mystic yoga practice. Thus the residents of that abode are demigods by birth and have all mystic powers. Besides them there are other human beings, who are known as Kinnaras and Gandharvas and are accompanied by their beautiful wives, who are known as Apsarās, or angels.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -2413,18 +2366,6 @@ Fourteen verses describe Kailāsa.   Nara-itaraiḥ means “by devatās.”</di
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Kailāsa is sanctified by Vedic hymns and yoga practice — the place itself carries the vibration of those who live there. The atmosphere you cultivate in your home and routines slowly shapes everyone who enters it.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What does the &#39;sound profile&#39; of my home or workspace cultivate — clarity, agitation, devotion, noise?</li><li>Which one small daily practice could begin to sanctify the space I inhabit?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -2603,7 +2544,6 @@ Fourteen verses describe Kailāsa.   Nara-itaraiḥ means “by devatās.”</di
     <div class="fc-translation" data-sec="translation">Kailāsa is full of mountains filled with all kinds of valuable jewels and minerals and surrounded by all varieties of valuable trees and plants. The top of the hill is nicely decorated by various types of deer.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -2632,18 +2572,6 @@ Fourteen verses describe Kailāsa.   Nara-itaraiḥ means “by devatās.”</di
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Kailāsa&#39;s jewels, herbs and deer all coexist as part of one harmonious abode. Beauty isn&#39;t a single feature; it&#39;s the way many small elements are arranged in mutual relationship.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What &#39;small varieties&#39; in my life am I overlooking because I&#39;m chasing one big jewel?</li><li>How could I arrange my surroundings so the pieces start cooperating instead of competing?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -2804,7 +2732,6 @@ Fourteen verses describe Kailāsa.   Nara-itaraiḥ means “by devatās.”</di
     <div class="fc-translation" data-sec="translation">There are many waterfalls, and in the mountains there are many beautiful caves in which the very beautiful wives of the mystics are found.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -2825,18 +2752,6 @@ Ramaṇaiḥ means “with their lovers.”  Kailāsa gives pleasure (ramaṇam)
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Waterfalls and caves — sound and silence side by side — host the practice of mystics and their consorts. A real spiritual environment makes room both for vibrant flow and for hidden depth.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which do I need more of right now: outward flow or interior cave?</li><li>Where in my week is there a literal cave — a private place for unobserved practice?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -3015,7 +2930,6 @@ Ramaṇaiḥ means “with their lovers.”  Kailāsa gives pleasure (ramaṇam)
     <div class="fc-translation" data-sec="translation">On Kailāsa Hill there is always the rhythmical sound of the peacocks’ sweet vibrations and the bees’ humming. Cuckoos are always singing, and other birds whisper amongst themselves.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -3036,18 +2950,6 @@ The peacocks cry everywhere (abhi).  There is a noise like a group of householde
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Peacocks, bees, cuckoos and other birds make a layered, rhythmic music on Kailāsa. Healthy environments hum with many voices; you don&#39;t have to silence everyone to find peace, only to harmonize.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Whose &#39;whispering&#39; in my circle is actually adding to the music, and whose is just noise?</li><li>How do I respond when several voices around me speak at once — block them out or listen for the rhythm?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -3226,7 +3128,6 @@ The peacocks cry everywhere (abhi).  There is a noise like a group of householde
     <div class="fc-translation" data-sec="translation">There are tall trees with straight branches that appear to call the sweet birds, and when herds of elephants pass through the hills, it appears that the Kailāsa Hill moves with them. When the waterfalls resound, it appears that Kailāsa Hill does also.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -3247,18 +3148,6 @@ The birds are like brāhmaṇa guests, being invited by the mountain. The mounta
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">When elephants pass and waterfalls roar, the whole hill seems to move with them. When you&#39;re settled in something firm, you can absorb energetic movement around you without being destabilized.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where am I confusing my own movement with the world&#39;s, like the hill &#39;moving&#39; with the elephants?</li><li>Which inner ground would let me sway with events without being uprooted by them?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -3524,7 +3413,6 @@ The birds are like brāhmaṇa guests, being invited by the mountain. The mounta
     <div class="fc-translation" data-sec="translation">The whole of Kailāsa Hill is decorated with various kinds of trees, of which the following names may be mentioned: mandāra, pārijāta, sarala, tamāla, tāla, kovidāra, āsana, arjuna, āmra-jāti [mango], kadamba, dhūli-kadamba, nāga, punnāga, campaka, pāṭala, aśoka, bakula, kunda and kurabaka. The entire hill is decorated with such trees, which produce flowers with fragrant aromas.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -3545,18 +3433,6 @@ Cūta and āmra (verse 18) are types of mango.  Nīpa is a variety of kadamba.</
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Kailāsa is decked with mandāra, pārijāta, kadamba and many fragrant trees — diversity is the natural ornament of a holy place. Don&#39;t expect spiritual reality to be monochrome; the Lord&#39;s domain blossoms in many forms at once.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Am I trying to make my spiritual life uniform when it is meant to flower in many fragrances?</li><li>Which &#39;tree&#39; — practice, relationship, study — have I been neglecting in my inner garden?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -3717,7 +3593,6 @@ Cūta and āmra (verse 18) are types of mango.  Nīpa is a variety of kadamba.</
     <div class="fc-translation" data-sec="translation">There are other trees also which decorate the hill, such as the golden lotus flower, the cinnamon tree, mālatī, kubja, mallikā and mādhavī.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -3738,18 +3613,6 @@ Reṇuka is cardamom.  Jāti is jasmine.</div>
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Even the more &#39;minor&#39; trees — cinnamon, mālatī, mādhavī — get a verse. In holy reality nothing is filler; the small ornaments are noticed and named.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Whom in my daily life have I treated as filler when they are actually ornamenting it?</li><li>What small daily detail could I begin to honor by simply naming it with attention?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -3883,7 +3746,6 @@ Reṇuka is cardamom.  Jāti is jasmine.</div>
     <div class="fc-translation" data-sec="translation">Kailāsa Hill is also decorated with such trees as kata, jackfruit, julara, banyan trees, plakṣas, nyagrodhas and trees producing asafetida. Also there are trees of betel nuts and bhūrja-patra, as well as rājapūga, blackberries and similar other trees.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -3902,18 +3764,6 @@ Reṇuka is cardamom.  Jāti is jasmine.</div>
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Banyans, jackfruit, asafetida — even pungent and ordinary trees decorate Kailāsa. Holiness doesn&#39;t reject the unglamorous; it integrates the practical right alongside the beautiful.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which &#39;ordinary&#39; element of my life have I dismissed as unspiritual that actually belongs in the garden?</li><li>Where am I editing out the practical in pursuit of an aesthetic of holiness?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -4047,7 +3897,6 @@ Reṇuka is cardamom.  Jāti is jasmine.</div>
     <div class="fc-translation" data-sec="translation">There are mango trees, priyāla, madhuka and iṅguda. Besides these there are other trees, like thin bamboos, kīcaka and varieties of other bamboo trees, all decorating the tract of Kailāsa Hill.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -4068,18 +3917,6 @@ Veṇu is bamboo which is not hollow, and kīcaka is bamboo which is hollow.</di
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Mango, priyāla, bamboo — even the bending, breakable trees adorn the hill. Strength alone doesn&#39;t make a place sacred; flexibility and yielding have their own dignity.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where am I admiring only rigid strength and missing the dignity of bamboo-like yielding?</li><li>Which area of my life is asking me to bend rather than break?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -4374,7 +4211,6 @@ Veṇu is bamboo which is not hollow, and kīcaka is bamboo which is hollow.</di
     <div class="fc-translation" data-sec="translation">There are different kinds of lotus flowers, such as kumuda, utpala and śatapatra. The forest appears to be a decorated garden, and the small lakes are full of various kinds of birds who whisper very sweetly. There are many kinds of other animals also, like deer, monkeys, boars, lions, ṛkṣas, śalyakas, forest cows, forest asses, tigers, small deer, buffalo and many other animals, who are fully enjoying their lives.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -4395,18 +4231,6 @@ Nābhi is a musk deer.</div>
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Many lotuses, many animals — even tigers, asses and buffalo — all &#39;fully enjoy their lives&#39; together on Kailāsa. In genuine spiritual atmosphere even natural opposites lose their hostility.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where am I treating someone as a &#39;tiger&#39; I must escape, when the real work is creating a Kailāsa around them?</li><li>What would change if I assumed every being in my orbit deserves to fully enjoy their life?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -4576,7 +4400,6 @@ Nābhi is a musk deer.</div>
     <div class="fc-translation" data-sec="translation">There are varieties of deer, such as karṇāntra, ekapada, aśvāsya, vṛka and kastūrī, the deer which bears musk. Besides the deer there are many banana trees which decorate the small hillside lakes very nicely.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -4597,18 +4420,6 @@ The mountain was made beautiful by river banks coved with banana groves.</div>
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The musk deer carries its fragrance unknowingly; banana trees decorate the lakeside without effort. Some beauty in your life is meant to be carried and shared rather than performed.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What quality in me do others notice that I myself underrate or don&#39;t see?</li><li>Where am I trying to perform fragrance instead of simply carrying it?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -4784,7 +4595,6 @@ The mountain was made beautiful by river banks coved with banana groves.</div>
 
     <div class="fc-translation" data-sec="translation">There is a small lake named Alakanandā in which Satī used to take her bath, and that lake is especially auspicious. All the demigods, after seeing the specific beauty of Kailāsa Hill, were struck with wonder at the great opulence to be found there.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -4823,18 +4633,6 @@ It was surrounded by the Gaṅgā whose water was made more sacred by the bathin
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Satī used to bathe in Alakanandā — a place still sanctified by her presence even after her loss. The traces of those we&#39;ve loved keep blessing the places where they walked.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which place in my life still carries the imprint of someone I&#39;ve lost, and how do I honor that?</li><li>Whose presence am I currently sanctifying by simply being there, even without trying?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -5039,7 +4837,6 @@ It was surrounded by the Gaṅgā whose water was made more sacred by the bathin
 
     <div class="fc-translation" data-sec="translation">Thus the demigods saw the wonderfully beautiful region known as Alakā in the forest known as Saugandhika, which means “full of fragrance.” The forest is known as Saugandhika because of its abundance of lotus flowers.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -5078,18 +4875,6 @@ There were lotuses there called saugandhika.  It is in the singular since it rep
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The forest is called Saugandhika — &#39;full of fragrance&#39; — because of its lotuses. You are recognized by what blossoms in you; cultivate the lotus and the name will follow.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>If my inner life were named after its dominant flower, what would it be called this year?</li><li>Which lotus am I willing to plant now that may give my whole forest a different name?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -5268,7 +5053,6 @@ There were lotuses there called saugandhika.  It is in the singular since it rep
     <div class="fc-translation" data-sec="translation">They also saw the two rivers named Nandā and Alakanandā. These two rivers are sanctified by the dust of the lotus feet of the Supreme Personality of Godhead, Govinda.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -5304,18 +5088,6 @@ Outside the city there were two rivers.</div>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The rivers Nandā and Alakanandā are sanctified by the dust of Govinda&#39;s feet. What sanctifies a flow of activity isn&#39;t its scale but the touch of the Lord at its source.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which &#39;river&#39; of activity in my life is flowing without any contact with the Lord&#39;s lotus feet?</li><li>Where could I invite even a single moment of remembrance into a currently mundane current?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -5475,7 +5247,6 @@ Outside the city there were two rivers.</div>
 
     <div class="fc-translation" data-sec="translation">My dear Kṣattā, Vidura, the celestial damsels come down to those rivers in their airplanes with their husbands, and after sexual enjoyment, they enter the water and enjoy sprinkling their husbands with water.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -5523,18 +5294,6 @@ They enter the two rivers (yayoḥ).</div>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Even celestial damsels descend for sexual enjoyment and bathe afterward — heavenly beings still carry material habits. Don&#39;t assume a high outer position means inner freedom from desire.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where am I impressed by someone&#39;s status while ignoring the same pull I&#39;m trying to grow out of?</li><li>What is the &#39;bath&#39; I run to after indulging desire, and what would real cleansing look like?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -5722,7 +5481,6 @@ They enter the two rivers (yayoḥ).</div>
     <div class="fc-translation" data-sec="translation">After the damsels of the heavenly planets bathe in the water, it becomes yellowish and fragrant due to the kuṅkuma from their bodies. Thus the elephants come to bathe there with their wives, the she-elephants, and they also drink the water, although they are not thirsty.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -5753,18 +5511,6 @@ Elephants, though not thirsty, drink the water of those two rivers, because the 
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The damsels&#39; kuṅkuma colors the water, and even unthirsty elephants come to drink it. The residues of one person&#39;s enjoyment can pull others into mindless consumption.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where am I &#39;drinking&#39; something just because someone else&#39;s energy has colored it appealing?</li><li>What residue is my own indulgence leaving in the shared waters of my home or community?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -5924,7 +5670,6 @@ Elephants, though not thirsty, drink the water of those two rivers, because the 
 
     <div class="fc-translation" data-sec="translation">The airplanes of the heavenly denizens are bedecked with pearls, gold and many valuable jewels. The heavenly denizens are compared to clouds in the sky decorated with occasional flashes of electric lightning.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -5953,18 +5698,6 @@ Tāra means pearls.  The city is compared to the sky, the lightning to the women
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Heavenly airplanes glitter like clouds with lightning — impressive, but still passing weather. Even celestial opulence is temporary; don&#39;t anchor your identity to vehicles that vanish.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which of my &#39;airplanes&#39; — possessions, status — am I mistaking for a stable home?</li><li>What would I lean on if the glittering vehicles I depend on dissolved tomorrow?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -6160,7 +5893,6 @@ Tāra means pearls.  The city is compared to the sky, the lightning to the women
 
     <div class="fc-translation" data-sec="translation">While traveling, the demigods passed over the forest known as Saugandhika, which is full of varieties of flowers, fruits and desire trees. While passing over the forest, they also saw the regions of Yakṣeśvara.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -6209,18 +5941,6 @@ The devatās passed through (hitvā) Alakā and the forest.  The sentence contin
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The demigods pass over forests of desire-trees and the realm of Kuvera, treasurer of the gods. You can travel through landscapes of wealth and wish-fulfillment without stopping if you&#39;re aimed at a higher destination.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which &#39;desire forest&#39; is currently tempting me to land, and what was my actual destination?</li><li>What helps me keep moving past Kuvera&#39;s territory toward the place I really came to reach?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -6380,7 +6100,6 @@ The devatās passed through (hitvā) Alakā and the forest.  The sentence contin
 
     <div class="fc-translation" data-sec="translation">In that celestial forest there were many birds whose necks were colored reddish and whose sweet sounds mixed with the humming of the bees. The lakes were abundantly decorated with crying swans as well as strong-stemmed lotus flowers.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -6424,18 +6143,6 @@ The forest was decorated with the songs of cuckoos and buzzing of bees.  It had 
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Red-throated birds, humming bees, crying swans and lotuses make Kailāsa&#39;s forest a layered concert. Pay attention to environments that calm and elevate you; they&#39;re rehearsing what your inner life can become.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which environment most reliably tunes me upward — and how often do I visit it?</li><li>What sounds dominate my daily soundscape, and are they raising or lowering me?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -6586,7 +6293,6 @@ The forest was decorated with the songs of cuckoos and buzzing of bees.  It had 
 
     <div class="fc-translation" data-sec="translation">All these atmospheric influences unsettled the forest elephants who flocked together in the sandalwood forest, and the blowing wind agitated the minds of the damsels there for further sexual enjoyment.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -6630,18 +6336,6 @@ The minds of the women were additionally (adhi) agitated with desire, since the 
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Sandalwood breeze and beauty awakened the sexual appetite of the forest damsels — material atmospheres condition desire. The wind around you matters; it touches your mind even when you think you&#39;re untouched.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which breeze in my environment regularly stirs up the desires I&#39;m trying to grow past?</li><li>Where could I change the air I&#39;m breathing rather than blaming myself for being moved by it?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -6820,7 +6514,6 @@ The minds of the women were additionally (adhi) agitated with desire, since the 
     <div class="fc-translation" data-sec="translation">They also saw that the bathing ghāṭas and their staircases were made of vaidūrya-maṇi. The water was full of lotus flowers. Passing by such lakes, the demigods reached a place where there was a great banyan tree.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -6856,18 +6549,6 @@ Vāpyaḥ means ponds.  Prāptā modifies vāpyaḥ.   Another version has prāp
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Even the bathing steps were made of vaidūrya jewel — every threshold to purification was beautiful. The way you set up the small approaches (your morning, your altar, your seat) shapes whether you actually step in.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>How beautiful and inviting are the steps that lead to my daily practice?</li><li>What one &#39;jewel&#39; could I place at the threshold of my sādhanā to make me want to enter?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -7045,7 +6726,6 @@ Vāpyaḥ means ponds.  Prāptā modifies vāpyaḥ.   Another version has prāp
 
     <div class="fc-translation" data-sec="translation">That banyan tree was eight hundred miles high, and its branches spread over six hundred miles around. The tree cast a fine shade which permanently cooled the temperature, yet there was no noise of birds.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -7089,18 +6769,6 @@ Its height was a hundred yojanas, and its branches spread seventy-five yojanas. 
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The great banyan was huge, cool and silent — no birds, no noise, perfect for meditation. The right place for inner work is often the one where nothing happens; cultivate at least one such tree in your day.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where in my day is there 800-mile-tall banyan silence, and how often do I sit under it?</li><li>Which &#39;noisy&#39; tree do I keep returning to when I actually need the quiet one?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -7269,7 +6937,6 @@ Its height was a hundred yojanas, and its branches spread seventy-five yojanas. 
 
     <div class="fc-translation" data-sec="translation">The demigods saw Lord Śiva sitting under that tree, which was competent to give perfection to mystic yogīs and deliver all people. As grave as time eternal, he appeared to have given up all anger.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -7324,18 +6991,6 @@ He appeared to be death, by thinking of the offense committed to him, but he app
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Śiva sat under the tree, perfectly grave, having released all anger. The capacity to put down even legitimate rage is a sign of inner power, not weakness.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which anger — even justified — am I still carrying as if I needed it?</li><li>What would &#39;grave as time eternal&#39; look like in my response to today&#39;s irritations?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -7486,7 +7141,6 @@ He appeared to be death, by thinking of the offense committed to him, but he app
 
     <div class="fc-translation" data-sec="translation">Lord Śiva sat there, surrounded by saintly persons like Kuvera, the master of the Guhyakas, and the four Kumāras, who were already liberated souls. Lord Śiva was grave and saintly.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -7535,18 +7189,6 @@ Sakhyā means “by Kuvera.”</div>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The four Kumāras, liberated since birth, sat with Śiva — your company shapes your gravity. Surround yourself with those whose presence steadies you, not those who agitate.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Who in my life functions as &#39;Kumāras&#39; — companions whose presence sobers and elevates me?</li><li>Where am I spending time in company that pulls me into frivolity instead of depth?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -7706,7 +7348,6 @@ Sakhyā means “by Kuvera.”</div>
 
     <div class="fc-translation" data-sec="translation">The demigods saw Lord Śiva situated in his perfection as the master of the senses, knowledge, fruitive activities and the path of achieving perfection. He was the friend of the entire world, and by virtue of his full affection for everyone, he was very auspicious.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -7736,18 +7377,6 @@ He is the shelter of knowledge, austerity and yoga because he starts these proce
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Śiva is described as friend of the entire world, full of affection for everyone. True spiritual power expresses itself as universal benevolence, not as a private circle of favor.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Toward whom is my affection conspicuously absent, and what would universalizing it cost me?</li><li>How would my decisions today change if I assumed &#39;friend of the entire world&#39; as my job description?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -7934,7 +7563,6 @@ He is the shelter of knowledge, austerity and yoga because he starts these proce
 
     <div class="fc-translation" data-sec="translation">He was seated on a deerskin and was practicing all forms of austerity. Because his body was smeared with ashes, he looked like an evening cloud. On his hair was the sign of a half-moon, a symbolic representation.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -7993,18 +7621,6 @@ Tāpasa refers to Śaivites. Sanhyabhra-rucā means reddish.</div>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Śiva sits on a deerskin, smeared with ashes, signaling austerity to those who can&#39;t yet follow stricter Vaiṣṇava norms. Sometimes spiritual leaders take on rough externals to meet people where they are.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where do I judge a teacher or friend by externals without understanding the audience they serve?</li><li>Which &#39;ashes&#39; am I wearing as a form of austerity that genuinely supports my practice?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -8164,7 +7780,6 @@ Tāpasa refers to Śaivites. Sanhyabhra-rucā means reddish.</div>
 
     <div class="fc-translation" data-sec="translation">He was seated on a straw mattress and speaking to all present, including the great sage Nārada, to whom he specifically spoke about the Absolute Truth.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -8203,18 +7818,6 @@ He was sitting on a mat used by ascetics (bṛsyām).  Brahma means Vedas.  Prev
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Śiva sits on a straw mat and speaks the Absolute Truth to Nārada. The most exalted teaching often happens on the simplest furniture; truth doesn&#39;t need a throne to be itself.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Am I waiting for the right setting before I share or receive something important?</li><li>When did a great conversation happen for me on a &#39;straw mat&#39; — and what made it possible?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -8392,7 +7995,6 @@ He was sitting on a mat used by ascetics (bṛsyām).  Brahma means Vedas.  Prev
 
     <div class="fc-translation" data-sec="translation">His left leg was placed on his right thigh, and his left hand was placed on his left thigh. [This sitting posture is called vīrāsana.] In his right hand he held rudrākṣa beads, and his finger was in the mode of argument.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -8448,18 +8050,6 @@ Reciters of mantra define the tarka-mudrā as placing the tips of the forefinger
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Śiva&#39;s vīrāsana — leg crossed, rudrākṣa in hand, finger in argument — shows a body composed for sustained inquiry. The posture you take literally shapes the kind of thinking you can do.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What physical posture do I take for my most important inner work, and is it serving me?</li><li>When did my body&#39;s slump or alertness most clearly affect the quality of my reflection?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -8657,7 +8247,6 @@ Reciters of mantra define the tarka-mudrā as placing the tips of the forefinger
 
     <div class="fc-translation" data-sec="translation">All the sages and demigods, headed by Indra, offered their respectful obeisances unto Lord Śiva with folded hands. Lord Śiva was dressed in saffron garments and absorbed in trance, thus appearing to be the foremost of all sages.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -8717,18 +8306,6 @@ The wise know that direct contact with the Lord, which includes the happiness of
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Indra and the demigods bow with folded hands while Śiva sits absorbed in trance. Real worship begins with the humility of folded hands, even before any words are spoken.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where in my day do I literally or figuratively fold my hands before something larger?</li><li>How does my posture in approaching a teacher or scripture differ from my posture with a peer?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -8935,7 +8512,6 @@ The wise know that direct contact with the Lord, which includes the happiness of
 
     <div class="fc-translation" data-sec="translation">Lord Śiva’s lotus feet were worshiped by both the demigods and demons, but still, in spite of his exalted position, as soon as he saw that Lord Brahmā was there among all the other demigods, he immediately stood up and offered him respect by bowing down and touching his lotus feet, just as Vāmanadeva offered His respectful obeisances to Kaśyapa Muni.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -8984,18 +8560,6 @@ The wise know that direct contact with the Lord, which includes the happiness of
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Despite being worshiped by demigods and demons, Śiva stands up and touches Brahmā&#39;s feet when he arrives. Greatness is shown by who you choose to honor, not by who honors you.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Whom should I be the one to stand up for and honor, regardless of my own perceived rank?</li><li>Where has my position kept me seated when I should have risen?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -9211,7 +8775,6 @@ The wise know that direct contact with the Lord, which includes the happiness of
 
     <div class="fc-translation" data-sec="translation">All the sages who were sitting with Lord Śiva, such as Nārada and others, also offered their respectful obeisances to Lord Brahmā. After being so worshiped, Lord Brahmā, smiling, began to speak to Lord Śiva.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -9254,18 +8817,6 @@ Those who were with Śiva, such as Nārada, along with the sages, offered respec
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Brahmā smiled as he began to address Śiva — sensing his grief and volatility, he opened gently. How you start a hard conversation often decides how it ends; a smile is a load-bearing structure.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which hard conversation am I avoiding because I haven&#39;t worked out how to begin it kindly?</li><li>Where could a small softening in tone change everything about how my words land today?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -9477,7 +9028,6 @@ Those who were with Śiva, such as Nārada, along with the sages, offered respec
 
     <div class="fc-translation" data-sec="translation">Lord Brahmā said: My dear Lord Śiva, I know that you are the controller of the entire material manifestation, the combination father and mother of the cosmic manifestation, and the Supreme Brahman beyond the cosmic manifestation as well. I know you in that way.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -9521,18 +9071,6 @@ Though you offer respects to me, you are more powerful since you are one with th
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Brahmā addresses Śiva as controller, father-mother, and Supreme Brahman beyond the cosmos. Begin by truly recognizing the other&#39;s stature; reconciliation flows from seeing them clearly, not from flattery.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Whose true stature have I been minimizing in a conflict, and how would honest recognition change my approach?</li><li>What is the difference between flattery and clear acknowledgment in my own speech?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -9717,7 +9255,6 @@ Though you offer respects to me, you are more powerful since you are one with th
 
     <div class="fc-translation" data-sec="translation">My dear lord, you create this cosmic manifestation, maintain it, and annihilate it by expansion of your personality, exactly as a spider creates, maintains and winds up its web.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -9771,18 +9308,6 @@ Instead of svarūpayoḥ the word svāṁśayor is sometimes seen.  The genitive
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Like a spider with its web, Śiva spins, sustains and withdraws creation from his own being. You too create, maintain and dismantle your worlds — relationships, projects, identities — from yourself; own that responsibility.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which &#39;web&#39; am I currently maintaining out of habit, that I have the power to also withdraw?</li><li>What am I about to spin into existence, and have I considered how I&#39;ll eventually withdraw it?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -10016,7 +9541,6 @@ Instead of svarūpayoḥ the word svāṁśayor is sometimes seen.  The genitive
 
     <div class="fc-translation" data-sec="translation">My dear lord, Your Lordship has introduced the system of sacrifices through the agency of Dakṣa, and thus one may derive the benefits of religious activities and economic development. Under your regulative principles, the institution of the four varṇās and āśramas is respected. The brāhmaṇas therefore vow to follow this system strictly.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -10070,18 +9594,6 @@ O producer of dharma and artha!  You created sacrifice, like weaving of cloth, t
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Through Dakṣa, Śiva established sacrifices and the varṇa-āśrama order. Structures and roles aren&#39;t bureaucratic burdens; they&#39;re scaffolds the divine uses to keep society moving toward dharma.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which structure or role in my life have I dismissed that&#39;s actually holding my dharma steady?</li><li>Where am I performing my duty mechanically rather than as part of a divinely-supported order?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -10315,7 +9827,6 @@ O producer of dharma and artha!  You created sacrifice, like weaving of cloth, t
 
     <div class="fc-translation" data-sec="translation">O most auspicious lord, you have ordained the heavenly planets, the spiritual Vaikuṇṭha planets and the impersonal Brahman sphere as the respective destinations of the performers of auspicious activities. Similarly, for others, who are miscreants, you have destined different kinds of hells which are horrible and ghastly. Yet sometimes it is found that their destinations are just the opposite. It is very difficult to ascertain the cause of this.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -10389,18 +9900,6 @@ You give the results of karma.  O auspicious lord!  You extend Svarga to the per
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Brahmā notes that destinations sometimes don&#39;t match deeds — the wicked seem to flourish, the pious to suffer. The arithmetic of karma is real but rarely visible in a single life; don&#39;t lose faith because the ledger looks crooked today.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where am I demoralized by a result that contradicts the effort, and how can I lengthen my time-horizon?</li><li>What would I do differently if I stopped expecting visible justice to arrive on my preferred schedule?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -10634,7 +10133,6 @@ You give the results of karma.  O auspicious lord!  You extend Svarga to the per
 
     <div class="fc-translation" data-sec="translation">My dear Lord, devotees who have fully dedicated their lives unto your lotus feet certainly observe your presence as Paramātmā in each and every being, and as such they do not differentiate between one living being and another. Such persons treat all living entities equally. They never become overwhelmed by anger like animals, who can see nothing without differentiation.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -10708,18 +10206,6 @@ You give the results of karma.  O auspicious lord!  You extend Svarga to the per
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Devotees see the Lord as Paramātmā in every being and so don&#39;t differentiate. They never get overwhelmed by anger like animals seeing without discrimination — actually, they see more, not less, and from that fullness they refuse to discriminate.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Whom am I currently &#39;animal-seeing&#39; — only as obstacle, only as resource — instead of as Paramātmā&#39;s residence?</li><li>Where would my anger dissolve if I genuinely saw the Lord seated inside the person provoking me?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -10980,7 +10466,6 @@ You give the results of karma.  O auspicious lord!  You extend Svarga to the per
 
     <div class="fc-translation" data-sec="translation">Persons who observe everything with differentiation, who are simply attached to fruitive activities, who are mean-minded, who are always pained to see the flourishing condition of others and who thus give distress to them by uttering harsh and piercing words have already been killed by providence. Thus there is no need for them to be killed again by an exalted personality like you.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -11027,18 +10512,6 @@ You give the results of karma.  O auspicious lord!  You extend Svarga to the per
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Envious, mean-minded people who can&#39;t bear others&#39; flourishing have already been killed by providence; no further punishment from a saint is needed. Don&#39;t waste your energy avenging yourself on those whose own envy is already eating them.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Whom am I planning to &#39;correct&#39; who is already suffering the natural consequences of their attitude?</li><li>Where is my own envy quietly killing me before any external force needs to?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -11254,7 +10727,6 @@ You give the results of karma.  O auspicious lord!  You extend Svarga to the per
 
     <div class="fc-translation" data-sec="translation">My dear lord, if in some places materialists, who are already bewildered by the insurmountable illusory energy of the Supreme Godhead, sometimes commit offenses, a saintly person, with compassion, does not take this seriously. Knowing that they commit offenses because they are overpowered by the illusory energy, he does not show his prowess to counteract them.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -11323,18 +10795,6 @@ The devotees, being tolerant of everything, tolerate suffering caused by others.
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">When the bewildered offend you, a saintly person, knowing they&#39;re overpowered by māyā, doesn&#39;t unleash their power in retaliation. Restraint in the face of others&#39; confusion is one of the marks of a real sādhu.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Whose offense against me can I reframe as the action of someone confused rather than malicious?</li><li>Where am I withholding my full power as a discipline of compassion rather than weakness?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -11559,7 +11019,6 @@ The devotees, being tolerant of everything, tolerate suffering caused by others.
 
     <div class="fc-translation" data-sec="translation">My dear lord, you are never bewildered by the formidable influence of the illusory energy of the Supreme Personality of Godhead. Therefore you are omniscient and should be merciful and compassionate toward those who are bewildered by the same illusory energy and are very much attached to fruitive activities.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -11617,18 +11076,6 @@ You, the best of devotees, should not become angry.  You are not under the contr
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Brahmā appeals to Śiva to be merciful precisely because he is unbewildered by māyā. Those who see clearly carry a greater obligation toward those who cannot; clarity isn&#39;t a privilege, it&#39;s a duty.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>In which arena do I see more clearly than those around me — and am I using that clarity to help or to judge?</li><li>Whose bewilderment am I currently scorning that I should be patiently serving instead?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -11872,7 +11319,6 @@ You, the best of devotees, should not become angry.  You are not under the contr
     <div class="fc-translation" data-sec="translation">My dear Lord Śiva, you are a shareholder of a portion of the sacrifice, and you are the giver of the result. The bad priests did not deliver your share, and therefore you destroyed everything, and the sacrifice remains unfinished. Now you can do the needful and take your rightful share.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -11928,18 +11374,6 @@ What should be done now?   O Śiva (mano)!  Revive that sacrifice of Dakṣa whi
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Brahmā acknowledges that Śiva was denied his rightful share; that&#39;s why the sacrifice imploded. When you&#39;ve been excluded from what is legitimately yours, the situation cannot heal until that share is restored.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Whom in my circle have I quietly excluded from a share they deserve — credit, decision-making, presence?</li><li>Where am I refusing to name aloud the share I&#39;ve been denied, and how is that silence prolonging the wound?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -12127,7 +11561,6 @@ What should be done now?   O Śiva (mano)!  Revive that sacrifice of Dakṣa whi
     <div class="fc-translation" data-sec="translation">My dear lord, by your mercy the performer of the sacrifice [King Dakṣa] may get back his life, Bhaga may get back his eyes, Bhṛgu his mustache, and Pūṣā his teeth.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -12146,18 +11579,6 @@ What should be done now?   O Śiva (mano)!  Revive that sacrifice of Dakṣa whi
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Brahmā pleads for Dakṣa&#39;s life, Bhaga&#39;s eyes, Bhṛgu&#39;s mustache, Pūṣā&#39;s teeth — for each victim, a specific restoration. Real reconciliation is granular; it names each wound and asks for each repair, not a vague &#39;let&#39;s move on.&#39;</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which specific losses caused by my actions can I name and offer to repair, one by one?</li><li>Where am I asking for blanket forgiveness when I owe a list of detailed amends?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -12327,7 +11748,6 @@ What should be done now?   O Śiva (mano)!  Revive that sacrifice of Dakṣa whi
     <div class="fc-translation" data-sec="translation">O Lord Śiva, may the demigods and the priests whose limbs have been broken by your soldiers recover from the injuries by your grace.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -12348,18 +11768,6 @@ O Śiva (manyu)!  Anāturam means “healed.”</div>
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Brahmā asks Śiva to heal those whose limbs his own soldiers broke. The mature step after victory is not gloating but personally tending to the wounded on the losing side.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Whom have I &#39;won against&#39; that I now have the opportunity — and duty — to help recover?</li><li>What does it cost me to extend healing to someone my anger genuinely hurt?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -12571,7 +11979,6 @@ O Śiva (manyu)!  Anāturam means “healed.”</div>
 
     <div class="fc-translation" data-sec="translation">O destroyer of the sacrifice, please take your portion of the sacrifice and let the sacrifice be completed by your grace.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -12616,18 +12023,6 @@ Restoration of the Sacrifice</div>
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Brahmā asks Śiva to take his portion so the sacrifice can be completed. Our work — daily, professional, devotional — is only complete when every legitimate stakeholder receives what is theirs.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which &#39;sacrifice&#39; in my life is stuck incomplete because someone hasn&#39;t been given their portion?</li><li>What action today would actually finish what I keep telling myself is &#39;almost done&#39;?</li></ul>
-
-
-
-
-
-    </section>
 
 
 

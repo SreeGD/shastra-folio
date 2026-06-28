@@ -31,7 +31,7 @@
 <body class="has-sidebar">
 <header class="fc-site-header">
     <button type="button" class="fc-mobile-trigger fc-mobile-trigger-left" data-overlay="left" aria-label="Open settings drawer">⚙</button>
-<a class="fc-brand" href="../../../">FolioCorpus<span class="fc-sub">Bhakti-rasāmṛta-sindhu</span></a>
+    <a class="fc-brand" href="../../../">FolioCorpus<span class="fc-sub">Bhagavad-gītā</span></a>
     <nav class="fc-site-nav">
         <a href="../../../">Home</a>
         <a href="../../../bg/">Bhagavad-gītā</a>
@@ -46,8 +46,8 @@
     <button class="fc-sb-collapse" type="button" data-sb="left" title="Collapse left sidebar" aria-label="Collapse"></button>
 
     <div class="fc-sb-body">
-        <details class="fc-sb-section" data-sbsec="reading" open>
-            <summary class="fc-sb-title">Reading</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Reading</div>
             <div class="fc-sb-sub">Theme</div>
             <div class="fc-segmented" data-setting="theme">
                 <button type="button" data-val="light">Light</button>
@@ -73,10 +73,10 @@
                 <button type="button" data-val="single">Single</button>
                 <button type="button" data-val="side">Side-by-side</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="display" open>
-            <summary class="fc-sb-title">Display</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Display</div>
             <div class="fc-sb-grid">
                 <label><input type="checkbox" data-section="devanagari" checked> Devanāgarī</label>
                 <label><input type="checkbox" data-section="iast" checked> IAST transliteration</label>
@@ -98,10 +98,33 @@
                 <button type="button" data-action="expand-all">Expand all</button>
                 <button type="button" data-action="collapse-all">Collapse all</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="tools" open>
-            <summary class="fc-sb-title">Tools</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Find your starting point</div>
+            <div class="fc-persona-links">
+                <a class="fc-persona-link" href="../../../daily/">🌅 Daily (one value a week)</a>
+                <a class="fc-persona-link" href="../../../householder/">🏠 Householder (family & work)</a>
+                <a class="fc-persona-link" href="../../../parenting/">👨‍👩‍👧 Parenting (stories for kids)</a>
+                <a class="fc-persona-link" href="../../../themes/">📚 All themes</a>
+                <a class="fc-persona-link" href="../../../values/" style="background:#F0F6F2;border-left-color:#1F4632;">ॐ Vedic Value System ↗</a>
+                <a class="fc-persona-link" href="../../../vidya/" style="background:#FBF6E4;border-left-color:#C8860B;">📚 Vidyā Karaṇa (kids, multi-lang) ↗</a>
+            </div>
+        </div>
+
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Audience</div>
+            <div class="fc-audience-filter">
+                <label><input type="radio" name="fc-audience" value="all" checked> All levels</label>
+                <label><input type="radio" name="fc-audience" value="primary"> Primary (children)</label>
+                <label><input type="radio" name="fc-audience" value="middle"> Middle (teens)</label>
+                <label><input type="radio" name="fc-audience" value="senior"> Senior (adults)</label>
+                <label><input type="radio" name="fc-audience" value="college"> College / scholar</label>
+            </div>
+        </div>
+
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Tools</div>
             <div class="fc-sb-tools">
                 <button type="button" id="fc-presentation-toggle" class="fc-tool-btn"><span>🖥 Presentation</span><kbd class="fc-kbd">F</kbd></button>
                 <button type="button" id="fc-pen-toggle" class="fc-tool-btn"><span>✏️ Pen mode</span><kbd class="fc-kbd">P</kbd></button>
@@ -116,10 +139,26 @@
                 <button type="button" id="fc-clear-highlights" class="fc-tool-btn">🩷 Clear highlights (page)</button>
                 <button type="button" id="fc-notes-modal-open" class="fc-tool-btn">📓 My annotations</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="progress" id="fc-progress-section" open>
-            <summary class="fc-sb-title">Progress</summary>
+        <div class="fc-sb-section" id="fc-tts-controls" hidden>
+            <div class="fc-sb-title">
+                Read-aloud
+                <label class="fc-tts-master">
+                    <input type="checkbox" id="fc-tts-enabled" checked>
+                    <span class="fc-tts-master-label">On</span>
+                </label>
+            </div>
+            <div class="fc-tts-inner">
+                <div class="fc-sb-sub">Voice</div>
+                <select id="fc-tts-voice" class="fc-tts-select" aria-label="TTS voice"></select>
+                <div class="fc-sb-sub">Rate <span class="fc-tts-rate-val">1.0×</span></div>
+                <input type="range" id="fc-tts-rate" min="0.5" max="2" step="0.1" value="1" class="fc-tts-rate" aria-label="Reading rate">
+            </div>
+        </div>
+
+        <div class="fc-sb-section" id="fc-progress-section">
+            <div class="fc-sb-title">Progress</div>
             <div class="fc-progress-row">
                 <span class="fc-progress-num" id="fc-progress-num">0</span>
                 <span class="fc-progress-divider">/</span>
@@ -134,29 +173,29 @@
                 <span class="fc-progress-spacer"></span>
                 <button type="button" class="fc-progress-reset" id="fc-progress-reset" title="Reset progress">↺</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="bookmarks" open>
-            <summary class="fc-sb-title">Bookmarks <span class="fc-sb-count" id="fc-bookmarks-count">0</span></summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Bookmarks <span class="fc-sb-count" id="fc-bookmarks-count">0</span></div>
             <ul class="fc-bookmark-list" id="fc-bookmarks-list">
                 <li class="fc-sb-empty">No bookmarks yet — click ☆ on any verse.</li>
             </ul>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="notes" open>
-            <summary class="fc-sb-title">Notes <span class="fc-sb-count" id="fc-notes-count">0</span></summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Notes <span class="fc-sb-count" id="fc-notes-count">0</span></div>
             <ul class="fc-bookmark-list" id="fc-notes-list">
                 <li class="fc-sb-empty">No notes yet — open any verse and write in the 📝 block.</li>
             </ul>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="export">
-            <summary class="fc-sb-title">Export</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Export</div>
             <div class="fc-sb-tools">
                 <button type="button" id="fc-export-md" class="fc-tool-btn">📥 Download Markdown</button>
                 <button type="button" id="fc-export-json" class="fc-tool-btn">💾 Download JSON backup</button>
             </div>
-        </details>
+        </div>
     </div>
 </aside>    <main class="fc-container">
 <nav class="fc-breadcrumbs">
@@ -483,7 +522,6 @@
 
     <div class="fc-translation" data-sec="translation">Hereafter, the thirty-three vyabhicāri-bhāvas will be described. They are called vyabhicāri-bhāvas since they move (caranti) against the sthāyi-bhāva, while assisting it in a distinctive way (viśeṣena abhimukhyena)</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -545,7 +583,6 @@ There are some bodily symptoms which express overwhelming ecstatic love (vyabhic
 
 
     <div class="fc-translation" data-sec="translation">The vyabhicāri-bhāvas reveal themselves by words, by eye brows and other bodily parts and by external actions (anubhāvas) which arise from overwhelming emotions (sattva). [Note: The section on sāttvika-bhāvas explained that sāttvika-bhāvas arise solely from deep emotions and anubhāvas arise from deep emotions with the addition of intellect as well. In the description of the various vyabhicāri-bhāvas, some of them are described as producing sāttvika-bhāvas such as tears or hairs standing on end, and some produce anubhāvas such as dancing. That would mean that a vyabhicāri-bhāva produces sattva (deep emotion) which then produces a sāttvika-bhāva. The external symptoms of sāttvika-bhāvas as sometimes called the anubhāva aspect of the sāttvika-bhāva.] Since they set in motion (saṣcārayanti) the course of the sthāyi-bhāva, they are called saṣcāri-bhāvas.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -621,7 +658,6 @@ There are some bodily symptoms which express overwhelming ecstatic love (vyabhic
 
 
     <div class="fc-translation" data-sec="translation">All the vyabhicāri-bhāvas, rising and falling like waves in the sweet ocean of the sthāyi-bhāva, increase the sthāyi-bhāva and then merge into the sthāyi-bhāva.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -714,7 +750,6 @@ There are some bodily symptoms which express overwhelming ecstatic love (vyabhic
 
     <div class="fc-translation" data-sec="translation">The vyabhicāri-bhāvas are as follows: self-disgust (nirveda), remorse (viṣāda), thinking oneself unqualified (dainyam or dīnatā), debility (glāni or mlāni), fatigue (śrama), rapture (mada), pride (garva), apprehension (śaṅkā), sudden fear (trāsa), confusion of the mind (āvega), insanity (unmāda), epilepsy (apasmṛti), sickness (vyādhi), loss of internal awareness (moha), death-like symptoms (mṛti), sloth (ālasyam), indecision (jāḍyam), shame (vrīḍā), concealment (avahitthā), remembrance (smṛti), conjecture (vitarka), pondering (cintā), finding meaning through scriptural reference (mati), steadiness (dhṛti), joy (harṣa), impatience (autsukyam), ferocity (augrya), indignation (amarṣa), fault-finding (asūyā), insolence (cāpalya), sleep (nidrā), dreaming (supti), and enlightenment (bodha).</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -792,7 +827,6 @@ There are some bodily symptoms which express overwhelming ecstatic love (vyabhic
 
 
     <div class="fc-translation" data-sec="translation">The vyabhicāri-bhāvas are as follows: self-disgust (nirveda), remorse (viṣāda), thinking oneself unqualified (dainyam or dīnatā), debility (glāni or mlāni), fatigue (śrama), rapture (mada), pride (garva), apprehension (śaṅkā), sudden fear (trāsa), confusion of the mind (āvega), insanity (unmāda), epilepsy (apasmṛti), sickness (vyādhi), loss of internal awareness (moha), death-like symptoms (mṛti), sloth (ālasyam), indecision (jāḍyam), shame (vrīḍā), concealment (avahitthā), remembrance (smṛti), conjecture (vitarka), pondering (cintā), finding meaning through scriptural reference (mati), steadiness (dhṛti), joy (harṣa), impatience (autsukyam), ferocity (augrya), indignation (amarṣa), fault-finding (asūyā), insolence (cāpalya), sleep (nidrā), dreaming (supti), and enlightenment (bodha).</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -872,7 +906,6 @@ There are some bodily symptoms which express overwhelming ecstatic love (vyabhic
 
     <div class="fc-translation" data-sec="translation">The vyabhicāri-bhāvas are as follows: self-disgust (nirveda), remorse (viṣāda), thinking oneself unqualified (dainyam or dīnatā), debility (glāni or mlāni), fatigue (śrama), rapture (mada), pride (garva), apprehension (śaṅkā), sudden fear (trāsa), confusion of the mind (āvega), insanity (unmāda), epilepsy (apasmṛti), sickness (vyādhi), loss of internal awareness (moha), death-like symptoms (mṛti), sloth (ālasyam), indecision (jāḍyam), shame (vrīḍā), concealment (avahitthā), remembrance (smṛti), conjecture (vitarka), pondering (cintā), finding meaning through scriptural reference (mati), steadiness (dhṛti), joy (harṣa), impatience (autsukyam), ferocity (augrya), indignation (amarṣa), fault-finding (asūyā), insolence (cāpalya), sleep (nidrā), dreaming (supti), and enlightenment (bodha).</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -942,7 +975,6 @@ There are some bodily symptoms which express overwhelming ecstatic love (vyabhic
 
 
     <div class="fc-translation" data-sec="translation">Self-disgust arising from great sorrow, separation, hatred or worrying about doing what should not be done, or not doing what should be done, is called nirveda. In this state worry, tears, change of color, feeling of lack of qualities (dainyam) and sighing occur.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -1017,7 +1049,6 @@ When one is forced to act in a way which is forbidden, or to refrain from acting
 
 
     <div class="fc-translation" data-sec="translation">From great sorrow: O Yaśodā! What is to be gained from continuing to maintain this sinful, unfortunate body? Come! We will immediately offer our bodies in the lake of Kāliya filled with the fire of poison.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -1105,7 +1136,6 @@ When one is forced to act in a way which is forbidden, or to refrain from acting
 
     <div class="fc-translation" data-sec="translation">From separation: Without the presence of sweetness of Mādhava, Vṛndāvana became withered, without charm and devoid of flowers. How does this unfortunate, strong bee continue to live?</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1178,7 +1208,6 @@ When one is forced to act in a way which is forbidden, or to refrain from acting
 
 
     <div class="fc-translation" data-sec="translation">From Dāna-keli-kaumudī: O friend! Without hearing the words of Mādhava, my ears may as well become deaf. Without seeing the form of Mādhava, my eyes may as well become blind.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -1257,7 +1286,6 @@ When one is forced to act in a way which is forbidden, or to refrain from acting
 
 
     <div class="fc-translation" data-sec="translation">From anger, in the words of Satyabhāmā, Hari-vaṁśa: O Kṛṣṇa! If Nārada is praising Rukmiṇī in front of You, he is calling upon her a misfortune similar to mine.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -1345,7 +1373,6 @@ When one is forced to act in a way which is forbidden, or to refrain from acting
 
     <div class="fc-translation" data-sec="translation">Through discrimination, from the Tenth Canto: I have wasted all this time, O unconquerable one, becoming more and more intoxicated by my domain and opulence as an earthly king. Misidentifying the mortal body as the self, becoming attached to children, wives, treasury and land, I suffered endless anxiety. SB 10.51.47</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1406,7 +1433,6 @@ When one is forced to act in a way which is forbidden, or to refrain from acting
 
 
     <div class="fc-translation" data-sec="translation">Though it is inauspicious, Bharata Muni has mentioned nirveda as the first vyabhicāri-bhāva, since it is the sthāyi-bhāva for śānta-rasa. This is the opinion of some persons. [Note: This is mentioned again in 3.1.50, in the discussion of śānta-rasa.]</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -1494,7 +1520,6 @@ When one is forced to act in a way which is forbidden, or to refrain from acting
 
     <div class="fc-translation" data-sec="translation">Remorse: Remorse or despair arising from failure to attain one’s desired object, from failure to accomplish a task, from occurrence of a disaster, or from committing an offense is called viṣāda. In this state, there is worry, search for a means of accomplishing, search for assistance, weeping, moaning, heavy breathing, change of color and drying of the mouth.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1570,7 +1595,6 @@ In this condition of lamentation one becomes questioning, thoughtful, tearful, r
 
     <div class="fc-translation" data-sec="translation">Remorse: Remorse or despair arising from failure to attain one’s desired object, from failure to accomplish a task, from occurrence of a disaster, or from committing an offense is called viṣāda. In this state, there is worry, search for a means of accomplishing, search for assistance, weeping, moaning, heavy breathing, change of color and drying of the mouth.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1645,7 +1669,6 @@ In this condition of lamentation one becomes questioning, thoughtful, tearful, r
 
 
     <div class="fc-translation" data-sec="translation">From not attaining one’s desired object: O Kṛṣṇa, killer of the Agha demon! My body is afflicted with age, my words are uncontrolled and my mind is without memory power. What to speak of attaining the moon of bliss on seeing You, I have not even attained the opportunity of desiring to worship You!</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -1733,7 +1756,6 @@ In this condition of lamentation one becomes questioning, thoughtful, tearful, r
 
     <div class="fc-translation" data-sec="translation">From failure to accomplish an action: Today in a dream I was picking flowers and very carefully made a garland out of them. But just when I thought of offering it to the heart of Mukunda, my sleep broke.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1807,7 +1829,6 @@ In this condition of lamentation one becomes questioning, thoughtful, tearful, r
 
     <div class="fc-translation" data-sec="translation">Remorse arising from impending disaster: I am so unfortunate! Why did I take my son to Mathurā? Why did I not forcibly keep Him in my house? In Mathurā the elephant desires to afflict my son just as Rāhu desires to afflict the moon.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1880,7 +1901,6 @@ In this condition of lamentation one becomes questioning, thoughtful, tearful, r
 
 
     <div class="fc-translation" data-sec="translation">Remorse arising from committing an offense, from the Tenth Canto: My Lord, just see my uncivilized impudence! To test Your power, I tried to extend my illusory potency to cover You, the unlimited and primeval Supersoul, who bewilder even the masters of illusion. What am I compared to You? I am just like a small spark in the presence of a great fire. SB 10.14.9</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -1967,7 +1987,6 @@ If that is the case, what is the fault in doing so? Brahmā then explains. “To
     <div class="fc-translation" data-sec="translation">Another example or remorse arising from committing offense: Having stolen the Syamantaka jewel, I have fallen into the mouth of terrible hell. Having fallen in the Vaitaraṇī River, what boat should I use to cross over it?</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -2037,7 +2056,6 @@ If that is the case, what is the fault in doing so? Brahmā then explains. “To
 
 
     <div class="fc-translation" data-sec="translation">Thinking oneself a low creature because of sorrow, fear or offense is called dainyam or dīnatā. In this state there are words of flattery, feebleness of the heart, impurity of the heart, thinking various thoughts, and immobility of the limbs.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -2126,7 +2144,6 @@ A sense of weakness caused by distress, fear or offensiveness is called humility
 
     <div class="fc-translation" data-sec="translation">Humility arising from sorrow, from the Tenth Canto: For so long I have been pained by troubles in this world and have been burning with lamentation. My six enemies are never satiated, and I can find no peace. Therefore, O giver of shelter, O Supreme Soul, please protect me! O Lord, in the midst of danger I have by good fortune approached Your lotus feet, which are the truth and which thus make one fearless and free of sorrow. SB 10.51.57</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2191,7 +2208,6 @@ A sense of weakness caused by distress, fear or offensiveness is called humility
 
 
     <div class="fc-translation" data-sec="translation">Lowness arising from fear, from the First Canto: O my Lord, You are all-powerful. A fiery iron arrow is coming towards me fast. My Lord, let it burn me personally, if You so desire, but please do not let it burn and abort my embryo. Please do me this favor, my Lord. SB 1.8.10</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -2279,7 +2295,6 @@ A sense of weakness caused by distress, fear or offensiveness is called humility
 
     <div class="fc-translation" data-sec="translation">Lowness arising from committing an offense, from the Tenth Canto: Therefore, O infallible Lord, kindly excuse my offenses. I have taken birth in the mode of passion and am therefore simply foolish, presuming myself a controller independent of Your Lordship. My eyes are blinded by the darkness of ignorance, which causes me to think of myself as the unborn creator of the universe. But please consider that I am Your servant and therefore worthy of Your compassion. SB 10.14.10</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2358,7 +2373,6 @@ A sense of weakness caused by distress, fear or offensiveness is called humility
 
     <div class="fc-translation" data-sec="translation">The word adya in duḥkha-trāsāparādhādyair (verse 21) indicates that dainyam also arises from shame. This is illustrated in the Bhāgavatam: Dear Kṛṣṇa, don’t be unfair! We know that You are the respectable son of Nanda and that You are honored by everyone in Vraja. You are also very dear to us. Please give us back our clothes. We are shivering in the cold water. SB 10.22.14</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2427,7 +2441,6 @@ A sense of weakness caused by distress, fear or offensiveness is called humility
 
 
     <div class="fc-translation" data-sec="translation">Ojas, whose ruling deity is the moon, produces strength and nourishment in the body. When it decreases by physical exertion, mental anxiety or the sexual act, the weakened state is called glāni or mlāni. In the state of glāni or languishing there is trembling, indecision, change of color, becoming thin and throwing glances here and there.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -2516,7 +2529,6 @@ When a person blames himself for committing an inappropriate action, his feeling
 
     <div class="fc-translation" data-sec="translation">Glāni arising from physical exertion: One time Rādhā was churning yogurt for Kṛṣṇa. At that time here jewel studded bracelet on her hand began to shake. Her lips began to sing the glories of Kṛṣṇa, living in Vraja. In fear of her elders, her eyes began to move about. Churning the yoghurt in this way, she became extremely tired, and could not move her limbs.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2590,7 +2602,6 @@ When a person blames himself for committing an inappropriate action, his feeling
 
     <div class="fc-translation" data-sec="translation">Another example: In order to string an incomparable garland for Kṛṣṇa, doe-eyed Rādhā went into an inaccessible forest. While picking the beautiful flowers, she became very weak for a few moments, due to exhaustion.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2663,7 +2674,6 @@ When a person blames himself for committing an inappropriate action, his feeling
 
 
     <div class="fc-translation" data-sec="translation">Fatigue due to mental anxieties: Because of the summer heat, the lake’s water dries up and becomes devoid of lotuses and water birds. Mādhava! In a similar way, in separation, Your mother Yaśodā, devoid of happiness, has become weakened. Her soul has departed and her body is withering away.</div>
-
 
 
     <section class="fc-section" data-sec="gaudiya">
@@ -2744,7 +2754,6 @@ When a person blames himself for committing an inappropriate action, his feeling
 
     <div class="fc-translation" data-sec="translation">Fatigue arising from amorous actions, from Rasa-sudhākara: At the conclusion of amorous activities, Kṛṣṇa raised Rādhā very carefully from the bed. Rādhā then held His hand and came to the veranda of the house shining with moonlight.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2809,7 +2818,6 @@ When a person blames himself for committing an inappropriate action, his feeling
 
 
     <div class="fc-translation" data-sec="translation">Fatigue arising from losing the way, dancing or amorous activities is called śrama. In this state, sleep, perspiration, rubbing the body, yawning and heavy breathing appear.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -2885,7 +2893,6 @@ One feels fatigue after walking a long distance, after dancing and after sexual 
 
     <div class="fc-translation" data-sec="translation">Fatigue from losing the way: When Kṛṣṇa offended his mother and fled away, she pursued her son in Vraja. Her hair become unbound and she began to perspire.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2959,7 +2966,6 @@ One feels fatigue after walking a long distance, after dancing and after sexual 
 
     <div class="fc-translation" data-sec="translation">From dancing: At a festival performed for Kṛṣṇa, Baladeva, surrounded by his singing friends on the bank of the Yamunā River, began to dance, moving his body about while his pearl necklace shook. His body became covered in perspiration.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3024,7 +3030,6 @@ One feels fatigue after walking a long distance, after dancing and after sexual 
 
 
     <div class="fc-translation" data-sec="translation">From amorous actions, from the Tenth Canto: Seeing that the gopīs were fatigued from conjugal enjoyment, my dear King, merciful Kṛṣṇa lovingly wiped their faces with His comforting hand. SB 10.33.20</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -3094,7 +3099,6 @@ One feels fatigue after walking a long distance, after dancing and after sexual 
 
 
     <div class="fc-translation" data-sec="translation">Rapture which destroys all sense of discriminating power is called mada. There are two types: arising from intoxication and arising from extreme transformations due to love. In this state there is stumbling while walking, uncoordinated movement of the limbs, and uncoordinated speaking. The eyes roll, and the face becomes red.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -3170,7 +3174,6 @@ When one becomes arrogant with false prestige due to drinking intoxicants or bei
 
     <div class="fc-translation" data-sec="translation">Rapture arising from intoxication, from Lalita-mādhava: Baladeva arrived with disheveled hair, fully intoxicated with liquor. He began to shout, “The ant-like kings, being defeated, are hiding in some hole. I will smash the whole universe. O Indra, plaything of Śacī! Why are you laughing?”</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3244,7 +3247,6 @@ When one becomes arrogant with false prestige due to drinking intoxicants or bei
 
     <div class="fc-translation" data-sec="translation">Another example of intoxication from a traditional work: “O Kṛṣṇa! Tell me immediately! Is the earth swerving? Is the moon wobbling? O Yadus, why are you laughing? Give me some wine in a glass!” In this way sitting in his house, Balarāma stuttered while speaking. May that Balarāma give you blessings!</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3306,7 +3308,6 @@ When one becomes arrogant with false prestige due to drinking intoxicants or bei
 
     <div class="fc-translation" data-sec="translation">When a person becomes intoxicated with liquor, the superior person falls asleep. The second best person laughs and sings. The lowest person shouts, uses rough words and weeps.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3367,7 +3368,6 @@ When one becomes arrogant with false prestige due to drinking intoxicants or bei
 
 
     <div class="fc-translation" data-sec="translation">There are three types of intoxication according to the stage of intoxication. However, in this work these will not be discussed as they are not very useful to the topic.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -3442,7 +3442,6 @@ When one becomes arrogant with false prestige due to drinking intoxicants or bei
 
     <div class="fc-translation" data-sec="translation">Rapture arising from love: O Vṛndā! See this astonishing thing! Rādhā, in the rapture of new love, gazing at Kṛṣṇa in front of her, sometimes frowns, sometimes wanders about, sometimes laughs, sometimes weeps, sometimes covers her face, sometimes prattles and sometimes repeatedly offers respects to her friends.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3508,7 +3507,6 @@ When one becomes arrogant with false prestige due to drinking intoxicants or bei
 
     <div class="fc-translation" data-sec="translation">Treating others with contempt due to one’s own good fortune, due to youthful beauty, due to one’s good qualities, due to taking shelter of the Lord, or due to attaining one’s object of love, is called garva or haughtiness.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3570,7 +3568,6 @@ Expressions of ecstatic love in pride may be the result of excessive wealth, exq
 
 
     <div class="fc-translation" data-sec="translation">In this state there are joking words, not giving answers by one’s own choice, showing off one’s body, concealing one’s intentions and not hearing others’ words.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -3650,7 +3647,6 @@ Expressions of ecstatic love in pride may be the result of excessive wealth, exq
 
 
     <div class="fc-translation" data-sec="translation">Haughtiness arising from good fortune, from Kṛṣṇa-karṇāmṛta: O Kṛṣṇa! Is it really astonishing if You can give up holding my hand? I will consider You a real man if You can take Yourself from my heart.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -3738,7 +3734,6 @@ Expressions of ecstatic love in pride may be the result of excessive wealth, exq
 
     <div class="fc-translation" data-sec="translation">Haughtiness arising from beauty: Endowed with the beauty of youth, my friend Rādhā is fortunate, having taken shelter of the form of natural sweetness. How can she glance at You, who have enjoyed hundreds upon hundreds of women of Vraja and then abandoned them?</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3811,7 +3806,6 @@ Expressions of ecstatic love in pride may be the result of excessive wealth, exq
 
 
     <div class="fc-translation" data-sec="translation">Haughtiness arising from good qualities: The cowherd boys can make unlimited garlands of the most beautiful, fragrant flowers. But Kṛṣṇa, showing great astonishment at the skill in its making, will eagerly hold over His heart my garland.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -3886,7 +3880,6 @@ Expressions of ecstatic love in pride may be the result of excessive wealth, exq
 
     <div class="fc-translation" data-sec="translation">From taking the shelter of the Lord, from the Tenth Canto: O Mādhava, Supreme Personality of Godhead, Lord of the goddess of fortune, if devotees completely in love with You sometimes fall from the path of devotion, they do not fall like nondevotees, for You still protect them. Thus they fearlessly traverse the heads of their opponents and continue to progress in devotional service. SB 10.2.33</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3960,7 +3953,6 @@ Expressions of ecstatic love in pride may be the result of excessive wealth, exq
 
     <div class="fc-translation" data-sec="translation">Haughtiness from attaining one’s desired object: O moon of Vṛndāvana! Receiving Your excellent mercy, in great bliss, I have become proud. Today my heart does not even desire the mercy of the Lord of Vaikuṇṭha which is sought by the minds of the sages.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -4029,7 +4021,6 @@ Expressions of ecstatic love in pride may be the result of excessive wealth, exq
 
 
     <div class="fc-translation" data-sec="translation">Apprehension due to committing theft, offense, or others’ cruelty is called śaṅkā. In this state, there is drying of the mouth, change of complexion, glancing in all directions, and hiding oneself.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -4104,7 +4095,6 @@ Expressions of ecstatic love in pride may be the result of excessive wealth, exq
 
     <div class="fc-translation" data-sec="translation">Apprehension from theft: After stealing the calves and cowherd boys out of pride, Brahmā, desiring to disappear from Kṛṣṇa’s presence, out of great apprehension glanced with his eight eyes in the eight directions.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -4177,7 +4167,6 @@ Expressions of ecstatic love in pride may be the result of excessive wealth, exq
 
 
     <div class="fc-translation" data-sec="translation">Another example: Akrura thought, “I have hidden the Syamantaka jewel which gives wealth, and fled away. In anxiety because of this despicable act, until today, happiness has disappeared from my heart.”</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -4252,7 +4241,6 @@ Expressions of ecstatic love in pride may be the result of excessive wealth, exq
 
     <div class="fc-translation" data-sec="translation">Apprehension from offense: O Indra! As long as you pour rain upon Nanda’s fields, you will be despondent. Listen as I tell you something for your benefit. By surrendering completely to Kṛṣṇa’s lotus feet, you will enjoy full powers as Indra without apprehension in your heart.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -4325,7 +4313,6 @@ Expressions of ecstatic love in pride may be the result of excessive wealth, exq
 
 
     <div class="fc-translation" data-sec="translation">Apprehension on seeing others’ cruelty, from Padyāvalī: O friend! Thinking of Kṛṣṇa living in Mathurā surrounded by the ferocious demons of Kaṁsa, I am deeply afflicted. In the same way I feel affliction in separation from Kṛṣṇa.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -4408,7 +4395,6 @@ Expressions of ecstatic love in pride may be the result of excessive wealth, exq
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-4-53" data-note-label="BG 4.53" data-note-chapter="4" data-note-vlabel="53">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 4.53…" rows="4"></textarea>
@@ -4455,7 +4441,6 @@ Expressions of ecstatic love in pride may be the result of excessive wealth, exq
 
 
     <div class="fc-translation" data-sec="translation">The disturbance which arises in the heart from lightning, fearful creatures or a loud sound is called trāsa (terror). In this state a person grasps nearby objects for support. His hairs stand on end. He quivers, becomes paralyzed, and wanders about.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -4534,7 +4519,6 @@ When a person becomes disturbed in his heart by seeing lightning in the sky, by 
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-4-55" data-note-label="BG 4.55" data-note-chapter="4" data-note-vlabel="55">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 4.55…" rows="4"></textarea>
@@ -4589,7 +4573,6 @@ When a person becomes disturbed in his heart by seeing lightning in the sky, by 
 
 
     <div class="fc-translation" data-sec="translation">Terror from ferocious beasts: When Vṛṣāsura, taking the form of a bull, approached, some of the gopīs began to tremble. Suddenly embracing a tamāla tree, mistaking it for Kṛṣṇa, they could not move.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -4664,7 +4647,6 @@ When a person becomes disturbed in his heart by seeing lightning in the sky, by 
 
     <div class="fc-translation" data-sec="translation">Terror arising from frightening sounds: When the very wise Yaśodā heard the terrifying howling of wolves echoing in all directions, which gave pain to the ears, she kept Kṛṣṇa within her eyesight continually for some days.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -4725,7 +4707,6 @@ When a person becomes disturbed in his heart by seeing lightning in the sky, by 
 
 
     <div class="fc-translation" data-sec="translation">Disturbance of the heart which suddenly produces shaking of the limbs is called trāsa. This is different from fear. Fear arises after deliberating on previous and subsequent events.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -4805,7 +4786,6 @@ When a person becomes disturbed in his heart by seeing lightning in the sky, by 
 
     <div class="fc-translation" data-sec="translation">Confusion of the mind is called āvega. It is of eight types, arising from dear things, detested objects, fire, wind, rain, calamity, elephants or enemies.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -4867,7 +4847,6 @@ Emotion is caused by something very dear, by something very detestable, by fire,
 
 
     <div class="fc-translation" data-sec="translation">In āvega arising from dear objects, standing of hair on end, words of affection, fickleness, and rising to one’s feet appear. In āvega arising from detested objects, falling on the ground, shouting and wandering about appear.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -4943,7 +4922,6 @@ Emotion is caused by something very dear, by something very detestable, by fire,
 
     <div class="fc-translation" data-sec="translation">In āvega arising from fire, the actions are retreating, shaking of the body, closing the eyes, and tears. In āvega from wind, the actions are covering the body, walking swiftly, and rubbing the eyes.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -5005,7 +4983,6 @@ Emotion is caused by something very dear, by something very detestable, by fire,
 
     <div class="fc-translation" data-sec="translation">In āvega arising from rain, the actions are running, holding an umbrella and crouching down. In āvega arising from calamity, the actions are discoloration of the face, astonishment and strong shaking of the body.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -5066,7 +5043,6 @@ Emotion is caused by something very dear, by something very detestable, by fire,
 
 
     <div class="fc-translation" data-sec="translation">In āvega from elephants, the actions are fleeing away, strong shaking, trāsa and looking behind. In āvega arising from enemies, the actions are taking up armor and weapons, abandoning one’s house and going elsewhere.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -5133,7 +5109,6 @@ Emotion is caused by something very dear, by something very detestable, by fire,
 
     <div class="fc-translation" data-sec="translation">Āvega arising from seeing one’s object of affection: When Yaśodā, the queen of Gokula, saw Kṛṣṇa returning from the forest of Vṛndāvana, her hair stood on end. She became perplexed and milk began to flow from her breast.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -5198,7 +5173,6 @@ Emotion is caused by something very dear, by something very detestable, by fire,
 
 
     <div class="fc-translation" data-sec="translation">Āvega arising from hearing about one’s object of affection, from the Tenth Canto: The wives of the brāhmaṇas were always eager to see Kṛṣṇa, for their minds had been enchanted by descriptions of Him. Thus as soon as they heard that He had come, they became very excited. SB 10.23.18</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -5272,7 +5246,6 @@ Emotion is caused by something very dear, by something very detestable, by fire,
 
 
     <div class="fc-translation" data-sec="translation">From seeing something detestable: Hearing a terrifying sound and seeing Kṛṣṇa on the chest of Pūtanā during a dream at night, Yaśodā wailed in a loud voice, “What is this? What is this?” She began wandering about in confusion.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -5360,7 +5333,6 @@ Emotion is caused by something very dear, by something very detestable, by fire,
 
     <div class="fc-translation" data-sec="translation">Hearing something detestable: Hearing that Kṛṣṇa was situated between two Arjuna trees on the bank of the Yamunā, Yaśodā with eyes turned upwards, became struck with confusion, and could not decide what to do.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -5446,7 +5418,6 @@ Emotion is caused by something very dear, by something very detestable, by fire,
 
 
     <div class="fc-translation" data-sec="translation">Āvega arising from fire: O Kṛṣṇa with peacock feather! See the fire making a constantly ferocious sound. It is touching the Mandākinī River of Svarga with its long flames, as if sipping its waters. You are the jewel which protects the life of Your friends. Seeing You standing in the midst of the deep forest in order to protect the cows, our hearts have become bewildered.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -5534,7 +5505,6 @@ Emotion is caused by something very dear, by something very detestable, by fire,
 
     <div class="fc-translation" data-sec="translation">Āvega arising from wind: When Tṛṇāvarta, making a terrifying sound, endowed with great strength to uproot large forest trees, spreading clouds of dust, carrying cow dung, dust, grass and stones, began to sway the branches of the Bhāṇḍira tree, Yaśodā, the wife of Nanda, not seeing her son Kṛṣṇa on the ground, became overcome with great confusion.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -5614,7 +5584,6 @@ Emotion is caused by something very dear, by something very detestable, by fire,
 
     <div class="fc-translation" data-sec="translation">Āvega arising from rain, from the Tenth Canto: The cows and other animals, shivering from the excessive rain and wind, and the cowherd men and ladies, pained by the cold, all approached Lord Govinda for shelter. SB 10.25.11</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -5687,7 +5656,6 @@ Emotion is caused by something very dear, by something very detestable, by fire,
 
 
     <div class="fc-translation" data-sec="translation">Another example: Showers of rain along with hail are falling profusely like juice from the foreheads of elephants. The young men have become confused. You are just a boy. Therefore, do not try to go out of the house.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -5775,7 +5743,6 @@ Emotion is caused by something very dear, by something very detestable, by fire,
 
     <div class="fc-translation" data-sec="translation">Āvega arising from calamity: Becoming perplexed, Yaśodā said, “The broad earth is suddenly shaking. In the sky meteors are making terrifying sounds. My young boy has just now gone to the bank of the Yamunā contaminated with the poison of Kāliya. What should I do?”</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -5862,7 +5829,6 @@ Emotion is caused by something very dear, by something very detestable, by fire,
 
     <div class="fc-translation" data-sec="translation">Āvega arising from elephants: O Śyāmasundara! Flee quickly! Flee quickly! There is terrifying elephant in front of You. Because of Your sweet glances, the fickle hearts of us Mathurā women have become completely disturbed.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -5919,7 +5885,6 @@ Emotion is caused by something very dear, by something very detestable, by fire,
 
 
     <div class="fc-translation" data-sec="translation">By mentioning elephant, other wicked animals such horses should be understood as well.</div>
-
 
 
     <section class="fc-section" data-sec="gaudiya">
@@ -5999,7 +5964,6 @@ Emotion is caused by something very dear, by something very detestable, by fire,
 
 
     <div class="fc-translation" data-sec="translation">Another example: O mother! The horse demon Keśī blinds the heavenly damsels of Indra by raising the dust in the stables with his hooves. By shaking his mane, he whips the horses pulling the chariot of the sun and makes them flee away. But let that demon horse come towards Me! My long arm is ready for him! Why are you so disturbed?</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -6087,7 +6051,6 @@ Emotion is caused by something very dear, by something very detestable, by fire,
 
     <div class="fc-translation" data-sec="translation">Disturbance arising from enemies, from Lalita-mādhava: Here is the lowest demon Śaṅkhacūḍa, sturdy in body, with arms long as tāla trees and chest broad as a mountain plateau. What a match for the beautiful child resembling Cupid, soft as the bud of new tamāla tree! Is there no skilful person here to help us? O queen of Vraja, I cannot understand where all the results of your austerities have gone today.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -6160,7 +6123,6 @@ Emotion is caused by something very dear, by something very detestable, by fire,
 
 
     <div class="fc-translation" data-sec="translation">Another example, also from Lalita-mādhava: When Kṛṣṇa stole Rukmiṇī at the svayaṁvara, the kings spoke to their servants. “My horse, chariot, elephant, bow quiver, and sword are here. What fear do I have? You should be quick! The lusty cowherd has stolen the daughter of a king!”</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -6235,7 +6197,6 @@ Emotion is caused by something very dear, by something very detestable, by fire,
 
 
     <div class="fc-translation" data-sec="translation">Though the above example is actually only an ābhāsa of āvega, being the sentiment of āvega in non-devotees, taking Kṛṣṇa as the enemy, because it reveals the superior nature of Kṛṣṇa, it is given as an example.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -6319,7 +6280,6 @@ Emotion is caused by something very dear, by something very detestable, by fire,
 
     <div class="fc-translation" data-sec="translation">Confused understanding caused by extreme bliss, calamity or separation is called unmāda (insanity). [Note: Unmāḍa is defined as hṛd-bhrama.This is similar to āvega, which was defined as cittasya bhrama, confused mind. The difference is that unmāda arises from extreme states, and produces more extreme actions.] In this state the actions are loud laughing, dancing, singing, useless actions, prattling, running, shouting and performing activities opposite of what are normally performed.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -6388,7 +6348,6 @@ Emotion is caused by something very dear, by something very detestable, by fire,
 
 
     <div class="fc-translation" data-sec="translation">Confused understanding caused by extreme bliss, calamity or separation is called unmāda (insanity). [Note: Unmāḍa is defined as hṛd-bhrama.This is similar to āvega, which was defined as cittasya bhrama, confused mind. The difference is that unmāda arises from extreme states, and produces more extreme actions.] In this state the actions are loud laughing, dancing, singing, useless actions, prattling, running, shouting and performing activities opposite of what are normally performed.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -6463,7 +6422,6 @@ Emotion is caused by something very dear, by something very detestable, by fire,
 
     <div class="fc-translation" data-sec="translation">Insanity arising from intense bliss, from Kṛṣṇa-karṇāmṛta: May Rādhā who, having surrendering her heart to Kṛṣṇa, churned an empty yogurt pot, purify the world. And may Kṛṣṇa, whose eyes like bees hovered upon Rādhā’s breasts which were like flower clusters, with mind absorbed in Rādhā, and who began milking a bull, purify the world.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -6536,7 +6494,6 @@ Emotion is caused by something very dear, by something very detestable, by fire,
 
 
     <div class="fc-translation" data-sec="translation">Insanity arising from calamity: What a calamity! When Kṛṣṇa entered the lake of Kāliya, Yaśodā became insane, and thinking the animals were knowers of mantras, folded her hands and began offering them respects. Thinking the trees were doctors, she asked them for medicine to counteract the poison.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -6624,7 +6581,6 @@ Emotion is caused by something very dear, by something very detestable, by fire,
 
     <div class="fc-translation" data-sec="translation">Insanity arising from separation, from the Tenth Canto: The gopīs began to sing in a loud voice together and began to search for Kṛṣṇa in the various forests like insane persons. They began to inquire from the trees about that person who is inside and outside of all living beings like ether. SB 10.30.4</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -6703,7 +6659,6 @@ Since the manifestation of the Lord as being outside everything is far away from
 
     <div class="fc-translation" data-sec="translation">Insanity could be included within sickness (vyādhiṣu). However, it is described separately because in states such as separation, it induces a unique variety of actions. Vyādhiṣu means “among different types of sickness.”</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -6764,7 +6719,6 @@ Since the manifestation of the Lord as being outside everything is far away from
 
 
     <div class="fc-translation" data-sec="translation">When a person attains the stage of bewilderment in the adhirūḍha stage of mahā-bhāva, unmāda takes on another form called divyonmāda.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -6834,7 +6788,6 @@ Since the manifestation of the Lord as being outside everything is far away from
 
 
     <div class="fc-translation" data-sec="translation">A condition of almost total lack of consciousness arising from disturbance of the dhātus due to grief is called apasmāra (epilepsy). In that state there is falling on the ground, running about, pain in the limbs, confusion, shaking of the body, foaming at the mouth, flailing the arms and shouting.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -6922,7 +6875,6 @@ Since the manifestation of the Lord as being outside everything is far away from
 
     <div class="fc-translation" data-sec="translation">An example: O best of the Yadus! Now, our mother Yaśodā, because of pain due to separation from You for a long time is foaming at the mouth like the shore of the ocean. Her arms are moving about like waves in the ocean. She sometimes whirls about, sometimes rolls on the ground, makes sounds and sometimes remains motionless.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -7009,7 +6961,6 @@ Since the manifestation of the Lord as being outside everything is far away from
 
     <div class="fc-translation" data-sec="translation">Another example: Crown jewel of the Yadus! Hearing that You killed Kaṁsa, Kaṁsa’s close friends underwent unspeakable, terrible transformations. They wander on the beach whirling about like wheels and cannot stop. From their mouths, foam flows in great quantities and their arms flail about. [Note: This is also a case of ābhāsa, since it takes place in the enemies of Kṛṣṇa.]</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -7070,7 +7021,6 @@ Since the manifestation of the Lord as being outside everything is far away from
 
 
     <div class="fc-translation" data-sec="translation">This sickness called apasmāra has been described separately from sickness, as in the case of unmāda, since it produces an extremely astonishing state with a hint of bhayānaka-rasa (fear).</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -7140,7 +7090,6 @@ Since the manifestation of the Lord as being outside everything is far away from
 
 
     <div class="fc-translation" data-sec="translation">Sickness such as fever generated from extreme sorrow at hearing of contempt for Kṛṣṇa by the demons or from separation or other events is called vyādhi or disease, but in this book vyādhi refers to symptoms caused by an emotional state (rather than from disturbance of the dhātus) arising from that separation. In this state, paralysis, slackness of the limbs, heavy breathing, anxiety and fatigue occur.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -7214,7 +7163,6 @@ Since the manifestation of the Lord as being outside everything is far away from
 
 
     <div class="fc-translation" data-sec="translation">O Kṛṣṇa! Separated from You for a long time, Your associates in Vraja are afflicted. Their bodies are burning and remain motionless. Their nostrils quiver because of heavy breathing, and they roll on the ground.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -7296,7 +7244,6 @@ Since the manifestation of the Lord as being outside everything is far away from
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-4-92" data-note-label="BG 4.92" data-note-chapter="4" data-note-vlabel="92">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 4.92…" rows="4"></textarea>
@@ -7351,7 +7298,6 @@ Since the manifestation of the Lord as being outside everything is far away from
 
 
     <div class="fc-translation" data-sec="translation">Moha arising from joy, from the Tenth Canto: O Śaunaka, greatest of saints and devotees, when Mahārāja Parīkṣit inquired from Śukadeva Gosvāmī in this way, Śukadeva Gosvāmī, immediately remembering subject matters about Kṛṣṇa within the core of his heart, externally lost contact with the actions of his senses. Thereafter, with great difficulty, he revived his external sensory perception and began to speak to Mahārāja Parīkṣit about kṛṣṇa-kathā. SB 10.12.44</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -7425,7 +7371,6 @@ Since the manifestation of the Lord as being outside everything is far away from
 
 
     <div class="fc-translation" data-sec="translation">Another example of moha arising from joy: Seeing Kṛṣṇa alone in Kurukṣetra, the women of Vraja stopped breathing, stopped blinking their eyes, stopped all actions and became devoid of consciousness. They remained standing there like golden statues.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -7512,7 +7457,6 @@ Since the manifestation of the Lord as being outside everything is far away from
 
 
     <div class="fc-translation" data-sec="translation">Moha arising from separation, from Haṁsadūta: Once, Rādhā, in order to assuage the fire of separation in her heart, went to the bank of the Yamunā with her friends, but seeing there the familiar bower of creepers, her heart became covered with a blank state of mind--which was her dear friend, like deep sleep.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -7602,7 +7546,6 @@ There is the following statement in the Haṁsadūta: “One day when Śrīmatī
 
     <div class="fc-translation" data-sec="translation">Moha arising from fear: When Kṛṣṇa showed His universal form, Arjuna, who had the insignia of Hanumān on his flag, seeing that form, dropped his Gāṇḍiva bow. However, being in a state of moha, he was not aware of this.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -7668,7 +7611,6 @@ There is the following statement in the Haṁsadūta: “One day when Śrīmatī
 
     <div class="fc-translation" data-sec="translation">Moha arising from despair, from the Tenth Canto: When Balarāma and the other boys saw that Kṛṣṇa had been devoured by the gigantic duck, they became unconscious, like senses without life. SB 10.11.49</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -7730,7 +7672,6 @@ Once the Bakāsura demon assumed the shape of a very big heron and opened his mo
 
 
     <div class="fc-translation" data-sec="translation">When the devotees develop moha, they lose awareness of objects including their own bodies, but awareness of Kṛṣṇa never disappears.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -7829,7 +7770,6 @@ When the lack of external awareness becomes most prominent the state is called p
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-4-99" data-note-label="BG 4.99" data-note-chapter="4" data-note-vlabel="99">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 4.99…" rows="4"></textarea>
@@ -7884,7 +7824,6 @@ When the lack of external awareness becomes most prominent the state is called p
 
 
     <div class="fc-translation" data-sec="translation">The pious persons of Mathurā, with weak breathing, eyes glancing sideways and upwards, taking on a unique complexion in their bodies and hiccupping loudly, gave up their lives while uttering Kṛṣṇa’s name unclearly.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -7960,7 +7899,6 @@ When the lack of external awareness becomes most prominent the state is called p
     <div class="fc-translation" data-sec="translation">Another example: The sun in the form of Kṛṣṇa drank up the deep darkness of life of the midnight in the form of Pūtanā. Her eyes lit up for a moment beyond her control and then died out, like the glowing of fireflies in the night. That midnight suddenly disappeared with the loud hooting of owls in the form of her death groans.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -8032,7 +7970,6 @@ When the lack of external awareness becomes most prominent the state is called p
     <div class="fc-translation" data-sec="translation">The state of consciousness just prior to death is generally called mṛti. However, some say that mṛti should be considered only an external similarity to death (anubhāva). It has been described in the enemies of Kṛṣṇa (though it is not the vyabhicāri-bhāva called mṛti) just in order to show His power.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -8102,7 +8039,6 @@ When the lack of external awareness becomes most prominent the state is called p
 
 
     <div class="fc-translation" data-sec="translation">Lack of enthusiasm to do activities because of satiation or fatigue, even though one has the ability to do them is called ālasya.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -8190,7 +8126,6 @@ When, because of self-satisfaction or dislike of excessive labor, a person does 
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-4-104" data-note-label="BG 4.104" data-note-chapter="4" data-note-vlabel="104">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 4.104…" rows="4"></textarea>
@@ -8237,7 +8172,6 @@ When, because of self-satisfaction or dislike of excessive labor, a person does 
 
 
     <div class="fc-translation" data-sec="translation">ālasya arising from satiation: O king of the cowherds! At the festival of Govardhana we have become so satisfied that we cannot even give blessings.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -8311,7 +8245,6 @@ When, because of self-satisfaction or dislike of excessive labor, a person does 
 
 
     <div class="fc-translation" data-sec="translation">ālasya arising from fatigue: After arm wrestling with me to please me, he cannot do any activity now and he is stretching his limbs. You should not call him to fight immediately.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -8394,7 +8327,6 @@ When, because of self-satisfaction or dislike of excessive labor, a person does 
 
 
     <div class="fc-translation" data-sec="translation">Absence of the ability to decide anything, which arises from hearing or seeing desirable or undesirable things or which arises from separation, is called jāḍyam. This occurs previous to and following moha (inoperative mind). In this state, blinking of the eyes, silence and forgetfulness occur.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -8482,7 +8414,6 @@ When, because of self-satisfaction or dislike of excessive labor, a person does 
 
     <div class="fc-translation" data-sec="translation">From hearing what is desirable, from the Tenth Canto: Using their upraised ears as vessels, the cows are drinking the nectar of the flute-song flowing out of Kṛṣṇa’s mouth. The calves, their mouths full of milk from their mothers’ moist nipples, stand still as they take Govinda within themselves through their tear-filled eyes and embrace Him within their hearts. SB 10.21.14</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -8555,7 +8486,6 @@ When, because of self-satisfaction or dislike of excessive labor, a person does 
 
 
     <div class="fc-translation" data-sec="translation">From hearing what is undesirable: Hearing Keśava call out someone else’s name, the heart of Lakṣmaṇā, one of the leaders of the gopīs, was pained. Her eyes stopped blinking and she did not utter a word.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -8635,7 +8565,6 @@ When, because of self-satisfaction or dislike of excessive labor, a person does 
 
     <div class="fc-translation" data-sec="translation">From seeing the object of desire, from the Tenth Canto: King Yudhiṣṭhira respectfully brought Lord Govinda, the Supreme God of gods, to his personal quarters. The King was so overcome with joy that he could not remember all the rituals of worship. SB 10.71.40</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -8700,7 +8629,6 @@ When, because of self-satisfaction or dislike of excessive labor, a person does 
 
 
     <div class="fc-translation" data-sec="translation">From seeing the undesirable, from the Tenth Canto: Sending their minds after Kṛṣṇa, the gopīs stood as motionless as figures in a painting. They remained there as long as the flag atop the chariot was visible, and even until they could no longer see the dust raised by the chariot wheels. SB 10.39.37</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -8774,7 +8702,6 @@ When, because of self-satisfaction or dislike of excessive labor, a person does 
 
 
     <div class="fc-translation" data-sec="translation">From separation: Your friends, pained by long separation from You, remain on this earth like the deities of neglectful brāhmaṇas which are without ornaments, wearing soiled cloth which is falling off, with limbs dirty and thin.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -8858,7 +8785,6 @@ When, because of self-satisfaction or dislike of excessive labor, a person does 
 
     <div class="fc-translation" data-sec="translation">The state of bashfulness, the opposite of audacity, arising from just meeting one’s lover, from performing forbidden actions, from praise or neglect is called vrīḍā (shyness). In this state there is silence, anxiety, covering the head, writing on the ground, and hanging the head.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -8931,7 +8857,6 @@ When, because of self-satisfaction or dislike of excessive labor, a person does 
 
 
     <div class="fc-translation" data-sec="translation">From meeting the Lord for the first time, from Padyāvalī: O lotus-eyed friend! Blinded with love, you have offered your beautiful body to Govinda. O friend! Do not be miserly by showing yourself to Him only a little. The purchased elephant does not quarrel with the goad.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -9019,7 +8944,6 @@ When, because of self-satisfaction or dislike of excessive labor, a person does 
 
     <div class="fc-translation" data-sec="translation">Shame arising from doing forbidden actions: O Indra! You should not hang down your head in shame and remain silent. Take the parijāta tree and go. Otherwise how can you show your face to your wife?</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -9098,7 +9022,6 @@ When, because of self-satisfaction or dislike of excessive labor, a person does 
 
     <div class="fc-translation" data-sec="translation">Shame from being praised: When Kṛṣṇa praised Uddhava, listing all of his good qualities, Uddhava lowered his head and took on a unique attractiveness.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -9164,7 +9087,6 @@ When, because of self-satisfaction or dislike of excessive labor, a person does 
 
     <div class="fc-translation" data-sec="translation">Shame arising from neglect, from Hari-vaṁśa, in a statement by Satyā: Raivataka Mountain is always glorious with spring flowers. How can I look upon that mountain when I have lost the affection of Kṛṣṇa, though once I most dear to Him?</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -9225,7 +9147,6 @@ When, because of self-satisfaction or dislike of excessive labor, a person does 
 
 
     <div class="fc-translation" data-sec="translation">The external action of wanting to hide one’s external symptoms because of thinking oneself low is called avahitthā.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -9302,7 +9223,6 @@ There is a symptom of ecstatic love known as concealment, or trying to hide one�
 
     <div class="fc-translation" data-sec="translation">In this state, hiding one’s limbs so others will think one is something else, glancing elsewhere, useless actions, and clever use of words occur.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -9363,7 +9283,6 @@ There is a symptom of ecstatic love known as concealment, or trying to hide one�
 
 
     <div class="fc-translation" data-sec="translation">The ancient authorities say that the bhāva which conceals ones anubhāvas (external symptoms) is called the avahitthā-vyabhicāri bhāva.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -9451,7 +9370,6 @@ There is a symptom of ecstatic love known as concealment, or trying to hide one�
 
     <div class="fc-translation" data-sec="translation">Out of deceit: Śrī Kṛṣṇa had awakened romantic desires within the gopīs, and they honored Him by glancing at Him with playful smiles, gesturing amorously with their eyebrows, and massaging His hands and feet as they held them in their laps. Even while worshiping Him, however, they felt somewhat angry (which they concealed), and thus they spoke to Him. SB 10.32.16</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -9538,7 +9456,6 @@ There is a symptom of ecstatic love known as concealment, or trying to hide one�
 
     <div class="fc-translation" data-sec="translation">Out of mild nature: When Madhusūdana brought the parijāta tree to the house of Satyabhāmā, though Rukmiṇī was filled with anger, no one could detect that deception because of her mildness.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -9612,7 +9529,6 @@ There is a symptom of ecstatic love known as concealment, or trying to hide one�
 
     <div class="fc-translation" data-sec="translation">Concealment out of bashfulness, from the First Canto: The insuperable ecstasy was so strong that the queens, who were shy, first embraced the Lord in the innermost recesses of their hearts. Then they embraced Him visually, and then they sent their sons to embrace Him [which is equal to personal embracing]. But, O chief amongst the Bhṛgus, though they tried to restrain their feelings, they inadvertently shed tears. SB 1.11.32</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -9677,7 +9593,6 @@ There is a symptom of ecstatic love known as concealment, or trying to hide one�
 
 
     <div class="fc-translation" data-sec="translation">From deceit and bashfulness: O messenger! Will a respectable women desire such a snake among cowherds? Remembering Him, the hairs of my body are standing on end out of fear.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -9756,7 +9671,6 @@ There is a symptom of ecstatic love known as concealment, or trying to hide one�
 
 
     <div class="fc-translation" data-sec="translation">Concealment by good qualities: Though Rādhā’s attachment to Kṛṣṇa increased to the extreme, by the wealth of her self-control, she concealed it so that no one could doubt her.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -9844,7 +9758,6 @@ There is a symptom of ecstatic love known as concealment, or trying to hide one�
 
     <div class="fc-translation" data-sec="translation">Concealment out of respect: When Kṛṣṇa began to joke among His laughing cowherd friends, His servant Patrī became jubilant. Out of respect, he hung his head and with great difficulty covered his laughing.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -9913,7 +9826,6 @@ There is a symptom of ecstatic love known as concealment, or trying to hide one�
 
 
     <div class="fc-translation" data-sec="translation">Three bhāvas will be seen operating in this situation: one as a cause, one which is concealed and one bhāva which conceals the other. Individually or in a group, the bhāvas may act as a cause, being concealed or concealing.</div>
-
 
 
     <section class="fc-section" data-sec="gaudiya">
@@ -9994,7 +9906,6 @@ In verse 124 the cause is a natural deceitful nature. What is concealed (gopya) 
     <div class="fc-translation" data-sec="translation">Three bhāvas will be seen operating in this situation: one as a cause, one which is concealed and one bhāva which conceals the other. Individually or in a group, the bhāvas may act as a cause, being concealed or concealing.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -10071,7 +9982,6 @@ In verse 124 the cause is a natural deceitful nature. What is concealed (gopya) 
 
 
     <div class="fc-translation" data-sec="translation">Scrutiny of previous experience, which arises from strict practice or from seeing similar objects, is called smṛti (remembrance). In this state shaking the head and moving the brows occur.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -10152,7 +10062,6 @@ There are many symptoms of ecstatic love caused by remembering Kṛṣṇa.</p>
 
     <div class="fc-translation" data-sec="translation">Smṛti arising from seeing a similar object: O Mukunda! When lotus-eyed Rādhā saw a dark cloud she remembered You and experienced the force of love.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -10217,7 +10126,6 @@ There are many symptoms of ecstatic love caused by remembering Kṛṣṇa.</p>
 
 
     <div class="fc-translation" data-sec="translation">Smṛti arising from determined practice: Without concentrating, spontaneously, the lotus feet of the Lord now appear in my heart at any time and at any place.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -10296,7 +10204,6 @@ There are many symptoms of ecstatic love caused by remembering Kṛṣṇa.</p>
 
 
     <div class="fc-translation" data-sec="translation">Arriving at a conclusion based on error, doubt or inference is called vitarka (conjecture). In this state, moving the brows and moving the head and fingers occur.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -10384,7 +10291,6 @@ There are many symptoms of ecstatic love caused by remembering Kṛṣṇa.</p>
 
     <div class="fc-translation" data-sec="translation">Vitarka arising from inference, from Vidagdha-mādhava: O elephant who sports in the houses of Vṛndāvana! The peacock feather has fallen from Your head on the ground, but You are unaware of that. There is a prepared garland lying in front of You, but You do not put it on. From that I can infer that the power of the bees, in the form of Rādhā’s eyes, has agitated You.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -10471,7 +10377,6 @@ There are many symptoms of ecstatic love caused by remembering Kṛṣṇa.</p>
 
     <div class="fc-translation" data-sec="translation">Vitarka arising from doubt: Is that a tamāla tree? It cannot be, for why would it endowed with such pure, clear movements? Is it a cloud? No, it cannot be, for a spotless moon is residing there. O moonfaced one! It seems that Mukunda, who can enchant the universe with the sound of His flute, is certainly wandering on the top of Govardhana Mountain.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -10553,7 +10458,6 @@ There are many symptoms of ecstatic love caused by remembering Kṛṣṇa.</p>
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-4-135" data-note-label="BG 4.135" data-note-chapter="4" data-note-vlabel="135">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 4.135…" rows="4"></textarea>
@@ -10604,7 +10508,6 @@ There are many symptoms of ecstatic love caused by remembering Kṛṣṇa.</p>
 
 
     <div class="fc-translation" data-sec="translation">Pondering, arising from not attaining a desired object or from attaining an undesirable object, is called cintā. In this state, heavy breathing, hanging the head, writing on the ground, change of color, sleeplessness, prattle, and fever occur.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -10692,7 +10595,6 @@ There are many symptoms of ecstatic love caused by remembering Kṛṣṇa.</p>
 
     <div class="fc-translation" data-sec="translation">Pondering arising from not attaining the desired object of love, from the Tenth Canto: Their heads hanging down and their heavy, sorrowful breathing drying up their reddened lips, the gopīs scratched the ground with their toes. Tears flowed from their eyes, carrying their kajjala and washing away the vermilion smeared on their breasts. Thus they stood, silently bearing the burden of their unhappiness. SB 10.29.29</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -10765,7 +10667,6 @@ There are many symptoms of ecstatic love caused by remembering Kṛṣṇa.</p>
 
 
     <div class="fc-translation" data-sec="translation">Another example: O killer of Agha! Your affectionate mother, depressed and thin from thinking of You, remained sitting on the veranda from a long time, and having waited till evening, she now wanders about within the house. How astonishing it is! Though You experienced such fun there, You have completely forgotten about Your house.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -10853,7 +10754,6 @@ There are many symptoms of ecstatic love caused by remembering Kṛṣṇa.</p>
 
     <div class="fc-translation" data-sec="translation">Cintā arising from attaining something undesirable: Do not remain sleepless, absorbed in intense deliberation, with hot tears withering your lotus face. I will go to Mathurā with Akrura and bring back your son very soon.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -10928,7 +10828,6 @@ There are many symptoms of ecstatic love caused by remembering Kṛṣṇa.</p>
 
     <div class="fc-translation" data-sec="translation">Ascertaining a meaning after consulting scripture is called mati. [Note: Conclusions are drawn in vitarka as well, but not through reference to scripture.]</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -11001,7 +10900,6 @@ There are many symptoms of ecstatic love caused by remembering Kṛṣṇa.</p>
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-4-141" data-note-label="BG 4.141" data-note-chapter="4" data-note-vlabel="141">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 4.141…" rows="4"></textarea>
@@ -11056,7 +10954,6 @@ There are many symptoms of ecstatic love caused by remembering Kṛṣṇa.</p>
 
 
     <div class="fc-translation" data-sec="translation">From the Padma Purāṇa, Vaiśākha-maḥātmya: Let the purāṇas and other scriptures glorify here and there for a kalpa the greatness of their respective devatās in order to produce illusion in the people of this world. But after taking account of all varieties of interpretation, their conclusion is that Viṣṇu alone is the Supreme Lord.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -11144,7 +11041,6 @@ There are many symptoms of ecstatic love caused by remembering Kṛṣṇa.</p>
 
     <div class="fc-translation" data-sec="translation">From the Tenth Canto: Knowing that great sages who have renounced all attachments proclaim Your glories, that You are the Supreme Soul of all the worlds, and that You are so gracious that You give away even Your own self, I chose You as my husband, rejecting Lord Brahmā, Lord Śiva and the rulers of heaven, whose aspirations are all frustrated by the force of time, which is born from Your eyebrows. What interest, then, could I have in any other suitors? SB 10.60.39</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -11222,7 +11118,6 @@ There are many symptoms of ecstatic love caused by remembering Kṛṣṇa.</p>
 
 
     <div class="fc-translation" data-sec="translation">The steadiness of heart arising from attaining realization of the Lord, from absence of suffering in attaining realization of the Lord, and from realizing prema with the Lord is called dhṛti. In this state there is no lamentation for things not attained or for things which have disappeared.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -11302,7 +11197,6 @@ When a person is fully satisfied due to attaining knowledge, transcending all di
 
 
     <div class="fc-translation" data-sec="translation">From attaining realization of the Lord, from Bhartṛhari’s Vairāgya-śataka: When I attain knowledge related to the Lord, I will eat only begged food and live without clothing. I will sleep on the ground. What is the necessity of serving the king or other authorities?</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -11390,7 +11284,6 @@ When a person is fully satisfied due to attaining knowledge, transcending all di
 
     <div class="fc-translation" data-sec="translation">From lack of suffering: Our cow sheds have become the playground of Lakṣmī and more than a 100,000 billion cows are running around. A divine child is playing in the house. I am fully satisfied with the happiness of family life.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -11469,7 +11362,6 @@ When a person is fully satisfied due to attaining knowledge, transcending all di
 
     <div class="fc-translation" data-sec="translation">From attaining prema: I am situated on the bank of the ocean of nectar consisting of the Lord’s pastimes. Thus my mind is not aware of artha, dharma, kāma and mokṣa, which are now worthless like grass.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -11534,7 +11426,6 @@ When a person is fully satisfied due to attaining knowledge, transcending all di
 
 
     <div class="fc-translation" data-sec="translation">Happiness of the heart arising from seeing or attaining one’s desired object is called harṣa. In this state standing of hair on end, perspiration, tears, glowing face, confusion (āvega), insanity (unmāda), indecision jaḍatā) and fainting (moha) occur.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -11614,7 +11505,6 @@ When a person is fully satisfied due to attaining knowledge, transcending all di
 
     <div class="fc-translation" data-sec="translation">Joy on seeing one’s desired object, from Viṣṇu Purāṇa: O sage! When Akrura saw Kṛṣṇa and Balarāma, his lotus-faced blossomed with joy and all his hairs stood on end.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -11680,7 +11570,6 @@ When a person is fully satisfied due to attaining knowledge, transcending all di
 
     <div class="fc-translation" data-sec="translation">From attaining one’s desired object, from the Tenth Canto: Upon the shoulder of one gopī Kṛṣṇa placed His arm, whose natural blue-lotus fragrance was mixed with that of the sandalwood pulp anointing it. As the gopī relished that fragrance, her bodily hair stood on end in jubilation, and she kissed His arm. SB 10.33.11</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -11741,7 +11630,6 @@ When a person is fully satisfied due to attaining knowledge, transcending all di
 
 
     <div class="fc-translation" data-sec="translation">Inability to tolerate the passing of time, arising from desire to see or attain a desired object is called autsukyam (impatience). In this state there is drying of the mouth, haste, pondering and prominence of breathing.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -11829,7 +11717,6 @@ When a person is fully satisfied due to attaining knowledge, transcending all di
 
     <div class="fc-translation" data-sec="translation">Impatience arising from a desire to see one’s cherished object, from the Tenth Canto: When the young women of the city heard that Lord Kṛṣṇa, the reservoir of pleasure for human eyes, had arrived, they hurriedly went onto the royal road to see Him. They abandoned their household duties and even left their husbands in bed, and in their eagerness the knots of their hair and garments came loose. SB 10.71.34</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -11903,7 +11790,6 @@ When a person is fully satisfied due to attaining knowledge, transcending all di
 
     <div class="fc-translation" data-sec="translation">From Stavāvalī, Śrī-rādhikāṣṭaka: When Kṛṣṇa revealed his whereabouts in the grove by the sound of His flute, Rādhā, coming quickly to the grove with smiling face, remained waiting with head hung down, eager to hear Kṛṣṇa’s words. When will that Rādhā engage me in her service?</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -11976,7 +11862,6 @@ When a person is fully satisfied due to attaining knowledge, transcending all di
 
 
     <div class="fc-translation" data-sec="translation">Impatience arising from a desire to attain one’s desired object: When the gopīs tried to prolong the conversation with Kṛṣṇa by expert joking, and thus delay Him, Rādhā came to the grove quickly, on the pretext of accepting a bunch of flowers.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -12056,7 +11941,6 @@ When a person is fully satisfied due to attaining knowledge, transcending all di
 
     <div class="fc-translation" data-sec="translation">Ferocity arising from offenses and harsh words is called augrya. In that state killing, binding, shaking the head, shouting loudly and beating occur.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -12129,7 +12013,6 @@ When a person is fully satisfied due to attaining knowledge, transcending all di
 
 
     <div class="fc-translation" data-sec="translation">Augrya arising from offense (to Kṛṣṇa): Garuḍa speaks: By my power the snakes have abortions. But in my presence, Kāliya is offending my master. I want to offer him to the fire in my stomach, but I am afraid of Kṛṣṇa’s anger.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -12217,7 +12100,6 @@ When a person is fully satisfied due to attaining knowledge, transcending all di
 
     <div class="fc-translation" data-sec="translation">Augrya arising from harsh words (against Kṛṣṇa), in a statement by Sahadeva: Sahadeva speaks: I will place with more force than the punishment of Yama my left foot on the head of that person who cannot tolerate the first worship of Kṛṣṇa--who is full of all glories and worth of worship by all devatās.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -12290,7 +12172,6 @@ When a person is fully satisfied due to attaining knowledge, transcending all di
 
 
     <div class="fc-translation" data-sec="translation">Baladeva speaks: O Lord! These evil men, lowest members of Kuru dynasty, having attained and given up the qualities of kings, are attached to sitting on the king’s throne. How painful it is to have to hear them today in the assembly boldly insulting Acyuta, worthy of praise by the whole universe.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -12374,7 +12255,6 @@ When a person is fully satisfied due to attaining knowledge, transcending all di
 
     <div class="fc-translation" data-sec="translation">Intolerance arising from contempt or insult or other causes is called amarṣa (indignation). In this state perspiration, shaking the head, change of color, pondering, looking for methods, shouting, turning away and beating occur.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -12443,7 +12323,6 @@ When a person is fully satisfied due to attaining knowledge, transcending all di
 
 
     <div class="fc-translation" data-sec="translation">Intolerance arising from contempt or insult or other causes is called amarṣa (indignation). In this state perspiration, shaking the head, change of color, pondering, looking for methods, shouting, turning away and beating occur.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -12518,7 +12397,6 @@ When a person is fully satisfied due to attaining knowledge, transcending all di
 
     <div class="fc-translation" data-sec="translation">Indignation arising from contempt, from Vidagdha-mādhava: Jaṭilā said to Kṛṣṇa: See! My son’s new, auspicious bride, endowed with all the sweetness of the earth, is sitting by my side. O unsteady boy! You cannot disturb me, though You wander fearlessly through Vraja moving Your eyebrows!</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -12591,7 +12469,6 @@ When a person is fully satisfied due to attaining knowledge, transcending all di
 
 
     <div class="fc-translation" data-sec="translation">Indignation arising from disrespect, in the words of Padmā: O thief in the kadamba forest! Quickly come here and do not use clever words. There is no greater disrespect for a person like me than directly to spoil excellent Candrāvalī in the assembly of gopīs by uttering the unsuitable name of Rādhā.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -12679,7 +12556,6 @@ When a person is fully satisfied due to attaining knowledge, transcending all di
 
     <div class="fc-translation" data-sec="translation">Indignation arising from being cheated, indicated by the word ādi: Dear Acyuta, You know very well why we have come here. Who but a cheater like You would abandon young women who come to see Him in the middle of the night, enchanted by the loud song of His flute? Just to see You, we have completely rejected our husbands, children, ancestors, brothers and other relatives. SB 10.31.17</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -12748,7 +12624,6 @@ When a person is fully satisfied due to attaining knowledge, transcending all di
 
 
     <div class="fc-translation" data-sec="translation">Hatred arising from the others’ increase of good fortune or qualities is called asūyā (envy or fault-finding). In this state, malice, disrespect, insult, fault finding, speaking ill of others, casting evil glances and moving the eyebrows occur.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -12823,7 +12698,6 @@ When a person is fully satisfied due to attaining knowledge, transcending all di
 
     <div class="fc-translation" data-sec="translation">Envy arising from others’ increase of good fortune, from Padyāvalī: Do not be proud, now that you attain the glory of a new maṣjarī marked with the hand of Kṛṣṇa on your forehead. Can no one else be the recipient of that mark? Others would also have this good fortune if our enemy’s hand did not shake.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -12888,7 +12762,6 @@ When a person is fully satisfied due to attaining knowledge, transcending all di
 
 
     <div class="fc-translation" data-sec="translation">From the Tenth Canto: These footprints of that special gopī greatly disturb us. Of all the gopīs, she alone was taken away to a secluded place, where she is enjoying the lips of Kṛṣṇa. SB 10.30.31</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -12955,7 +12828,6 @@ When a person is fully satisfied due to attaining knowledge, transcending all di
 
     <div class="fc-translation" data-sec="translation">Envy arising from increase of good qualities: Balarāma’s team thinks itself strong and able to defeat our team with Kṛṣṇa on our side, but is there anyone weaker than Balarāma’s team in this world?</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -13020,7 +12892,6 @@ When a person is fully satisfied due to attaining knowledge, transcending all di
 
 
     <div class="fc-translation" data-sec="translation">Cāpalam (insolence) means inconsiderateness of the heart arising from attraction or repulsion. In this state, lack of judgment, rough words and careless actions occur.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -13095,7 +12966,6 @@ When a person is fully satisfied due to attaining knowledge, transcending all di
 
     <div class="fc-translation" data-sec="translation">Cāpalya arising from attachment: O unconquerable one, tomorrow when my marriage ceremony is about to begin, You should arrive unseen in Vidarbha and surround Yourself with the leaders of Your army. Then crush the forces of Caidya and Magadhendra and marry me in the Rākṣasa style, winning me with Your valor. SB 10.52.41</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -13162,7 +13032,6 @@ According to the Vedic system there are eight kinds of marriages, one of which i
 
     <div class="fc-translation" data-sec="translation">Cāpalya arising from hatred: May the flute, which loosens the cords tying the clothing of the beautiful women, enter the ocean on the waves of the Yamunā!</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -13227,7 +13096,6 @@ According to the Vedic system there are eight kinds of marriages, one of which i
 
 
     <div class="fc-translation" data-sec="translation">Suspension of external awareness arising from pondering, lack of energy, natural tendency, and fatigue is called nidrā or sleep. In this state, rubbing the limbs, yawning, inaction, heavy breathing, and closing the eyes occur.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -13294,7 +13162,6 @@ According to the Vedic system there are eight kinds of marriages, one of which i
 
     <div class="fc-translation" data-sec="translation">Nidrā arising from worry: When the sun turned red at sunset and she did not hear the sound of the flute, Yaśodā entered a state of nidrā, being afflicted by excessive pondering the situation.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -13359,7 +13226,6 @@ According to the Vedic system there are eight kinds of marriages, one of which i
 
 
     <div class="fc-translation" data-sec="translation">Nidrā arising from lack of energy: When Yaśodā tied up Kṛṣṇa, she was unable to move her body. She became dizzy. Rubbing her limbs, she entered a state of nidrā.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -13433,7 +13299,6 @@ According to the Vedic system there are eight kinds of marriages, one of which i
 
 
     <div class="fc-translation" data-sec="translation">Nidrā arising from natural urge: O killer of Agha! Look! Having extinguished all fears by thinking of Your exploits, the cowherd men have given up locking their doors and sleep at night in the yards of their houses without moving their limbs.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -13511,7 +13376,6 @@ According to the Vedic system there are eight kinds of marriages, one of which i
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-4-175" data-note-label="BG 4.175" data-note-chapter="4" data-note-vlabel="175">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 4.175…" rows="4"></textarea>
@@ -13554,7 +13418,6 @@ According to the Vedic system there are eight kinds of marriages, one of which i
 
 
     <div class="fc-translation" data-sec="translation">The state just previous to extinguishing of consciousness, in which there is the appearance of Kṛṣṇa without particular pastimes, is called nidrā for the devotees.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -13638,7 +13501,6 @@ Thus the state previous to extinguishing external consciousness in which there i
 
     <div class="fc-translation" data-sec="translation">Sleep in which there are various thoughts and an experience of objects is called supti or dreaming. In this state there is absence of the functioning of the external senses, heavy breathing and closing the eyes.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -13711,7 +13573,6 @@ Thus the state previous to extinguishing external consciousness in which there i
 
 
     <div class="fc-translation" data-sec="translation">An example: Baladeva astonished the assembly of Yadus and made them laugh, when he went to sleep. While breathing heavily and heaving his belly, he exclaimed in a dream state, “O lotus-eyed Kṛṣṇa! You have magnificently manifested your wealth of childhood pastimes, by powerfully crushing the intolerable pride of Kāliya, king of the snakes.”</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -13792,7 +13653,6 @@ He astonished those Yadu members who had entered the inner chamber of the assemb
 
     <div class="fc-translation" data-sec="translation">Enlightenment or appearance of knowledge caused by destruction of ignorance, destruction of moha and destruction of sleep is called bodha.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -13870,7 +13730,6 @@ He astonished those Yadu members who had entered the inner chamber of the assemb
 
 
     <div class="fc-translation" data-sec="translation">Bodha arising from destruction of ignorance: Enlightenment occurs after the appearance of knowledge which occurs after removal of ignorance. This enlightenment consists of realization one’s identity with brahman, which destroys unlimited suffering.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -13958,7 +13817,6 @@ He astonished those Yadu members who had entered the inner chamber of the assemb
 
     <div class="fc-translation" data-sec="translation">Another example: Realizing my svarūpa of eternity and knowledge after attaining the lamp of knowledge, without obstacle, I will now search for the supreme brahman personified, composed of concentrated bliss.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -14023,7 +13881,6 @@ He astonished those Yadu members who had entered the inner chamber of the assemb
 
 
     <div class="fc-translation" data-sec="translation">Bodha arising from destruction of moha: When moha is destroyed by the sound, fragrance, touch and taste of the Lord, there is bodha. In this state the eyes are open, hairs stand on end, and there is rising from the ground.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -14097,7 +13954,6 @@ He astonished those Yadu members who had entered the inner chamber of the assemb
 
 
     <div class="fc-translation" data-sec="translation">Bodha from destruction of moha, arising from sound of the Lord: All of Rādhā’s sense stopped functioning (moha) due to the bliss generated from first seeing Kṛṣṇa. Then when Lalitā uttered the names of Kṛṣṇa in her ear, she opened her eyes.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -14185,7 +14041,6 @@ He astonished those Yadu members who had entered the inner chamber of the assemb
 
     <div class="fc-translation" data-sec="translation">Arising from smell: When Kṛṣṇa once disappeared from the presence of Rādhā, she lost control of her limbs, lost her color, and lost her breath. She fell on the forest earth. When the fragrance of Kṛṣṇa’s forest garland spread in all directions, Rādhā’s hairs stood on end by smelling the fragrance, and look--she rose from the earth.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -14272,7 +14127,6 @@ He astonished those Yadu members who had entered the inner chamber of the assemb
 
     <div class="fc-translation" data-sec="translation">Breaking moha by touch: O friend! Whose touch is this, which is soft, blissful and all-conquering? Seeing the bank of the Yamunā I had fainted. The touch of that hand completely removed with force my fainting condition which gave me so much suffering, and produced in me a fainting condition of happiness.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -14358,7 +14212,6 @@ He astonished those Yadu members who had entered the inner chamber of the assemb
 
 
     <div class="fc-translation" data-sec="translation">Destruction of moha caused by taste: Younger brother of Balarāma! When You disappeared during the rāsa dance, my friend Rādhā lost control of her body and became unconscious. But when lotus-eyed Rādhā tasted Your chewed tāmbūla which I placed in her mouth, her hairs stood on end.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -14449,7 +14302,6 @@ He astonished those Yadu members who had entered the inner chamber of the assemb
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-4-187" data-note-label="BG 4.187" data-note-chapter="4" data-note-vlabel="187">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 4.187…" rows="4"></textarea>
@@ -14504,7 +14356,6 @@ He astonished those Yadu members who had entered the inner chamber of the assemb
 
 
     <div class="fc-translation" data-sec="translation">Bodha arising from breaking sleep through a dream: “O Kṛṣṇa! Do not laugh. Stop pulling the edge of my cloth, otherwise I will tell Jaṭilā about Your fickle behavior.” Saying this in a dream, Rādhā suddenly woke up. Seeing the elders in front of her, she became very bashful and hung her head.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -14571,7 +14422,6 @@ He astonished those Yadu members who had entered the inner chamber of the assemb
 
     <div class="fc-translation" data-sec="translation">Bodha arising from breaking sleep due to sufficient sleep: Just when the messenger arrived at her house, Rādhā woke up. It is seen that the attempts of those with pious credits quickly bear fruit.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -14637,7 +14487,6 @@ He astonished those Yadu members who had entered the inner chamber of the assemb
 
     <div class="fc-translation" data-sec="translation">By sound: Just as the rumbling of the clouds which gives joy to the peacocks causes the swans to fly away, so the sound of the flute broke the sleep of the gopīs.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -14698,7 +14547,6 @@ He astonished those Yadu members who had entered the inner chamber of the assemb
 
 
     <div class="fc-translation" data-sec="translation">Thus the thirty-three vyabhicāri-bhāvas have been described. They should be described as superior, moderate and inferior according to their condition.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -14770,7 +14618,6 @@ All the previously mentioned thirty-three symptoms of ecstatic love are called v
 
     <div class="fc-translation" data-sec="translation">All other conditions such as envy, agitation, deceit, spite, discrimination, coming to conclusion, impotence, toleration, curiosity, longing, modesty, doubt, and audacity can be included in the thirty-three and are thus not described separately</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -14839,7 +14686,6 @@ All the previously mentioned thirty-three symptoms of ecstatic love are called v
 
 
     <div class="fc-translation" data-sec="translation">All other conditions such as envy, agitation, deceit, spite, discrimination, coming to conclusion, impotence, toleration, curiosity, longing, modesty, doubt, and audacity can be included in the thirty-three and are thus not described separately</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -14917,7 +14763,6 @@ All the previously mentioned thirty-three symptoms of ecstatic love are called v
 
 
     <div class="fc-translation" data-sec="translation">Thus mātsarya (envy) is included in asūyā. Udvega (agitation) is included in trāsa. Dambha (deceit) is included in avahitthā. Īrṣyā (spite) is included in amarṣa. Viveka (discrimination) and nirṇaya (concluding) are included in mati. Klaibyam (impotence) is included in dainyam. Kṣamā (toleration) is included in dhṛti. Kutuka (curiosity) and utkaṇṭha (longing) are included in autsukya. Vinaya (modesty) is included in lajjā. Saṁśaya (doubt) is included in vitarka. Dhārṣṭya (audacity) is included in cāpala.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -15010,7 +14855,6 @@ When one becomes malicious upon seeing another’s advancement of life, his stat
 
     <div class="fc-translation" data-sec="translation">Thus mātsarya (envy) is included in asūyā. Udvega (agitation) is included in trāsa. Dambha (deceit) is included in avahitthā. Īrṣyā (spite) is included in amarṣa. Viveka (discrimination) and nirṇaya (concluding) are included in mati. Klaibyam (impotence) is included in dainyam. Kṣamā (toleration) is included in dhṛti. Kutuka (curiosity) and utkaṇṭha (longing) are included in autsukya. Vinaya (modesty) is included in lajjā. Saṁśaya (doubt) is included in vitarka. Dhārṣṭya (audacity) is included in cāpala.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -15086,7 +14930,6 @@ When one becomes malicious upon seeing another’s advancement of life, his stat
 
     <div class="fc-translation" data-sec="translation">Among the vyabhicāri-bhāvas some act as cause (vibhāva) and others act as effect (anubhāva).</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -15159,7 +15002,6 @@ When one becomes malicious upon seeing another’s advancement of life, his stat
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-4-197" data-note-label="BG 4.197" data-note-chapter="4" data-note-vlabel="197">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 4.197…" rows="4"></textarea>
@@ -15214,7 +15056,6 @@ When one becomes malicious upon seeing another’s advancement of life, his stat
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-4-198" data-note-label="BG 4.198" data-note-chapter="4" data-note-vlabel="198">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 4.198…" rows="4"></textarea>
@@ -15257,7 +15098,6 @@ When one becomes malicious upon seeing another’s advancement of life, his stat
 
 
     <div class="fc-translation" data-sec="translation">The causes and effects of vyabhicāri-bhāvas, sāttvika-bhāvas and various other actions should be understood to be similar to situations in the material world.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -15319,7 +15159,6 @@ When one becomes malicious upon seeing another’s advancement of life, his stat
 
 
     <div class="fc-translation" data-sec="translation">Criticism or other actions are considered the cause of change of color (sāttvika-bhāva) and amarṣa (indignation, vyabhicāri-bhāva), and the effect of asūyā (envy, vyabhicāri-bhāva).</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -15395,7 +15234,6 @@ False argument, determination, steadiness, remembrance, joyfulness, ignorance, h
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-4-201" data-note-label="BG 4.201" data-note-chapter="4" data-note-vlabel="201">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 4.201…" rows="4"></textarea>
@@ -15438,7 +15276,6 @@ False argument, determination, steadiness, remembrance, joyfulness, ignorance, h
 
 
     <div class="fc-translation" data-sec="translation">The vyabhicāri-bhāvas of trāsa, nidrā, śrama, ālasya, mada arising from intoxication, and bodha arise “somewhat” as the effects of rati.</div>
-
 
 
     <section class="fc-section" data-sec="gaudiya">
@@ -15508,7 +15345,6 @@ False argument, determination, steadiness, remembrance, joyfulness, ignorance, h
     <div class="fc-translation" data-sec="translation">Rati has no direct relationship with the six vyabhicāri-bhāvas just mentioned. Rati has a relationship with them only because they support rati for encouraging pastimes.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -15576,7 +15412,6 @@ False argument, determination, steadiness, remembrance, joyfulness, ignorance, h
     <div class="fc-translation" data-sec="translation">Vitarka, mati, nirveda, dhṛti, smṛti, harṣa, and the type of bodha arising from destruction of ignorance become “somewhat” the cause of rati.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -15638,7 +15473,6 @@ False argument, determination, steadiness, remembrance, joyfulness, ignorance, h
 
 
     <div class="fc-translation" data-sec="translation">The vyabhicāri-bhāvas may be either dependent or independent.</div>
-
 
 
     <section class="fc-section" data-sec="gaudiya">
@@ -15718,7 +15552,6 @@ False argument, determination, steadiness, remembrance, joyfulness, ignorance, h
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-4-206" data-note-label="BG 4.206" data-note-chapter="4" data-note-vlabel="206">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 4.206…" rows="4"></textarea>
@@ -15773,7 +15606,6 @@ False argument, determination, steadiness, remembrance, joyfulness, ignorance, h
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-4-207" data-note-label="BG 4.207" data-note-chapter="4" data-note-vlabel="207">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 4.207…" rows="4"></textarea>
@@ -15816,7 +15648,6 @@ False argument, determination, steadiness, remembrance, joyfulness, ignorance, h
 
 
     <div class="fc-translation" data-sec="translation">That superior vyabhicāri-bhāva which nourishes a primary rati is called a direct, superior dependent vyabhicāri-bhāva.</div>
-
 
 
     <section class="fc-section" data-sec="gaudiya">
@@ -15896,7 +15727,6 @@ False argument, determination, steadiness, remembrance, joyfulness, ignorance, h
 
 
     <div class="fc-translation" data-sec="translation">An example: What is the use of eyes which do not see Mathurā, hearing whose name my hairs stand on end?</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -15983,7 +15813,6 @@ False argument, determination, steadiness, remembrance, joyfulness, ignorance, h
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-4-210" data-note-label="BG 4.210" data-note-chapter="4" data-note-vlabel="210">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 4.210…" rows="4"></textarea>
@@ -16030,7 +15859,6 @@ False argument, determination, steadiness, remembrance, joyfulness, ignorance, h
 
 
     <div class="fc-translation" data-sec="translation">I am Bhīma. How unfortunate are my two arms, strong as iron beams, if they cannot crush the evil Śiṣupāla, the enemy of Kṛṣṇa?</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -16088,7 +15916,6 @@ False argument, determination, steadiness, remembrance, joyfulness, ignorance, h
 
 
     <div class="fc-translation" data-sec="translation">In the above verse, nirveda (self-deprecation) is under the control of the secondary rati of anger. Thus it is called indirect, or vyavahita.</div>
-
 
 
     <section class="fc-section" data-sec="gaudiya">
@@ -16168,7 +15995,6 @@ False argument, determination, steadiness, remembrance, joyfulness, ignorance, h
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-4-213" data-note-label="BG 4.213" data-note-chapter="4" data-note-vlabel="213">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 4.213…" rows="4"></textarea>
@@ -16223,7 +16049,6 @@ False argument, determination, steadiness, remembrance, joyfulness, ignorance, h
 
 
     <div class="fc-translation" data-sec="translation">When Arjuna saw the universal form of Kṛṣṇa which was crushing the heads of the living entities in the universe with its teeth situated in its shining mouths, his mouth became dry and he forgot himself.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -16298,7 +16123,6 @@ False argument, determination, steadiness, remembrance, joyfulness, ignorance, h
 
 
     <div class="fc-translation" data-sec="translation">Uncontrollable fear appeared from Arjuna experiencing the frightful actions of the universal form. This covers the rati of Arjuna. The vyabhicāri-bhāva of moha is under the control of a fear which is not a secondary rati.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -16393,7 +16217,6 @@ Thus Arjuna’s resulting moha is not part of a secondary rati. Therefore, it is
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-4-216" data-note-label="BG 4.216" data-note-chapter="4" data-note-vlabel="216">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 4.216…" rows="4"></textarea>
@@ -16436,7 +16259,6 @@ Thus Arjuna’s resulting moha is not part of a secondary rati. Therefore, it is
 
 
     <div class="fc-translation" data-sec="translation">Those knowledgeable of rati divide the independent vyabhicāri-bhāvas into three types: devoid of genuine rati, influenced by genuine rati and having a trace of rati.</div>
-
 
 
     <section class="fc-section" data-sec="gaudiya">
@@ -16516,7 +16338,6 @@ Thus Arjuna’s resulting moha is not part of a secondary rati. Therefore, it is
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-4-218" data-note-label="BG 4.218" data-note-chapter="4" data-note-vlabel="218">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 4.218…" rows="4"></textarea>
@@ -16563,7 +16384,6 @@ Thus Arjuna’s resulting moha is not part of a secondary rati. Therefore, it is
 
 
     <div class="fc-translation" data-sec="translation">Independent self-deprecation, from the Tenth Canto: To hell with our threefold birth, our vow of celibacy and our extensive learning! To hell with our aristocratic background and our expertise in the rituals of sacrifice! These are all condemned because we were inimical to the transcendental Personality of Godhead. [Note: The vyabhicāri-bhāva of nirveda (self-deprecation) is called independent because it is devoid of real rati for Kṛṣṇa. The brāhmaṇas did not have rati for Kṛṣṇa, but rati-chāyā. Just as raty-ābhāsa gives rise to apparent sāttvika-bhāvas, it gives rise to apparent vyabhicāri-bhāvas.] SB 10.23.40</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -16630,7 +16450,6 @@ Thus Arjuna’s resulting moha is not part of a secondary rati. Therefore, it is
 
     <div class="fc-translation" data-sec="translation">Influenced by genuine rati: When a vyabhicāri-bhāva appears spontaneously but devoid of even rati-gandha (the third type of independent vyabhicāri-bhāva, having genuine rati as the indirect cause), but is related to genuine rati because the experiencer has permanent genuine rati, it is called raty-anusparśana-svatantra-vyabhicāri-bhāva.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -16695,7 +16514,6 @@ Thus Arjuna’s resulting moha is not part of a secondary rati. Therefore, it is
 
 
     <div class="fc-translation" data-sec="translation">Terror: Hearing the roaring of the terrifying bull demon, the cowherd boys became fearful and almost deaf because of the loud sound. They began to shout, ’’Kṛṣṇa! Please save us!”</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -16770,7 +16588,6 @@ Thus Arjuna’s resulting moha is not part of a secondary rati. Therefore, it is
 
 
     <div class="fc-translation" data-sec="translation">When a vyabhicāri-bhāva shows a touch of rati even though it remains independent, it is called rati-gandhi-svatantra-vyabhicāri-bhāva.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -16863,7 +16680,6 @@ Thus Arjuna’s resulting moha is not part of a secondary rati. Therefore, it is
     <div class="fc-translation" data-sec="translation">Bashfulness: “O my daughter! I know why you are wearing that yellow cloth on your body. Do not try to hide from me (your attraction for Kṛṣṇa).” When Mukharā told this to Rādhā, Rādhā quickly hung her head and covered her face with the edge of her cloth to hide her shame.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -16931,7 +16747,6 @@ Thus Arjuna’s resulting moha is not part of a secondary rati. Therefore, it is
     <div class="fc-translation" data-sec="translation">When these vyabhicāri-bhāvas manifest inappropriately in unqualified persons, they are actually semblances or ābhāsas of vyabhicāri-bhāvas. There are two types of inappropriateness: appearing in persons hostile to Kṛṣṇa and being improperly credited.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -16997,7 +16812,6 @@ Thus Arjuna’s resulting moha is not part of a secondary rati. Therefore, it is
 
 
     <div class="fc-translation" data-sec="translation">Unfavorable vyabhicāri-bhāvābhāsa: When the bhāvas are present in those hostile to Kṛṣṇa they are called prātikūlya (unfavorable). [Note: This is similar to the sāttvika-bhāvas appearing in the enemies of Kṛṣṇa, which was called pratīpa.]</div>
-
 
 
     <section class="fc-section" data-sec="gaudiya">
@@ -17082,7 +16896,6 @@ Thus Arjuna’s resulting moha is not part of a secondary rati. Therefore, it is
 
     <div class="fc-translation" data-sec="translation">An example of hostile manifestation of self-deprecation: When the cowherd boy without training killed the horse demon who was my very life and soul, what is the need for me, the unfortunate king Kaṁsa, who defeated Indra as play, to maintain my life?</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -17163,7 +16976,6 @@ Thus Arjuna’s resulting moha is not part of a secondary rati. Therefore, it is
 
 
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -17241,7 +17053,6 @@ Thus Arjuna’s resulting moha is not part of a secondary rati. Therefore, it is
 
 
     <div class="fc-translation" data-sec="translation">There are two types of inappropriateness: non-existent (asatya) and unqualified (ayogya). “Non-existent” means attributing vyabhicāri-bhāvas to inanimate objects (which cannot have emotions). “Unqualified” means attributing the bhāvas to animals (who are unqualified for higher emotions).</div>
-
 
 
     <section class="fc-section" data-sec="gaudiya">
@@ -17326,7 +17137,6 @@ Thus Arjuna’s resulting moha is not part of a secondary rati. Therefore, it is
 
     <div class="fc-translation" data-sec="translation">Self-deprecation in trees: “My life is useless since Kṛṣṇa has not enjoyed the shade of my branches even once.” “O kadamba tree! Do not lament! You will attain success in life when Kṛṣṇa jumps from your branches to punish Kāliya.”</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -17392,7 +17202,6 @@ Thus Arjuna’s resulting moha is not part of a secondary rati. Therefore, it is
 
     <div class="fc-translation" data-sec="translation">Pride in animals: A peacock speaks: I am very pure. What bird is there to compare with me? Giving up Garudā, the Lord enjoys my feather on His head.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -17453,7 +17262,6 @@ Thus Arjuna’s resulting moha is not part of a secondary rati. Therefore, it is
 
 
     <div class="fc-translation" data-sec="translation">Consciousness, discrimination, and the experience of sweetness described in the kadamba tree and other objects should be understood to be only a semblance to those items because they have only consciousness without discriminating powers.</div>
-
 
 
     <section class="fc-section" data-sec="gaudiya">
@@ -17525,7 +17333,6 @@ Thus it sāmānya-dṛṣṭyā means that they have consciousness without discr
 
 
     <div class="fc-translation" data-sec="translation">Sometimes four stages are seen in the manifestation of vyabhicāri-bhāvas: appearance, conjunction, conflict and disappearance. Appearance (utpatti) means the initial manifestation of the vyabhicāri-bhāva.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -17611,7 +17418,6 @@ Thus it sāmānya-dṛṣṭyā means that they have consciousness without discr
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-4-233" data-note-label="BG 4.233" data-note-chapter="4" data-note-vlabel="233">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 4.233…" rows="4"></textarea>
@@ -17666,7 +17472,6 @@ Thus it sāmānya-dṛṣṭyā means that they have consciousness without discr
 
 
     <div class="fc-translation" data-sec="translation">Appearance of asūyā: O Viśakhā! When you came in the morning to the bower, your friend Rādhā appeared splendid, even though her belt was crooked from her haste in tying it around her waist. When Kṛṣṇa revealed that confidential matter, Rādhā sent a crooked glance at Him with a frown on her brow. May that Rādhā purify you!</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -17753,7 +17558,6 @@ Thus it sāmānya-dṛṣṭyā means that they have consciousness without discr
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-4-235" data-note-label="BG 4.235" data-note-chapter="4" data-note-vlabel="235">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 4.235…" rows="4"></textarea>
@@ -17796,7 +17600,6 @@ Thus it sāmānya-dṛṣṭyā means that they have consciousness without discr
 
 
     <div class="fc-translation" data-sec="translation">When the same vyabhicāri-bhāva arises from two different causes and joins, it is called sarūpa-sandhi.</div>
-
 
 
 
@@ -17867,7 +17670,6 @@ Thus it sāmānya-dṛṣṭyā means that they have consciousness without discr
 
 
     <div class="fc-translation" data-sec="translation">Jaḍya caused by favorable and unfavorable circumstances: In the evening, the dead demoness lay on the earth and your son was sitting on her breast laughing. When Yaśodā heard this, for some time she remained motionless.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -17954,7 +17756,6 @@ Thus it sāmānya-dṛṣṭyā means that they have consciousness without discr
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-4-238" data-note-label="BG 4.238" data-note-chapter="4" data-note-vlabel="238">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 4.238…" rows="4"></textarea>
@@ -18001,7 +17802,6 @@ Thus it sāmānya-dṛṣṭyā means that they have consciousness without discr
 
 
     <div class="fc-translation" data-sec="translation">Two differing bhāvas arising from one source: This child is very fickle. He constantly runs inside and outside of Gokula. His fearlessness causes me both joy (harṣa) and apprehension (śaṅkā).</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -18075,7 +17875,6 @@ Thus it sāmānya-dṛṣṭyā means that they have consciousness without discr
 
 
     <div class="fc-translation" data-sec="translation">Two bhāvas of harṣa and viṣāda from differing sources joining together: Seeing her son with joyful eyes in front of her, and seeing the strong wrestlers as well, Devakī began to shed both cool and hot tears.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -18162,7 +17961,6 @@ Thus it sāmānya-dṛṣṭyā means that they have consciousness without discr
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-4-241" data-note-label="BG 4.241" data-note-chapter="4" data-note-vlabel="241">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 4.241…" rows="4"></textarea>
@@ -18217,7 +18015,6 @@ Thus it sāmānya-dṛṣṭyā means that they have consciousness without discr
 
 
     <div class="fc-translation" data-sec="translation">Here there is a combination of harṣa (joy), autsukya (impatience), garva (pride), amarṣa (indignation) and asūyā (displeasure) arising from one cause: Rādhā, being stopped forcibly by strong Kṛṣṇa in the forest on the bank of the Yamunā, internally smiled at Him. She gracefully glanced at Him with red eyes and furrowed brows. Her eyes lit up with flickering pupils, but she showed contempt for him. May Rādhā remain glorious!</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -18305,7 +18102,6 @@ Thus it sāmānya-dṛṣṭyā means that they have consciousness without discr
 
     <div class="fc-translation" data-sec="translation">Many bhāvas arising from many causes: In this example there is lajjā (shame), amarṣa (envy), harṣa (joy) and viṣāda (despair). On the occasion of a festival, Rādhā, wearing a necklace given by Kṛṣṇa, saw nearby her mother, and in front of her, smiling Padmā. At a distance, she saw Kṛṣṇa and her husband Abhimanyu. She hung her head in shame on seeing her mother, threw crooked glances at Padmā in hatred. Her face blossomed with joy on seeing Kṛṣṇa and became withered on seeing her husband.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -18379,7 +18175,6 @@ Thus it sāmānya-dṛṣṭyā means that they have consciousness without discr
 
 
     <div class="fc-translation" data-sec="translation">When many bhāvas conflict with each other, the state is called śābalya.</div>
-
 
 
     <section class="fc-section" data-sec="gaudiya">
@@ -18460,7 +18255,6 @@ Thus it sāmānya-dṛṣṭyā means that they have consciousness without discr
 
     <div class="fc-translation" data-sec="translation">In this example there is a combination of garva (pride), viṣāda (despair), dainyam (feeling feeble), mati (consideration), smṛti (remembrance), śaṅkā (apprehension), amarṣa (indignation) and trāsa (terror). What can that child do? Yet he has killed all of my friends! Should I then surrender to Him? A warrior can never do that. I am preparing huge wrestlers to fight Him. But He has lifted Govardhana with His hand. I should go today to Vraja and attack Him, but my heart is shaking because of Him.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -18533,7 +18327,6 @@ Thus it sāmānya-dṛṣṭyā means that they have consciousness without discr
 
 
     <div class="fc-translation" data-sec="translation">Here there is a combination of nirveda (self-contempt), garva (pride), śaṅkā (apprehension), dhṛti (steadiness), viṣāda (despair), mati (contemplation) and autsukya (impatience). My long eyes are unfortunate since they do not see Mathurā. My learning has made kings into servants. Time devours everything, but my house is the playground of Lakṣmī. Yet how unfortunate I am! My body grows thinner day by day. Therefore, I should sit in my house and worship the Lord but my heart is attracted to Vṛndāvana.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -18609,7 +18402,6 @@ There is a proverb in Sanskrit which says, “Disappointment gives rise to the g
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-4-247" data-note-label="BG 4.247" data-note-chapter="4" data-note-vlabel="247">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 4.247…" rows="4"></textarea>
@@ -18664,7 +18456,6 @@ There is a proverb in Sanskrit which says, “Disappointment gives rise to the g
 
 
     <div class="fc-translation" data-sec="translation">This is an example of disappearance of viṣāda (despair): When the children of Vraja could not see Kṛṣṇa, their faces withered and became pale. They began searching for Kṛṣṇa in the forest. At that time, hearing the soft sound of His flute on a mountain top, they became filled with joy with hairs standing on end.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -18740,7 +18531,6 @@ There is a proverb in Sanskrit which says, “Disappointment gives rise to the g
 
     <div class="fc-translation" data-sec="translation">Though my words do not have variety in meaning or flavor, examples of the vyabhicāri-bhāvas have been presented to indicate their essential nature as much as possible.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -18801,7 +18591,6 @@ There is a proverb in Sanskrit which says, “Disappointment gives rise to the g
 
 
     <div class="fc-translation" data-sec="translation">The forty-one chief bhāvas or emotions are these thirty-three vyabhicāri-bhāvas, the seven secondary sthāyi-bhāvas, [Note: Later Rūpa Gosvāmī explains that the seven secondary ratis are actually vyabhicāri-bhāvas. He classes them as ratis only out of deference to Bharata Muni and others.] and the one mukhya-sthāyi-bhāva of the devotee. [Note: Though a devotee may have a mixture of primary ratis in his relationship with Kṛṣṇa, one of those is dominant as the sthāyi-bhāva, and others appear only at certain times, not at the same time, as vyabhicāri-bhāvas, or secondary ratis.]</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -18877,7 +18666,6 @@ There is a proverb in Sanskrit which says, “Disappointment gives rise to the g
 
     <div class="fc-translation" data-sec="translation">The transformations of mind created by the appearance of these forty-one bhāvas are said to create transformations in the body and all of the senses. [Note: These become the cause of sāttvika-bhavas and anubhāvas.]</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -18946,7 +18734,6 @@ There is a proverb in Sanskrit which says, “Disappointment gives rise to the g
 
 
     <div class="fc-translation" data-sec="translation">One bhāva is natural to the person, and other bhāvas are incidental. The natural bhāva spreads internally and externally just as red color is completely identical with naturally red substances. Thus, the natural bhāva becomes very apparent just by a slight contact with the cause (Kṛṣṇa).</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -19030,7 +18817,6 @@ There is a proverb in Sanskrit which says, “Disappointment gives rise to the g
 
     <div class="fc-translation" data-sec="translation">One bhāva is natural to the person, and other bhāvas are incidental. The natural bhāva spreads internally and externally just as red color is completely identical with naturally red substances. Thus, the natural bhāva becomes very apparent just by a slight contact with the cause (Kṛṣṇa).</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -19105,7 +18891,6 @@ There is a proverb in Sanskrit which says, “Disappointment gives rise to the g
 
     <div class="fc-translation" data-sec="translation">By this natural bhāva, rati (attraction or love) is appears. Though rati is one in speaking about it generally, it appears in various forms when wishing to describe its various qualities.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -19166,7 +18951,6 @@ There is a proverb in Sanskrit which says, “Disappointment gives rise to the g
 
 
     <div class="fc-translation" data-sec="translation">Just as white cloth appears red when red dye is applied to a cloth, the incidental bhāvas become situated in the devotees by various causes and then become visible.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -19242,7 +19026,6 @@ There is a proverb in Sanskrit which says, “Disappointment gives rise to the g
 
     <div class="fc-translation" data-sec="translation">Because of the variety of causes and other elements and the differences in the devotees, there is great diversity in every one of the bhāvas.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -19303,7 +19086,6 @@ There is a proverb in Sanskrit which says, “Disappointment gives rise to the g
 
 
     <div class="fc-translation" data-sec="translation">There is a variety of minds of the various types of devotees (devotees in śānta, dāsya etc.). In accordance with the variety of minds, there are also various gradations of the appearance of the bhāvas because of various natures such as gariṣṭha.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -19378,7 +19160,6 @@ There is a proverb in Sanskrit which says, “Disappointment gives rise to the g
 
 
     <div class="fc-translation" data-sec="translation">Even if these bhāvas were to appear strongly in hearts which are gariṣṭha (heavy), gambhīra (deep), mahiṣṭha (expansive) or karkaśa (hard) in nature, ordinary people could not perceive the bhāvas clearly because there would be no external transformations of body or senses.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -19455,7 +19236,6 @@ The word amī refers to the bhāvas.</p>
 
     <div class="fc-translation" data-sec="translation">When these bhāvas arise even slightly in hearts which are laghiṣṭha (light), uttāna (spread on the surface), kṣodiṣṭha (small) and komala (soft), they can be recognized externally because of extreme transformations of the body and senses.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -19516,7 +19296,6 @@ The word amī refers to the bhāvas.</p>
 
 
     <div class="fc-translation" data-sec="translation">The heavy heart is like a pile of gold. The light heart is like a pile of cotton wool. The bhāvas act like wind in relation to these two types of hearts.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -19603,7 +19382,6 @@ The word amī refers to the bhāvas.</p>
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-4-261" data-note-label="BG 4.261" data-note-chapter="4" data-note-vlabel="261">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 4.261…" rows="4"></textarea>
@@ -19646,7 +19424,6 @@ The word amī refers to the bhāvas.</p>
 
 
     <div class="fc-translation" data-sec="translation">The expansive heart is like a city and the small heart is like a hut. Bhāva is like a lamp or an elephant for these two types of hearts.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -19709,7 +19486,6 @@ The word amī refers to the bhāvas.</p>
 
     <div class="fc-translation" data-sec="translation">There are three degrees of hardness: like a thunderbolt, gold and lac. Bhāva is like fire in relation to these three types of hard heart.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -19770,7 +19546,6 @@ The word amī refers to the bhāvas.</p>
 
 
     <div class="fc-translation" data-sec="translation">The thunderbolt is extremely hard and never becomes soft. This hardness is seen in the hearts of those who perform severe austerities.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -19846,7 +19621,6 @@ The word amī refers to the bhāvas.</p>
 
     <div class="fc-translation" data-sec="translation">Gold becomes liquid from intense heating. By the very strong heat of bhāva, this heart becomes soft. Lac becomes soft with very little heat. With a little bhāva, this heart becomes soft.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -19907,7 +19681,6 @@ The word amī refers to the bhāvas.</p>
 
 
     <div class="fc-translation" data-sec="translation">Softness is of three degrees: like bee’s wax, butter and nectar. In relation to these, bhāva is like the heat of the sun.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -19992,7 +19765,6 @@ Thunderbolt, gold and lac are used to explain the phenomenon of becoming liquid 
 
     <div class="fc-translation" data-sec="translation">Bee’s wax and butter become liquid from different degrees of heat from the sun. Nectar is naturally liquid. The hearts of the dearest devotees of Govinda are naturally soft like nectar.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -20066,7 +19838,6 @@ Thunderbolt, gold and lac are used to explain the phenomenon of becoming liquid 
 
 
     <div class="fc-translation" data-sec="translation">The mind of some devotee may be constantly influenced by a mixture of two or three of the above conditions such as gariṣṭha.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -20148,7 +19919,6 @@ In all cases, the amount of softness or melting of the heart depends on the stre
 
 
     <div class="fc-translation" data-sec="translation">But when the principal sthāyi-bhāva becomes very prominent, all types of hearts become completely disturbed by the vyabhicāri-bhāvas.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -20235,7 +20005,6 @@ In all cases, the amount of softness or melting of the heart depends on the stre
 
 
     <div class="fc-translation" data-sec="translation">The devotee is like the ocean. As Viṣṇu resides in the milk ocean, so the Lord resides in the heart of the devotee. As the ocean is deep or unfathomable, the heart of the devotee is inscrutable, not revealing its qualities. As the ocean is unwearied, so the devotee is continuous in his service. As the ocean is difficult to cross, but has a permanent shore, so the devotee’s qualities are difficult to enumerate, but he appears to limit those qualities. But when the devotee develops full prema he cannot prevent the transformations arising from that prema, just as, the ocean cannot prevent the rising of the tide when the moon rises from the ocean</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>

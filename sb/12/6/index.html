@@ -25,19 +25,25 @@
     <link rel="icon" href="../../../assets/icons/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="../../../assets/icons/icon.svg">
     <link rel="stylesheet" href="../../../assets/css/site.css">
+    <link rel="alternate" hreflang="te-IN" href="../../../te/sb/12/6/">
+    <link rel="alternate" hreflang="x-default" href="../../../">
     <script>window.FC_TO_ROOT = "../../../";</script>
     <script src="../../../assets/js/toggle.js"></script>
 </head>
 <body class="has-sidebar" data-chapter="6">
 <header class="fc-site-header">
     <button type="button" class="fc-mobile-trigger fc-mobile-trigger-left" data-overlay="left" aria-label="Open settings drawer">⚙</button>
-<a class="fc-brand" href="../../../">FolioCorpus<span class="fc-sub">Śrīmad-Bhāgavatam</span></a>
+    <a class="fc-brand" href="../../../">FolioCorpus<span class="fc-sub">Bhagavad-gītā</span></a>
     <nav class="fc-site-nav">
         <a href="../../../">Home</a>
         <a href="../../../bg/">Bhagavad-gītā</a>
         <a href="../../../sb/">Śrīmad-Bhāgavatam</a>
         <a href="../../../search/" title="Search across all integrated works">🔍 Search</a>
         <button type="button" id="fc-random-verse" class="fc-nav-btn" title="Jump to a random verse">🎲 Random</button>
+        <span class="fc-lang-switch" aria-label="Script">
+            <a class="active" href="#" title="Devanāgarī edition">EN</a>
+            <a class="" href="../../../te/sb/12/6/" title="Telugu lipi edition">తె</a>
+        </span>
     </nav>
     <button type="button" class="fc-mobile-trigger fc-mobile-trigger-right" data-overlay="right" aria-label="Open chapter index drawer">📚</button>
 </header>
@@ -46,8 +52,8 @@
     <button class="fc-sb-collapse" type="button" data-sb="left" title="Collapse left sidebar" aria-label="Collapse"></button>
 
     <div class="fc-sb-body">
-        <details class="fc-sb-section" data-sbsec="reading" open>
-            <summary class="fc-sb-title">Reading</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Reading</div>
             <div class="fc-sb-sub">Theme</div>
             <div class="fc-segmented" data-setting="theme">
                 <button type="button" data-val="light">Light</button>
@@ -73,10 +79,10 @@
                 <button type="button" data-val="single">Single</button>
                 <button type="button" data-val="side">Side-by-side</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="display" open>
-            <summary class="fc-sb-title">Display</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Display</div>
             <div class="fc-sb-grid">
                 <label><input type="checkbox" data-section="devanagari" checked> Devanāgarī</label>
                 <label><input type="checkbox" data-section="iast" checked> IAST transliteration</label>
@@ -99,10 +105,33 @@
                 <button type="button" data-action="expand-all">Expand all</button>
                 <button type="button" data-action="collapse-all">Collapse all</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="tools" open>
-            <summary class="fc-sb-title">Tools</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Find your starting point</div>
+            <div class="fc-persona-links">
+                <a class="fc-persona-link" href="../../../daily/">🌅 Daily (one value a week)</a>
+                <a class="fc-persona-link" href="../../../householder/">🏠 Householder (family & work)</a>
+                <a class="fc-persona-link" href="../../../parenting/">👨‍👩‍👧 Parenting (stories for kids)</a>
+                <a class="fc-persona-link" href="../../../themes/">📚 All themes</a>
+                <a class="fc-persona-link" href="../../../values/" style="background:#F0F6F2;border-left-color:#1F4632;">ॐ Vedic Value System ↗</a>
+                <a class="fc-persona-link" href="../../../vidya/" style="background:#FBF6E4;border-left-color:#C8860B;">📚 Vidyā Karaṇa (kids, multi-lang) ↗</a>
+            </div>
+        </div>
+
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Audience</div>
+            <div class="fc-audience-filter">
+                <label><input type="radio" name="fc-audience" value="all" checked> All levels</label>
+                <label><input type="radio" name="fc-audience" value="primary"> Primary (children)</label>
+                <label><input type="radio" name="fc-audience" value="middle"> Middle (teens)</label>
+                <label><input type="radio" name="fc-audience" value="senior"> Senior (adults)</label>
+                <label><input type="radio" name="fc-audience" value="college"> College / scholar</label>
+            </div>
+        </div>
+
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Tools</div>
             <div class="fc-sb-tools">
                 <button type="button" id="fc-presentation-toggle" class="fc-tool-btn"><span>🖥 Presentation</span><kbd class="fc-kbd">F</kbd></button>
                 <button type="button" id="fc-pen-toggle" class="fc-tool-btn"><span>✏️ Pen mode</span><kbd class="fc-kbd">P</kbd></button>
@@ -117,10 +146,26 @@
                 <button type="button" id="fc-clear-highlights" class="fc-tool-btn">🩷 Clear highlights (page)</button>
                 <button type="button" id="fc-notes-modal-open" class="fc-tool-btn">📓 My annotations</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="progress" id="fc-progress-section" open>
-            <summary class="fc-sb-title">Progress</summary>
+        <div class="fc-sb-section" id="fc-tts-controls" hidden>
+            <div class="fc-sb-title">
+                Read-aloud
+                <label class="fc-tts-master">
+                    <input type="checkbox" id="fc-tts-enabled" checked>
+                    <span class="fc-tts-master-label">On</span>
+                </label>
+            </div>
+            <div class="fc-tts-inner">
+                <div class="fc-sb-sub">Voice</div>
+                <select id="fc-tts-voice" class="fc-tts-select" aria-label="TTS voice"></select>
+                <div class="fc-sb-sub">Rate <span class="fc-tts-rate-val">1.0×</span></div>
+                <input type="range" id="fc-tts-rate" min="0.5" max="2" step="0.1" value="1" class="fc-tts-rate" aria-label="Reading rate">
+            </div>
+        </div>
+
+        <div class="fc-sb-section" id="fc-progress-section">
+            <div class="fc-sb-title">Progress</div>
             <div class="fc-progress-row">
                 <span class="fc-progress-num" id="fc-progress-num">0</span>
                 <span class="fc-progress-divider">/</span>
@@ -135,29 +180,29 @@
                 <span class="fc-progress-spacer"></span>
                 <button type="button" class="fc-progress-reset" id="fc-progress-reset" title="Reset progress">↺</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="bookmarks" open>
-            <summary class="fc-sb-title">Bookmarks <span class="fc-sb-count" id="fc-bookmarks-count">0</span></summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Bookmarks <span class="fc-sb-count" id="fc-bookmarks-count">0</span></div>
             <ul class="fc-bookmark-list" id="fc-bookmarks-list">
                 <li class="fc-sb-empty">No bookmarks yet — click ☆ on any verse.</li>
             </ul>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="notes" open>
-            <summary class="fc-sb-title">Notes <span class="fc-sb-count" id="fc-notes-count">0</span></summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Notes <span class="fc-sb-count" id="fc-notes-count">0</span></div>
             <ul class="fc-bookmark-list" id="fc-notes-list">
                 <li class="fc-sb-empty">No notes yet — open any verse and write in the 📝 block.</li>
             </ul>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="export">
-            <summary class="fc-sb-title">Export</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Export</div>
             <div class="fc-sb-tools">
                 <button type="button" id="fc-export-md" class="fc-tool-btn">📥 Download Markdown</button>
                 <button type="button" id="fc-export-json" class="fc-tool-btn">💾 Download JSON backup</button>
             </div>
-        </details>
+        </div>
     </div>
 </aside>    <main class="fc-container">
 <nav class="fc-breadcrumbs">
@@ -175,7 +220,7 @@
         <h1 class="fc-verse-heading">12.6 · Mahārāja Parīkṣit Passes Away</h1>
         <span class="fc-ribbon-meta">
             71 verses
- · <a class="fc-ribbon-link" href="class-prep/">🖨 Class prep</a>        </span>
+        </span>
         <input type="search" class="fc-search" id="fc-search" placeholder="🔍 Search in this chapter" aria-label="Search verses in this chapter">
         <span class="fc-ribbon-current" id="fc-ribbon-current" aria-live="polite"></span>
     </div>
@@ -584,7 +629,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <div class="fc-translation" data-sec="translation">Sūta Gosvāmī said: After hearing all that was narrated to him by the self-realized and equipoised Śukadeva, the son of Vyāsadeva, Mahārāja Parīkṣit humbly approached his lotus feet. Bowing his head down upon the sage’s feet, the King, who had lived his entire life under the protection of Lord Viṣṇu, folded his hands in supplication and spoke as follows.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -628,18 +672,6 @@ The Sixth Chapter describes Mahārāja Parīkṣit attaining Kṛṣṇa, the se
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Having heard the entire Bhagavatam from the equipoised Sukadeva, Pariksit feels gratitude take over his being. The verse models what receiving deep teaching should produce in us — not pride of knowing but soft gratitude and humility.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What is the dominant feeling after my time with scripture — knowing or thanking?</li><li>Whom in my life should I thank for the spiritual food they have given me?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -852,7 +884,6 @@ The Sixth Chapter describes Mahārāja Parīkṣit attaining Kṛṣṇa, the se
     <div class="fc-translation" data-sec="translation">Mahārāja Parīkṣit said: I have now achieved the purpose of my life, because a great and merciful soul like you has shown such kindness to me. You have personally spoken to me this narration of the Supreme Personality of Godhead, Hari, who is without beginning or end.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -873,18 +904,6 @@ I have been successful (siddhaḥ), because the Lord whom I directly saw in the 
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Pariksit declares the purpose of his life fulfilled because a kind soul revealed Kṛṣṇa to him. He doesn&#39;t say his kingdom was the fulfillment; the kingdom was just the setting. Our circumstances are setting; encountering the Lord is the plot.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Am I treating my circumstances as plot when they may only be setting?</li><li>Who has shown me Kṛṣṇa, and have I told them what it meant?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -1063,7 +1082,6 @@ I have been successful (siddhaḥ), because the Lord whom I directly saw in the 
     <div class="fc-translation" data-sec="translation">I do not consider it at all amazing that great souls such as yourself, whose minds are always absorbed in the infallible Personality of Godhead, show mercy to the foolish conditioned souls, tormented as we are by the problems of material life.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -1084,18 +1102,6 @@ Acyutātmanām means “whose minds are absorbed in Acyuta.”</div>
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Pariksit says he is not amazed that great souls absorbed in the Lord still show mercy to the fallen — that is simply their nature. Saints reach down because they are full, not because they need anything. We can become small currents of that same mercy.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>When I help others, am I drawing from fullness or from need?</li><li>Whose small kindness has flowed to me from such fullness, and can I pass it on today?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -1256,7 +1262,6 @@ Acyutātmanām means “whose minds are absorbed in Acyuta.”</div>
     <div class="fc-translation" data-sec="translation">I have heard from you this Śrīmad-Bhāgavatam, which is the perfect summary of all the Purāṇas and which perfectly describes the Supreme Lord, Uttamaḥśloka.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -1277,18 +1282,6 @@ Acyutātmanām means “whose minds are absorbed in Acyuta.”</div>
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Pariksit has now heard the perfect summary of all the Puranas describing Uttamaḥśloka. Receiving Bhagavatam at the right time can complete a life. Even one good hearing, fully received, is enough to reorient everything.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Have I ever &#39;fully received&#39; a passage of Bhagavatam, or only skimmed?</li><li>What conditions does my heart need to truly receive even one verse?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -1467,7 +1460,6 @@ Acyutātmanām means “whose minds are absorbed in Acyuta.”</div>
     <div class="fc-translation" data-sec="translation">My lord, I now have no fear of Takṣaka or any other living being, or even of repeated deaths, because I have absorbed myself in that purely spiritual Absolute Truth, which you have revealed and which destroys all fear.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -1511,18 +1503,6 @@ This is an example of suggestive means of expression. It however is found origin
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Pariksit no longer fears Taksaka, other beings, or repeated deaths — he has absorbed himself in the purely spiritual Brahman. Fear shrinks naturally when something larger fills the inner space; we don&#39;t have to fight it directly.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which fear of mine could I starve by filling the same inner space with something larger?</li><li>What spiritual content, taken in regularly, would do that filling?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -1700,7 +1680,6 @@ This is an example of suggestive means of expression. It however is found origin
 
     <div class="fc-translation" data-sec="translation">O brāhmaṇa, please give me permission to resign my speech and the functions of all my senses unto Lord Adhokṣaja. Allow me to absorb my mind, purified of lusty desires, within Him and to thus give up my life.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1729,18 +1708,6 @@ O brāhamaṇa!  Give me the order by your mercy, and nothing unfavorable.  Give
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Pariksit asks permission to withdraw his speech, senses, and mind into Lord Adhokṣaja. He doesn&#39;t simply stop using them; he offers them. Spiritual death is not absence of activity but redirection of every faculty to the Lord.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which of my faculties is currently the least dedicated to the Lord?</li><li>What small act today would consciously redirect it?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -1928,7 +1895,6 @@ O brāhamaṇa!  Give me the order by your mercy, and nothing unfavorable.  Give
     <div class="fc-translation" data-sec="translation">You have revealed to me that which is most auspicious, the supreme personal feature of the Lord. I am now fixed in knowledge and self-realization, and my ignorance has been eradicated.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -1949,18 +1915,6 @@ By known about the Lord and realization of his sweetness and powers, my ignoranc
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Pariksit thanks Sukadeva for revealing the supreme personal feature of the Lord, leaving him fixed in knowledge and self-realization. The personal Lord, not impersonal vagueness, is what finally settles the heart.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Does the Lord I worship feel like a person who can be addressed?</li><li>What practice could deepen that personal sense for me?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -2146,7 +2100,6 @@ By known about the Lord and realization of his sweetness and powers, my ignoranc
     <div class="fc-translation" data-sec="translation">Sūta Gosvāmī said: Thus requested, the saintly son of Śrīla Vyāsadeva gave his permission to King Parīkṣit. Then, after being worshiped by the King and all the sages present, Śukadeva departed from that place.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -2167,18 +2120,6 @@ Bhikṣubhiḥ means “by all the great sages.”</div>
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Sukadeva grants permission and, worshiped by Pariksit and the sages, takes leave. There is a quiet dignity in spiritual goodbyes between teacher and student — neither clinging nor coldness, just permission for the next stage.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Am I able to let someone I love move into their next stage without clinging?</li><li>What about my own next stage am I avoiding because of attachment to the present one?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -2482,7 +2423,6 @@ Bhikṣubhiḥ means “by all the great sages.”</div>
     <div class="fc-translation" data-sec="translation">Mahārāja Parīkṣit then sat down on the bank of the Ganges, upon a seat made of darbha grass with the tips of its stalks facing east, and turned himself toward the north. Having attained the perfection of yoga, he experienced full self-realization and was free of material attachment and doubt. The saintly King settled his mind within his spiritual self by pure intelligence and proceeded to meditate upon the Supreme Absolute Truth. His life air ceased to move, and he became as stationary as a tree.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -2503,18 +2443,6 @@ By his intelligence (ātmanā) he concentrated acutely (param) on Kṛṣṇa (�
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Pariksit sits on darbha grass facing east, turns himself toward Brahman, and waits. He does not protest his fate or scramble for protection. There is a courage in receiving death consciously, in chosen posture, that bhakti makes possible.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Could I, today, sit consciously with one thing I have been avoiding?</li><li>What posture — physical or inner — most supports facing reality squarely?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -2693,7 +2621,6 @@ By his intelligence (ātmanā) he concentrated acutely (param) on Kṛṣṇa (�
     <div class="fc-translation" data-sec="translation">O learned brāhmaṇas, the snake-bird Takṣaka, who had been sent by the angry son of a brāhmaṇa, was going toward the King to kill him when he saw Kaśyapa Muni on the path.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -2714,18 +2641,6 @@ Since he was situated in the spiritual world, the attack of Takṣaka was a usel
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Taksaka, sent by the brahmana boy&#39;s curse, meets Kaśyapa on the road — a healer who could counteract the poison. Even our enemies are choreographed within a larger script. Nothing approaches us by pure accident.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What recent &#39;enemy&#39; or obstacle could I view as choreographed for some lesson?</li><li>What might be the lesson if I were quiet enough to ask?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -2885,7 +2800,6 @@ Since he was situated in the spiritual world, the attack of Takṣaka was a usel
 
     <div class="fc-translation" data-sec="translation">Takṣaka flattered Kaśyapa by presenting him with valuable offerings and thereby stopped the sage, who was expert in counteracting poison, from protecting Mahārāja Parīkṣit. Then the snake-bird, who could assume any form he wished, disguised himself as a brāhmaṇa, approached the King and bit him.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2929,18 +2843,6 @@ Kaśyapa had come to gather materials for a remedy to protect Parīkṣit from t
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Taksaka flatters Kasyapa with valuable offerings, stopping him from protecting Pariksit. Greed turns even powerful potential help into silence. The verse warns: any of us can be bought when we want something more than we want dharma.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where am I quietly &#39;for sale&#39; — willing to look the other way for some gain?</li><li>What spiritual immunity could I cultivate against this kind of buying?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -3110,7 +3012,6 @@ Kaśyapa had come to gather materials for a remedy to protect Parīkṣit from t
     <div class="fc-translation" data-sec="translation">While living beings all over the universe looked on, the body of the great self-realized saint among kings was immediately burned to ashes by the fire of the snake’s poison.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -3141,18 +3042,6 @@ The burning of his body was like the last rites performed by his son.</div>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">While beings throughout the universe look on, Pariksit&#39;s body is burned to ashes by Taksaka&#39;s fire. The saint dies a death the world witnesses; the loss is universal, the soul&#39;s gain is total. A devotee&#39;s exit is a teaching to all who watch.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Whose exit from this world have I learned the most from?</li><li>What would I want my own exit to teach, were any to witness it?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -3358,7 +3247,6 @@ The burning of his body was like the last rites performed by his son.</div>
     <div class="fc-translation" data-sec="translation">There arose a terrible cry of lamentation in all directions on the earth and in the heavens, and all the demigods, demons, human beings and other creatures were astonished.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -3377,18 +3265,6 @@ The burning of his body was like the last rites performed by his son.</div>
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Lamentation rises throughout the worlds at the loss of Pariksit. Genuine saints leave a hole in the world that creation itself feels. Our mourning, properly held, can become honoring rather than only grief.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Whose passing have I genuinely mourned, and have I let that mourning become honor?</li><li>What in their life still teaches me, alive after they have gone?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -3539,7 +3415,6 @@ The burning of his body was like the last rites performed by his son.</div>
 
     <div class="fc-translation" data-sec="translation">Kettledrums sounded in the regions of the demigods, and the celestial Gandharvas and Apsarās sang. The demigods showered flowers and spoke words of praise.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3566,18 +3441,6 @@ The burning of his body was like the last rites performed by his son.</div>
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Even as some lament, the demigods praise Pariksit and shower flowers from above. From an earthly view his death is loss; from a higher view it is a coronation. The same event reads differently depending on the altitude of vision.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which event in my life looks different from a higher altitude than my usual one?</li><li>How can I climb to that altitude more often?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -3756,7 +3619,6 @@ The burning of his body was like the last rites performed by his son.</div>
     <div class="fc-translation" data-sec="translation">Hearing that his father had been fatally bitten by the snake-bird, Mahārāja Janamejaya became extremely angry and had brāhmaṇas perform a mighty sacrifice in which he offered all the snakes in the world into the sacrificial fire.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -3777,18 +3639,6 @@ The burning of his body was like the last rites performed by his son.</div>
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Janamejaya, hearing of his father&#39;s death, organizes a massive snake sacrifice in rage. Grief without wisdom turns into harm-seeking. Bhagavatam quietly observes how unprocessed loss can drive us into chains of further violence.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Has a recent loss of mine fueled an impulse to harm — even by harsh words?</li><li>What practice helps me grieve cleanly, without dragging others into it?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -3967,7 +3817,6 @@ The burning of his body was like the last rites performed by his son.</div>
     <div class="fc-translation" data-sec="translation">When Takṣaka saw even the most powerful serpents being burned in the blazing fire of that snake sacrifice, he was overwhelmed with fear and approached Lord Indra for shelter.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -3986,18 +3835,6 @@ The burning of his body was like the last rites performed by his son.</div>
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Seeing serpents burn in the fire, Taksaka panics and runs to Indra for shelter. Even powerful beings, when their wrongdoing catches up, hide behind higher powers. Refuge sought from selfish motives still finds someone.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where do I take refuge when I am cornered by the consequences of my actions?</li><li>Is that refuge moving me toward dharma or merely insulating me from it?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -4176,7 +4013,6 @@ The burning of his body was like the last rites performed by his son.</div>
     <div class="fc-translation" data-sec="translation">When King Janamejaya did not see Takṣaka entering his sacrificial fire, he said to the brāhmaṇas : Why is not Takṣaka, the lowest of all serpents, burning in this fire?</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -4195,18 +4031,6 @@ The burning of his body was like the last rites performed by his son.</div>
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Janamejaya demands to know why Taksaka has not fallen into the fire. Anger keeps escalating its demands; it always wants more thoroughness. The verse shows the open-ended hunger of revenge.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where has a recent demand of mine quietly escalated when not met?</li><li>What practice helps me notice the escalation before it goes farther?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -4403,7 +4227,6 @@ The burning of his body was like the last rites performed by his son.</div>
     <div class="fc-translation" data-sec="translation">The brāhmaṇas replied: O best of kings, the snake Takṣaka has not fallen into the fire because he is being protected by Indra, whom he has approached for shelter. Indra is holding him back from the fire.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -4422,18 +4245,6 @@ The burning of his body was like the last rites performed by his son.</div>
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The brahmanas reply that Taksaka is being protected by Indra, his refuge. Bhagavatam matter-of-factly shows the political-spiritual networks of power. Reality is not flat; everyone has a patron somewhere.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Whose patronage protects me when my actions misfire?</li><li>Have I considered making the Lord Himself that patron more fully?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -4648,7 +4459,6 @@ The burning of his body was like the last rites performed by his son.</div>
     <div class="fc-translation" data-sec="translation">The intelligent King Janamejaya, hearing these words, replied to the priests: Then, my dear brāhmaṇas, why not make Takṣaka fall into the fire, along with his protector, Indra?</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -4667,18 +4477,6 @@ The burning of his body was like the last rites performed by his son.</div>
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Janamejaya then asks why not pull Indra in along with Taksaka. Revenge expands its target list; once you accept its logic, no one is too high to attack. Bhagavatam is sober about how anger devours hierarchy itself.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Has any recent resentment of mine reached up toward authority figures?</li><li>Where would my anger stop if I let it speak its full logic?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -4875,7 +4673,6 @@ The burning of his body was like the last rites performed by his son.</div>
     <div class="fc-translation" data-sec="translation">Hearing this, the priests then chanted this mantra for offering Takṣaka together with Indra as an oblation into the sacrificial fire: O Takṣaka, fall immediately into this fire, together with Indra and his entire host of demigods!</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -4896,18 +4693,6 @@ O Indra!  You are proud, thinking “I am the king of the devatās.”  I will m
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The priests chant the dangerous mantra that begins pulling Indra and Taksaka together toward the fire. Words backed by ritual power can do real harm; we should be careful what we authorize, even verbally, in moments of anger.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which &#39;mantras&#39; do I chant in anger — habitual harsh phrases?</li><li>What gentler words could I install in their place?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -5086,7 +4871,6 @@ O Indra!  You are proud, thinking “I am the king of the devatās.”  I will m
     <div class="fc-translation" data-sec="translation">When Lord Indra, along with his airplane and Takṣaka, was suddenly thrown from his position by these insulting words of the brāhmaṇas, he became very disturbed.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -5107,18 +4891,6 @@ His mind became disturbed thinking, “Today my life had ended.”</div>
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Indra, suddenly thrown from his position by the brahmanas&#39; insulting words, becomes very anxious. Even the king of heaven is not safely above public disturbance. Position never fully protects from indignity once the wheel turns.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which &#39;position&#39; have I been hoping insulates me from disturbance?</li><li>What inner ground stays steady even when position shakes?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -5288,7 +5060,6 @@ His mind became disturbed thinking, “Today my life had ended.”</div>
     <div class="fc-translation" data-sec="translation">Bṛhaspati, the son of Aṅgirā Muni, seeing Indra falling from the sky in his airplane along with Takṣaka, approached King Janamejaya and spoke to him as follows.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -5309,18 +5080,6 @@ His mind became disturbed thinking, “Today my life had ended.”</div>
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Bṛhaspati, seeing Indra falling, approaches Janamejaya to advise restraint. Wise mediators intervene before things become irretrievable. We can ourselves be that quiet advisor for someone heading too far.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Is there someone in my life I should gently advise to pause before going further?</li><li>Who might be playing that role for me — and am I listening?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -5517,7 +5276,6 @@ His mind became disturbed thinking, “Today my life had ended.”</div>
     <div class="fc-translation" data-sec="translation">O King among men, it is not fitting that this king of snakes meet death at your hands, for he has drunk the nectar of the immortal demigods. Consequently he is not subject to the ordinary symptoms of old age and death.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -5538,18 +5296,6 @@ You are king of the humans.  You should not kill Indra, king of the devatās who
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Bṛhaspati tells the king Taksaka has drunk amṛta and cannot be killed by him. Some battles cannot be won by force of will alone; the wise see this and stop pushing. Knowing when to stop is half of wisdom.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which battle of mine am I refusing to recognize as unwinnable in its present form?</li><li>What would &#39;stopping with dignity&#39; look like there?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -5745,7 +5491,6 @@ You are king of the humans.  You should not kill Indra, king of the devatās who
 
     <div class="fc-translation" data-sec="translation">The life and death of an embodied soul and his destination in the next life are all caused by himself through his own activity. Therefore, O King, no other agent is actually responsible for creating one’s happiness and distress.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -5774,18 +5519,6 @@ Hear the philosophy behind what you are doing out of grief for your father. The 
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The life, death, and next destination of an embodied soul are caused by himself through his own activity. No one can really kill another against the script of their karma. The locus of responsibility moves inside, where it belongs.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where am I blaming external agents for what my own choices have shaped?</li><li>What does it free in me to reclaim that responsibility?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -5999,7 +5732,6 @@ Hear the philosophy behind what you are doing out of grief for your father. The 
 
     <div class="fc-translation" data-sec="translation">When a conditioned soul is killed by snakes, thieves, fire, lightning, hunger, disease or anything else, he is experiencing the reaction to his own past work.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -6038,18 +5770,6 @@ Persons of this world obtain death under the control of karma through a snake bi
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">When a conditioned soul is killed by snakes, thieves, fire, lightning, hunger or disease, he is experiencing the reaction of his own past karma. The world is not random violence; it is the body&#39;s encounter with its own seed-bed. Knowing this softens both rage and victimhood.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which painful event of mine could I begin to see as a reaction rather than an injustice?</li><li>How does that view change my response without erasing my grief?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -6236,7 +5956,6 @@ Persons of this world obtain death under the control of karma through a snake bi
 
     <div class="fc-translation" data-sec="translation">Therefore, my dear King, please stop this sacrificial performance, which was initiated with the intent of doing harm to others. Many innocent snakes have already been burned to death. Indeed, all persons must suffer the unforeseen consequences of their past activities.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -6265,18 +5984,6 @@ This sacrifice should be stopped because it is black magic, which condemned and 
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Bṛhaspati urges Janamejaya to stop the sacrifice meant to harm others. Many innocent snakes have already died for someone else&#39;s revenge. We are warned: large rituals of vengeance always end up consuming the innocent.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which of my &#39;crusades&#39; may already be costing innocent parties?</li><li>What does a graceful stopping look like, even now?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -6471,7 +6178,6 @@ This sacrifice should be stopped because it is black magic, which condemned and 
     <div class="fc-translation" data-sec="translation">Sūta Gosvāmī continued: Advised in this manner, Mahārāja Janamejaya replied, “So be it.” Honoring the words of the great sage, he desisted from performing the snake sacrifice and worshiped Bṛhaspati, the most eloquent of sages.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -6490,18 +6196,6 @@ This sacrifice should be stopped because it is black magic, which condemned and 
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Janamejaya replies, &#39;So be it,&#39; and honors the sage&#39;s words. To stop mid-course, after a public commitment, takes humility. Wise people prize being right less than being good.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where am I clinging to a public commitment that wisdom now asks me to lay down?</li><li>What would help me say &#39;so be it&#39; rather than dig in?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -6686,7 +6380,6 @@ This sacrifice should be stopped because it is black magic, which condemned and 
 
     <div class="fc-translation" data-sec="translation">This is indeed the Supreme Lord Viṣṇu’s illusory energy, which is unstoppable and difficult to perceive. Although the individual spirit souls are part and parcel of the Lord, through the influence of this illusory energy they are bewildered by their identification with various material bodies.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -6725,18 +6418,6 @@ How can even learned persons be so bewildered?   Because of the anger of Janmeja
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Suta now teaches: the Lord&#39;s illusory energy is unstoppable and hard to perceive; though we are parts of Him, we identify with the bodies she creates. Maya is sophisticated; she binds us by pretending she&#39;s not there at all.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where is maya operating in my life most invisibly right now?</li><li>What single sadhana most reliably exposes her work to my awareness?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -7230,7 +6911,6 @@ How can even learned persons be so bewildered?   Because of the anger of Janmeja
 
     <div class="fc-translation" data-sec="translation">But there exists a supreme reality, in which the illusory energy cannot fearlessly dominate, thinking, “I can control this person because he is deceitful.” In that highest reality there are no illusory argumentative philosophies. Rather, there the true students of spiritual science constantly engage in authorized spiritual investigation. In that supreme reality there is no manifestation of the material mind, which functions in terms of alternating decision and doubt. Created material products, their subtle causes and the goals of enjoyment attained by their utilization do not exist there. Furthermore, in that supreme reality there is no conditioned spirit, covered by false ego and the three modes of nature. That reality excludes everything limited or limiting. One who is wise should therefore stop the waves of material life and enjoy within that Supreme Truth.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -7278,18 +6958,6 @@ Thus, in Viṣṇu there is no mind which has functions of accepting and rejecti
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">But there is a supreme reality maya cannot fearlessly dominate. Surrender to that reality breaks her presumption. We don&#39;t beat maya; we let Someone bigger stand between us and her.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What &#39;someone bigger&#39; do I keep between myself and maya&#39;s pull?</li><li>How can I deepen that arrangement today, even by one small offering?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -7523,7 +7191,6 @@ Thus, in Viṣṇu there is no mind which has functions of accepting and rejecti
 
     <div class="fc-translation" data-sec="translation">Those who desire to give up all that is not essentially real move systematically, by negative discrimination of the extraneous, to the supreme position of Lord Viṣṇu. Giving up petty materialism, they offer their love exclusively to the Absolute Truth within their hearts and embrace that highest truth in fixed meditation.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -7567,18 +7234,6 @@ The devotees concentrate by continual remembrance on the svarūpa of Viṣṇu (
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Those who want to give up everything inessential systematically discriminate, dropping the extraneous, until they reach the supreme position. The path is not just acquisition of truth but careful, ongoing release of what is not it.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What &#39;extraneous&#39; am I being asked to release this week?</li><li>What helps me feel safe releasing it rather than gripping tighter?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -7793,7 +7448,6 @@ The devotees concentrate by continual remembrance on the svarūpa of Viṣṇu (
     <div class="fc-translation" data-sec="translation">Such devotees come to understand the supreme transcendental situation of the Personality of Godhead, Lord Viṣṇu, because they are no longer polluted by the concepts of “I” and “my,” which are based on body and home.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -7824,18 +7478,6 @@ This clarifies the meaning of the previous verse.  Adhigacchanti refers to avasi
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Such devotees come to understand the Lord&#39;s supreme transcendental situation because their hearts are no longer polluted. Vision improves by purification, not by extra effort to see. Cleaning, not staring harder, is the spiritual technique.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which &#39;cleaning&#39; practice is currently most missing from my routine?</li><li>What would change if I focused on cleansing rather than chasing experiences?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -8014,7 +7656,6 @@ This clarifies the meaning of the previous verse.  Adhigacchanti refers to avasi
     <div class="fc-translation" data-sec="translation">One should tolerate all insults and never fail to show proper respect to any person. Avoiding identification with the material body, one should not create enmity with anyone.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -8045,18 +7686,6 @@ If a person commits offense, the form of Viṣṇu will disappear. The method of
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Tolerate insults, respect others, do not identify with the body, do not create suffering for any living being. Bhagavatam compresses a full ethical curriculum into one verse. Each clause is the work of a lifetime.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which of the four instructions is hardest for me right now?</li><li>What single practice this week would strengthen me in that area?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -8226,7 +7855,6 @@ If a person commits offense, the form of Viṣṇu will disappear. The method of
     <div class="fc-translation" data-sec="translation">I offer my obeisances to the Supreme Personality of Godhead, the invincible Lord Śrī Kṛṣṇa. Simply by meditating upon His lotus feet I have been able to study and appreciate this great literature.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -8247,18 +7875,6 @@ Concluding the scripture, Sūta offers respects to his deity. I have understood 
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Suta closes with obeisances to invincible Kṛṣṇa, by meditation on whose lotus feet he has been able to recall this entire history. Devotion, not memory alone, retrieves spiritual teaching. The Lord supplies the very capacity to remember Him.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>When I forget what I read, do I ask Him for the memory back?</li><li>How might prayer for memory itself reshape my study?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -8453,7 +8069,6 @@ Concluding the scripture, Sūta offers respects to his deity. I have understood 
     <div class="fc-translation" data-sec="translation">Śaunaka Ṛṣi said: O gentle Sūta, please narrate to us how Paila and the other greatly intelligent disciples of Śrīla Vyāsadeva, who are known as the standard authorities of Vedic wisdom, spoke and edited the Vedas.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -8474,18 +8089,6 @@ Having heard about the saṁhitā, the sages want to know about the divisions of
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Saunaka now asks about the Veda&#39;s branches and how Vyasa&#39;s disciples carried them. Bhagavatam pauses to honor the careful work of transmission. Spiritual culture survives because someone stayed precise about the chain.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Whose careful transmission have I benefited from without knowing?</li><li>Where can I be more precise about what I pass on?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -8661,7 +8264,6 @@ Having heard about the saṁhitā, the sages want to know about the divisions of
 
     <div class="fc-translation" data-sec="translation">Sūta Gosvāmī said: O brāhmaṇa, first the subtle vibration of transcendental sound appeared from the sky of the heart of the most elevated Lord Brahmā, whose mind was perfectly fixed in spiritual realization. One can perceive this subtle vibration when one stops all external hearing.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -8690,18 +8292,6 @@ In order to correctly define the fruit of the tree of the Vedas, he briefly desc
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Suta describes how subtle transcendental sound first appeared from the sky of Brahma&#39;s heart. The Vedas began as an inner vibration before becoming external syllables. All real teaching has this two-layered nature.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Do I attend to the inner vibration of what I read, or only the outer words?</li><li>What practice slows me down enough to hear the inner layer?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -8889,7 +8479,6 @@ In order to correctly define the fruit of the tree of the Vedas, he briefly desc
     <div class="fc-translation" data-sec="translation">By worship of this subtle form of the Vedas, O brāhmaṇa, mystic sages cleanse their hearts of all contamination caused by impurity of substance, activity and doer, and thus they attain freedom from repeated birth and death.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -8920,18 +8509,6 @@ By worshipping this sound the sages destroy the contamination known as objects (
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">By worship of this subtle form of the Vedas, mystic sages cleanse their hearts of contamination caused by substance, activity, and the doer&#39;s mistaken self-conception. Vedic study is a purification, not a collection of beliefs.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Do I treat Vedic study as belief-acquisition or as cleansing?</li><li>What would &#39;cleansing&#39; look like in how I approach my next reading?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -9128,7 +8705,6 @@ By worshipping this sound the sages destroy the contamination known as objects (
     <div class="fc-translation" data-sec="translation">From that transcendental subtle vibration arose the oṁkāra composed of three sounds. The oṁkāra has unseen potencies and manifests automatically within a purified heart. It is the representation of the Absolute Truth in all three of His phases — the Supreme Personality, the Supreme Soul and the supreme impersonal truth.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -9149,18 +8725,6 @@ From nāda (tataḥ) appeared oṁ composed of three letters a, o and m, whose b
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">From the subtle vibration arose oṁkara, with unseen potencies, manifesting in the realized self. Sound itself is a portal — not metaphorically, but functionally. The mantras we chant work on us at this level.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which mantra do I currently let work on me daily?</li><li>Could I deepen attention to its sound, not just its meaning?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -9490,7 +9054,6 @@ From nāda (tataḥ) appeared oṁ composed of three letters a, o and m, whose b
 
     <div class="fc-translation" data-sec="translation">This oṁkāra, ultimately nonmaterial and imperceptible, is heard by the Supersoul without His possessing material ears or any other material senses. The entire expanse of Vedic sound is elaborated from oṁkāra, which appears from the soul, within the sky of the heart. It is the direct designation of the self-originating Absolute Truth, the Supersoul, and is the secret essence and eternal seed of all Vedic hymns.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -9529,18 +9092,6 @@ Who is the Supreme Lord known by words like Bhagavān?  He is the person who hea
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Oṁkara, nonmaterial and imperceptible, is heard by the Supersoul without material ears. The Lord receives our mantras at a level prior to the senses. Our chanting reaches Him even when we ourselves are barely awake to it.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Have I underestimated the value of even my distracted chanting?</li><li>How might trust in the Lord&#39;s hearing relax my anxiety about quality?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -9746,7 +9297,6 @@ Who is the Supreme Lord known by words like Bhagavān?  He is the person who hea
     <div class="fc-translation" data-sec="translation">Oṁkāra exhibited the three original sounds of the alphabet — A, U and M. These three, O most eminent descendant of Bhṛgu, sustain all the different threefold aspects of material existence, including the three modes of nature, the names of the Ṛg, Yajur and Sāma Vedas, the goals known as the Bhūr, Bhuvar and Svar planetary systems, and the three functional platforms called waking consciousness, sleep and deep sleep.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -9767,18 +9317,6 @@ This verse shows how oṁ is the cause.  Oṁ has three syllables a, u and m by 
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Oṁkara contains A, U and M — the three sounds sustaining all things that have a name. The simplest sounds organize the greatest realities. Spiritual life often hides in the smallest, most repeatable units.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which &#39;small unit&#39; of practice am I overlooking as too simple to matter?</li><li>What might happen if I gave it my fullest attention this week?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -9962,7 +9500,6 @@ This verse shows how oṁ is the cause.  Oṁ has three syllables a, u and m by 
     <div class="fc-translation" data-sec="translation">From that oṁkāra Lord Brahmā created all the sounds of the alphabet — the vowels, consonants, semivowels, sibilants and others — distinguished by such features as long and short measure.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -9983,18 +9520,6 @@ The appearance of the Vedas from oṁ is described.  From oṁ (tataḥ) Brahmā
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">From oṁkara, Brahma created vowels, consonants, semivowels, and sibilants — the whole grammar of human language. All speech traces back to a single sacred breath. Treating speech as ordinary is a kind of forgetting.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where does my speech most fall away from sacred origin into careless use?</li><li>What single shift would honor speech&#39;s source today?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -10164,7 +9689,6 @@ The appearance of the Vedas from oṁ is described.  From oṁ (tataḥ) Brahmā
     <div class="fc-translation" data-sec="translation">All-powerful Brahmā made use of this collection of sounds to produce from his four faces the four Vedas, which appeared together with the sacred oṁkāra and the seven vyāhṛti invocations. His intention was to propagate the process of Vedic sacrifice according to the different functions performed by the priests of each of the four Vedas.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -10195,18 +9719,6 @@ By this group of sounds (tena) Brahmā created the four Vedas.</div>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Brahma uses these sounds to produce the four Vedas from his four faces, together with oṁkara. The structure of revelation is patterned, organized, complete. Nothing in Vedic culture is haphazard at its source.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where in my spiritual life do I rely on the haphazard rather than the patterned?</li><li>Which pattern from tradition could I newly trust?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -10394,7 +9906,6 @@ By this group of sounds (tena) Brahmā created the four Vedas.</div>
     <div class="fc-translation" data-sec="translation">Brahmā taught these Vedas to his sons, who were great sages among the brāhmaṇas and experts in the art of Vedic recitation. They in turn took the role of ācāryas and imparted the Vedas to their own sons.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -10415,18 +9926,6 @@ They taught sons like Marīci.</div>
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Brahma taught the Vedas to his sons, who taught their sons. The whole vast edifice rests on relationships of teaching and trust. Without that human chain, no scripture survives — and we are now one link in it.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Whom am I currently a &#39;link&#39; to in spiritual transmission, however small?</li><li>Who is a link to me, and have I honored them?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -10594,7 +10093,6 @@ They taught sons like Marīci.</div>
     <div class="fc-translation" data-sec="translation">In this way, throughout the cycles of four ages, generation after generation of disciples — all firmly fixed in their spiritual vows — have received these Vedas by disciplic succession. At the end of each Dvāpara-yuga the Vedas are edited into separate divisions by eminent sages.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -10625,18 +10123,6 @@ Te refers to the Vedas.</div>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Through cycles of four ages, generation after generation of disciples, firmly fixed in vows, received the Veda. The strength of a tradition is not one teacher&#39;s brilliance but the steadiness of countless ordinary disciples.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Am I cultivating the unspectacular steadiness that real tradition needs?</li><li>What &#39;vow&#39; could I keep this month that contributes that quietly?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -10806,7 +10292,6 @@ Te refers to the Vedas.</div>
     <div class="fc-translation" data-sec="translation">Observing that people in general were diminished in their life span, strength and intelligence by the influence of time, great sages took inspiration from the Personality of Godhead sitting within their hearts and systematically divided the Vedas.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -10825,18 +10310,6 @@ Te refers to the Vedas.</div>
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Observing that human lifespan, strength, and intelligence were diminishing under time, great sages divided the Vedas to make them accessible. Mercy is willing to simplify when the audience cannot bear the full version anymore.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where am I refusing to simplify out of attachment to thoroughness?</li><li>Whom could my simpler version of a teaching actually help?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -11149,7 +10622,6 @@ Te refers to the Vedas.</div>
     <div class="fc-translation" data-sec="translation">O brāhmaṇa, in the present age of Vaivasvata Manu, the leaders of the universe, led by Brahmā and Śiva, requested the Supreme Personality of Godhead, the protector of all the worlds, to save the principles of religion. O most fortunate Śaunaka, the almighty Lord, exhibiting a divine spark of a portion of His plenary portion, then appeared in the womb of Satyavatī as the son of Parāśara. In this form, named Kṛṣṇa Dvaipāyana Vyāsa, he divided the one Veda into four.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -11170,18 +10642,6 @@ Antare means “in Vaivasvata Manvantara.”</div>
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Brahma and Siva, leaders of the universe, requested Vyasa to subdivide the Vedas. Even the highest beings recognize when a service is needed and request the right person. Leadership often means knowing whom to ask.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Whom am I not asking for help because of pride?</li><li>Which &#39;right person&#39; for a current need have I been overlooking?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -11341,7 +10801,6 @@ Antare means “in Vaivasvata Manvantara.”</div>
 
     <div class="fc-translation" data-sec="translation">Śrīla Vyāsadeva separated the mantras of the Ṛg, Atharva, Yajur and Sāma Vedas into four divisions, just as one sorts out a mixed collection of jewels into piles. Thus he composed four distinct Vedic literatures.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -11370,18 +10829,6 @@ Antare means “in Vaivasvata Manvantara.”</div>
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Vyasa sorts the mantras of the four Vedas as one sorts a mixed pile of jewels. Each scripture finds its right place by careful classification. Spiritual organization is itself an act of devotion when done with love.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where could a little careful &#39;sorting&#39; bring more devotion into my life?</li><li>What clutter of priorities is awaiting Vyasa-like attention?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -11560,7 +11007,6 @@ Antare means “in Vaivasvata Manvantara.”</div>
     <div class="fc-translation" data-sec="translation">The most powerful and intelligent Vyāsadeva called four of his disciples, O brāhmaṇa, and entrusted to each of them one of these four saṁhitās.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -11579,18 +11025,6 @@ Antare means “in Vaivasvata Manvantara.”</div>
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Vyasa calls four disciples and entrusts each with one saṁhita. Authority is given, then released. A real teacher hands real responsibility — not just tasks — to those he has trained.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Whom have I really empowered — not just delegated to — in some area of life?</li><li>Where am I clinging to control that should be released?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -11849,7 +11283,6 @@ Antare means “in Vaivasvata Manvantara.”</div>
     <div class="fc-translation" data-sec="translation">Śrīla Vyāsadeva taught the first saṁhitā, the Ṛg Veda, to Paila and gave this collection the name Bahvṛca. To the sage Vaiśampāyana he spoke the collection of Yajur mantras named Nigada. He taught the Sāma Veda mantras, designated as the Chandoga-saṁhitā, to Jaimini, and he spoke the Atharva Veda to his dear disciple Sumantu.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -11870,18 +11303,6 @@ Bahvṛca (having many verses) was the name of the Ṛg Saṁhitā. Yajur Veda w
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Each Veda goes to a specific disciple. The naming and assigning create a structure that lasts millennia. Specific personal commission has more durable power than vague communal invitation.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What specific commission have I received, and am I honoring its specificity?</li><li>Whom could I commission specifically rather than generally?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -12290,7 +11711,6 @@ Bahvṛca (having many verses) was the name of the Ṛg Saṁhitā. Yajur Veda w
 
     <div class="fc-translation" data-sec="translation">After dividing his saṁhitā into two parts, the wise Paila spoke it to Indrapramiti and Bāṣkala. Bāṣkala further divided his collection into four parts, O Bhārgava, and instructed them to his disciples Bodhya, Yājṣavalkya, Parāśara and Agnimitra. Indrapramiti, the self-controlled sage, taught his saṁhitā to the learned mystic Māṇḍūkeya, whose disciple Devamitra later passed down the divisions of the Ṛg Veda to Saubhari and others.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -12319,18 +11739,6 @@ These verses describe the branches of the Ṛg Veda.  Paila divided the Ṛg Ved
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Paila divides his saṁhita and gives the parts to students; the chain branches and proliferates. One person&#39;s faithful handling becomes the seed of many lineages. Small fidelities have unforeseeable reach.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which &#39;small fidelity&#39; of mine could be quietly seeding a future I cannot see?</li><li>What discourages me from honoring small fidelities — and how can I push back?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -12491,7 +11899,6 @@ These verses describe the branches of the Ṛg Veda.  Paila divided the Ṛg Ved
     <div class="fc-translation" data-sec="translation">The son of Māṇḍūkeya, named Śākalya, divided his own collection into five, entrusting one subdivision each to Vātsya, Mudgala, Śālīya, Gokhalya and Śiśira.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -12512,18 +11919,6 @@ Māṇḍūkeya’s son was Śākalya. He taught it to five persons.</div>
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Sakalya divides his collection into five and entrusts each part to a disciple. Even bookish details receive devotional attention here. To Vyasa&#39;s school, classification was a form of worship.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Could I bring devotional intent into a mundane organizational task this week?</li><li>What changes when I treat ordinary work as offering?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -12666,7 +12061,6 @@ Māṇḍūkeya’s son was Śākalya. He taught it to five persons.</div>
     <div class="fc-translation" data-sec="translation">The sage Jātūkarṇya was also a disciple of Śākalya, and after dividing the saṁhitā he received from Śākalya into three parts, he added a fourth section, a Vedic glossary. He taught one of these parts to each of four disciples — Balāka, the second Paila, Jābāla and Viraja.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -12687,18 +12081,6 @@ Māṇḍūkeya’s son was Śākalya. He taught it to five persons.</div>
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Jatukarnya divides his received saṁhita into three and adds a fourth section. Faithful transmission still leaves room for creative addition. Honoring tradition does not exclude bringing one&#39;s own contribution.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where have I confused &#39;faithful&#39; with &#39;never adding my voice&#39;?</li><li>What honest contribution wants to be made through me to what I have received?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -12876,7 +12258,6 @@ Māṇḍūkeya’s son was Śākalya. He taught it to five persons.</div>
 
     <div class="fc-translation" data-sec="translation">Bāṣkali assembled the Vālakhilya-saṁhitā, a collection from all the branches of the Ṛg Veda. This collection was received by Vālāyani, Bhajya and Kāśāra.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -12905,18 +12286,6 @@ Bāṣkali was the son of Bāṣkala.  He collected the verses from different br
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Baskali assembles the Valakhilya-saṁhita from many branches and passes it on. Some servants of tradition are anthologizers — gathering the scattered for those who come later. Curatorial service is real service.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where might my best service be curating rather than creating?</li><li>What scattered wisdom could I gather for those who follow?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -13104,7 +12473,6 @@ Bāṣkali was the son of Bāṣkala.  He collected the verses from different br
     <div class="fc-translation" data-sec="translation">Thus these various saṁhitās of the Ṛg Veda were maintained through disciplic succession by these saintly brāhmaṇas. Simply by hearing of this distribution of the Vedic hymns, one will be freed from all sins.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -13123,18 +12491,6 @@ Bāṣkali was the son of Bāṣkala.  He collected the verses from different br
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">These saṁhitas of the Ṛg Veda are kept alive through disciplic succession by saintly brahmanas. Just hearing of this distribution is itself purifying. Even reading lineage lists is a contact with grace.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Have I allowed myself to be moved by reading paramparas, or only skimmed them?</li><li>Which lineage feels closest to my heart, and how can I honor it?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -13313,7 +12669,6 @@ Bāṣkali was the son of Bāṣkala.  He collected the verses from different br
     <div class="fc-translation" data-sec="translation">The disciples of Vaiśampāyana became authorities in the Atharva Veda. They were known as the Carakas because they executed strict vows to free their guru from his sin of killing a brāhmaṇa.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -13334,18 +12689,6 @@ Now appearance of the Taittirīya branch of the Yajur Veda is described.  The de
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Vaisampayana&#39;s disciples become Carakas, vowing to free their guru of a karmic burden. Real disciples take on their teacher&#39;s debts as their own — that is the depth of the bond.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Whose burdens have I taken on as my own out of love?</li><li>Whose are willing to be carried for me — and have I let them?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -13524,7 +12867,6 @@ Now appearance of the Taittirīya branch of the Yajur Veda is described.  The de
     <div class="fc-translation" data-sec="translation">Once Yājṣavalkya, one of the disciples of Vaiśampāyana, said: O master, how much benefit will be derived from the feeble endeavors of these weak disciples of yours? I will personally perform some outstanding penance.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -13545,18 +12887,6 @@ Yājṣavalkya was Vaiśampāyana’s disciple.  What is the use of atonements b
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Yajnavalkya questions the weak efforts of his fellow disciples — a moment of pride disguised as concern. The Bhagavatam captures how easily intelligence becomes superiority. Sharp minds need sharp humility.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where does my &#39;concern&#39; for others cover quiet contempt?</li><li>What would humble that voice without dulling my intelligence?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -13761,7 +13091,6 @@ Yājṣavalkya was Vaiśampāyana’s disciple.  What is the use of atonements b
 
     <div class="fc-translation" data-sec="translation">Addressed thus, the spiritual master Vaiśampāyana became angry and said: Go away from here! Enough of you, O disciple who insults brāhmaṇas! Furthermore, you must immediately give back everything I have taught you.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -13790,18 +13119,6 @@ He became angry because Yajṣavalkya had spoken out of pride. You criticize br�
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Vaisampayana, angered, expels Yajnavalkya for insulting brahmanas. Disrespect to the community of sages has weight even from a star pupil. We can be talented and wrong at the same time.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where am I trading on talent while neglecting respect?</li><li>Whose correction of me, however harsh, was actually right?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -14109,7 +13426,6 @@ He became angry because Yajṣavalkya had spoken out of pride. You criticize br�
 
     <div class="fc-translation" data-sec="translation">Yājṣavalkya, the son of Devarāta, then vomited the mantras of the Yajur Veda and went away from there. The assembled disciples, looking greedily upon these yajur hymns, assumed the form of partridges and picked them all up. These divisions of the Yajur Veda therefore became known as the most beautiful Taittirīya-saṁhitā, the hymns collected by partridges [tittirāḥ].</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -14138,18 +13454,6 @@ Yajṣavalkya was the son of Devarāta.  Since it was improper for brāhmaṇas 
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Yajnavalkya, expelled, vomits the Yajur mantras; the other disciples eagerly take them up. What one losing personality releases can become food for many. Even painful losses can feed those who come after.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Have I let go of something painfully, and seen others benefit from it?</li><li>How does that knowledge transform the pain?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -14319,7 +13623,6 @@ Yajṣavalkya was the son of Devarāta.  Since it was improper for brāhmaṇas 
     <div class="fc-translation" data-sec="translation">My dear brāhmaṇa Śaunaka, Yājṣavalkya then desired to find out new yajur-mantras unknown to even his spiritual master. With this in mind he offered attentive worship to the powerful lord of the sun.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -14340,18 +13643,6 @@ Adhigaveṣayan means seeking.  He sought mantras which his guru Vaiśampāyana 
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Yajnavalkya now desires new yajur-mantras unknown even to his guru, and offers worship to the sun-god. Falling, he humbly seeks a higher source. Mistakes, repented, can become the doorway to fresh revelation.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Has a recent mistake of mine opened me to a higher source than before?</li><li>Where am I refusing that doorway because I am still ashamed?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -14697,7 +13988,6 @@ Adhigaveṣayan means seeking.  He sought mantras which his guru Vaiśampāyana 
 
     <div class="fc-translation" data-sec="translation">Śrī Yājṣavalkya said: I offer my respectful obeisances to the Supreme Personality of Godhead appearing as the sun. You are present as the controller of the four kinds of living entities, beginning from Brahmā and extending down to the blades of grass. Just as the sky is present both inside and outside every living being, you exist both within the hearts of all as the Supersoul and externally in the form of time. Just as the sky cannot be covered by the clouds present within it, you are never covered by any false material designation. By the flow of years, which are made up of the tiny fragments of time called kṣaṇas, lavas and nimeṣas, you alone maintain this world, drying up the waters and giving them back as rain.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -14736,18 +14026,6 @@ I offer respects to you, the sun, the lord of the whole universe, who alone supp
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Yajnavalkya offers obeisance to the Supreme Lord appearing as the sun, the controller of the four kinds of beings. Worship of any deity, properly understood, reaches the Lord behind that form. Diversity of approach, unity of arrival.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Do I respect the legitimate forms of approach my brothers and sisters use?</li><li>Where might I expand my own vision of how the Lord makes Himself reachable?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -14961,7 +14239,6 @@ I offer respects to you, the sun, the lord of the whole universe, who alone supp
     <div class="fc-translation" data-sec="translation">O glowing one, O powerful lord of the sun, you are the chief of all the demigods. I meditate with careful attention on your fiery globe, because for those who offer prayers to you three times daily according to the Vedic method passed down through authorized disciplic succession, you burn away all sinful activities, all consequent suffering and even the original seed of desire.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -14992,18 +14269,6 @@ O best of the devatās!  O Savitā!  I mediate on he who lights up the sun globe
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Yajnavalkya meditates with careful attention on the sun&#39;s fiery globe — the chief of demigods. Choosing one form for fixed meditation can quiet the wandering mind. Specificity supports concentration.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which single form or aspect of the Lord could I make the home of my meditation this month?</li><li>What scatters my attention when I try?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -15154,7 +14419,6 @@ O best of the devatās!  O Savitā!  I mediate on he who lights up the sun globe
     <div class="fc-translation" data-sec="translation">You are personally present as the indwelling lord in the hearts of all moving and nonmoving beings, who depend completely on your shelter. Indeed, you animate their material minds, senses and vital airs to act.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -15175,18 +14439,6 @@ You put into motion the unconscious (anātmanaḥ) mind and senses.</div>
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The sun-god is the indwelling lord of all moving and nonmoving beings, present in every heart. We are never alone, never unobserved by love. That recognition can reshape an ordinary day.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What changes in my next interaction if I sense the Lord watching from within both of us?</li><li>Where would that vision soften my edges?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -15462,7 +14714,6 @@ You put into motion the unconscious (anātmanaḥ) mind and senses.</div>
 
     <div class="fc-translation" data-sec="translation">The world has been seized and swallowed by the python of darkness in its horrible mouth and has become unconscious, as if dead. But mercifully glancing upon the sleeping people of the world, you raise them up with the gift of sight. Thus you are most magnanimous. At the three sacred junctures of each day, you engage the pious in the path of ultimate good, inducing them to perform religious duties that situate them in their spiritual position.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -15491,18 +14742,6 @@ Rising over Eastern Mountain, you glance upon the world. You engage people in wo
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The world swallowed by the python of darkness becomes unconscious; only the Lord&#39;s merciful glance can revive it. Dawn is itself a daily mercy. The Lord&#39;s gaze is what keeps anyone awake at all.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>When have I felt &#39;looked at&#39; by something larger and come back to life?</li><li>How can I be a glance of mercy for someone in darkness today?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -15671,7 +14910,6 @@ Rising over Eastern Mountain, you glance upon the world. You engage people in wo
     <div class="fc-translation" data-sec="translation">Just like an earthly king, you travel about everywhere spreading fear among the unholy as the powerful deities of the directions offer you in their folded palms lotus flowers and other respectful presentations.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -15692,18 +14930,6 @@ You are given arghya (arhaṇaḥ) along with handfuls of lotus buds or similar 
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Like an earthly king, the sun travels everywhere spreading awe among the unholy as the direction-deities offer it lotus tributes. Beauty and authority can travel together; rule does not need to be ugly.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where in my own authority — at home, work — am I rougher than necessary?</li><li>What would beauty in my exercise of authority look like?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -15872,7 +15098,6 @@ You are given arghya (arhaṇaḥ) along with handfuls of lotus buds or similar 
     <div class="fc-translation" data-sec="translation">Therefore, my lord, I am prayerfully approaching your lotus feet, which are honored by the spiritual masters of the three worlds, because I hope to receive from you mantras of the Yajur Veda unknown to anyone else.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -15893,18 +15118,6 @@ Ayāta-yāma means powerful mantras which cannot be known by others. With a desi
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Yajnavalkya prayerfully approaches the sun&#39;s lotus feet, honored by spiritual masters, hoping to receive yajur-mantras unknown to others. He uses his prayer not for power but for service to scripture. The right ask matters.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What am I currently asking for in prayer, and is it for service or for self?</li><li>How might I refine the ask itself?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -16099,7 +15312,6 @@ Ayāta-yāma means powerful mantras which cannot be known by others. With a desi
     <div class="fc-translation" data-sec="translation">Sūta Gosvāmī said: Satisfied by such glorification, the powerful sun-god assumed the form of a horse and presented to the sage Yājṣavalkya yajur-mantras previously unknown in human society.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -16118,18 +15330,6 @@ Ayāta-yāma means powerful mantras which cannot be known by others. With a desi
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Satisfied, the sun-god takes the form of a horse and gives Yajnavalkya yajur-mantras. Revelation can come in unexpected shapes when one is sincere. We should not pre-judge how grace will arrive.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What unexpected shape has grace taken for me recently?</li><li>Where am I screening out grace by demanding it look a certain way?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -16297,7 +15497,6 @@ Ayāta-yāma means powerful mantras which cannot be known by others. With a desi
     <div class="fc-translation" data-sec="translation">From these countless hundreds of mantras of the Yajur Veda, the powerful sage compiled fifteen new branches of Vedic literature. These became known as the Vājasaneyi-saṁhitā because they were produced from the hairs of the horse’s mane, and they were accepted in disciplic succession by the followers of Kāṇva, Mādhyandina and other ṛṣis.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -16318,18 +15517,6 @@ He made fifteen branches from the hundreds of Yajur mantras he received.  Vājas
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">From the hundreds of mantras received, Yajnavalkya compiles fifteen new branches — the Vajasaneyi school. Personal disgrace is converted into permanent contribution. The Lord lets a falling become a foundation.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Could one of my &#39;falls&#39; be quietly preparing me for a unique contribution?</li><li>What would it look like to make that contribution rather than only nurse the fall?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -16517,7 +15704,6 @@ He made fifteen branches from the hundreds of Yajur mantras he received.  Vājas
     <div class="fc-translation" data-sec="translation">Jaimini Ṛṣi, the authority of the Sāma Veda, had a son named Sumantu, and the son of Sumantu was Sutvān. The sage Jaimini spoke to each of them a different part of the Sāma-veda-saṁhitā.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -16548,18 +15734,6 @@ The branches of the Sāma Veda are now described.  The son of Sumantu was Sutvā
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Jaimini speaks different parts of the Sama Veda to his son Sumantu, his grandson Sutvan, and others. Spiritual transmission can travel through bloodline when bloodline is also sadhana. Family can be a school of devotion.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Is my family currently a school of devotion in any small way?</li><li>What one habit could turn an ordinary moment with family into transmission?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -16854,7 +16028,6 @@ The branches of the Sāma Veda are now described.  The son of Sumantu was Sutvā
     <div class="fc-translation" data-sec="translation">Sukarmā, another disciple of Jaimini, was a great scholar. He divided the mighty tree of the Sāma Veda into one thousand saṁhitās. Then, O brāhmaṇa, three disciples of Sukarmā — Hiraṇyanābha, the son of Kuśala; Pauṣyaṣji; and Āvantya, who was very advanced in spiritual realization — took charge of the sāma-mantras.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -16875,18 +16048,6 @@ Sukarmā, disciple of Jaimini, became very great regarding learning the tree of 
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Sukarma, another disciple, divides the Sama Veda into one thousand saṁhitas. Some servants of tradition specialize in scale; others in depth. Tradition needs both kinds.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Am I more naturally a &#39;depth&#39; or &#39;scale&#39; contributor — and have I owned it?</li><li>Where am I cheating my natural form by imitating another?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -17074,7 +16235,6 @@ Sukarmā, disciple of Jaimini, became very great regarding learning the tree of 
     <div class="fc-translation" data-sec="translation">The five hundred disciples of Pauṣyaṣji and Āvantya became known as the northern singers of the Sāma Veda, and in later times some of them also became known as eastern singers.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -17095,18 +16255,6 @@ Hiraṇyanābha’s five hundred disciples became northern reciters.  Five hundr
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Five hundred disciples become the northern singers of the Sama Veda. Numbers grow because patient teachers said yes to one student at a time. Mass movements have humble, individual roots.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Whom is the Lord asking me to say yes to, one at a time?</li><li>What &#39;mass&#39; am I distracted by that is hiding the next single yes?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -17258,7 +16406,6 @@ Hiraṇyanābha’s five hundred disciples became northern reciters.  Five hundr
     <div class="fc-translation" data-sec="translation">Five other disciples of Pauṣyaṣji, namely Laugākṣi, Māṅgali, Kulya, Kuśīda and Kukṣi, each received one hundred saṁhitās.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -17279,18 +16426,6 @@ Pauṣaṣji had five other disciples.</div>
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Five other disciples of Pausyanji each receive one hundred saṁhitas. Even ordinary participants in a lineage carry significant trust. We may not be the star — but we may still be a hundred saṁhitas&#39; worth.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Am I underestimating my role because I am not the famous student?</li><li>What if I gave full attention to the &#39;hundred&#39; I have received?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -17450,7 +16585,6 @@ Pauṣaṣji had five other disciples.</div>
 
     <div class="fc-translation" data-sec="translation">Kṛta, the disciple of Hiraṇyanābha, spoke twenty-four saṁhitās to his own disciples, and the remaining collections were passed down by the self-realized sage Āvantya.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -17489,18 +16623,6 @@ In this chapter Śrī Sūta Gosvāmī describes the expansion of the branches of
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Krta and the disciples of Hiranyanabha continue the chain. The Bhagavatam patiently names them so that no one is lost. Heaven does not forget the unsung servants of paramparas; we should not either.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Whose unsung service in my life have I never thanked?</li><li>What small act today could honor a &#39;Krta&#39; I know?</li></ul>
-
-
-
-
-
-    </section>
 
 
 

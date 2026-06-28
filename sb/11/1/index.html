@@ -25,19 +25,25 @@
     <link rel="icon" href="../../../assets/icons/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="../../../assets/icons/icon.svg">
     <link rel="stylesheet" href="../../../assets/css/site.css">
+    <link rel="alternate" hreflang="te-IN" href="../../../te/sb/11/1/">
+    <link rel="alternate" hreflang="x-default" href="../../../">
     <script>window.FC_TO_ROOT = "../../../";</script>
     <script src="../../../assets/js/toggle.js"></script>
 </head>
 <body class="has-sidebar" data-chapter="1">
 <header class="fc-site-header">
     <button type="button" class="fc-mobile-trigger fc-mobile-trigger-left" data-overlay="left" aria-label="Open settings drawer">⚙</button>
-<a class="fc-brand" href="../../../">FolioCorpus<span class="fc-sub">Śrīmad-Bhāgavatam</span></a>
+    <a class="fc-brand" href="../../../">FolioCorpus<span class="fc-sub">Bhagavad-gītā</span></a>
     <nav class="fc-site-nav">
         <a href="../../../">Home</a>
         <a href="../../../bg/">Bhagavad-gītā</a>
         <a href="../../../sb/">Śrīmad-Bhāgavatam</a>
         <a href="../../../search/" title="Search across all integrated works">🔍 Search</a>
         <button type="button" id="fc-random-verse" class="fc-nav-btn" title="Jump to a random verse">🎲 Random</button>
+        <span class="fc-lang-switch" aria-label="Script">
+            <a class="active" href="#" title="Devanāgarī edition">EN</a>
+            <a class="" href="../../../te/sb/11/1/" title="Telugu lipi edition">తె</a>
+        </span>
     </nav>
     <button type="button" class="fc-mobile-trigger fc-mobile-trigger-right" data-overlay="right" aria-label="Open chapter index drawer">📚</button>
 </header>
@@ -46,8 +52,8 @@
     <button class="fc-sb-collapse" type="button" data-sb="left" title="Collapse left sidebar" aria-label="Collapse"></button>
 
     <div class="fc-sb-body">
-        <details class="fc-sb-section" data-sbsec="reading" open>
-            <summary class="fc-sb-title">Reading</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Reading</div>
             <div class="fc-sb-sub">Theme</div>
             <div class="fc-segmented" data-setting="theme">
                 <button type="button" data-val="light">Light</button>
@@ -73,10 +79,10 @@
                 <button type="button" data-val="single">Single</button>
                 <button type="button" data-val="side">Side-by-side</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="display" open>
-            <summary class="fc-sb-title">Display</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Display</div>
             <div class="fc-sb-grid">
                 <label><input type="checkbox" data-section="devanagari" checked> Devanāgarī</label>
                 <label><input type="checkbox" data-section="iast" checked> IAST transliteration</label>
@@ -99,10 +105,33 @@
                 <button type="button" data-action="expand-all">Expand all</button>
                 <button type="button" data-action="collapse-all">Collapse all</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="tools" open>
-            <summary class="fc-sb-title">Tools</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Find your starting point</div>
+            <div class="fc-persona-links">
+                <a class="fc-persona-link" href="../../../daily/">🌅 Daily (one value a week)</a>
+                <a class="fc-persona-link" href="../../../householder/">🏠 Householder (family & work)</a>
+                <a class="fc-persona-link" href="../../../parenting/">👨‍👩‍👧 Parenting (stories for kids)</a>
+                <a class="fc-persona-link" href="../../../themes/">📚 All themes</a>
+                <a class="fc-persona-link" href="../../../values/" style="background:#F0F6F2;border-left-color:#1F4632;">ॐ Vedic Value System ↗</a>
+                <a class="fc-persona-link" href="../../../vidya/" style="background:#FBF6E4;border-left-color:#C8860B;">📚 Vidyā Karaṇa (kids, multi-lang) ↗</a>
+            </div>
+        </div>
+
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Audience</div>
+            <div class="fc-audience-filter">
+                <label><input type="radio" name="fc-audience" value="all" checked> All levels</label>
+                <label><input type="radio" name="fc-audience" value="primary"> Primary (children)</label>
+                <label><input type="radio" name="fc-audience" value="middle"> Middle (teens)</label>
+                <label><input type="radio" name="fc-audience" value="senior"> Senior (adults)</label>
+                <label><input type="radio" name="fc-audience" value="college"> College / scholar</label>
+            </div>
+        </div>
+
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Tools</div>
             <div class="fc-sb-tools">
                 <button type="button" id="fc-presentation-toggle" class="fc-tool-btn"><span>🖥 Presentation</span><kbd class="fc-kbd">F</kbd></button>
                 <button type="button" id="fc-pen-toggle" class="fc-tool-btn"><span>✏️ Pen mode</span><kbd class="fc-kbd">P</kbd></button>
@@ -117,10 +146,26 @@
                 <button type="button" id="fc-clear-highlights" class="fc-tool-btn">🩷 Clear highlights (page)</button>
                 <button type="button" id="fc-notes-modal-open" class="fc-tool-btn">📓 My annotations</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="progress" id="fc-progress-section" open>
-            <summary class="fc-sb-title">Progress</summary>
+        <div class="fc-sb-section" id="fc-tts-controls" hidden>
+            <div class="fc-sb-title">
+                Read-aloud
+                <label class="fc-tts-master">
+                    <input type="checkbox" id="fc-tts-enabled" checked>
+                    <span class="fc-tts-master-label">On</span>
+                </label>
+            </div>
+            <div class="fc-tts-inner">
+                <div class="fc-sb-sub">Voice</div>
+                <select id="fc-tts-voice" class="fc-tts-select" aria-label="TTS voice"></select>
+                <div class="fc-sb-sub">Rate <span class="fc-tts-rate-val">1.0×</span></div>
+                <input type="range" id="fc-tts-rate" min="0.5" max="2" step="0.1" value="1" class="fc-tts-rate" aria-label="Reading rate">
+            </div>
+        </div>
+
+        <div class="fc-sb-section" id="fc-progress-section">
+            <div class="fc-sb-title">Progress</div>
             <div class="fc-progress-row">
                 <span class="fc-progress-num" id="fc-progress-num">0</span>
                 <span class="fc-progress-divider">/</span>
@@ -135,29 +180,29 @@
                 <span class="fc-progress-spacer"></span>
                 <button type="button" class="fc-progress-reset" id="fc-progress-reset" title="Reset progress">↺</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="bookmarks" open>
-            <summary class="fc-sb-title">Bookmarks <span class="fc-sb-count" id="fc-bookmarks-count">0</span></summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Bookmarks <span class="fc-sb-count" id="fc-bookmarks-count">0</span></div>
             <ul class="fc-bookmark-list" id="fc-bookmarks-list">
                 <li class="fc-sb-empty">No bookmarks yet — click ☆ on any verse.</li>
             </ul>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="notes" open>
-            <summary class="fc-sb-title">Notes <span class="fc-sb-count" id="fc-notes-count">0</span></summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Notes <span class="fc-sb-count" id="fc-notes-count">0</span></div>
             <ul class="fc-bookmark-list" id="fc-notes-list">
                 <li class="fc-sb-empty">No notes yet — open any verse and write in the 📝 block.</li>
             </ul>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="export">
-            <summary class="fc-sb-title">Export</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Export</div>
             <div class="fc-sb-tools">
                 <button type="button" id="fc-export-md" class="fc-tool-btn">📥 Download Markdown</button>
                 <button type="button" id="fc-export-json" class="fc-tool-btn">💾 Download JSON backup</button>
             </div>
-        </details>
+        </div>
     </div>
 </aside>    <main class="fc-container">
 <nav class="fc-breadcrumbs">
@@ -490,7 +535,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
 
     <div class="fc-translation" data-sec="translation">Śrī Śukadeva Gosvāmī said: Lord Śrī Kṛṣṇa, accompanied by Balarāma and surrounded by the Yadu dynasty, executed the killing of many demons. Then, further to remove the burden of the earth, the Lord arranged for the great Battle of Kurukṣetra, which suddenly erupted in violence between the Kurus and the Pāṇḍavas.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -846,7 +890,6 @@ In the Tenth Canto Kṛṣṇa, the tenth subject āśraya, Svayam Bhagavān, wh
 
 
     <div class="fc-translation" data-sec="translation">Because the sons of Pāṇḍu were enraged by the numerous offenses of their enemies, such as duplicitous gambling, verbal insults, the seizing of Draupadī’s hair, and many other cruel transgressions, the Supreme Lord engaged those Pāṇḍavas as the immediate cause to execute His will. On the pretext of the Battle of Kurukṣetra, Lord Kṛṣṇa arranged for all the kings who were burdening the earth to assemble with their armies on opposite sides of the battlefield, and when the Lord killed them through the agency of war, the earth was relieved of its burden.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -1218,7 +1261,6 @@ This verse described the quarrel. The Lord made Arjuna and others, enraged great
 
     <div class="fc-translation" data-sec="translation">The Supreme Personality of Godhead used the Yadu dynasty, which was protected by His own arms, to eliminate the kings who with their armies had been the burden of this earth. Then the unfathomable Lord thought to Himself, “Although some may say that the earth’s burden is now gone, in My opinion it is not yet gone, because there still remains the Yādava dynasty itself, whose strength is unbearable for the earth.”</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1580,7 +1622,6 @@ Who were the Yadus?  They were protected by the strength of Lord’s own arms.  
 
     <div class="fc-translation" data-sec="translation">Lord Kṛṣṇa thought, “No outside force could ever bring about the defeat of this family, the Yadu dynasty, whose members have always been fully surrendered to Me and are unrestricted in their opulence. But if I inspire a quarrel within the dynasty, that quarrel will act just like a fire created from the friction of bamboo in a grove, and then I shall achieve My real purpose and return to My eternal abode.”</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1816,7 +1857,6 @@ Should relieving the earth of this burden be undertaken by someone else?  The an
 
 
     <div class="fc-translation" data-sec="translation">My dear King Parīkṣit, when the supreme almighty Lord, whose desire always comes to pass, had thus made up His mind, He withdrew His own family on the pretext of a curse spoken by an assembly of brāhmaṇas.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -2248,7 +2288,6 @@ Making up his mind in this way, on the pretext of a brāhmaṇa’s curse he wit
 
     <div class="fc-translation" data-sec="translation">The Supreme Personality of Godhead, Kṛṣṇa, is the reservoir of all beauty. All beautiful things emanate from Him, and His personal form is so attractive that it steals the eyes away from all other objects, which then seem devoid of beauty in comparison to Him. When Lord Kṛṣṇa was on the earth, He attracted the eyes of all people. When Kṛṣṇa spoke, His words attracted the minds of all who remembered them. By seeing the footsteps of Lord Kṛṣṇa, people became attracted to Him, and thus they wanted to offer their bodily activities to the Lord as His followers. In this way Kṛṣṇa very easily spread His glories, which are sung throughout the world by the most sublime and essential Vedic verses. Lord Kṛṣṇa considered that simply by hearing and chanting those glories, conditioned souls born in the future would cross beyond the darkness of ignorance. Being satisfied with this arrangement, He left for His desired destination.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2539,7 +2578,6 @@ Being compassionate in mind, when his devotees are afflicted by the demons, Svay
 
     <div class="fc-translation" data-sec="translation">King Parīkṣit inquired: How could the brāhmaṇas curse the Vṛṣṇis, who were always respectful to the brāhmaṇas, charitable, and inclined to serve senior and exalted personalities and whose minds were always fully absorbed in thought of Lord Kṛṣṇa?</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2816,7 +2854,6 @@ Being compassionate in mind, when his devotees are afflicted by the demons, Svay
 
 
     <div class="fc-translation" data-sec="translation">King Parīkṣit continued inquiring: What was the motive for this curse? What did it consist of, O purest of the twice-born? And how could such a disagreement have arisen among the Yadus, who all shared the same goal of life? Please tell me all these things.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -3179,7 +3216,6 @@ How could there be a quarrel causing their destruction among those with one mind
 
 
     <div class="fc-translation" data-sec="translation">Śukadeva Gosvāmī said: The Lord, who bore His body as the amalgamation of everything beautiful, dutifully executed the most auspicious activities while on the earth, although He was, in fact, without any endeavor already satisfied in all desires. Residing in His abode and enjoying life, the Lord, whose glorification is in itself magnanimous, now wanted to annihilate His dynasty, as there still remained some small part of His duty to be carried out.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -3563,7 +3599,6 @@ The Lord produced the curse through the brāhmaṇas by his will, since he desir
 
 
     <div class="fc-translation" data-sec="translation">The sages Viśvāmitra, Asita, Kaṇva, Durvāsā, Bhṛgu, Aṅgirā, Kaśyapa, Vāmadeva, Atri and Vasiṣṭha, along with Nārada and others, once performed fruitive rituals that award abundant pious results, bring great happiness and take away the sins of Kali-yuga for the whole world by merely being recounted. The sages duly executed these rituals in the home of the chief of the Yadus, Vasudeva, the father of Lord Kṛṣṇa. After Lord Kṛṣṇa, who was staying in Vasudeva’s house as time personified, respectfully sent the sages off at the conclusion of the ceremonies, they went to the holy place called Piṇḍāraka.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -4039,7 +4074,6 @@ First the Lord made arrangements for the curse to be made.  After performing hor
 
     <div class="fc-translation" data-sec="translation">To that holy place, the young boys of the Yadu dynasty had brought Sāmba, son of Jāmbavatī, dressed in woman’s garb. Playfully approaching the great sages gathered there, the boys grabbed hold of the sages’ feet and impudently asked them with feigned humility, “O learned brāhmaṇas, this black-eyed pregnant woman has something to ask you. She is too embarrassed to inquire for herself. She is just about to give birth and is very desirous of having a son. Since all of you are great sages with infallible vision, please tell us whether her child will be a boy or a girl.”</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -4327,7 +4361,6 @@ Upasaṅgṛhya means “they touched the sages’ feet.”  Kiṁ svit means �
 
     <div class="fc-translation" data-sec="translation">Thus ridiculed by deceit, the sages became angry, O King, and told the boys, “Fools! She will bear you an iron club that will destroy your entire dynasty.”</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -4601,7 +4634,6 @@ Pralabdhāḥ here means “having their knowledge being put to a test.”</div>
 
 
     <div class="fc-translation" data-sec="translation">Upon hearing the curse of the sages, the terrified boys quickly uncovered the belly of Sāmba, and indeed they observed that therein was an iron club.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -4888,7 +4920,6 @@ Pralabdhāḥ here means “having their knowledge being put to a test.”</div>
     <div class="fc-translation" data-sec="translation">The young men of the Yadu dynasty said, “Oh, what have we done? We are so unfortunate! What will our family members say to us?” Speaking thus and being very disturbed, they returned to their homes, taking the club with them.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -5120,7 +5151,6 @@ Pralabdhāḥ here means “having their knowledge being put to a test.”</div>
 
 
     <div class="fc-translation" data-sec="translation">The Yadu boys, the luster of their faces completely faded, brought the club into the royal assembly, and in the presence of all the Yādavas they told King Ugrasena what had happened.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -5374,7 +5404,6 @@ They told Ugrasena, not Kṛṣṇa.</div>
 
 
     <div class="fc-translation" data-sec="translation">O King Parīkṣit, when the inhabitants of Dvārakā heard of the infallible curse of the brāhmaṇas and saw the club, they were astonished and distraught with fear.</div>
-
 
 
     <section class="fc-section" data-sec="gaudiya">
@@ -5631,7 +5660,6 @@ Ugrasena told everyone, “Do not have fear or shame.”  Without asking Kṛṣ
 
     <div class="fc-translation" data-sec="translation">After having the club ground to bits, King Āhuka [Ugrasena] of the Yadus personally threw the pieces, along with the remaining lump of iron, into the water of the ocean.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -5876,7 +5904,6 @@ Ugrasena told everyone, “Do not have fear or shame.”  Without asking Kṛṣ
 
 
     <div class="fc-translation" data-sec="translation">A certain fish swallowed the iron lump, and the bits of iron, carried back to the shore by the waves, implanted themselves there and grew into tall, sharp canes.</div>
-
 
 
     <section class="fc-section" data-sec="gaudiya">
@@ -6134,7 +6161,6 @@ Taralaiḥ means “by waves.”</div>
     <div class="fc-translation" data-sec="translation">The fish was caught in the ocean along with other fish in a fishermen’s net. The iron lump in the fish’s stomach was taken by the hunter Jarā, who fixed it as an arrowhead at the end of his shaft.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -6368,7 +6394,6 @@ Taralaiḥ means “by waves.”</div>
 
 
     <div class="fc-translation" data-sec="translation">Knowing fully the significance of all these events, the Supreme Lord, though capable of reversing the brāhmaṇas’ curse, did not wish to do so. Rather, in His form of time, He gladly sanctioned the events.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>

@@ -25,19 +25,25 @@
     <link rel="icon" href="../../../assets/icons/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="../../../assets/icons/icon.svg">
     <link rel="stylesheet" href="../../../assets/css/site.css">
+    <link rel="alternate" hreflang="te-IN" href="../../../te/sb/1/6/">
+    <link rel="alternate" hreflang="x-default" href="../../../">
     <script>window.FC_TO_ROOT = "../../../";</script>
     <script src="../../../assets/js/toggle.js"></script>
 </head>
 <body class="has-sidebar" data-chapter="6">
 <header class="fc-site-header">
     <button type="button" class="fc-mobile-trigger fc-mobile-trigger-left" data-overlay="left" aria-label="Open settings drawer">⚙</button>
-<a class="fc-brand" href="../../../">FolioCorpus<span class="fc-sub">Śrīmad-Bhāgavatam</span></a>
+    <a class="fc-brand" href="../../../">FolioCorpus<span class="fc-sub">Bhagavad-gītā</span></a>
     <nav class="fc-site-nav">
         <a href="../../../">Home</a>
         <a href="../../../bg/">Bhagavad-gītā</a>
         <a href="../../../sb/">Śrīmad-Bhāgavatam</a>
         <a href="../../../search/" title="Search across all integrated works">🔍 Search</a>
         <button type="button" id="fc-random-verse" class="fc-nav-btn" title="Jump to a random verse">🎲 Random</button>
+        <span class="fc-lang-switch" aria-label="Script">
+            <a class="active" href="#" title="Devanāgarī edition">EN</a>
+            <a class="" href="../../../te/sb/1/6/" title="Telugu lipi edition">తె</a>
+        </span>
     </nav>
     <button type="button" class="fc-mobile-trigger fc-mobile-trigger-right" data-overlay="right" aria-label="Open chapter index drawer">📚</button>
 </header>
@@ -46,8 +52,8 @@
     <button class="fc-sb-collapse" type="button" data-sb="left" title="Collapse left sidebar" aria-label="Collapse"></button>
 
     <div class="fc-sb-body">
-        <details class="fc-sb-section" data-sbsec="reading" open>
-            <summary class="fc-sb-title">Reading</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Reading</div>
             <div class="fc-sb-sub">Theme</div>
             <div class="fc-segmented" data-setting="theme">
                 <button type="button" data-val="light">Light</button>
@@ -73,10 +79,10 @@
                 <button type="button" data-val="single">Single</button>
                 <button type="button" data-val="side">Side-by-side</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="display" open>
-            <summary class="fc-sb-title">Display</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Display</div>
             <div class="fc-sb-grid">
                 <label><input type="checkbox" data-section="devanagari" checked> Devanāgarī</label>
                 <label><input type="checkbox" data-section="iast" checked> IAST transliteration</label>
@@ -99,10 +105,33 @@
                 <button type="button" data-action="expand-all">Expand all</button>
                 <button type="button" data-action="collapse-all">Collapse all</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="tools" open>
-            <summary class="fc-sb-title">Tools</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Find your starting point</div>
+            <div class="fc-persona-links">
+                <a class="fc-persona-link" href="../../../daily/">🌅 Daily (one value a week)</a>
+                <a class="fc-persona-link" href="../../../householder/">🏠 Householder (family & work)</a>
+                <a class="fc-persona-link" href="../../../parenting/">👨‍👩‍👧 Parenting (stories for kids)</a>
+                <a class="fc-persona-link" href="../../../themes/">📚 All themes</a>
+                <a class="fc-persona-link" href="../../../values/" style="background:#F0F6F2;border-left-color:#1F4632;">ॐ Vedic Value System ↗</a>
+                <a class="fc-persona-link" href="../../../vidya/" style="background:#FBF6E4;border-left-color:#C8860B;">📚 Vidyā Karaṇa (kids, multi-lang) ↗</a>
+            </div>
+        </div>
+
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Audience</div>
+            <div class="fc-audience-filter">
+                <label><input type="radio" name="fc-audience" value="all" checked> All levels</label>
+                <label><input type="radio" name="fc-audience" value="primary"> Primary (children)</label>
+                <label><input type="radio" name="fc-audience" value="middle"> Middle (teens)</label>
+                <label><input type="radio" name="fc-audience" value="senior"> Senior (adults)</label>
+                <label><input type="radio" name="fc-audience" value="college"> College / scholar</label>
+            </div>
+        </div>
+
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Tools</div>
             <div class="fc-sb-tools">
                 <button type="button" id="fc-presentation-toggle" class="fc-tool-btn"><span>🖥 Presentation</span><kbd class="fc-kbd">F</kbd></button>
                 <button type="button" id="fc-pen-toggle" class="fc-tool-btn"><span>✏️ Pen mode</span><kbd class="fc-kbd">P</kbd></button>
@@ -117,10 +146,26 @@
                 <button type="button" id="fc-clear-highlights" class="fc-tool-btn">🩷 Clear highlights (page)</button>
                 <button type="button" id="fc-notes-modal-open" class="fc-tool-btn">📓 My annotations</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="progress" id="fc-progress-section" open>
-            <summary class="fc-sb-title">Progress</summary>
+        <div class="fc-sb-section" id="fc-tts-controls" hidden>
+            <div class="fc-sb-title">
+                Read-aloud
+                <label class="fc-tts-master">
+                    <input type="checkbox" id="fc-tts-enabled" checked>
+                    <span class="fc-tts-master-label">On</span>
+                </label>
+            </div>
+            <div class="fc-tts-inner">
+                <div class="fc-sb-sub">Voice</div>
+                <select id="fc-tts-voice" class="fc-tts-select" aria-label="TTS voice"></select>
+                <div class="fc-sb-sub">Rate <span class="fc-tts-rate-val">1.0×</span></div>
+                <input type="range" id="fc-tts-rate" min="0.5" max="2" step="0.1" value="1" class="fc-tts-rate" aria-label="Reading rate">
+            </div>
+        </div>
+
+        <div class="fc-sb-section" id="fc-progress-section">
+            <div class="fc-sb-title">Progress</div>
             <div class="fc-progress-row">
                 <span class="fc-progress-num" id="fc-progress-num">0</span>
                 <span class="fc-progress-divider">/</span>
@@ -135,29 +180,29 @@
                 <span class="fc-progress-spacer"></span>
                 <button type="button" class="fc-progress-reset" id="fc-progress-reset" title="Reset progress">↺</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="bookmarks" open>
-            <summary class="fc-sb-title">Bookmarks <span class="fc-sb-count" id="fc-bookmarks-count">0</span></summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Bookmarks <span class="fc-sb-count" id="fc-bookmarks-count">0</span></div>
             <ul class="fc-bookmark-list" id="fc-bookmarks-list">
                 <li class="fc-sb-empty">No bookmarks yet — click ☆ on any verse.</li>
             </ul>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="notes" open>
-            <summary class="fc-sb-title">Notes <span class="fc-sb-count" id="fc-notes-count">0</span></summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Notes <span class="fc-sb-count" id="fc-notes-count">0</span></div>
             <ul class="fc-bookmark-list" id="fc-notes-list">
                 <li class="fc-sb-empty">No notes yet — open any verse and write in the 📝 block.</li>
             </ul>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="export">
-            <summary class="fc-sb-title">Export</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Export</div>
             <div class="fc-sb-tools">
                 <button type="button" id="fc-export-md" class="fc-tool-btn">📥 Download Markdown</button>
                 <button type="button" id="fc-export-json" class="fc-tool-btn">💾 Download JSON backup</button>
             </div>
-        </details>
+        </div>
     </div>
 </aside>    <main class="fc-container">
 <nav class="fc-breadcrumbs">
@@ -175,7 +220,7 @@
         <h1 class="fc-verse-heading">1.6 · Conversation Between Nārada and Vyāsadeva</h1>
         <span class="fc-ribbon-meta">
             38 verses
- · <a class="fc-ribbon-link" href="class-prep/">🖨 Class prep</a>        </span>
+        </span>
         <input type="search" class="fc-search" id="fc-search" placeholder="🔍 Search in this chapter" aria-label="Search verses in this chapter">
         <span class="fc-ribbon-current" id="fc-ribbon-current" aria-live="polite"></span>
     </div>
@@ -481,7 +526,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <div class="fc-translation" data-sec="translation">Sūta said: O brāhmaṇas, thus hearing all about Śrī Nārada’s birth and activities, Vyāsadeva, the incarnation of God and son of Satyavatī, inquired as follows.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -573,18 +617,6 @@ O brāhmaṇa Śaunaka! The powerful Vyāsa, son of Satyavatī, after hearing ab
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Hearing about a saint&#39;s birth and activities awakens deeper questions in a sincere seeker. Vyāsa, though himself an incarnation, models the humility of asking more. Inquiry itself is a sign of spiritual hunger.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Whose life story stirs me to ask deeper questions about my own path?</li><li>When did I last sit with a &#39;further question&#39; rather than rushing past it?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -778,7 +810,6 @@ O brāhmaṇa Śaunaka! The powerful Vyāsa, son of Satyavatī, after hearing ab
 
     <div class="fc-translation" data-sec="translation">Śrī Vyāsadeva said: What did you [Nārada] do after the departure of the great sages who had instructed you in scientific transcendental knowledge before the beginning of your present birth?</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -846,18 +877,6 @@ When the mendicants who had taught you that knowledge departed, being of young a
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Vyāsa, a disciple of Nārada, models sad-dharma-pṛcchā — sincere inquiry from the spiritual master. Initiation is not the end of the journey; the willingness to keep asking &#39;what next?&#39; is essential to real progress.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Am I still asking my mentor what came after their own first awakening?</li><li>What &#39;next step&#39; question am I avoiding because I think I already know?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -1053,7 +1072,6 @@ When the mendicants who had taught you that knowledge departed, being of young a
 
     <div class="fc-translation" data-sec="translation">O son of Brahmā, how did you pass your life after initiation, and how did you attain this body, having quit your old one in due course?</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1104,18 +1122,6 @@ When the mendicants who had taught you that knowledge departed, being of young a
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Nārada was once an ordinary maidservant&#39;s son. His transformation into an eternal spiritual body shows that birth and circumstance do not limit spiritual destiny — sincere practice and association rewrite the story.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What story about my background do I treat as a ceiling on my spiritual life?</li><li>Where is my present &#39;ordinary&#39; situation actually the seedbed of something extraordinary?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -1320,7 +1326,6 @@ When the mendicants who had taught you that knowledge departed, being of young a
 
     <div class="fc-translation" data-sec="translation">O great sage, time annihilates everything in due course, so how is it that this subject matter, which happened prior to this day of Brahmā, is still fresh in your memory, undisturbed by time?</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1386,18 +1391,6 @@ When the mendicants who had taught you that knowledge departed, being of young a
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Spiritual consciousness developed in one body carries across lifetimes, untouched by time. What looks like &#39;long ago&#39; to the material mind is fresh to the awakened spirit. Inner work compounds across births.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What spiritual investments am I making today that will outlive this body?</li><li>Where do I act as if only this lifetime matters?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -1573,7 +1566,6 @@ When the mendicants who had taught you that knowledge departed, being of young a
 
     <div class="fc-translation" data-sec="translation">Śrī Nārada said: The great sages, who had imparted scientific knowledge of transcendence to me, departed for other places, and I had to pass my life in this way.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1630,18 +1622,6 @@ When the mendicant teachers who had given me knowledge left, even though I was o
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">After the sages departed, young Nārada was left to live with what he had received. Real teaching is tested not in the teacher&#39;s presence but in their absence. We must learn to walk the path alone.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>How do I live the teachings when no teacher is watching?</li><li>What did a mentor leave me with that I have not yet fully absorbed?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -1820,7 +1800,6 @@ When the mendicant teachers who had given me knowledge left, even though I was o
     <div class="fc-translation" data-sec="translation">I was the only son of my mother, who was not only a simple woman but a maidservant as well. Since I was her only offspring, she had no other alternative for protection: she bound me with the tie of affection.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -1863,18 +1842,6 @@ When the mendicant teachers who had given me knowledge left, even though I was o
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Nārada describes the simple, dependent circumstances of his early life — a single mother, an only son, bonds of affection. Even saints begin in small, vulnerable situations. There is no shame in humble origins.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Whose affection has shaped me more than I usually acknowledge?</li><li>Do I look down on humble beginnings — my own or others&#39;?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -2080,7 +2047,6 @@ When the mendicant teachers who had given me knowledge left, even though I was o
     <div class="fc-translation" data-sec="translation">She wanted to look after my maintenance properly, but because she was not independent, she was not able to do anything for me. The world is under the full control of the Supreme Lord; therefore everyone is like a wooden doll in the hands of a puppet master.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -2113,18 +2079,6 @@ When the mendicant teachers who had given me knowledge left, even though I was o
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">His mother wanted to provide but could not — the world is run by the Supreme, and even loving caregivers are like wooden dolls in a puppet master&#39;s hands. Recognizing this loosens our grip on the illusion of control.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where am I trying to control outcomes that are not really mine to control?</li><li>How does seeing myself as an instrument, not the puppeteer, change how I act today?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -2312,7 +2266,6 @@ When the mendicant teachers who had given me knowledge left, even though I was o
     <div class="fc-translation" data-sec="translation">When I was a mere child of five years, I lived in a brāhmaṇa school. I was dependent on my mother’s affection and had no experience of different lands.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -2345,18 +2298,6 @@ When the mendicant teachers who had given me knowledge left, even though I was o
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Nārada lived a small, sheltered childhood — school, mother, no exposure to the wider world. Innocence and a narrow world are not failings; they are the soil in which simple faith first grows.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What &#39;small world&#39; am I dismissing that may actually be protecting something tender in me?</li><li>When did sheltered simplicity teach me something complexity could not?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -2543,7 +2484,6 @@ When the mendicant teachers who had given me knowledge left, even though I was o
 
     <div class="fc-translation" data-sec="translation">Once upon a time, my poor mother, when going out one night to milk a cow, was bitten on the leg by a serpent, influenced by supreme time.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2574,18 +2514,6 @@ When the mendicant teachers who had given me knowledge left, even though I was o
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Nārada&#39;s mother died from a snakebite — an event devastating on the surface but driven by supreme time. The deepest losses can be the very means by which we are turned toward the Lord.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What loss, in hindsight, redirected my life in a way I now value?</li><li>Am I still grieving a loss without asking what it was opening?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -2754,7 +2682,6 @@ When the mendicant teachers who had given me knowledge left, even though I was o
 
     <div class="fc-translation" data-sec="translation">I took this as the special mercy of the Lord, who always desires benediction for His devotees, and so thinking, I started for the north.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2805,18 +2732,6 @@ When the mendicant teachers who had given me knowledge left, even though I was o
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Instead of despairing at his mother&#39;s death, Nārada received it as the Lord&#39;s special mercy and walked north. Devotees read difficulty as direction, not as punishment. Orientation matters more than circumstance.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What recent difficulty might actually be a &#39;walk north&#39; invitation?</li><li>Where am I reading mundane bad luck where mercy might be at work?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -3012,7 +2927,6 @@ When the mendicant teachers who had given me knowledge left, even though I was o
 
     <div class="fc-translation" data-sec="translation">After my departure, I passed through many flourishing metropolises, towns, villages, animal farms, mines, agricultural lands, valleys, flower gardens, nursery gardens and natural forests.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3096,18 +3010,6 @@ miśraṁ tu kharvaṭaṁ nāma nadī-giri-samāśrayam ||</p>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Nārada passed through cities, farms, mines, gardens, forests — the same kinds of human activity that fill our world today. Civilizations rise and fall, but the search for the eternal is what really matters in any age.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which of my daily activities would still matter if civilizations turned over?</li><li>Where am I mistaking the scenery of life for the journey itself?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -3317,7 +3219,6 @@ miśraṁ tu kharvaṭaṁ nāma nadī-giri-samāśrayam ||</p>
     <div class="fc-translation" data-sec="translation">I passed through hills and mountains full of reservoirs of various minerals like gold, silver and copper, and through tracts of land with reservoirs of water filled with beautiful lotus flowers, fit for the denizens of heaven, decorated with bewildered bees and singing birds.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -3365,18 +3266,6 @@ miśraṁ tu kharvaṭaṁ nāma nadī-giri-samāśrayam ||</p>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">He passed through landscapes rich with minerals, flowers, and bees — nature itself is the Lord&#39;s wealth, far surpassing any human treasury. Beauty is everywhere for those who travel light enough to notice.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What natural wealth am I walking past without seeing today?</li><li>How would my pace change if I treated the world as the Lord&#39;s gallery?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -3639,7 +3528,6 @@ miśraṁ tu kharvaṭaṁ nāma nadī-giri-samāśrayam ||</p>
 
     <div class="fc-translation" data-sec="translation">I then passed alone through many forests of rushes, bamboo, reeds, sharp grass, weeds and caves, which were very difficult to go through alone. I visited deep, dark and dangerously fearful forests, which were the play yards of snakes, owls and jackals.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3680,18 +3568,6 @@ miśraṁ tu kharvaṭaṁ nāma nadī-giri-samāśrayam ||</p>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Nārada walked alone through dangerous forests of snakes, owls, and jackals. The mendicant tradition trains fearlessness by sustained exposure to the unknown. Faith is built by walking, not just believing.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What &#39;dark forest&#39; am I avoiding that might actually be my training ground?</li><li>Where would walking alone, with faith, deepen me more than staying safe?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -3878,7 +3754,6 @@ miśraṁ tu kharvaṭaṁ nāma nadī-giri-samāśrayam ||</p>
 
     <div class="fc-translation" data-sec="translation">Thus traveling, I felt tired, both bodily and mentally, and I was both thirsty and hungry. So I took a bath in a river lake and also drank water. By contacting water, I got relief from my exhaustion.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3950,18 +3825,6 @@ miśraṁ tu kharvaṭaṁ nāma nadī-giri-samāśrayam ||</p>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Tired, thirsty, hungry, Nārada bathed in a river and drank — nature itself met his needs without begging. A sincere seeker doesn&#39;t need to clutch at people; simplicity and trust are enough.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where am I &#39;begging&#39; from others what nature or grace would freely provide?</li><li>What simple, natural rest would refresh me right now?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -4130,7 +3993,6 @@ miśraṁ tu kharvaṭaṁ nāma nadī-giri-samāśrayam ||</p>
 
     <div class="fc-translation" data-sec="translation">After that, under the shadow of a banyan tree in an uninhabited forest I began to meditate upon the Supersoul situated within, using my intelligence, as I had learned from liberated souls.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -4196,18 +4058,6 @@ miśraṁ tu kharvaṭaṁ nāma nadī-giri-samāśrayam ||</p>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Under a banyan tree, Nārada meditated on the Supersoul as the liberated sages had taught him. Meditation should not be invented privately — it must be received from a trustworthy source and then practiced steadily.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Whose actual instruction am I following in my inner practice — or am I improvising?</li><li>Where could a trained meditation, received properly, replace my well-meaning guesswork?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -4385,7 +4235,6 @@ miśraṁ tu kharvaṭaṁ nāma nadī-giri-samāśrayam ||</p>
 
     <div class="fc-translation" data-sec="translation">As soon as I began to meditate upon the lotus feet of the Personality of Godhead with my mind transformed in transcendental love, tears rolled down my eyes, and without delay the Personality of Godhead, Śrī Kṛṣṇa, appeared on the lotus of my heart.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -4477,18 +4326,6 @@ miśraṁ tu kharvaṭaṁ nāma nadī-giri-samāśrayam ||</p>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">When transcendental love stirred, tears flowed and Kṛṣṇa appeared on the lotus of his heart. The Lord is reached through feeling, not technique. Sincerity of bhāva is the actual doorway.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where in my practice is technique outpacing feeling?</li><li>What would it take for tears of devotion — not effort — to become familiar to me?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -4675,7 +4512,6 @@ miśraṁ tu kharvaṭaṁ nāma nadī-giri-samāśrayam ||</p>
 
     <div class="fc-translation" data-sec="translation">O Vyāsadeva, at that time, being exceedingly overpowered by feelings of happiness, every part of my body became separately enlivened. Being absorbed in an ocean of ecstasy, I could not see both myself and the Lord.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -4746,18 +4582,6 @@ miśraṁ tu kharvaṭaṁ nāma nadī-giri-samāśrayam ||</p>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Ecstasy overwhelmed Nārada so completely that he could not perceive himself or the Lord — only the ocean of love. True spiritual experience dissolves the separation between subject and object. Self disappears in joy.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>When was the last time I lost track of myself in something good?</li><li>Do I leave room in my life for experiences I can&#39;t analyze afterward?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -4944,7 +4768,6 @@ miśraṁ tu kharvaṭaṁ nāma nadī-giri-samāśrayam ||</p>
 
     <div class="fc-translation" data-sec="translation">The transcendental form of the Lord, as it is, satisfies the mind’s desire and at once erases all mental incongruities. Upon losing that form, I suddenly got up, being perturbed, as is usual when one loses that which is desirable.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -4991,18 +4814,6 @@ miśraṁ tu kharvaṭaṁ nāma nadī-giri-samāśrayam ||</p>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The Lord&#39;s transcendental form satisfies the mind completely; losing it leaves a holy ache. Once you taste something truly satisfying, all substitutes feel hollow. Real spiritual desire is born of real spiritual contact.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What spiritual taste, once experienced, made everything else taste thin?</li><li>Where am I trying to satisfy my heart with substitutes for what only the Lord can give?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -5198,7 +5009,6 @@ miśraṁ tu kharvaṭaṁ nāma nadī-giri-samāśrayam ||</p>
 
     <div class="fc-translation" data-sec="translation">I desired to see again that transcendental form of the Lord, but despite my attempts to concentrate upon the heart with eagerness to view the form again, I could not see Him any more, and thus dissatisfied, I was very much aggrieved.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -5274,18 +5084,6 @@ miśraṁ tu kharvaṭaṁ nāma nadī-giri-samāśrayam ||</p>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Nārada tried to recreate the vision and could not — and grew aggrieved. There is no mechanical method to summon God. The seeker must wait in faithful duty, not demand on schedule.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where am I demanding spiritual experience on my timetable?</li><li>What faithful duty can I keep doing while I wait for grace?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -5472,7 +5270,6 @@ miśraṁ tu kharvaṭaṁ nāma nadī-giri-samāśrayam ||</p>
 
     <div class="fc-translation" data-sec="translation">Seeing my attempts in that lonely place, the Personality of Godhead, who is transcendental to all mundane description, spoke to me with gravity and pleasing words, just to mitigate my grief.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -5533,18 +5330,6 @@ miśraṁ tu kharvaṭaṁ nāma nadī-giri-samāśrayam ||</p>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The Lord, beyond all mundane words, spoke gently to console Nārada&#39;s grief. By His mercy, the very capacity to hear Him is given. We don&#39;t earn the conversation; we are made fit for it.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where might I be missing a gentle inner word because I&#39;m not listening?</li><li>Whose grief around me could be eased by a few quiet, weighty words?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -5740,7 +5525,6 @@ miśraṁ tu kharvaṭaṁ nāma nadī-giri-samāśrayam ||</p>
 
     <div class="fc-translation" data-sec="translation">O Nārada [the Lord spoke], I regret that during this lifetime you will not be able to see Me anymore. Those who are incomplete in service and who are not completely free from all material taints can hardly see Me.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -5811,18 +5595,6 @@ miśraṁ tu kharvaṭaṁ nāma nadī-giri-samāśrayam ||</p>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The Lord warned Nārada: those incomplete in service and tinged with materialism cannot easily see Him. Vision of the Lord is not a reward for cleverness but a fruit of pure-heartedness. The work is on us.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What &#39;tinge&#39; in me — lust, anger, ambition — keeps the inner door half-shut?</li><li>Where is my service still incomplete in a way only I would know?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -6027,7 +5799,6 @@ miśraṁ tu kharvaṭaṁ nāma nadī-giri-samāśrayam ||</p>
 
     <div class="fc-translation" data-sec="translation">O virtuous one, you have only once seen My person, and this is just to increase your desire for Me, because the more you hanker for Me, the more you will be freed from all material desires.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -6104,18 +5875,6 @@ miśraṁ tu kharvaṭaṁ nāma nadī-giri-samāśrayam ||</p>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">A single vision was given to increase Nārada&#39;s hunger. The more we long for the Lord, the more material desires fall away on their own. Hunger for the Eternal is the real cure for craving.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What spiritual hunger am I trying to numb instead of feeding?</li><li>Where might a deeper longing actually free me from a smaller craving?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -6311,7 +6070,6 @@ miśraṁ tu kharvaṭaṁ nāma nadī-giri-samāśrayam ||</p>
 
     <div class="fc-translation" data-sec="translation">By service of the Absolute Truth, even for a few days, a devotee attains firm and fixed intelligence in Me. Consequently he goes on to become My associate in the transcendental world after giving up the present deplorable material worlds.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -6382,18 +6140,6 @@ miśraṁ tu kharvaṭaṁ nāma nadī-giri-samāśrayam ||</p>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Even a few days of sincere devotional service produce fixed, unwavering intelligence centered in the Lord. Stability of purpose grows surprisingly fast when the orientation is right. Quality, not quantity, of practice matters.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What &#39;few days&#39; of focused practice could shift my orientation now?</li><li>Where am I postponing because I think devotion requires years before it works?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -6598,7 +6344,6 @@ miśraṁ tu kharvaṭaṁ nāma nadī-giri-samāśrayam ||</p>
 
     <div class="fc-translation" data-sec="translation">Intelligence engaged in My devotion cannot be thwarted at any time. Even at the time of creation, as well as at the time of annihilation, your remembrance will continue by My mercy.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -6669,18 +6414,6 @@ miśraṁ tu kharvaṭaṁ nāma nadī-giri-samāśrayam ||</p>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Intelligence engaged in devotion is never wasted; it survives creation and dissolution. Material achievements end; spiritual remembrance is carried forward by the Lord&#39;s mercy across all changes.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What part of my mental life would I want to carry across this body?</li><li>Where am I investing intelligence in things that won&#39;t outlast even this decade?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -6914,7 +6647,6 @@ miśraṁ tu kharvaṭaṁ nāma nadī-giri-samāśrayam ||</p>
 
     <div class="fc-translation" data-sec="translation">Then that supreme authority, personified by sound and unseen by eyes, but most wonderful, stopped speaking. Feeling a sense of gratitude, I offered my obeisances unto Him, bowing my head.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -6990,18 +6722,6 @@ miśraṁ tu kharvaṭaṁ nāma nadī-giri-samāśrayam ||</p>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The Lord spoke and was heard, not seen. Sound is no less real than sight — the Vedas, the Gītā, the holy name carry the Lord Himself. Persistent chanting is direct contact, not symbolic preparation.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Do I treat sacred sound as decoration or as direct presence?</li><li>What would shift if I trusted that the holy name actually carries the Lord?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -7226,7 +6946,6 @@ miśraṁ tu kharvaṭaṁ nāma nadī-giri-samāśrayam ||</p>
 
     <div class="fc-translation" data-sec="translation">Thus I began chanting the holy name and fame of the Lord by repeated recitation, ignoring all the formalities of the material world. Such chanting and remembering of the transcendental pastimes of the Lord are benedictory. So doing, I traveled all over the earth, fully satisfied, humble and unenvious.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -7327,18 +7046,6 @@ miśraṁ tu kharvaṭaṁ nāma nadī-giri-samāśrayam ||</p>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Nārada began chanting and traveling, ignoring social formalities, fully satisfied, humble and unenvious. The chanting devotee needs little outwardly because the inward fullness is real.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which social formalities am I observing that actually drain me?</li><li>What would a life of chanting + walking look like, even in small daily doses?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -7516,7 +7223,6 @@ miśraṁ tu kharvaṭaṁ nāma nadī-giri-samāśrayam ||</p>
 
     <div class="fc-translation" data-sec="translation">And so, O Brāhmaṇa Vyāsadeva, in due course of time I, who was fully absorbed in thinking of Kṛṣṇa and who therefore had no attachments, being completely freed from all material taints, met with death, as lightning and illumination occur simultaneously.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -7587,18 +7293,6 @@ miśraṁ tu kharvaṭaṁ nāma nadī-giri-samāśrayam ||</p>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Absorbed in Kṛṣṇa, free of attachment, Nārada met death like a flash of lightning — simultaneous with new illumination. For the devotee, death is not a wall but a doorway opening at the same instant as a new light.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Do I prepare for death as transition or pretend it isn&#39;t coming?</li><li>Where could less attachment now make a future passage easier?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -7767,7 +7461,6 @@ miśraṁ tu kharvaṭaṁ nāma nadī-giri-samāśrayam ||</p>
 
     <div class="fc-translation" data-sec="translation">Having been awarded a transcendental body befitting an associate of the Personality of Godhead, I quit the body made of five material elements, and thus all acquired fruitive results of work [karma] stopped.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -7879,18 +7572,6 @@ apaiti nāma sphuraṇena tat te prārabdha-karmeti virauti vedaḥ ||</p>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">A transcendental body was awarded; karma stopped. The new body of the liberated devotee is free of material modes and fruitive reactions. The Lord&#39;s mercy ends the karmic loop, not our effort alone.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which karmic loop in my life keeps recycling because I have not surrendered it?</li><li>Where am I trying to engineer freedom that only grace can deliver?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -8068,7 +7749,6 @@ apaiti nāma sphuraṇena tat te prārabdha-karmeti virauti vedaḥ ||</p>
 
     <div class="fc-translation" data-sec="translation">At the end of the millennium, when the Personality of Godhead, Lord Nārāyaṇa, lay down within the water of devastation, Brahmā began to enter into Him along with all creative elements, and I also entered through His breathing.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -8141,18 +7821,6 @@ avāpa vaiṣṇavīṁ nidrām ekībhūyātha viṣṇunā ||</p>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">At the end of the millennium, Nārada entered the Lord through Brahmā&#39;s breath. The liberated devotee returns to the source between cycles, carried not by his own effort but by the Lord&#39;s natural inhalation of all that is His.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What part of me is already being &#39;breathed back&#39; toward its source, if I would notice?</li><li>Where could I let go and let the larger rhythm carry me?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -8330,7 +7998,6 @@ avāpa vaiṣṇavīṁ nidrām ekībhūyātha viṣṇunā ||</p>
 
     <div class="fc-translation" data-sec="translation">After 4,300,000,000 solar years, when Brahmā awoke to create again by the will of the Lord, all the ṛṣis like Marīci, Aṅgirā, Atri and so on were created from the transcendental body of the Lord, and I also appeared along with them.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -8381,18 +8048,6 @@ avāpa vaiṣṇavīṁ nidrām ekībhūyātha viṣṇunā ||</p>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">When Brahmā woke to create again, the great ṛṣis — and Nārada — reappeared from the Lord&#39;s transcendental body. The eternal associates of the Lord recur in every cycle. Devotion gives one a permanent role in the cosmic drama.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What part am I being asked to play in this &#39;cycle&#39; of my own life?</li><li>Where would faithful repetition matter more than novelty?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -8579,7 +8234,6 @@ avāpa vaiṣṇavīṁ nidrām ekībhūyātha viṣṇunā ||</p>
 
     <div class="fc-translation" data-sec="translation">Since then, by the grace of the almighty Viṣṇu, I travel everywhere without restriction both in the transcendental world and in the three divisions of the material world. This is because I am fixed in unbroken devotional service of the Lord.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -8638,18 +8292,6 @@ pravṛttākhye marīcādyā muktaikaṁ nāradaṁ munim ||</p>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">By the Lord&#39;s grace, Nārada moves freely across all worlds because he is fixed in unbroken devotion. Real freedom is not the absence of duty but unbroken connection. The inwardly anchored move unbound outwardly.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where am I confusing restlessness with freedom?</li><li>What unbroken inner practice could give me freedom of movement in the outer world?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -8827,7 +8469,6 @@ pravṛttākhye marīcādyā muktaikaṁ nāradaṁ munim ||</p>
 
     <div class="fc-translation" data-sec="translation">And thus I travel, constantly singing the transcendental message of the glories of the Lord, vibrating this instrument called a vīṇā, which is charged with transcendental sound and which was given to me by Lord Kṛṣṇa.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -8893,18 +8534,6 @@ pravṛttākhye marīcādyā muktaikaṁ nāradaṁ munim ||</p>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Nārada travels everywhere singing the Lord&#39;s glories, vibrating a vīṇā given by Kṛṣṇa Himself. The instrument, the sound, and the singer are all transcendental. Devotional art carries the Lord directly into the world.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What &#39;instrument&#39; has been given to me to glorify the Lord?</li><li>Where am I letting my instrument gather dust while I look for a better one?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -9073,7 +8702,6 @@ pravṛttākhye marīcādyā muktaikaṁ nāradaṁ munim ||</p>
 
     <div class="fc-translation" data-sec="translation">The Supreme Lord Śrī Kṛṣṇa, whose glories and activities are pleasing to hear, at once appears on the seat of my heart, as if called for, as soon as I begin to chant His holy activities.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -9134,18 +8762,6 @@ pravṛttākhye marīcādyā muktaikaṁ nāradaṁ munim ||</p>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">As soon as Nārada chants Kṛṣṇa&#39;s activities, the Lord appears in his heart — like switching on a spiritual television. The Lord is not separate from His name and pastimes; chanting them invites Him immediately.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What would change if I treated chanting as immediate presence, not preparation?</li><li>Where in my day could I &#39;switch on&#39; this inner channel even briefly?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -9321,7 +8937,6 @@ pravṛttākhye marīcādyā muktaikaṁ nāradaṁ munim ||</p>
 
     <div class="fc-translation" data-sec="translation">It is personally experienced by me that those who are always full of cares and anxieties due to desiring contact of the senses with their objects can cross the ocean of nescience on a most suitable boat — the constant chanting of the transcendental activities of the Personality of Godhead.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -9407,18 +9022,6 @@ pravṛttākhye marīcādyā muktaikaṁ nāradaṁ munim ||</p>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Those tossed by sense-craving can cross the ocean of nescience on the most suitable boat — constant chanting of the Lord&#39;s activities. The mind cannot be silenced, but it can be redirected to something that actually satisfies.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What &#39;boat&#39; am I currently in across the ocean of anxiety?</li><li>Where would chanting work better than will-powered silence?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -9614,7 +9217,6 @@ pravṛttākhye marīcādyā muktaikaṁ nāradaṁ munim ||</p>
 
     <div class="fc-translation" data-sec="translation">It is true that by practicing restraint of the senses by the yoga system one can get relief from the disturbances of desire and lust, but this is not sufficient to give satisfaction to the soul, for this [satisfaction] is derived from devotional service to the Personality of Godhead.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -9723,18 +9325,6 @@ jṣānaṁ yat tad adhīnaṁ hi bhakti-yoga-samanvitam</p>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Yoga restrains the senses but cannot satisfy the soul; only devotional service to the Lord does that. Self-control is necessary but not sufficient. The heart wants love, not just discipline.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where am I disciplining myself without loving anything?</li><li>What devotional act could feed the soul-hunger my discipline cannot reach?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -9957,7 +9547,6 @@ jṣānaṁ yat tad adhīnaṁ hi bhakti-yoga-samanvitam</p>
 
     <div class="fc-translation" data-sec="translation">O Vyāsadeva, you are freed from all sins. Thus I have explained my birth and activities for self-realization, as you asked. All this will be conducive for your personal satisfaction also.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -10073,18 +9662,6 @@ jṣānaṁ yat tad adhīnaṁ hi bhakti-yoga-samanvitam</p>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Nārada&#39;s story of his own life is offered for Vyāsa&#39;s satisfaction — and ours. Personal testimony from a realized soul is itself transformative. We learn not only doctrine but example.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Whose realized life story is currently shaping mine?</li><li>What would I tell, honestly, if asked to recount the awakenings of my own life?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -10287,7 +9864,6 @@ jṣānaṁ yat tad adhīnaṁ hi bhakti-yoga-samanvitam</p>
 
     <div class="fc-translation" data-sec="translation">Sūta Gosvāmī said: Thus addressing Vyāsadeva, Śrīla Nārada Muni took leave of him, and vibrating on his vīṇā instrument, he left to wander at his free will.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -10368,18 +9944,6 @@ jṣānaṁ yat tad adhīnaṁ hi bhakti-yoga-samanvitam</p>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Nārada takes his leave and wanders at his free will, vibrating his vīṇā. True freedom belongs to the soul rooted in devotion; conditioned souls only imagine themselves free. Anchoring in service is liberation in motion.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where do I confuse &#39;doing what I want&#39; with actual freedom?</li><li>What single anchor in devotion would let me move more freely in everything else?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -10564,7 +10128,6 @@ jṣānaṁ yat tad adhīnaṁ hi bhakti-yoga-samanvitam</p>
 
     <div class="fc-translation" data-sec="translation">All glory and success to Śrīla Nārada Muni because he glorifies the activities of the Personality of Godhead, and so doing he himself takes pleasure and also enlivens all the distressed souls of the universe.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -10633,18 +10196,6 @@ Punishment of Aśvatthāmā</p>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Glory to Nārada — he glorifies the Lord, takes pleasure himself, and revives all distressed souls. True service multiplies joy: the singer is enlivened, and so are the listeners. Real happiness here is found only on this path.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Whose distressed heart could I enliven today by sharing something of the Lord&#39;s glory?</li><li>Where am I chasing happiness in ways that don&#39;t enliven others?</li></ul>
-
-
-
-
-
-    </section>
 
 
 

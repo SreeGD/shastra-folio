@@ -25,19 +25,25 @@
     <link rel="icon" href="../../../assets/icons/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="../../../assets/icons/icon.svg">
     <link rel="stylesheet" href="../../../assets/css/site.css">
+    <link rel="alternate" hreflang="te-IN" href="../../../te/sb/9/3/">
+    <link rel="alternate" hreflang="x-default" href="../../../">
     <script>window.FC_TO_ROOT = "../../../";</script>
     <script src="../../../assets/js/toggle.js"></script>
 </head>
 <body class="has-sidebar" data-chapter="3">
 <header class="fc-site-header">
     <button type="button" class="fc-mobile-trigger fc-mobile-trigger-left" data-overlay="left" aria-label="Open settings drawer">⚙</button>
-<a class="fc-brand" href="../../../">FolioCorpus<span class="fc-sub">Śrīmad-Bhāgavatam</span></a>
+    <a class="fc-brand" href="../../../">FolioCorpus<span class="fc-sub">Bhagavad-gītā</span></a>
     <nav class="fc-site-nav">
         <a href="../../../">Home</a>
         <a href="../../../bg/">Bhagavad-gītā</a>
         <a href="../../../sb/">Śrīmad-Bhāgavatam</a>
         <a href="../../../search/" title="Search across all integrated works">🔍 Search</a>
         <button type="button" id="fc-random-verse" class="fc-nav-btn" title="Jump to a random verse">🎲 Random</button>
+        <span class="fc-lang-switch" aria-label="Script">
+            <a class="active" href="#" title="Devanāgarī edition">EN</a>
+            <a class="" href="../../../te/sb/9/3/" title="Telugu lipi edition">తె</a>
+        </span>
     </nav>
     <button type="button" class="fc-mobile-trigger fc-mobile-trigger-right" data-overlay="right" aria-label="Open chapter index drawer">📚</button>
 </header>
@@ -46,8 +52,8 @@
     <button class="fc-sb-collapse" type="button" data-sb="left" title="Collapse left sidebar" aria-label="Collapse"></button>
 
     <div class="fc-sb-body">
-        <details class="fc-sb-section" data-sbsec="reading" open>
-            <summary class="fc-sb-title">Reading</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Reading</div>
             <div class="fc-sb-sub">Theme</div>
             <div class="fc-segmented" data-setting="theme">
                 <button type="button" data-val="light">Light</button>
@@ -73,10 +79,10 @@
                 <button type="button" data-val="single">Single</button>
                 <button type="button" data-val="side">Side-by-side</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="display" open>
-            <summary class="fc-sb-title">Display</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Display</div>
             <div class="fc-sb-grid">
                 <label><input type="checkbox" data-section="devanagari" checked> Devanāgarī</label>
                 <label><input type="checkbox" data-section="iast" checked> IAST transliteration</label>
@@ -99,10 +105,33 @@
                 <button type="button" data-action="expand-all">Expand all</button>
                 <button type="button" data-action="collapse-all">Collapse all</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="tools" open>
-            <summary class="fc-sb-title">Tools</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Find your starting point</div>
+            <div class="fc-persona-links">
+                <a class="fc-persona-link" href="../../../daily/">🌅 Daily (one value a week)</a>
+                <a class="fc-persona-link" href="../../../householder/">🏠 Householder (family & work)</a>
+                <a class="fc-persona-link" href="../../../parenting/">👨‍👩‍👧 Parenting (stories for kids)</a>
+                <a class="fc-persona-link" href="../../../themes/">📚 All themes</a>
+                <a class="fc-persona-link" href="../../../values/" style="background:#F0F6F2;border-left-color:#1F4632;">ॐ Vedic Value System ↗</a>
+                <a class="fc-persona-link" href="../../../vidya/" style="background:#FBF6E4;border-left-color:#C8860B;">📚 Vidyā Karaṇa (kids, multi-lang) ↗</a>
+            </div>
+        </div>
+
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Audience</div>
+            <div class="fc-audience-filter">
+                <label><input type="radio" name="fc-audience" value="all" checked> All levels</label>
+                <label><input type="radio" name="fc-audience" value="primary"> Primary (children)</label>
+                <label><input type="radio" name="fc-audience" value="middle"> Middle (teens)</label>
+                <label><input type="radio" name="fc-audience" value="senior"> Senior (adults)</label>
+                <label><input type="radio" name="fc-audience" value="college"> College / scholar</label>
+            </div>
+        </div>
+
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Tools</div>
             <div class="fc-sb-tools">
                 <button type="button" id="fc-presentation-toggle" class="fc-tool-btn"><span>🖥 Presentation</span><kbd class="fc-kbd">F</kbd></button>
                 <button type="button" id="fc-pen-toggle" class="fc-tool-btn"><span>✏️ Pen mode</span><kbd class="fc-kbd">P</kbd></button>
@@ -117,10 +146,26 @@
                 <button type="button" id="fc-clear-highlights" class="fc-tool-btn">🩷 Clear highlights (page)</button>
                 <button type="button" id="fc-notes-modal-open" class="fc-tool-btn">📓 My annotations</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="progress" id="fc-progress-section" open>
-            <summary class="fc-sb-title">Progress</summary>
+        <div class="fc-sb-section" id="fc-tts-controls" hidden>
+            <div class="fc-sb-title">
+                Read-aloud
+                <label class="fc-tts-master">
+                    <input type="checkbox" id="fc-tts-enabled" checked>
+                    <span class="fc-tts-master-label">On</span>
+                </label>
+            </div>
+            <div class="fc-tts-inner">
+                <div class="fc-sb-sub">Voice</div>
+                <select id="fc-tts-voice" class="fc-tts-select" aria-label="TTS voice"></select>
+                <div class="fc-sb-sub">Rate <span class="fc-tts-rate-val">1.0×</span></div>
+                <input type="range" id="fc-tts-rate" min="0.5" max="2" step="0.1" value="1" class="fc-tts-rate" aria-label="Reading rate">
+            </div>
+        </div>
+
+        <div class="fc-sb-section" id="fc-progress-section">
+            <div class="fc-sb-title">Progress</div>
             <div class="fc-progress-row">
                 <span class="fc-progress-num" id="fc-progress-num">0</span>
                 <span class="fc-progress-divider">/</span>
@@ -135,29 +180,29 @@
                 <span class="fc-progress-spacer"></span>
                 <button type="button" class="fc-progress-reset" id="fc-progress-reset" title="Reset progress">↺</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="bookmarks" open>
-            <summary class="fc-sb-title">Bookmarks <span class="fc-sb-count" id="fc-bookmarks-count">0</span></summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Bookmarks <span class="fc-sb-count" id="fc-bookmarks-count">0</span></div>
             <ul class="fc-bookmark-list" id="fc-bookmarks-list">
                 <li class="fc-sb-empty">No bookmarks yet — click ☆ on any verse.</li>
             </ul>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="notes" open>
-            <summary class="fc-sb-title">Notes <span class="fc-sb-count" id="fc-notes-count">0</span></summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Notes <span class="fc-sb-count" id="fc-notes-count">0</span></div>
             <ul class="fc-bookmark-list" id="fc-notes-list">
                 <li class="fc-sb-empty">No notes yet — open any verse and write in the 📝 block.</li>
             </ul>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="export">
-            <summary class="fc-sb-title">Export</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Export</div>
             <div class="fc-sb-tools">
                 <button type="button" id="fc-export-md" class="fc-tool-btn">📥 Download Markdown</button>
                 <button type="button" id="fc-export-json" class="fc-tool-btn">💾 Download JSON backup</button>
             </div>
-        </details>
+        </div>
     </div>
 </aside>    <main class="fc-container">
 <nav class="fc-breadcrumbs">
@@ -175,7 +220,7 @@
         <h1 class="fc-verse-heading">9.3 · The Marriage of Sukanyā and Cyavana Muni</h1>
         <span class="fc-ribbon-meta">
             36 verses
- · <a class="fc-ribbon-link" href="class-prep/">🖨 Class prep</a>        </span>
+        </span>
         <input type="search" class="fc-search" id="fc-search" placeholder="🔍 Search in this chapter" aria-label="Search verses in this chapter">
         <span class="fc-ribbon-current" id="fc-ribbon-current" aria-live="polite"></span>
     </div>
@@ -469,7 +514,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
     <div class="fc-translation" data-sec="translation">Śrī Śukadeva Gosvāmī continued: O King, Śaryāti, another son of Manu, was a ruler completely aware of Vedic knowledge. He gave instructions about the functions for the second day of the yajṣa to be performed by the descendants of Aṅgirā.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -535,18 +579,6 @@ The Third Chapter describes how Śaryāti’s daughter Sukanyā married the sage
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Śaryāti, fluent in the Vedas, instructs Aṅgirā&#39;s descendants on second-day sacrificial duties. Real Vedic kingship is not just power but operative scholarship in the service of yajña.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where am I content to be a &#39;patron&#39; of practice when I should be its detailed practitioner?</li><li>What specific knowledge would my service require me to actually master, not delegate?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -716,7 +748,6 @@ The Third Chapter describes how Śaryāti’s daughter Sukanyā married the sage
     <div class="fc-translation" data-sec="translation">Śaryāti had a beautiful lotus-eyed daughter named Sukanyā, with whom he went to the forest to see the āśrama of Cyavana Muni.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -735,18 +766,6 @@ The Third Chapter describes how Śaryāti’s daughter Sukanyā married the sage
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Śaryāti brings his daughter to a sage&#39;s āśrama — a king teaches his child by exposure, not lecture. Holy places and holy company shape children more than instruction.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which holy place have I not taken my children, friends, or self to recently?</li><li>What gets transmitted by mere proximity that words could never convey?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -916,7 +935,6 @@ The Third Chapter describes how Śaryāti’s daughter Sukanyā married the sage
     <div class="fc-translation" data-sec="translation">While that Sukanyā, surrounded by her friends, was collecting various types of fruits from the trees in the forest, she saw within the hole of an earthworm two things glowing like luminaries.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -935,18 +953,6 @@ The Third Chapter describes how Śaryāti’s daughter Sukanyā married the sage
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Sukanyā sees two glowing points inside an anthill — the world is full of hidden presences mistaken for ordinary curiosities. We routinely encounter the sacred without recognizing it.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What in my recent week glowed strangely but I dismissed as ordinary?</li><li>How might I cultivate the eyes to spot the sacred hidden in everyday holes?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -1125,7 +1131,6 @@ The Third Chapter describes how Śaryāti’s daughter Sukanyā married the sage
     <div class="fc-translation" data-sec="translation">As if induced by providence, the girl ignorantly pierced those two glowworms with a thorn, and when they were pierced, blood began to ooze out of them.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -1144,18 +1149,6 @@ The Third Chapter describes how Śaryāti’s daughter Sukanyā married the sage
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Without malice, in pure ignorance, Sukanyā pierces what turns out to be a great sage&#39;s eyes. The unknowing act still produces real consequence; ignorance does not erase impact.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where have I caused harm in ignorance and assumed innocence absolves me?</li><li>What investigation should I do before treating a strange object as a toy?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -1334,7 +1327,6 @@ The Third Chapter describes how Śaryāti’s daughter Sukanyā married the sage
     <div class="fc-translation" data-sec="translation">Thereupon, all the soldiers of Śaryāti were immediately obstructed from passing urine and stool. Upon perceiving this, Śaryāti spoke to his associates in surprise.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -1353,18 +1345,6 @@ The Third Chapter describes how Śaryāti’s daughter Sukanyā married the sage
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Suddenly every soldier in the camp cannot pass urine or stool — one person&#39;s offense paralyzes an entire community. Group consequences quickly trace back to individual lapses.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>When my community suffers, do I look at what I individually contributed to the blockage?</li><li>What overlooked offense might be the hidden cause of a stuck situation in my circle?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -1543,7 +1523,6 @@ The Third Chapter describes how Śaryāti’s daughter Sukanyā married the sage
     <div class="fc-translation" data-sec="translation">How strange it is that one of us has attempted to do something wrong to Cyavana Muni, the son of Bhṛgu. It certainly appears that someone among us has polluted this āśrama.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -1564,18 +1543,6 @@ You have committed (vicestitam) some offense.  Someone among us must have commit
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Śaryāti immediately suspects an offense to the sage and asks who is responsible. Mature leadership treats community symptoms as moral data, not just logistical problems.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>When something stops working in my world, do I look for moral causes or only technical ones?</li><li>Where could I be the leader who names the unspoken offense?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -1763,7 +1730,6 @@ You have committed (vicestitam) some offense.  Someone among us must have commit
     <div class="fc-translation" data-sec="translation">Being very much afraid, the girl Sukanyā said to her father: I have done something wrong, for I have ignorantly pierced these two luminous substances with a thorn.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -1782,18 +1748,6 @@ You have committed (vicestitam) some offense.  Someone among us must have commit
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Sukanyā confesses immediately and honestly. The first step toward repair is unhedged confession — without it the whole group remains stuck.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What ignorance-driven lapse of mine am I holding back from confessing to someone trusted?</li><li>How would the situation around me improve if I confessed today what I am hiding?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -1945,7 +1899,6 @@ You have committed (vicestitam) some offense.  Someone among us must have commit
     <div class="fc-translation" data-sec="translation">After hearing this statement by his daughter, King Śaryāti was very much afraid. In various ways, he tried to appease Cyavana Muni, for it was he who sat within the hole of the earthworm.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -1964,18 +1917,6 @@ You have committed (vicestitam) some offense.  Someone among us must have commit
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">On hearing his daughter&#39;s confession, Śaryāti rushes to appease the sage. A father takes responsibility for his child&#39;s mistake rather than scolding her into helplessness.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Do I appease the offended party as well as correct my child, or only one or the other?</li><li>What relationship of mine needs immediate appeasement before more time passes?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -2162,7 +2103,6 @@ You have committed (vicestitam) some offense.  Someone among us must have commit
 
     <div class="fc-translation" data-sec="translation">King Śaryāti, being very contemplative and thus understanding Cyavana Muni’s purpose, gave his daughter in charity to the sage. Thus released from danger with great difficulty, he took permission from Cyavana Muni and returned home.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2201,18 +2141,6 @@ He said, “Please of forgive my foolish daughter.”  “Is your daughter marri
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Reading the sage&#39;s mind, Śaryāti gives his daughter in marriage as recompense. Sometimes the price of avoiding a curse is something we never imagined giving — and we must give it.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What attachment am I clinging to that the situation is actually asking me to surrender?</li><li>Have I learned to read what a saintly person silently wants, rather than waiting to be told?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -2354,7 +2282,6 @@ He said, “Please of forgive my foolish daughter.”  “Is your daughter marri
 
     <div class="fc-translation" data-sec="translation">Cyavana Muni was very irritable, but since Sukanyā had gotten him as her husband, she dealt with him carefully, according to his mood. Knowing his mind, she performed service to him without being bewildered.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2416,18 +2343,6 @@ He said, “Please of forgive my foolish daughter.”  “Is your daughter marri
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Sukanyā learns to live with a difficult, irritable elder sage by reading his mood. A wife&#39;s victory, the verse suggests, is not equality of friction but skill in serving without bewilderment.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where am I matching irritability with irritability instead of skillful adjustment?</li><li>Whose temperament could I serve more peacefully if I studied them more carefully?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -2623,7 +2538,6 @@ He said, “Please of forgive my foolish daughter.”  “Is your daughter marri
 
     <div class="fc-translation" data-sec="translation">Thereafter, some time having passed, the Aśvinī-kumāra brothers, the heavenly physicians, happened to come to Cyavana Muni’s āśrama. After offering them respectful obeisances, Cyavana Muni requested them to give him youthful life, for they were able to do so.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2672,18 +2586,6 @@ Kasyacit kālasya means “at some time.”  Īśvarau means “capable of givin
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Cyavana asks the Aśvinī-kumāras for youth — even great sages may legitimately use available means to restore the body. Spiritual greatness does not require despising medicine.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where am I avoiding qualified help out of false renunciation?</li><li>What &#39;physicians&#39; — material or spiritual — am I overdue to consult?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -2880,7 +2782,6 @@ Kasyacit kālasya means “at some time.”  Īśvarau means “capable of givin
     <div class="fc-translation" data-sec="translation">Cyavana Muni said: Although you are ineligible to drink soma-rasa in sacrifices, I promise to give you a full pot of it. Kindly arrange beauty and youth for me, because they are attractive to young women.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -2936,18 +2837,6 @@ I will give you a full pot of soma (graham).   I will perform sacrifice to you t
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Cyavana offers soma — something the Aśvins were forbidden from — as a fair exchange for their help. He uses his spiritual capital to elevate them; influence is meant to be shared.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What access do I have that I could share to lift those who helped me?</li><li>Whose exclusion am I in a position to gently undo?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -3117,7 +3006,6 @@ I will give you a full pot of soma (graham).   I will perform sacrifice to you t
     <div class="fc-translation" data-sec="translation">The great physicians, the Aśvinī-kumāras, very gladly accepted Cyavana Muni’s proposal. Thus they told the brāhmaṇa, “Just dive into this lake of successful life.” [One who bathes in this lake has his desires fulfilled.]</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -3151,18 +3039,6 @@ I will give you a full pot of soma (graham).   I will perform sacrifice to you t
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The Aśvins tell Cyavana to dive into a lake that fulfills desires. Sometimes the answer is not negotiation but full immersion into a hidden facility we did not even know existed.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where am I bargaining with my problem when I could simply plunge into a deeper resource?</li><li>What &#39;lake&#39; has a teacher pointed me to that I have not yet dived into wholeheartedly?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -3304,7 +3180,6 @@ I will give you a full pot of soma (graham).   I will perform sacrifice to you t
 
     <div class="fc-translation" data-sec="translation">After saying this, the Aśvinī-kumāras caught hold of Cyavana Muni, who was an old, diseased invalid with loose skin, white hair, and veins visible all over his body, and all three of them entered the lake.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3343,18 +3218,6 @@ Taking the old man, they also entered the lake.</div>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The Aśvins lovingly carry the old, decrepit sage into the lake. Sometimes others must hold our hand to help us cross the threshold we could not cross alone.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Whose hand do I need to grasp to actually enter the transformative water?</li><li>Whom can I help carry, today, into a transformation they could not access alone?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -3506,7 +3369,6 @@ Taking the old man, they also entered the lake.</div>
     <div class="fc-translation" data-sec="translation">Thereafter, three men with very beautiful bodily features emerged from the lake. They were nicely dressed and decorated with earrings and garlands of lotuses. All of them were of the same standard of beauty.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -3525,18 +3387,6 @@ Taking the old man, they also entered the lake.</div>
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Three equally beautiful men emerge — the Aśvins playfully blur identity to test Sukanyā. Transformation can look so complete that the new and the same become indistinguishable.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>How would I respond if life suddenly offered me a glamorous alternative dressed identically to my commitment?</li><li>What chastity of attention am I being tested on right now?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -3705,7 +3555,6 @@ Taking the old man, they also entered the lake.</div>
 
     <div class="fc-translation" data-sec="translation">The chaste and very beautiful Sukanyā could not distinguish her husband from the two Aśvinī-kumāras, for they were equally beautiful. Not understanding who her real husband was, she took shelter of the Aśvinī-kumāras.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3734,18 +3583,6 @@ They said, “Please accept your husband, recognizing him among us three.”   �
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Sukanyā refuses to guess and takes shelter of the Aśvins, asking them to point out her husband. When you cannot tell, ask — chastity is also intellectual honesty under confusion.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where am I trying to guess my way through ambiguity when the qualified would gladly tell me?</li><li>What &#39;shelter&#39; am I postponing taking out of pride in my own discernment?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -3906,7 +3743,6 @@ They said, “Please accept your husband, recognizing him among us three.”   �
     <div class="fc-translation" data-sec="translation">The Aśvinī-kumāras were very pleased to see Sukanyā’s chastity and faithfulness. Thus they showed her Cyavana Muni, her husband, and after taking permission from him, they returned to the heavenly planets in their plane.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -3955,18 +3791,6 @@ They said, “Please accept your husband, recognizing him among us three.”   �
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Pleased by Sukanyā&#39;s chastity, the Aśvins identify Cyavana and depart. Pure-hearted fidelity earns help from places we did not request, then sends those helpers away without claim.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Whose fidelity in my life has quietly drawn unseen help to me?</li><li>Where can I support someone&#39;s loyalty without making them dependent on me?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -4134,7 +3958,6 @@ They said, “Please accept your husband, recognizing him among us three.”   �
     <div class="fc-translation" data-sec="translation">Thereafter, King Śaryāti, desiring to perform a sacrifice, went to the residence of Cyavana Muni. There he saw by the side of his daughter a very beautiful young man, as bright as the sun.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -4153,18 +3976,6 @@ They said, “Please accept your husband, recognizing him among us three.”   �
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Śaryāti returns and is shocked to see a glowing young man next to his daughter. Appearances at first glance can lead even wise observers to false conclusions.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What recent first impression did I act on that deserved a second look?</li><li>Where am I likely misjudging a situation because I did not see the full backstory?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -4325,7 +4136,6 @@ They said, “Please accept your husband, recognizing him among us three.”   �
     <div class="fc-translation" data-sec="translation">After receiving obeisances from his daughter, the King, instead of offering blessings to her, appeared very displeased and spoke as follows.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -4344,18 +4154,6 @@ They said, “Please accept your husband, recognizing him among us three.”   �
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Without offering his usual blessing, Śaryāti speaks in displeasure. Even great parents can let outward perception override their daughter&#39;s character; we must catch ourselves before we strike.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>When was the last time I let displeasure displace my normal warmth toward someone I love?</li><li>Whose character should I be defending instead of doubting today?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -4589,7 +4387,6 @@ They said, “Please accept your husband, recognizing him among us three.”   �
 
     <div class="fc-translation" data-sec="translation">O unchaste girl, what is this that you have desired to do? You have cheated the most respectable husband, who is honored by everyone, for I see that because he was old, diseased and therefore unattractive, you have left his company to accept as your husband this young man, who appears to be a beggar from the street.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -4618,18 +4415,6 @@ You have cheated your husband, because you have given up an old husband and acce
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Śaryāti rebukes his daughter as unchaste for trading an aged husband for a young man. A father&#39;s anxiety about appearances can pour out as accusation before facts emerge.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where am I jumping to accuse someone I love based on what it looks like?</li><li>What would slow me down enough to ask before I rebuke?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -4879,7 +4664,6 @@ You have cheated your husband, because you have given up an old husband and acce
 
     <div class="fc-translation" data-sec="translation">O my daughter, who were born in a respectable family, how have you degraded your consciousness in this way? How is it that you are shamelessly maintaining a paramour? You will thus degrade the dynasties of both your father and your husband to hellish life.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -4938,18 +4722,6 @@ O woman born in a pure family!  How has your mind become deviated and degraded? 
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Śaryāti warns that infidelity drags down both ancestral and marital lines. Personal choices in chastity ripple far beyond the individual; lineages bear the weight together.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>How do my private choices, especially around fidelity, ripple through generations?</li><li>What standard am I holding because two families are watching, not just my own conscience?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -5118,7 +4890,6 @@ O woman born in a pure family!  How has your mind become deviated and degraded? 
 
     <div class="fc-translation" data-sec="translation">Sukanyā, however, being very proud of her chastity, smiled upon hearing the rebukes of her father. She smilingly told him, “My dear father, this young man by my side is your actual son-in-law, the great sage Cyavana, who was born in the family of Bhṛgu.”</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -5182,18 +4953,6 @@ She smiled out of pride in her chastity.</div>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Sukanyā smiles, secure in her chastity, and tells her father the truth — this young man is Cyavana. Inner integrity makes outer accusation bounce harmlessly off the heart.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>When falsely accused, can I smile, or do I crumble?</li><li>What inner certainty allows me to respond rather than react?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -5363,7 +5122,6 @@ She smiled out of pride in her chastity.</div>
     <div class="fc-translation" data-sec="translation">Thus Sukanyā explained how her husband had received the beautiful body of a young man. When the King heard this he was very surprised, and in great pleasure he embraced his beloved daughter.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -5407,18 +5165,6 @@ She smiled out of pride in her chastity.</div>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Once the truth is told, Śaryāti&#39;s displeasure dissolves into joyful embrace. Honest explanation, received humbly, can swing a parent from rebuke to embrace within minutes.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Whom do I owe an honest explanation that would lift the cloud between us?</li><li>Am I willing to hear someone&#39;s truth and pivot from displeasure to joy?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -5606,7 +5352,6 @@ She smiled out of pride in her chastity.</div>
     <div class="fc-translation" data-sec="translation">Cyavana Muni, by his own prowess, enabled King Śaryāti to perform the soma-yajṣa. The muni offered a full pot of soma-rasa to the Aśvinī-kumāras, although they were unfit to drink it.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -5637,18 +5382,6 @@ He had Śaryāti (vīram) perform a soma-yajṣā.</div>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Cyavana arranges that the Aśvins receive soma in Śaryāti&#39;s yajña — a sage repays kindness with elevation. Real gratitude lifts the helper&#39;s status, not just thanks them.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Who has helped me, and how could I structurally elevate them, not just say thanks?</li><li>What &#39;soma&#39; do I have access to that I am withholding from those who once carried me?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -5827,7 +5560,6 @@ He had Śaryāti (vīram) perform a soma-yajṣā.</div>
     <div class="fc-translation" data-sec="translation">King Indra, being perturbed and angry, wanted to kill Cyavana Muni, and therefore he impetuously took up his thunderbolt. But Cyavana Muni, by his powers, paralyzed Indra’s arm that held the thunderbolt.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -5848,18 +5580,6 @@ Without considering, Indra suddenly became angry and took up his thunderbolt.</d
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Indra, furious that the Aśvins are being included, lifts his thunderbolt — but Cyavana paralyzes his arm. Higher principle, when defended by a saint, can freeze even a king of heaven mid-strike.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where am I striking out from position rather than principle?</li><li>Who in my life would I let arrest my own raised hand for a higher good?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -6047,7 +5767,6 @@ Without considering, Indra suddenly became angry and took up his thunderbolt.</d
     <div class="fc-translation" data-sec="translation">Although the Aśvinī-kumāras were only physicians and were therefore excluded from drinking soma-rasa in sacrifices, the demigods agreed to allow them henceforward to drink it.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -6066,18 +5785,6 @@ Without considering, Indra suddenly became angry and took up his thunderbolt.</d
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The demigods relent and welcome the Aśvins to share soma henceforward. Even heavenly customs evolve when a saintly voice persists in opening doors.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What outdated exclusion in my community am I positioned to challenge?</li><li>Where could persistent saintly pressure rewrite a long-standing rule for the better?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -6247,7 +5954,6 @@ Without considering, Indra suddenly became angry and took up his thunderbolt.</d
     <div class="fc-translation" data-sec="translation">King Śaryāti begot three sons, named Uttānabarhi, Ānarta and Bhūriṣeṇa. From Ānarta came a son named Revata.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -6266,18 +5972,6 @@ Without considering, Indra suddenly became angry and took up his thunderbolt.</d
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Three sons of Śaryāti continue the line. Even a chapter&#39;s marvelous events flow into the ordinariness of names and descendants — wonder lives inside continuity.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>How do I honor ordinary continuity after extraordinary episodes?</li><li>What &#39;next generation&#39; am I responsible to set in motion after a personal breakthrough?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -6492,7 +6186,6 @@ Without considering, Indra suddenly became angry and took up his thunderbolt.</d
     <div class="fc-translation" data-sec="translation">O Mahārāja Parīkṣit, subduer of enemies, this Revata constructed a kingdom known as Kuśasthalī in the depths of the ocean. There he lived and ruled such tracts of land as Ānarta, etc. He had one hundred very nice sons, of whom the eldest was Kakudmī.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -6511,18 +6204,6 @@ Without considering, Indra suddenly became angry and took up his thunderbolt.</d
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Revata builds an underwater kingdom, Kuśasthalī, and rules far-flung lands with a hundred sons. Visionary kingship sees territory others cannot — even beneath the ocean.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What &#39;underwater&#39; opportunity am I dismissing because it is invisible to convention?</li><li>Where am I underbuilding compared to what my situation could support?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -6700,7 +6381,6 @@ Without considering, Indra suddenly became angry and took up his thunderbolt.</d
 
     <div class="fc-translation" data-sec="translation">Taking his own daughter, Revatī, Kakudmī went to Lord Brahmā in Brahmaloka, which is transcendental to the three modes of material nature, and inquired about a husband for her.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -6729,18 +6409,6 @@ Vibhum means Brahmā.  His planet is not covered by rajas and tamas (apāvṛtam
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Kakudmī takes his daughter Revatī to Brahmaloka to seek a husband. Wise parents consult the highest available authority for their child&#39;s lifelong partnership.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Whose counsel would I consult for the biggest decision of someone I love?</li><li>Have I built relationships with elders worth traveling to before such moments arise?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -6901,7 +6569,6 @@ Vibhum means Brahmā.  His planet is not covered by rajas and tamas (apāvṛtam
     <div class="fc-translation" data-sec="translation">When Kakudmī arrived there, Lord Brahmā was engaged in hearing musical performances by the Gandharvas and had not a moment to talk with him. Therefore Kakudmī waited, and at the end of the musical performances he offered his obeisances to Lord Brahmā and thus submitted his long-standing desire.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -6922,18 +6589,6 @@ Brahmā did not have time (alabdha-kṣaṇaḥ).   When the Gandharva was finis
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Brahmā is engrossed in gandharva music and Kakudmī waits patiently until he is free. Even the highest authority is sometimes busy; reverent patience is the only proper protocol.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Do I respect a teacher&#39;s time enough to wait until they are actually available?</li><li>Where has impatience cost me the very audience I came for?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -7139,7 +6794,6 @@ Brahmā did not have time (alabdha-kṣaṇaḥ).   When the Gandharva was finis
     <div class="fc-translation" data-sec="translation">After hearing his words, Lord Brahmā, who is most powerful, laughed loudly and said to Kakudmī: O King, all those whom you may have decided within the core of your heart to accept as your son-in-law have passed away in the course of time.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -7160,18 +6814,6 @@ Those who were considered as son-in-laws in your heart have passed away.</div>
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Brahmā laughs and tells Kakudmī that all his planned son-in-laws have died long ago. Time invisibly devours the partners and futures we were so carefully selecting.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>How much of my careful planning assumes a timescale that is already gone?</li><li>What humbles me about how short my &#39;long-term plans&#39; actually are in cosmic view?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -7367,7 +7009,6 @@ Those who were considered as son-in-laws in your heart have passed away.</div>
 
     <div class="fc-translation" data-sec="translation">Twenty-seven catur-yugas have already passed. Those upon whom you may have decided are now gone, and so are their sons, grandsons and other descendants. You cannot even hear about their names.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -7396,18 +7037,6 @@ Time calculated especially (vikalpitaḥ) as twenty-seven yuga cycles has passed
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Twenty-seven catur-yugas have passed during the short audience — even the memory of those candidates has vanished. Earth-time and Brahmā-time differ so radically that we cannot grasp how brief we are.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What does my own &#39;lifetime&#39; mean against the scale Brahmā experiences?</li><li>How would I live this week if I held that perspective from morning to night?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -7577,7 +7206,6 @@ Time calculated especially (vikalpitaḥ) as twenty-seven yuga cycles has passed
     <div class="fc-translation" data-sec="translation">O King, leave here and offer your daughter to Lord Baladeva, who is still present. He is most powerful. Indeed, He is the Supreme Personality of Godhead, whose plenary portion is Lord Viṣṇu. Your daughter is fit to be given to Him in charity.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -7596,18 +7224,6 @@ Time calculated especially (vikalpitaḥ) as twenty-seven yuga cycles has passed
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Brahmā directs Kakudmī to give Revatī to Baladeva, the Supreme Personality of Godhead. When every planned option has expired, the Lord Himself is the timeless match available now.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where have all my options expired, and have I considered turning straight to the Lord?</li><li>What &#39;best match&#39; am I overlooking because I am still listing earthly candidates?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -7741,7 +7357,6 @@ Time calculated especially (vikalpitaḥ) as twenty-seven yuga cycles has passed
     <div class="fc-translation" data-sec="translation">Lord Baladeva is the Supreme Personality of Godhead. One who hears and chants about Him is purified. Because He is always the well-wisher of all living entities, He has descended with all His paraphernalia to purify the entire world and lessen its burden.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -7760,18 +7375,6 @@ Time calculated especially (vikalpitaḥ) as twenty-seven yuga cycles has passed
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Baladeva has descended with all His paraphernalia to purify the earth and lighten its burden. Hearing and chanting about Him is itself the purification.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where do I look for purification besides śravaṇa and kīrtana of the Lord?</li><li>What burden of the earth is the Lord lessening that I could participate in lessening?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -7959,7 +7562,6 @@ Time calculated especially (vikalpitaḥ) as twenty-seven yuga cycles has passed
     <div class="fc-translation" data-sec="translation">Having received this order from Lord Brahmā, Kakudmī offered obeisances unto him and returned to his own residence. He then saw that his residence was vacant, having been abandoned by his brothers and other relatives, who were living in all directions because of fear of such higher living beings as the Yakṣas.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -7980,18 +7582,6 @@ This describes what happened in the past. His brothers had long abandoned the re
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Kakudmī returns home and finds it long abandoned by relatives fleeing Yakṣas. The world he left no longer exists; while we are gone even a short while, life reshuffles.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What &#39;home&#39; am I assuming will still be there when I return from my absorptions?</li><li>How would I treat my present circle if I knew nothing returns unchanged?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -8151,7 +7741,6 @@ This describes what happened in the past. His brothers had long abandoned the re
 
     <div class="fc-translation" data-sec="translation">Thereafter, the King gave his most beautiful daughter in charity to the supremely powerful Baladeva and then retired from worldly life and went to Badarikāśrama to please Nara-Nārāyaṇa.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -8191,18 +7780,6 @@ Once Mahārāja Ambarīṣa was worshiping the Supreme Personality of Godhead in
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Kakudmī gives Revatī to Baladeva, then retires to Badarikāśrama to worship Nara-Nārāyaṇa. After arranging the most important duty, he turns directly toward the Lord, his real destination.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>When my last great duty is discharged, do I have a plan to turn toward the Lord directly?</li><li>What single &#39;Badarikāśrama&#39; would I run to if I were free of all current obligations?</li></ul>
-
-
-
-
-
-    </section>
 
 
 

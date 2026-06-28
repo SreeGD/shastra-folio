@@ -25,19 +25,25 @@
     <link rel="icon" href="../../../assets/icons/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="../../../assets/icons/icon.svg">
     <link rel="stylesheet" href="../../../assets/css/site.css">
+    <link rel="alternate" hreflang="te-IN" href="../../../te/sb/12/2/">
+    <link rel="alternate" hreflang="x-default" href="../../../">
     <script>window.FC_TO_ROOT = "../../../";</script>
     <script src="../../../assets/js/toggle.js"></script>
 </head>
 <body class="has-sidebar" data-chapter="2">
 <header class="fc-site-header">
     <button type="button" class="fc-mobile-trigger fc-mobile-trigger-left" data-overlay="left" aria-label="Open settings drawer">⚙</button>
-<a class="fc-brand" href="../../../">FolioCorpus<span class="fc-sub">Śrīmad-Bhāgavatam</span></a>
+    <a class="fc-brand" href="../../../">FolioCorpus<span class="fc-sub">Bhagavad-gītā</span></a>
     <nav class="fc-site-nav">
         <a href="../../../">Home</a>
         <a href="../../../bg/">Bhagavad-gītā</a>
         <a href="../../../sb/">Śrīmad-Bhāgavatam</a>
         <a href="../../../search/" title="Search across all integrated works">🔍 Search</a>
         <button type="button" id="fc-random-verse" class="fc-nav-btn" title="Jump to a random verse">🎲 Random</button>
+        <span class="fc-lang-switch" aria-label="Script">
+            <a class="active" href="#" title="Devanāgarī edition">EN</a>
+            <a class="" href="../../../te/sb/12/2/" title="Telugu lipi edition">తె</a>
+        </span>
     </nav>
     <button type="button" class="fc-mobile-trigger fc-mobile-trigger-right" data-overlay="right" aria-label="Open chapter index drawer">📚</button>
 </header>
@@ -46,8 +52,8 @@
     <button class="fc-sb-collapse" type="button" data-sb="left" title="Collapse left sidebar" aria-label="Collapse"></button>
 
     <div class="fc-sb-body">
-        <details class="fc-sb-section" data-sbsec="reading" open>
-            <summary class="fc-sb-title">Reading</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Reading</div>
             <div class="fc-sb-sub">Theme</div>
             <div class="fc-segmented" data-setting="theme">
                 <button type="button" data-val="light">Light</button>
@@ -73,10 +79,10 @@
                 <button type="button" data-val="single">Single</button>
                 <button type="button" data-val="side">Side-by-side</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="display" open>
-            <summary class="fc-sb-title">Display</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Display</div>
             <div class="fc-sb-grid">
                 <label><input type="checkbox" data-section="devanagari" checked> Devanāgarī</label>
                 <label><input type="checkbox" data-section="iast" checked> IAST transliteration</label>
@@ -99,10 +105,33 @@
                 <button type="button" data-action="expand-all">Expand all</button>
                 <button type="button" data-action="collapse-all">Collapse all</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="tools" open>
-            <summary class="fc-sb-title">Tools</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Find your starting point</div>
+            <div class="fc-persona-links">
+                <a class="fc-persona-link" href="../../../daily/">🌅 Daily (one value a week)</a>
+                <a class="fc-persona-link" href="../../../householder/">🏠 Householder (family & work)</a>
+                <a class="fc-persona-link" href="../../../parenting/">👨‍👩‍👧 Parenting (stories for kids)</a>
+                <a class="fc-persona-link" href="../../../themes/">📚 All themes</a>
+                <a class="fc-persona-link" href="../../../values/" style="background:#F0F6F2;border-left-color:#1F4632;">ॐ Vedic Value System ↗</a>
+                <a class="fc-persona-link" href="../../../vidya/" style="background:#FBF6E4;border-left-color:#C8860B;">📚 Vidyā Karaṇa (kids, multi-lang) ↗</a>
+            </div>
+        </div>
+
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Audience</div>
+            <div class="fc-audience-filter">
+                <label><input type="radio" name="fc-audience" value="all" checked> All levels</label>
+                <label><input type="radio" name="fc-audience" value="primary"> Primary (children)</label>
+                <label><input type="radio" name="fc-audience" value="middle"> Middle (teens)</label>
+                <label><input type="radio" name="fc-audience" value="senior"> Senior (adults)</label>
+                <label><input type="radio" name="fc-audience" value="college"> College / scholar</label>
+            </div>
+        </div>
+
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Tools</div>
             <div class="fc-sb-tools">
                 <button type="button" id="fc-presentation-toggle" class="fc-tool-btn"><span>🖥 Presentation</span><kbd class="fc-kbd">F</kbd></button>
                 <button type="button" id="fc-pen-toggle" class="fc-tool-btn"><span>✏️ Pen mode</span><kbd class="fc-kbd">P</kbd></button>
@@ -117,10 +146,26 @@
                 <button type="button" id="fc-clear-highlights" class="fc-tool-btn">🩷 Clear highlights (page)</button>
                 <button type="button" id="fc-notes-modal-open" class="fc-tool-btn">📓 My annotations</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="progress" id="fc-progress-section" open>
-            <summary class="fc-sb-title">Progress</summary>
+        <div class="fc-sb-section" id="fc-tts-controls" hidden>
+            <div class="fc-sb-title">
+                Read-aloud
+                <label class="fc-tts-master">
+                    <input type="checkbox" id="fc-tts-enabled" checked>
+                    <span class="fc-tts-master-label">On</span>
+                </label>
+            </div>
+            <div class="fc-tts-inner">
+                <div class="fc-sb-sub">Voice</div>
+                <select id="fc-tts-voice" class="fc-tts-select" aria-label="TTS voice"></select>
+                <div class="fc-sb-sub">Rate <span class="fc-tts-rate-val">1.0×</span></div>
+                <input type="range" id="fc-tts-rate" min="0.5" max="2" step="0.1" value="1" class="fc-tts-rate" aria-label="Reading rate">
+            </div>
+        </div>
+
+        <div class="fc-sb-section" id="fc-progress-section">
+            <div class="fc-sb-title">Progress</div>
             <div class="fc-progress-row">
                 <span class="fc-progress-num" id="fc-progress-num">0</span>
                 <span class="fc-progress-divider">/</span>
@@ -135,29 +180,29 @@
                 <span class="fc-progress-spacer"></span>
                 <button type="button" class="fc-progress-reset" id="fc-progress-reset" title="Reset progress">↺</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="bookmarks" open>
-            <summary class="fc-sb-title">Bookmarks <span class="fc-sb-count" id="fc-bookmarks-count">0</span></summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Bookmarks <span class="fc-sb-count" id="fc-bookmarks-count">0</span></div>
             <ul class="fc-bookmark-list" id="fc-bookmarks-list">
                 <li class="fc-sb-empty">No bookmarks yet — click ☆ on any verse.</li>
             </ul>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="notes" open>
-            <summary class="fc-sb-title">Notes <span class="fc-sb-count" id="fc-notes-count">0</span></summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Notes <span class="fc-sb-count" id="fc-notes-count">0</span></div>
             <ul class="fc-bookmark-list" id="fc-notes-list">
                 <li class="fc-sb-empty">No notes yet — open any verse and write in the 📝 block.</li>
             </ul>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="export">
-            <summary class="fc-sb-title">Export</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Export</div>
             <div class="fc-sb-tools">
                 <button type="button" id="fc-export-md" class="fc-tool-btn">📥 Download Markdown</button>
                 <button type="button" id="fc-export-json" class="fc-tool-btn">💾 Download JSON backup</button>
             </div>
-        </details>
+        </div>
     </div>
 </aside>    <main class="fc-container">
 <nav class="fc-breadcrumbs">
@@ -175,7 +220,7 @@
         <h1 class="fc-verse-heading">12.2 · The Symptoms of Kali-yuga</h1>
         <span class="fc-ribbon-meta">
             38 verses
- · <a class="fc-ribbon-link" href="class-prep/">🖨 Class prep</a>        </span>
+        </span>
         <input type="search" class="fc-search" id="fc-search" placeholder="🔍 Search in this chapter" aria-label="Search verses in this chapter">
         <span class="fc-ribbon-current" id="fc-ribbon-current" aria-live="polite"></span>
     </div>
@@ -490,7 +535,6 @@ Last updated 2 years ago</p>                <p class="fc-bb-summary-attrib">— 
 
     <div class="fc-translation" data-sec="translation">Śukadeva Gosvāmī said: Then, O King, religion, truthfulness, cleanliness, tolerance, mercy, duration of life, physical strength and memory will all diminish day by day because of the powerful influence of the Age of Kali.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -526,18 +570,6 @@ In the Second Chapter, the faults of Kali-yuga, the appearance of Kalki, the cha
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Kali-yuga steadily erodes religion, truth, cleanliness, tolerance, mercy, lifespan, strength and memory. Naming the decline is not pessimism — it is diagnosis. Once we see what age is pulling on us, we can deliberately cultivate those very qualities in ourselves rather than drift with the current.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which of these eight qualities have I personally noticed weakening in me or around me?</li><li>Which one am I willing to consciously nurture this week?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -742,7 +774,6 @@ In the Second Chapter, the faults of Kali-yuga, the appearance of Kalki, the cha
 
     <div class="fc-translation" data-sec="translation">In Kali-yuga, wealth alone will be considered the sign of a man’s good birth, proper behavior and fine qualities. And law and justice will be applied only on the basis of one’s power.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -775,18 +806,6 @@ He who has wealth has good birth, good conduct and good qualities.  This will be
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Kali measures a person&#39;s worth by their bank balance, and applies justice by power. Knowing this, a sincere reader stops measuring themselves and others by wealth, and learns to see the eternal spark of the soul in every being regardless of net worth.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where do I subtly let money decide who I respect or befriend?</li><li>How can I deliberately honor the soul in someone the world calls insignificant?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -989,7 +1008,6 @@ He who has wealth has good birth, good conduct and good qualities.  This will be
 
     <div class="fc-translation" data-sec="translation">Men and women will live together merely because of superficial attraction, and success in business will depend on deceit. Womanliness and manliness will be judged according to one’s expertise in sex, and a man will be known as a brāhmaṇa just by his wearing a thread.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1021,18 +1039,6 @@ He who has wealth has good birth, good conduct and good qualities.  This will be
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Relationships reduced to attraction, business to deceit, identity to performance — these are Kali&#39;s signatures. The remedy is to anchor relationships, work and identity in something deeper than appearance: sincere service of Kṛṣṇa within and through one&#39;s life.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where am I confusing attraction with love, or appearance with substance?</li><li>What would it look like to bring a deeper aim into one specific relationship?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -1210,7 +1216,6 @@ He who has wealth has good birth, good conduct and good qualities.  This will be
 
     <div class="fc-translation" data-sec="translation">A person’s spiritual position will be ascertained merely according to external symbols, and on that same basis people will change from one spiritual order to the next. A person’s propriety will be seriously questioned if he does not earn a good living. And one who is very clever at juggling words will be considered a learned scholar.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1261,18 +1266,6 @@ Excellence or degradation in āśrama, not knowledge or proper conduct, will be 
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">External symbols replace inner reality — robes without realization, scholarship without wisdom. The verse asks us to check whether our own spiritual life rests on actual practice or on the costume of practice.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which spiritual &#39;symbol&#39; in my life is real, and which is mostly decoration?</li><li>What inner work would make the decoration become real?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -1466,7 +1459,6 @@ Excellence or degradation in āśrama, not knowledge or proper conduct, will be 
 
     <div class="fc-translation" data-sec="translation">A person will be judged unholy if he does not have money, and hypocrisy will be accepted as virtue. Marriage will be arranged simply by verbal agreement, and a person will think he is fit to appear in public if he has merely taken a bath.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1511,18 +1503,6 @@ Excellence or degradation in āśrama, not knowledge or proper conduct, will be 
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Hypocrisy gets praised as virtue, and poverty gets read as sin. Such inversions can be confusing only if we let public opinion judge us. A sincere reader returns to a simpler measure: does Kṛṣṇa see this act as truthful and pure?</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Whose opinion do I most fear, and what does that fear cost me in honesty?</li><li>What would change if Kṛṣṇa&#39;s gaze were the only one I cared about?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -1767,7 +1747,6 @@ Excellence or degradation in āśrama, not knowledge or proper conduct, will be 
 
     <div class="fc-translation" data-sec="translation">A sacred place will be taken to consist of no more than a reservoir of water located at a distance, and beauty will be thought to depend on one’s hairstyle. Filling the belly will become the goal of life, and one who is audacious will be accepted as truthful. He who can maintain a family will be regarded as an expert man, and the principles of religion will be observed only for the sake of reputation.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1795,18 +1774,6 @@ Excellence or degradation in āśrama, not knowledge or proper conduct, will be 
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Pilgrimage shrinks to a quick dip; beauty shrinks to a hairstyle; success shrinks to a full belly. Each shrinking is a chance to deliberately reach back to depth — go to a holy place for sādhu-saṅga, find beauty in purity, treat success as service.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which of my pursuits have I quietly miniaturized in this way?</li><li>How could I restore depth to one of them?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -1994,7 +1961,6 @@ Excellence or degradation in āśrama, not knowledge or proper conduct, will be 
     <div class="fc-translation" data-sec="translation">As the earth thus becomes crowded with a corrupt population, whoever among any of the social classes shows himself to be the strongest will gain political power.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -2023,18 +1989,6 @@ Excellence or degradation in āśrama, not knowledge or proper conduct, will be 
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">When values collapse, raw strength fills the vacuum left by dharma. The reader&#39;s protection is not to compete on that ground but to cultivate inner strength — faith, sādhana, and surrender — which lasts beyond any power play.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where am I trying to win by force what could only be won by faith?</li><li>What inner strength am I building that no Kali-yuga ruler can take?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -2222,7 +2176,6 @@ Excellence or degradation in āśrama, not knowledge or proper conduct, will be 
     <div class="fc-translation" data-sec="translation">Losing their wives and properties to such avaricious and merciless rulers, who will behave no better than ordinary thieves, the citizens will flee to the mountains and forests.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -2241,18 +2194,6 @@ Excellence or degradation in āśrama, not knowledge or proper conduct, will be 
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Citizens flee to forests when rulers behave like thieves. Externally we may not flee, but inwardly we can withdraw from the marketplace of greed and take refuge in the &#39;forest&#39; of nāma, scripture and devotional community.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What is my own inner &#39;forest&#39; I can retreat into when the world becomes coarse?</li><li>How often do I actually go there?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -2439,7 +2380,6 @@ Excellence or degradation in āśrama, not knowledge or proper conduct, will be 
 
     <div class="fc-translation" data-sec="translation">Harassed by famine and excessive taxes, people will resort to eating leaves, roots, flesh, wild honey, fruits, flowers and seeds. Struck by drought, they will become completely ruined.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2466,18 +2406,6 @@ Excellence or degradation in āśrama, not knowledge or proper conduct, will be 
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Disconnection from the Supreme Lord parches a civilization the way a cut leaf withers. Real abundance flows from connection; even our computers and rockets cannot manufacture rain. So we tend the connection daily, not as a fallback but as the source.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where am I trusting human cleverness to substitute for divine grace?</li><li>What act of daily reconnection (japa, prayer, service) am I willing to commit to?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -2683,7 +2611,6 @@ Excellence or degradation in āśrama, not knowledge or proper conduct, will be 
     <div class="fc-translation" data-sec="translation">The citizens will suffer greatly from cold, wind, heat, rain and snow. They will be further tormented by quarrels, hunger, thirst, disease and severe anxiety.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -2717,18 +2644,6 @@ Excellence or degradation in āśrama, not knowledge or proper conduct, will be 
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Kali brings cold, heat, drought, quarrel, hunger, disease and anxiety. We cannot escape the climate of the age, but we can practice tolerance — a quality the Bhāgavatam keeps praising — and let suffering deepen rather than embitter us.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which difficulty in my life am I resenting more than learning from?</li><li>How might I let it deepen my dependence on Kṛṣṇa?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -2840,7 +2755,6 @@ Excellence or degradation in āśrama, not knowledge or proper conduct, will be 
     <div class="fc-translation" data-sec="translation">The maximum duration of life for human beings in Kali-yuga will become fifty years.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -2859,18 +2773,6 @@ Excellence or degradation in āśrama, not knowledge or proper conduct, will be 
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Lifespan shrinks to fifty years by Kali&#39;s end. The shrinking lifespan is itself a teaching: there is no time to postpone the spiritual life. Whatever we plan to do for the soul, we begin now, with this hour.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What spiritual practice have I been putting off for &#39;later&#39;?</li><li>What is the smallest piece of it I could start today?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -3449,7 +3351,6 @@ Excellence or degradation in āśrama, not knowledge or proper conduct, will be 
 
     <div class="fc-translation" data-sec="translation">By the time the Age of Kali ends, the bodies of all creatures will be greatly reduced in size, and the religious principles of followers of varṇāśrama will be ruined. The path of the Vedas will be completely forgotten in human society, and so-called religion will be mostly atheistic. The kings will mostly be thieves, the occupations of men will be stealing, lying and needless violence, and all the social classes will be reduced to the lowest level of śūdras. Cows will be like goats, spiritual hermitages will be no different from mundane houses, and family ties will extend no further than the immediate bonds of marriage. Most plants and herbs will be tiny, and all trees will appear like dwarf śamī trees. Clouds will be full of lightning, homes will be devoid of piety, and all human beings will have become like asses. At that time, the Supreme Personality of Godhead will appear on the earth. Acting with the power of pure spiritual goodness, He will rescue eternal religion.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3489,18 +3390,6 @@ Sthāsnuṣu means trees.</div>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Bodies shrink, varṇāśrama fades, atheism wears the costume of religion, kings rob, cows look like goats and family means just husband and wife. The full inventory of Kali&#39;s symptoms helps us not panic at any one of them — and prepare for Kalki by living simply, truthfully and devotedly now.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which of these symptoms in my surroundings have I stopped noticing as unusual?</li><li>What deliberate counter-life am I choosing to live?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -3670,7 +3559,6 @@ Sthāsnuṣu means trees.</div>
     <div class="fc-translation" data-sec="translation">Lord Viṣṇu — the Supreme Personality of Godhead, the spiritual master of all moving and nonmoving living beings, and the Supreme Soul of all — takes birth to protect the principles of religion and to relieve His saintly devotees from the reactions of material work.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -3691,18 +3579,6 @@ The birth will take place for liberating the devotees (karmāpanuttaye).</div>
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The Lord descends to protect dharma and to free His devotees from karmic entanglement. This is the heart of every avatāra story: God is not distant. When the situation requires Him, He comes — including into the small situations of a sincere devotee&#39;s life.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where in my life am I quietly waiting for the Lord to act, while not doing my own part?</li><li>What is one small act of dharma I can offer Him today?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -3845,7 +3721,6 @@ The birth will take place for liberating the devotees (karmāpanuttaye).</div>
     <div class="fc-translation" data-sec="translation">Lord Kalki will appear in the home of the most eminent brāhmaṇa of Śambhala village, the great soul Viṣṇuyaśā.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -3864,18 +3739,6 @@ The birth will take place for liberating the devotees (karmāpanuttaye).</div>
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The grand cosmic Kalki incarnation will appear in a simple brāhmaṇa&#39;s village home. Even the world-shaking comes through a humble household. So the reader honors the home, the family, the village — these are the cradles of divine work.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>How am I treating my home — as a base for divine service, or only as a private refuge?</li><li>What small consecration could elevate it?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -4169,7 +4032,6 @@ The birth will take place for liberating the devotees (karmāpanuttaye).</div>
 
     <div class="fc-translation" data-sec="translation">Lord Kalki, the Lord of the universe, will mount His swift horse Devadatta and, sword in hand, travel over the earth exhibiting His eight mystic opulences and eight special qualities of Godhead. Displaying His unequaled effulgence and riding with great speed, He will kill by the millions those thieves who have dared dress as kings.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -4199,18 +4061,6 @@ He will mount a swift horse given by the devatās by which the demons are destro
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Kalki riding His swift horse, sword in hand, ending the reign of false kings — a powerful image of how the Lord&#39;s mercy can also look like decisive removal of what blocks dharma. Sometimes the most loving act is a clear sword-stroke against falsity within us.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What &#39;false king&#39; inside me is begging for that sword today?</li><li>Am I willing to let the Lord cut it cleanly?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -4464,7 +4314,6 @@ He will mount a swift horse given by the devatās by which the demons are destro
 
     <div class="fc-translation" data-sec="translation">After all the impostor kings have been killed, the residents of the cities and towns will feel the breezes carrying the most sacred fragrance of the sandalwood paste and other decorations of Lord Vāsudeva, and their minds will thereby become transcendentally pure.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -4501,18 +4350,6 @@ He will mount a swift horse given by the devatās by which the demons are destro
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">After the false kings are gone, transcendental fragrance from the Lord&#39;s body purifies the survivors&#39; minds. Even now, the same fragrance — His name, His pastimes, His presence in saintly company — can purify our minds amid Kali&#39;s confusion.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where in my day am I deliberately exposing my mind to Kṛṣṇa&#39;s &#39;fragrance&#39;?</li><li>How could I increase that exposure tomorrow?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -4682,7 +4519,6 @@ He will mount a swift horse given by the devatās by which the demons are destro
     <div class="fc-translation" data-sec="translation">When Lord Vāsudeva, the Supreme Personality of Godhead, appears in their hearts in His transcendental form of goodness, the remaining citizens will abundantly repopulate the earth.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -4703,18 +4539,6 @@ Sthaviṣṭhaḥ means “strong because of being fixed in dharma.”</div>
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">When the Lord appears in the heart in His sattvic form, life regenerates. Earth repopulates outwardly because hearts have repopulated inwardly. Our small inward sādhana matters far beyond what we can see; it participates in the renewal of the world.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Do I really believe my inner sādhana matters to the world?</li><li>How would I sit for japa or worship today if I knew it did?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -4893,7 +4717,6 @@ Sthaviṣṭhaḥ means “strong because of being fixed in dharma.”</div>
     <div class="fc-translation" data-sec="translation">When the Supreme Lord has appeared on earth as Kalki, the maintainer of religion, Satya-yuga will begin, and human society will bring forth progeny in the mode of goodness.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -4914,18 +4737,6 @@ Sūtiḥ means production.</div>
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Satya-yuga begins when Kalki arrives and society regenerates in the mode of goodness. Sattva is not for special people; we can choose more sattva in our food, association, sleep, work and speech — beginning Satya in miniature within ourselves.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What one area of my life could I shift toward goodness this week?</li><li>Who or what is currently pulling me toward rajas or tamas?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -5113,7 +4924,6 @@ Sūtiḥ means production.</div>
     <div class="fc-translation" data-sec="translation">When the moon, the sun and Bṛhaspatī are together in the constellation Karkaṭa, and all three enter simultaneously into the lunar mansion Puṣyā — at that exact moment the age of Satya, or Kṛta, will begin.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -5134,18 +4944,6 @@ This verse describes the beginning of Satya-yuga.  Tiṣya means Puṣya constel
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Bhāgavatam pinpoints even the astronomical moment when Satya-yuga begins. The Lord&#39;s plan is exact; nothing is random. A reader takes courage that the same precision watches over one&#39;s own life and timing.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where am I telling myself my situation is random and unfair?</li><li>What changes when I trust that even my timing is held by Him?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -5322,7 +5120,6 @@ This verse describes the beginning of Satya-yuga.  Tiṣya means Puṣya constel
     <div class="fc-translation" data-sec="translation">Thus I have described all the kings — past, present and future — who belong to the dynasties of the sun and the moon.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -5343,18 +5140,6 @@ This concludes the description what started in Canto Nine.</div>
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Past, present and future kings have all been named — a long, finished list. Such finality is meditative: every story ends. Our task is to live a story whose meaning doesn&#39;t depend on continuing to be remembered.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What part of my legacy am I clinging to?</li><li>What would I do today that doesn&#39;t need to be remembered to be worth doing?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -5532,7 +5317,6 @@ This concludes the description what started in Canto Nine.</div>
 
     <div class="fc-translation" data-sec="translation">From your birth up to the coronation of King Nanda, 1,150 years will pass.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -5571,18 +5355,6 @@ The years should be enumerated from Parīkṣit onwards.  From kings like Mārj�
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Even sacred chronology is given precisely: 1,150 years from Parīkṣit to Nanda. Bhāgavatam is grounded history, not vague mythology. We can read it with confidence that its spiritual map is as exact as its temporal one.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where do I dismiss scripture&#39;s claims because they don&#39;t match modern timelines?</li><li>How might I read more trustfully today?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -5949,7 +5721,6 @@ The years should be enumerated from Parīkṣit onwards.  From kings like Mārj�
     <div class="fc-translation" data-sec="translation">Of the seven stars forming the constellation of the seven sages, Pulaha and Kratu are the first to rise in the night sky. If a line running north and south were drawn through their midpoint, whichever of the lunar mansions this line passes through is said to be the ruling asterism of the constellation for that time. The Seven Sages will remain connected with that particular lunar mansion for one hundred human years. Currently, during your lifetime, they are situated in the nakṣatra called Maghā.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -5970,18 +5741,6 @@ A precise calculation of time is given in order to define the beginning of Kali-
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Even the Seven Sages move on a hundred-year clock through the nakṣatras. The cosmos is liturgical, not chaotic. Knowing this lets us breathe: our lifetimes are tiny notes in a vast symphony that the Lord conducts.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where does my anxiety come from imagining I have to conduct the symphony?</li><li>What &#39;note&#39; is mine to play today, well and simply?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -6187,7 +5946,6 @@ A precise calculation of time is given in order to define the beginning of Kali-
     <div class="fc-translation" data-sec="translation">The Supreme Lord, Viṣṇu, is brilliant like the sun and is known as Kṛṣṇa. When He returned to the spiritual sky, Kali entered this world, and people then began to take pleasure in sinful activities.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -6208,18 +5966,6 @@ When the seven sages entered Maghā constellation, the Lord of Vaikuṇṭha, th
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">When Kṛṣṇa returned to the spiritual world, Kali entered — sin grew popular not because people changed overnight but because His direct restraint lifted. The remedy now: invite Him back in, into the heart, through nāma and seva, where He still rules.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Have I been treating Kṛṣṇa as a memory rather than as a present resident of my heart?</li><li>How can I &#39;reinstall&#39; Him into one part of my life today?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -6415,7 +6161,6 @@ When the seven sages entered Maghā constellation, the Lord of Vaikuṇṭha, th
 
     <div class="fc-translation" data-sec="translation">As long as Lord Śrī Kṛṣṇa, the husband of the goddess of fortune, touched the earth with His lotus feet, Kali was powerless to subdue this planet.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -6444,18 +6189,6 @@ When the seven sages entered Maghā constellation, the Lord of Vaikuṇṭha, th
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">As long as the Lord&#39;s lotus feet touched the earth, Kali was powerless. He still touches earth wherever His devotees worship — in any home, temple or heart that holds Him. So we keep our home a place His feet still touch.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What in my home or schedule invites His feet to remain present?</li><li>What invites Kali in instead?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -6634,7 +6367,6 @@ When the seven sages entered Maghā constellation, the Lord of Vaikuṇṭha, th
     <div class="fc-translation" data-sec="translation">When the constellation of the seven sages is passing through the lunar mansion Maghā, the Age of Kali begins. It comprises twelve hundred years of the demigods.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -6655,18 +6387,6 @@ When the seven sages enter Maghā constellation and Kṛṣṇa disappears, the 
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Kali-yuga spans 1,200 celestial years (432,000 of ours). Knowing the scale calms the urge to fix the age single-handedly. We do our small piece — sādhana, kindness, truthful work — and let time do the rest.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where am I exhausting myself trying to fix what time alone will resolve?</li><li>What small piece is genuinely mine to do today?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -6845,7 +6565,6 @@ When the seven sages enter Maghā constellation and Kṛṣṇa disappears, the 
     <div class="fc-translation" data-sec="translation">When the great sages of the Saptarṣi constellation pass from Maghā to Pūrvāsāḍhā, Kali will have his full strength, beginning from King Nanda and his dynasty.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -6866,18 +6585,6 @@ This verse describes the time it took for Kali to become strong.</div>
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Kali reaches full strength from Nanda&#39;s dynasty onward — i.e., it has been at full power for a long time. Recognizing this stops us from imagining a golden recent past; we work with the age we have, not the one we wish we had.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What nostalgia am I using to avoid responsibility for the present?</li><li>What does sincere effort look like today, in this actual age?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -7073,7 +6780,6 @@ This verse describes the time it took for Kali to become strong.</div>
 
     <div class="fc-translation" data-sec="translation">Those who scientifically understand the past declare that on the very day that Lord Śrī Kṛṣṇa departed for the spiritual world, the influence of the Age of Kali began.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -7102,18 +6808,6 @@ This verse describes the time it took for Kali to become strong.</div>
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The exact day Kṛṣṇa departed, Kali began its full influence — and yet Kṛṣṇa is still available through nāma. The age&#39;s onset doesn&#39;t take Him away; it only makes us reach for Him more deliberately.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Has Kali quietly convinced me that Kṛṣṇa is harder to reach now?</li><li>What proves to me, in experience, that He is still as close as ever?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -7301,7 +6995,6 @@ This verse describes the time it took for Kali to become strong.</div>
     <div class="fc-translation" data-sec="translation">After the one thousand celestial years of Kali-yuga, the Satya-yuga will manifest again. At that time the minds of all men will become self-effulgent.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -7332,18 +7025,6 @@ This verse describes the entrance time of Satya-yuga.  Caturthe means “in Kali
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">After 1,000 celestial years, Satya returns and minds become self-effulgent. Hope is built into the cycle — but more importantly, self-effulgence is the soul&#39;s actual nature. Sādhana uncovers it now; we don&#39;t have to wait for Satya-yuga to taste it.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>When have I tasted, briefly, an inner clarity that feels like my real nature?</li><li>What helps me return to that taste?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -7539,7 +7220,6 @@ This verse describes the entrance time of Satya-yuga.  Caturthe means “in Kali
 
     <div class="fc-translation" data-sec="translation">Thus I have described the royal dynasty of Manu, as it is known on this earth. One can similarly study the history of the vaiśyas, śūdras and brāhmaṇas living in the various ages.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -7568,18 +7248,6 @@ Just as the numbers in members in the families of Manu have been enumerated, the
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Royal, intellectual, commercial and laboring orders each include great and small souls. Quality of character cuts across class. So we never write off another&#39;s potential — and we never coast on our own birth or position.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Whose potential have I underestimated based on their social slot?</li><li>Where am I coasting on a position rather than earning it through character?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -7757,7 +7425,6 @@ Just as the numbers in members in the families of Manu have been enumerated, the
 
     <div class="fc-translation" data-sec="translation">These personalities, who were great souls, are now known only by their names. They exist only in accounts from the past, and only their fame remains on the earth.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -7786,18 +7453,6 @@ Of those who are known by names (nāma-liṅgānām) and remaining stories, thei
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Once-great souls now exist only as names in old accounts. Even fame eventually fades into a single line in a book. Better to do something for Kṛṣṇa — He remembers even small services forever, regardless of whether history does.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What service of mine would I want Kṛṣṇa to &#39;remember,&#39; even if no one else did?</li><li>How does this change what I prioritize today?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -7967,7 +7622,6 @@ Of those who are known by names (nāma-liṅgānām) and remaining stories, thei
     <div class="fc-translation" data-sec="translation">Devāpi, the brother of Mahārāja Śāntanu, and Maru, the descendant of Ikṣvāku, both possess great mystic strength and are living even now in the village of Kalāpa.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -7988,18 +7642,6 @@ This describes the method of reviving the destroyed line of kings. Devāpi was i
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Two great kings, Devāpi and Maru, live secretly in Kalāpa village even now, waiting for their service moment. The Lord&#39;s instruments are quietly in place. Our task is simply to be ready when our own moment arrives.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Am I living in a way that would have me ready if my moment came tomorrow?</li><li>What would &#39;ready&#39; mean for me concretely?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -8177,7 +7819,6 @@ This describes the method of reviving the destroyed line of kings. Devāpi was i
 
     <div class="fc-translation" data-sec="translation">At the end of the Age of Kali, these two kings, having received instruction directly from the Supreme Personality of Godhead, Vāsudeva, will return to human society and reestablish the eternal religion of man, characterized by the divisions of varṇa and āśrama, just as it was before.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -8204,18 +7845,6 @@ This describes the method of reviving the destroyed line of kings. Devāpi was i
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">After Kali, Devāpi and Maru will reestablish varṇāśrama directly by the Lord&#39;s instruction. Even now, the eternal religion is preserved in seed form by quiet devotees. We can be such seed-keepers in our own homes and circles.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What small piece of eternal dharma am I keeping alive in my home?</li><li>Who might inherit it from me?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -8412,7 +8041,6 @@ This describes the method of reviving the destroyed line of kings. Devāpi was i
     <div class="fc-translation" data-sec="translation">The cycle of four ages — Satya, Tretā, Dvāpara and Kali — continues perpetually among living beings on this earth, repeating the same general sequence of events.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -8433,18 +8061,6 @@ This verse shows the cycle of four yugas.</div>
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The four ages cycle endlessly, with the same general pattern. Once you see the cycle, you stop expecting permanent fixes from any one regime, technology, or era. Real progress is inward — moving the soul closer to the Lord regardless of which yuga turns outside.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What outward &#39;fix&#39; have I been hoping will permanently solve a problem?</li><li>What inward movement would actually solve it?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -8650,7 +8266,6 @@ This verse shows the cycle of four yugas.</div>
     <div class="fc-translation" data-sec="translation">My dear King Parīkṣit, all these kings I have described, as well as all other human beings, come to this earth and stake their claims, but ultimately they all must give up this world and meet their destruction.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -8669,18 +8284,6 @@ This verse shows the cycle of four yugas.</div>
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Every claimant on earth — kings included — eventually leaves and is destroyed. Holding this clearly is not morbid; it is sobering medicine that loosens our death-grip on possessions, positions and identities.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What am I holding so tightly that the thought of giving it up feels like death?</li><li>What would it be like to hold it more lightly, even today?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -8903,7 +8506,6 @@ This verse shows the cycle of four yugas.</div>
 
     <div class="fc-translation" data-sec="translation">Even though a person’s body may now have the designation “king,” in the end its name will be “worms,” “stool” or “ashes.” What can a person who injures other living beings for the sake of his body know about his own self-interest, since his activities are simply leading him to hell?</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -8932,18 +8534,6 @@ He who is known by the name of “king” after death is known by the names “w
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The body called &#39;king&#39; will end as worms, stool or ashes. To injure other beings for the sake of such a body is to pave one&#39;s road to hell. Recognizing this, we choose nonviolence and see the same divine spark in every living being.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>For whose pleasure is my body being maintained — mine alone, or also Kṛṣṇa&#39;s service?</li><li>Whom am I subtly injuring for the sake of this body&#39;s comfort?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -9139,7 +8729,6 @@ He who is known by the name of “king” after death is known by the names “w
 
     <div class="fc-translation" data-sec="translation">[The materialistic king thinks:] “This unbounded earth was held by my predecessors and is now under my sovereignty. How can I arrange for it to remain in the hands of my sons, grandsons and other descendants?”</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -9168,18 +8757,6 @@ Possessiveness is illustrated by emotional statements. Since the land was held b
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The materialistic mind plots how to keep land &#39;in the family&#39; forever — pure foolish possessiveness. Bhāgavatam laughs gently at the futility. The land was never ours; we are passing tenants on Kṛṣṇa&#39;s property.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What am I planning to bequeath as if I owned it forever?</li><li>How might I instead plan to bequeath devotion?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -9393,7 +8970,6 @@ Possessiveness is illustrated by emotional statements. Since the land was held b
 
     <div class="fc-translation" data-sec="translation">Although the foolish accept the body made of earth, water and fire as “me” and this earth as “mine,” in every case they have ultimately abandoned both their body and the earth and passed away into oblivion.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -9422,18 +8998,6 @@ Having accepted body as self and earth as “mine,” they give up both body and
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Even though the soul is eternal, the family name and earthly fame surely fade into oblivion. Knowing this protects us from sacrificing the eternal for the temporary — a foolish trade we almost make daily.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where am I trading the eternal for the temporary in small ways?</li><li>What is one swap I could reverse today?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -9620,7 +9184,6 @@ Having accepted body as self and earth as “mine,” they give up both body and
 
     <div class="fc-translation" data-sec="translation">My dear King Parīkṣit, all these kings who tried to enjoy the earth by their strength were reduced by the force of time to nothing more than historical accounts.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -9653,18 +9216,6 @@ Description of the Yugas</div>
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Śukadeva tenderly devastates Parīkṣit&#39;s possible last shred of attachment to kingship — this is the spiritual master&#39;s mercy: loosening our grip on illusion so we can fly home. We accept that mercy when our own teacher or scripture punctures our pretensions.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Whose loving &#39;puncturing&#39; of my pretensions am I currently resisting?</li><li>What might it free in me if I received it gratefully?</li></ul>
-
-
-
-
-
-    </section>
 
 
 

@@ -25,19 +25,25 @@
     <link rel="icon" href="../../../assets/icons/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="../../../assets/icons/icon.svg">
     <link rel="stylesheet" href="../../../assets/css/site.css">
+    <link rel="alternate" hreflang="te-IN" href="../../../te/sb/3/9/">
+    <link rel="alternate" hreflang="x-default" href="../../../">
     <script>window.FC_TO_ROOT = "../../../";</script>
     <script src="../../../assets/js/toggle.js"></script>
 </head>
 <body class="has-sidebar" data-chapter="9">
 <header class="fc-site-header">
     <button type="button" class="fc-mobile-trigger fc-mobile-trigger-left" data-overlay="left" aria-label="Open settings drawer">⚙</button>
-<a class="fc-brand" href="../../../">FolioCorpus<span class="fc-sub">Śrīmad-Bhāgavatam</span></a>
+    <a class="fc-brand" href="../../../">FolioCorpus<span class="fc-sub">Bhagavad-gītā</span></a>
     <nav class="fc-site-nav">
         <a href="../../../">Home</a>
         <a href="../../../bg/">Bhagavad-gītā</a>
         <a href="../../../sb/">Śrīmad-Bhāgavatam</a>
         <a href="../../../search/" title="Search across all integrated works">🔍 Search</a>
         <button type="button" id="fc-random-verse" class="fc-nav-btn" title="Jump to a random verse">🎲 Random</button>
+        <span class="fc-lang-switch" aria-label="Script">
+            <a class="active" href="#" title="Devanāgarī edition">EN</a>
+            <a class="" href="../../../te/sb/3/9/" title="Telugu lipi edition">తె</a>
+        </span>
     </nav>
     <button type="button" class="fc-mobile-trigger fc-mobile-trigger-right" data-overlay="right" aria-label="Open chapter index drawer">📚</button>
 </header>
@@ -46,8 +52,8 @@
     <button class="fc-sb-collapse" type="button" data-sb="left" title="Collapse left sidebar" aria-label="Collapse"></button>
 
     <div class="fc-sb-body">
-        <details class="fc-sb-section" data-sbsec="reading" open>
-            <summary class="fc-sb-title">Reading</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Reading</div>
             <div class="fc-sb-sub">Theme</div>
             <div class="fc-segmented" data-setting="theme">
                 <button type="button" data-val="light">Light</button>
@@ -73,10 +79,10 @@
                 <button type="button" data-val="single">Single</button>
                 <button type="button" data-val="side">Side-by-side</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="display" open>
-            <summary class="fc-sb-title">Display</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Display</div>
             <div class="fc-sb-grid">
                 <label><input type="checkbox" data-section="devanagari" checked> Devanāgarī</label>
                 <label><input type="checkbox" data-section="iast" checked> IAST transliteration</label>
@@ -99,10 +105,33 @@
                 <button type="button" data-action="expand-all">Expand all</button>
                 <button type="button" data-action="collapse-all">Collapse all</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="tools" open>
-            <summary class="fc-sb-title">Tools</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Find your starting point</div>
+            <div class="fc-persona-links">
+                <a class="fc-persona-link" href="../../../daily/">🌅 Daily (one value a week)</a>
+                <a class="fc-persona-link" href="../../../householder/">🏠 Householder (family & work)</a>
+                <a class="fc-persona-link" href="../../../parenting/">👨‍👩‍👧 Parenting (stories for kids)</a>
+                <a class="fc-persona-link" href="../../../themes/">📚 All themes</a>
+                <a class="fc-persona-link" href="../../../values/" style="background:#F0F6F2;border-left-color:#1F4632;">ॐ Vedic Value System ↗</a>
+                <a class="fc-persona-link" href="../../../vidya/" style="background:#FBF6E4;border-left-color:#C8860B;">📚 Vidyā Karaṇa (kids, multi-lang) ↗</a>
+            </div>
+        </div>
+
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Audience</div>
+            <div class="fc-audience-filter">
+                <label><input type="radio" name="fc-audience" value="all" checked> All levels</label>
+                <label><input type="radio" name="fc-audience" value="primary"> Primary (children)</label>
+                <label><input type="radio" name="fc-audience" value="middle"> Middle (teens)</label>
+                <label><input type="radio" name="fc-audience" value="senior"> Senior (adults)</label>
+                <label><input type="radio" name="fc-audience" value="college"> College / scholar</label>
+            </div>
+        </div>
+
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Tools</div>
             <div class="fc-sb-tools">
                 <button type="button" id="fc-presentation-toggle" class="fc-tool-btn"><span>🖥 Presentation</span><kbd class="fc-kbd">F</kbd></button>
                 <button type="button" id="fc-pen-toggle" class="fc-tool-btn"><span>✏️ Pen mode</span><kbd class="fc-kbd">P</kbd></button>
@@ -117,10 +146,26 @@
                 <button type="button" id="fc-clear-highlights" class="fc-tool-btn">🩷 Clear highlights (page)</button>
                 <button type="button" id="fc-notes-modal-open" class="fc-tool-btn">📓 My annotations</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="progress" id="fc-progress-section" open>
-            <summary class="fc-sb-title">Progress</summary>
+        <div class="fc-sb-section" id="fc-tts-controls" hidden>
+            <div class="fc-sb-title">
+                Read-aloud
+                <label class="fc-tts-master">
+                    <input type="checkbox" id="fc-tts-enabled" checked>
+                    <span class="fc-tts-master-label">On</span>
+                </label>
+            </div>
+            <div class="fc-tts-inner">
+                <div class="fc-sb-sub">Voice</div>
+                <select id="fc-tts-voice" class="fc-tts-select" aria-label="TTS voice"></select>
+                <div class="fc-sb-sub">Rate <span class="fc-tts-rate-val">1.0×</span></div>
+                <input type="range" id="fc-tts-rate" min="0.5" max="2" step="0.1" value="1" class="fc-tts-rate" aria-label="Reading rate">
+            </div>
+        </div>
+
+        <div class="fc-sb-section" id="fc-progress-section">
+            <div class="fc-sb-title">Progress</div>
             <div class="fc-progress-row">
                 <span class="fc-progress-num" id="fc-progress-num">0</span>
                 <span class="fc-progress-divider">/</span>
@@ -135,29 +180,29 @@
                 <span class="fc-progress-spacer"></span>
                 <button type="button" class="fc-progress-reset" id="fc-progress-reset" title="Reset progress">↺</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="bookmarks" open>
-            <summary class="fc-sb-title">Bookmarks <span class="fc-sb-count" id="fc-bookmarks-count">0</span></summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Bookmarks <span class="fc-sb-count" id="fc-bookmarks-count">0</span></div>
             <ul class="fc-bookmark-list" id="fc-bookmarks-list">
                 <li class="fc-sb-empty">No bookmarks yet — click ☆ on any verse.</li>
             </ul>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="notes" open>
-            <summary class="fc-sb-title">Notes <span class="fc-sb-count" id="fc-notes-count">0</span></summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Notes <span class="fc-sb-count" id="fc-notes-count">0</span></div>
             <ul class="fc-bookmark-list" id="fc-notes-list">
                 <li class="fc-sb-empty">No notes yet — open any verse and write in the 📝 block.</li>
             </ul>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="export">
-            <summary class="fc-sb-title">Export</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Export</div>
             <div class="fc-sb-tools">
                 <button type="button" id="fc-export-md" class="fc-tool-btn">📥 Download Markdown</button>
                 <button type="button" id="fc-export-json" class="fc-tool-btn">💾 Download JSON backup</button>
             </div>
-        </details>
+        </div>
     </div>
 </aside>    <main class="fc-container">
 <nav class="fc-breadcrumbs">
@@ -175,7 +220,7 @@
         <h1 class="fc-verse-heading">3.9 · Brahmā&#39;s Prayers for Creative Energy</h1>
         <span class="fc-ribbon-meta">
             43 verses
- · <a class="fc-ribbon-link" href="class-prep/">🖨 Class prep</a>        </span>
+        </span>
         <input type="search" class="fc-search" id="fc-search" placeholder="🔍 Search in this chapter" aria-label="Search verses in this chapter">
         <span class="fc-ribbon-current" id="fc-ribbon-current" aria-live="polite"></span>
     </div>
@@ -627,7 +672,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <div class="fc-translation" data-sec="translation">Lord Brahmā said: O my Lord, today, after many, many years of penance, I have come to know about You. Oh, how unfortunate the embodied living entities are that they are unable to know Your personality! My Lord, You are the only knowable object because there is nothing supreme beyond You. If there is anything supposedly superior to You, it is not the Absolute. You exist as the Supreme by exhibiting the creative energy of matter.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -734,18 +778,6 @@ This verse shows that after attaining mercy one can meet the Lord and know the L
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The verse describes a universe that is not a random stage but an arrangement with a purpose. Our work is not to engineer that purpose but to find our seat within it. The pivot here is cosmic manifestation.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where have you been demanding outcomes from a system you did not design?</li><li>How could awe of the creation become a daily practice and not just a Sunday feeling?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -979,7 +1011,6 @@ This verse shows that after attaining mercy one can meet the Lord and know the L
 
     <div class="fc-translation" data-sec="translation">The form which I see is eternally freed from material contamination and has advented to show mercy to the devotees as a manifestation of internal potency. This incarnation is the origin of many other incarnations, and I am born from the lotus flower grown from Your navel home.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1048,18 +1079,6 @@ This verse shows that after attaining mercy one can meet the Lord and know the L
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The verse describes a universe that is not a random stage but an arrangement with a purpose. Our work is not to engineer that purpose but to find our seat within it. The verse anchors this in modes of material nature.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What would change in your prayer if you remembered how small your sphere actually is?</li><li>Which &#39;cosmic&#39; problem are you trying to solve when your actual task is just to play your small part well?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -1320,7 +1339,6 @@ This verse shows that after attaining mercy one can meet the Lord and know the L
 
     <div class="fc-translation" data-sec="translation">O my Lord, I do not see a form superior to Your present form of eternal bliss and knowledge. In Your impersonal Brahman effulgence in the spiritual sky, there is no occasional change and no deterioration of internal potency. I surrender unto You because whereas I am proud of my material body and senses, Your Lordship is the cause of the cosmic manifestation and yet You are untouched by matter.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1387,18 +1405,6 @@ This verse shows that after attaining mercy one can meet the Lord and know the L
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The verse describes layered cosmic machinery — modes, elements, governing demigods — to remind us that even our &#39;private&#39; lives are arranged by larger hands. The verse keeps returning to devotional service to the Lord.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where have you been demanding outcomes from a system you did not design?</li><li>How could awe of the creation become a daily practice and not just a Sunday feeling?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -1650,7 +1656,6 @@ This verse shows that after attaining mercy one can meet the Lord and know the L
 
     <div class="fc-translation" data-sec="translation">This present form, or any transcendental form expanded by the Supreme Personality of Godhead, Śrī Kṛṣṇa, is equally auspicious for all the universes. Since You have manifested this eternal personal form upon whom Your devotees meditate, I therefore offer my respectful obeisances unto You. Those who are destined to be dispatched to the path of hell neglect Your personal form because of speculating on material topics.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1699,18 +1704,6 @@ You are auspicious for the whole world!  The materialists do not respect the for
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Prayer here is not performance — it is the soul speaking honestly to the Lord. The verse models a posture of dependence that strips away pretense. The pivot here is Supreme Personality of Godhead.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What honest sentence would you say to the Lord right now if no one else could hear?</li><li>What would your worship look like if no one were ever going to know you did it?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -1962,7 +1955,6 @@ You are auspicious for the whole world!  The materialists do not respect the for
 
     <div class="fc-translation" data-sec="translation">O my Lord, persons who smell the aroma of Your lotus feet, carried by the air of Vedic sound through the holes of the ears, accept Your devotional service. For them You are never separated from the lotus of their hearts.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2002,18 +1994,6 @@ The worshippers of the impersonal Brahman are described as jṣānīs in the scr
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Devotional service is named here as the central fact of spiritual life, not a hobby alongside it. The verse asks us to make the Lord the actual recipient of our daily activity rather than a polite afterthought. The verse keeps returning to lotus feet of the Lord.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What part of your day still belongs entirely to your own enjoyment, and could even a corner of it be offered?</li><li>Whom in your life would notice if your devotional service deepened, and what would they see?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -2301,7 +2281,6 @@ The worshippers of the impersonal Brahman are described as jṣānīs in the scr
 
     <div class="fc-translation" data-sec="translation">O my Lord, the people of the world are embarrassed by all material anxieties — they are always afraid. They always try to protect wealth, body and friends, they are filled with lamentation and unlawful desires and paraphernalia, and they avariciously base their undertakings on the perishable conceptions of “my” and “mine.” As long as they do not take shelter of Your safe lotus feet, they are full of such anxieties.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2388,18 +2367,6 @@ The word tāvat has been used in both verse, making the case strong. Thus in thi
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Devotional service is named here as the central fact of spiritual life, not a hobby alongside it. The verse asks us to make the Lord the actual recipient of our daily activity rather than a polite afterthought. The pivot here is pure devotee.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What part of your day still belongs entirely to your own enjoyment, and could even a corner of it be offered?</li><li>What would steady, unglamorous service look like for you this month?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -2660,7 +2627,6 @@ The word tāvat has been used in both verse, making the case strong. Thus in thi
 
     <div class="fc-translation" data-sec="translation">O my Lord, persons who are bereft of the all-auspicious performance of chanting and hearing about Your transcendental activities are certainly unfortunate and are also bereft of good sense. They engage in inauspicious activities, enjoying sense gratification for a very little while.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2729,18 +2695,6 @@ The word tāvat has been used in both verse, making the case strong. Thus in thi
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The verse places hearing kṛṣṇa-kathā at the centre of spiritual practice. It is not preparation for some later realization — it is itself the work that does the rewiring. The verse anchors this in material existence.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What podcast or playlist would you have to give up to make room for daily kṛṣṇa-kathā?</li><li>What would change if you treated 30 minutes of kṛṣṇa-kathā as non-negotiable as a meal?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -3001,7 +2955,6 @@ The word tāvat has been used in both verse, making the case strong. Thus in thi
 
     <div class="fc-translation" data-sec="translation">O great actor, my Lord, all these poor creatures are constantly perplexed by hunger, thirst, severe cold, secretion and bile, attacked by coughing winter, blasting summer, rains and many other disturbing elements, and overwhelmed by strong sex urges and indefatigable anger. I take pity on them, and I am very much aggrieved for them.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3090,18 +3043,6 @@ I lament for others also who are like animals, devoid of understanding their own
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The verse names māyā as the quiet author of our recurring disappointments. Seeing her hand at work is itself the first relief from her grip. The verse keeps returning to threefold miseries.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What &#39;if only X happens, I&#39;ll finally be fine&#39; story are you still telling yourself?</li><li>How would you live this week if you stopped expecting the material world to finally cooperate?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -3344,7 +3285,6 @@ I lament for others also who are like animals, devoid of understanding their own
 
     <div class="fc-translation" data-sec="translation">O my Lord, the material miseries are without factual existence for the soul. Yet as long as the conditioned soul sees the body as meant for sense enjoyment, he cannot get out of the entanglement of material miseries, being influenced by Your external energy.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3408,18 +3348,6 @@ I lament for others also who are like animals, devoid of understanding their own
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The verse points at the threefold miseries not to depress the reader but to interrupt the fantasy that the next arrangement will finally be different. The verse anchors this in material existence.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where have you been blaming people for what is actually a structural feature of material life?</li><li>What would change if you read your suffering as a teacher rather than an enemy?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -3698,7 +3626,6 @@ I lament for others also who are like animals, devoid of understanding their own
 
     <div class="fc-translation" data-sec="translation">Such nondevotees engage their senses in very troublesome and extensive work, and they suffer insomnia at night because their intelligence constantly breaks their sleep with various mental speculations. They are frustrated in all their various plans by supernatural power. Even great sages, if they are against Your transcendental topics, must rotate in this material world.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3793,18 +3720,6 @@ One should not say that material existence, caused by ignorance, will be destroy
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The scale of the creation in this verse is not given to overwhelm us but to right-size us. Most of our anxiety shrinks when our self-importance shrinks. Its centre of gravity is devotional service to the Lord.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where have you been demanding outcomes from a system you did not design?</li><li>What would humility actually look like for you in your work this week?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -4056,7 +3971,6 @@ One should not say that material existence, caused by ignorance, will be destroy
 
     <div class="fc-translation" data-sec="translation">O my Lord, Your devotees can see You through the ears by the process of bona fide hearing, and thus their hearts become cleansed, and You take Your seat there. You are so merciful to Your devotees that You manifest Yourself in the particular eternal form of transcendence in which they always think of You.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -4171,18 +4085,6 @@ Bhakti, even without jṣāna, delivers one from material existence. But more th
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Real devotion is steady, not theatrical. The verse treats bhakti as the work the soul was made for — every other career is a temporary detour from this primary employment. The verse keeps returning to devotional service to the Lord.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What ordinary activity could you re-aim today so it becomes an offering rather than a transaction?</li><li>What would steady, unglamorous service look like for you this month?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -4452,7 +4354,6 @@ Bhakti, even without jṣāna, delivers one from material existence. But more th
 
     <div class="fc-translation" data-sec="translation">My Lord, You are not very much satisfied by the worship of the demigods, who arrange for Your worship very pompously, with various paraphernalia, but who are full of material hankerings. You are situated in everyone’s heart as the Supersoul just to show Your causeless mercy, and You are the eternal well-wisher, but You are unavailable for the nondevotee.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -4545,18 +4446,6 @@ You stay in the hearts of the pure devotees but not in the hearts of devotees st
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Material life is described here not as something to fix from inside but to see through. The verse names suffering honestly so the reader stops expecting permanent happiness from impermanent arrangements. The verse anchors this in threefold miseries.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where have you been blaming people for what is actually a structural feature of material life?</li><li>Where is māyā&#39;s hand most active in your week, and how could you cooperate with reality instead?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -4808,7 +4697,6 @@ You stay in the hearts of the pure devotees but not in the hearts of devotees st
 
     <div class="fc-translation" data-sec="translation">But the pious activities of the people, such as performance of Vedic rituals, charity, austere penances and transcendental service, performed with a view to worship You and satisfy You by offering You the fruitive results, are also beneficial. Such acts of religion never go in vain.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -4867,18 +4755,6 @@ Since those without material desires are the best in bhakti, bhakti in the form 
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Real devotion is steady, not theatrical. The verse treats bhakti as the work the soul was made for — every other career is a temporary detour from this primary employment. The pivot here is devotional service to the Lord.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What ordinary activity could you re-aim today so it becomes an offering rather than a transaction?</li><li>What would steady, unglamorous service look like for you this month?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -5148,7 +5024,6 @@ Since those without material desires are the best in bhakti, bhakti in the form 
 
     <div class="fc-translation" data-sec="translation">Let me offer my obeisances unto the Supreme Transcendence, who is eternally distinguished by His internal potency. His indistinguishable impersonal feature is realized by intelligence for self-realization. I offer my obeisances unto Him who by His pastimes enjoys the creation, maintenance and dissolution of the cosmic manifestation.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -5207,18 +5082,6 @@ Having delineated two types of worship for the devotees, Brahmā offers respect 
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The cosmology here is not abstract scenery — it locates the reader inside a vast, intelligent order. Seeing your tiny role in this design quietly cools the urge to make yourself the centre. The verse anchors this in cosmic manifestation.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>How does it change your day to remember the universe was not built around your preferences?</li><li>What would humility actually look like for you in your work this week?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -5497,7 +5360,6 @@ Having delineated two types of worship for the devotees, Brahmā offers respect 
 
     <div class="fc-translation" data-sec="translation">Let me take shelter of the lotus feet of Him whose incarnations, qualities and activities are mysterious imitations of worldly affairs. One who invokes His transcendental names, even unconsciously, at the time he quits this life, is certainly washed immediately of the sins of many, many births and attains Him without fail.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -5576,18 +5438,6 @@ Worshipped by sincere devotion, revealing his true, spiritual form, the Lord spo
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The verse points beyond impersonal abstraction to a Lord who hears, acts, and relates. Spiritual life gets real once we stop talking about Him and start talking to Him. The verse keeps returning to Supreme Personality of Godhead.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What in your life are you treating as &#39;mine&#39; that the verse would call &#39;His&#39;?</li><li>How does relating to a person, rather than a principle, change how you speak in prayer?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -5857,7 +5707,6 @@ Worshipped by sincere devotion, revealing his true, spiritual form, the Lord spo
 
     <div class="fc-translation" data-sec="translation">Your Lordship is the prime root of the tree of the planetary systems. This tree has grown by first penetrating the material nature in three trunks — as me, Śiva and You, the Almighty — for creation, maintenance and dissolution, and we three have grown with many branches. Therefore I offer my obeisances unto You, the tree of the cosmic manifestation.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -5922,18 +5771,6 @@ Brahmā offers respects, indicating that not only he, but the all the elements s
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The cosmology here is not abstract scenery — it locates the reader inside a vast, intelligent order. Seeing your tiny role in this design quietly cools the urge to make yourself the centre. Its centre of gravity is Supreme Personality of Godhead.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What would change in your prayer if you remembered how small your sphere actually is?</li><li>How could awe of the creation become a daily practice and not just a Sunday feeling?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -6221,7 +6058,6 @@ Brahmā offers respects, indicating that not only he, but the all the elements s
 
     <div class="fc-translation" data-sec="translation">People in general all engage in foolish acts, not in the really beneficial activities enunciated directly by You for their guidance. As long as their tendency for foolish work remains powerful, all their plans in the struggle for existence will be cut to pieces. I therefore offer my obeisances unto Him who acts as eternal time.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -6307,18 +6143,6 @@ Mokṣa-dharma says paṣcarātrasya kṛtsnasya vaktā tu bhagavān svayam: the
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The cosmology here is not abstract scenery — it locates the reader inside a vast, intelligent order. Seeing your tiny role in this design quietly cools the urge to make yourself the centre. Its centre of gravity is cosmic manifestation.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What would change in your prayer if you remembered how small your sphere actually is?</li><li>What would humility actually look like for you in your work this week?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -6561,7 +6385,6 @@ Mokṣa-dharma says paṣcarātrasya kṛtsnasya vaktā tu bhagavān svayam: the
 
     <div class="fc-translation" data-sec="translation">Your Lordship, I offer my respectful obeisances unto You who are indefatigable time and the enjoyer of all sacrifices. Although I am situated in an abode which will continue to exist for a time duration of two parārdhas, although I am the leader of all other planets in the universe, and although I have undergone many, many years of penance for self-realization, still I offer my respects unto You.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -6635,18 +6458,6 @@ This verse describes the limits of the strength of time.  I, Brahmā, though sit
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The verse describes layered cosmic machinery — modes, elements, governing demigods — to remind us that even our &#39;private&#39; lives are arranged by larger hands. Its centre of gravity is self-realization.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where have you been demanding outcomes from a system you did not design?</li><li>Which &#39;cosmic&#39; problem are you trying to solve when your actual task is just to play your small part well?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -6898,7 +6709,6 @@ This verse describes the limits of the strength of time.  I, Brahmā, though sit
 
     <div class="fc-translation" data-sec="translation">O my Lord, by Your own will You appear in the various species of living entities, among animals lower than human beings as well as among the demigods, to perform Your transcendental pastimes. You are not affected by material contamination. You come just to fulfill the obligations of Your own principles of religion, and therefore, O Supreme Personality, I offer my obeisances unto You for manifesting such different forms.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -6978,18 +6788,6 @@ Because I am superior to the jīvas, to the Brahman and to the puruṣa known as
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Pastimes here are described as the actual means by which the Lord is known. Cold philosophy can only carry the soul so far before relationship takes over.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which form of the Lord is the right doorway for the heart you actually have, not the one you wish you had?</li><li>What would change in your day if you held a particular pastime in mind from morning to evening?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -7230,7 +7028,6 @@ Because I am superior to the jīvas, to the Brahman and to the puruṣa known as
 
     <div class="fc-translation" data-sec="translation">My Lord, You accept the pleasure of sleeping in the water of devastation, where there are violent waves, and You enjoy pleasure on the bed of snakes, showing the happiness of Your sleep to intelligent persons. At that time, all the universal planets are stationed within Your abdomen.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -7299,18 +7096,6 @@ Brahmā offers respects to the form he sees in front of him in two verses.  The 
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The verse describes layered cosmic machinery — modes, elements, governing demigods — to remind us that even our &#39;private&#39; lives are arranged by larger hands.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>How does it change your day to remember the universe was not built around your preferences?</li><li>Which &#39;cosmic&#39; problem are you trying to solve when your actual task is just to play your small part well?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -7553,7 +7338,6 @@ Brahmā offers respects to the form he sees in front of him in two verses.  The 
 
     <div class="fc-translation" data-sec="translation">O object of my worship, I am born from the house of Your lotus navel for the purpose of creating the universe by Your mercy. All these planets of the universe were stationed within Your transcendental abdomen while You were enjoying sleep. Now, Your sleep having ended, Your eyes are open like blossoming lotuses in the morning.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -7628,18 +7412,6 @@ I arose (āsam) from the abode in the lotus in his navel. I am the maker of the 
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Devotional service is named here as the central fact of spiritual life, not a hobby alongside it. The verse asks us to make the Lord the actual recipient of our daily activity rather than a polite afterthought. Its centre of gravity is Supreme Personality of Godhead.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What ordinary activity could you re-aim today so it becomes an offering rather than a transaction?</li><li>What would steady, unglamorous service look like for you this month?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -7918,7 +7690,6 @@ I arose (āsam) from the abode in the lotus in his navel. I am the maker of the 
 
     <div class="fc-translation" data-sec="translation">Let the Supreme Lord be merciful towards me. He is the one friend and soul of all living entities in the world, and He maintains all, for their ultimate happiness, by His six transcendental opulences. May He be merciful towards me so that I, as before, may be empowered with the introspection to create, for I am also one of the surrendered souls who are dear to the Lord.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -8022,18 +7793,6 @@ Having offered praise, Brahmā now makes requests in four verses.  The Lord is t
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The Lord&#39;s representatives are described as actively seeking out the fallen. The verse asks the reader whether their own concern for others has any feet under it. The pivot here is Supreme Personality of Godhead.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Whose welfare have you been hoping someone else would attend to?</li><li>Where has receiving someone&#39;s mercy quietly changed your life — and have you ever thanked them?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -8294,7 +8053,6 @@ Having offered praise, Brahmā now makes requests in four verses.  The Lord is t
 
     <div class="fc-translation" data-sec="translation">The Supreme Lord, the Personality of Godhead, is always the benefactor of the surrendered souls. His activities are always enacted through His internal potency, Ramā, or the goddess of fortune. I pray only to engage in His service in the creation of the material world, and I pray that I not be materially affected by my works, for thus I may be able to give up the false prestige of being the creator.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -8398,18 +8156,6 @@ Fearing the influence of creative work predominated by rajo-guṇa, Brahmā pray
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The verse describes layered cosmic machinery — modes, elements, governing demigods — to remind us that even our &#39;private&#39; lives are arranged by larger hands. Its centre of gravity is modes of nature.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What would change in your prayer if you remembered how small your sphere actually is?</li><li>What would humility actually look like for you in your work this week?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -8688,7 +8434,6 @@ Fearing the influence of creative work predominated by rajo-guṇa, Brahmā pray
 
     <div class="fc-translation" data-sec="translation">The Lord’s potencies are innumerable. As He lies down in the water of devastation, I am born as the total universal energy from the navel lake in which the lotus sprouts. I am now engaged in manifesting His diverse energies in the form of the cosmic manifestation. I therefore pray that in the course of my material activities I may not be deviated from the vibration of the Vedic hymns.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -8732,18 +8477,6 @@ The extent that I can enter into the ocean of your qualities is because of the m
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The scale of the creation in this verse is not given to overwhelm us but to right-size us. Most of our anxiety shrinks when our self-importance shrinks. The verse anchors this in cosmic manifestation.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where have you been demanding outcomes from a system you did not design?</li><li>Which &#39;cosmic&#39; problem are you trying to solve when your actual task is just to play your small part well?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -8995,7 +8728,6 @@ The extent that I can enter into the ocean of your qualities is because of the m
 
     <div class="fc-translation" data-sec="translation">The Lord, who is supreme and is the oldest of all, is unlimitedly merciful. I wish that He may smilingly bestow His benediction upon me by opening His lotus eyes. He can uplift the entire cosmic creation and remove our dejection by kindly speaking His directions.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -9064,18 +8796,6 @@ The servant will certainly be blissful by the glance of mercy and merciful instr
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The verse describes a universe that is not a random stage but an arrangement with a purpose. Our work is not to engineer that purpose but to find our seat within it. The verse keeps returning to devotional service to the Lord.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where have you been demanding outcomes from a system you did not design?</li><li>What would humility actually look like for you in your work this week?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -9278,7 +8998,6 @@ The servant will certainly be blissful by the glance of mercy and merciful instr
 
     <div class="fc-translation" data-sec="translation">The sage Maitreya said: O Vidura, after observing the source of his appearance, namely the Personality of Godhead, Brahmā prayed for His mercy as far as his mind and words would permit him. Thus having prayed, he became silent, as if tired from his activities of penance, knowledge and mental concentration.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -9367,18 +9086,6 @@ Thus seeing the manifestation of the Lord (sva-sambhavam) directly before him (t
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The verse describes a universe that is not a random stage but an arrangement with a purpose. Our work is not to engineer that purpose but to find our seat within it. The verse anchors this in spiritual master.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where have you been demanding outcomes from a system you did not design?</li><li>How could awe of the creation become a daily practice and not just a Sunday feeling?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -9663,7 +9370,6 @@ Thus seeing the manifestation of the Lord (sva-sambhavam) directly before him (t
 
     <div class="fc-translation" data-sec="translation">The Lord saw that Brahmā was very anxious about the planning and construction of the different planetary systems and was depressed upon seeing the devastating water. He could understand the intention of Brahmā, and thus He spoke in deep, thoughtful words, removing all the illusion that had arisen.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -9722,18 +9428,6 @@ Brahmā was dejected because of the water of devastation, and stressed concernin
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The verse describes layered cosmic machinery — modes, elements, governing demigods — to remind us that even our &#39;private&#39; lives are arranged by larger hands. The pivot here is modes of material nature.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where have you been demanding outcomes from a system you did not design?</li><li>What would humility actually look like for you in your work this week?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -9954,7 +9648,6 @@ Brahmā was dejected because of the water of devastation, and stressed concernin
 
     <div class="fc-translation" data-sec="translation">The Supreme Personality of Godhead then said: O Brahmā, O depth of Vedic wisdom, be neither depressed nor anxious about the execution of creation. What you are begging from Me has already been granted before.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -10038,18 +9731,6 @@ This verse shows the complete dissolution of Brahmā’s illusion. May knowledge
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The scale of the creation in this verse is not given to overwhelm us but to right-size us. Most of our anxiety shrinks when our self-importance shrinks. Its centre of gravity is Supreme Personality of Godhead.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>How does it change your day to remember the universe was not built around your preferences?</li><li>How could awe of the creation become a daily practice and not just a Sunday feeling?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -10263,7 +9944,6 @@ This verse shows the complete dissolution of Brahmā’s illusion. May knowledge
 
     <div class="fc-translation" data-sec="translation">O Brahmā, situate yourself in penance and meditation and follow the principles of knowledge to receive My favor. By these actions you will be able to understand everything from within your heart.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -10327,18 +10007,6 @@ This verse shows the complete dissolution of Brahmā’s illusion. May knowledge
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The verse defines life&#39;s success by surrender, not by accumulation. What looks like &#39;giving up&#39; from outside is, from inside, finally arriving at one&#39;s natural position.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where is your devotional life mostly verbal, and where is it actually costing you something?</li><li>Whom in your life would notice if your devotional service deepened, and what would they see?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -10534,7 +10202,6 @@ This verse shows the complete dissolution of Brahmā’s illusion. May knowledge
 
     <div class="fc-translation" data-sec="translation">O Brahmā, when you are absorbed in devotional service, in the course of your creative activities, you will see Me in you and throughout the universe, and you will see that you yourself, the universe and the living entities are all in Me.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -10583,18 +10250,6 @@ The Lord replies to Brahma’s request that he not forget the Lord when he gets 
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Devotional service is named here as the central fact of spiritual life, not a hobby alongside it. The verse asks us to make the Lord the actual recipient of our daily activity rather than a polite afterthought. The verse anchors this in devotional service to the Lord.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where is your devotional life mostly verbal, and where is it actually costing you something?</li><li>Whom in your life would notice if your devotional service deepened, and what would they see?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -10799,7 +10454,6 @@ The Lord replies to Brahma’s request that he not forget the Lord when he gets 
 
     <div class="fc-translation" data-sec="translation">You will see Me in all living entities as well as all over the universe, just as fire is situated in wood. Only in that state of transcendental vision will you be able to be free from all kinds of illusion.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -10858,18 +10512,6 @@ Brahmā prayed that he would avoid all sin during creation.  The Lord also guara
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The verse describes a universe that is not a random stage but an arrangement with a purpose. Our work is not to engineer that purpose but to find our seat within it. The verse keeps returning to pure devotee.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What would change in your prayer if you remembered how small your sphere actually is?</li><li>How could awe of the creation become a daily practice and not just a Sunday feeling?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -11047,7 +10689,6 @@ Brahmā prayed that he would avoid all sin during creation.  The Lord also guara
 
     <div class="fc-translation" data-sec="translation">When you are free from the conception of gross and subtle bodies and when your senses are free from all influences of the modes of material nature, you will realize your pure form in My association. At that time you will be situated in pure consciousness.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -11109,18 +10750,6 @@ Others explain the verse in another way. Because Brahmā mentioned in his prayer
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The verse describes layered cosmic machinery — modes, elements, governing demigods — to remind us that even our &#39;private&#39; lives are arranged by larger hands. The verse keeps returning to material existence.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where have you been demanding outcomes from a system you did not design?</li><li>Which &#39;cosmic&#39; problem are you trying to solve when your actual task is just to play your small part well?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -11307,7 +10936,6 @@ Others explain the verse in another way. Because Brahmā mentioned in his prayer
 
     <div class="fc-translation" data-sec="translation">Since you have desired to increase the population innumerably and expand your varieties of service, you shall never be deprived in this matter because My causeless mercy upon you will always increase for all time.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -11366,18 +10994,6 @@ Having taught you about jṣāna, bhakti and rāsa, I give you my mercy, not jus
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The verse models compassion as a practical job, not a feeling. Real mercy is taking the trouble to carry someone toward what is actually good for them, even when it is uncomfortable. Its centre of gravity is pure devotee.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What &#39;comfortable&#39; kindness do you offer that you suspect is not actually mercy?</li><li>What would real mercy look like for the person in front of you today?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -11582,7 +11198,6 @@ Having taught you about jṣāna, bhakti and rāsa, I give you my mercy, not jus
 
     <div class="fc-translation" data-sec="translation">You are the original ṛṣi, and because your mind is always fixed on Me, even though you will be engaged in generating various progeny the vicious mode of passion will never encroach upon you.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -11611,18 +11226,6 @@ You should not fear contamination of rajoguṇa.  In the Tenth Canto, Brahmā’
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Devotional service is named here as the central fact of spiritual life, not a hobby alongside it. The verse asks us to make the Lord the actual recipient of our daily activity rather than a polite afterthought.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What ordinary activity could you re-aim today so it becomes an offering rather than a transaction?</li><li>What would steady, unglamorous service look like for you this month?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -11854,7 +11457,6 @@ You should not fear contamination of rajoguṇa.  In the Tenth Canto, Brahmā’
 
     <div class="fc-translation" data-sec="translation">Although I am not easily knowable by the conditioned soul, you have known Me today because you know that My personality is not constituted of anything material, and specifically not of the five gross and three subtle elements.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -11923,18 +11525,6 @@ Since, you see that I, though possessing a form, do not have a form made of mate
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Suffering is treated here as structural, not accidental. Once we stop expecting the material world to cooperate, we can begin actually using it for spiritual progress. The pivot here is material existence.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What &#39;if only X happens, I&#39;ll finally be fine&#39; story are you still telling yourself?</li><li>How would you live this week if you stopped expecting the material world to finally cooperate?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -12112,7 +11702,6 @@ Since, you see that I, though possessing a form, do not have a form made of mate
 
     <div class="fc-translation" data-sec="translation">When you were contemplating whether there was a source to the stem of the lotus of your birth and you even entered into that stem, you could not trace out anything. But at that time I manifested My form from within.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -12176,18 +11765,6 @@ You are the proof that since my form can only be seen my inconceivable desire, i
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The verse defines life&#39;s success by surrender, not by accumulation. What looks like &#39;giving up&#39; from outside is, from inside, finally arriving at one&#39;s natural position. The pivot here is Supreme Personality of Godhead.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where is your devotional life mostly verbal, and where is it actually costing you something?</li><li>Whom in your life would notice if your devotional service deepened, and what would they see?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -12392,7 +11969,6 @@ You are the proof that since my form can only be seen my inconceivable desire, i
 
     <div class="fc-translation" data-sec="translation">O Brahmā, the prayers that you have chanted praising the glories of My transcendental activities, the penances you have undertaken to understand Me, and your firm faith in Me — all these are to be considered My causeless mercy.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -12461,18 +12037,6 @@ Even your ability to praise me was by my mercy only.  The praising that you did 
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The verse models the central spiritual relationship: an inquirer approaching a realized teacher. Spiritual life rarely advances without this living human pivot. The verse keeps returning to spiritual master.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Whom in your life do you actually let teach you, in the sense of letting them correct you?</li><li>Whose lineage do you stand inside, even quietly, and how does that shape what you hear?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -12668,7 +12232,6 @@ Even your ability to praise me was by my mercy only.  The praising that you did 
 
     <div class="fc-translation" data-sec="translation">I am very much pleased by your description of Me in terms of My transcendental qualities, which appear mundane to the mundaners. I grant you all benedictions in your desire to glorify all the planets by your activities.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -12737,18 +12300,6 @@ I am intensely pleased with bhakti, which arises from my mercy.  See my astonish
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The verse describes layered cosmic machinery — modes, elements, governing demigods — to remind us that even our &#39;private&#39; lives are arranged by larger hands. The verse anchors this in pure devotee.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where have you been demanding outcomes from a system you did not design?</li><li>Which &#39;cosmic&#39; problem are you trying to solve when your actual task is just to play your small part well?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -12944,7 +12495,6 @@ I am intensely pleased with bhakti, which arises from my mercy.  See my astonish
 
     <div class="fc-translation" data-sec="translation">Any human being who prays like Brahmā, and who thus worships Me, shall very soon be blessed with the fulfillment of all his desires, for I am the Lord of all benediction.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -12973,18 +12523,6 @@ Since I am please with you, what can be said?</div>
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The verse treats sense gratification as the path of least resistance, not as evil. The work is to introduce a little resistance — a small rule, kept — and let the soul re-emerge.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What is your mind feeding on most often, and how is that diet shaping your devotion?</li><li>What would it look like to lead the mind, gently, the way you would lead a child?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -13171,7 +12709,6 @@ Since I am please with you, what can be said?</div>
 
     <div class="fc-translation" data-sec="translation">It is the opinion of expert transcendentalists that the ultimate goal of performing all traditional good works, penances, sacrifices, charities, mystic activities, trances, etc., is to invoke My satisfaction.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -13230,18 +12767,6 @@ There is nothing better than pleasing me.  Whatever results (niḥśreyasam) are
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The verse insists on the Lord&#39;s specific identity — not an idea of God but a person with name, form, and intent. Vague spirituality cannot reach what only personal address can. The pivot here is Supreme Personality of Godhead.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where does your idea of God blur into a generic &#39;higher power&#39; that asks nothing of you?</li><li>How does relating to a person, rather than a principle, change how you speak in prayer?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -13446,7 +12971,6 @@ There is nothing better than pleasing me.  Whatever results (niḥśreyasam) are
 
     <div class="fc-translation" data-sec="translation">I am the Supersoul of every individual. I am the supreme director and the dearest. People are wrongly attached to the gross and subtle bodies, but they should be attached to Me only.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -13516,18 +13040,6 @@ However, though Paramātmā is dearest, it is seen that even though the jṣān�
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The verse points at the threefold miseries not to depress the reader but to interrupt the fantasy that the next arrangement will finally be different. The verse anchors this in Supreme Personality of Godhead.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What &#39;if only X happens, I&#39;ll finally be fine&#39; story are you still telling yourself?</li><li>How would you live this week if you stopped expecting the material world to finally cooperate?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -13715,7 +13227,6 @@ However, though Paramātmā is dearest, it is seen that even though the jṣān�
     <div class="fc-translation" data-sec="translation">By following My instructions you can now generate the living entities as before, by dint of your complete Vedic wisdom and the body you have directly received from Me, the supreme cause of everything.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -13776,18 +13287,6 @@ You prayed that you should not forget the Vedas. Your body will be filled with t
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The Lord directs Brahmā to generate beings using the Vedic wisdom and divinely-given body that are themselves gifts. Even the cosmic creator works with borrowed equipment and revealed knowledge. Our creative acts, too, depend on what we have received.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What &#39;body and wisdom&#39; have I received that I now treat as my own achievement?</li><li>How would I create differently if I held my equipment as on-loan from the Lord?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -13954,7 +13453,6 @@ You prayed that you should not forget the Vedas. Your body will be filled with t
 
     <div class="fc-translation" data-sec="translation">The sage Maitreya said: After instructing Brahmā, the creator of the universe, to expand, the primeval Lord, the Personality of Godhead in His personal form as Nārāyaṇa, disappeared.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -14014,18 +13512,6 @@ Ten Types of Creation</div>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The cosmology here is not abstract scenery — it locates the reader inside a vast, intelligent order. Seeing your tiny role in this design quietly cools the urge to make yourself the centre.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where have you been demanding outcomes from a system you did not design?</li><li>Which &#39;cosmic&#39; problem are you trying to solve when your actual task is just to play your small part well?</li></ul>
-
-
-
-
-
-    </section>
 
 
 

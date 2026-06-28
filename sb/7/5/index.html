@@ -25,19 +25,25 @@
     <link rel="icon" href="../../../assets/icons/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="../../../assets/icons/icon.svg">
     <link rel="stylesheet" href="../../../assets/css/site.css">
+    <link rel="alternate" hreflang="te-IN" href="../../../te/sb/7/5/">
+    <link rel="alternate" hreflang="x-default" href="../../../">
     <script>window.FC_TO_ROOT = "../../../";</script>
     <script src="../../../assets/js/toggle.js"></script>
 </head>
 <body class="has-sidebar" data-chapter="5">
 <header class="fc-site-header">
     <button type="button" class="fc-mobile-trigger fc-mobile-trigger-left" data-overlay="left" aria-label="Open settings drawer">⚙</button>
-<a class="fc-brand" href="../../../">FolioCorpus<span class="fc-sub">Śrīmad-Bhāgavatam</span></a>
+    <a class="fc-brand" href="../../../">FolioCorpus<span class="fc-sub">Bhagavad-gītā</span></a>
     <nav class="fc-site-nav">
         <a href="../../../">Home</a>
         <a href="../../../bg/">Bhagavad-gītā</a>
         <a href="../../../sb/">Śrīmad-Bhāgavatam</a>
         <a href="../../../search/" title="Search across all integrated works">🔍 Search</a>
         <button type="button" id="fc-random-verse" class="fc-nav-btn" title="Jump to a random verse">🎲 Random</button>
+        <span class="fc-lang-switch" aria-label="Script">
+            <a class="active" href="#" title="Devanāgarī edition">EN</a>
+            <a class="" href="../../../te/sb/7/5/" title="Telugu lipi edition">తె</a>
+        </span>
     </nav>
     <button type="button" class="fc-mobile-trigger fc-mobile-trigger-right" data-overlay="right" aria-label="Open chapter index drawer">📚</button>
 </header>
@@ -46,8 +52,8 @@
     <button class="fc-sb-collapse" type="button" data-sb="left" title="Collapse left sidebar" aria-label="Collapse"></button>
 
     <div class="fc-sb-body">
-        <details class="fc-sb-section" data-sbsec="reading" open>
-            <summary class="fc-sb-title">Reading</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Reading</div>
             <div class="fc-sb-sub">Theme</div>
             <div class="fc-segmented" data-setting="theme">
                 <button type="button" data-val="light">Light</button>
@@ -73,10 +79,10 @@
                 <button type="button" data-val="single">Single</button>
                 <button type="button" data-val="side">Side-by-side</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="display" open>
-            <summary class="fc-sb-title">Display</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Display</div>
             <div class="fc-sb-grid">
                 <label><input type="checkbox" data-section="devanagari" checked> Devanāgarī</label>
                 <label><input type="checkbox" data-section="iast" checked> IAST transliteration</label>
@@ -99,10 +105,33 @@
                 <button type="button" data-action="expand-all">Expand all</button>
                 <button type="button" data-action="collapse-all">Collapse all</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="tools" open>
-            <summary class="fc-sb-title">Tools</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Find your starting point</div>
+            <div class="fc-persona-links">
+                <a class="fc-persona-link" href="../../../daily/">🌅 Daily (one value a week)</a>
+                <a class="fc-persona-link" href="../../../householder/">🏠 Householder (family & work)</a>
+                <a class="fc-persona-link" href="../../../parenting/">👨‍👩‍👧 Parenting (stories for kids)</a>
+                <a class="fc-persona-link" href="../../../themes/">📚 All themes</a>
+                <a class="fc-persona-link" href="../../../values/" style="background:#F0F6F2;border-left-color:#1F4632;">ॐ Vedic Value System ↗</a>
+                <a class="fc-persona-link" href="../../../vidya/" style="background:#FBF6E4;border-left-color:#C8860B;">📚 Vidyā Karaṇa (kids, multi-lang) ↗</a>
+            </div>
+        </div>
+
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Audience</div>
+            <div class="fc-audience-filter">
+                <label><input type="radio" name="fc-audience" value="all" checked> All levels</label>
+                <label><input type="radio" name="fc-audience" value="primary"> Primary (children)</label>
+                <label><input type="radio" name="fc-audience" value="middle"> Middle (teens)</label>
+                <label><input type="radio" name="fc-audience" value="senior"> Senior (adults)</label>
+                <label><input type="radio" name="fc-audience" value="college"> College / scholar</label>
+            </div>
+        </div>
+
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Tools</div>
             <div class="fc-sb-tools">
                 <button type="button" id="fc-presentation-toggle" class="fc-tool-btn"><span>🖥 Presentation</span><kbd class="fc-kbd">F</kbd></button>
                 <button type="button" id="fc-pen-toggle" class="fc-tool-btn"><span>✏️ Pen mode</span><kbd class="fc-kbd">P</kbd></button>
@@ -117,10 +146,26 @@
                 <button type="button" id="fc-clear-highlights" class="fc-tool-btn">🩷 Clear highlights (page)</button>
                 <button type="button" id="fc-notes-modal-open" class="fc-tool-btn">📓 My annotations</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="progress" id="fc-progress-section" open>
-            <summary class="fc-sb-title">Progress</summary>
+        <div class="fc-sb-section" id="fc-tts-controls" hidden>
+            <div class="fc-sb-title">
+                Read-aloud
+                <label class="fc-tts-master">
+                    <input type="checkbox" id="fc-tts-enabled" checked>
+                    <span class="fc-tts-master-label">On</span>
+                </label>
+            </div>
+            <div class="fc-tts-inner">
+                <div class="fc-sb-sub">Voice</div>
+                <select id="fc-tts-voice" class="fc-tts-select" aria-label="TTS voice"></select>
+                <div class="fc-sb-sub">Rate <span class="fc-tts-rate-val">1.0×</span></div>
+                <input type="range" id="fc-tts-rate" min="0.5" max="2" step="0.1" value="1" class="fc-tts-rate" aria-label="Reading rate">
+            </div>
+        </div>
+
+        <div class="fc-sb-section" id="fc-progress-section">
+            <div class="fc-sb-title">Progress</div>
             <div class="fc-progress-row">
                 <span class="fc-progress-num" id="fc-progress-num">0</span>
                 <span class="fc-progress-divider">/</span>
@@ -135,29 +180,29 @@
                 <span class="fc-progress-spacer"></span>
                 <button type="button" class="fc-progress-reset" id="fc-progress-reset" title="Reset progress">↺</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="bookmarks" open>
-            <summary class="fc-sb-title">Bookmarks <span class="fc-sb-count" id="fc-bookmarks-count">0</span></summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Bookmarks <span class="fc-sb-count" id="fc-bookmarks-count">0</span></div>
             <ul class="fc-bookmark-list" id="fc-bookmarks-list">
                 <li class="fc-sb-empty">No bookmarks yet — click ☆ on any verse.</li>
             </ul>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="notes" open>
-            <summary class="fc-sb-title">Notes <span class="fc-sb-count" id="fc-notes-count">0</span></summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Notes <span class="fc-sb-count" id="fc-notes-count">0</span></div>
             <ul class="fc-bookmark-list" id="fc-notes-list">
                 <li class="fc-sb-empty">No notes yet — open any verse and write in the 📝 block.</li>
             </ul>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="export">
-            <summary class="fc-sb-title">Export</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Export</div>
             <div class="fc-sb-tools">
                 <button type="button" id="fc-export-md" class="fc-tool-btn">📥 Download Markdown</button>
                 <button type="button" id="fc-export-json" class="fc-tool-btn">💾 Download JSON backup</button>
             </div>
-        </details>
+        </div>
     </div>
 </aside>    <main class="fc-container">
 <nav class="fc-breadcrumbs">
@@ -175,7 +220,7 @@
         <h1 class="fc-verse-heading">7.5 · Prahlāda Mahārāja, the Saintly Son of Hiraṇyakaśipu</h1>
         <span class="fc-ribbon-meta">
             53 verses
- · <a class="fc-ribbon-link" href="class-prep/">🖨 Class prep</a>        </span>
+        </span>
         <input type="search" class="fc-search" id="fc-search" placeholder="🔍 Search in this chapter" aria-label="Search verses in this chapter">
         <span class="fc-ribbon-current" id="fc-ribbon-current" aria-live="polite"></span>
     </div>
@@ -482,7 +527,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <div class="fc-translation" data-sec="translation">The great saint Nārada Muni said: The demons, headed by Hiraṇyakaśipu, accepted Śukrācārya as their priest for ritualistic ceremonies. Śukrācārya’s two sons, Ṣaṇḍa and Amarka, lived near Hiraṇyakaśipu’s palace.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -581,18 +625,6 @@ In the Fifth Chapter Prahlāda, asked by his father about his education, praises
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The demons accept Śukrācārya as priest, and his sons Ṣaṇḍa and Amarka live near the palace. A brāhmaṇa who takes service of atheists for prestige helps spread atheism. Choose whom you serve with your skills as carefully as you choose what you serve with your heart.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Whose project are you currently lending your skills to without examining its true direction?</li><li>Where might prestige be tempting you to consecrate the wrong cause?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -762,7 +794,6 @@ In the Fifth Chapter Prahlāda, asked by his father about his education, praises
     <div class="fc-translation" data-sec="translation">Prahlāda Mahārāja was already educated in devotional life, but when his father sent him to those two sons of Śukrācārya to be educated, they accepted him at their school along with the other sons of the asuras.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -806,18 +837,6 @@ In the Fifth Chapter Prahlāda, asked by his father about his education, praises
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Already educated in devotional life, Prahlāda is sent to the asuras&#39; school anyway. Sometimes the inwardly-formed are placed amid the outwardly-trained for a purpose larger than either. Your spiritual education does not pause because the curriculum is wrong.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where are you the inwardly-formed one in an outwardly-shaped environment?</li><li>What would it mean to honor both your real education and the room you are in?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -1022,7 +1041,6 @@ In the Fifth Chapter Prahlāda, asked by his father about his education, praises
 
     <div class="fc-translation" data-sec="translation">Prahlāda certainly heard and recited the topics of politics and economics taught by the teachers, but he understood that political philosophy involves considering someone a friend and someone else an enemy, and thus he did not like it.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1061,18 +1079,6 @@ He did not consider topics like punishment and politics proper. Why?  It complet
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Prahlāda hears politics and economics but rejects them — they rest on dividing people into friends and enemies. The devotional vision refuses that primal split. The world will keep handing you that frame; you do not have to take it.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which &#39;friend vs enemy&#39; framing in your life would loosen if you held it like Prahlāda?</li><li>Where does your career force a binary on you that your devotion forbids?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -1259,7 +1265,6 @@ He did not consider topics like punishment and politics proper. Why?  It complet
 
     <div class="fc-translation" data-sec="translation">My dear King Yudhiṣṭhira, once upon a time the King of the demons, Hiraṇyakaśipu, took his son Prahlāda on his lap and very affectionately inquired: My dear son, please let me know what you think is the best of all the subjects you have studied from your teachers.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1345,18 +1350,6 @@ The King thought that his son would be confused if asked about difficult subject
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Hiraṇyakaśipu, holding Prahlāda on his lap, lovingly asks what he considers the best of his studies. Even tyrants sometimes pose a genuine question. The opportunity to speak truth often comes wrapped in affection from the unlikeliest source.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Whose unexpected question has recently opened a door for you to speak truth?</li><li>How do you prepare for moments when even a difficult figure invites your honesty?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -1606,7 +1599,6 @@ The King thought that his son would be confused if asked about difficult subject
 
     <div class="fc-translation" data-sec="translation">Prahlāda Mahārāja replied: O best of the asuras, King of the demons, as far as I have learned from my spiritual master, any person who has accepted a temporary body and temporary household life is certainly embarrassed by anxiety because of having fallen in a dark well where there is no water but only suffering. One should give up this position and go to the forest [vana]. More clearly, one should go to Vṛndāvana, where only Kṛṣṇa consciousness is prevalent, and should thus take shelter of the Supreme Personality of Godhead.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1750,18 +1742,6 @@ Prahlāda understood his intention, and, considering the question “What thing 
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Prahlāda answers: anyone holding a temporary body and household is in a dark waterless well of suffering — better go to the forest of Vṛndāvana and take shelter of Kṛṣṇa. Honest spiritual diagnosis names the well before recommending the way out.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which &#39;dark waterless well&#39; in your life are you reluctant to name as such?</li><li>What single move toward Kṛṣṇa-shelter could you take this week, materially or inwardly?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -1937,7 +1917,6 @@ Prahlāda understood his intention, and, considering the question “What thing 
 
     <div class="fc-translation" data-sec="translation">Nārada Muni continued: When Prahlāda Mahārāja spoke about the path of self-realization in devotional service, thus being faithful to the camp of his father’s enemies, Hiraṇyakaśipu, the King of the demons, heard Prahlāda’s words and he laughingly said, “Thus is the intelligence of children spoiled by the words of the enemy.”</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2020,18 +1999,6 @@ The words were completely dedicated to Viṣṇu, his enemy.  He laughed, “Thi
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Hearing his son speak from the &#39;enemy camp,&#39; Hiraṇyakaśipu laughs that children&#39;s intelligence is so easily spoiled. The demonic mind cannot accept that devotion grows naturally in pure hearts. Maturity is mistaken for corruption when you refuse the Lord.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where do you laugh off another&#39;s sincerity as &#39;spoiled intelligence&#39;?</li><li>What devotion in those younger than you might actually be greater than yours?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -2200,7 +2167,6 @@ The words were completely dedicated to Viṣṇu, his enemy.  He laughed, “Thi
 
     <div class="fc-translation" data-sec="translation">Hiraṇyakaśipu advised his assistants: My dear demons, give complete protection to this boy at the gurukula where he is instructed, so that his intelligence will not be further influenced by Vaiṣṇavas who may go there in disguise.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2299,18 +2265,6 @@ They have done this at school.  The Vaiṣṇavas are responsible.</div>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Hiraṇyakaśipu orders strict protection at the gurukula so no Vaiṣṇava in disguise can influence Prahlāda further. Power without insight imagines truth spreads only by infiltration. Truth actually grows from within when conditions are right.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where are you over-protecting your inner circle from influences that are not actually the threat?</li><li>What inner condition, not outer fence, is the real source of devotion?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -2470,7 +2424,6 @@ They have done this at school.  The Vaiṣṇavas are responsible.</div>
 
     <div class="fc-translation" data-sec="translation">When Hiraṇyakaśipu’s servants brought the boy Prahlāda back to the gurukula [the place where the brāhmaṇas taught the boys], the priests of the demons, Ṣaṇḍa and Amarka, pacified him. With very mild voices and affectionate words, they inquired from him as follows.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2554,18 +2507,6 @@ They praised him with sweet words. “We will speak to him so that out of fear h
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The demons&#39; priests Ṣaṇḍa and Amarka use mild voice and affectionate words to pry the names of the &#39;Vaiṣṇava infiltrators&#39; out of Prahlāda. Soft manipulation often precedes hard threat. Watch the tone shift in any interrogation.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where has someone used &#39;sweet words&#39; to extract information you should have guarded?</li><li>How do you tell genuine kindness from soft manipulation?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -2752,7 +2693,6 @@ They praised him with sweet words. “We will speak to him so that out of fear h
 
     <div class="fc-translation" data-sec="translation">Dear son Prahlāda, all peace and good fortune unto you. Kindly do not speak lies; just reply with the truth. These boys you see are not like you, for they do not speak in a deviant way. How have you learned these instructions? How has your intelligence been spoiled in this way?</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2801,18 +2741,6 @@ Good fortune to you!  We will give you some sweets if you tell the truth!  Bāl�
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The teachers tell Prahlāda the other boys are not &#39;deviant&#39; like him — how did your intelligence get spoiled? Conformity is treated as health; sincerity is treated as pollution. Notice when a community names its best member as its sick one.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Whose &#39;deviance&#39; in your circle might actually be greater health?</li><li>Where are you tempted to label your own inner divergence as corruption rather than truth?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -2972,7 +2900,6 @@ Good fortune to you!  We will give you some sweets if you tell the truth!  Bāl�
 
     <div class="fc-translation" data-sec="translation">O best of your family, has this pollution of your intelligence been brought about by you or by the enemies? We are all your teachers and are very eager to hear about this. Please tell us the truth.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3026,18 +2953,6 @@ You should tell us.  They thought, “If he gives the name of some Vaiṣṇava,
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The teachers want the names of the Vaiṣṇavas who taught Prahlāda, so those Vaiṣṇavas can be arrested and killed before the boy. Powers afraid of devotion always want a list of names. Refuse to provide it.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Whose name has someone tried to extract from you in order to harm them?</li><li>How do you protect the gentle in your circle from those who fear them?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -3256,7 +3171,6 @@ You should tell us.  They thought, “If he gives the name of some Vaiṣṇava,
 
     <div class="fc-translation" data-sec="translation">Prahlāda Mahārāja replied: Let me offer my respectful obeisances unto the Supreme Personality of Godhead, whose external energy has created the distinctions of “my friend” and “my enemy” by deluding the intelligence of men. Indeed, I am now actually experiencing this, although I have previously heard of it from authoritative sources.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3328,18 +3242,6 @@ He thought, “These fools cooked in saṁsāra think I am a stupid boy.”  The
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Prahlāda offers obeisances to the Lord whose external energy created the &#39;friend vs enemy&#39; delusion. The very category through which his interrogators see him is itself the māyā of which he speaks. Sometimes the answer is to name the cage in which the question is asked.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What &#39;friend vs enemy&#39; cage is shaping the questions you are being asked today?</li><li>How could you name the cage without escalating the conflict?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -3544,7 +3446,6 @@ He thought, “These fools cooked in saṁsāra think I am a stupid boy.”  The
 
     <div class="fc-translation" data-sec="translation">When the Supreme Personality of Godhead is pleased with the living entity because of his devotional service, one becomes a paṇḍita and does not make distinctions between enemies, friends and himself. Intelligently, he then thinks, “Every one of us is an eternal servant of God, and therefore we are not different from one another.”</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3695,18 +3596,6 @@ There is no difference because, from the point of view of ātmā, all jīvas are
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Pleased by devotion, the Lord makes one a paṇḍita who sees no enemy, no friend, no separate self — all are eternal servants of God. Wisdom is not adding more information; it is dropping a wrong way of seeing.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which &#39;friend&#39; or &#39;enemy&#39; in your life would dissolve under the gaze &#39;we are all servants of God&#39;?</li><li>Where do you treat that vision as theory rather than practice?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -3949,7 +3838,6 @@ There is no difference because, from the point of view of ātmā, all jīvas are
 
     <div class="fc-translation" data-sec="translation">Persons who always think in terms of “enemy” and “friend” are unable to ascertain the Supersoul within themselves. Not to speak of them, even such exalted persons as Lord Brahmā, who are fully conversant with the Vedic literature, are sometimes bewildered in following the principles of devotional service. The same Supreme Personality of Godhead who has created this situation has certainly given me the intelligence to take the side of your so-called enemy.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -4028,18 +3916,6 @@ The Lord is difficult to understand for people with animal intelligence. Paramā
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Those locked in &#39;friend vs enemy&#39; thinking cannot find the Supersoul; even Brahmā is sometimes bewildered. Prahlāda has been given by the same Lord the intelligence to take &#39;the enemy&#39;s side.&#39; Sometimes choosing the unpopular side is the only honest response to grace.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where is grace currently asking you to take the &#39;enemy&#39;s side&#39; — to honor what your circle dishonors?</li><li>What is the cost of refusing that intelligence when it has been given?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -4226,7 +4102,6 @@ The Lord is difficult to understand for people with animal intelligence. Paramā
 
     <div class="fc-translation" data-sec="translation">O brāhmaṇas [teachers], as iron attracted by a magnetic stone moves automatically toward the magnet, my consciousness, having been changed by His will, is attracted by Lord Viṣṇu, who carries a disc in His hand. Thus I have no independence.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -4319,18 +4194,6 @@ What is this difference in intelligence?  Just as iron moves on its own towards 
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Like iron drawn to a magnet, Prahlāda&#39;s consciousness is irresistibly drawn by the Lord with the disc — he has no independence in the matter. True attraction to Kṛṣṇa is not a decision but a recognition of pre-existing pull. He is Kṛṣṇa: the all-attractive.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What in you is already &#39;iron to the magnet&#39; — pulled toward the sacred without your decision?</li><li>How might you stop resisting that pull and simply follow it?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -4506,7 +4369,6 @@ What is this difference in intelligence?  Just as iron moves on its own towards 
 
     <div class="fc-translation" data-sec="translation">The great saint Nārada Muni continued: The great soul Prahlāda Mahārāja became silent after saying this to his teachers, Ṣaṇḍa and Amarka, the seminal sons of Śukrācārya. These so-called brāhmaṇas then became angry at him. Because they were servants of Hiraṇyakaśipu, they were very sorry, and to chastise Prahlāda Mahārāja they spoke as follows.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -4595,18 +4457,6 @@ The verb “spoke” should be supplied.</div>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Ṣaṇḍa and Amarka become angry — being only seminal brāhmaṇas, servants of Hiraṇyakaśipu, they lack actual brahminical qualities. Birth in a sacred family does not guarantee sacred character. Examine what you have inherited as title from what you have earned as substance.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which inherited spiritual identity in your life have you taken as substance rather than mere title?</li><li>Where could your inherited role become real through actual qualification?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -4775,7 +4625,6 @@ The verb “spoke” should be supplied.</div>
 
     <div class="fc-translation" data-sec="translation">Oh, please bring me a stick! This Prahlāda is damaging our name and fame. Because of his bad intelligence, he has become like a cinder in the dynasty of the demons. Now he needs to be treated by the fourth of the four kinds of political diplomacy.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -4835,18 +4684,6 @@ Vetram is a special stick for beating. Bring the stick because he has brought in
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The teachers call for a stick — the fourth and last political tool when pacification, bribery, and division all fail. When argument cannot persuade, force comes. Note the moment a debate turns to a beating; it tells you the other side has run out of reasons.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>When have you watched an argument escalate to force, and what was the missing reason?</li><li>Where in your life have you reached for the stick when you could not find words?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -5022,7 +4859,6 @@ Vetram is a special stick for beating. Bring the stick because he has brought in
 
     <div class="fc-translation" data-sec="translation">This rascal Prahlāda has appeared like a thorn tree in a forest of sandalwood. To cut down sandalwood trees, an axe is needed, and the wood of the thorn tree is very suitable for the handle of such an axe. Lord Viṣṇu is the axe for cutting down the sandalwood forest of the family of demons, and this Prahlāda is the handle for that axe.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -5101,18 +4937,6 @@ Prahlāda is the handle of the axe named Viṣṇu who cuts the root of the sand
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The teachers compare Hiraṇyakaśipu&#39;s dynasty to a sandalwood forest, Lord Viṣṇu to the axe, and Prahlāda to the axe-handle made of thorn-wood. To cut the sandalwood, the axe needs a thorny piece of itself. The Lord uses a devotee from within to cut what cannot be cut from outside.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where might you be the &#39;axe-handle&#39; the Lord is using from inside a situation?</li><li>Whose unlikely devotion in your circle is doing the cutting nothing else could?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -5263,7 +5087,6 @@ Prahlāda is the handle of the axe named Viṣṇu who cuts the root of the sand
 
     <div class="fc-translation" data-sec="translation">Ṣaṇḍa and Amarka, the teachers of Prahlāda Mahārāja, chastised and threatened their disciple in various ways and began teaching him about the paths of religion, economic development and sense gratification. This is the way they educated him.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -5322,18 +5145,6 @@ They tried to teach him.</div>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Ṣaṇḍa and Amarka threaten and then teach the standard worldly paths — dharma, artha, kāma — but skip mokṣa entirely. Demonic education leaves out the only path that actually liberates. Notice what your education left out.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What did your formal education simply not contain, that you have had to seek elsewhere?</li><li>How are you transmitting (or not) the missing piece to those you teach?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -5511,7 +5322,6 @@ They tried to teach him.</div>
 
     <div class="fc-translation" data-sec="translation">After some time, the teachers Ṣaṇḍa and Amarka thought that Prahlāda Mahārāja was sufficiently educated in the diplomatic affairs of pacifying public leaders, appeasing them by giving them lucrative posts, dividing and ruling over them, and punishing them in cases of disobedience. Then, one day, after Prahlāda’s mother had personally washed the boy and dressed him nicely with sufficient ornaments, they presented him before his father.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -5565,18 +5375,6 @@ Jṣāta-jṣeya-catuṣṭayam means Prahlāda who had learned four subjects wo
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">After a time, the teachers consider Prahlāda &#39;sufficiently educated&#39; in the four diplomatic tools — pacify, bribe, divide, punish. Skill in political manipulation is the asuras&#39; real curriculum. Notice when a &#39;good education&#39; is mostly training in manipulation.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which manipulation-skills have you been carefully trained in without realizing it?</li><li>What would &#39;real education&#39; that does not center manipulation look like for those you teach?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -5755,7 +5553,6 @@ Jṣāta-jṣeya-catuṣṭayam means Prahlāda who had learned four subjects wo
     <div class="fc-translation" data-sec="translation">When Hiraṇyakaśipu saw that his child had fallen at his feet and was offering obeisances, as an affectionate father he immediately began showering blessings upon the child and embraced him with both arms. A father naturally feels happy to embrace his son, and Hiraṇyakaśipu became very happy in this way.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -5809,18 +5606,6 @@ Jṣāta-jṣeya-catuṣṭayam means Prahlāda who had learned four subjects wo
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Seeing his child fall at his feet, Hiraṇyakaśipu showers blessings and embraces him with both arms. The demonic too feel parental love. Hostility and tenderness can live in one body — and both are real even when their object is the same person.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Whose love for you carries both hostility and tenderness — and how do you receive each?</li><li>Where do you hold mixed feelings for someone you both love and resist?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -5980,7 +5765,6 @@ Jṣāta-jṣeya-catuṣṭayam means Prahlāda who had learned four subjects wo
 
     <div class="fc-translation" data-sec="translation">Nārada Muni continued: My dear King Yudhiṣṭhira, Hiraṇyakaśipu seated Prahlāda Mahārāja on his lap and began smelling his head. With affectionate tears gliding down from his eyes and moistening the child’s smiling face, he spoke to his son as follows.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -6007,18 +5791,6 @@ Jṣāta-jṣeya-catuṣṭayam means Prahlāda who had learned four subjects wo
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Hiraṇyakaśipu seats Prahlāda on his lap, smells his head, sheds affectionate tears onto the child&#39;s smiling face. The Vedic gesture of smelling a child&#39;s head is profoundly intimate. Even the hardest heart has these moments — they are not the whole story but they are part of it.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Whom in your life have you written off, forgetting their moments of real tenderness?</li><li>How does honoring such moments change how you respond to their later cruelty?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -6212,7 +5984,6 @@ Jṣāta-jṣeya-catuṣṭayam means Prahlāda who had learned four subjects wo
 
     <div class="fc-translation" data-sec="translation">Hiraṇyakaśipu said: My dear Prahlāda, my dear son, O long-lived one, for so much time you have heard many things from your teachers. Now please repeat to me whatever you think is the best of that knowledge.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -6271,18 +6042,6 @@ Svadhītam means “what you have studied without having doubts.”   Anu means 
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Hiraṇyakaśipu asks, &#39;tell me whatever you think is best of what you&#39;ve learned.&#39; Prahlāda will answer with the teachings of his real guru, Nārada, not those of Ṣaṇḍa and Amarka. When asked for the best, give what is best — not what is safe.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>When asked &#39;what&#39;s the best of what you know?&#39; do you give the safe answer or the true one?</li><li>Whose real teaching in your life would you cite if you had to choose one source?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -6600,7 +6359,6 @@ Svadhītam means “what you have studied without having doubts.”   Anu means 
 
 
     <div class="fc-translation" data-sec="translation">Prahlāda Mahārāja said: Hearing and chanting about the transcendental holy name, form, qualities, paraphernalia and pastimes of Lord Viṣṇu, remembering them, serving the lotus feet of the Lord, offering the Lord respectful worship with sixteen types of paraphernalia, offering prayers to the Lord, becoming His servant, considering the Lord one’s best friend, and surrendering everything unto Him (in other words, serving Him with the body, mind and words) — these nine processes are accepted as pure devotional service. One who has dedicated his life to the service of Kṛṣṇa through these nine methods should be understood to be the most learned person, for he has acquired complete knowledge.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -7164,18 +6922,6 @@ Svadhītam means “what you have studied without having doubts.”   Anu means 
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Prahlāda names the nine processes of pure devotion — hearing, chanting, remembering, serving the feet, worshiping, praying, becoming a servant, befriending, and surrendering everything. These nine fields together constitute complete knowledge. Choose any one as a doorway.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which of the nine processes most naturally calls you right now?</li><li>How could you weave one new devotional process into next week?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -7345,7 +7091,6 @@ Svadhītam means “what you have studied without having doubts.”   Anu means 
     <div class="fc-translation" data-sec="translation">After hearing these words of devotional service from the mouth of his son Prahlāda, Hiraṇyakaśipu was extremely angry. His lips trembling, he spoke as follows to Ṣaṇḍa, the son of his guru, Śukrācārya.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -7414,18 +7159,6 @@ Svadhītam means “what you have studied without having doubts.”   Anu means 
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Hearing devotional service from his son&#39;s mouth, Hiraṇyakaśipu&#39;s lips tremble with rage and he turns on Ṣaṇḍa. Anger looks for someone to blame when the truth lands too directly. Watch where your fury redirects when truth strikes home.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>When truth lands hard, whom do you blame to deflect the blow?</li><li>What truth in your life would land so directly that it would expose this redirection pattern?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -7603,7 +7336,6 @@ Svadhītam means “what you have studied without having doubts.”   Anu means 
 
     <div class="fc-translation" data-sec="translation">O unqualified, most heinous son of a brāhmaṇa, you have disobeyed my order and taken shelter of the party of my enemies. You have taught this poor boy about devotional service! What is this nonsense?</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -7642,18 +7374,6 @@ Te should be tvayā (by you).   You have taught something which has no worth (as
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Hiraṇyakaśipu accuses Ṣaṇḍa of teaching the boy devotional service — calling it asāram, &#39;having no substance.&#39; To the demonic mind, the most substantial thing in existence appears as empty. Worldview determines what looks real and what looks like nonsense.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What in your spiritual life have you been told is &#39;without substance&#39; by those who cannot see it?</li><li>Where is your own dismissal of someone&#39;s path actually a confession of your worldview?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -7840,7 +7560,6 @@ Te should be tvayā (by you).   You have taught something which has no worth (as
 
     <div class="fc-translation" data-sec="translation">In due course of time, various types of diseases are manifest in those who are sinful. Similarly, in this world there are many deceptive friends in false garbs, but eventually, because of their false behavior, their actual enmity becomes manifest.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -7911,18 +7630,6 @@ The killer of a brāhmaṇa gets tuberculosis. The alcoholic gets discolored tee
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Hiraṇyakaśipu suspects the teachers are deceptive friends whose enmity has finally surfaced — like diseases that erupt only after sin accumulates. Demonic suspicion sees betrayal everywhere because it knows itself. Project carefully; you reveal your own playbook.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where does your suspicion of others&#39; betrayal actually reveal your own habits?</li><li>What &#39;disease&#39; of relationship in your life might be your own behavior surfacing?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -8200,7 +7907,6 @@ The killer of a brāhmaṇa gets tuberculosis. The alcoholic gets discolored tee
     <div class="fc-translation" data-sec="translation">The son of Śukrācārya, Hiraṇyakaśipu’s spiritual master, said: O enemy of King Indra, O King! Whatever your son Prahlāda has said was not taught to him by me or anyone else. His spontaneous devotional service has naturally developed in him. Therefore, please give up your anger and do not unnecessarily accuse us. It is not good to insult a brāhmaṇa in this way.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -8261,18 +7967,6 @@ O enemy of Indra! This indicates “It is not proper for you to become angry at 
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Ṣaṇḍa swears no one taught Prahlāda this — it arose spontaneously in him. The teacher&#39;s defense reveals an unintended truth: real devotion can be naturally inherent. Sometimes a soul brings devotion across lifetimes, no one had to teach it.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What devotional capacity in your life was clearly already in you when you arrived?</li><li>Whose &#39;spontaneous&#39; devotion have you under-honored because no school produced it?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -8502,7 +8196,6 @@ O enemy of Indra! This indicates “It is not proper for you to become angry at 
 
     <div class="fc-translation" data-sec="translation">Śrī Nārada Muni continued: When Hiraṇyakaśipu received this reply from the teacher, he again addressed his son Prahlāda. Hiraṇyakaśipu said: You rascal, most fallen of our family, if you have not received this education from your teachers, where have you gotten it?</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -8546,18 +8239,6 @@ O inauspicious one!  The hidden meaning is “From where did you get this mind w
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">If not from the teachers, where then? Hiraṇyakaśipu presses Prahlāda again. The demonic mind, refused one explanation, demands another rather than admit the simple truth. Insisting on a &#39;proper&#39; source for devotion is itself a refusal of devotion.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where do you demand a credentialed source for a truth you have already received directly?</li><li>What devotion in your life arrived without proper papers?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -8798,7 +8479,6 @@ O inauspicious one!  The hidden meaning is “From where did you get this mind w
 
     <div class="fc-translation" data-sec="translation">Prahlāda Mahārāja replied: Because of their uncontrolled senses, persons too addicted to materialistic life make progress toward hellish conditions and repeatedly chew that which has already been chewed. Their inclinations toward Kṛṣṇa are never aroused, either by the instructions of others, by their own efforts, or by a combination of both.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -8904,18 +8584,6 @@ True, according to you, thinking of Kṛṣṇa is asat. It is non-existent at l
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Prahlāda answers: those addicted to material life keep &#39;chewing the chewed&#39; and their minds never turn to Kṛṣṇa — neither by instruction, nor by their own effort, nor by both. Material absorption is a closed loop that even good teaching cannot pierce. Surrender is needed.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What &#39;already-chewed&#39; pleasure are you returning to despite knowing better?</li><li>Where has even good teaching failed to break the loop, and what would actually break it?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -9167,7 +8835,6 @@ True, according to you, thinking of Kṛṣṇa is asat. It is non-existent at l
 
     <div class="fc-translation" data-sec="translation">Persons who are strongly entrapped by the consciousness of enjoying material life, and who have therefore accepted as their leader or guru a similar blind man attached to external sense objects, cannot understand that the goal of life is to return home, back to Godhead, and engage in the service of Lord Viṣṇu. As blind men guided by another blind man miss the right path and fall into a ditch, materially attached men led by another materially attached man are bound by the ropes of fruitive labor, which are made of very strong cords, and they continue again and again in materialistic life, suffering the threefold miseries.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -9301,18 +8968,6 @@ True, according to you, thinking of Kṛṣṇa is asat. It is non-existent at l
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The blind led by the blind — materially attached men led by another materially attached man — miss the path and fall into the ditch. Choose your guides by their relationship with the Lord, not by their worldly credentials. Spiritual leadership requires inner sight.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which of your current guides shows the inner sight Prahlāda describes?</li><li>Where might you be following a blind guide because the credentials are reassuring?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -9537,7 +9192,6 @@ True, according to you, thinking of Kṛṣṇa is asat. It is non-existent at l
 
     <div class="fc-translation" data-sec="translation">Unless they smear upon their bodies the dust of the lotus feet of a Vaiṣṇava completely freed from material contamination, persons very much inclined toward materialistic life cannot be attached to the lotus feet of the Lord, who is glorified for His uncommon activities. Only by becoming Kṛṣṇa conscious and taking shelter at the lotus feet of the Lord in this way can one be freed from material contamination.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -9691,18 +9345,6 @@ The goal of having the intelligence touch the Lord’s feet (yad arthaḥ) is de
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Without taking the dust of a pure Vaiṣṇava&#39;s lotus feet, materialists cannot become attached to Kṛṣṇa. Contact with the truly liberated changes what no self-effort can change. Seek the company that transmits what cannot be self-generated.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Whose company in your life has actually transmitted to you what you could not produce alone?</li><li>What practice keeps you in such company despite worldly demands?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -9863,7 +9505,6 @@ The goal of having the intelligence touch the Lord’s feet (yad arthaḥ) is de
     <div class="fc-translation" data-sec="translation">After Prahlāda Mahārāja had spoken in this way and become silent, Hiraṇyakaśipu, blinded by anger, threw him off his lap and onto the ground.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -9932,18 +9573,6 @@ The goal of having the intelligence touch the Lord’s feet (yad arthaḥ) is de
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Blinded by anger, Hiraṇyakaśipu throws his small son off his lap onto the ground. The same lap that held him moments ago becomes the platform of his rejection. Tenderness and violence can occupy the same body in the same hour.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Whose tenderness and violence have you experienced in close succession, and how do you hold both?</li><li>Where might your own anger be casting off what you genuinely love?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -10122,7 +9751,6 @@ The goal of having the intelligence touch the Lord’s feet (yad arthaḥ) is de
     <div class="fc-translation" data-sec="translation">Indignant and angry, his reddish eyes like molten copper, Hiraṇyakaśipu said to his servants: O demons, take this boy away from me! He deserves to be killed. Kill him as soon as possible!</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -10153,18 +9781,6 @@ He was overcome with anger along with intolerance (amarṣa). Naiṛṛtā means
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Eyes reddened like molten copper, Hiraṇyakaśipu orders his servants to kill the boy. Demonic decision-making accelerates from disagreement to extermination with terrifying speed. Be wary of relationships in which disagreement becomes a death sentence.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which relationship in your life moves from disagreement to threat too quickly?</li><li>What internal pattern in you collapses &#39;I differ&#39; into &#39;you must be destroyed&#39;?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -10365,7 +9981,6 @@ He was overcome with anger along with intolerance (amarṣa). Naiṛṛtā means
 
     <div class="fc-translation" data-sec="translation">This boy Prahlāda is the killer of my brother, for he has given up his family to engage in the devotional service of the enemy, Lord Viṣṇu, like a menial servant.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -10404,18 +10019,6 @@ He is the killer of my brother.  “But it is well known that Viṣṇu killed y
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Hiraṇyakaśipu calls Prahlāda &#39;the killer of my brother&#39; for serving Viṣṇu like a menial. Devotion to a perceived &#39;enemy of the family&#39; is treated as betrayal worse than murder. Family loyalty weaponized against devotion is a recurring demonic move.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where is family loyalty being used as a weapon against your devotion?</li><li>How do you honor family without sacrificing the Lord on its altar?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -10612,7 +10215,6 @@ He is the killer of my brother.  “But it is well known that Viṣṇu killed y
     <div class="fc-translation" data-sec="translation">Although Prahlāda is only five years old, even at this young age he has given up his affectionate relationship with his father and mother. Therefore, he is certainly untrustworthy. Indeed, it is not at all believable that he will behave well toward Viṣṇu.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -10673,18 +10275,6 @@ Viṣṇu should not be believed.  How could a person who is intelligent put fai
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">He insists even a five-year-old who has given up affection for his parents cannot be trusted toward Viṣṇu either. The demonic mind cannot believe in love that crosses &#39;family lines.&#39; To it, all devotion looks like defection.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where do you frame someone&#39;s wider love as betrayal of you?</li><li>How can you let a loved one belong more deeply to the Lord without feeling abandoned?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -10963,7 +10553,6 @@ Viṣṇu should not be believed.  How could a person who is intelligent put fai
 
     <div class="fc-translation" data-sec="translation">Although a medicinal herb, being born in the forest, does not belong to the same category as a man, if beneficial it is kept very carefully. Similarly, if someone outside one’s family is favorable, he should be given protection like a son. On the other hand, if a limb of one’s body is poisoned by disease, it must be amputated so that the rest of the body may live happily. Similarly, even one’s own son, if unfavorable, must be rejected, although born of one’s own body.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -10992,18 +10581,6 @@ Viṣṇu should not be believed.  How could a person who is intelligent put fai
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Hiraṇyakaśipu reasons: a beneficial outsider should be kept like a son, and a poisoned limb of one&#39;s own body must be amputated. Therefore Prahlāda, even one&#39;s own son, can be rejected. Demonic logic dresses cruelty in surgical metaphors.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where do you reach for &#39;surgical&#39; metaphors to justify cutting off someone you love?</li><li>How would treating Prahlāda&#39;s gentleness as medicine — not poison — change your decisions?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -11181,7 +10758,6 @@ Viṣṇu should not be believed.  How could a person who is intelligent put fai
 
     <div class="fc-translation" data-sec="translation">Just as uncontrolled senses are the enemies of all yogīs engaged in advancing in spiritual life, this Prahlāda, who appears to be a friend, is an enemy because I cannot control him. Therefore this enemy, whether eating, sitting or sleeping, must be killed by all means.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -11245,18 +10821,6 @@ He should be killed by putting poison in his food and other means.</div>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Prahlāda is &#39;an enemy in the form of a friend&#39; because the father cannot control him — so he must be killed while eating, sitting, or sleeping. Demonic strategy targets the vulnerable everyday moments. The deepest cruelty is to those who have already given trust.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Whose trust in you have you used against them, even slightly?</li><li>What &#39;everyday vulnerability&#39; in your relationships deserves more, not less, protection?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -11578,7 +11142,6 @@ He should be killed by putting poison in his food and other means.</div>
     <div class="fc-translation" data-sec="translation">The demons [Rākṣasas], the servants of Hiraṇyakaśipu, thus began striking the tender parts of Prahlāda Mahārāja’s body with their tridents. The demons all had fearful faces, sharp teeth and reddish, coppery beards and hair, and they appeared extremely threatening. Making a tumultuous sound, shouting, “Chop him up! Pierce him!” they began striking Prahlāda Mahārāja, who sat silently, meditating upon the Supreme Personality of Godhead.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -11622,18 +11185,6 @@ He should be killed by putting poison in his food and other means.</div>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Sharp-toothed Rākṣasas with coppery beards strike Prahlāda&#39;s tender body with tridents, shouting &#39;chop him up, pierce him!&#39; He sits silently, meditating on the Supreme. Demonic violence and devotional silence occupy the same scene. Devotion does not require winning the scene to be unbroken.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where in your life is silent meditation your strength in the middle of violence (literal or verbal)?</li><li>What unbroken inner space is yours to return to, no matter what is happening outside?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -11802,7 +11353,6 @@ He should be killed by putting poison in his food and other means.</div>
 
     <div class="fc-translation" data-sec="translation">Even though a person who has no assets in pious activities performs some good deed, it will have no result. Thus the weapons of the demons had no tangible effects upon Prahlāda Mahārāja because he was a devotee undisturbed by material conditions and fully engaged in meditating upon and serving the Supreme Personality of Godhead, who is unchangeable, who cannot be realized by the material senses, and who is the soul of the entire universe.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -11846,18 +11396,6 @@ His body (ātmā) was connected with the Lord, since it was previously said that
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Just as good deeds without pious assets bear no fruit, the demons&#39; weapons bear no result on Prahlāda — fully meditating on the Lord and undisturbed by material conditions. Spiritual protection comes from total absorption, not from defending the body.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where are you defending the body while neglecting the absorption that actually protects?</li><li>What practice could deepen your absorption enough that material weapons lose their bite?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -12009,7 +11547,6 @@ His body (ātmā) was connected with the Lord, since it was previously said that
     <div class="fc-translation" data-sec="translation">My dear King Yudhiṣṭhira, when all the attempts of the demons to kill Prahlāda Mahārāja were futile, the King of the demons, Hiraṇyakaśipu, being most fearful, began contriving other means to kill him.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -12068,18 +11605,6 @@ His body (ātmā) was connected with the Lord, since it was previously said that
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">When all the demons&#39; attempts to kill Prahlāda fail, Hiraṇyakaśipu — now afraid — devises further means. The failure of cruelty often produces fear in the cruel one. Devotion&#39;s protection over time can convert a persecutor&#39;s confidence into anxiety.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where has your persistence under attack quietly unnerved someone who attacked you?</li><li>How does Prahlāda&#39;s example shape your response to long-running hostility?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -12432,7 +11957,6 @@ His body (ātmā) was connected with the Lord, since it was previously said that
     <div class="fc-translation" data-sec="translation">Hiraṇyakaśipu could not kill his son by throwing him beneath the feet of big elephants, throwing him among huge, fearful snakes, employing destructive spells, hurling him from the top of a hill, conjuring up illusory tricks, administering poison, starving him, exposing him to severe cold, winds, fire and water, or throwing heavy stones to crush him. When Hiraṇyakaśipu found that he could not in any way harm Prahlāda, who was completely sinless, he was in great anxiety about what to do next.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -12453,18 +11977,6 @@ He tried black magic (abhicāraiḥ), throwing him from high places (avapātanai
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Elephants, snakes, spells, cliffs, illusions, poison, starvation, cold, wind, fire, water, crushing stones — none of them harm Prahlāda. The Lord&#39;s protection of a sinless devotee is comprehensive. Worry less about the specific danger; trust the protector.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which specific danger have you been over-fixating on?</li><li>How would your week feel if you trusted the Lord&#39;s protection covers the whole category?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -12670,7 +12182,6 @@ He tried black magic (abhicāraiḥ), throwing him from high places (avapātanai
     <div class="fc-translation" data-sec="translation">Hiraṇyakaśipu thought: I have used many ill names in chastising this boy Prahlāda and have devised many means of killing him, but despite all my endeavors, he could not be killed. Indeed, he saved himself by his own powers, without being affected in the least by these treacheries and abominable actions.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -12706,18 +12217,6 @@ Three verses explain his thoughts. Asad-dharmaiḥ means “from spells.”</div
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Hiraṇyakaśipu marvels: despite all his ill names and lethal plots, the boy saves himself by his own powers. He still does not name the real protector — only notes the boy&#39;s strength. The demonic see effects but refuse to name the cause.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What protection in your life have you accounted for in any terms except the Lord&#39;s?</li><li>Where could naming the Lord as cause reshape your sense of past survivals?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -12911,7 +12410,6 @@ Three verses explain his thoughts. Asad-dharmaiḥ means “from spells.”</div
 
     <div class="fc-translation" data-sec="translation">Although he is very near to me and is merely a child, he is situated in complete fearlessness. He resembles a dog’s curved tail, which can never be straightened, because he never forgets my misbehavior and his connection with his master, Lord Viṣṇu.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -12940,18 +12438,6 @@ Though he is situated close, he never forgets my enemy (anāryam), Viṣṇu.  P
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Prahlāda is &#39;like a dog&#39;s tail that can never be straightened&#39; — he never forgets his connection to Viṣṇu. Some inclinations are unbendable. To the demonic, this is stubbornness; to the devotional, it is fidelity.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which &#39;unbendable&#39; inclination in you is actually fidelity to something sacred?</li><li>Where have you tried to straighten in yourself what was never meant to be straightened?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -13130,7 +12616,6 @@ Though he is situated close, he never forgets my enemy (anāryam), Viṣṇu.  P
     <div class="fc-translation" data-sec="translation">I can see that this boy’s strength is unlimited, for he has not feared any of my punishments. He appears immortal. Therefore, because of my enmity toward him, I shall die. Or maybe this will not take place.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -13184,18 +12669,6 @@ Though he is situated close, he never forgets my enemy (anāryam), Viṣṇu.  P
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Hiraṇyakaśipu admits the boy&#39;s strength is unlimited and seems immortal. He concludes: I shall die because of my enmity toward him — or maybe not. Demonic clarity sometimes flickers into truth and then quickly dims again.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What flash of truth have you had lately that you allowed to dim back into convenient denial?</li><li>Where could you let a half-acknowledged insight ripen into a real decision?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -13374,7 +12847,6 @@ Though he is situated close, he never forgets my enemy (anāryam), Viṣṇu.  P
     <div class="fc-translation" data-sec="translation">Thinking in this way, the King of the Daityas, morose and bereft of bodily luster, remained silent with his face downward. Then Ṣaṇḍa and Amarka, the two sons of Śukrācārya, spoke to him in secret.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -13403,18 +12875,6 @@ Though he is situated close, he never forgets my enemy (anāryam), Viṣṇu.  P
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Morose and dim, Hiraṇyakaśipu sits silently with face downward. Even a tyrant has long moments of dejection. Devotion&#39;s stamina can wear down the energy of opposition over time.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where has your steady devotion already worn down a persistent opposition without your noticing?</li><li>What would it mean to keep going even when the opposition looks unmoved?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -13667,7 +13127,6 @@ Though he is situated close, he never forgets my enemy (anāryam), Viṣṇu.  P
     <div class="fc-translation" data-sec="translation">O lord, we know that when you simply move your eyebrows, all the commanders of the various planets are most afraid. Without the help of any assistant, you have conquered all the three worlds. Therefore, we do not find any reason for you to be morose and full of anxiety. As for Prahlāda, he is nothing but a child and cannot be a cause of anxiety. After all, his bad or good qualities have no value.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -13688,18 +13147,6 @@ We do not see it suitable for you to think about desires you cannot attain. “B
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Ṣaṇḍa and Amarka flatter him: a movement of your eyebrow terrifies the rulers of every planet — why worry about a small child? Sycophants always minimize the very thing you should be paying attention to. Flattery is the enemy of right discernment.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Whose flattery is currently helping you ignore the small voice you should be heeding?</li><li>Where is what looks &#39;small&#39; actually the most important data point?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -13952,7 +13399,6 @@ We do not see it suitable for you to think about desires you cannot attain. “B
     <div class="fc-translation" data-sec="translation">Until the return of our spiritual master, Śukrācārya, arrest this child with the ropes of Varuṇa so that he will not flee in fear. In any case, by the time he is somewhat grown up and has assimilated our instructions or served our spiritual master, he will change in his intelligence. Thus there need be no cause for anxiety.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -13973,18 +13419,6 @@ We do not see it suitable for you to think about desires you cannot attain. “B
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Wait for Śukrācārya&#39;s return; arrest the child with Varuṇa&#39;s ropes; he will grow up and conform. Time and pressure are expected to flatten devotion. Demonic strategy bets on the maturation of conformity. It loses that bet with real bhaktas.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where has someone bet on your spiritual youth fading into conformity?</li><li>How do you guard against the slow pressures to &#39;grow up&#39; out of devotion?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -14171,7 +13605,6 @@ We do not see it suitable for you to think about desires you cannot attain. “B
 
     <div class="fc-translation" data-sec="translation">After hearing these instructions of Ṣaṇḍa and Amarka, the sons of his spiritual master, Hiraṇyakaśipu agreed and requested them to instruct Prahlāda in that system of occupational duty which is followed by royal householder families.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -14201,18 +13634,6 @@ Anjṣāya means “accepting.”</div>
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Hiraṇyakaśipu agrees, asking the teachers to instruct Prahlāda in the duties of a royal householder — not a renunciate. Worldly elders steer the young toward householder management and away from the renounced order. The path of mokṣa is quietly edited out.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which renunciate impulse in you has been steered toward &#39;household management&#39; by well-meaning elders?</li><li>What would it mean to keep mokṣa as an open option in your life decisions?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -14408,7 +13829,6 @@ Anjṣāya means “accepting.”</div>
 
     <div class="fc-translation" data-sec="translation">Thereafter, Ṣaṇḍa and Amarka systematically and unceasingly taught Prahlāda Mahārāja, who was very submissive and humble, about mundane religion, economic development and sense gratification.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -14465,18 +13885,6 @@ Anjṣāya means “accepting.”</div>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Ṣaṇḍa and Amarka teach Prahlāda — submissive and humble — about mundane religion, economic development, and sense gratification. The standard human script. Even a fully formed devotee shows humility toward worldly teachers without absorbing their conclusions.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where do you confuse humility with absorbing conclusions you do not hold?</li><li>How can you be submissive in form while preserving devotional substance?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -14645,7 +14053,6 @@ Anjṣāya means “accepting.”</div>
 
     <div class="fc-translation" data-sec="translation">The teachers Ṣaṇḍa and Amarka instructed Prahlāda Mahārāja in the three kinds of material advancement called religion, economic development and sense gratification. Prahlāda, however, being situated above such instructions, did not like them, for such instructions are based on the duality of worldly affairs, which involve one in a materialistic way of life marked by birth, death, old age and disease.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -14711,18 +14118,6 @@ Just as he considered the teachings of tri-varga to be wrong, he considered this
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Prahlāda receives the three-fold worldly instruction but inwardly does not like it — these teachings rest on duality and lock one into birth, death, old age, and disease. Real liberation requires going past the dualistic frame even when it is delivered by experts.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which dualistic frame in your education or work is silently keeping you locked into saṁsāra?</li><li>What practice helps you step past duality even while functioning within it?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -14891,7 +14286,6 @@ Just as he considered the teachings of tri-varga to be wrong, he considered this
 
     <div class="fc-translation" data-sec="translation">When the teachers went home to attend to their household affairs, the students of the same age as Prahlāda Mahārāja would call him to take the opportunity of leisure hours for play.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -14960,18 +14354,6 @@ Parāvrṭtaḥ means “going to his house from the school.” There he engaged
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">When the teachers go home, his classmates of his own age call Prahlāda to play. He uses the leisure hours not for amusement but for preaching Kṛṣṇa-consciousness. Free time is the test — what do you turn to when no curriculum constrains you?</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What have you done with your leisure hours lately, and what does it reveal?</li><li>How could the spaces between obligations become opportunities for sacred conversation?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -15149,7 +14531,6 @@ Parāvrṭtaḥ means “going to his house from the school.” There he engaged
 
     <div class="fc-translation" data-sec="translation">Prahlāda Mahārāja, who was truly the supreme learned person, then addressed his class friends in very sweet language. Smiling, he began to teach them about the uselessness of the materialistic way of life. Being very kind to them, he instructed them as follows.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -15213,18 +14594,6 @@ Vidvān tna-niṣthām means “he knew that the boys had faith in him as their 
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Prahlāda, the supreme learned person, smilingly addresses his friends in sweet words on the uselessness of materialistic life. Kindness, smile, and clarity together transmit truth better than any of them alone. Real teaching is firm and tender at once.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where could your truth-telling be made more effective by adding the smile and the sweet word?</li><li>Who in your life delivers hard truth with such kindness, and what can you learn from them?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -15527,7 +14896,6 @@ Vidvān tna-niṣthām means “he knew that the boys had faith in him as their 
 
     <div class="fc-translation" data-sec="translation">My dear King Yudhiṣṭhira, all the children were very much affectionate and respectful to Prahlāda Mahārāja, and because of their tender age they were not so polluted by the instructions and actions of their teachers, who were attached to condemned duality and bodily comfort. Thus the boys surrounded Prahlāda Mahārāja, giving up their playthings, and sat down to hear him. Their hearts and eyes being fixed upon him, they looked at him with great earnestness. Prahlāda Mahārāja, although born in a demon family, was an exalted devotee, and he desired their welfare. Thus he began instructing them about the futility of materialistic life.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -15581,18 +14949,6 @@ Prahlāda Instructs His Friends</div>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">His tender-aged friends — not yet polluted by the materialistic instructions of their teachers — give up their toys and sit attentively. Prahlāda, born in a demon family but exalted in devotion, teaches them the futility of materialistic life. The young, when addressed kindly, will listen to truth.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which younger person around you is ready to hear what their teachers do not say?</li><li>How can you offer wisdom kindly enough that they will set down their toys?</li></ul>
-
-
-
-
-
-    </section>
 
 
 

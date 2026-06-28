@@ -25,19 +25,25 @@
     <link rel="icon" href="../../../assets/icons/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="../../../assets/icons/icon.svg">
     <link rel="stylesheet" href="../../../assets/css/site.css">
+    <link rel="alternate" hreflang="te-IN" href="../../../te/sb/8/8/">
+    <link rel="alternate" hreflang="x-default" href="../../../">
     <script>window.FC_TO_ROOT = "../../../";</script>
     <script src="../../../assets/js/toggle.js"></script>
 </head>
 <body class="has-sidebar" data-chapter="8">
 <header class="fc-site-header">
     <button type="button" class="fc-mobile-trigger fc-mobile-trigger-left" data-overlay="left" aria-label="Open settings drawer">⚙</button>
-<a class="fc-brand" href="../../../">FolioCorpus<span class="fc-sub">Śrīmad-Bhāgavatam</span></a>
+    <a class="fc-brand" href="../../../">FolioCorpus<span class="fc-sub">Bhagavad-gītā</span></a>
     <nav class="fc-site-nav">
         <a href="../../../">Home</a>
         <a href="../../../bg/">Bhagavad-gītā</a>
         <a href="../../../sb/">Śrīmad-Bhāgavatam</a>
         <a href="../../../search/" title="Search across all integrated works">🔍 Search</a>
         <button type="button" id="fc-random-verse" class="fc-nav-btn" title="Jump to a random verse">🎲 Random</button>
+        <span class="fc-lang-switch" aria-label="Script">
+            <a class="active" href="#" title="Devanāgarī edition">EN</a>
+            <a class="" href="../../../te/sb/8/8/" title="Telugu lipi edition">తె</a>
+        </span>
     </nav>
     <button type="button" class="fc-mobile-trigger fc-mobile-trigger-right" data-overlay="right" aria-label="Open chapter index drawer">📚</button>
 </header>
@@ -46,8 +52,8 @@
     <button class="fc-sb-collapse" type="button" data-sb="left" title="Collapse left sidebar" aria-label="Collapse"></button>
 
     <div class="fc-sb-body">
-        <details class="fc-sb-section" data-sbsec="reading" open>
-            <summary class="fc-sb-title">Reading</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Reading</div>
             <div class="fc-sb-sub">Theme</div>
             <div class="fc-segmented" data-setting="theme">
                 <button type="button" data-val="light">Light</button>
@@ -73,10 +79,10 @@
                 <button type="button" data-val="single">Single</button>
                 <button type="button" data-val="side">Side-by-side</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="display" open>
-            <summary class="fc-sb-title">Display</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Display</div>
             <div class="fc-sb-grid">
                 <label><input type="checkbox" data-section="devanagari" checked> Devanāgarī</label>
                 <label><input type="checkbox" data-section="iast" checked> IAST transliteration</label>
@@ -99,10 +105,33 @@
                 <button type="button" data-action="expand-all">Expand all</button>
                 <button type="button" data-action="collapse-all">Collapse all</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="tools" open>
-            <summary class="fc-sb-title">Tools</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Find your starting point</div>
+            <div class="fc-persona-links">
+                <a class="fc-persona-link" href="../../../daily/">🌅 Daily (one value a week)</a>
+                <a class="fc-persona-link" href="../../../householder/">🏠 Householder (family & work)</a>
+                <a class="fc-persona-link" href="../../../parenting/">👨‍👩‍👧 Parenting (stories for kids)</a>
+                <a class="fc-persona-link" href="../../../themes/">📚 All themes</a>
+                <a class="fc-persona-link" href="../../../values/" style="background:#F0F6F2;border-left-color:#1F4632;">ॐ Vedic Value System ↗</a>
+                <a class="fc-persona-link" href="../../../vidya/" style="background:#FBF6E4;border-left-color:#C8860B;">📚 Vidyā Karaṇa (kids, multi-lang) ↗</a>
+            </div>
+        </div>
+
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Audience</div>
+            <div class="fc-audience-filter">
+                <label><input type="radio" name="fc-audience" value="all" checked> All levels</label>
+                <label><input type="radio" name="fc-audience" value="primary"> Primary (children)</label>
+                <label><input type="radio" name="fc-audience" value="middle"> Middle (teens)</label>
+                <label><input type="radio" name="fc-audience" value="senior"> Senior (adults)</label>
+                <label><input type="radio" name="fc-audience" value="college"> College / scholar</label>
+            </div>
+        </div>
+
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Tools</div>
             <div class="fc-sb-tools">
                 <button type="button" id="fc-presentation-toggle" class="fc-tool-btn"><span>🖥 Presentation</span><kbd class="fc-kbd">F</kbd></button>
                 <button type="button" id="fc-pen-toggle" class="fc-tool-btn"><span>✏️ Pen mode</span><kbd class="fc-kbd">P</kbd></button>
@@ -117,10 +146,26 @@
                 <button type="button" id="fc-clear-highlights" class="fc-tool-btn">🩷 Clear highlights (page)</button>
                 <button type="button" id="fc-notes-modal-open" class="fc-tool-btn">📓 My annotations</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="progress" id="fc-progress-section" open>
-            <summary class="fc-sb-title">Progress</summary>
+        <div class="fc-sb-section" id="fc-tts-controls" hidden>
+            <div class="fc-sb-title">
+                Read-aloud
+                <label class="fc-tts-master">
+                    <input type="checkbox" id="fc-tts-enabled" checked>
+                    <span class="fc-tts-master-label">On</span>
+                </label>
+            </div>
+            <div class="fc-tts-inner">
+                <div class="fc-sb-sub">Voice</div>
+                <select id="fc-tts-voice" class="fc-tts-select" aria-label="TTS voice"></select>
+                <div class="fc-sb-sub">Rate <span class="fc-tts-rate-val">1.0×</span></div>
+                <input type="range" id="fc-tts-rate" min="0.5" max="2" step="0.1" value="1" class="fc-tts-rate" aria-label="Reading rate">
+            </div>
+        </div>
+
+        <div class="fc-sb-section" id="fc-progress-section">
+            <div class="fc-sb-title">Progress</div>
             <div class="fc-progress-row">
                 <span class="fc-progress-num" id="fc-progress-num">0</span>
                 <span class="fc-progress-divider">/</span>
@@ -135,29 +180,29 @@
                 <span class="fc-progress-spacer"></span>
                 <button type="button" class="fc-progress-reset" id="fc-progress-reset" title="Reset progress">↺</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="bookmarks" open>
-            <summary class="fc-sb-title">Bookmarks <span class="fc-sb-count" id="fc-bookmarks-count">0</span></summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Bookmarks <span class="fc-sb-count" id="fc-bookmarks-count">0</span></div>
             <ul class="fc-bookmark-list" id="fc-bookmarks-list">
                 <li class="fc-sb-empty">No bookmarks yet — click ☆ on any verse.</li>
             </ul>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="notes" open>
-            <summary class="fc-sb-title">Notes <span class="fc-sb-count" id="fc-notes-count">0</span></summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Notes <span class="fc-sb-count" id="fc-notes-count">0</span></div>
             <ul class="fc-bookmark-list" id="fc-notes-list">
                 <li class="fc-sb-empty">No notes yet — open any verse and write in the 📝 block.</li>
             </ul>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="export">
-            <summary class="fc-sb-title">Export</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Export</div>
             <div class="fc-sb-tools">
                 <button type="button" id="fc-export-md" class="fc-tool-btn">📥 Download Markdown</button>
                 <button type="button" id="fc-export-json" class="fc-tool-btn">💾 Download JSON backup</button>
             </div>
-        </details>
+        </div>
     </div>
 </aside>    <main class="fc-container">
 <nav class="fc-breadcrumbs">
@@ -175,7 +220,7 @@
         <h1 class="fc-verse-heading">8.8 · The Churning of the Milk Ocean</h1>
         <span class="fc-ribbon-meta">
             40 verses
- · <a class="fc-ribbon-link" href="class-prep/">🖨 Class prep</a>        </span>
+        </span>
         <input type="search" class="fc-search" id="fc-search" placeholder="🔍 Search in this chapter" aria-label="Search verses in this chapter">
         <span class="fc-ribbon-current" id="fc-ribbon-current" aria-live="polite"></span>
     </div>
@@ -509,7 +554,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <div class="fc-translation" data-sec="translation">Śukadeva Gosvāmī continued: Upon Lord Śiva’s drinking the poison, both the demigods and the demons, being very pleased, began to churn the ocean with renewed vigor. As a result of this, there appeared a cow known as surabhi.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -583,18 +627,6 @@ In the Eighth Chapter, among various jewels, Lakṣmī also appears and Viṣṇ
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">After Śiva drank the poison, churning resumed and the surabhi cow appeared — source of milk, ghee, and the basis of yajña. The first fruit after enduring poison is something that feeds sacred fire. Sacrifice begins where suffering ends.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What &#39;first good thing&#39; has appeared in my life right after I endured something poisonous?</li><li>What do I currently treat as ordinary that actually fuels my entire spiritual practice?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -754,7 +786,6 @@ In the Eighth Chapter, among various jewels, Lakṣmī also appears and Viṣṇ
 
     <div class="fc-translation" data-sec="translation">O King Parīkṣit, great sages who were completely aware of the Vedic ritualistic ceremonies took charge of that surabhi cow, which produced all the yogurt, milk and ghee absolutely necessary for offering oblations into the fire. They did this just for the sake of pure ghee, which they wanted for the performance of sacrifices to elevate themselves to the higher planetary systems, up to Brahmaloka.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -823,18 +854,6 @@ Devayanasya means for attaining the path to Brahmaloka.</div>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Great sages took charge of surabhi for the sake of pure ghee to perform yajña and elevate themselves. The wise do not collect resources for their own enjoyment; they steward them for sacrifice. Possession is meaningful only when offered upward.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What resource am I &#39;taking charge&#39; of for personal use that should serve sacrifice?</li><li>If I imagined my income as ghee for yajña, what would I change about how I spend it?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -1004,7 +1023,6 @@ Devayanasya means for attaining the path to Brahmaloka.</div>
     <div class="fc-translation" data-sec="translation">Thereafter, a horse named Uccaiḥśravā, which was as white as the moon, was generated. Bali Mahārāja desired to possess this horse, and Indra, the King of heaven, did not protest, for he had previously been so advised by the Supreme Personality of Godhead.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -1070,18 +1088,6 @@ The Lord instructed this in order to increase the pride of the demons.</div>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The white horse Uccaiḥśravā appeared, and Indra let Bali take it on the Lord&#39;s prior advice. Letting go of attractive things, on the Lord&#39;s instruction, builds trust. Indra obeyed without protest — a quiet act of bhakti even kings perform.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What attractive thing has the Lord asked me to let go of, that I am still negotiating about?</li><li>Where could quiet obedience save me from a fight I would otherwise lose?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -1251,7 +1257,6 @@ The Lord instructed this in order to increase the pride of the demons.</div>
     <div class="fc-translation" data-sec="translation">As the next result of the churning, the king of elephants, named Airāvata, was generated. This elephant was white, and with its four tusks it defied the glories of Kailāsa Mountain, the glorious abode of Lord Śiva.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -1287,18 +1292,6 @@ With its tusks like mountain peaks, the elephant challenged the glory of white M
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The white elephant Airāvata appeared, defying the glory of Śiva&#39;s Kailāsa with its four tusks. The Lord&#39;s ocean produces beings that rival the most exalted abodes. Do not assume the most magnificent thing you know is the highest possible.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What awe-inspiring thing in my life am I treating as the ceiling, when greater is possible?</li><li>Where has my imagination of the spiritual world been smaller than its reality?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -1485,7 +1478,6 @@ With its tusks like mountain peaks, the elephant challenged the glory of white M
 
     <div class="fc-translation" data-sec="translation">Thereafter, O King, eight great elephants, which could go in any direction, were generated. They were headed by Airāvaṇa. Eight she-elephants, headed by Abhramu, were also generated.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1522,18 +1514,6 @@ With its tusks like mountain peaks, the elephant challenged the glory of white M
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Eight directional elephants and their consorts emerged. The cosmic order is populated by named beings who hold every direction. We do not live in an empty universe of laws but in a peopled one full of intentional servants of the Lord.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Do I treat the universe as impersonal mechanism or as a community of servants?</li><li>Which &#39;direction&#39; of my life feels under-protected — and might benefit from a remembrance of these guardians?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -1824,7 +1804,6 @@ With its tusks like mountain peaks, the elephant challenged the glory of white M
     <div class="fc-translation" data-sec="translation">Generated thereafter from the great ocean were the celebrated gems Kaustubha-maṇi and Padmarāga-maṇi. Lord Viṣṇu, to decorate His chest, desired to possess them. Generated next was the pārijāta flower, which decorates the celestial planets. O King, as you fulfill the desires of everyone on this planet by fulfilling all ambitions, the pārijāta fulfills the desires of everyone.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -1843,18 +1822,6 @@ With its tusks like mountain peaks, the elephant challenged the glory of white M
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Kaustubha gem, Padmarāga, and the wish-fulfilling pārijāta appeared — Viṣṇu took the gems for His chest. The Lord chooses to wear what comes from the churning. He gladly accepts what we produce as ornament on His own body.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What &#39;gem&#39; produced through my efforts might the Lord want to wear, if I offered it?</li><li>Where am I hoarding what was made to decorate Him?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -2004,7 +1971,6 @@ With its tusks like mountain peaks, the elephant challenged the glory of white M
     <div class="fc-translation" data-sec="translation">Next there appeared the Apsarās [who are used as prostitutes on the heavenly planets]. They were fully decorated with golden ornaments and lockets and were dressed in fine and attractive clothing. The Apsarās move very slowly in an attractive style that bewilders the inhabitants of the heavenly planets.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -2025,18 +1991,6 @@ Ramaṇyaḥ means “they give pleasure by their movements and glances.”</div
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Apsarās appeared, beautifully decorated, moving slowly and bewildering the heavenly residents. Not everything produced by spiritual effort is purely spiritual. Sacred churnings also surface objects of bewilderment. Discernment, not avoidance, is the practice.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What &#39;apsarā&#39; has my spiritual life produced that I am subtly bewildered by?</li><li>Where am I confusing beauty with sanctity in what my churning has brought forward?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -2223,7 +2177,6 @@ Ramaṇyaḥ means “they give pleasure by their movements and glances.”</div
 
     <div class="fc-translation" data-sec="translation">Then there appeared the goddess of fortune, Ramā, who is absolutely dedicated to being enjoyed by the Supreme Personality of Godhead. She appeared like electricity, surpassing the lightning that might illuminate a marble mountain.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2274,18 +2227,6 @@ Rāma is the embodiment of wealth (sākṣāt śrī).  Ramā means “one who gi
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The goddess Lakṣmī appeared — dedicated entirely to being enjoyed by the Supreme. Real opulence is by nature directed toward the Lord; it does not stand alone. To want her without Him is to want her in her unnatural state.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Do I want Lakṣmī (wealth, opulence) for the Lord&#39;s enjoyment or for my own?</li><li>Where am I trying to keep wealth as if it could exist apart from its master?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -2454,7 +2395,6 @@ Rāma is the embodiment of wealth (sākṣāt śrī).  Ramā means “one who gi
 
     <div class="fc-translation" data-sec="translation">Because of her exquisite beauty, her bodily features, her youth, her complexion and her glories, everyone, including the demigods, the demons and the human beings, desired her. They were attracted because she is the source of all opulences.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2538,18 +2478,6 @@ They became attracted to Lakṣmī, the form of wealth just described, but not t
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Everyone — demigods, demons, humans — desired Lakṣmī. But she is bhagavat-parā: dependent on the Lord. Those who serve Nārāyaṇa receive her favor naturally; those who pursue her alone get only flickering wealth that abandons them.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Am I pursuing opulence directly, or through service to the One she belongs to?</li><li>Where in my financial life would &#39;flickering&#39; describe the wealth I have?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -2728,7 +2656,6 @@ They became attracted to Lakṣmī, the form of wealth just described, but not t
     <div class="fc-translation" data-sec="translation">The King of heaven, Indra, brought a suitable sitting place for the goddess of fortune. All the rivers of sacred water, such as the Ganges and Yamunā, personified themselves, and each of them brought pure water in golden waterpots for mother Lakṣmī, the goddess of fortune.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -2794,18 +2721,6 @@ The word ca indicates that both forms—the form of wealth, and the form dear to
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Indra arranged a seat, and the sacred rivers personified themselves to bring water in golden pots. When the Lord&#39;s beloved is being honored, all who can serve, serve. Even rivers show up with their best.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What &#39;best vessel&#39; do I bring when sacred occasions arise in my life?</li><li>Where am I a passive observer when I could be an active server?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -2965,7 +2880,6 @@ The word ca indicates that both forms—the form of wealth, and the form dear to
 
     <div class="fc-translation" data-sec="translation">The land became a person and collected all the drugs and herbs needed for installing the Deity. The cows delivered five products, namely milk, yogurt, ghee, urine and cow dung, and spring personified collected everything produced in spring, during the months of Caitra and Vaiśākha [April and May].</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3004,18 +2918,6 @@ The word ca indicates that both forms—the form of wealth, and the form dear to
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Earth herself collected herbs; cows yielded the pañca-gavya; spring brought its season&#39;s fruits. Sacred ritual draws contributions from the whole cosmos. Cow protection is not symbolic — it is the practical foundation of dharmic life.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>How is my treatment of cows aligned with — or detached from — the dharmic principles I claim?</li><li>What &#39;season&#39; am I in, and what is mine to contribute right now to the larger ritual?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -3185,7 +3087,6 @@ The word ca indicates that both forms—the form of wealth, and the form dear to
     <div class="fc-translation" data-sec="translation">The great sages performed the bathing ceremony of the goddess of fortune as directed in the authorized scriptures, the Gandharvas chanted all-auspicious Vedic mantras, and the professional women dancers very nicely danced and sang authorized songs prescribed in the Vedas.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -3259,18 +3160,6 @@ The word ca indicates that both forms—the form of wealth, and the form dear to
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Sages performed the bathing, Gandharvas chanted, dancers performed authorized songs. Every role was filled by its proper expert, in its scripturally sanctioned form. Authentic worship is collaborative and authorized, not improvised.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where am I improvising worship that has a clear authorized form I could learn?</li><li>What role in collective worship am I uniquely suited for but not yet stepping into?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -3449,7 +3338,6 @@ The word ca indicates that both forms—the form of wealth, and the form dear to
     <div class="fc-translation" data-sec="translation">The clouds in personified form beat various types of drums, known as mṛdaṅgas, paṇavas, murajas and ānakas. They also blew conchshells and bugles known as gomukhas and played flutes and stringed instruments. The combined sound of these instruments was tumultuous.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -3478,18 +3366,6 @@ The word ca indicates that both forms—the form of wealth, and the form dear to
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Clouds personified beat drums; conches blew; flutes and strings filled the air. Heaven itself becomes orchestra when Lakṣmī is honored. Sacred celebration is not quiet politeness; it is tumultuous, total, joyful.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where am I keeping spiritual celebration small and tasteful when it asks to be tumultuous?</li><li>What instrument — literal or metaphorical — could I play in the next sacred celebration?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -3658,7 +3534,6 @@ The word ca indicates that both forms—the form of wealth, and the form dear to
 
     <div class="fc-translation" data-sec="translation">Thereafter, the great elephants from all the directions carried big water jugs full of Ganges water and bathed the goddess of fortune, to the accompaniment of Vedic mantras chanted by learned brāhmaṇas. While thus being bathed, the goddess of fortune maintained her original style, with a lotus flower in her hand, and she appeared very beautiful. The goddess of fortune is the most chaste, for she does not know anyone but the Supreme Personality of Godhead.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3687,18 +3562,6 @@ The word ca indicates that both forms—the form of wealth, and the form dear to
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Great elephants bathed her with Ganges water as brāhmaṇas chanted; she held her lotus and remained perfectly chaste, knowing none but the Lord. Lakṣmī&#39;s chastity is her perpetual orientation. Her opulence flows because her devotion is undivided.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where does my heart wander from the one to whom I claim primary devotion?</li><li>What would &#39;chastity&#39; as undivided attention look like in my spiritual practice?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -3858,7 +3721,6 @@ The word ca indicates that both forms—the form of wealth, and the form dear to
 
     <div class="fc-translation" data-sec="translation">The ocean, which is the source of all valuable jewels, supplied the upper and lower portions of a yellow silken garment. The predominating deity of the water, Varuṇa, presented flower garlands surrounded by six-legged bumblebees, drunken with honey.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3922,18 +3784,6 @@ It is prescribed that after the bathing the person should wear yellow cloth.</di
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The ocean gave yellow silk; Varuṇa offered flower garlands buzzing with honey-drunk bees. The natural elements themselves dress and adorn the goddess. Devotional service draws material assistance from sources we cannot orchestrate.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What unexpected &#39;gift from the elements&#39; has supported a recent spiritual effort of mine?</li><li>Am I open to the universe contributing to my dharma, or do I try to do everything myself?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -4085,7 +3935,6 @@ It is prescribed that after the bathing the person should wear yellow cloth.</di
     <div class="fc-translation" data-sec="translation">Viśvakarmā, one of the prajāpatis, supplied varieties of decorated ornaments. The goddess of learning, Sarasvatī, supplied a necklace, Lord Brahmā supplied a lotus flower, and the inhabitants of Nāgaloka supplied earrings.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -4134,18 +3983,6 @@ It is prescribed that after the bathing the person should wear yellow cloth.</di
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Viśvakarmā supplied ornaments; Sarasvatī a necklace; Brahmā a lotus; Nāgaloka earrings. Each contributor offered exactly what was theirs to give. Cosmic celebration is everyone bringing their own specialty.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What is uniquely mine to bring to the Lord that no one else can substitute for?</li><li>Where am I copying someone else&#39;s offering instead of giving what is mine?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -4334,7 +4171,6 @@ It is prescribed that after the bathing the person should wear yellow cloth.</di
 
     <div class="fc-translation" data-sec="translation">Thereafter, mother Lakṣmī, the goddess of fortune, having been properly celebrated with an auspicious ritualistic ceremony, began moving about, holding in her hand a garland of lotus flowers, which were surrounded by humming bumblebees. Smiling with shyness, her cheeks decorated by her earrings, she looked extremely beautiful.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -4363,18 +4199,6 @@ The Supreme Lord is the shelter of both forms of Lakṣmī.  Svasti ayanā means
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">After all this celebration, Lakṣmī moved about with her lotus, smiling shyly. She was &#39;born&#39; of the ocean but immediately rested on Nārāyaṇa&#39;s chest. She does not stay in any material origin; she returns to her eternal home.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What origin am I clinging to as identity that I should be willing to leave behind?</li><li>Where is my &#39;eternal resting place&#39; — and how much of my time and attention do I actually spend there?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -4591,7 +4415,6 @@ The Supreme Lord is the shelter of both forms of Lakṣmī.  Svasti ayanā means
     <div class="fc-translation" data-sec="translation">Her two breasts, which were symmetrical and nicely situated, were covered with sandalwood pulp and kuṅkuma powder, and her waist was very thin. As she walked here and there, her ankle bells jingling softly, she appeared like a creeper of gold.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -4637,18 +4460,6 @@ Thereafter (tataḥ) in the assembly (tataḥ) she moved about, like a moving go
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Adorned, slim-waisted, ankle bells softly jingling, she walked like a golden creeper. Beauty in the Bhāgavatam is detailed and embodied — not abstract. The spiritual world is more, not less, sensorily rich than this one.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Do I dismiss the sensory richness of spiritual descriptions as merely poetic?</li><li>What part of my body or surroundings could I beautify as an act of remembering the spiritual ideal?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -4855,7 +4666,6 @@ Thereafter (tataḥ) in the assembly (tataḥ) she moved about, like a moving go
 
     <div class="fc-translation" data-sec="translation">While walking among the Gandharvas, Yakṣas, asuras, Siddhas, Cāraṇas and denizens of heaven, Lakṣmīdevī, the goddess of fortune, was scrutinizingly examining them, but she could not find anyone naturally endowed with all good qualities. None of them was devoid of faults, and therefore she could not take shelter of any of them.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -4894,18 +4704,6 @@ Of the two forms of Lakṣmī which merged together, the form of wealth made a s
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Lakṣmī scrutinized every candidate at the svayaṁvara and found none free of fault. The most discerning eye in creation is also the most refusing — she will not settle. Devotional intelligence is rigorous in its rejection of inadequate shelter.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where have I &#39;settled&#39; for shelter that I knew was inadequate?</li><li>What would Lakṣmī&#39;s level of scrutiny do to my list of dependencies?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -5184,7 +4982,6 @@ Of the two forms of Lakṣmī which merged together, the form of wealth made a s
 
     <div class="fc-translation" data-sec="translation">The goddess of fortune, examining the assembly, thought in this way: Someone who has undergone great austerity has not yet conquered anger. Someone possesses knowledge, but he has not conquered material desires. Someone is a very great personality, but he cannot conquer lusty desires. Even a great personality depends on something else. How, then, can he be the supreme controller?</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -5233,18 +5030,6 @@ In three verses Lakṣmī in the form of wealth thinks to herself the reason for
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Anyone who has austerity has not conquered anger; whoever has knowledge has not conquered desire. Everyone is controlled by something. Only one who controls everything else can be the true Lord — and only He can be the safe resort.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What is currently controlling me that I imagine I have under control?</li><li>Where am I depending on a person who is themselves dependent on something else?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -5487,7 +5272,6 @@ In three verses Lakṣmī in the form of wealth thinks to herself the reason for
 
     <div class="fc-translation" data-sec="translation">Someone may possess full knowledge of religion but still not be kind to all living entities. In someone, whether human or demigod, there may be renunciation, but that is not the cause of liberation. Someone may possess great power and yet be unable to check the power of eternal time. Someone else may have renounced attachment to the material world, yet he cannot compare to the Supreme Personality of Godhead. Therefore, no one is completely freed from the influence of the material modes of nature.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -5579,18 +5363,6 @@ Some, the karmīs like Śukrācārya, have dharma, but are not friendly to all b
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Knowledge of dharma without kindness to all beings is hollow. Power without victory over time is fragile. Even renunciation does not equal the Supreme. Religion that does not produce love of God is, in Bhāgavata language, mere labor.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Does my religious practice produce kindness to all beings, or just sectarian identity?</li><li>What &#39;good quality&#39; of mine am I overestimating as if it were complete?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -5861,7 +5633,6 @@ Some, the karmīs like Śukrācārya, have dharma, but are not friendly to all b
     <div class="fc-translation" data-sec="translation">Someone may have longevity but not have auspiciousness or good behavior. Someone may have both auspiciousness and good behavior, but the duration of his life is not fixed. Although such demigods as Lord Śiva have eternal life, they have inauspicious habits like living in crematoriums. And even if others are well qualified in all respects, they are not devotees of the Supreme Personality of Godhead.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -5937,18 +5708,6 @@ Some like Bali have long life, but do not have good conduct or auspiciousness.  
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Long life without good behavior, good behavior with short life, eternal life with crematorium habits — every candidate has a hole. Only the Lord combines all auspicious qualities without compromise. Look for the un-flawed shelter.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What &#39;mostly good&#39; arrangement am I tolerating that has a hidden hole in it?</li><li>Where do I keep choosing partial solutions because the complete one feels too far?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -6146,7 +5905,6 @@ Some like Bali have long life, but do not have good conduct or auspiciousness.  
 
     <div class="fc-translation" data-sec="translation">Śukadeva Gosvāmī continued: In this way, after full deliberation, the goddess of fortune accepted Mukunda as her husband because although He is independent and not in want of her, He possesses all transcendental qualities and mystic powers and is therefore the most desirable.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -6190,18 +5948,6 @@ Considering in this way Ramā selected Mukunda as her husband.  “But if he is 
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">She chose Mukunda — independent, not in want of her, yet possessing all transcendental qualities and powers. The Lord&#39;s lack of need is part of what makes Him perfectly worth choosing. He cannot be manipulated by giving Him what He needs.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Do I prefer relationships where the other person needs me, because it gives me leverage?</li><li>What would it mean to choose a Lord who does not need me, but is fully present anyway?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -6436,7 +6182,6 @@ Considering in this way Ramā selected Mukunda as her husband.  “But if he is 
     <div class="fc-translation" data-sec="translation">Approaching the Supreme Personality of Godhead, the goddess of fortune placed upon His shoulders the garland of newly grown lotus flowers, which was surrounded by humming bumblebees searching for honey. Then, expecting to get a place on the bosom of the Lord, she remained standing by His side, her face smiling in shyness.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -6472,18 +6217,6 @@ Placing on his shoulders an attractive (uśatīm) garland, she remained silent b
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">She approached Him, placed the garland of lotuses around His shoulders, and stood smiling shyly, awaiting a place on His chest. Even the supreme goddess offers, then waits. Bhakti has rhythm — give, then stand silently, ready for acceptance.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Have I learned to wait, after offering, without grasping at acknowledgment?</li><li>What service have I made, then anxiously asked about the result instead of standing shyly?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -6735,7 +6468,6 @@ Placing on his shoulders an attractive (uśatīm) garland, she remained silent b
 
     <div class="fc-translation" data-sec="translation">The Supreme Personality of Godhead is the father of the three worlds, and His bosom is the residence of mother Lakṣmī, the goddess of fortune, the proprietor of all opulences. The goddess of fortune, by her favorable and merciful glance, can increase the opulence of the three worlds, along with their inhabitants and their directors, the demigods.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -6774,18 +6506,6 @@ This verse describes the abode of the two types of Lakṣmī.  His chest became 
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Lakṣmī resides on Nārāyaṇa&#39;s bosom and from there blesses anyone who serves Him. Wealth, by her, comes to devotees as permanent — not flickering — because it stays connected to its source. Approach Him; she sees and blesses naturally.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Am I trying to get Lakṣmī&#39;s attention directly, or through service to Nārāyaṇa?</li><li>What &#39;permanent opulence&#39; would look different from the wealth I currently chase?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -6955,7 +6675,6 @@ This verse describes the abode of the two types of Lakṣmī.  His chest became 
     <div class="fc-translation" data-sec="translation">The inhabitants of Gandharvaloka and Cāraṇaloka then took the opportunity to play their musical instruments, such as conchshells, bugles and drums. They began dancing and singing along with their wives.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -7009,18 +6728,6 @@ This verse describes the abode of the two types of Lakṣmī.  His chest became 
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Gandharvas and Cāraṇas played their instruments, sang and danced with their wives. Sacred joy is communal and embodied. Spiritual culture finds expression in music, dance, and shared celebration — not only in silent meditation.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>When did I last celebrate the Lord&#39;s deeds with my body, not just my mind?</li><li>Whom in my life would I include in spiritual celebration if I made the invitation?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -7199,7 +6906,6 @@ This verse describes the abode of the two types of Lakṣmī.  His chest became 
     <div class="fc-translation" data-sec="translation">Lord Brahmā, Lord Śiva, the great sage Aṅgirā, and similar directors of universal management showered flowers and chanted mantras indicating the transcendental glories of the Supreme Personality of Godhead.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -7218,18 +6924,6 @@ This verse describes the abode of the two types of Lakṣmī.  His chest became 
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Even Brahmā, Śiva, and Aṅgirā showered flowers and chanted the Lord&#39;s transcendental glories. The highest controllers of the universe sing His praises. We do not &#39;descend&#39; to worship; we join the highest beings in their natural activity.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Do I think praising the Lord is beneath my dignity in any setting?</li><li>Where can I sing His glories more freely — perhaps where I have been falsely silent?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -7381,7 +7075,6 @@ This verse describes the abode of the two types of Lakṣmī.  His chest became 
     <div class="fc-translation" data-sec="translation">All the demigods, along with the prajāpatis and their descendants, being blessed by Lakṣmījī’s glance upon them, were immediately enriched with good behavior and transcendental qualities. Thus they were very much satisfied.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -7400,18 +7093,6 @@ This verse describes the abode of the two types of Lakṣmī.  His chest became 
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Blessed by Lakṣmī&#39;s glance, the demigods became enriched with good behavior and transcendental qualities. Real wealth comes with character. Where the goddess looks, virtue follows — not vice versa.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where in my life has financial increase corresponded with character improvement — or its opposite?</li><li>If Lakṣmī&#39;s glance brings virtue, what kind of wealth am I actually receiving?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -7581,7 +7262,6 @@ This verse describes the abode of the two types of Lakṣmī.  His chest became 
     <div class="fc-translation" data-sec="translation">O King, because of being neglected by the goddess of fortune, the demons and Rākṣasas were depressed, bewildered and frustrated, and thus they became shameless.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -7600,18 +7280,6 @@ This verse describes the abode of the two types of Lakṣmī.  His chest became 
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Neglected by the goddess, the demons became depressed, bewildered, and shameless. The absence of the Lord&#39;s favor produces shamelessness more than poverty does. Lacking grace, even the wealthy fall into degraded behavior.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where do I see shamelessness in the powerful around me — and how does this verse explain it?</li><li>What &#39;shameless&#39; behavior in myself might trace to a quiet absence of grace I have not addressed?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -7799,7 +7467,6 @@ This verse describes the abode of the two types of Lakṣmī.  His chest became 
     <div class="fc-translation" data-sec="translation">Next appeared Vāruṇī, the lotus-eyed goddess who controls drunkards. With the permission of the Supreme Personality of Godhead, Kṛṣṇa, the demons, headed by Bali Mahārāja, took possession of this young girl.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -7835,18 +7502,6 @@ Vāruṇī means liquor which is the food of Varuṇa.</div>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Vāruṇī, goddess of intoxication, appeared and the demons took her. The Lord allowed it. Each party in cosmic competition takes home what suits its nature. Choices reveal character; the Lord rarely interrupts.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What &#39;Vāruṇī&#39; am I drawn to that is allowed but reveals something about me?</li><li>Where has the Lord allowed me to take something that, on reflection, I would now decline?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -8005,7 +7660,6 @@ Vāruṇī means liquor which is the food of Varuṇa.</div>
     <div class="fc-translation" data-sec="translation">O King, thereafter, while the sons of Kaśyapa, both demons and demigods, were engaged in churning the Ocean of Milk, a very wonderful male person appeared.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -8024,18 +7678,6 @@ Vāruṇī means liquor which is the food of Varuṇa.</div>
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">A wonderful male person appeared from the ocean. The churning kept yielding personalities, not just objects. Spiritual progress also produces people — relationships, teachers, helpers — not just experiences and items.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Whom has my churning recently brought into my life that I have not yet honored as a fruit?</li><li>Do I expect spiritual practice to yield experiences when it actually yields companions?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -8214,7 +7856,6 @@ Vāruṇī means liquor which is the food of Varuṇa.</div>
     <div class="fc-translation" data-sec="translation">He was strongly built; his arms were long, stout and strong; his neck, which was marked with three lines, resembled a conchshell; his eyes were reddish; and his complexion was blackish. He was very young, he was garlanded with flowers, and his entire body was fully decorated with various ornaments.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -8233,18 +7874,6 @@ Vāruṇī means liquor which is the food of Varuṇa.</div>
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Strong, conch-necked, reddish-eyed, garlanded, ornamented — the description honors the form. The Bhāgavatam takes time to describe what is sacred. Sustained attention to detail is itself a form of reverence.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where do I rush past sacred descriptions, missing the reverence they ask for?</li><li>What in my life deserves the kind of attention this verse gives to Dhanvantari?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -8454,7 +8083,6 @@ Vāruṇī means liquor which is the food of Varuṇa.</div>
     <div class="fc-translation" data-sec="translation">He was dressed in yellow garments and wore brightly polished earrings made of pearls. The tips of his hair were anointed with oil, and his chest was very broad. His body had all good features, he was stout and strong like a lion, and he was decorated with bangles. In his hand he carried a jug filled to the top with nectar.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -8473,18 +8101,6 @@ Vāruṇī means liquor which is the food of Varuṇa.</div>
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Yellow garments, pearl earrings, oiled hair, broad chest, lion-like strength, and a jug of nectar in his hand. Dhanvantari arrived with the entire purpose of the churning embodied. When the Lord answers our long effort, He brings the answer in person.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What long churning of mine is approaching its &#39;Dhanvantari moment&#39; — and am I ready to receive him?</li><li>How do I hold the Lord&#39;s incarnations — as remote figures or as deliverers approaching personally?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -8653,7 +8269,6 @@ Vāruṇī means liquor which is the food of Varuṇa.</div>
 
     <div class="fc-translation" data-sec="translation">This person was Dhanvantari, a plenary portion of a plenary portion of Lord Viṣṇu. He was very conversant with the science of medicine, and as one of the demigods he was permitted to take a share in sacrifices.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -8694,18 +8309,6 @@ Ijya-bhuk means he enjoyed a share of the sacrifices.</div>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Dhanvantari was an aṁśa of an aṁśa of Viṣṇu, expert in medicine. Even fractional incarnations of the Lord come with full competence. There is no &#39;minor&#39; incarnation; every expansion does its work fully.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where do I dismiss minor manifestations of the Lord because they are not the &#39;main one&#39;?</li><li>Whose competent service in my life might be a Dhanvantari I have under-honored?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -8884,7 +8487,6 @@ Ijya-bhuk means he enjoyed a share of the sacrifices.</div>
     <div class="fc-translation" data-sec="translation">Upon seeing Dhanvantari carrying the jug of nectar, the demons, desiring the jug and its contents, immediately snatched it away by force.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -8920,18 +8522,6 @@ Amṛtābhṛtam means “filled with nectar.”</div>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The demons immediately snatched the jug. Whoever is closest to material desire is fastest to grab what looks valuable. Devotees often wait, deliberate, and confirm — by then the demons have already taken it.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where has my hesitation cost me what was meant for me — but my pause also kept me from demonic grabbing?</li><li>When is decisiveness a virtue, and when is it the demon&#39;s reflex?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -9092,7 +8682,6 @@ Amṛtābhṛtam means “filled with nectar.”</div>
     <div class="fc-translation" data-sec="translation">When the jug of nectar was carried off by the demons, the demigods were morose. Thus they sought shelter at the lotus feet of the Supreme Personality of Godhead, Hari.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -9111,18 +8700,6 @@ Amṛtābhṛtam means “filled with nectar.”</div>
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Lost the nectar, the demigods immediately turned to the Lord&#39;s lotus feet. Loss is not the end; it is the moment of return. The instinct to take shelter the second things fall apart is what marks the devotee.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>When I recently lost something important, did I go to the Lord first or to someone else?</li><li>What current loss might be the Lord&#39;s invitation to take shelter more deeply?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -9301,7 +8878,6 @@ Amṛtābhṛtam means “filled with nectar.”</div>
     <div class="fc-translation" data-sec="translation">When the Supreme Personality of Godhead, who always desires to fulfill the ambitions of His devotees, saw that the demigods were morose, He said to them, “Do not be aggrieved. By My own energy I shall bewilder the demons by creating a quarrel among them. In this way I shall fulfill your desire to have the nectar.”</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -9330,18 +8906,6 @@ Amṛtābhṛtam means “filled with nectar.”</div>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The Lord told the demigods not to grieve — He would create a quarrel among the demons by His own energy and arrange the nectar&#39;s distribution. He does not always retrieve what was lost; sometimes He orchestrates conditions so it returns to us.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What current &#39;quarrel among the demons&#39; might actually be the Lord&#39;s arrangement for my benefit?</li><li>Do I trust that He has plans I cannot see, or do I prefer plans I can manage?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -9555,7 +9119,6 @@ Amṛtābhṛtam means “filled with nectar.”</div>
 
     <div class="fc-translation" data-sec="translation">O King, a quarrel then arose among the demons over who would get the nectar first. Each of them said, “You cannot drink it first. I must drink it first. Me first, not you!”</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -9599,18 +9162,6 @@ Mithaḥ means “in private” as well as “mutually.” Their minds filled wi
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The demons immediately fought: me first, not you. Demonic culture is sense-gratification first; devotional culture is the Lord&#39;s satisfaction first. Quarrels in any society are downstream of who-first culture.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where in my groups do I see the &#39;me first&#39; reflex — including in myself?</li><li>What conflict around me would dissolve if everyone shifted to &#39;the Lord first&#39;?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -9913,7 +9464,6 @@ Mithaḥ means “in private” as well as “mutually.” Their minds filled wi
 
     <div class="fc-translation" data-sec="translation">Some of the demons said, “All the demigods have taken part in churning the Ocean of Milk. Now, as everyone has an equal right to partake in any public sacrifice, according to the eternal religious system it is befitting that the demigods now have a share of the nectar.” O King, in this way the weaker demons forbade the stronger demons to take the nectar.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -9967,18 +9517,6 @@ Two verses describe the abusive words of the weaker demons. Since the devatās h
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Weaker demons argued for an equal share on dharmic grounds — that all who churned have rights. Note: dharma is invoked by the weaker, not the stronger. Principles often emerge as the protest of those who would otherwise lose.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where do I invoke principle only when I am losing — and ignore it when I am winning?</li><li>Whose voice in a current dispute am I dismissing as merely weak when it is actually principled?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -10654,7 +10192,6 @@ Two verses describe the abusive words of the weaker demons. Since the devatās h
 
     <div class="fc-translation" data-sec="translation">The Supreme Personality of Godhead, Viṣṇu, who can counteract any unfavorable situation, then assumed the form of an extremely beautiful woman. This incarnation as a woman, Mohinī-mūrti, was most pleasing to the mind. Her complexion resembled in color a newly grown blackish lotus, and every part of Her body was beautifully situated. Her ears were equally decorated with earrings, Her cheeks were very beautiful, Her nose was raised and Her face full of youthful luster. Her large breasts made Her waist seem very thin. Attracted by the aroma of Her face and body, bumblebees hummed around Her, and thus Her eyes were restless. Her hair, which was extremely beautiful, was garlanded with mallikā flowers. Her attractively constructed neck was decorated with a necklace and other ornaments, Her arms were decorated with bangles, Her body was covered with a clean sari, and Her breasts seemed like islands in an ocean of beauty. Her legs were decorated with ankle bells. Because of the movements of Her eyebrows as She smiled with shyness and glanced over the demons, all the demons were saturated with lusty desires, and every one of them desired to possess Her.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -10708,18 +10245,6 @@ Mohinī Bewilders the Demons</div>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The Lord assumed the form of Mohinī — supremely beautiful, with shy glances and humming bumblebees around her face. The demons, saturated with lust, all desired her. The Lord uses the very weakness of the demons against them. He meets each according to their bondage.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where has the Lord met a weakness of mine with an arrangement that disarmed it?</li><li>What attraction am I currently saturated by — and how might the Lord be using even that for my eventual deliverance?</li></ul>
-
-
-
-
-
-    </section>
 
 
 

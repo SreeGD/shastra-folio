@@ -31,7 +31,7 @@
 <body class="has-sidebar">
 <header class="fc-site-header">
     <button type="button" class="fc-mobile-trigger fc-mobile-trigger-left" data-overlay="left" aria-label="Open settings drawer">⚙</button>
-<a class="fc-brand" href="../../../">FolioCorpus<span class="fc-sub">Caitanya-caritāmṛta</span></a>
+    <a class="fc-brand" href="../../../">FolioCorpus<span class="fc-sub">Bhagavad-gītā</span></a>
     <nav class="fc-site-nav">
         <a href="../../../">Home</a>
         <a href="../../../bg/">Bhagavad-gītā</a>
@@ -46,8 +46,8 @@
     <button class="fc-sb-collapse" type="button" data-sb="left" title="Collapse left sidebar" aria-label="Collapse"></button>
 
     <div class="fc-sb-body">
-        <details class="fc-sb-section" data-sbsec="reading" open>
-            <summary class="fc-sb-title">Reading</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Reading</div>
             <div class="fc-sb-sub">Theme</div>
             <div class="fc-segmented" data-setting="theme">
                 <button type="button" data-val="light">Light</button>
@@ -73,10 +73,10 @@
                 <button type="button" data-val="single">Single</button>
                 <button type="button" data-val="side">Side-by-side</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="display" open>
-            <summary class="fc-sb-title">Display</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Display</div>
             <div class="fc-sb-grid">
                 <label><input type="checkbox" data-section="devanagari" checked> Devanāgarī</label>
                 <label><input type="checkbox" data-section="iast" checked> IAST transliteration</label>
@@ -98,10 +98,33 @@
                 <button type="button" data-action="expand-all">Expand all</button>
                 <button type="button" data-action="collapse-all">Collapse all</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="tools" open>
-            <summary class="fc-sb-title">Tools</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Find your starting point</div>
+            <div class="fc-persona-links">
+                <a class="fc-persona-link" href="../../../daily/">🌅 Daily (one value a week)</a>
+                <a class="fc-persona-link" href="../../../householder/">🏠 Householder (family & work)</a>
+                <a class="fc-persona-link" href="../../../parenting/">👨‍👩‍👧 Parenting (stories for kids)</a>
+                <a class="fc-persona-link" href="../../../themes/">📚 All themes</a>
+                <a class="fc-persona-link" href="../../../values/" style="background:#F0F6F2;border-left-color:#1F4632;">ॐ Vedic Value System ↗</a>
+                <a class="fc-persona-link" href="../../../vidya/" style="background:#FBF6E4;border-left-color:#C8860B;">📚 Vidyā Karaṇa (kids, multi-lang) ↗</a>
+            </div>
+        </div>
+
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Audience</div>
+            <div class="fc-audience-filter">
+                <label><input type="radio" name="fc-audience" value="all" checked> All levels</label>
+                <label><input type="radio" name="fc-audience" value="primary"> Primary (children)</label>
+                <label><input type="radio" name="fc-audience" value="middle"> Middle (teens)</label>
+                <label><input type="radio" name="fc-audience" value="senior"> Senior (adults)</label>
+                <label><input type="radio" name="fc-audience" value="college"> College / scholar</label>
+            </div>
+        </div>
+
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Tools</div>
             <div class="fc-sb-tools">
                 <button type="button" id="fc-presentation-toggle" class="fc-tool-btn"><span>🖥 Presentation</span><kbd class="fc-kbd">F</kbd></button>
                 <button type="button" id="fc-pen-toggle" class="fc-tool-btn"><span>✏️ Pen mode</span><kbd class="fc-kbd">P</kbd></button>
@@ -116,10 +139,26 @@
                 <button type="button" id="fc-clear-highlights" class="fc-tool-btn">🩷 Clear highlights (page)</button>
                 <button type="button" id="fc-notes-modal-open" class="fc-tool-btn">📓 My annotations</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="progress" id="fc-progress-section" open>
-            <summary class="fc-sb-title">Progress</summary>
+        <div class="fc-sb-section" id="fc-tts-controls" hidden>
+            <div class="fc-sb-title">
+                Read-aloud
+                <label class="fc-tts-master">
+                    <input type="checkbox" id="fc-tts-enabled" checked>
+                    <span class="fc-tts-master-label">On</span>
+                </label>
+            </div>
+            <div class="fc-tts-inner">
+                <div class="fc-sb-sub">Voice</div>
+                <select id="fc-tts-voice" class="fc-tts-select" aria-label="TTS voice"></select>
+                <div class="fc-sb-sub">Rate <span class="fc-tts-rate-val">1.0×</span></div>
+                <input type="range" id="fc-tts-rate" min="0.5" max="2" step="0.1" value="1" class="fc-tts-rate" aria-label="Reading rate">
+            </div>
+        </div>
+
+        <div class="fc-sb-section" id="fc-progress-section">
+            <div class="fc-sb-title">Progress</div>
             <div class="fc-progress-row">
                 <span class="fc-progress-num" id="fc-progress-num">0</span>
                 <span class="fc-progress-divider">/</span>
@@ -134,29 +173,29 @@
                 <span class="fc-progress-spacer"></span>
                 <button type="button" class="fc-progress-reset" id="fc-progress-reset" title="Reset progress">↺</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="bookmarks" open>
-            <summary class="fc-sb-title">Bookmarks <span class="fc-sb-count" id="fc-bookmarks-count">0</span></summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Bookmarks <span class="fc-sb-count" id="fc-bookmarks-count">0</span></div>
             <ul class="fc-bookmark-list" id="fc-bookmarks-list">
                 <li class="fc-sb-empty">No bookmarks yet — click ☆ on any verse.</li>
             </ul>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="notes" open>
-            <summary class="fc-sb-title">Notes <span class="fc-sb-count" id="fc-notes-count">0</span></summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Notes <span class="fc-sb-count" id="fc-notes-count">0</span></div>
             <ul class="fc-bookmark-list" id="fc-notes-list">
                 <li class="fc-sb-empty">No notes yet — open any verse and write in the 📝 block.</li>
             </ul>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="export">
-            <summary class="fc-sb-title">Export</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Export</div>
             <div class="fc-sb-tools">
                 <button type="button" id="fc-export-md" class="fc-tool-btn">📥 Download Markdown</button>
                 <button type="button" id="fc-export-json" class="fc-tool-btn">💾 Download JSON backup</button>
             </div>
-        </details>
+        </div>
     </div>
 </aside>    <main class="fc-container">
 <nav class="fc-breadcrumbs">
@@ -367,7 +406,6 @@
 
     <div class="fc-translation" data-sec="translation">Let me repeatedly offer my respectful obeisances unto the beelike devotees who always taste the honey of the lotus feet of Lord Caitanya Mahāprabhu. If even a doggish nondevotee somehow takes shelter of such devotees, he enjoys the aroma of the lotus flower.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -436,7 +474,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-10-2" data-note-label="BG 10.2" data-note-chapter="10" data-note-vlabel="2">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 10.2…" rows="4"></textarea>
@@ -475,7 +512,6 @@
 
 
     <div class="fc-translation" data-sec="translation">The description of Lord Caitanya as the gardener and the tree is inconceivable. Now hear with attention about the branches of this tree.</div>
-
 
 
 
@@ -538,7 +574,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-10-4" data-note-label="BG 10.4" data-note-chapter="10" data-note-vlabel="4">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 10.4…" rows="4"></textarea>
@@ -577,7 +612,6 @@
 
 
     <div class="fc-translation" data-sec="translation">All the great personalities in the line of Lord Caitanya enumerated these devotees, but they could not distinguish between the greater and the lesser.</div>
-
 
 
 
@@ -640,7 +674,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-10-6" data-note-label="BG 10.6" data-note-chapter="10" data-note-vlabel="6">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 10.6…" rows="4"></textarea>
@@ -679,7 +712,6 @@
 
 
     <div class="fc-translation" data-sec="translation">I offer my obeisances to all the dear devotees of Śrī Caitanya Mahāprabhu, the eternal tree of love of Godhead. I offer my respects to all the branches of the tree, the devotees of the Lord who distribute the fruit of love of Kṛṣṇa.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -737,7 +769,6 @@
 
 
     <div class="fc-translation" data-sec="translation">The two brothers Śrīvāsa Paṇḍita and Śrī Rāma Paṇḍita started two branches that are well known in the world.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -807,7 +838,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-10-9" data-note-label="BG 10.9" data-note-chapter="10" data-note-vlabel="9">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 10.9…" rows="4"></textarea>
@@ -858,7 +888,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-10-10" data-note-label="BG 10.10" data-note-chapter="10" data-note-vlabel="10">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 10.10…" rows="4"></textarea>
@@ -897,7 +926,6 @@
 
 
     <div class="fc-translation" data-sec="translation">These four brothers and their family members fully engaged in the service of Lord Caitanya. They knew no other god or goddess.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -967,7 +995,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-10-12" data-note-label="BG 10.12" data-note-chapter="10" data-note-vlabel="12">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 10.12…" rows="4"></textarea>
@@ -1006,7 +1033,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Ācāryaratna was also named Śrī Candraśekhara Ācārya. In a drama in his house, Lord Caitanya played the goddess of fortune.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -1065,7 +1091,6 @@
 
     <div class="fc-translation" data-sec="translation">Puṇḍarīka Vidyānidhi, the third big branch, was so dear to Lord Caitanya Mahāprabhu that in his absence Lord Caitanya Himself would sometimes cry.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1122,7 +1147,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Gadādhara Paṇḍita, the fourth branch, is described as an incarnation of the pleasure potency of Śrī Kṛṣṇa. No one, therefore, can equal him.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -1192,7 +1216,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-10-16" data-note-label="BG 10.16" data-note-chapter="10" data-note-vlabel="16">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 10.16…" rows="4"></textarea>
@@ -1231,7 +1254,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Vakreśvara Paṇḍita, the fifth branch of the tree, was a very dear servant of Lord Caitanya’s. He could dance with constant ecstasy for seventy-two hours.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -1301,7 +1323,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-10-18" data-note-label="BG 10.18" data-note-chapter="10" data-note-vlabel="18">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 10.18…" rows="4"></textarea>
@@ -1340,7 +1361,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“O Candramukha! Please give me ten thousand Gandharvas. Let them sing as I dance, and then I will be greatly happy.”</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -1410,7 +1430,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-10-20" data-note-label="BG 10.20" data-note-chapter="10" data-note-vlabel="20">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 10.20…" rows="4"></textarea>
@@ -1449,7 +1468,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Paṇḍita Jagadānanda, the sixth branch of the Caitanya tree, was celebrated as the life and soul of the Lord. He is known to have been an incarnation of Satyabhāmā [one of the chief queens of Lord Kṛṣṇa].</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -1519,7 +1537,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-10-22" data-note-label="BG 10.22" data-note-chapter="10" data-note-vlabel="22">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 10.22…" rows="4"></textarea>
@@ -1570,7 +1587,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-10-23" data-note-label="BG 10.23" data-note-chapter="10" data-note-vlabel="23">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 10.23…" rows="4"></textarea>
@@ -1609,7 +1625,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Rāghava Paṇḍita, Lord Śrī Caitanya Mahāprabhu’s original follower, is understood to have been the seventh branch. From him proceeded another subbranch, headed by Makaradhvaja Kara.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -1667,7 +1682,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Rāghava Paṇḍita’s sister Damayantī was the dear maidservant of the Lord. She always collected various ingredients with which to cook for Lord Caitanya.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -1737,7 +1751,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-10-26" data-note-label="BG 10.26" data-note-chapter="10" data-note-vlabel="26">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 10.26…" rows="4"></textarea>
@@ -1788,7 +1801,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-10-27" data-note-label="BG 10.27" data-note-chapter="10" data-note-vlabel="27">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 10.27…" rows="4"></textarea>
@@ -1827,7 +1839,6 @@
 
 
     <div class="fc-translation" data-sec="translation">I shall describe the contents of the bags of Rāghava Paṇḍita later in this book. Hearing this narration, devotees generally cry, and tears glide down from their eyes.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -1897,7 +1908,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-10-29" data-note-label="BG 10.29" data-note-chapter="10" data-note-vlabel="29">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 10.29…" rows="4"></textarea>
@@ -1936,7 +1946,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Śrī Ācārya Purandara, the ninth branch, was a constant associate of Lord Caitanya’s. The Lord accepted him as His father.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -2006,7 +2015,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-10-31" data-note-label="BG 10.31" data-note-chapter="10" data-note-vlabel="31">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 10.31…" rows="4"></textarea>
@@ -2045,7 +2053,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Later in the Caitanya-caritāmṛta I shall describe this incident of chastisement in detail. The Lord, being very much satisfied by this chastisement, sent Dāmodara Paṇḍita to Navadvīpa.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -2115,7 +2122,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-10-33" data-note-label="BG 10.33" data-note-chapter="10" data-note-vlabel="33">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 10.33…" rows="4"></textarea>
@@ -2154,7 +2160,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Sadāśiva Paṇḍita, the twelfth branch, was always eager to serve the lotus feet of the Lord. It was his good fortune that when Lord Nityānanda came to Navadvīpa He resided at his house.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -2213,7 +2218,6 @@
 
     <div class="fc-translation" data-sec="translation">The thirteenth branch was Pradyumna Brahmacārī. Since he was a worshiper of Lord Nṛsiṁhadeva, Śrī Caitanya Mahāprabhu changed his name to Nṛsiṁhānanda Brahmacārī.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2270,7 +2274,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Nārāyaṇa Paṇḍita, the fourteenth branch, a great and liberal devotee, did not know any shelter but Lord Caitanya’s lotus feet.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -2329,7 +2332,6 @@
 
     <div class="fc-translation" data-sec="translation">The fifteenth branch was Śrīmān Paṇḍita, who was a constant servitor of Lord Caitanya Mahāprabhu. He used to carry a torch while the Lord danced.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2386,7 +2388,6 @@
 
 
     <div class="fc-translation" data-sec="translation">The sixteenth branch, Śuklāmbara Brahmacārī, was very fortunate because Lord Caitanya Mahāprabhu jokingly or seriously begged food from him or sometimes snatched it from him forcibly and ate it.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -2445,7 +2446,6 @@
 
     <div class="fc-translation" data-sec="translation">Nandana Ācārya, the seventeenth branch of the Caitanya tree, is celebrated within the world because the two Prabhus [Lord Caitanya and Nityānanda] sometimes hid in his house.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2503,7 +2503,6 @@
 
     <div class="fc-translation" data-sec="translation">Mukunda Datta, a class friend of Lord Caitanya’s, was another branch of the Caitanya tree. Lord Caitanya danced while he sang.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2560,7 +2559,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Vāsudeva Datta, the nineteenth branch of the Śrī Caitanya tree, was a great personality and a most confidential devotee of the Lord. One could not describe his qualities even with thousands of mouths.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -2630,7 +2628,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-10-42" data-note-label="BG 10.42" data-note-chapter="10" data-note-vlabel="42">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 10.42…" rows="4"></textarea>
@@ -2669,7 +2666,6 @@
 
 
     <div class="fc-translation" data-sec="translation">The twentieth branch of the Caitanya tree was Haridāsa Ṭhākura. His character was wonderful. He used to chant the holy name of Kṛṣṇa 300,000 times a day without fail.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -2739,7 +2735,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-10-44" data-note-label="BG 10.44" data-note-chapter="10" data-note-vlabel="44">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 10.44…" rows="4"></textarea>
@@ -2778,7 +2773,6 @@
 
 
     <div class="fc-translation" data-sec="translation">The waves of his good qualities were like those of Prahlāda Mahārāja. He did not even slightly raise an eyebrow when persecuted by the Muslim ruler.</div>
-
 
 
 
@@ -2841,7 +2835,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-10-46" data-note-label="BG 10.46" data-note-chapter="10" data-note-vlabel="46">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 10.46…" rows="4"></textarea>
@@ -2892,7 +2885,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-10-47" data-note-label="BG 10.47" data-note-chapter="10" data-note-vlabel="47">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 10.47…" rows="4"></textarea>
@@ -2931,7 +2923,6 @@
 
 
     <div class="fc-translation" data-sec="translation">One subbranch of Haridāsa Ṭhākura consisted of the residents of Kulīna-grāma. The most important among them was Satyarāja Khān, or Satyarāja Vasu, who was a recipient of all the mercy of Haridāsa Ṭhākura.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -2990,7 +2981,6 @@
 
     <div class="fc-translation" data-sec="translation">Murāri Gupta, the twenty-first branch of the tree of Śrī Caitanya Mahāprabhu, was a storehouse of love of Godhead. His great humility and meekness melted the heart of Lord Caitanya.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3047,7 +3037,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Śrīla Murāri Gupta never accepted charity from friends, nor did he accept money from anyone. He practiced as a physician and maintained his family with his earnings.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -3106,7 +3095,6 @@
 
     <div class="fc-translation" data-sec="translation">As Murāri Gupta treated his patients, by his mercy both their bodily and spiritual diseases subsided.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3164,7 +3152,6 @@
 
     <div class="fc-translation" data-sec="translation">Śrīmān Sena, the twenty-second branch of the Caitanya tree, was a very faithful servant of Lord Caitanya. He knew nothing else but the lotus feet of Śrī Caitanya Mahāprabhu.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3221,7 +3208,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Śrī Gadādhara dāsa, the twenty-third branch, was understood to be the topmost, for he induced all the Muslim Kazis to chant the holy name of Lord Hari.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -3291,7 +3277,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-10-54" data-note-label="BG 10.54" data-note-chapter="10" data-note-vlabel="54">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 10.54…" rows="4"></textarea>
@@ -3342,7 +3327,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-10-55" data-note-label="BG 10.55" data-note-chapter="10" data-note-vlabel="55">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 10.55…" rows="4"></textarea>
@@ -3381,7 +3365,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Lord Śrī Caitanya Mahāprabhu bestows His causeless mercy upon His devotees in three features: His own direct appearance [sākṣāt], His prowess within someone He empowers [āveśa], and His manifestation [āvirbhāva].</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -3451,7 +3434,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-10-57" data-note-label="BG 10.57" data-note-chapter="10" data-note-vlabel="57">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 10.57…" rows="4"></textarea>
@@ -3502,7 +3484,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-10-58" data-note-label="BG 10.58" data-note-chapter="10" data-note-vlabel="58">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 10.58…" rows="4"></textarea>
@@ -3541,7 +3522,6 @@
 
 
     <div class="fc-translation" data-sec="translation">In his body there were symptoms of āvirbhāva. Such appearances are uncommon, but Lord Caitanya Mahāprabhu displayed many such pastimes through His different features.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -3599,7 +3579,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Śrīla Śivānanda Sena experienced the three features of sākṣāt, āveśa and āvirbhāva. Later I shall vividly describe this transcendentally blissful subject.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -3669,7 +3648,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-10-61" data-note-label="BG 10.61" data-note-chapter="10" data-note-vlabel="61">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 10.61…" rows="4"></textarea>
@@ -3708,7 +3686,6 @@
 
 
     <div class="fc-translation" data-sec="translation">The three sons of Śivānanda Sena, named Caitanya dāsa, Rāmadāsa and Karṇapūra, were all heroic devotees of Lord Caitanya.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -3767,7 +3744,6 @@
 
     <div class="fc-translation" data-sec="translation">Śrīvallabha Sena and Śrīkānta Sena were also subbranches of Śivānanda Sena, for they were not only his nephews but also unalloyed devotees of Śrī Caitanya Mahāprabhu.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3824,7 +3800,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Govindānanda and Govinda Datta, the twenty-fifth and twenty-sixth branches of the tree, were performers of kīrtana in the company of Śrī Caitanya Mahāprabhu. Govinda Datta was the principal singer in Lord Caitanya’s kīrtana party.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -3883,7 +3858,6 @@
 
     <div class="fc-translation" data-sec="translation">Śrī Vijaya dāsa, the twenty-seventh branch, another of the Lord’s chief singers, gave the Lord many books written by hand.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3941,7 +3915,6 @@
 
     <div class="fc-translation" data-sec="translation">Śrī Caitanya Mahāprabhu gave Vijaya dāsa the name Ratnabāhu [“jewel-handed”] because he copied many manuscripts for Him. The twenty-eighth branch was Kṛṣṇadāsa, who was very dear to the Lord. He was known as Akiñcana Kṛṣṇadāsa.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3998,7 +3971,6 @@
 
 
     <div class="fc-translation" data-sec="translation">The twenty-ninth branch was Śrīdhara, a trader in banana-tree bark. He was a very dear servant of the Lord. On many occasions, the Lord played jokes on him.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -4068,7 +4040,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-10-68" data-note-label="BG 10.68" data-note-chapter="10" data-note-vlabel="68">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 10.68…" rows="4"></textarea>
@@ -4119,7 +4090,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-10-69" data-note-label="BG 10.69" data-note-chapter="10" data-note-vlabel="69">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 10.69…" rows="4"></textarea>
@@ -4158,7 +4128,6 @@
 
 
     <div class="fc-translation" data-sec="translation">The thirty-first branch was Jagadīśa Paṇḍita, and the thirty-second was Hiraṇya Mahāśaya, unto whom Lord Caitanya in His childhood showed His causeless mercy.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -4217,7 +4186,6 @@
 
     <div class="fc-translation" data-sec="translation">In their two houses Lord Caitanya Mahāprabhu begged food on the Ekādaśī day and personally ate it.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -4274,7 +4242,6 @@
 
 
     <div class="fc-translation" data-sec="translation">The thirty-third and thirty-fourth branches were the two students of Caitanya Mahāprabhu named Puruṣottama and Sañjaya, who were stalwart students in grammar. They were very great personalities.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -4333,7 +4300,6 @@
 
     <div class="fc-translation" data-sec="translation">Vanamālī Paṇḍita, the thirty-fifth branch of the tree, was very much celebrated in this world. He saw a golden club and plow in the hands of the Lord.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -4390,7 +4356,6 @@
 
 
     <div class="fc-translation" data-sec="translation">The thirty-sixth branch, Buddhimanta Khān, was extremely dear to Lord Caitanya Mahāprabhu. He was always prepared to carry out the Lord’s orders, and therefore he was considered to be a chief servant of the Lord.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -4449,7 +4414,6 @@
 
     <div class="fc-translation" data-sec="translation">Garuḍa Paṇḍita, the thirty-seventh branch of the tree, always engaged in chanting the auspicious name of the Lord. Because of the strength of this chanting, even the effects of poison could not touch him.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -4506,7 +4470,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Gopīnātha Siṁha, the thirty-eighth branch of the tree, was a faithful servant of Lord Caitanya Mahāprabhu. The Lord jokingly addressed him as Akrūra.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -4565,7 +4528,6 @@
 
     <div class="fc-translation" data-sec="translation">Devānanda Paṇḍita was a professional reciter of Śrīmad-Bhāgavatam, but by the mercy of Vakreśvara Paṇḍita and the grace of the Lord he understood the devotional interpretation of the Bhāgavatam.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -4622,7 +4584,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Śrī Khaṇḍavāsī Mukunda and his son Raghunandana were the thirty-ninth branch of the tree, Narahari was the fortieth, Cirañjīva the forty-first and Sulocana the forty-second. They were all big branches of the all-merciful tree of Caitanya Mahāprabhu. They distributed the fruits and flowers of love of Godhead anywhere and everywhere.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -4692,7 +4653,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-10-80" data-note-label="BG 10.80" data-note-chapter="10" data-note-vlabel="80">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 10.80…" rows="4"></textarea>
@@ -4731,7 +4691,6 @@
 
 
     <div class="fc-translation" data-sec="translation">All the inhabitants of Kulīna-grāma village, headed by Vāṇīnātha Vasu, were servants of Lord Caitanya, who was their only life and wealth.</div>
-
 
 
 
@@ -4794,7 +4753,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-10-82" data-note-label="BG 10.82" data-note-chapter="10" data-note-vlabel="82">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 10.82…" rows="4"></textarea>
@@ -4845,7 +4803,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-10-83" data-note-label="BG 10.83" data-note-chapter="10" data-note-vlabel="83">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 10.83…" rows="4"></textarea>
@@ -4884,7 +4841,6 @@
 
 
     <div class="fc-translation" data-sec="translation">On the western side were the forty-third, forty-fourth and forty-fifth branches — Śrī Sanātana, Śrī Rūpa and Anupama. They were the best of all.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -4942,7 +4898,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Among these branches, Rūpa and Sanātana were principal. Anupama, Jīva Gosvāmī and others, headed by Rājendra, were their subbranches.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -5012,7 +4967,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-10-86" data-note-label="BG 10.86" data-note-chapter="10" data-note-vlabel="86">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 10.86…" rows="4"></textarea>
@@ -5051,7 +5005,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Extending to the borders of the river Sindhu and the Himalayan Mountain valleys, these two branches expanded throughout India, including all the places of pilgrimage, such as Vṛndāvana, Mathurā and Haridvāra.</div>
-
 
 
 
@@ -5114,7 +5067,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-10-88" data-note-label="BG 10.88" data-note-chapter="10" data-note-vlabel="88">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 10.88…" rows="4"></textarea>
@@ -5153,7 +5105,6 @@
 
 
     <div class="fc-translation" data-sec="translation">The people in general on the western side of India were neither intelligent nor well behaved, but by the influence of Śrīla Rūpa Gosvāmī and Sanātana Gosvāmī they were trained in devotional service and good behavior.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -5212,7 +5163,6 @@
 
     <div class="fc-translation" data-sec="translation">In accordance with the directions of the revealed scriptures, both Gosvāmīs excavated the lost places of pilgrimage and inaugurated the worship of Deities in Vṛndāvana.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -5270,7 +5220,6 @@
 
     <div class="fc-translation" data-sec="translation">Śrīla Raghunātha dāsa Gosvāmī, the forty-sixth branch of the tree, was one of the most dear servants of Lord Caitanya Mahāprabhu. He left all his material possessions to surrender completely unto the Lord and live at His lotus feet.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -5327,7 +5276,6 @@
 
 
     <div class="fc-translation" data-sec="translation">When Raghunātha dāsa Gosvāmī approached Śrī Caitanya Mahāprabhu at Jagannātha Purī, the Lord entrusted him to the care of Svarūpa Dāmodara, His secretary. Thus they both engaged in the confidential service of the Lord.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -5397,7 +5345,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-10-93" data-note-label="BG 10.93" data-note-chapter="10" data-note-vlabel="93">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 10.93…" rows="4"></textarea>
@@ -5436,7 +5383,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Śrīla Raghunātha dāsa Gosvāmī intended to go to Vṛndāvana to see the lotus feet of Rūpa and Sanātana and then give up his life by jumping from Govardhana Hill.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -5506,7 +5452,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-10-95" data-note-label="BG 10.95" data-note-chapter="10" data-note-vlabel="95">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 10.95…" rows="4"></textarea>
@@ -5545,7 +5490,6 @@
 
 
     <div class="fc-translation" data-sec="translation">These two brothers, however, did not allow him to die. They accepted him as their third brother and kept him in their company.</div>
-
 
 
 
@@ -5608,7 +5552,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-10-97" data-note-label="BG 10.97" data-note-chapter="10" data-note-vlabel="97">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 10.97…" rows="4"></textarea>
@@ -5647,7 +5590,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Raghunātha dāsa Gosvāmī gradually gave up all food and drink but a few drops of buttermilk.</div>
-
 
 
 
@@ -5710,7 +5652,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-10-99" data-note-label="BG 10.99" data-note-chapter="10" data-note-vlabel="99">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 10.99…" rows="4"></textarea>
@@ -5749,7 +5690,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Day and night he rendered service within his mind to Rādhā-Kṛṣṇa, and for three hours a day he discoursed about the character of Lord Caitanya Mahāprabhu.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -5819,7 +5759,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-10-101" data-note-label="BG 10.101" data-note-chapter="10" data-note-vlabel="101">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 10.101…" rows="4"></textarea>
@@ -5870,7 +5809,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-10-102" data-note-label="BG 10.102" data-note-chapter="10" data-note-vlabel="102">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 10.102…" rows="4"></textarea>
@@ -5909,7 +5847,6 @@
 
 
     <div class="fc-translation" data-sec="translation">I am struck with wonder when I hear about the devotional service he executed. I accept Śrīla Rūpa Gosvāmī and Raghunātha dāsa Gosvāmī as my guides.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -5979,7 +5916,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-10-104" data-note-label="BG 10.104" data-note-chapter="10" data-note-vlabel="104">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 10.104…" rows="4"></textarea>
@@ -6018,7 +5954,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Śrī Gopāla Bhaṭṭa Gosvāmī, the forty-seventh branch, was one of the great and exalted branches of the tree. He always engaged in discourses about love of Godhead in the company of Rūpa Gosvāmī and Sanātana Gosvāmī.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -6077,7 +6012,6 @@
 
     <div class="fc-translation" data-sec="translation">The ācārya Śaṅkarāraṇya was considered the forty-eighth branch of the original tree. From Him proceeded the subbranches known as Mukunda, Kāśīnātha and Rudra.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -6134,7 +6068,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Śrīnātha Paṇḍita, the forty-ninth branch, was the beloved recipient of all the mercy of Śrī Caitanya Mahāprabhu. Everyone in the three worlds was astonished to see how he worshiped Lord Kṛṣṇa.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -6193,7 +6126,6 @@
 
     <div class="fc-translation" data-sec="translation">Jagannātha Ācārya, the fiftieth branch of the Caitanya tree, was an extremely dear servant of the Lord, by whose order he decided to live on the bank of the Ganges.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -6250,7 +6182,6 @@
 
 
     <div class="fc-translation" data-sec="translation">The fifty-first branch of the Caitanya tree was Kṛṣṇadāsa Vaidya, the fifty-second was Paṇḍita Śekhara, the fifty-third was Kavicandra, and the fifty-fourth was Ṣaṣṭhīvara, who was a great saṅkīrtana performer.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -6309,7 +6240,6 @@
 
     <div class="fc-translation" data-sec="translation">The fifty-fifth branch was Śrīnātha Miśra, the fifty-sixth was Śubhānanda, the fifty-seventh was Śrīrāma, the fifty-eighth was Īśāna, the fifty-ninth was Śrīnidhi, the sixtieth was Śrī Gopīkānta, and the sixty-first was Miśra Bhagavān.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -6366,7 +6296,6 @@
 
 
     <div class="fc-translation" data-sec="translation">The sixty-second branch of the tree was Subuddhi Miśra, the sixty-third was Hṛdayānanda, the sixty-fourth was Kamala-nayana, the sixty-fifth was Maheśa Paṇḍita, the sixty-sixth was Śrīkara, and the sixty-seventh was Śrī Madhusūdana.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -6425,7 +6354,6 @@
 
     <div class="fc-translation" data-sec="translation">The sixty-eighth branch of the original tree was Puruṣottama, the sixty-ninth was Śrī Gālīma, the seventieth was Jagannātha dāsa, the seventy-first was Śrī Candraśekhara Vaidya, and the seventy-second was Dvija Haridāsa.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -6482,7 +6410,6 @@
 
 
     <div class="fc-translation" data-sec="translation">The seventy-third branch of the original tree was Rāmadāsa, the seventy-fourth was Kavicandra, the seventy-fifth was Śrī Gopāla dāsa, the seventy-sixth was Bhāgavata Ācārya, and the seventy-seventh was Ṭhākura Sāraṅga dāsa.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -6541,7 +6468,6 @@
 
     <div class="fc-translation" data-sec="translation">The seventy-eighth branch of the original tree was Jagannātha Tīrtha, the seventy-ninth was the brāhmaṇa Śrī Jānakīnātha, the eightieth was Gopāla Ācārya, and the eighty-first was the brāhmaṇa Vāṇīnātha.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -6599,7 +6525,6 @@
 
     <div class="fc-translation" data-sec="translation">The three brothers Govinda, Mādhava and Vāsudeva were the eighty-second, eighty-third and eighty-fourth branches of the tree. Lord Caitanya and Nityānanda used to dance in their kīrtana performances.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -6656,7 +6581,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Rāmadāsa Abhirāma was fully absorbed in the mellow of friendship. He made a flute of a bamboo stick with sixteen knots.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -6726,7 +6650,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-10-117" data-note-label="BG 10.117" data-note-chapter="10" data-note-vlabel="117">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 10.117…" rows="4"></textarea>
@@ -6777,7 +6700,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-10-118" data-note-label="BG 10.118" data-note-chapter="10" data-note-vlabel="118">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 10.118…" rows="4"></textarea>
@@ -6816,7 +6738,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Bhāgavata Ācārya, Cirañjīva, Śrī Raghunandana, Mādhavācārya, Kamalākānta and Śrī Yadunandana were all among the branches of the Caitanya tree.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -6874,7 +6795,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Jagāi and Mādhāi, the eighty-ninth and ninetieth branches of the tree, were the greatest recipients of Lord Caitanya’s mercy. These two brothers were the witnesses who proved that Lord Caitanya was rightly named Patita-pāvana, “the deliverer of the fallen souls.”</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -6944,7 +6864,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-10-121" data-note-label="BG 10.121" data-note-chapter="10" data-note-vlabel="121">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 10.121…" rows="4"></textarea>
@@ -6983,7 +6902,6 @@
 
 
     <div class="fc-translation" data-sec="translation">I have especially mentioned all these devotees because they accompanied Lord Caitanya Mahāprabhu in Bengal and Orissa and served Him in many ways.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -7053,7 +6971,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-10-123" data-note-label="BG 10.123" data-note-chapter="10" data-note-vlabel="123">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 10.123…" rows="4"></textarea>
@@ -7092,7 +7009,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Among the devotees who accompanied the Lord in Jagannātha Purī, two of them — Paramānanda Purī and Svarūpa Dāmodara — were the heart and soul of the Lord. Among the other devotees were Gadādhara, Jagadānanda, Śaṅkara, Vakreśvara, Dāmodara Paṇḍita, Ṭhākura Haridāsa, Raghunātha Vaidya and Raghunātha dāsa.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -7162,7 +7078,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-10-127" data-note-label="BG 10.127" data-note-chapter="10" data-note-vlabel="127">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 10.127…" rows="4"></textarea>
@@ -7201,7 +7116,6 @@
 
 
     <div class="fc-translation" data-sec="translation">All the devotees who resided in Bengal used to visit Jagannātha Purī every year to see the Lord.</div>
-
 
 
 
@@ -7264,7 +7178,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-10-129" data-note-label="BG 10.129" data-note-chapter="10" data-note-vlabel="129">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 10.129…" rows="4"></textarea>
@@ -7303,7 +7216,6 @@
 
 
     <div class="fc-translation" data-sec="translation">There was Sārvabhauma Bhaṭṭācārya, one of the biggest branches of the tree of the Lord, and his sister’s husband, Śrī Gopīnātha Ācārya.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -7361,7 +7273,6 @@
 
 
     <div class="fc-translation" data-sec="translation">In the list of devotees at Jagannātha Purī [which begins with Paramānanda Purī, Svarūpa Dāmodara, Sārvabhauma Bhaṭṭācārya and Gopīnātha Ācārya], Kāśī Miśra was the fifth, Pradyumna Miśra the sixth and Bhavānanda Rāya the seventh. Lord Caitanya took great pleasure in meeting with them.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -7431,7 +7342,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-10-132" data-note-label="BG 10.132" data-note-chapter="10" data-note-vlabel="132">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 10.132…" rows="4"></textarea>
@@ -7482,7 +7392,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-10-133" data-note-label="BG 10.133" data-note-chapter="10" data-note-vlabel="133">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 10.133…" rows="4"></textarea>
@@ -7521,7 +7430,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Śrī Caitanya Mahāprabhu told Bhavānanda Rāya, “Your five sons are all My dear devotees. Rāmānanda Rāya and I are one, although our bodies are different.”</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -7580,7 +7488,6 @@
 
     <div class="fc-translation" data-sec="translation">King Pratāparudra of Orissa, the Oriyā devotees Kṛṣṇānanda and Śivānanda, and Paramānanda Mahāpātra, Bhagavān Ācārya, Brahmānanda Bhāratī, Śrī Śikhi Māhiti and Murāri Māhiti constantly associated with Caitanya Mahāprabhu while He resided in Jagannātha Purī.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -7638,7 +7545,6 @@
 
     <div class="fc-translation" data-sec="translation">Mādhavīdevī, the seventeenth of the prominent devotees, was the younger sister of Śikhi Māhiti. She is considered to have formerly been a maidservant of Śrīmatī Rādhārāṇī.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -7695,7 +7601,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Brahmacārī Kāśīśvara was a disciple of Īśvara Purī, and Śrī Govinda was another of his dear disciples.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -7765,7 +7670,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-10-139" data-note-label="BG 10.139" data-note-chapter="10" data-note-vlabel="139">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 10.139…" rows="4"></textarea>
@@ -7804,7 +7708,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Both Kāśīśvara and Govinda were Godbrothers of Śrī Caitanya Mahāprabhu, and thus the Lord duly honored them as soon as they arrived. But because Īśvara Purī had ordered them to give Caitanya Mahāprabhu personal service, the Lord accepted their service.</div>
-
 
 
 
@@ -7867,7 +7770,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-10-141" data-note-label="BG 10.141" data-note-chapter="10" data-note-vlabel="141">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 10.141…" rows="4"></textarea>
@@ -7906,7 +7808,6 @@
 
 
     <div class="fc-translation" data-sec="translation">When Caitanya Mahāprabhu went to the temple of Jagannātha, Kāśīśvara, being very strong, cleared the crowds aside with his hands so that Caitanya Mahāprabhu could pass untouched.</div>
-
 
 
 
@@ -7969,7 +7870,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-10-143" data-note-label="BG 10.143" data-note-chapter="10" data-note-vlabel="143">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 10.143…" rows="4"></textarea>
@@ -8008,7 +7908,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Every day Rāmāi filled twenty-two big waterpots, whereas Nandāi personally assisted Govinda.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -8067,7 +7966,6 @@
 
     <div class="fc-translation" data-sec="translation">The twenty-second devotee, Kṛṣṇadāsa, was born of a pure and respectable brāhmaṇa family. While touring southern India, Lord Caitanya took Kṛṣṇadāsa with Him.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -8125,7 +8023,6 @@
 
     <div class="fc-translation" data-sec="translation">As a bona fide devotee, Balabhadra Bhaṭṭācārya, the twenty-third principal associate, acted as the brahmacārī of Śrī Caitanya Mahāprabhu when He toured Mathurā.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -8182,7 +8079,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Baḍa Haridāsa and Choṭa Haridāsa, the twenty-fourth and twenty-fifth devotees in Nīlācala, were good singers who always accompanied Lord Caitanya.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -8252,7 +8148,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-10-148" data-note-label="BG 10.148" data-note-chapter="10" data-note-vlabel="148">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 10.148…" rows="4"></textarea>
@@ -8303,7 +8198,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-10-149" data-note-label="BG 10.149" data-note-chapter="10" data-note-vlabel="149">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 10.149…" rows="4"></textarea>
@@ -8342,7 +8236,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Acyutānanda, the thirty-fifth devotee, was the son of Advaita Ācārya. He also lived with Lord Caitanya, taking shelter of His lotus feet at Jagannātha Purī.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -8412,7 +8305,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-10-151" data-note-label="BG 10.151" data-note-chapter="10" data-note-vlabel="151">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 10.151…" rows="4"></textarea>
@@ -8451,7 +8343,6 @@
 
 
     <div class="fc-translation" data-sec="translation">The prominent devotees at Vārāṇasī were the physician Candraśekhara, Tapana Miśra and Raghunātha Bhaṭṭācārya, Tapana Miśra’s son. When Lord Caitanya came to Vārāṇasī after seeing Vṛndāvana, for two months He lived at the residence of Candraśekhara Vaidya and accepted prasādam at the house of Tapana Miśra.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -8521,7 +8412,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-10-155" data-note-label="BG 10.155" data-note-chapter="10" data-note-vlabel="155">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 10.155…" rows="4"></textarea>
@@ -8560,7 +8450,6 @@
 
 
     <div class="fc-translation" data-sec="translation">When Raghunātha grew to be a young man, he visited Lord Caitanya Mahāprabhu at Jagannātha Purī and stayed there for eight months. Sometimes he offered prasādam to the Lord.</div>
-
 
 
 
@@ -8623,7 +8512,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-10-157" data-note-label="BG 10.157" data-note-chapter="10" data-note-vlabel="157">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 10.157…" rows="4"></textarea>
@@ -8662,7 +8550,6 @@
 
 
     <div class="fc-translation" data-sec="translation">While he stayed with Śrīla Rūpa Gosvāmī, his engagement was to recite Śrīmad-Bhāgavatam for him to hear. As a result of this Bhāgavatam recitation, he attained perfectional love of Kṛṣṇa, by which he remained always maddened.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -8732,7 +8619,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-10-159" data-note-label="BG 10.159" data-note-chapter="10" data-note-vlabel="159">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 10.159…" rows="4"></textarea>
@@ -8771,7 +8657,6 @@
 
 
     <div class="fc-translation" data-sec="translation">From each branch of the tree have grown hundreds and thousands of subbranches of disciples and granddisciples.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -8841,7 +8726,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-10-161" data-note-label="BG 10.161" data-note-chapter="10" data-note-vlabel="161">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 10.161…" rows="4"></textarea>
@@ -8880,7 +8764,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Each and every branch of Śrī Caitanya Mahāprabhu’s devotees has unlimited spiritual power and glory. Even if one had thousands of mouths, it would be impossible to describe the limits of their activities.</div>
-
 
 
 
@@ -8943,7 +8826,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-10-163" data-note-label="BG 10.163" data-note-chapter="10" data-note-vlabel="163">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 10.163…" rows="4"></textarea>
@@ -8982,7 +8864,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Praying at the lotus feet of Śrī Rūpa and Śrī Raghunātha, always desiring their mercy, I, Kṛṣṇadāsa, narrate Śrī Caitanya-caritāmṛta, following in their footsteps.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>

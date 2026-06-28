@@ -25,19 +25,25 @@
     <link rel="icon" href="../../../assets/icons/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="../../../assets/icons/icon.svg">
     <link rel="stylesheet" href="../../../assets/css/site.css">
+    <link rel="alternate" hreflang="te-IN" href="../../../te/sb/11/10/">
+    <link rel="alternate" hreflang="x-default" href="../../../">
     <script>window.FC_TO_ROOT = "../../../";</script>
     <script src="../../../assets/js/toggle.js"></script>
 </head>
 <body class="has-sidebar" data-chapter="10">
 <header class="fc-site-header">
     <button type="button" class="fc-mobile-trigger fc-mobile-trigger-left" data-overlay="left" aria-label="Open settings drawer">⚙</button>
-<a class="fc-brand" href="../../../">FolioCorpus<span class="fc-sub">Śrīmad-Bhāgavatam</span></a>
+    <a class="fc-brand" href="../../../">FolioCorpus<span class="fc-sub">Bhagavad-gītā</span></a>
     <nav class="fc-site-nav">
         <a href="../../../">Home</a>
         <a href="../../../bg/">Bhagavad-gītā</a>
         <a href="../../../sb/">Śrīmad-Bhāgavatam</a>
         <a href="../../../search/" title="Search across all integrated works">🔍 Search</a>
         <button type="button" id="fc-random-verse" class="fc-nav-btn" title="Jump to a random verse">🎲 Random</button>
+        <span class="fc-lang-switch" aria-label="Script">
+            <a class="active" href="#" title="Devanāgarī edition">EN</a>
+            <a class="" href="../../../te/sb/11/10/" title="Telugu lipi edition">తె</a>
+        </span>
     </nav>
     <button type="button" class="fc-mobile-trigger fc-mobile-trigger-right" data-overlay="right" aria-label="Open chapter index drawer">📚</button>
 </header>
@@ -46,8 +52,8 @@
     <button class="fc-sb-collapse" type="button" data-sb="left" title="Collapse left sidebar" aria-label="Collapse"></button>
 
     <div class="fc-sb-body">
-        <details class="fc-sb-section" data-sbsec="reading" open>
-            <summary class="fc-sb-title">Reading</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Reading</div>
             <div class="fc-sb-sub">Theme</div>
             <div class="fc-segmented" data-setting="theme">
                 <button type="button" data-val="light">Light</button>
@@ -73,10 +79,10 @@
                 <button type="button" data-val="single">Single</button>
                 <button type="button" data-val="side">Side-by-side</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="display" open>
-            <summary class="fc-sb-title">Display</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Display</div>
             <div class="fc-sb-grid">
                 <label><input type="checkbox" data-section="devanagari" checked> Devanāgarī</label>
                 <label><input type="checkbox" data-section="iast" checked> IAST transliteration</label>
@@ -99,10 +105,33 @@
                 <button type="button" data-action="expand-all">Expand all</button>
                 <button type="button" data-action="collapse-all">Collapse all</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="tools" open>
-            <summary class="fc-sb-title">Tools</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Find your starting point</div>
+            <div class="fc-persona-links">
+                <a class="fc-persona-link" href="../../../daily/">🌅 Daily (one value a week)</a>
+                <a class="fc-persona-link" href="../../../householder/">🏠 Householder (family & work)</a>
+                <a class="fc-persona-link" href="../../../parenting/">👨‍👩‍👧 Parenting (stories for kids)</a>
+                <a class="fc-persona-link" href="../../../themes/">📚 All themes</a>
+                <a class="fc-persona-link" href="../../../values/" style="background:#F0F6F2;border-left-color:#1F4632;">ॐ Vedic Value System ↗</a>
+                <a class="fc-persona-link" href="../../../vidya/" style="background:#FBF6E4;border-left-color:#C8860B;">📚 Vidyā Karaṇa (kids, multi-lang) ↗</a>
+            </div>
+        </div>
+
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Audience</div>
+            <div class="fc-audience-filter">
+                <label><input type="radio" name="fc-audience" value="all" checked> All levels</label>
+                <label><input type="radio" name="fc-audience" value="primary"> Primary (children)</label>
+                <label><input type="radio" name="fc-audience" value="middle"> Middle (teens)</label>
+                <label><input type="radio" name="fc-audience" value="senior"> Senior (adults)</label>
+                <label><input type="radio" name="fc-audience" value="college"> College / scholar</label>
+            </div>
+        </div>
+
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Tools</div>
             <div class="fc-sb-tools">
                 <button type="button" id="fc-presentation-toggle" class="fc-tool-btn"><span>🖥 Presentation</span><kbd class="fc-kbd">F</kbd></button>
                 <button type="button" id="fc-pen-toggle" class="fc-tool-btn"><span>✏️ Pen mode</span><kbd class="fc-kbd">P</kbd></button>
@@ -117,10 +146,26 @@
                 <button type="button" id="fc-clear-highlights" class="fc-tool-btn">🩷 Clear highlights (page)</button>
                 <button type="button" id="fc-notes-modal-open" class="fc-tool-btn">📓 My annotations</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="progress" id="fc-progress-section" open>
-            <summary class="fc-sb-title">Progress</summary>
+        <div class="fc-sb-section" id="fc-tts-controls" hidden>
+            <div class="fc-sb-title">
+                Read-aloud
+                <label class="fc-tts-master">
+                    <input type="checkbox" id="fc-tts-enabled" checked>
+                    <span class="fc-tts-master-label">On</span>
+                </label>
+            </div>
+            <div class="fc-tts-inner">
+                <div class="fc-sb-sub">Voice</div>
+                <select id="fc-tts-voice" class="fc-tts-select" aria-label="TTS voice"></select>
+                <div class="fc-sb-sub">Rate <span class="fc-tts-rate-val">1.0×</span></div>
+                <input type="range" id="fc-tts-rate" min="0.5" max="2" step="0.1" value="1" class="fc-tts-rate" aria-label="Reading rate">
+            </div>
+        </div>
+
+        <div class="fc-sb-section" id="fc-progress-section">
+            <div class="fc-sb-title">Progress</div>
             <div class="fc-progress-row">
                 <span class="fc-progress-num" id="fc-progress-num">0</span>
                 <span class="fc-progress-divider">/</span>
@@ -135,29 +180,29 @@
                 <span class="fc-progress-spacer"></span>
                 <button type="button" class="fc-progress-reset" id="fc-progress-reset" title="Reset progress">↺</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="bookmarks" open>
-            <summary class="fc-sb-title">Bookmarks <span class="fc-sb-count" id="fc-bookmarks-count">0</span></summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Bookmarks <span class="fc-sb-count" id="fc-bookmarks-count">0</span></div>
             <ul class="fc-bookmark-list" id="fc-bookmarks-list">
                 <li class="fc-sb-empty">No bookmarks yet — click ☆ on any verse.</li>
             </ul>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="notes" open>
-            <summary class="fc-sb-title">Notes <span class="fc-sb-count" id="fc-notes-count">0</span></summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Notes <span class="fc-sb-count" id="fc-notes-count">0</span></div>
             <ul class="fc-bookmark-list" id="fc-notes-list">
                 <li class="fc-sb-empty">No notes yet — open any verse and write in the 📝 block.</li>
             </ul>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="export">
-            <summary class="fc-sb-title">Export</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Export</div>
             <div class="fc-sb-tools">
                 <button type="button" id="fc-export-md" class="fc-tool-btn">📥 Download Markdown</button>
                 <button type="button" id="fc-export-json" class="fc-tool-btn">💾 Download JSON backup</button>
             </div>
-        </details>
+        </div>
     </div>
 </aside>    <main class="fc-container">
 <nav class="fc-breadcrumbs">
@@ -535,7 +580,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <div class="fc-translation" data-sec="translation">The Supreme Personality of Godhead said: Taking full shelter in Me, with the mind carefully fixed in the devotional service of the Lord as spoken by Me, one should live without personal desire and practice the social and occupational system called varṇāśrama.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -810,7 +854,6 @@ In the Tenth Chapter jṣāna, the bondage of the jīva because of relationship 
 
     <div class="fc-translation" data-sec="translation">A purified soul should see that because the conditioned souls who are dedicated to sense gratification have falsely accepted the objects of sense pleasure as truth, all of their endeavors are doomed to failure.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1073,7 +1116,6 @@ How does one become free of material desires?  By meditation on his spiritual go
 
     <div class="fc-translation" data-sec="translation">One who is sleeping may see many objects of sense gratification in a dream, but such pleasurable things are merely creations of the mind and are thus ultimately useless. Similarly, the living entity who is asleep to his spiritual identity also sees many sense objects, but these innumerable objects of temporary gratification are creations of the Lord’s illusory potency and have no permanent existence. One who meditates upon them, impelled by the senses, uselessly engages his intelligence.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1335,7 +1377,6 @@ Resolute intelligence is only one in this process, O son of the Kurus. The intel
 
     <div class="fc-translation" data-sec="translation">One who has fixed Me within his mind as the goal of life should give up activities based on sense gratification and should instead execute work governed by the regulative principles for advancement. When, however, one is fully engaged in searching out the ultimate truth of the soul, one should not accept the scriptural injunctions governing fruitive activities.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1593,7 +1634,6 @@ When a person has no attachment to the sense objects or to action to attain them
 
     <div class="fc-translation" data-sec="translation">One who has accepted Me as the supreme goal of life should strictly observe the scriptural injunctions forbidding sinful activities and, as far as possible, should execute the injunctions prescribing minor regulative duties such as cleanliness. Ultimately, however, one should approach a bona fide spiritual master who is full in knowledge of Me as I am, who is peaceful, and who by spiritual elevation is not different from Me.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1834,7 +1874,6 @@ However this person should respectfully follow prohibitions like non-violence, a
 
 
     <div class="fc-translation" data-sec="translation">The servant or disciple of the spiritual master should be free from false prestige, never considering himself to be the doer. He should be active and never lazy and should give up all sense of proprietorship over the objects of the senses, including his wife, children, home and society. He should be endowed with feelings of loving friendship toward the spiritual master and should never become deviated or bewildered. The servant or disciple should always desire advancement in spiritual understanding, should not envy anyone and should always avoid useless conversation.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -2137,7 +2176,6 @@ The qualities of the disciple are described. He should be devoid of possessivene
 
     <div class="fc-translation" data-sec="translation">One should see one’s real self-interest in life in all circumstances and should therefore remain detached from wife, children, home, land, relatives, friends, wealth and so on.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2435,7 +2473,6 @@ But one should not lack possessiveness of guru and the Lord. Thus it is said one
 
     <div class="fc-translation" data-sec="translation">Just as fire, which burns and illuminates, is different from firewood, which is to be burned to give illumination, similarly the seer within the body, the self-enlightened spirit soul, is different from the material body, which is to be illuminated by consciousness. Thus the spirit soul and the body possess different characteristics and are separate entities.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2707,7 +2744,6 @@ One should not think the body is the self. The ātmā, the giver of consciousnes
 
 
     <div class="fc-translation" data-sec="translation">Just as fire may appear differently as dormant, manifest, weak, brilliant and so on, according to the condition of the fuel, similarly, the spirit soul enters a material body and accepts particular bodily characteristics.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -3005,7 +3041,6 @@ Just as one mistakes the qualities of wood such as its tendency to be destroyed 
 
     <div class="fc-translation" data-sec="translation">The subtle and gross material bodies are created by the material modes of nature, which expand from the potency of the Supreme Personality of Godhead. Material existence occurs when the living entity falsely accepts the qualities of the gross and subtle bodies as being his own factual nature. This illusory state, however, can be destroyed by real knowledge.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3269,7 +3304,6 @@ Just as one mistakes the qualities of wood such as its tendency to be destroyed 
 
     <div class="fc-translation" data-sec="translation">Therefore, by the cultivation of knowledge one should approach the Supreme Personality of Godhead situated within oneself. By understanding the Lord’s pure, transcendental existence, one should gradually give up the false vision of the material world as independent reality.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3532,7 +3566,6 @@ Knowing the ātmā, completely untouched (param), situated within the gross and 
 
 
     <div class="fc-translation" data-sec="translation">The spiritual master can be compared to the lower kindling stick, the disciple to the upper kindling stick, and the instruction given by the guru to the third stick placed in between. The transcendental knowledge communicated from guru to disciple is compared to the fire arising from the contact of these, which burns the darkness of ignorance to ashes, bringing great happiness both to guru and disciple.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -3860,7 +3893,6 @@ To make clear that knowledge obtained from the guru can destroy avidyā and its 
 
 
     <div class="fc-translation" data-sec="translation">By submissively hearing from an expert spiritual master, the expert disciple develops pure knowledge, which repels the onslaught of material illusion arising from the three modes of material nature. Finally this pure knowledge itself ceases, just as fire ceases when the stock of fuel has been consumed.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -4413,7 +4445,6 @@ Only by bhakti can a person know me as Brahman. Then, knowing me as Brahman by t
 
     <div class="fc-translation" data-sec="translation">My dear Uddhava, I have thus explained to you perfect knowledge. There are philosophers, however, who challenge My conclusion. They state that the natural position of the living entity is to engage in fruitive activities, and they see him as the enjoyer of the happiness and unhappiness that accrue from his own work. According to this materialistic philosophy, the world, time, the revealed scriptures and the self are all variegated and eternal, existing as a perpetual flow of transformations. Knowledge, moreover, cannot be one or eternal, because it arises from the different and changing forms of objects; thus knowledge itself is always subject to change. Even if you accept such a philosophy, My dear Uddhava, there will still be perpetual birth, death, old age and disease, since all living entities must accept a material body subject to the influence of time.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -4715,7 +4746,6 @@ Enjoyment is better than renunciation because of the impossibility of change in 
 
     <div class="fc-translation" data-sec="translation">Although the performer of fruitive activities desires perpetual happiness, it is clearly observed that materialistic workers are often unhappy and only occasionally satisfied, thus proving that they are not independent or in control of their destiny. When a person is always under the superior control of another, how can he expect any valuable results from his own fruitive actions?</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -4999,7 +5029,6 @@ The performer of karmas is seen to be powerless in his enjoyment since he experi
 
 
     <div class="fc-translation" data-sec="translation">It is observed within the material world that sometimes even an intelligent person is not happy. Similarly, sometimes even a great fool is happy. The concept of becoming happy through expertly performing material activities is simply a useless exhibition of false egotism.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -5300,7 +5329,6 @@ The performer of karmas is seen to be powerless in his enjoyment since he experi
 
     <div class="fc-translation" data-sec="translation">Even if people know how to achieve happiness and avoid unhappiness, they still do not know the process by which death will not be able to exert its power over them.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -5578,7 +5606,6 @@ Even if one has knowledge, one cannot be successful. They do not know the proper
 
 
     <div class="fc-translation" data-sec="translation">Death is not at all pleasing, and since everyone is exactly like a condemned man being led to the place of execution, what possible happiness can people derive from material objects or the gratification they provide?</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -5875,7 +5902,6 @@ Even if one has knowledge, one cannot be successful. They do not know the proper
 
     <div class="fc-translation" data-sec="translation">That material happiness of which we hear, such as promotion to heavenly planets for celestial enjoyment, is just like that material happiness we have already experienced. Both are polluted by jealousy, envy, decay and death. Therefore, just as an attempt to raise crops becomes fruitless if there are many problems like crop disease, insect plague or drought, similarly, the attempt to attain material happiness, either on earth or on the heavenly planets, is always fruitless because of innumerable obstacles.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -6147,7 +6173,6 @@ It has just been said that there is no happiness in this world. There is also no
 
 
     <div class="fc-translation" data-sec="translation">If one performs Vedic sacrifices and fruitive rituals without any mistake or contamination, one will achieve a heavenly situation in the next life. But even this result, which is only achieved by perfect performance of fruitive rituals, will be vanquished by time. Now hear of this.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -6434,7 +6459,6 @@ Even if one performs acts without discrepancies, one cannot eliminate suffering.
     <div class="fc-translation" data-sec="translation">If on earth one performs sacrifices for the satisfaction of the demigods, he goes to the heavenly planets, where, just like a demigod, he enjoys all of the heavenly pleasures he has earned by his performances.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -6688,7 +6712,6 @@ Even if one performs acts without discrepancies, one cannot eliminate suffering.
     <div class="fc-translation" data-sec="translation">Having achieved the heavenly planets, the performer of ritualistic sacrifices travels in a glowing airplane, which he obtains as the result of his piety on earth. Being glorified by songs sung by the Gandharvas and dressed in wonderfully charming clothes, he enjoys life surrounded by heavenly goddesses.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -6933,7 +6956,6 @@ Devīnām means Apsarās.</div>
 
 
     <div class="fc-translation" data-sec="translation">Accompanied by heavenly women, the enjoyer of the fruits of sacrifice goes on pleasure rides in a wonderful airplane, which is decorated with circles of tinkling bells and which flies wherever he desires. Being relaxed, comfortable and happy in the heavenly pleasure gardens, he does not consider that he is exhausting the fruits of his piety and will soon fall down to the mortal world.</div>
-
 
 
     <section class="fc-section" data-sec="gaudiya">
@@ -7198,7 +7220,6 @@ He enjoys in an airplane that goes anywhere he wants.</div>
 
 
     <div class="fc-translation" data-sec="translation">Until his pious results are used up, the performer of sacrifice enjoys life in the heavenly planets. When the pious results are exhausted, however, he falls down from the pleasure gardens of heaven, being moved against his desire by the force of eternal time.</div>
-
 
 
     <section class="fc-section" data-sec="gaudiya">
@@ -7756,7 +7777,6 @@ He is made to fall (cālitaḥ) by time.</div>
 
     <div class="fc-translation" data-sec="translation">If a human being is engaged in sinful, irreligious activities, either because of bad association or because of his failure to control his senses, then such a person will certainly develop a personality full of material desires. He thus becomes miserly toward others, greedy and always anxious to exploit the bodies of women. When the mind is so polluted one becomes violent and aggressive and without the authority of Vedic injunctions slaughters innocent animals for sense gratification. Worshiping ghosts and spirits, the bewildered person falls fully into the grip of unauthorized activities and thus goes to hell, where he receives a material body infected by the darkest modes of nature. In such a degraded body, he unfortunately continues to perform inauspicious activities that greatly increase his future unhappiness, and therefore he again accepts a similar material body. What possible happiness can there be for one who engages in activities inevitably terminating in death?</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -8010,7 +8030,6 @@ There are two types of people qualified for action--the religious and sinful.  T
 
 
     <div class="fc-translation" data-sec="translation">In all the planetary systems, from the heavenly to the hellish, and for all of the great demigods who live for one thousand yuga cycles, there is fear of Me in My form of time. Even Brahmā, who possesses the supreme life span of 311,040,000,000,000 years, is also afraid of Me.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -8289,7 +8308,6 @@ By nature’s evidence of the Lord’s existence, atheism is rejected.</div>
 
 
     <div class="fc-translation" data-sec="translation">The material senses create material activities, either pious or sinful, and the modes of nature set the material senses into motion. The living entity, being fully engaged by the material senses and modes of nature, experiences the various results of fruitive work.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -8576,7 +8594,6 @@ Verse 28 explained that the sinful person goes to hell though he does not desire
 
     <div class="fc-translation" data-sec="translation">As long as the living entity thinks that the modes of material nature have separate existences, he will be obliged to take birth in many different forms and will experience varieties of material existence. Therefore, the living entity remains completely dependent on fruitive activities under the modes of nature.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -8853,7 +8870,6 @@ As long as the jīva acts with his senses and produces diversity in high or low 
 
 
     <div class="fc-translation" data-sec="translation">The conditioned soul who remains dependent on fruitive activities under the material modes of nature will continue to fear Me, the Supreme Personality of Godhead, since I impose the results of one’s fruitive activities. Those who accept the material concept of life, taking the variegatedness of the modes of nature to be factual, devote themselves to material enjoyment and are therefore always absorbed in lamentation and grief.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -9146,7 +9162,6 @@ The Lord condemns those who claim that the path of enjoyment is the best.  Those
 
     <div class="fc-translation" data-sec="translation">When there is agitation and interaction of the material modes of nature, the living entities then describe Me in various ways such as all-powerful time, the Self, Vedic knowledge, the universe, one’s own nature, religious ceremonies and so on.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -9433,7 +9448,6 @@ Some accept Svarga, the time of enjoyment, the scriptures proclaiming karma, and
 
 
     <div class="fc-translation" data-sec="translation">Śrī Uddhava said: O my Lord, a living entity situated within the material body is surrounded by the modes of nature and the happiness and distress that are born of activities caused by these modes. How is it possible that he is not bound by this material encirclement? It may also be said that the living entity is ultimately transcendental and has nothing to do with the material world. Then how is he ever bound by material nature?</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -9865,7 +9879,6 @@ According to you the goal is liberation. This is achieved by practice of bhakti,
 
 
     <div class="fc-translation" data-sec="translation">O my Lord, Acyuta, the same living entity is sometimes described as eternally conditioned and at other times as eternally liberated. I am not able to understand, therefore, the actual situation of the living entity. You, my Lord, are the best of those who are expert in answering philosophical questions. Please explain to me the symptoms by which one can tell the difference between a living entity who is eternally liberated and one who is eternally conditioned. In what various ways would they remain situated, enjoy life, eat, evacuate, lie down, sit or move about?</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>

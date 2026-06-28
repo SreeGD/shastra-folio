@@ -25,19 +25,25 @@
     <link rel="icon" href="../../../assets/icons/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="../../../assets/icons/icon.svg">
     <link rel="stylesheet" href="../../../assets/css/site.css">
+    <link rel="alternate" hreflang="te-IN" href="../../../te/sb/9/8/">
+    <link rel="alternate" hreflang="x-default" href="../../../">
     <script>window.FC_TO_ROOT = "../../../";</script>
     <script src="../../../assets/js/toggle.js"></script>
 </head>
 <body class="has-sidebar" data-chapter="8">
 <header class="fc-site-header">
     <button type="button" class="fc-mobile-trigger fc-mobile-trigger-left" data-overlay="left" aria-label="Open settings drawer">⚙</button>
-<a class="fc-brand" href="../../../">FolioCorpus<span class="fc-sub">Śrīmad-Bhāgavatam</span></a>
+    <a class="fc-brand" href="../../../">FolioCorpus<span class="fc-sub">Bhagavad-gītā</span></a>
     <nav class="fc-site-nav">
         <a href="../../../">Home</a>
         <a href="../../../bg/">Bhagavad-gītā</a>
         <a href="../../../sb/">Śrīmad-Bhāgavatam</a>
         <a href="../../../search/" title="Search across all integrated works">🔍 Search</a>
         <button type="button" id="fc-random-verse" class="fc-nav-btn" title="Jump to a random verse">🎲 Random</button>
+        <span class="fc-lang-switch" aria-label="Script">
+            <a class="active" href="#" title="Devanāgarī edition">EN</a>
+            <a class="" href="../../../te/sb/9/8/" title="Telugu lipi edition">తె</a>
+        </span>
     </nav>
     <button type="button" class="fc-mobile-trigger fc-mobile-trigger-right" data-overlay="right" aria-label="Open chapter index drawer">📚</button>
 </header>
@@ -46,8 +52,8 @@
     <button class="fc-sb-collapse" type="button" data-sb="left" title="Collapse left sidebar" aria-label="Collapse"></button>
 
     <div class="fc-sb-body">
-        <details class="fc-sb-section" data-sbsec="reading" open>
-            <summary class="fc-sb-title">Reading</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Reading</div>
             <div class="fc-sb-sub">Theme</div>
             <div class="fc-segmented" data-setting="theme">
                 <button type="button" data-val="light">Light</button>
@@ -73,10 +79,10 @@
                 <button type="button" data-val="single">Single</button>
                 <button type="button" data-val="side">Side-by-side</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="display" open>
-            <summary class="fc-sb-title">Display</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Display</div>
             <div class="fc-sb-grid">
                 <label><input type="checkbox" data-section="devanagari" checked> Devanāgarī</label>
                 <label><input type="checkbox" data-section="iast" checked> IAST transliteration</label>
@@ -99,10 +105,33 @@
                 <button type="button" data-action="expand-all">Expand all</button>
                 <button type="button" data-action="collapse-all">Collapse all</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="tools" open>
-            <summary class="fc-sb-title">Tools</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Find your starting point</div>
+            <div class="fc-persona-links">
+                <a class="fc-persona-link" href="../../../daily/">🌅 Daily (one value a week)</a>
+                <a class="fc-persona-link" href="../../../householder/">🏠 Householder (family & work)</a>
+                <a class="fc-persona-link" href="../../../parenting/">👨‍👩‍👧 Parenting (stories for kids)</a>
+                <a class="fc-persona-link" href="../../../themes/">📚 All themes</a>
+                <a class="fc-persona-link" href="../../../values/" style="background:#F0F6F2;border-left-color:#1F4632;">ॐ Vedic Value System ↗</a>
+                <a class="fc-persona-link" href="../../../vidya/" style="background:#FBF6E4;border-left-color:#C8860B;">📚 Vidyā Karaṇa (kids, multi-lang) ↗</a>
+            </div>
+        </div>
+
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Audience</div>
+            <div class="fc-audience-filter">
+                <label><input type="radio" name="fc-audience" value="all" checked> All levels</label>
+                <label><input type="radio" name="fc-audience" value="primary"> Primary (children)</label>
+                <label><input type="radio" name="fc-audience" value="middle"> Middle (teens)</label>
+                <label><input type="radio" name="fc-audience" value="senior"> Senior (adults)</label>
+                <label><input type="radio" name="fc-audience" value="college"> College / scholar</label>
+            </div>
+        </div>
+
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Tools</div>
             <div class="fc-sb-tools">
                 <button type="button" id="fc-presentation-toggle" class="fc-tool-btn"><span>🖥 Presentation</span><kbd class="fc-kbd">F</kbd></button>
                 <button type="button" id="fc-pen-toggle" class="fc-tool-btn"><span>✏️ Pen mode</span><kbd class="fc-kbd">P</kbd></button>
@@ -117,10 +146,26 @@
                 <button type="button" id="fc-clear-highlights" class="fc-tool-btn">🩷 Clear highlights (page)</button>
                 <button type="button" id="fc-notes-modal-open" class="fc-tool-btn">📓 My annotations</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="progress" id="fc-progress-section" open>
-            <summary class="fc-sb-title">Progress</summary>
+        <div class="fc-sb-section" id="fc-tts-controls" hidden>
+            <div class="fc-sb-title">
+                Read-aloud
+                <label class="fc-tts-master">
+                    <input type="checkbox" id="fc-tts-enabled" checked>
+                    <span class="fc-tts-master-label">On</span>
+                </label>
+            </div>
+            <div class="fc-tts-inner">
+                <div class="fc-sb-sub">Voice</div>
+                <select id="fc-tts-voice" class="fc-tts-select" aria-label="TTS voice"></select>
+                <div class="fc-sb-sub">Rate <span class="fc-tts-rate-val">1.0×</span></div>
+                <input type="range" id="fc-tts-rate" min="0.5" max="2" step="0.1" value="1" class="fc-tts-rate" aria-label="Reading rate">
+            </div>
+        </div>
+
+        <div class="fc-sb-section" id="fc-progress-section">
+            <div class="fc-sb-title">Progress</div>
             <div class="fc-progress-row">
                 <span class="fc-progress-num" id="fc-progress-num">0</span>
                 <span class="fc-progress-divider">/</span>
@@ -135,29 +180,29 @@
                 <span class="fc-progress-spacer"></span>
                 <button type="button" class="fc-progress-reset" id="fc-progress-reset" title="Reset progress">↺</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="bookmarks" open>
-            <summary class="fc-sb-title">Bookmarks <span class="fc-sb-count" id="fc-bookmarks-count">0</span></summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Bookmarks <span class="fc-sb-count" id="fc-bookmarks-count">0</span></div>
             <ul class="fc-bookmark-list" id="fc-bookmarks-list">
                 <li class="fc-sb-empty">No bookmarks yet — click ☆ on any verse.</li>
             </ul>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="notes" open>
-            <summary class="fc-sb-title">Notes <span class="fc-sb-count" id="fc-notes-count">0</span></summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Notes <span class="fc-sb-count" id="fc-notes-count">0</span></div>
             <ul class="fc-bookmark-list" id="fc-notes-list">
                 <li class="fc-sb-empty">No notes yet — open any verse and write in the 📝 block.</li>
             </ul>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="export">
-            <summary class="fc-sb-title">Export</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Export</div>
             <div class="fc-sb-tools">
                 <button type="button" id="fc-export-md" class="fc-tool-btn">📥 Download Markdown</button>
                 <button type="button" id="fc-export-json" class="fc-tool-btn">💾 Download JSON backup</button>
             </div>
-        </details>
+        </div>
     </div>
 </aside>    <main class="fc-container">
 <nav class="fc-breadcrumbs">
@@ -175,7 +220,7 @@
         <h1 class="fc-verse-heading">9.8 · The Sons of Sagara Meet Lord Kapiladeva</h1>
         <span class="fc-ribbon-meta">
             27 verses
- · <a class="fc-ribbon-link" href="class-prep/">🖨 Class prep</a>        </span>
+        </span>
         <input type="search" class="fc-search" id="fc-search" placeholder="🔍 Search in this chapter" aria-label="Search verses in this chapter">
         <span class="fc-ribbon-current" id="fc-ribbon-current" aria-live="polite"></span>
     </div>
@@ -486,7 +531,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
     <div class="fc-translation" data-sec="translation">Śukadeva Gosvāmī continued: The son of Rohita was Harita, and Harita’s son was Campa, who constructed the town of Campāpurī. The son of Campa was Sudeva, and his son was Vijaya.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -527,18 +571,6 @@ The Eighth Chapter tells the story of King Sagara, how his sons were destroyed b
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Generations build, name, and leave behind cities like Campāpurī. Even the kingdoms we found are footnotes in someone&#39;s story — usefulness, not permanence, is the highest available reward.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What &#39;city&#39; am I building that I am imagining as permanent?</li><li>How could I refocus my construction work on usefulness now rather than fame later?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -733,7 +765,6 @@ The Eighth Chapter tells the story of King Sagara, how his sons were destroyed b
     <div class="fc-translation" data-sec="translation">The son of Vijaya was Bharuka, Bharuka’s son was Vṛka, and Vṛka’s son was Bāhuka. The enemies of King Bāhuka took away all his possessions, and therefore the King entered the order of vānaprastha and went to the forest with his wife.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -752,18 +783,6 @@ The Eighth Chapter tells the story of King Sagara, how his sons were destroyed b
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">When enemies stripped Bāhuka of everything, he simply went to the forest with his wife. Sudden loss can be received either as catastrophe or as a doorway into the next āśrama of life.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>If I were stripped of my current possessions, would I have practiced enough to find the doorway?</li><li>What detachment training could I start now, before circumstances impose it?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -933,7 +952,6 @@ The Eighth Chapter tells the story of King Sagara, how his sons were destroyed b
     <div class="fc-translation" data-sec="translation">Bāhuka died when he was old, and one of his wives wanted to die with him, following the satī rite. At that time, however, Aurva Muni, knowing her to be pregnant, forbade her to die.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -954,18 +972,6 @@ She was forbidden by the sage who knew her to be pregnant (prajāvantam).</div>
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Aurva Muni forbids the pregnant wife to die with her husband — a future life depends on her staying. There are moments when our grief-driven impulses must yield to a responsibility we are carrying for someone yet unseen.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Whose future is depending on my refusal to give up in my own present grief?</li><li>Where might a sage&#39;s voice be telling me to stay when my emotions want to walk away?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -1202,7 +1208,6 @@ She was forbidden by the sage who knew her to be pregnant (prajāvantam).</div>
     <div class="fc-translation" data-sec="translation">Knowing that she was pregnant, the co-wives of the wife of Bāhuka conspired to give her poison with her food, but it did not act. Instead, the son was born along with the poison. Therefore he became famous as Sagara [“one who is born with poison”]. Sagara later became the emperor. The place known as Gaṅgāsāgara was excavated by his sons.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -1223,18 +1228,6 @@ They gave her poison with her food (andhasā).</div>
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Sagara is born even though his co-wives poison his mother. When the Lord wills a soul into the world for a purpose, even deliberate harm becomes the very label by which he is known and remembered.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What &#39;poison&#39; was present at my own beginning that, by the Lord&#39;s arrangement, did not destroy me?</li><li>Whose hostile interference in my life has the Lord rendered harmless?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -1501,7 +1494,6 @@ They gave her poison with her food (andhasā).</div>
     <div class="fc-translation" data-sec="translation">Sagara Mahārāja, following the order of his spiritual master, Aurva, did not kill the uncivilized men like the Tālajaṅghas, Yavanas, Śakas, Haihayas and Barbaras. Instead, some of them he made dress awkwardly, some of them he shaved clean but allowed to wear mustaches, some of them he left wearing loose hair, some he half shaved, some he left without underwear, and some without external garments. Thus these different clans were made to dress differently, but King Sagara did not kill them.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -1522,18 +1514,6 @@ A series of tribes are listed. By the words of his guru Aurva, they were made to
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Sagara doesn&#39;t exterminate the barbaric clans; he marks them by altered dress and grooming. Sometimes correction comes through visible reminders rather than annihilation — discipline that preserves life while making non-dharmic identity obvious.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where am I tempted to &#39;destroy&#39; what I should be patiently marking and reforming?</li><li>What visible reminders in my own life are meant to keep me from drifting back into old habits?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -1766,7 +1746,6 @@ A series of tribes are listed. By the words of his guru Aurva, they were made to
     <div class="fc-translation" data-sec="translation">Following the instructions of the great sage Aurva, Sagara Mahārāja performed aśvamedha sacrifices and thus satisfied the Supreme Lord, who is the supreme controller, the Supersoul of all learned scholars, and the knower of all Vedic knowledge, the Supreme Personality of Godhead. But Indra, the King of heaven, stole the horse meant to be offered at the sacrifice.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -1795,18 +1774,6 @@ A series of tribes are listed. By the words of his guru Aurva, they were made to
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Following his guru&#39;s instructions, Sagara performs grand sacrifices and pleases the Lord — but Indra still steals the horse. Even our most sincere sacrifices can be interrupted by powerful interferences, and that does not mean the offering was wrong.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>When my offerings get &#39;interrupted,&#39; do I conclude I was mistaken — or trust the offering itself?</li><li>What &#39;horse&#39; in my life has been mysteriously snatched away in the middle of devotional work?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -1967,7 +1934,6 @@ A series of tribes are listed. By the words of his guru Aurva, they were made to
     <div class="fc-translation" data-sec="translation">[King Sagara had two wives, Sumati and Keśinī.] The sons of Sumati, who were very proud of their prowess and influence, following the order of their father, searched for the lost horse. While doing so, they dug into the earth very extensively.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -1988,18 +1954,6 @@ King Sagara had two wives, Sumati and Keśinī.  Six verses describe the prowess
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Pride drives the sons of Sagara to literally tear up the earth in search of the lost horse. Material confidence in our own prowess often leaves a trail of destruction we will later regret.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What am I aggressively &#39;digging up&#39; to recover, and at what cost to the surrounding world?</li><li>Where is pride directing my problem-solving in a way I&#39;ll be embarrassed by later?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -2267,7 +2221,6 @@ King Sagara had two wives, Sumati and Keśinī.  Six verses describe the prowess
     <div class="fc-translation" data-sec="translation">Thereafter, in the northeastern direction, they saw the horse near the āśrama of Kapila Muni. “Here is the man who has stolen the horse,” they said. “He is staying there with closed eyes. Certainly he is very sinful. Kill him! Kill him!” Shouting like this, the sons of Sagara, sixty thousand all together, raised their weapons. When they approached the sage, the sage opened His eyes.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -2286,18 +2239,6 @@ King Sagara had two wives, Sumati and Keśinī.  Six verses describe the prowess
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Sixty thousand armed princes shouting &#39;kill, kill&#39; over a meditating sage — when collective momentum carries us, we will commit absurd offenses with no internal pause. Crowd-mind is among the most dangerous spiritual states.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which group am I part of whose collective momentum sometimes overrides my better judgment?</li><li>When did I last refuse to join a chorus crying &#39;kill, kill&#39; against someone undeserving?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -2448,7 +2389,6 @@ King Sagara had two wives, Sumati and Keśinī.  Six verses describe the prowess
 
     <div class="fc-translation" data-sec="translation">By the influence of Indra, the King of heaven, the sons of Sagara had lost their intelligence and disrespected a great personality. Consequently, fire emanated from their own bodies, and they were immediately burned to ashes.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2477,18 +2417,6 @@ The third material element fire increased in their bodies because of their offen
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Disrespect to a great personality literally combusts the offenders. Misbehavior toward saintly persons is not just bad manners — it ignites something destructive within us.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Whose holiness am I currently treating with casual disrespect?</li><li>What inner &#39;overheating&#39; might be a signal that I have offended someone the Lord protects?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -2696,7 +2624,6 @@ The third material element fire increased in their bodies because of their offen
     <div class="fc-translation" data-sec="translation">It is sometimes argued that the sons of King Sagara were burned to ashes by the fire emanating from the eyes of Kapila Muni. This statement, however, is not approved by great learned persons, for Kapila Muni’s body is completely in the mode of goodness and therefore cannot manifest the mode of ignorance in the form of anger, just as the pure sky cannot be polluted by the dust of the earth.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -2737,18 +2664,6 @@ Those who say that Kapila became angry are ignorant. To say that the sons were b
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Some retell the story as if Kapila destroyed the princes in anger, but a sage in pure goodness cannot manifest such ignorance. We must be careful not to project our own grossness onto the actions of advanced souls.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where have I attributed motives to a devotee that say more about me than about them?</li><li>How could I extend more benefit of the doubt to those whose nature is purer than mine?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -2960,7 +2875,6 @@ Those who say that Kapila became angry are ignorant. To say that the sons were b
 
     <div class="fc-translation" data-sec="translation">Kapila Muni enunciated in this material world the Sāṅkhya philosophy, which is a strong boat with which to cross over the ocean of nescience. Indeed, a person eager to cross the ocean of the material world may take shelter of this philosophy. In such a greatly learned person, situated on the elevated platform of transcendence, how can there be any distinction between enemy and friend?</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2989,18 +2903,6 @@ Sāṅkhya philosophy is propagated by him.  How can material conceptions exist 
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Sāṅkhya philosophy, as Kapila gave it, is a boat across the ocean of nescience — and a person established on that platform sees no fundamental enemy. The deeper one knows reality, the fewer &#39;others&#39; there are to oppose.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which &#39;enemy&#39; in my mental world might dissolve if I climbed onto a more elevated platform?</li><li>What philosophical boat am I currently relying on, and is it actually seaworthy?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -3177,7 +3079,6 @@ Sāṅkhya philosophy is propagated by him.  How can material conceptions exist 
     <div class="fc-translation" data-sec="translation">Among the sons of Sagara Mahārāja was one named Asamaṣjasa, who was born from the King’s second wife, Keśinī. The son of Asamaṣjasa was known as Aṁśumān, and he was always engaged in working for the good of Sagara Mahārāja, his grandfather.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -3213,18 +3114,6 @@ Another son of King Sagara who was called Asamaṣjasa was the son of Keśinī.<
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">From the same household come ignoble and noble grandchildren. Aṁśumān quietly serves his grandfather throughout — and is the one who will redeem the family&#39;s lost cause.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which young person in my life, working quietly in service, may be the future redeemer of my work?</li><li>Am I noticing and encouraging the silent servants more than the noisy strivers?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -3519,7 +3408,6 @@ Another son of King Sagara who was called Asamaṣjasa was the son of Keśinī.<
     <div class="fc-translation" data-sec="translation">Formerly, in his previous birth, Asamaṣjasa had been a great mystic yogī, but by bad association he had fallen from his exalted position. Now, in this life, he was born in a royal family and was a jāti-smara; that is, he had the special advantage of being able to remember his past birth. Nonetheless, he wanted to display himself as a miscreant, and therefore he would do things that were abominable in the eyes of the public and unfavorable to his relatives. He would disturb the boys sporting in the river Sarayū by throwing them into the depths of the water.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -3540,18 +3428,6 @@ In a previous birth he had fallen from yoga.  He performed condemned acts in thi
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Asamaṣjasa was once a great yogī who fell through bad association. Spiritual altitude does not guarantee permanence — and association with wrong company has uprooted even those who could remember past lives.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What past spiritual progress of mine could be eroded by current company?</li><li>Where do I need to be more honest about whose presence I am marinating in?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -3711,7 +3587,6 @@ In a previous birth he had fallen from yoga.  He performed condemned acts in thi
 
     <div class="fc-translation" data-sec="translation">Because Asamaṣjasa engaged in such abominable activities, his father gave up affection for him and had him exiled. Then Asamaṣjasa exhibited his mystic power by reviving the boys and showing them to the King and their parents. After this, Asamaṣjasa left Ayodhyā.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3738,18 +3613,6 @@ In a previous birth he had fallen from yoga.  He performed condemned acts in thi
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Even after exile, Asamaṣjasa demonstrates real mystic power by reviving the boys he had drowned. Hidden depths in a wayward person sometimes reveal themselves only after the worst has happened.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Whom have I given up on whose hidden depths might still surprise me?</li><li>Is there hidden good in me waiting for the right occasion to be displayed, and am I waiting too long?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -3928,7 +3791,6 @@ In a previous birth he had fallen from yoga.  He performed condemned acts in thi
     <div class="fc-translation" data-sec="translation">O King Parīkṣit, when all the inhabitants of Ayodhyā saw that their boys had come back to life, they were astounded, and King Sagara greatly lamented the absence of his son.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -3977,18 +3839,6 @@ In a previous birth he had fallen from yoga.  He performed condemned acts in thi
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Sagara grieves his son even after recognizing his abominable acts. A parent&#39;s love does not cleanly disappear with disappointment, and grief and disapproval can coexist for a long time.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where am I trying to choose between disappointment and love when both must be carried?</li><li>How can I honor the complexity of my feelings about someone who has hurt me?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -4158,7 +4008,6 @@ In a previous birth he had fallen from yoga.  He performed condemned acts in thi
     <div class="fc-translation" data-sec="translation">Thereafter, Aṁśumān, the grandson of Mahārāja Sagara, was ordered by the King to search for the horse. Following the same path traversed by his uncles, Aṁśumān gradually reached the stack of ashes and found the horse nearby.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -4179,18 +4028,6 @@ Aṁśumān was the son of Asamaṣjasa.  He went on the path dug up by his ance
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Aṁśumān, sent to find the same horse, ends up at the same ashes. We often walk paths where our predecessors failed — and the question is whether we are willing to learn from their ashes instead of repeating them.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Whose ashes am I walking past in my own life, and what is the lesson?</li><li>Where am I in danger of re-enacting a mistake already documented in my family or community?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -4360,7 +4197,6 @@ Aṁśumān was the son of Asamaṣjasa.  He went on the path dug up by his ance
     <div class="fc-translation" data-sec="translation">The great Aṁśumān saw the sage named Kapila, the saint who is an incarnation of Viṣṇu, sitting there by the horse. Aṁśumān offered Him respectful obeisances, folded his hands and offered Him prayers with great attention.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -4389,18 +4225,6 @@ Aṁśumān was the son of Asamaṣjasa.  He went on the path dug up by his ance
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Where his uncles drew weapons, Aṁśumān folds his hands and offers prayers. The same situation can be the occasion of damnation or deliverance, depending on the posture we bring to it.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What encounter today could go very differently if I came folding hands instead of clenching fists?</li><li>Where am I bringing weapons when prayer is the actual required tool?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -4650,7 +4474,6 @@ Aṁśumān was the son of Asamaṣjasa.  He went on the path dug up by his ance
 
     <div class="fc-translation" data-sec="translation">Aṁśumān said: My Lord, even Lord Brahmā is to this very day unable to understand Your position, which is far beyond himself, either by meditation or by mental speculation. So what to speak of others like us, who have been created by Brahmā in various forms as demigods, animals, human beings, birds and beasts? We are completely in ignorance. Therefore, how can we know You, who are the Transcendence?</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -4700,18 +4523,6 @@ It is not surprising that the offending sons of Sagara were burned, because they
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Even Brahmā cannot fully understand the Lord; what to speak of small creatures shaped by the modes. Genuine humility about our cognitive limits is the first qualification for receiving anything real.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where am I demanding that the Lord conform to my conceptual grasp before I will trust Him?</li><li>How might I rest in not-fully-understanding, instead of treating it as a problem?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -4936,7 +4747,6 @@ It is not surprising that the offending sons of Sagara were burned, because they
 
     <div class="fc-translation" data-sec="translation">My Lord, You are fully situated in everyone’s heart, but the living entities, covered by the material body, cannot see You, for they are influenced by the external energy, conducted by the three modes of material nature. Their intelligence being covered by sattva-guṇa, rajo-guṇa and tamo-guṇa, they can see only the actions and reactions of these three modes of material nature. Because of the actions and reactions of the mode of ignorance, whether the living entities are awake or sleeping, they can see only the workings of material nature; they cannot see Your Lordship.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -5017,18 +4827,6 @@ Those with material bodies, dominated by the three guṇas, see only objects of 
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Covered by the three modes, we see only nature&#39;s actions and reactions, not the Lord in the heart. Awake or asleep, we can be busy without ever noticing the One who is closer than our own breath.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>How much of my day is spent reacting to the modes versus addressing the Lord within?</li><li>What small interior turning could remind me that He is in my heart right now?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -5226,7 +5024,6 @@ Those with material bodies, dominated by the three guṇas, see only objects of 
 
     <div class="fc-translation" data-sec="translation">O my Lord, sages freed from the influence of the three modes of material nature — sages such as the four Kumāras [Sanat, Sanaka, Sanandana and Sanātana] — are able to think of You, who are concentrated knowledge. But how can an ignorant person like me think of You?</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -5298,18 +5095,6 @@ Naturally, not by sādhana, the sages have destroyed illusion and difference ari
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The four Kumāras can think of the Lord; an ordinary, ignorant person doubts whether he can. Beginning the practice anyway — even with the protest of inadequacy — is the only honest start.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where is my sense of inadequacy being used as an excuse not to begin?</li><li>How can I begin remembering the Lord today, just as I am?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -5480,7 +5265,6 @@ Naturally, not by sādhana, the sages have destroyed illusion and difference ari
 
     <div class="fc-translation" data-sec="translation">O completely peaceful Lord, although material nature, fruitive activities and their consequent material names and forms are Your creation, You are unaffected by them. Therefore, Your transcendental name is different from material names, and Your form is different from material forms. You assume a form resembling a material body just to give us instructions like those of Bhagavad-gītā, but actually You are the supreme original person. I therefore offer my respectful obeisances unto You.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -5547,18 +5331,6 @@ You are free of forms actions and qualities related to māyā (praśānta-māyā
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The Lord&#39;s names and forms are not material despite resembling them. He appears in seemingly bodily form to give us teachings, but His identity is original and untouched by the modes.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Am I treating the Lord&#39;s name as a sound and His Deity as stone — or as the Lord Himself?</li><li>What would shift if I addressed the Deity today as the Person He really is?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -5737,7 +5509,6 @@ You are free of forms actions and qualities related to māyā (praśānta-māyā
     <div class="fc-translation" data-sec="translation">O my Lord, those whose hearts are bewildered by the influence of lust, greed, envy and illusion are interested only in false hearth and home in this world created by Your māyā. Attached to home, wife and children, they wander in this material world perpetually.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -5786,18 +5557,6 @@ You are free of forms actions and qualities related to māyā (praśānta-māyā
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Hearts bewildered by lust, greed, envy, and illusion build whole lives around a false home. Most of the architecture we labor on is set on land that māyā has rented out for a season.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which &#39;false home&#39; am I most invested in repairing rather than questioning?</li><li>What would I do differently if I admitted my lease here was short?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -5949,7 +5708,6 @@ You are free of forms actions and qualities related to māyā (praśānta-māyā
     <div class="fc-translation" data-sec="translation">O Supersoul of all living entities, O Personality of Godhead, simply by seeing You I have now been freed from all lusty desires, which are the root cause of insurmountable illusion and bondage in the material world.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -5980,18 +5738,6 @@ You are free of forms actions and qualities related to māyā (praśānta-māyā
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Aṁśumān reports that simply seeing the Lord has freed him from lusty desires. Real darśana — even momentary — has cleansing power that no amount of self-management can replicate.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>How am I cultivating actual darśana — of Deity, image, or remembered form — and not just talking about it?</li><li>What stubborn desire of mine has not yet been brought into the Lord&#39;s presence?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -6186,7 +5932,6 @@ You are free of forms actions and qualities related to māyā (praśānta-māyā
     <div class="fc-translation" data-sec="translation">O King Parīkṣit, when Aṁśumān had glorified the Lord in this way, the great sage Kapila, the powerful incarnation of Viṣṇu, being very merciful to him, explained to him the path of knowledge.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -6205,18 +5950,6 @@ You are free of forms actions and qualities related to māyā (praśānta-māyā
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Glorification, sincerely offered, draws out the Lord&#39;s mercy in the form of further instruction. Praise is not the end — it opens the door to receiving deeper guidance.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What instruction might be waiting for me on the other side of more genuine glorification of the Lord?</li><li>Where am I asking for direction without having first offered honest praise?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -6438,7 +6171,6 @@ You are free of forms actions and qualities related to māyā (praśānta-māyā
     <div class="fc-translation" data-sec="translation">The Personality of Godhead said: My dear Aṁśumān, here is the animal sought by your grandfather for sacrifice. Please take it. As for your forefathers, who have been burnt to ashes, they can be delivered only by Ganges water, and not by any other means.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -6459,18 +6191,6 @@ There is no other means of deliverance for them.</div>
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The Lord gives Aṁśumān the lost horse and tells him only Ganges water can deliver the burned ancestors. Some debts are paid not by our cleverness but by specific sacred remedies the Lord prescribes.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What sacred remedy — Gaṅgā water, the holy name, sādhu-saṅga — am I underusing for the ancestors of my own past?</li><li>Whose &#39;ashes&#39; am I responsible for delivering, and am I taking that responsibility seriously?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -6640,7 +6360,6 @@ There is no other means of deliverance for them.</div>
     <div class="fc-translation" data-sec="translation">Thereafter, Aṁśumān circumambulated Kapila Muni and offered Him respectful obeisances, bowing his head. After fully satisfying Him in this way, Aṁśumān brought back the horse meant for sacrifice, and with this horse Mahārāja Sagara performed the remaining ritualistic ceremonies.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -6659,18 +6378,6 @@ There is no other means of deliverance for them.</div>
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Aṁśumān circumambulates, satisfies the Lord, and returns with the horse. Heroism for a devotee is not in slaying a sage but in worshiping Him and quietly carrying the work forward.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>How is my own service silently carrying forward something my elders began?</li><li>Where could a quiet act of worship today move a stuck situation more than further effort?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -6830,7 +6537,6 @@ There is no other means of deliverance for them.</div>
 
     <div class="fc-translation" data-sec="translation">After delivering charge of his kingdom to Aṁśumān and thus being freed from all material anxiety and bondage, Sagara Mahārāja, following the means instructed by Aurva Muni, achieved the supreme destination.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -6880,18 +6586,6 @@ The son of Aśmaka was known as Bālika. He was protected from the curse of Para
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Sagara hands over the kingdom, lets go of anxiety, and reaches the supreme destination by his guru&#39;s method. The clean handoff is itself a spiritual act — and the freedom that follows is the real reward.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What clean handoff is overdue in my own life?</li><li>Whose method am I following toward the supreme destination, and am I actually following it?</li></ul>
-
-
-
-
-
-    </section>
 
 
 

@@ -31,7 +31,7 @@
 <body class="has-sidebar">
 <header class="fc-site-header">
     <button type="button" class="fc-mobile-trigger fc-mobile-trigger-left" data-overlay="left" aria-label="Open settings drawer">⚙</button>
-<a class="fc-brand" href="../../../">FolioCorpus<span class="fc-sub">Caitanya-caritāmṛta</span></a>
+    <a class="fc-brand" href="../../../">FolioCorpus<span class="fc-sub">Bhagavad-gītā</span></a>
     <nav class="fc-site-nav">
         <a href="../../../">Home</a>
         <a href="../../../bg/">Bhagavad-gītā</a>
@@ -46,8 +46,8 @@
     <button class="fc-sb-collapse" type="button" data-sb="left" title="Collapse left sidebar" aria-label="Collapse"></button>
 
     <div class="fc-sb-body">
-        <details class="fc-sb-section" data-sbsec="reading" open>
-            <summary class="fc-sb-title">Reading</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Reading</div>
             <div class="fc-sb-sub">Theme</div>
             <div class="fc-segmented" data-setting="theme">
                 <button type="button" data-val="light">Light</button>
@@ -73,10 +73,10 @@
                 <button type="button" data-val="single">Single</button>
                 <button type="button" data-val="side">Side-by-side</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="display" open>
-            <summary class="fc-sb-title">Display</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Display</div>
             <div class="fc-sb-grid">
                 <label><input type="checkbox" data-section="devanagari" checked> Devanāgarī</label>
                 <label><input type="checkbox" data-section="iast" checked> IAST transliteration</label>
@@ -98,10 +98,33 @@
                 <button type="button" data-action="expand-all">Expand all</button>
                 <button type="button" data-action="collapse-all">Collapse all</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="tools" open>
-            <summary class="fc-sb-title">Tools</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Find your starting point</div>
+            <div class="fc-persona-links">
+                <a class="fc-persona-link" href="../../../daily/">🌅 Daily (one value a week)</a>
+                <a class="fc-persona-link" href="../../../householder/">🏠 Householder (family & work)</a>
+                <a class="fc-persona-link" href="../../../parenting/">👨‍👩‍👧 Parenting (stories for kids)</a>
+                <a class="fc-persona-link" href="../../../themes/">📚 All themes</a>
+                <a class="fc-persona-link" href="../../../values/" style="background:#F0F6F2;border-left-color:#1F4632;">ॐ Vedic Value System ↗</a>
+                <a class="fc-persona-link" href="../../../vidya/" style="background:#FBF6E4;border-left-color:#C8860B;">📚 Vidyā Karaṇa (kids, multi-lang) ↗</a>
+            </div>
+        </div>
+
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Audience</div>
+            <div class="fc-audience-filter">
+                <label><input type="radio" name="fc-audience" value="all" checked> All levels</label>
+                <label><input type="radio" name="fc-audience" value="primary"> Primary (children)</label>
+                <label><input type="radio" name="fc-audience" value="middle"> Middle (teens)</label>
+                <label><input type="radio" name="fc-audience" value="senior"> Senior (adults)</label>
+                <label><input type="radio" name="fc-audience" value="college"> College / scholar</label>
+            </div>
+        </div>
+
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Tools</div>
             <div class="fc-sb-tools">
                 <button type="button" id="fc-presentation-toggle" class="fc-tool-btn"><span>🖥 Presentation</span><kbd class="fc-kbd">F</kbd></button>
                 <button type="button" id="fc-pen-toggle" class="fc-tool-btn"><span>✏️ Pen mode</span><kbd class="fc-kbd">P</kbd></button>
@@ -116,10 +139,26 @@
                 <button type="button" id="fc-clear-highlights" class="fc-tool-btn">🩷 Clear highlights (page)</button>
                 <button type="button" id="fc-notes-modal-open" class="fc-tool-btn">📓 My annotations</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="progress" id="fc-progress-section" open>
-            <summary class="fc-sb-title">Progress</summary>
+        <div class="fc-sb-section" id="fc-tts-controls" hidden>
+            <div class="fc-sb-title">
+                Read-aloud
+                <label class="fc-tts-master">
+                    <input type="checkbox" id="fc-tts-enabled" checked>
+                    <span class="fc-tts-master-label">On</span>
+                </label>
+            </div>
+            <div class="fc-tts-inner">
+                <div class="fc-sb-sub">Voice</div>
+                <select id="fc-tts-voice" class="fc-tts-select" aria-label="TTS voice"></select>
+                <div class="fc-sb-sub">Rate <span class="fc-tts-rate-val">1.0×</span></div>
+                <input type="range" id="fc-tts-rate" min="0.5" max="2" step="0.1" value="1" class="fc-tts-rate" aria-label="Reading rate">
+            </div>
+        </div>
+
+        <div class="fc-sb-section" id="fc-progress-section">
+            <div class="fc-sb-title">Progress</div>
             <div class="fc-progress-row">
                 <span class="fc-progress-num" id="fc-progress-num">0</span>
                 <span class="fc-progress-divider">/</span>
@@ -134,29 +173,29 @@
                 <span class="fc-progress-spacer"></span>
                 <button type="button" class="fc-progress-reset" id="fc-progress-reset" title="Reset progress">↺</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="bookmarks" open>
-            <summary class="fc-sb-title">Bookmarks <span class="fc-sb-count" id="fc-bookmarks-count">0</span></summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Bookmarks <span class="fc-sb-count" id="fc-bookmarks-count">0</span></div>
             <ul class="fc-bookmark-list" id="fc-bookmarks-list">
                 <li class="fc-sb-empty">No bookmarks yet — click ☆ on any verse.</li>
             </ul>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="notes" open>
-            <summary class="fc-sb-title">Notes <span class="fc-sb-count" id="fc-notes-count">0</span></summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Notes <span class="fc-sb-count" id="fc-notes-count">0</span></div>
             <ul class="fc-bookmark-list" id="fc-notes-list">
                 <li class="fc-sb-empty">No notes yet — open any verse and write in the 📝 block.</li>
             </ul>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="export">
-            <summary class="fc-sb-title">Export</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Export</div>
             <div class="fc-sb-tools">
                 <button type="button" id="fc-export-md" class="fc-tool-btn">📥 Download Markdown</button>
                 <button type="button" id="fc-export-json" class="fc-tool-btn">💾 Download JSON backup</button>
             </div>
-        </details>
+        </div>
     </div>
 </aside>    <main class="fc-container">
 <nav class="fc-breadcrumbs">
@@ -472,7 +511,6 @@
 
     <div class="fc-translation" data-sec="translation">By the mercy of Lord Caitanya Mahāprabhu, even a foolish child can fully describe the real nature of Lord Kṛṣṇa, the enjoyer of the pastimes of Vraja, according to the vision of the revealed scriptures.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -541,7 +579,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-4-2" data-note-label="BG 4.2" data-note-chapter="4" data-note-vlabel="2">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 4.2…" rows="4"></textarea>
@@ -580,7 +617,6 @@
 
 
     <div class="fc-translation" data-sec="translation">I have described the meaning of the fourth verse. Now, O devotees, kindly hear the explanation of the fifth verse.</div>
-
 
 
 
@@ -643,7 +679,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-4-4" data-note-label="BG 4.4" data-note-chapter="4" data-note-vlabel="4">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 4.4…" rows="4"></textarea>
@@ -694,7 +729,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-4-5" data-note-label="BG 4.5" data-note-chapter="4" data-note-vlabel="5">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 4.5…" rows="4"></textarea>
@@ -733,7 +767,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Although this is true, this is but the external reason for the Lord’s incarnation. Please hear one other reason — the confidential reason — for the Lord’s appearance.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -803,7 +836,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-4-7" data-note-label="BG 4.7" data-note-chapter="4" data-note-vlabel="7">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 4.7…" rows="4"></textarea>
@@ -854,7 +886,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-4-8" data-note-label="BG 4.8" data-note-chapter="4" data-note-vlabel="8">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 4.8…" rows="4"></textarea>
@@ -893,7 +924,6 @@
 
 
     <div class="fc-translation" data-sec="translation">But the time to lift the burden of the world mixed with the time for Lord Kṛṣṇa’s incarnation.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -963,7 +993,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-4-10" data-note-label="BG 4.10" data-note-chapter="4" data-note-vlabel="10">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 4.10…" rows="4"></textarea>
@@ -1002,7 +1031,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Lord Nārāyaṇa, the four primary expansions [Vāsudeva, Saṅkarṣaṇa, Pradyumna and Aniruddha], Matsya and the other līlā incarnations, the yuga-avatāras, the manv-antara incarnations and as many other incarnations as there are — all descend in the body of Lord Kṛṣṇa. In this way the complete Supreme Godhead, Lord Kṛṣṇa Himself, appears.</div>
-
 
 
 
@@ -1065,7 +1093,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-4-13" data-note-label="BG 4.13" data-note-chapter="4" data-note-vlabel="13">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 4.13…" rows="4"></textarea>
@@ -1116,7 +1143,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-4-14" data-note-label="BG 4.14" data-note-chapter="4" data-note-vlabel="14">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 4.14…" rows="4"></textarea>
@@ -1155,7 +1181,6 @@
 
 
     <div class="fc-translation" data-sec="translation">The Lord’s desire to appear was born from two reasons: the Lord wanted to taste the sweet essence of the mellows of love of God, and He wanted to propagate devotional service in the world on the platform of spontaneous attraction. Thus He is known as supremely jubilant and as the most merciful of all.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -1225,7 +1250,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-4-17" data-note-label="BG 4.17" data-note-chapter="4" data-note-vlabel="17">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 4.17…" rows="4"></textarea>
@@ -1276,7 +1300,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-4-18" data-note-label="BG 4.18" data-note-chapter="4" data-note-vlabel="18">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 4.18…" rows="4"></textarea>
@@ -1315,7 +1338,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“In whatever transcendental mellow My devotee worships Me, I reciprocate with him. That is My natural behavior.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -1374,7 +1396,6 @@
 
     <div class="fc-translation" data-sec="translation">“ ‘In whatever way My devotees surrender unto Me, I reward them accordingly. Everyone follows My path in all respects, O son of Pṛthā.’</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1432,7 +1453,6 @@
 
     <div class="fc-translation" data-sec="translation">“If one cherishes pure loving devotion to Me, thinking of Me as his son, his friend or his beloved, regarding himself as great and considering Me his equal or inferior, I become subordinate to him.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1489,7 +1509,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“ ‘Devotional service rendered to Me by the living beings revives their eternal life. O My dear damsels of Vraja, your affection for Me is your good fortune, for it is the only means by which you have obtained My favor.’</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -1559,7 +1578,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-4-24" data-note-label="BG 4.24" data-note-chapter="4" data-note-vlabel="24">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 4.24…" rows="4"></textarea>
@@ -1610,7 +1628,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-4-25" data-note-label="BG 4.25" data-note-chapter="4" data-note-vlabel="25">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 4.25…" rows="4"></textarea>
@@ -1649,7 +1666,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“If My beloved consort reproaches Me in a sulky mood, that steals My mind from the reverent hymns of the Vedas.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -1708,7 +1724,6 @@
 
     <div class="fc-translation" data-sec="translation">“Taking these pure devotees with Me, I shall descend and sport in various wonderful ways, unknown even in Vaikuṇṭha. I shall broadcast such pastimes by which even I am amazed.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1765,7 +1780,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“The influence of yogamāyā will inspire the gopīs with the sentiment that I am their paramour.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -1824,7 +1838,6 @@
 
     <div class="fc-translation" data-sec="translation">“Neither the gopīs nor I shall notice this, for our minds will always be entranced by one another’s beauty and qualities.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1881,7 +1894,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“Pure attachment will unite us even at the expense of moral and religious duties [dharma]. Destiny will sometimes bring us together and sometimes separate us.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -1951,7 +1963,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-4-32" data-note-label="BG 4.32" data-note-chapter="4" data-note-vlabel="32">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 4.32…" rows="4"></textarea>
@@ -1990,7 +2001,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“Then, by hearing about the pure love of the residents of Vraja, devotees will worship Me on the path of spontaneous love, abandoning all rituals of religiosity and fruitive activity.”</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -2049,7 +2059,6 @@
 
     <div class="fc-translation" data-sec="translation">“Kṛṣṇa manifests His eternal humanlike form and performs His pastimes to show mercy to the devotees. Having heard such pastimes, one should engage in service to Him.”</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2106,7 +2115,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Here the use of the verb “bhavet,” which is in the imperative mood, tells us that this certainly must be done. Noncompliance would be abandonment of duty.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -2176,7 +2184,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-4-36-37" data-note-label="BG 4.36-37" data-note-chapter="4" data-note-vlabel="36-37">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 4.36-37…" rows="4"></textarea>
@@ -2215,7 +2222,6 @@
 
 
     <div class="fc-translation" data-sec="translation">When the Lord desired to appear for another reason, the time for promulgating the religion of the age also arose.</div>
-
 
 
 
@@ -2278,7 +2284,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-4-39" data-note-label="BG 4.39" data-note-chapter="4" data-note-vlabel="39">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 4.39…" rows="4"></textarea>
@@ -2329,7 +2334,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-4-40" data-note-label="BG 4.40" data-note-chapter="4" data-note-vlabel="40">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 4.40…" rows="4"></textarea>
@@ -2368,7 +2372,6 @@
 
 
     <div class="fc-translation" data-sec="translation">In this way, assuming the sentiment of a devotee, He preached devotional service while practicing it Himself.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -2438,7 +2441,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-4-42" data-note-label="BG 4.42" data-note-chapter="4" data-note-vlabel="42">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 4.42…" rows="4"></textarea>
@@ -2489,7 +2491,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-4-43" data-note-label="BG 4.43" data-note-chapter="4" data-note-vlabel="43">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 4.43…" rows="4"></textarea>
@@ -2528,7 +2529,6 @@
 
 
     <div class="fc-translation" data-sec="translation">But if we compare the sentiments in an impartial mood, we find that the conjugal sentiment is superior to all others in sweetness.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -2586,7 +2586,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“Increasing love is experienced in various tastes, one above another. But that love which has the highest taste in the gradual succession of desire manifests itself in the form of conjugal love.”</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -2656,7 +2655,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-4-46" data-note-label="BG 4.46" data-note-chapter="4" data-note-vlabel="46">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 4.46…" rows="4"></textarea>
@@ -2695,7 +2693,6 @@
 
 
     <div class="fc-translation" data-sec="translation">There is a great increase of mellow in the unwedded conjugal mood. Such love is found nowhere but in Vraja.</div>
-
 
 
 
@@ -2758,7 +2755,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-4-48" data-note-label="BG 4.48" data-note-chapter="4" data-note-vlabel="48">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 4.48…" rows="4"></textarea>
@@ -2809,7 +2805,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-4-49" data-note-label="BG 4.49" data-note-chapter="4" data-note-vlabel="49">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 4.49…" rows="4"></textarea>
@@ -2848,7 +2843,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Therefore Lord Gaurāṅga, who is Śrī Hari Himself, accepted the sentiments of Rādhā and thus fulfilled His own desires.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -2918,7 +2912,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-4-51" data-note-label="BG 4.51" data-note-chapter="4" data-note-vlabel="51">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 4.51…" rows="4"></textarea>
@@ -2957,7 +2950,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“Lord Kṛṣṇa desired to taste the limitless nectarean mellows of the love of one of His multitude of loving damsels [Śrī Rādhā], and so He has assumed the form of Lord Caitanya. He has tasted that love while hiding His own dark complexion with Her effulgent yellow color. May that Lord Caitanya confer upon us His grace.”</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -3027,7 +3019,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-4-53" data-note-label="BG 4.53" data-note-chapter="4" data-note-vlabel="53">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 4.53…" rows="4"></textarea>
@@ -3078,7 +3069,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-4-54" data-note-label="BG 4.54" data-note-chapter="4" data-note-vlabel="54">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 4.54…" rows="4"></textarea>
@@ -3117,7 +3107,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“The loving affairs of Śrī Rādhā and Kṛṣṇa are transcendental manifestations of the Lord’s internal pleasure-giving potency. Although Rādhā and Kṛṣṇa are one in Their identity, They separated Themselves eternally. Now these two transcendental identities have again united, in the form of Śrī Kṛṣṇa Caitanya. I bow down to Him, who has manifested Himself with the sentiment and complexion of Śrīmatī Rādhārāṇī although He is Kṛṣṇa Himself.”</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -3175,7 +3164,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Rādhā and Kṛṣṇa are one and the same, but They have assumed two bodies. Thus They enjoy each other, tasting the mellows of love.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -3245,7 +3233,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-4-57" data-note-label="BG 4.57" data-note-chapter="4" data-note-vlabel="57">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 4.57…" rows="4"></textarea>
@@ -3284,7 +3271,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Therefore I shall first delineate the position of Rādhā and Kṛṣṇa. From that description the glory of Lord Caitanya will be known.</div>
-
 
 
 
@@ -3347,7 +3333,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-4-59" data-note-label="BG 4.59" data-note-chapter="4" data-note-vlabel="59">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 4.59…" rows="4"></textarea>
@@ -3386,7 +3371,6 @@
 
 
     <div class="fc-translation" data-sec="translation">That hlādinī energy gives Kṛṣṇa pleasure and nourishes His devotees.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -3456,7 +3440,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-4-61" data-note-label="BG 4.61" data-note-chapter="4" data-note-vlabel="61">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 4.61…" rows="4"></textarea>
@@ -3495,7 +3478,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Hlādinī is His aspect of bliss; sandhinī, of eternal existence; and samvit, of cognizance, which is also accepted as knowledge.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -3553,7 +3535,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“O Lord, You are the support of everything. The three attributes hlādinī, sandhinī and samvit exist in You as one spiritual energy. But the material modes, which cause happiness, misery and mixtures of the two, do not exist in You, for You have no material qualities.”</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -3623,7 +3604,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-4-64" data-note-label="BG 4.64" data-note-chapter="4" data-note-vlabel="64">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 4.64…" rows="4"></textarea>
@@ -3662,7 +3642,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Kṛṣṇa’s mother, father, abode, house, bedding, seats and so on are all transformations of śuddha-sattva.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -3721,7 +3700,6 @@
 
     <div class="fc-translation" data-sec="translation">“The condition of pure goodness [śuddha-sattva], in which the Supreme Personality of Godhead is revealed without any covering, is called vasudeva. In that pure state the Supreme Godhead, who is beyond the material senses and who is known as Vāsudeva, is perceived by my mind.”</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3778,7 +3756,6 @@
 
 
     <div class="fc-translation" data-sec="translation">The essence of the samvit potency is knowledge that the Supreme Personality of Godhead is Lord Kṛṣṇa. All other kinds of knowledge, such as the knowledge of Brahman, are its components.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -3837,7 +3814,6 @@
 
     <div class="fc-translation" data-sec="translation">The essence of the hlādinī potency is love of God, the essence of love of God is emotion [bhāva], and the ultimate development of emotion is mahābhāva.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3894,7 +3870,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Śrī Rādhā Ṭhākurāṇī is the embodiment of mahābhāva. She is the repository of all good qualities and the crest jewel among all the lovely consorts of Lord Kṛṣṇa.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -3953,7 +3928,6 @@
 
     <div class="fc-translation" data-sec="translation">“Of these two gopīs [Rādhārāṇī and Candrāvalī], Śrīmatī Rādhārāṇī is superior in all respects. She is the embodiment of mahābhāva, and She surpasses all in good qualities.”</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -4011,7 +3985,6 @@
 
     <div class="fc-translation" data-sec="translation">Her mind, senses and body are steeped in love for Kṛṣṇa. She is Kṛṣṇa’s own energy, and She helps Him in His pastimes.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -4068,7 +4041,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“I worship Govinda, the primeval Lord, who resides in His own realm, Goloka, with Rādhā, who resembles His own spiritual figure and who embodies the ecstatic potency [hlādinī]. Their companions are Her confidantes, who embody extensions of Her bodily form and who are imbued and permeated with ever-blissful spiritual rasa.”</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -4138,7 +4110,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-4-73" data-note-label="BG 4.73" data-note-chapter="4" data-note-vlabel="73">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 4.73…" rows="4"></textarea>
@@ -4177,7 +4148,6 @@
 
 
     <div class="fc-translation" data-sec="translation">The beloved consorts of Lord Kṛṣṇa are of three kinds: the goddesses of fortune, the queens, and the milkmaids of Vraja, who are the foremost of all. These consorts all proceed from Rādhikā.</div>
-
 
 
 
@@ -4240,7 +4210,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-4-76" data-note-label="BG 4.76" data-note-chapter="4" data-note-vlabel="76">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 4.76…" rows="4"></textarea>
@@ -4279,7 +4248,6 @@
 
 
     <div class="fc-translation" data-sec="translation">The goddesses of fortune are partial manifestations of Śrīmatī Rādhikā, and the queens are reflections of Her image.</div>
-
 
 
 
@@ -4342,7 +4310,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-4-78" data-note-label="BG 4.78" data-note-chapter="4" data-note-vlabel="78">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 4.78…" rows="4"></textarea>
@@ -4381,7 +4348,6 @@
 
 
     <div class="fc-translation" data-sec="translation">The Vraja-devīs have diverse bodily features. They are Her expansions and are the instruments for expanding rasa.</div>
-
 
 
 
@@ -4444,7 +4410,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-4-80" data-note-label="BG 4.80" data-note-chapter="4" data-note-vlabel="80">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 4.80…" rows="4"></textarea>
@@ -4483,7 +4448,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Among them are various groups of consorts in Vraja who have varieties of sentiments and mellows. They help Lord Kṛṣṇa taste all the sweetness of the rāsa dance and other pastimes.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -4553,7 +4517,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-4-82" data-note-label="BG 4.82" data-note-chapter="4" data-note-vlabel="82">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 4.82…" rows="4"></textarea>
@@ -4592,7 +4555,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“The transcendental goddess Śrīmatī Rādhārāṇī is the direct counterpart of Lord Śrī Kṛṣṇa. She is the central figure for all the goddesses of fortune. She possesses all the attractiveness to attract the all-attractive Personality of Godhead. She is the primeval internal potency of the Lord.”</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -4662,7 +4624,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-4-84" data-note-label="BG 4.84" data-note-chapter="4" data-note-vlabel="84">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 4.84…" rows="4"></textarea>
@@ -4713,7 +4674,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-4-85" data-note-label="BG 4.85" data-note-chapter="4" data-note-vlabel="85">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 4.85…" rows="4"></textarea>
@@ -4752,7 +4712,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Or “kṛṣṇa-mayī” means that She is identical with Lord Kṛṣṇa, for She embodies the mellows of love. The energy of Lord Kṛṣṇa is identical with Him.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -4811,7 +4770,6 @@
 
     <div class="fc-translation" data-sec="translation">Her worship [ārādhana] consists of fulfilling the desires of Lord Kṛṣṇa. Therefore the Purāṇas call Her Rādhikā.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -4868,7 +4826,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“Truly the Personality of Godhead has been worshiped by Her. Therefore Lord Govinda, being pleased, has brought Her to a lonely spot, leaving us all behind.”</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -4938,7 +4895,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-4-89" data-note-label="BG 4.89" data-note-chapter="4" data-note-vlabel="89">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 4.89…" rows="4"></textarea>
@@ -4977,7 +4933,6 @@
 
 
     <div class="fc-translation" data-sec="translation">I have already explained the meaning of “sarva-lakṣmī.” Rādhā is the original source of all the goddesses of fortune.</div>
-
 
 
 
@@ -5040,7 +4995,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-4-91" data-note-label="BG 4.91" data-note-chapter="4" data-note-vlabel="91">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 4.91…" rows="4"></textarea>
@@ -5079,7 +5033,6 @@
 
 
     <div class="fc-translation" data-sec="translation">The word “sarva-kānti” indicates that all beauty and luster rest in Her body. All the lakṣmīs derive their beauty from Her.</div>
-
 
 
 
@@ -5142,7 +5095,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-4-93" data-note-label="BG 4.93" data-note-chapter="4" data-note-vlabel="93">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 4.93…" rows="4"></textarea>
@@ -5181,7 +5133,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Śrīmatī Rādhikā fulfills all the desires of Lord Kṛṣṇa. This is the meaning of “sarva-kānti.”</div>
-
 
 
 
@@ -5244,7 +5195,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-4-95" data-note-label="BG 4.95" data-note-chapter="4" data-note-vlabel="95">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 4.95…" rows="4"></textarea>
@@ -5283,7 +5233,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Śrī Rādhā is the full power, and Lord Kṛṣṇa is the possessor of full power. The two are not different, as evidenced by the revealed scriptures.</div>
-
 
 
 
@@ -5346,7 +5295,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-4-97" data-note-label="BG 4.97" data-note-chapter="4" data-note-vlabel="97">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 4.97…" rows="4"></textarea>
@@ -5385,7 +5333,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Thus Rādhā and Lord Kṛṣṇa are one, yet They have taken two forms to enjoy the mellows of pastimes.</div>
-
 
 
 
@@ -5448,7 +5395,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-4-99-100" data-note-label="BG 4.99-100" data-note-chapter="4" data-note-vlabel="99-100">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 4.99-100…" rows="4"></textarea>
@@ -5487,7 +5433,6 @@
 
 
     <div class="fc-translation" data-sec="translation">To explain the sixth verse, I shall first give a hint of its meaning.</div>
-
 
 
 
@@ -5550,7 +5495,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-4-102" data-note-label="BG 4.102" data-note-chapter="4" data-note-vlabel="102">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 4.102…" rows="4"></textarea>
@@ -5589,7 +5533,6 @@
 
 
     <div class="fc-translation" data-sec="translation">There is a principal cause for Lord Kṛṣṇa’s appearance. It grows from His own engagements as the foremost enjoyer of loving exchanges.</div>
-
 
 
 
@@ -5652,7 +5595,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-4-104" data-note-label="BG 4.104" data-note-chapter="4" data-note-vlabel="104">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 4.104…" rows="4"></textarea>
@@ -5691,7 +5633,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Svarūpa Gosāñi is the most intimate associate of the Lord. He therefore knows all these topics well.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -5750,7 +5691,6 @@
 
     <div class="fc-translation" data-sec="translation">The heart of Lord Caitanya is the image of Śrī Rādhikā’s emotions. Thus feelings of pleasure and pain arise constantly therein.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -5808,7 +5748,6 @@
 
     <div class="fc-translation" data-sec="translation">In the final portion of His pastimes, Lord Caitanya was obsessed with the madness of separation from Lord Kṛṣṇa. He acted in erroneous ways and talked deliriously.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -5865,7 +5804,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Just as Rādhikā went mad at the sight of Uddhava, so Lord Caitanya was obsessed day and night with the madness of separation.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -5935,7 +5873,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-4-109" data-note-label="BG 4.109" data-note-chapter="4" data-note-vlabel="109">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 4.109…" rows="4"></textarea>
@@ -5974,7 +5911,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Whenever a particular sentiment arose in His heart, Svarūpa Dāmodara satisfied Him by singing songs or reciting verses of the same nature.</div>
-
 
 
 
@@ -6037,7 +5973,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-4-111" data-note-label="BG 4.111" data-note-chapter="4" data-note-vlabel="111">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 4.111…" rows="4"></textarea>
@@ -6076,7 +6011,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Formerly in Vraja Lord Kṛṣṇa displayed three ages, namely childhood, boyhood and adolescence. His adolescence is especially significant.</div>
-
 
 
 
@@ -6139,7 +6073,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-4-113" data-note-label="BG 4.113" data-note-chapter="4" data-note-vlabel="113">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 4.113…" rows="4"></textarea>
@@ -6178,7 +6111,6 @@
 
 
     <div class="fc-translation" data-sec="translation">In youth He tasted the essence of rasa, fulfilling His desires in pastimes like the rāsa dance with Śrīmatī Rādhikā and the other gopīs.</div>
-
 
 
 
@@ -6241,7 +6173,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-4-115" data-note-label="BG 4.115" data-note-chapter="4" data-note-vlabel="115">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 4.115…" rows="4"></textarea>
@@ -6280,7 +6211,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“Lord Madhusūdana enjoyed His youth with pastimes on autumn nights in the midst of the jewellike milkmaids. Thus He dispelled all the misfortunes of the world.”</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -6339,7 +6269,6 @@
 
     <div class="fc-translation" data-sec="translation">“Lord Kṛṣṇa made Śrīmatī Rādhārāṇī close Her eyes in shame before Her friends by His words relating Their amorous activities on the previous night. Then He showed the highest limit of cleverness in drawing pictures of dolphins in various playful sports on Her breasts. In this way Lord Hari made His youth successful by performing pastimes in the bushes with Śrī Rādhā and Her friends.”</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -6396,7 +6325,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“O Paurṇamāsī, if Lord Hari had not descended in Mathurā with Śrīmatī Rādhārāṇī, this entire creation — and especially Cupid, the demigod of love — would have been useless.”</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -6466,7 +6394,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-4-119-120" data-note-label="BG 4.119-120" data-note-chapter="4" data-note-vlabel="119-120">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 4.119-120…" rows="4"></textarea>
@@ -6505,7 +6432,6 @@
 
 
     <div class="fc-translation" data-sec="translation">I shall explain His first desire. Kṛṣṇa says, “I am the primary cause of all rasas.</div>
-
 
 
 
@@ -6568,7 +6494,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-4-122" data-note-label="BG 4.122" data-note-chapter="4" data-note-vlabel="122">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 4.122…" rows="4"></textarea>
@@ -6607,7 +6532,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“I do not know the strength of Rādhā’s love, with which She always overwhelms Me.</div>
-
 
 
 
@@ -6670,7 +6594,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-4-124" data-note-label="BG 4.124" data-note-chapter="4" data-note-vlabel="124">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 4.124…" rows="4"></textarea>
@@ -6709,7 +6632,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“O my beloved friend Vṛndā, where are you coming from?”</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -6779,7 +6701,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-4-126" data-note-label="BG 4.126" data-note-chapter="4" data-note-vlabel="126">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 4.126…" rows="4"></textarea>
@@ -6818,7 +6739,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“Just as I am the abode of all mutually contradictory characteristics, so Rādhā’s love is always full of similar contradictions.</div>
-
 
 
 
@@ -6881,7 +6801,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-4-128" data-note-label="BG 4.128" data-note-chapter="4" data-note-vlabel="128">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 4.128…" rows="4"></textarea>
@@ -6920,7 +6839,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“There is certainly nothing greater than Her love. But Her love is devoid of pride. That is the sign of its greatness.</div>
-
 
 
 
@@ -6983,7 +6901,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-4-130" data-note-label="BG 4.130" data-note-chapter="4" data-note-vlabel="130">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 4.130…" rows="4"></textarea>
@@ -7022,7 +6939,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“All glories to Rādhā’s love for Kṛṣṇa, the enemy of the demon Mura! Although it is all-pervading, it tends to increase at every moment. Although it is important, it is devoid of pride. And although it is pure, it is always beset with duplicity.”</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -7092,7 +7008,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-4-132" data-note-label="BG 4.132" data-note-chapter="4" data-note-vlabel="132">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 4.132…" rows="4"></textarea>
@@ -7131,7 +7046,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“I taste the bliss to which the object of love is entitled. But the pleasure of Rādhā, the abode of that love, is ten million times greater.</div>
-
 
 
 
@@ -7194,7 +7108,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-4-134" data-note-label="BG 4.134" data-note-chapter="4" data-note-vlabel="134">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 4.134…" rows="4"></textarea>
@@ -7233,7 +7146,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“If sometime I can be the abode of that love, only then may I taste its joy.”</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -7303,7 +7215,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-4-136" data-note-label="BG 4.136" data-note-chapter="4" data-note-vlabel="136">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 4.136…" rows="4"></textarea>
@@ -7342,7 +7253,6 @@
 
 
     <div class="fc-translation" data-sec="translation">That is one desire. Now please hear of another. Seeing His own beauty, Lord Kṛṣṇa began to consider.</div>
-
 
 
 
@@ -7405,7 +7315,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-4-138" data-note-label="BG 4.138" data-note-chapter="4" data-note-vlabel="138">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 4.138…" rows="4"></textarea>
@@ -7444,7 +7353,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“Only Rādhikā, by the strength of Her love, tastes all the nectar of My sweetness.</div>
-
 
 
 
@@ -7507,7 +7415,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-4-140" data-note-label="BG 4.140" data-note-chapter="4" data-note-vlabel="140">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 4.140…" rows="4"></textarea>
@@ -7546,7 +7453,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“My sweetness also has no room for expansion, yet it shines before that mirror in newer and newer beauty.</div>
-
 
 
 
@@ -7609,7 +7515,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-4-142" data-note-label="BG 4.142" data-note-chapter="4" data-note-vlabel="142">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 4.142…" rows="4"></textarea>
@@ -7648,7 +7553,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“My sweetness is always newer and newer. Devotees taste it according to their own respective love.</div>
-
 
 
 
@@ -7711,7 +7615,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-4-144" data-note-label="BG 4.144" data-note-chapter="4" data-note-vlabel="144">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 4.144…" rows="4"></textarea>
@@ -7750,7 +7653,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“If I deliberate on a way to taste it, I find that I hanker for the position of Rādhikā.”</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -7808,7 +7710,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“Who manifests an abundance of sweetness greater than Mine, which has never been experienced before and which causes wonder to all? Alas, I Myself, My mind bewildered upon seeing this beauty, impetuously desire to enjoy it like Śrīmatī Rādhārāṇī.”</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -7878,7 +7779,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-4-147" data-note-label="BG 4.147" data-note-chapter="4" data-note-vlabel="147">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 4.147…" rows="4"></textarea>
@@ -7917,7 +7817,6 @@
 
 
     <div class="fc-translation" data-sec="translation">All minds are attracted by hearing His sweet voice and flute, or by seeing His beauty. Even Lord Kṛṣṇa Himself makes efforts to taste that sweetness.</div>
-
 
 
 
@@ -7980,7 +7879,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-4-149" data-note-label="BG 4.149" data-note-chapter="4" data-note-vlabel="149">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 4.149…" rows="4"></textarea>
@@ -8019,7 +7917,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Such a person, being unsatisfied, begins to blaspheme Lord Brahmā, saying that he does not know the art of creating well and is simply inexperienced.</div>
-
 
 
 
@@ -8082,7 +7979,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-4-151" data-note-label="BG 4.151" data-note-chapter="4" data-note-vlabel="151">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 4.151…" rows="4"></textarea>
@@ -8121,7 +8017,6 @@
 
 
     <div class="fc-translation" data-sec="translation">[The gopīs said:] “O Kṛṣṇa, when You go to the forest during the day and we do not see Your sweet face, which is surrounded by beautiful curling hair, half a second becomes as long as an entire age for us. And we consider the creator, who has put eyelids on the eyes we use for seeing You, to be simply a fool.”</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -8179,7 +8074,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“The gopīs saw their beloved Kṛṣṇa at Kurukṣetra after a long separation. They secured and embraced Him in their hearts through their eyes, and they attained a joy so intense that not even perfect yogīs can attain it. The gopīs cursed the creator for creating eyelids that interfered with their vision.”</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -8249,7 +8143,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-4-154" data-note-label="BG 4.154" data-note-chapter="4" data-note-vlabel="154">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 4.154…" rows="4"></textarea>
@@ -8288,7 +8181,6 @@
 
 
     <div class="fc-translation" data-sec="translation">[The gopīs said:] “O friends, those eyes that see the beautiful faces of the sons of Mahārāja Nanda are certainly fortunate. As these two sons enter the forest, surrounded by Their friends, driving the cows before Them, They hold Their flutes to Their mouths and glance lovingly upon the residents of Vṛndāvana. For those who have eyes, we think there is no greater object of vision.”</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -8346,7 +8238,6 @@
 
 
     <div class="fc-translation" data-sec="translation">[The women of Mathurā said:] “What austerities must the gopīs have performed? With their eyes they always drink the nectar of the form of Lord Kṛṣṇa, which is the essence of loveliness and is not to be equaled or surpassed. That loveliness is the only abode of beauty, fame and opulence. It is self-perfect, ever fresh and extremely rare.”</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -8416,7 +8307,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-4-157" data-note-label="BG 4.157" data-note-chapter="4" data-note-vlabel="157">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 4.157…" rows="4"></textarea>
@@ -8455,7 +8345,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Lord Kṛṣṇa’s own beauty attracts Lord Kṛṣṇa Himself. But because He cannot fully enjoy it, His mind remains full of sorrow.</div>
-
 
 
 
@@ -8518,7 +8407,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-4-159" data-note-label="BG 4.159" data-note-chapter="4" data-note-vlabel="159">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 4.159…" rows="4"></textarea>
@@ -8557,7 +8445,6 @@
 
 
     <div class="fc-translation" data-sec="translation">This conclusion of rasa is extremely deep. Only Svarūpa Dāmodara knows much about it.</div>
-
 
 
 
@@ -8620,7 +8507,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-4-161" data-note-label="BG 4.161" data-note-chapter="4" data-note-vlabel="161">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 4.161…" rows="4"></textarea>
@@ -8659,7 +8545,6 @@
 
 
     <div class="fc-translation" data-sec="translation">The love of the gopīs is called rūḍha-bhāva. It is pure and spotless. It is not at any time lust.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -8718,7 +8603,6 @@
 
     <div class="fc-translation" data-sec="translation">“The pure love of the gopīs has become celebrated by the name ‘lust.’ The dear devotees of the Lord, headed by Śrī Uddhava, desire to taste that love.”</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -8776,7 +8660,6 @@
 
     <div class="fc-translation" data-sec="translation">Lust and love have different characteristics, just as iron and gold have different natures.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -8833,7 +8716,6 @@
 
 
     <div class="fc-translation" data-sec="translation">The desire to gratify one’s own senses is kāma [lust], but the desire to please the senses of Lord Kṛṣṇa is prema [love].</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -8903,7 +8785,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-4-166" data-note-label="BG 4.166" data-note-chapter="4" data-note-vlabel="166">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 4.166…" rows="4"></textarea>
@@ -8954,7 +8835,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-4-167-169" data-note-label="BG 4.167-169" data-note-chapter="4" data-note-vlabel="167-169">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 4.167-169…" rows="4"></textarea>
@@ -8993,7 +8873,6 @@
 
 
     <div class="fc-translation" data-sec="translation">That is called firm attachment to Lord Kṛṣṇa. It is spotlessly pure, like a clean cloth that has no stain.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -9063,7 +8942,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-4-171" data-note-label="BG 4.171" data-note-chapter="4" data-note-vlabel="171">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 4.171…" rows="4"></textarea>
@@ -9114,7 +8992,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-4-172" data-note-label="BG 4.172" data-note-chapter="4" data-note-vlabel="172">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 4.172…" rows="4"></textarea>
@@ -9153,7 +9030,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“O dearly beloved! Your lotus feet are so soft that we place them gently on our breasts, fearing that Your feet will be hurt. Our life rests only in You. Our minds, therefore, are filled with anxiety that Your tender feet might be wounded by pebbles as You roam about on the forest path.”</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -9223,7 +9099,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-4-174" data-note-label="BG 4.174" data-note-chapter="4" data-note-vlabel="174">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 4.174…" rows="4"></textarea>
@@ -9274,7 +9149,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-4-175" data-note-label="BG 4.175" data-note-chapter="4" data-note-vlabel="175">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 4.175…" rows="4"></textarea>
@@ -9313,7 +9187,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“O My beloved gopīs, you have renounced social customs, scriptural injunctions and your relatives for My sake. I disappeared behind you only to increase your concentration upon Me. Since I disappeared for your benefit, you should not be displeased with Me.”</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -9383,7 +9256,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-4-177" data-note-label="BG 4.177" data-note-chapter="4" data-note-vlabel="177">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 4.177…" rows="4"></textarea>
@@ -9422,7 +9294,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“In whatever way My devotees surrender unto Me, I reward them accordingly. Everyone follows My path in all respects, O son of Pṛthā.”</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -9492,7 +9363,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-4-179" data-note-label="BG 4.179" data-note-chapter="4" data-note-vlabel="179">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 4.179…" rows="4"></textarea>
@@ -9531,7 +9401,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“O gopīs, I am not able to repay My debt for your spotless service, even within a lifetime of Brahmā. Your connection with Me is beyond reproach. You have worshiped Me, cutting off all domestic ties, which are difficult to break. Therefore please let your own glorious deeds be your compensation.”</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -9589,7 +9458,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Now, whatever affection we see the gopīs show for their own bodies, know it for certain to be only for the sake of Lord Kṛṣṇa.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -9659,7 +9527,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-4-182" data-note-label="BG 4.182" data-note-chapter="4" data-note-vlabel="182">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 4.182…" rows="4"></textarea>
@@ -9710,7 +9577,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-4-183" data-note-label="BG 4.183" data-note-chapter="4" data-note-vlabel="183">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 4.183…" rows="4"></textarea>
@@ -9749,7 +9615,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“O Arjuna, there are no greater receptacles of deep love for Me than the gopīs, who cleanse and decorate their bodies because they consider them Mine.”</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -9819,7 +9684,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-4-185" data-note-label="BG 4.185" data-note-chapter="4" data-note-vlabel="185">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 4.185…" rows="4"></textarea>
@@ -9870,7 +9734,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-4-186" data-note-label="BG 4.186" data-note-chapter="4" data-note-vlabel="186">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 4.186…" rows="4"></textarea>
@@ -9909,7 +9772,6 @@
 
 
     <div class="fc-translation" data-sec="translation">The gopīs taste a pleasure ten million times greater than the pleasure Lord Kṛṣṇa derives from seeing them.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -9979,7 +9841,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-4-188" data-note-label="BG 4.188" data-note-chapter="4" data-note-vlabel="188">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 4.188…" rows="4"></textarea>
@@ -10018,7 +9879,6 @@
 
 
     <div class="fc-translation" data-sec="translation">For this contradiction I see only one solution: the joy of the gopīs lies in the joy of their beloved Kṛṣṇa.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -10088,7 +9948,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-4-190" data-note-label="BG 4.190" data-note-chapter="4" data-note-vlabel="190">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 4.190…" rows="4"></textarea>
@@ -10127,7 +9986,6 @@
 
 
     <div class="fc-translation" data-sec="translation">[The gopīs think:] “Kṛṣṇa has obtained so much pleasure by seeing me.” That thought increases the fullness and beauty of their faces and bodies.</div>
-
 
 
 
@@ -10190,7 +10048,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-4-192" data-note-label="BG 4.192" data-note-chapter="4" data-note-vlabel="192">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 4.192…" rows="4"></textarea>
@@ -10229,7 +10086,6 @@
 
 
     <div class="fc-translation" data-sec="translation">In this way a competition takes place between them in which no one acknowledges defeat.</div>
-
 
 
 
@@ -10292,7 +10148,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-4-194" data-note-label="BG 4.194" data-note-chapter="4" data-note-vlabel="194">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 4.194…" rows="4"></textarea>
@@ -10331,7 +10186,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Therefore we find that the joy of the gopīs nourishes the joy of Lord Kṛṣṇa. For that reason the fault of lust is not present in their love.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -10389,7 +10243,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“I worship Lord Keśava. Coming back from the forest of Vraja, He is worshiped by the gopīs, who mount the roofs of their palaces and meet Him on the path with a hundred manners of dancing glances and gentle smiles. The corners of His eyes wander, like large black bees, around the gopīs’ breasts.”</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -10459,7 +10312,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-4-197" data-note-label="BG 4.197" data-note-chapter="4" data-note-vlabel="197">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 4.197…" rows="4"></textarea>
@@ -10498,7 +10350,6 @@
 
 
     <div class="fc-translation" data-sec="translation">The love of the gopīs nourishes the sweetness of Lord Kṛṣṇa. That sweetness in turn increases their love, for they are greatly satisfied.</div>
-
 
 
 
@@ -10561,7 +10412,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-4-199" data-note-label="BG 4.199" data-note-chapter="4" data-note-vlabel="199">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 4.199…" rows="4"></textarea>
@@ -10600,7 +10450,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Whenever there is unselfish love, that is its style. The reservoir of love derives pleasure when the lovable object is pleased. When the pleasure of love interferes with the service of Lord Kṛṣṇa, the devotee becomes angry toward such ecstasy.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -10659,7 +10508,6 @@
 
     <div class="fc-translation" data-sec="translation">“Śrī Dāruka did not relish his ecstatic feelings of love, for they caused his limbs to become stunned and thus obstructed his service of fanning Lord Kṛṣṇa.”</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -10717,7 +10565,6 @@
 
     <div class="fc-translation" data-sec="translation">“The lotus-eyed Rādhārāṇī powerfully condemned the ecstatic love that caused a flow of tears that hindered Her sight of Govinda.”</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -10774,7 +10621,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Furthermore, pure devotees never forsake the loving service of Lord Kṛṣṇa to aspire for their own personal pleasure through the five kinds of liberation.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -10844,7 +10690,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-4-205" data-note-label="BG 4.205" data-note-chapter="4" data-note-vlabel="205">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 4.205…" rows="4"></textarea>
@@ -10895,7 +10740,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-4-206" data-note-label="BG 4.206" data-note-chapter="4" data-note-vlabel="206">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 4.206…" rows="4"></textarea>
@@ -10934,7 +10778,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“My devotees do not accept sālokya, sārṣṭi, sārūpya, sāmīpya or oneness with Me — even if I offer these liberations — in preference to serving Me.”</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -10992,7 +10835,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“My devotees, having fulfilled their desires by serving Me, do not accept the four kinds of salvation that are easily earned by such service. Why then should they accept any pleasures that are lost in the course of time?”</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -11062,7 +10904,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-4-209" data-note-label="BG 4.209" data-note-chapter="4" data-note-vlabel="209">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 4.209…" rows="4"></textarea>
@@ -11113,7 +10954,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-4-210" data-note-label="BG 4.210" data-note-chapter="4" data-note-vlabel="210">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 4.210…" rows="4"></textarea>
@@ -11152,7 +10992,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“O Pārtha, I speak to you the truth. The gopīs are My helpers, teachers, disciples, servants, friends and consorts. I do not know what they are not to Me.”</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -11222,7 +11061,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-4-212" data-note-label="BG 4.212" data-note-chapter="4" data-note-vlabel="212">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 4.212…" rows="4"></textarea>
@@ -11261,7 +11099,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“O Pārtha, the gopīs know My greatness, My loving service, respect for Me, and My mentality. Others cannot really know these.”</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -11320,7 +11157,6 @@
 
     <div class="fc-translation" data-sec="translation">Among the gopīs, Śrīmatī Rādhikā is the foremost. She surpasses all in beauty, in good qualities, in good fortune and, above all, in love.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -11377,7 +11213,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“Just as Rādhā is dear to Lord Kṛsṇa, so Her bathing place [Rādhā-kuṇḍa] is dear to Him. She alone is His most beloved of all the gopīs.”</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -11436,7 +11271,6 @@
 
     <div class="fc-translation" data-sec="translation">“O Pārtha, in all the three planetary systems, this earth is especially fortunate, for on earth is the town of Vṛndāvana. And there the gopīs are especially glorious because among them is My Śrīmatī Rādhārāṇī.”</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -11493,7 +11327,6 @@
 
 
     <div class="fc-translation" data-sec="translation">All the other gopīs help increase the joy of Kṛṣṇa’s pastimes with Rādhārāṇī. The gopīs act as the instruments of Their mutual enjoyment.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -11563,7 +11396,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-4-218" data-note-label="BG 4.218" data-note-chapter="4" data-note-vlabel="218">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 4.218…" rows="4"></textarea>
@@ -11602,7 +11434,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“Lord Kṛṣṇa, the enemy of Kaṁsa, left aside the other gopīs during the rāsa dance and took Śrīmatī Rādhārāṇī to His heart, for She is the helper of the Lord in realizing the essence of His desires.”</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -11672,7 +11503,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-4-220" data-note-label="BG 4.220" data-note-chapter="4" data-note-vlabel="220">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 4.220…" rows="4"></textarea>
@@ -11711,7 +11541,6 @@
 
 
     <div class="fc-translation" data-sec="translation">In the mood of Śrīmatī Rādhārāṇī, He also fulfilled His own desires. This is the principal reason for His appearance.</div>
-
 
 
 
@@ -11774,7 +11603,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-4-222" data-note-label="BG 4.222" data-note-chapter="4" data-note-vlabel="222">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 4.222…" rows="4"></textarea>
@@ -11825,7 +11653,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-4-223" data-note-label="BG 4.223" data-note-chapter="4" data-note-vlabel="223">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 4.223…" rows="4"></textarea>
@@ -11864,7 +11691,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“My dear friends, just see how Śrī Kṛṣṇa is enjoying the season of spring! With the gopīs embracing each of His limbs, He is like amorous love personified. With His transcendental pastimes, He enlivens all the gopīs and the entire creation. With His soft bluish-black arms and legs, which resemble blue lotus flowers, He has created a festival for Cupid.”</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -11934,7 +11760,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-4-225" data-note-label="BG 4.225" data-note-chapter="4" data-note-vlabel="225">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 4.225…" rows="4"></textarea>
@@ -11973,7 +11798,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Thus He initiated the dharma for the Age of Kali. The devotees of Lord Caitanya know all these truths.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -12031,7 +11855,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Advaita Ācārya, Lord Nityānanda, Śrīvāsa Paṇḍita, Gadādhara Paṇḍita, Svarūpa Dāmodara, Murāri Gupta, Haridāsa Ṭhākura and all the other devotees of Śrī Kṛṣṇa Caitanya — bowing down with devotion, I hold their lotus feet on my head.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -12101,7 +11924,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-4-229" data-note-label="BG 4.229" data-note-chapter="4" data-note-vlabel="229">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 4.229…" rows="4"></textarea>
@@ -12140,7 +11962,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“Desiring to understand the glory of Rādhārāṇī’s love, the wonderful qualities in Him that She alone relishes through Her love, and the happiness She feels when She realizes the sweetness of His love, the Supreme Lord Hari, richly endowed with Her emotions, appeared from the womb of Śrīmatī Śacī-devī, as the moon appeared from the ocean.”</div>
-
 
 
 
@@ -12203,7 +12024,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-4-231" data-note-label="BG 4.231" data-note-chapter="4" data-note-vlabel="231">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 4.231…" rows="4"></textarea>
@@ -12242,7 +12062,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Therefore I shall mention them, revealing only their essence, so that loving devotees will understand them but fools will not.</div>
-
 
 
 
@@ -12305,7 +12124,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-4-233" data-note-label="BG 4.233" data-note-chapter="4" data-note-vlabel="233">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 4.233…" rows="4"></textarea>
@@ -12344,7 +12162,6 @@
 
 
     <div class="fc-translation" data-sec="translation">All these conclusions are like the newly grown twigs of a mango tree; they are always pleasing to the devotees, who in this way resemble cuckoo birds.</div>
-
 
 
 
@@ -12407,7 +12224,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-4-235" data-note-label="BG 4.235" data-note-chapter="4" data-note-vlabel="235">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 4.235…" rows="4"></textarea>
@@ -12446,7 +12262,6 @@
 
 
     <div class="fc-translation" data-sec="translation">For fear of them I do not wish to speak, but if they do not understand, then what can be happier in all the three worlds?</div>
-
 
 
 
@@ -12509,7 +12324,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-4-237" data-note-label="BG 4.237" data-note-chapter="4" data-note-vlabel="237">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 4.237…" rows="4"></textarea>
@@ -12548,7 +12362,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Once Lord Kṛṣṇa considered within His heart, “Everyone says that I am complete bliss, full of all rasas.</div>
-
 
 
 
@@ -12611,7 +12424,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-4-239" data-note-label="BG 4.239" data-note-chapter="4" data-note-vlabel="239">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 4.239…" rows="4"></textarea>
@@ -12650,7 +12462,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“One who has a hundred times more qualities than Me could give pleasure to My mind.</div>
-
 
 
 
@@ -12713,7 +12524,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-4-241" data-note-label="BG 4.241" data-note-chapter="4" data-note-vlabel="241">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 4.241…" rows="4"></textarea>
@@ -12752,7 +12562,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“Although My beauty defeats the beauty of ten million Cupids, although it is unequaled and unsurpassed, and although it gives pleasure to the three worlds, seeing Rādhārāṇī gives pleasure to My eyes.</div>
-
 
 
 
@@ -12815,7 +12624,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-4-244" data-note-label="BG 4.244" data-note-chapter="4" data-note-vlabel="244">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 4.244…" rows="4"></textarea>
@@ -12854,7 +12662,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“Although My body lends fragrance to the entire creation, the scent of Rādhārāṇī’s limbs captivates My mind and heart.</div>
-
 
 
 
@@ -12917,7 +12724,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-4-246" data-note-label="BG 4.246" data-note-chapter="4" data-note-vlabel="246">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 4.246…" rows="4"></textarea>
@@ -12956,7 +12762,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“And although My touch is cooler than ten million moons, I am refreshed by the touch of Śrīmatī Rādhikā.</div>
-
 
 
 
@@ -13019,7 +12824,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-4-248" data-note-label="BG 4.248" data-note-chapter="4" data-note-vlabel="248">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 4.248…" rows="4"></textarea>
@@ -13058,7 +12862,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“In this way My affectionate feelings for Śrīmatī Rādhārāṇī may be understood, but on analysis I find them contradictory.</div>
-
 
 
 
@@ -13121,7 +12924,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-4-250" data-note-label="BG 4.250" data-note-chapter="4" data-note-vlabel="250">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 4.250…" rows="4"></textarea>
@@ -13160,7 +12962,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“The flutelike murmur of the bamboos rubbing against one another steals Rādhārāṇī’s consciousness, for She thinks it to be the sound of My flute. And She embraces a tamāla tree, mistaking it for Me.</div>
-
 
 
 
@@ -13223,7 +13024,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-4-252" data-note-label="BG 4.252" data-note-chapter="4" data-note-vlabel="252">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 4.252…" rows="4"></textarea>
@@ -13262,7 +13062,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“When a favorable breeze carries to Her the fragrance of My body, She is blinded by love and tries to fly into that breeze.</div>
-
 
 
 
@@ -13325,7 +13124,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-4-254" data-note-label="BG 4.254" data-note-chapter="4" data-note-vlabel="254">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 4.254…" rows="4"></textarea>
@@ -13364,7 +13162,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“Even with hundreds of mouths I could not express the transcendental pleasure She derives from My association.</div>
-
 
 
 
@@ -13427,7 +13224,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-4-256" data-note-label="BG 4.256" data-note-chapter="4" data-note-vlabel="256">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 4.256…" rows="4"></textarea>
@@ -13466,7 +13262,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“The sage Bharata has said that the mellows of lover and beloved are equal. But he does not know the mellows of My Vṛndāvana.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -13536,7 +13331,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-4-258" data-note-label="BG 4.258" data-note-chapter="4" data-note-vlabel="258">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 4.258…" rows="4"></textarea>
@@ -13575,7 +13369,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“ ‘My dear auspicious Rādhārāṇī, Your body is the source of all beauty. Your red lips are softer than the sense of immortal sweetness, Your face bears the aroma of a lotus flower, Your sweet words defeat the vibrations of the cuckoo, and Your limbs are cooler than the pulp of sandalwood. All My transcendental senses are overwhelmed in ecstatic pleasure by tasting You, who are completely decorated by beautiful qualities.’</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -13633,7 +13426,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“ ‘Her eyes are enchanted by the beauty of Lord Kṛṣṇa, the enemy of Kaṁsa. Her body thrills in pleasure at His touch. Her ears are always attracted to His sweet voice, Her nostrils are enchanted by His fragrance, and Her tongue hankers for the nectar of His soft lips. She hangs down her lotuslike face, exercising self-control only by pretense, but She cannot help showing the external signs of Her spontaneous love for Lord Kṛṣṇa.’</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -13703,7 +13495,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-4-261" data-note-label="BG 4.261" data-note-chapter="4" data-note-vlabel="261">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 4.261…" rows="4"></textarea>
@@ -13742,7 +13533,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“I am always eager to taste the joy that Rādhārāṇī derives from Me.</div>
-
 
 
 
@@ -13805,7 +13595,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-4-263" data-note-label="BG 4.263" data-note-chapter="4" data-note-vlabel="263">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 4.263…" rows="4"></textarea>
@@ -13844,7 +13633,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“Formerly I appeared in the world to taste mellows, and I tasted the mellows of pure love in various ways.</div>
-
 
 
 
@@ -13907,7 +13695,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-4-265" data-note-label="BG 4.265" data-note-chapter="4" data-note-vlabel="265">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 4.265…" rows="4"></textarea>
@@ -13946,7 +13733,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“But these three desires of Mine were not satisfied, for one cannot enjoy them in a contrary position.</div>
-
 
 
 
@@ -14009,7 +13795,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-4-267" data-note-label="BG 4.267" data-note-chapter="4" data-note-vlabel="267">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 4.267…" rows="4"></textarea>
@@ -14048,7 +13833,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“Therefore, assuming Rādhārāṇī’s sentiments and bodily complexion, I shall descend to fulfill these three desires.”</div>
-
 
 
 
@@ -14111,7 +13895,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-4-269" data-note-label="BG 4.269" data-note-chapter="4" data-note-vlabel="269">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 4.269…" rows="4"></textarea>
@@ -14150,7 +13933,6 @@
 
 
     <div class="fc-translation" data-sec="translation">At that time Śrī Advaita was earnestly worshiping Him. Advaita attracted Him with His loud calls.</div>
-
 
 
 
@@ -14213,7 +13995,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-4-271-272" data-note-label="BG 4.271-272" data-note-chapter="4" data-note-vlabel="271-272">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 4.271-272…" rows="4"></textarea>
@@ -14252,7 +14033,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Meditating on the lotus feet of Śrī Rūpa Gosvāmī, I have thus explained the sixth verse.</div>
-
 
 
 
@@ -14315,7 +14095,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-4-274" data-note-label="BG 4.274" data-note-chapter="4" data-note-vlabel="274">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 4.274…" rows="4"></textarea>
@@ -14354,7 +14133,6 @@
 
 
     <div class="fc-translation" data-sec="translation">“Lord Kṛṣṇa desired to taste the limitless nectarean mellows of the love possessed by one of His multitude of loving damsels [Śrī Rādhā], and so He has assumed the form of Lord Caitanya. He has tasted that love while hiding His own dark complexion with Her effulgent yellow color. May that Lord Caitanya confer upon us His grace.”</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -14424,7 +14202,6 @@
 
 
 
-
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-4-276" data-note-label="BG 4.276" data-note-chapter="4" data-note-vlabel="276">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 4.276…" rows="4"></textarea>
@@ -14463,7 +14240,6 @@
 
 
     <div class="fc-translation" data-sec="translation">Praying at the lotus feet of Śrī Rūpa and Śrī Raghunātha, always desiring their mercy, I, Kṛṣṇadāsa, narrate Śrī Caitanya-caritāmṛta, following in their footsteps.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>

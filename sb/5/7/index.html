@@ -25,19 +25,25 @@
     <link rel="icon" href="../../../assets/icons/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="../../../assets/icons/icon.svg">
     <link rel="stylesheet" href="../../../assets/css/site.css">
+    <link rel="alternate" hreflang="te-IN" href="../../../te/sb/5/7/">
+    <link rel="alternate" hreflang="x-default" href="../../../">
     <script>window.FC_TO_ROOT = "../../../";</script>
     <script src="../../../assets/js/toggle.js"></script>
 </head>
 <body class="has-sidebar" data-chapter="7">
 <header class="fc-site-header">
     <button type="button" class="fc-mobile-trigger fc-mobile-trigger-left" data-overlay="left" aria-label="Open settings drawer">⚙</button>
-<a class="fc-brand" href="../../../">FolioCorpus<span class="fc-sub">Śrīmad-Bhāgavatam</span></a>
+    <a class="fc-brand" href="../../../">FolioCorpus<span class="fc-sub">Bhagavad-gītā</span></a>
     <nav class="fc-site-nav">
         <a href="../../../">Home</a>
         <a href="../../../bg/">Bhagavad-gītā</a>
         <a href="../../../sb/">Śrīmad-Bhāgavatam</a>
         <a href="../../../search/" title="Search across all integrated works">🔍 Search</a>
         <button type="button" id="fc-random-verse" class="fc-nav-btn" title="Jump to a random verse">🎲 Random</button>
+        <span class="fc-lang-switch" aria-label="Script">
+            <a class="active" href="#" title="Devanāgarī edition">EN</a>
+            <a class="" href="../../../te/sb/5/7/" title="Telugu lipi edition">తె</a>
+        </span>
     </nav>
     <button type="button" class="fc-mobile-trigger fc-mobile-trigger-right" data-overlay="right" aria-label="Open chapter index drawer">📚</button>
 </header>
@@ -46,8 +52,8 @@
     <button class="fc-sb-collapse" type="button" data-sb="left" title="Collapse left sidebar" aria-label="Collapse"></button>
 
     <div class="fc-sb-body">
-        <details class="fc-sb-section" data-sbsec="reading" open>
-            <summary class="fc-sb-title">Reading</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Reading</div>
             <div class="fc-sb-sub">Theme</div>
             <div class="fc-segmented" data-setting="theme">
                 <button type="button" data-val="light">Light</button>
@@ -73,10 +79,10 @@
                 <button type="button" data-val="single">Single</button>
                 <button type="button" data-val="side">Side-by-side</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="display" open>
-            <summary class="fc-sb-title">Display</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Display</div>
             <div class="fc-sb-grid">
                 <label><input type="checkbox" data-section="devanagari" checked> Devanāgarī</label>
                 <label><input type="checkbox" data-section="iast" checked> IAST transliteration</label>
@@ -99,10 +105,33 @@
                 <button type="button" data-action="expand-all">Expand all</button>
                 <button type="button" data-action="collapse-all">Collapse all</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="tools" open>
-            <summary class="fc-sb-title">Tools</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Find your starting point</div>
+            <div class="fc-persona-links">
+                <a class="fc-persona-link" href="../../../daily/">🌅 Daily (one value a week)</a>
+                <a class="fc-persona-link" href="../../../householder/">🏠 Householder (family & work)</a>
+                <a class="fc-persona-link" href="../../../parenting/">👨‍👩‍👧 Parenting (stories for kids)</a>
+                <a class="fc-persona-link" href="../../../themes/">📚 All themes</a>
+                <a class="fc-persona-link" href="../../../values/" style="background:#F0F6F2;border-left-color:#1F4632;">ॐ Vedic Value System ↗</a>
+                <a class="fc-persona-link" href="../../../vidya/" style="background:#FBF6E4;border-left-color:#C8860B;">📚 Vidyā Karaṇa (kids, multi-lang) ↗</a>
+            </div>
+        </div>
+
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Audience</div>
+            <div class="fc-audience-filter">
+                <label><input type="radio" name="fc-audience" value="all" checked> All levels</label>
+                <label><input type="radio" name="fc-audience" value="primary"> Primary (children)</label>
+                <label><input type="radio" name="fc-audience" value="middle"> Middle (teens)</label>
+                <label><input type="radio" name="fc-audience" value="senior"> Senior (adults)</label>
+                <label><input type="radio" name="fc-audience" value="college"> College / scholar</label>
+            </div>
+        </div>
+
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Tools</div>
             <div class="fc-sb-tools">
                 <button type="button" id="fc-presentation-toggle" class="fc-tool-btn"><span>🖥 Presentation</span><kbd class="fc-kbd">F</kbd></button>
                 <button type="button" id="fc-pen-toggle" class="fc-tool-btn"><span>✏️ Pen mode</span><kbd class="fc-kbd">P</kbd></button>
@@ -117,10 +146,26 @@
                 <button type="button" id="fc-clear-highlights" class="fc-tool-btn">🩷 Clear highlights (page)</button>
                 <button type="button" id="fc-notes-modal-open" class="fc-tool-btn">📓 My annotations</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="progress" id="fc-progress-section" open>
-            <summary class="fc-sb-title">Progress</summary>
+        <div class="fc-sb-section" id="fc-tts-controls" hidden>
+            <div class="fc-sb-title">
+                Read-aloud
+                <label class="fc-tts-master">
+                    <input type="checkbox" id="fc-tts-enabled" checked>
+                    <span class="fc-tts-master-label">On</span>
+                </label>
+            </div>
+            <div class="fc-tts-inner">
+                <div class="fc-sb-sub">Voice</div>
+                <select id="fc-tts-voice" class="fc-tts-select" aria-label="TTS voice"></select>
+                <div class="fc-sb-sub">Rate <span class="fc-tts-rate-val">1.0×</span></div>
+                <input type="range" id="fc-tts-rate" min="0.5" max="2" step="0.1" value="1" class="fc-tts-rate" aria-label="Reading rate">
+            </div>
+        </div>
+
+        <div class="fc-sb-section" id="fc-progress-section">
+            <div class="fc-sb-title">Progress</div>
             <div class="fc-progress-row">
                 <span class="fc-progress-num" id="fc-progress-num">0</span>
                 <span class="fc-progress-divider">/</span>
@@ -135,29 +180,29 @@
                 <span class="fc-progress-spacer"></span>
                 <button type="button" class="fc-progress-reset" id="fc-progress-reset" title="Reset progress">↺</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="bookmarks" open>
-            <summary class="fc-sb-title">Bookmarks <span class="fc-sb-count" id="fc-bookmarks-count">0</span></summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Bookmarks <span class="fc-sb-count" id="fc-bookmarks-count">0</span></div>
             <ul class="fc-bookmark-list" id="fc-bookmarks-list">
                 <li class="fc-sb-empty">No bookmarks yet — click ☆ on any verse.</li>
             </ul>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="notes" open>
-            <summary class="fc-sb-title">Notes <span class="fc-sb-count" id="fc-notes-count">0</span></summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Notes <span class="fc-sb-count" id="fc-notes-count">0</span></div>
             <ul class="fc-bookmark-list" id="fc-notes-list">
                 <li class="fc-sb-empty">No notes yet — open any verse and write in the 📝 block.</li>
             </ul>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="export">
-            <summary class="fc-sb-title">Export</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Export</div>
             <div class="fc-sb-tools">
                 <button type="button" id="fc-export-md" class="fc-tool-btn">📥 Download Markdown</button>
                 <button type="button" id="fc-export-json" class="fc-tool-btn">💾 Download JSON backup</button>
             </div>
-        </details>
+        </div>
     </div>
 </aside>    <main class="fc-container">
 <nav class="fc-breadcrumbs">
@@ -175,7 +220,7 @@
         <h1 class="fc-verse-heading">5.7 · The Activities of King Bharata</h1>
         <span class="fc-ribbon-meta">
             14 verses
- · <a class="fc-ribbon-link" href="class-prep/">🖨 Class prep</a>        </span>
+        </span>
         <input type="search" class="fc-search" id="fc-search" placeholder="🔍 Search in this chapter" aria-label="Search verses in this chapter">
         <span class="fc-ribbon-current" id="fc-ribbon-current" aria-live="polite"></span>
     </div>
@@ -437,7 +482,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
     <div class="fc-translation" data-sec="translation">Śukadeva Gosvāmī continued speaking to Mahārāja Parīkṣit: My dear King, Bharata Mahārāja was a topmost devotee. Following the orders of his father, who had already decided to install him on the throne, he began to rule the earth accordingly. When Bharata Mahārāja ruled the entire globe, he followed the orders of his father and married Paṣcajanī, the daughter of Viśvarūpa.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -488,18 +532,6 @@ The Seventh Chapter describes how Bharata, with strong determination, worshipped
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Even a topmost devotee can fulfill the order of his father — ruling a kingdom, marrying — without compromising devotion. Obedience to a worthy elder is itself devotional, not a distraction from it.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What duty given by a worthy elder are you currently treating as an obstacle to devotion rather than as devotion itself?</li><li>Where might fulfilling someone else&#39;s reasonable request actually deepen, not dilute, your spiritual life?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -695,7 +727,6 @@ The Seventh Chapter describes how Bharata, with strong determination, worshipped
     <div class="fc-translation" data-sec="translation">Just as the false ego creates the subtle sense objects, Mahārāja Bharata created five sons in the womb of Paṣcajanī, his wife. These sons were named Sumati, Rāṣṭrabhṛta, Sudarśana, Āvaraṇa and Dhūmraketu.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -731,18 +762,6 @@ Bhūtādiḥ means ahaṅkāra.</div>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Children born of pure devotional parents carry their parents&#39; consciousness into the next generation. What we transmit through the act of bringing forth life is as formative as anything we do later.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What consciousness did you carry in the most generative seasons of your life, and what did that bring forth?</li><li>What inner state are you in now as you create — projects, relationships, art — and how is it shaping the result?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -874,7 +893,6 @@ Bhūtādiḥ means ahaṅkāra.</div>
 
     <div class="fc-translation" data-sec="translation">Formerly this planet was known as Ajanābha-varṣa, but since Mahārāja Bharata’s reign it has become known as Bhārata-varṣa.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -903,18 +921,6 @@ Because its ruler was the son of Nābhi (Ṛṣabha) the planet was known as Aja
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Lands and institutions take their character from those who lead them. The land we now call by one name will be called by another after a different kind of person rules it. Our influence quietly renames the worlds we inherit.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What &#39;name&#39; is being silently given to the spaces you preside over by the quality of your leadership?</li><li>What legacy of character would you want attached to the places you have shaped?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -1082,7 +1088,6 @@ Because its ruler was the son of Nābhi (Ṛṣabha) the planet was known as Aja
 
     <div class="fc-translation" data-sec="translation">Mahārāja Bharata was a very learned and experienced king on this earth. He perfectly ruled the citizens, being himself engaged in his own respective duties. Mahārāja Bharata was as affectionate to the citizens as his father and grandfather had been. Keeping them engaged in their occupational duties, he ruled the earth.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1109,18 +1114,6 @@ Because its ruler was the son of Nābhi (Ṛṣabha) the planet was known as Aja
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">A good leader keeps people gainfully engaged in work suited to their nature. Idleness or misfit work creates collective suffering. Compassionate leadership matches each person to a role in which they can advance.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Whom under your influence is in a role that does not suit their nature, and what could you do about it?</li><li>Where in your own life are you in a misfit role, and what would honest re-alignment look like?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -1324,7 +1317,6 @@ Because its ruler was the son of Nābhi (Ṛṣabha) the planet was known as Aja
 
     <div class="fc-translation" data-sec="translation">With great faith King Bharata performed various kinds of sacrifice. He performed the sacrifices known as agni-hotra, darśa, pūrṇamāsa, cāturmāsya, paśu-yajṣa [wherein a horse is sacrificed] and soma-yajṣa [wherein a kind of beverage is offered]. Sometimes these sacrifices were performed completely and sometimes partially. In any case, in all the sacrifices the regulations of cāturhotra were strictly followed. In this way Bharata Mahārāja worshiped the Supreme Personality of Godhead.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1387,18 +1379,6 @@ He worshipped the Lord who is the form of sacrifice without and with animal offe
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Faithful, properly executed sacrifices follow strict regulations because the form itself trains the heart. In our age, animal sacrifice is forbidden; saṅkīrtana takes its place — but the principle of disciplined offering remains.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What spiritual &#39;sacrifice&#39; could you take up with disciplined regularity for an entire season?</li><li>Where have you been skipping regulation in favor of mood, and what is it costing your practice?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -1728,7 +1708,6 @@ He worshipped the Lord who is the form of sacrifice without and with animal offe
 
     <div class="fc-translation" data-sec="translation">After performing the preliminaries of various sacrifices, Mahārāja Bharata offered the results in the name of religion to the Supreme Personality of Godhead, Vāsudeva. In other words, he performed all the yajṣas for the satisfaction of Lord Vāsudeva, Kṛṣṇa. Mahārāja Bharata thought that since the demigods were different parts of Vāsudeva’s body, He controls those who are explained in the Vedic mantras. By thinking in this way, Mahārāja Bharata was freed from all material contamination, such as attachment, lust and greed. When the priests were about to offer the sacrificial ingredients into the fire, Mahārāja Bharata expertly understood how the offering made to different demigods was simply an offering to the different limbs of the Lord. For instance, Indra is the arm of the Supreme Personality of Godhead, and Sūrya [the sun] is His eye. Thus Mahārāja Bharata considered that the oblations offered to different demigods were actually offered unto the different limbs of Lord Vāsudeva.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1817,18 +1796,6 @@ The results do not accrue to the impure person in the verse tāvat karāṇi kur
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Even a devotee may perform many forms of yajña, but all of them are aimed at Vāsudeva. Demigods are limbs of the Lord, not independent recipients. Keep the address of every offering clear: it goes to Kṛṣṇa.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where in your spiritual life are you offering to the limbs while forgetting the Body?</li><li>How could you re-direct one current practice so that its dedication to Vāsudeva becomes explicit?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -2113,7 +2080,6 @@ The results do not accrue to the impure person in the verse tāvat karāṇi kur
 
     <div class="fc-translation" data-sec="translation">In this way, being purified by ritualistic sacrifices, the heart of Mahārāja Bharata was completely uncontaminated. His devotional service unto Vāsudeva, Lord Kṛṣṇa, increased day after day. Lord Kṛṣṇa, the son of Vasudeva, is the original Personality of Godhead manifest as the Supersoul [Paramātmā] as well as the impersonal Brahman. Yogīs meditate upon the localized Paramātmā situated in the heart, jṣānīs worship the impersonal Brahman as the Supreme Absolute Truth, and devotees worship Vāsudeva, the Supreme Personality of Godhead, whose transcendental body is described in the śāstras. His body is decorated with the Śrīvatsa, the Kaustubha jewel and a flower garland, and His hands hold a conchshell, disc, club and lotus flower. Devotees like Nārada always think of Him within their hearts.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2198,18 +2164,6 @@ Brahman is worshipped by the jṣānīs, and Bhagavān is worshipped by the devo
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">As the heart is purified through sincere ritual, devotion to Kṛṣṇa grows day by day. Practice is not magic but cleaning: each round wipes another layer, and what was always present begins to shine through.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What practice in your life is reliably cleaning the heart, even if slowly?</li><li>Where are you waiting for visible breakthroughs when steady cleaning is what is actually called for?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -2395,7 +2349,6 @@ Brahman is worshipped by the jṣānīs, and Bhagavān is worshipped by the devo
 
     <div class="fc-translation" data-sec="translation">Destiny fixed the time for Mahārāja Bharata’s enjoyment of material opulence at one thousand times ten thousand years. When that period was finished, he retired from family life and divided the wealth he had received from his forefathers among his sons. He left his paternal home, the reservoir of all opulence, and started for Pulahāśrama, which is situated in Hardwar. The śālagrāma-śilās are obtainable there.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2454,18 +2407,6 @@ Not being able to ascertain whether his karmas of this life had finished or not,
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">There is a right season to retire from family life and divide inherited wealth among the next generation. Refusing to retire when the time comes is itself a spiritual failure. Hand off, then go inward.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What role are you holding past its season, refusing to hand off what is meant to pass on?</li><li>If you knew your retirement should come within a few years, what would you start preparing now?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -2606,7 +2547,6 @@ Not being able to ascertain whether his karmas of this life had finished or not,
 
     <div class="fc-translation" data-sec="translation">At Pulaha-āśrama, the Supreme Personality of Godhead, Hari, out of His transcendental affection for His devotee, becomes visible to His devotee, satisfying His devotee’s desires.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2662,18 +2602,6 @@ Because of his affection the Lord is present there in the form desired by his de
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Out of affection, the Lord becomes visible to His devotees in holy places. Pilgrimage works not by geography but by the openness it creates in the heart. The Lord meets us where we make space for Him.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What holy place — physical or inner — could you visit again with fresh openness to being met?</li><li>Where in your practice has the Lord already become visible, even subtly, and how have you responded?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -2823,7 +2751,6 @@ Because of his affection the Lord is present there in the form desired by his de
 
     <div class="fc-translation" data-sec="translation">In Pulaha-āśrama is the Gaṇḍakī River, which is the best of all rivers. The śālagrāma-śilā, the marble pebbles, purify all those places. On each and every marble pebble, up and down, circles like navels are visible.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2882,18 +2809,6 @@ The Gaṇḍakī (cakranadī) purifies the hermitages by the cakras on the śila
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Wherever sacred waters flow, the land becomes purified. Holiness has a quiet way of saturating an entire region. Be near what you want to be shaped by — proximity is itself a discipline.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What streams of holiness — books, kīrtana, devotee company — are you living near enough to be saturated by?</li><li>Where are you choosing to live near streams that pollute rather than purify?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -3115,7 +3030,6 @@ The Gaṇḍakī (cakranadī) purifies the hermitages by the cakras on the śila
 
     <div class="fc-translation" data-sec="translation">In the gardens of Pulaha-āśrama, Mahārāja Bharata lived alone and collected a variety of flowers, twigs and tulasī leaves. He also collected the water of the Gaṇḍakī River, as well as various roots, fruits and bulbs. With these he offered food to the Supreme Personality of Godhead, Vāsudeva, and, worshiping Him, he remained satisfied. In this way his heart was completely uncontaminated, and he did not have the least desire for material enjoyment. All material desires vanished. In this steady position, he felt full satisfaction and was situated in devotional service.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3180,18 +3094,6 @@ Upabhṛtopaśamaḥ means “he had increasing peace.”</div>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Simple offerings made alone in a garden — a leaf, a flower, water, a few roots — can fully satisfy the heart. Worship does not require grand arrangements; it requires unbroken sincerity in small ones.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What small, daily offering could you make with such sincerity that it becomes the spine of your devotional life?</li><li>Where are you waiting for the &#39;right setup&#39; when a simple practice today would already do?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -3575,7 +3477,6 @@ Upabhṛtopaśamaḥ means “he had increasing peace.”</div>
 
     <div class="fc-translation" data-sec="translation">That most exalted devotee, Mahārāja Bharata, in this way engaged constantly in the devotional service of the Lord. Naturally his love for Vāsudeva, Kṛṣṇa, increased more and more and melted his heart. Consequently he gradually lost all attachment for regulative duties. The hairs of his body stood on end, and all the ecstatic bodily symptoms were manifest. Tears flowed from his eyes, so much so that he could not see anything. Thus he constantly meditated on the reddish lotus feet of the Lord. At that time, his heart, which was like a lake, was filled with the water of ecstatic love. When his mind was immersed in that lake, he even forgot the regulative service to the Lord.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3644,18 +3545,6 @@ He had no enthusiasm to perform daily duties because his heart was melted with a
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Real devotion expresses itself in the body — tears, gooseflesh, melted heart. These ecstatic symptoms are not performance; they are evidence that love has crossed from theory into reality. Welcome them when they arise; never fake them when they don&#39;t.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where in your devotional life has feeling actually softened into spontaneous tears or chills — and what triggered it?</li><li>Where might you be performing ecstasy you do not feel, instead of waiting honestly for it to arise?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -3895,7 +3784,6 @@ He had no enthusiasm to perform daily duties because his heart was melted with a
 
     <div class="fc-translation" data-sec="translation">Mahārāja Bharata appeared very beautiful. He had a wealth of curly hair on his head, which was wet from bathing three times daily. He dressed in a deerskin. He worshiped Lord Nārāyaṇa, whose body was composed of golden effulgence and who resided within the sun. Mahārāja Bharata worshiped Lord Nārāyaṇa by chanting the hymns given in the Ṛg Veda, and he recited the following verse as the sun rose.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3949,18 +3837,6 @@ Thinking that his ecstatic symptoms were an obstacle, and that his intelligence 
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">A serious devotional life has visible disciplines — regular bathing, sober dress, set hours of worship, recitation of specific prayers. Romantic spirituality without structure rarely matures; structure without love stays cold. Both together produce real depth.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What three concrete daily disciplines would form a recognizable shape for your devotional life?</li><li>Which of those are currently missing, and what would installing them require?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -4194,7 +4070,6 @@ Thinking that his ecstatic symptoms were an obstacle, and that his intelligence 
 
     <div class="fc-translation" data-sec="translation">“The Supreme Personality of Godhead is situated in pure goodness. He illuminates the entire universe and bestows all benedictions upon His devotees. The Lord has created this universe from His own spiritual potency. According to His desire, the Lord entered this universe as the Supersoul, and by virtue of His different potencies He is maintaining all living entities desiring material enjoyment. Let me offer my respectful obeisances unto the Lord, who is the giver of intelligence.”</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -4272,18 +4147,6 @@ Bharata Becomes a Deer</div>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The Lord, situated in pure goodness, illuminates the universe and lives within every heart, fulfilling the desires of those who turn to Him. Meditation on the Supersoul within is not abstract; it is intimate conversation with the One who already knows you completely.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>How often do you actually turn inward to address the One sitting in your heart, by name?</li><li>What desire would you bring to that inner Companion today if you trusted Him to hear it?</li></ul>
-
-
-
-
-
-    </section>
 
 
 

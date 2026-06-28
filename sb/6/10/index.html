@@ -25,19 +25,25 @@
     <link rel="icon" href="../../../assets/icons/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="../../../assets/icons/icon.svg">
     <link rel="stylesheet" href="../../../assets/css/site.css">
+    <link rel="alternate" hreflang="te-IN" href="../../../te/sb/6/10/">
+    <link rel="alternate" hreflang="x-default" href="../../../">
     <script>window.FC_TO_ROOT = "../../../";</script>
     <script src="../../../assets/js/toggle.js"></script>
 </head>
 <body class="has-sidebar" data-chapter="10">
 <header class="fc-site-header">
     <button type="button" class="fc-mobile-trigger fc-mobile-trigger-left" data-overlay="left" aria-label="Open settings drawer">⚙</button>
-<a class="fc-brand" href="../../../">FolioCorpus<span class="fc-sub">Śrīmad-Bhāgavatam</span></a>
+    <a class="fc-brand" href="../../../">FolioCorpus<span class="fc-sub">Bhagavad-gītā</span></a>
     <nav class="fc-site-nav">
         <a href="../../../">Home</a>
         <a href="../../../bg/">Bhagavad-gītā</a>
         <a href="../../../sb/">Śrīmad-Bhāgavatam</a>
         <a href="../../../search/" title="Search across all integrated works">🔍 Search</a>
         <button type="button" id="fc-random-verse" class="fc-nav-btn" title="Jump to a random verse">🎲 Random</button>
+        <span class="fc-lang-switch" aria-label="Script">
+            <a class="active" href="#" title="Devanāgarī edition">EN</a>
+            <a class="" href="../../../te/sb/6/10/" title="Telugu lipi edition">తె</a>
+        </span>
     </nav>
     <button type="button" class="fc-mobile-trigger fc-mobile-trigger-right" data-overlay="right" aria-label="Open chapter index drawer">📚</button>
 </header>
@@ -46,8 +52,8 @@
     <button class="fc-sb-collapse" type="button" data-sb="left" title="Collapse left sidebar" aria-label="Collapse"></button>
 
     <div class="fc-sb-body">
-        <details class="fc-sb-section" data-sbsec="reading" open>
-            <summary class="fc-sb-title">Reading</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Reading</div>
             <div class="fc-sb-sub">Theme</div>
             <div class="fc-segmented" data-setting="theme">
                 <button type="button" data-val="light">Light</button>
@@ -73,10 +79,10 @@
                 <button type="button" data-val="single">Single</button>
                 <button type="button" data-val="side">Side-by-side</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="display" open>
-            <summary class="fc-sb-title">Display</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Display</div>
             <div class="fc-sb-grid">
                 <label><input type="checkbox" data-section="devanagari" checked> Devanāgarī</label>
                 <label><input type="checkbox" data-section="iast" checked> IAST transliteration</label>
@@ -99,10 +105,33 @@
                 <button type="button" data-action="expand-all">Expand all</button>
                 <button type="button" data-action="collapse-all">Collapse all</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="tools" open>
-            <summary class="fc-sb-title">Tools</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Find your starting point</div>
+            <div class="fc-persona-links">
+                <a class="fc-persona-link" href="../../../daily/">🌅 Daily (one value a week)</a>
+                <a class="fc-persona-link" href="../../../householder/">🏠 Householder (family & work)</a>
+                <a class="fc-persona-link" href="../../../parenting/">👨‍👩‍👧 Parenting (stories for kids)</a>
+                <a class="fc-persona-link" href="../../../themes/">📚 All themes</a>
+                <a class="fc-persona-link" href="../../../values/" style="background:#F0F6F2;border-left-color:#1F4632;">ॐ Vedic Value System ↗</a>
+                <a class="fc-persona-link" href="../../../vidya/" style="background:#FBF6E4;border-left-color:#C8860B;">📚 Vidyā Karaṇa (kids, multi-lang) ↗</a>
+            </div>
+        </div>
+
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Audience</div>
+            <div class="fc-audience-filter">
+                <label><input type="radio" name="fc-audience" value="all" checked> All levels</label>
+                <label><input type="radio" name="fc-audience" value="primary"> Primary (children)</label>
+                <label><input type="radio" name="fc-audience" value="middle"> Middle (teens)</label>
+                <label><input type="radio" name="fc-audience" value="senior"> Senior (adults)</label>
+                <label><input type="radio" name="fc-audience" value="college"> College / scholar</label>
+            </div>
+        </div>
+
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Tools</div>
             <div class="fc-sb-tools">
                 <button type="button" id="fc-presentation-toggle" class="fc-tool-btn"><span>🖥 Presentation</span><kbd class="fc-kbd">F</kbd></button>
                 <button type="button" id="fc-pen-toggle" class="fc-tool-btn"><span>✏️ Pen mode</span><kbd class="fc-kbd">P</kbd></button>
@@ -117,10 +146,26 @@
                 <button type="button" id="fc-clear-highlights" class="fc-tool-btn">🩷 Clear highlights (page)</button>
                 <button type="button" id="fc-notes-modal-open" class="fc-tool-btn">📓 My annotations</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="progress" id="fc-progress-section" open>
-            <summary class="fc-sb-title">Progress</summary>
+        <div class="fc-sb-section" id="fc-tts-controls" hidden>
+            <div class="fc-sb-title">
+                Read-aloud
+                <label class="fc-tts-master">
+                    <input type="checkbox" id="fc-tts-enabled" checked>
+                    <span class="fc-tts-master-label">On</span>
+                </label>
+            </div>
+            <div class="fc-tts-inner">
+                <div class="fc-sb-sub">Voice</div>
+                <select id="fc-tts-voice" class="fc-tts-select" aria-label="TTS voice"></select>
+                <div class="fc-sb-sub">Rate <span class="fc-tts-rate-val">1.0×</span></div>
+                <input type="range" id="fc-tts-rate" min="0.5" max="2" step="0.1" value="1" class="fc-tts-rate" aria-label="Reading rate">
+            </div>
+        </div>
+
+        <div class="fc-sb-section" id="fc-progress-section">
+            <div class="fc-sb-title">Progress</div>
             <div class="fc-progress-row">
                 <span class="fc-progress-num" id="fc-progress-num">0</span>
                 <span class="fc-progress-divider">/</span>
@@ -135,29 +180,29 @@
                 <span class="fc-progress-spacer"></span>
                 <button type="button" class="fc-progress-reset" id="fc-progress-reset" title="Reset progress">↺</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="bookmarks" open>
-            <summary class="fc-sb-title">Bookmarks <span class="fc-sb-count" id="fc-bookmarks-count">0</span></summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Bookmarks <span class="fc-sb-count" id="fc-bookmarks-count">0</span></div>
             <ul class="fc-bookmark-list" id="fc-bookmarks-list">
                 <li class="fc-sb-empty">No bookmarks yet — click ☆ on any verse.</li>
             </ul>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="notes" open>
-            <summary class="fc-sb-title">Notes <span class="fc-sb-count" id="fc-notes-count">0</span></summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Notes <span class="fc-sb-count" id="fc-notes-count">0</span></div>
             <ul class="fc-bookmark-list" id="fc-notes-list">
                 <li class="fc-sb-empty">No notes yet — open any verse and write in the 📝 block.</li>
             </ul>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="export">
-            <summary class="fc-sb-title">Export</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Export</div>
             <div class="fc-sb-tools">
                 <button type="button" id="fc-export-md" class="fc-tool-btn">📥 Download Markdown</button>
                 <button type="button" id="fc-export-json" class="fc-tool-btn">💾 Download JSON backup</button>
             </div>
-        </details>
+        </div>
     </div>
 </aside>    <main class="fc-container">
 <nav class="fc-breadcrumbs">
@@ -175,7 +220,7 @@
         <h1 class="fc-verse-heading">6.10 · The Battle Between the Demigods and Vṛtrāsura</h1>
         <span class="fc-ribbon-meta">
             28 verses
- · <a class="fc-ribbon-link" href="class-prep/">🖨 Class prep</a>        </span>
+        </span>
         <input type="search" class="fc-search" id="fc-search" placeholder="🔍 Search in this chapter" aria-label="Search verses in this chapter">
         <span class="fc-ribbon-current" id="fc-ribbon-current" aria-live="polite"></span>
     </div>
@@ -459,7 +504,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
     <div class="fc-translation" data-sec="translation">Śrī Śukadeva Gosvāmī said: After instructing Indra in this way, the Supreme Personality of Godhead, Hari, the cause of the cosmic manifestation, then and there disappeared from the presence of the onlooking demigods.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -580,18 +624,6 @@ The Tenth Chapter describes receiving the bones of Dadhīci, making the thunderb
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Having instructed Indra, Hari disappeared from the demigods&#39; sight. The Lord&#39;s instructions remain when His form withdraws; the work now belongs to those who heard.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What instructions am I living under from a vision that has already withdrawn?</li><li>Where am I waiting for another appearance instead of acting on what was said?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -770,7 +802,6 @@ The Tenth Chapter describes receiving the bones of Dadhīci, making the thunderb
     <div class="fc-translation" data-sec="translation">O King Parīkṣit, following the Lord’s instructions, the demigods approached Dadhīci, the son of Atharvā. He was very liberal, and when they begged him to give them his body, he at once partially agreed. However, just to hear religious instructions from them, he smiled and jokingly spoke as follows.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -791,18 +822,6 @@ Though he was pleased, and smiled, there was an indication that he would scold t
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Following the Lord&#39;s word, the demigods went to Dadhīci and asked for his body; he partly agreed but first wanted to hear about religious principles. A real saint, asked for his life, still wants to deepen dharma first.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Even when giving everything, do I keep room for spiritual learning?</li><li>What hard request have I delayed until I understood the underlying dharma?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -981,7 +1000,6 @@ Though he was pleased, and smiled, there was an indication that he would scold t
     <div class="fc-translation" data-sec="translation">O elevated demigods, at the time of death, severe, unbearable pain takes away the consciousness of all living entities who have accepted material bodies. Don’t you know about this pain?</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -1002,18 +1020,6 @@ Saṁsthāyām means “at death.”</div>
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">At death, severe unbearable pain takes away consciousness — don&#39;t you know this? Dadhīci tests whether the demigods grasp what they are asking him to undergo.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Do I appreciate the pain of what I have been asking of others?</li><li>Whose request of me am I underestimating the cost of?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -1191,7 +1197,6 @@ Saṁsthāyām means “at death.”</div>
 
     <div class="fc-translation" data-sec="translation">In this material world, every living entity is very much addicted to his material body. Struggling to keep his body forever, everyone tries to protect it by all means, even at the sacrifice of all his possessions. Therefore, who would be prepared to deliver his body to anyone, even if it were demanded by Lord Viṣṇu?</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1230,18 +1235,6 @@ Saṁsthāyām means “at death.”</div>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Every embodied being is addicted to the body and protects it even at the cost of possessions — who would give it for someone else? Dadhīci names the universal stake.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What would I give up before I would give up my body?</li><li>Where am I sacrificing things I claim to love in order to protect bodily comfort?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -1418,7 +1411,6 @@ Saṁsthāyām means “at death.”</div>
     <div class="fc-translation" data-sec="translation">The demigods replied: O exalted brāhmaṇa, pious persons like you, whose activities are praiseworthy, are very kind and affectionate to people in general. What can’t such pious souls give for the benefit of others? They can give everything, including their bodies.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -1467,18 +1459,6 @@ Saṁsthāyām means “at death.”</div>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The demigods reply: pious souls like you are so kind that they give even their lives. They appeal not to self-interest but to character.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Have I asked something of someone by appealing to their character rather than to a trade?</li><li>Where does my character invite requests that ordinary character could not bear?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -1683,7 +1663,6 @@ Saṁsthāyām means “at death.”</div>
 
     <div class="fc-translation" data-sec="translation">Those who are too self-interested beg something from others, not knowing of others’ pain. But if the beggar knew the difficulty of the giver, he would not ask for anything. Similarly, he who is able to give charity does not know the beggar’s difficulty, for otherwise he would not refuse to give the beggar anything he might want as charity.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1722,18 +1701,6 @@ The sage speaks part of the verse.  “Selfish people do not know the pain of ot
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The selfish ask without knowing the giver&#39;s difficulty; the giver doesn&#39;t know what he gains. Charity transcends accounting; both sides are blind to its real weight.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Have I asked for something without imagining what it cost?</li><li>Have I underestimated what I gained by giving?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -1937,7 +1904,6 @@ The sage speaks part of the verse.  “Selfish people do not know the pain of ot
     <div class="fc-translation" data-sec="translation">The great sage Dadhīci said: Just to hear from you about religious principles, I refused to offer my body at your request. Now, although my body is extremely dear to me, I must give it up for your better purposes since I know that it will leave me today or tomorrow.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -1993,18 +1959,6 @@ I have heard about dharma in your answer to my refusal. Or the words can be sarc
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Dadhīci: only to hear religious principles from you did I refuse — but my body is yours since it serves higher dharma. The hard question was rhetorical; the heart was already given.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What &#39;rhetorical refusal&#39; am I performing while my real answer is yes?</li><li>Could I shorten the dance and give earlier?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -2207,7 +2161,6 @@ I have heard about dharma in your answer to my refusal. Or the words can be sarc
 
     <div class="fc-translation" data-sec="translation">O demigods, one who has no compassion for humanity in its suffering and does not sacrifice his impermanent body for the higher causes of religious principles or eternal glory is certainly pitied even by the immovable beings.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2261,18 +2214,6 @@ Nāthāḥ is a vocative “O lords!”</div>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">One without compassion who won&#39;t sacrifice an impermanent body for higher causes is pitied even by immovable beings. Even trees feel sorry for the heartless.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where am I being pitied by simpler beings for my hardness?</li><li>What would compassion-in-action cost me, and is it worth that?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -2450,7 +2391,6 @@ Nāthāḥ is a vocative “O lords!”</div>
 
     <div class="fc-translation" data-sec="translation">If one is unhappy to see the distress of other living beings and happy to see their happiness, his religious principles are appreciated as imperishable by exalted persons who are considered pious and benevolent.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2526,18 +2466,6 @@ Nāthāḥ is a vocative “O lords!”</div>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">One unhappy at others&#39; distress and happy at their happiness — his religious principles are imperishable in the eyes of the wise. Inner alignment with others&#39; welfare is the truest test of dharma.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Whose happiness genuinely makes me happy, and whose distress genuinely hurts me?</li><li>Where is my circle of empathy too small to qualify as imperishable dharma?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -2733,7 +2661,6 @@ Nāthāḥ is a vocative “O lords!”</div>
 
     <div class="fc-translation" data-sec="translation">This body, which is eatable by jackals and dogs after death, does not actually do any good for me, the spirit soul. It is usable only for a short time and may perish at any moment. The body and its possessions, its riches and relatives, must all be engaged for the benefit of others, or else they will be sources of tribulation and misery.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2812,18 +2739,6 @@ He criticizes a person who does not give.  Pārakyaiḥ means “to be eaten by 
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">This body, edible by jackals and dogs after death, gives me no lasting good — its relations are eatable too. Naming the body&#39;s actual destiny dissolves attachment to it.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>How would I treat my body differently if I held its post-mortem destiny in mind today?</li><li>Which &#39;eatable&#39; attachments could I loosen before they decay?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -3008,7 +2923,6 @@ He criticizes a person who does not give.  Pārakyaiḥ means “to be eaten by 
 
     <div class="fc-translation" data-sec="translation">Śrī Śukadeva Gosvāmī said: Dadhīci Muni, the son of Atharvā, thus resolved to give his body to the service of the demigods. He placed himself, the spirit soul, at the lotus feet of the Supreme Personality of Godhead and in this way gave up his gross material body made of five elements.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3090,18 +3004,6 @@ He criticizes a person who does not give.  Pārakyaiḥ means “to be eaten by 
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Dadhīci placed his self at the Lord&#39;s lotus feet and prepared to give the body. The right preparation for dying is putting the soul into Kṛṣṇa first, then releasing the body.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where is my self anchored right now — and where will it be at the moment of release?</li><li>What practice plants the soul at the Lord&#39;s feet daily?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -3297,7 +3199,6 @@ He criticizes a person who does not give.  Pārakyaiḥ means “to be eaten by 
 
     <div class="fc-translation" data-sec="translation">Dadhīci Muni controlled his senses, life force, mind and intelligence and became absorbed in trance. Thus he cut all his material bonds. He could not perceive how his material body became separated from his self.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3350,18 +3251,6 @@ Yogam means samādhi.  Gatam means the body fell away from the soul.</div>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Controlling senses, breath, mind and intelligence, he entered trance and didn&#39;t perceive the body&#39;s separation from the self. Mastery turns the moment of death into a quiet, unnoticed crossing.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What kind of control over my faculties would let me &#39;not notice&#39; my body&#39;s drop?</li><li>Where could I begin practicing the brief versions of that mastery now?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -3665,7 +3554,6 @@ Yogam means samādhi.  Gatam means the body fell away from the soul.</div>
     <div class="fc-translation" data-sec="translation">Thereafter, King Indra very firmly took up the thunderbolt manufactured by Viśvakarmā from the bones of Dadhīci. Charged with the exalted power of Dadhīci Muni and enlightened by the power of the Supreme Personality of Godhead, Indra rode on the back of his carrier, Airāvata, surrounded by all the demigods, while all the great sages offered him praise. Thus he shone very beautifully, pleasing the three worlds as he rode off to kill Vṛtrāsura.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -3746,18 +3634,6 @@ Instead of śaktibhiḥ another version has sakthibhiḥ (by his bones).</div>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Viśvakarmā forged the thunderbolt from Dadhīci&#39;s bones; charged with his power and the Lord&#39;s, Indra wielded it. A saint&#39;s body becomes the weapon by which the worlds are saved.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What &#39;bones&#39; of past devotees have become weapons I now wield without acknowledging?</li><li>How could my life become useful raw material for someone&#39;s later rescue?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -3926,7 +3802,6 @@ Instead of śaktibhiḥ another version has sakthibhiḥ (by his bones).</div>
     <div class="fc-translation" data-sec="translation">My dear King Parīkṣit, as Rudra, being very angry at Antaka [Yamarāja] had formerly run toward Antaka to kill him, Indra angrily and with great force attacked Vṛtrāsura, who was surrounded by the leaders of the demoniac armies.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -3957,18 +3832,6 @@ Paryastam means “surrounded by.” Śiva is capable of killing Yamarāja.  Sim
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">As Rudra once ran toward Yama in fury, Indra now attacks Vṛtra surrounded by demon commanders. The story rhymes with earlier divine confrontations.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What old pattern is my current confrontation rhyming with?</li><li>Could I learn from how earlier participants handled it?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -4129,7 +3992,6 @@ Paryastam means “surrounded by.” Śiva is capable of killing Yamarāja.  Sim
 
     <div class="fc-translation" data-sec="translation">Thereafter, at the end of Satya-yuga and the beginning of Tretā-yuga, a fierce battle took place between the demigods and the demons on the bank of the Narmadā.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -4169,18 +4031,6 @@ The battle took place at the beginning of Tretā-yuga, in the first cycle of fou
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">At the end of Satya-yuga and beginning of Tretā, a fierce battle was fought on the bank of the Narmadā. Even cosmic battles have datelines and addresses.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Do I treat my struggles as timeless mythos or as situated in particular places and seasons?</li><li>What &#39;Narmadā bank&#39; am I currently on, and what season is it?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -4484,7 +4334,6 @@ The battle took place at the beginning of Tretā-yuga, in the first cycle of fou
     <div class="fc-translation" data-sec="translation">O King, when all the asuras came onto the battlefield, headed by Vṛtrāsura, they saw King Indra carrying the thunderbolt and surrounded by the Rudras, Vasus, Ādityas, Aśvinī-kumāras, Pitās, Vahnis, Maruts, Ṛbhus, Sādhyas and Viśvadevas. Surrounded by his company, Indra shone so brightly that his effulgence was intolerable to the demons.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -4528,18 +4377,6 @@ The battle took place at the beginning of Tretā-yuga, in the first cycle of fou
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">On the battlefield, the asuras saw Indra carrying the thunderbolt, surrounded by Rudras, Vasus, Ādityas, Aśvinīs, Pitās, Vahnis, Maruts, Ṛbhus, Sādhyas and Viśvedevas. Real backup is named, not abstract.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Who actually surrounds me in my battles — named and present?</li><li>Whom have I never bothered to name as my backup?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -5010,7 +4847,6 @@ The battle took place at the beginning of Tretā-yuga, in the first cycle of fou
     <div class="fc-translation" data-sec="translation">Many hundreds and thousands of demons, demi-demons, Yakṣas, Rākṣasas [man-eaters] and others, headed by Sumāli and Māli, resisted the armies of King Indra, which even death personified cannot easily overcome. Among the demons were Namuci, Śambara, Anarvā, Dvimūrdhā, Ṛṣabha, Asura, Hayagrīva, Śaṅkuśirā, Vipracitti, Ayomukha, Pulomā, Vṛṣaparvā, Praheti, Heti and Utkala. Roaring tumultuously and fearlessly like lions, these invincible demons, all dressed in golden ornaments, gave pain to the demigods with weapons like clubs, bludgeons, arrows, barbed darts, mallets and lances.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -5044,18 +4880,6 @@ The battle took place at the beginning of Tretā-yuga, in the first cycle of fou
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Many hundreds of thousands of demons headed by Sumāli and Māli resisted Indra&#39;s armies, who not even death personified can easily overcome. Sustained opposition can be vast; it is met by sustained order, not by lone valor.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where am I trying to fight a vast opposition alone?</li><li>What ordered force could I formally join?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -5225,7 +5049,6 @@ The battle took place at the beginning of Tretā-yuga, in the first cycle of fou
     <div class="fc-translation" data-sec="translation">Armed with lances, tridents, axes, swords and other weapons like śataghnīs and bhuśuṇḍis, the demons attacked from different directions and scattered all the chiefs of the demigod armies.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -5246,18 +5069,6 @@ The battle took place at the beginning of Tretā-yuga, in the first cycle of fou
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Armed with lances, tridents, axes, swords, śataghnīs and bhuśuṇḍis, the demons attacked from every direction and scattered the demigod chiefs. Multi-front assault is real; even chiefs can be scattered.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where is multi-front pressure scattering my own leadership?</li><li>How do I regroup when too many directions demand attention?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -5418,7 +5229,6 @@ The battle took place at the beginning of Tretā-yuga, in the first cycle of fou
     <div class="fc-translation" data-sec="translation">As the stars in the sky cannot be seen when covered by dense clouds, the demigods, being completely covered by networks of arrows falling upon them one after another, could not be seen.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -5439,18 +5249,6 @@ Puṅkha is the feathered end of the arrow. The arrows fell so that one arrow he
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">As stars are hidden by dense clouds, the demigods were obscured by waves of falling arrows. Sometimes our spiritual light is not extinguished but only momentarily occluded.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where do I treat occlusion as extinction?</li><li>What practice helps me trust the unseen light during a cloud?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -5618,7 +5416,6 @@ Puṅkha is the feathered end of the arrow. The arrows fell so that one arrow he
     <div class="fc-translation" data-sec="translation">The showers of various weapons and arrows released to kill the soldiers of the demigods did not reach them because the demigods, acting quickly, cut the weapons into thousands of pieces in the sky.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -5637,18 +5434,6 @@ Puṅkha is the feathered end of the arrow. The arrows fell so that one arrow he
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The weapon-showers did not reach them because the demigods cut the weapons to thousands of pieces in the sky. Skilled defenses are continuous; they do not wait for impact.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where could I intercept harmful inputs before they &#39;reach me&#39;?</li><li>What &#39;cutting in the sky&#39; practice keeps the heart undefended-yet-safe?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -5854,7 +5639,6 @@ Puṅkha is the feathered end of the arrow. The arrows fell so that one arrow he
     <div class="fc-translation" data-sec="translation">As their weapons and mantras decreased, the demons began showering mountain peaks, trees and stones upon the demigod soldiers, but the demigods were so powerful and expert that they nullified all these weapons by breaking them to pieces in the sky as before.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -5873,18 +5657,6 @@ Puṅkha is the feathered end of the arrow. The arrows fell so that one arrow he
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">When their arrows and mantras decreased, demons hurled mountain peaks, trees and stones, but the demigods broke them all. When sophisticated attacks fail, gross ones are tried; mature defenders neutralize both.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which &#39;subtle attacks&#39; have already been neutralized in my life, leaving cruder ones?</li><li>Am I trained to handle both kinds, or only one?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -6092,7 +5864,6 @@ Puṅkha is the feathered end of the arrow. The arrows fell so that one arrow he
     <div class="fc-translation" data-sec="translation">When the soldiers of the demons, commanded by Vṛtrāsura, saw that the soldiers of King Indra were quite well, having not been injured at all by their volleys of weapons, not even by the trees, stones and mountain peaks, the demons were very much afraid.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -6113,18 +5884,6 @@ Niśāmya means seeing.  Tatrasuḥ means they became afraid.</div>
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Seeing their volleys, trees, stones and mountain peaks had no effect, the demons grew frightened. When intelligence sees its weapons are useless, fear is the natural next state.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where has fear quietly taken over after my strategies failed?</li><li>Could that fear itself be the threshold to a new approach?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -6340,7 +6099,6 @@ Niśāmya means seeing.  Tatrasuḥ means they became afraid.</div>
 
     <div class="fc-translation" data-sec="translation">When insignificant persons use rough words to cast false, angry accusations against saintly persons, their fruitless words do not disturb the great personalities. Similarly, all the efforts of the demons against the demigods, who were favorably situated under the protection of Kṛṣṇa, were futile.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -6369,18 +6127,6 @@ Uṣati should be uṣatyaḥ (harsh speech), expressing misfortune, such as say
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">When insignificant persons hurl rough words against saints, the words do not disturb the great; so too the demons&#39; efforts against the Lord&#39;s protected demigods. Spiritual immunity actually exists.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where am I taking insults personally that should not penetrate?</li><li>What in me is meant to be immune yet is still reactive?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -6588,7 +6334,6 @@ Uṣati should be uṣatyaḥ (harsh speech), expressing misfortune, such as say
     <div class="fc-translation" data-sec="translation">The asuras, who are never devotees of Lord Kṛṣṇa, the Supreme Personality of Godhead, lost their pride in fighting when they found all their endeavors futile. Leaving aside their leader even in the very beginning of the fight, they decided to flee because all their prowess had been taken away by the enemy.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -6617,18 +6362,6 @@ Uṣati should be uṣatyaḥ (harsh speech), expressing misfortune, such as say
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The asuras, never devotees, lost their pride and even abandoned their leader, fleeing in various directions. False unity collapses under sustained failure; only devotional unity holds.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where is my own coalition (of habits, alliances) actually held together only by pride?</li><li>Whose company would actually hold during failure?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -6863,7 +6596,6 @@ Uṣati should be uṣatyaḥ (harsh speech), expressing misfortune, such as say
     <div class="fc-translation" data-sec="translation">Seeing his army broken and all the asuras, even those known as great heroes, fleeing the battlefield out of intense fear, Vṛtrāsura, who was truly a great-minded hero, smiled and spoke the following words.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -6882,18 +6614,6 @@ Uṣati should be uṣatyaḥ (harsh speech), expressing misfortune, such as say
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Seeing his army broken and fleeing, Vṛtra — a truly great-minded hero — smiled and spoke. Even the antagonist, at his moment of utter defeat, displays nobility through composure.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Could I smile and speak in my own moment of defeat?</li><li>Whose composure under loss have I been moved by?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -7101,7 +6821,6 @@ Uṣati should be uṣatyaḥ (harsh speech), expressing misfortune, such as say
     <div class="fc-translation" data-sec="translation">According to his position and the time and circumstances, Vṛtrāsura, the hero among heroes, spoke words that were much to be appreciated by thoughtful men. He called to the heroes of the demons, “O Vipracitti! O Namuci! O Pulomā! O Maya, Anarvā and Śambara! Please hear me and do not flee.”</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -7120,18 +6839,6 @@ Uṣati should be uṣatyaḥ (harsh speech), expressing misfortune, such as say
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">According to time and circumstance, Vṛtra spoke words worthy of thoughtful people: &#39;O Vipracitti! O Namuci! O Pulomā! …&#39; He calls his cohort by name into a higher conversation.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>When defeat comes, do I call my companions into higher conversation or lash out?</li><li>Whom would I name in such a final speech?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -7428,7 +7135,6 @@ Uṣati should be uṣatyaḥ (harsh speech), expressing misfortune, such as say
 
     <div class="fc-translation" data-sec="translation">Vṛtrāsura said: All living entities who have taken birth in this material world must die. Surely, no one in this world has found any means to be saved from death. Even providence has not provided a means to escape it. Under the circumstances, death being inevitable, if one can gain promotion to the higher planetary systems and be always celebrated here by dying a suitable death, what man will not accept such a glorious death?</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -7467,18 +7173,6 @@ If there will be fame and Svarga after death, it is this (amum) death is proper.
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">All who take birth must die — even providence has not arranged escape. Under this condition, dying for a worthy cause is the only intelligent option.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Have I named, in writing, a cause worth dying for?</li><li>How does that naming reshape today&#39;s choices?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -7685,7 +7379,6 @@ If there will be fame and Svarga after death, it is this (amum) death is proper.
 
     <div class="fc-translation" data-sec="translation">There are two ways to meet a glorious death, and both are very rare. One is to die after performing mystic yoga, especially bhakti-yoga, by which one can control the mind and living force and die absorbed in thought of the Supreme Personality of Godhead. The second is to die on the battlefield, leading the army and never showing one’s back. These two kinds of death are recommended in the śāstra as glorious.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -7725,18 +7418,6 @@ King Indra had first accepted Viśvarūpa as his priest and thereafter killed hi
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Two ways to a glorious death are rare: dying absorbed in the Supreme through bhakti-yoga, or dying on the battlefield in honor. Choose either, but choose with awareness.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Of the two routes Vṛtra names, which one am I being prepared for?</li><li>Where am I drifting toward an inglorious death by inattention?</li></ul>
-
-
-
-
-
-    </section>
 
 
 

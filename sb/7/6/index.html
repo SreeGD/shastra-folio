@@ -25,19 +25,25 @@
     <link rel="icon" href="../../../assets/icons/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="../../../assets/icons/icon.svg">
     <link rel="stylesheet" href="../../../assets/css/site.css">
+    <link rel="alternate" hreflang="te-IN" href="../../../te/sb/7/6/">
+    <link rel="alternate" hreflang="x-default" href="../../../">
     <script>window.FC_TO_ROOT = "../../../";</script>
     <script src="../../../assets/js/toggle.js"></script>
 </head>
 <body class="has-sidebar" data-chapter="6">
 <header class="fc-site-header">
     <button type="button" class="fc-mobile-trigger fc-mobile-trigger-left" data-overlay="left" aria-label="Open settings drawer">⚙</button>
-<a class="fc-brand" href="../../../">FolioCorpus<span class="fc-sub">Śrīmad-Bhāgavatam</span></a>
+    <a class="fc-brand" href="../../../">FolioCorpus<span class="fc-sub">Bhagavad-gītā</span></a>
     <nav class="fc-site-nav">
         <a href="../../../">Home</a>
         <a href="../../../bg/">Bhagavad-gītā</a>
         <a href="../../../sb/">Śrīmad-Bhāgavatam</a>
         <a href="../../../search/" title="Search across all integrated works">🔍 Search</a>
         <button type="button" id="fc-random-verse" class="fc-nav-btn" title="Jump to a random verse">🎲 Random</button>
+        <span class="fc-lang-switch" aria-label="Script">
+            <a class="active" href="#" title="Devanāgarī edition">EN</a>
+            <a class="" href="../../../te/sb/7/6/" title="Telugu lipi edition">తె</a>
+        </span>
     </nav>
     <button type="button" class="fc-mobile-trigger fc-mobile-trigger-right" data-overlay="right" aria-label="Open chapter index drawer">📚</button>
 </header>
@@ -46,8 +52,8 @@
     <button class="fc-sb-collapse" type="button" data-sb="left" title="Collapse left sidebar" aria-label="Collapse"></button>
 
     <div class="fc-sb-body">
-        <details class="fc-sb-section" data-sbsec="reading" open>
-            <summary class="fc-sb-title">Reading</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Reading</div>
             <div class="fc-sb-sub">Theme</div>
             <div class="fc-segmented" data-setting="theme">
                 <button type="button" data-val="light">Light</button>
@@ -73,10 +79,10 @@
                 <button type="button" data-val="single">Single</button>
                 <button type="button" data-val="side">Side-by-side</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="display" open>
-            <summary class="fc-sb-title">Display</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Display</div>
             <div class="fc-sb-grid">
                 <label><input type="checkbox" data-section="devanagari" checked> Devanāgarī</label>
                 <label><input type="checkbox" data-section="iast" checked> IAST transliteration</label>
@@ -99,10 +105,33 @@
                 <button type="button" data-action="expand-all">Expand all</button>
                 <button type="button" data-action="collapse-all">Collapse all</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="tools" open>
-            <summary class="fc-sb-title">Tools</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Find your starting point</div>
+            <div class="fc-persona-links">
+                <a class="fc-persona-link" href="../../../daily/">🌅 Daily (one value a week)</a>
+                <a class="fc-persona-link" href="../../../householder/">🏠 Householder (family & work)</a>
+                <a class="fc-persona-link" href="../../../parenting/">👨‍👩‍👧 Parenting (stories for kids)</a>
+                <a class="fc-persona-link" href="../../../themes/">📚 All themes</a>
+                <a class="fc-persona-link" href="../../../values/" style="background:#F0F6F2;border-left-color:#1F4632;">ॐ Vedic Value System ↗</a>
+                <a class="fc-persona-link" href="../../../vidya/" style="background:#FBF6E4;border-left-color:#C8860B;">📚 Vidyā Karaṇa (kids, multi-lang) ↗</a>
+            </div>
+        </div>
+
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Audience</div>
+            <div class="fc-audience-filter">
+                <label><input type="radio" name="fc-audience" value="all" checked> All levels</label>
+                <label><input type="radio" name="fc-audience" value="primary"> Primary (children)</label>
+                <label><input type="radio" name="fc-audience" value="middle"> Middle (teens)</label>
+                <label><input type="radio" name="fc-audience" value="senior"> Senior (adults)</label>
+                <label><input type="radio" name="fc-audience" value="college"> College / scholar</label>
+            </div>
+        </div>
+
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Tools</div>
             <div class="fc-sb-tools">
                 <button type="button" id="fc-presentation-toggle" class="fc-tool-btn"><span>🖥 Presentation</span><kbd class="fc-kbd">F</kbd></button>
                 <button type="button" id="fc-pen-toggle" class="fc-tool-btn"><span>✏️ Pen mode</span><kbd class="fc-kbd">P</kbd></button>
@@ -117,10 +146,26 @@
                 <button type="button" id="fc-clear-highlights" class="fc-tool-btn">🩷 Clear highlights (page)</button>
                 <button type="button" id="fc-notes-modal-open" class="fc-tool-btn">📓 My annotations</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="progress" id="fc-progress-section" open>
-            <summary class="fc-sb-title">Progress</summary>
+        <div class="fc-sb-section" id="fc-tts-controls" hidden>
+            <div class="fc-sb-title">
+                Read-aloud
+                <label class="fc-tts-master">
+                    <input type="checkbox" id="fc-tts-enabled" checked>
+                    <span class="fc-tts-master-label">On</span>
+                </label>
+            </div>
+            <div class="fc-tts-inner">
+                <div class="fc-sb-sub">Voice</div>
+                <select id="fc-tts-voice" class="fc-tts-select" aria-label="TTS voice"></select>
+                <div class="fc-sb-sub">Rate <span class="fc-tts-rate-val">1.0×</span></div>
+                <input type="range" id="fc-tts-rate" min="0.5" max="2" step="0.1" value="1" class="fc-tts-rate" aria-label="Reading rate">
+            </div>
+        </div>
+
+        <div class="fc-sb-section" id="fc-progress-section">
+            <div class="fc-sb-title">Progress</div>
             <div class="fc-progress-row">
                 <span class="fc-progress-num" id="fc-progress-num">0</span>
                 <span class="fc-progress-divider">/</span>
@@ -135,29 +180,29 @@
                 <span class="fc-progress-spacer"></span>
                 <button type="button" class="fc-progress-reset" id="fc-progress-reset" title="Reset progress">↺</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="bookmarks" open>
-            <summary class="fc-sb-title">Bookmarks <span class="fc-sb-count" id="fc-bookmarks-count">0</span></summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Bookmarks <span class="fc-sb-count" id="fc-bookmarks-count">0</span></div>
             <ul class="fc-bookmark-list" id="fc-bookmarks-list">
                 <li class="fc-sb-empty">No bookmarks yet — click ☆ on any verse.</li>
             </ul>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="notes" open>
-            <summary class="fc-sb-title">Notes <span class="fc-sb-count" id="fc-notes-count">0</span></summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Notes <span class="fc-sb-count" id="fc-notes-count">0</span></div>
             <ul class="fc-bookmark-list" id="fc-notes-list">
                 <li class="fc-sb-empty">No notes yet — open any verse and write in the 📝 block.</li>
             </ul>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="export">
-            <summary class="fc-sb-title">Export</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Export</div>
             <div class="fc-sb-tools">
                 <button type="button" id="fc-export-md" class="fc-tool-btn">📥 Download Markdown</button>
                 <button type="button" id="fc-export-json" class="fc-tool-btn">💾 Download JSON backup</button>
             </div>
-        </details>
+        </div>
     </div>
 </aside>    <main class="fc-container">
 <nav class="fc-breadcrumbs">
@@ -175,7 +220,7 @@
         <h1 class="fc-verse-heading">7.6 · Prahlāda Instructs His Demoniac Schoolmates</h1>
         <span class="fc-ribbon-meta">
             23 verses
- · <a class="fc-ribbon-link" href="class-prep/">🖨 Class prep</a>        </span>
+        </span>
         <input type="search" class="fc-search" id="fc-search" placeholder="🔍 Search in this chapter" aria-label="Search verses in this chapter">
         <span class="fc-ribbon-current" id="fc-ribbon-current" aria-live="polite"></span>
     </div>
@@ -469,7 +514,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
 
     <div class="fc-translation" data-sec="translation">Prahlāda Mahārāja said: One who is sufficiently intelligent should use the human form of body from the very beginning of life — in other words, from the tender age of childhood — to practice the activities of devotional service, giving up all other engagements. The human body is most rarely achieved, and although temporary like other bodies, it is meaningful because in human life one can perform devotional service. Even a slight amount of sincere devotional service can give one complete perfection.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -789,18 +833,6 @@ At the end of the last chapter it was mentioned that Prahlāda was compassionate
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Prahlāda tells his demon-born friends: start devotional practice from childhood — the human form is rare, temporary, and uniquely suited for bhakti. Even a small amount of sincere devotion can yield perfection. Begin now; the body that allows the practice is already on the clock.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What devotional practice could you begin today rather than postpone to a later season?</li><li>Where are you waiting for a &#39;better time&#39; that may not come?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -978,7 +1010,6 @@ At the end of the last chapter it was mentioned that Prahlāda was compassionate
 
     <div class="fc-translation" data-sec="translation">The human form of life affords one a chance to return home, back to Godhead. Therefore every living entity, especially in the human form of life, must engage in devotional service to the lotus feet of Lord Viṣṇu. This devotional service is natural because Lord Viṣṇu, the Supreme Personality of Godhead, is the most beloved, the master of the soul, and the well-wisher of all other living beings.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1135,18 +1166,6 @@ Thus, among the bhāvas of mādhurya (priya), śānta-rati (ātmā), dāsya (īs
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The human form is given to return home to God; Lord Viṣṇu is the most beloved, the master of the soul, the well-wisher of every being. Devotion is the natural response to who He already is. You are not inventing the relationship — only recognizing it.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What relationship in your life is most naturally devotional, and what would change if you scaled that quality toward the Lord?</li><li>Where do you treat devotion as an obligation rather than a recognition?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -1315,7 +1334,6 @@ Thus, among the bhāvas of mādhurya (priya), śānta-rati (ātmā), dāsya (īs
 
     <div class="fc-translation" data-sec="translation">Prahlāda Mahārāja continued: My dear friends born of demoniac families, the happiness perceived with reference to the sense objects by contact with the body can be obtained in any form of life, according to one’s past fruitive activities. Such happiness is automatically obtained without endeavor, just as we obtain distress.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1429,18 +1447,6 @@ Having attained a human form one should not endeavor for material happiness.  Ha
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Material happiness, like material distress, comes automatically according to past karma — in any form of life. No need to chase it; no need to fight it. Free up the energy you have been spending on both and direct it toward Kṛṣṇa-consciousness.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>How much of your effort goes into chasing happiness or escaping distress that would arrive on its own anyway?</li><li>What could you do with that energy if you stopped?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -1627,7 +1633,6 @@ Having attained a human form one should not endeavor for material happiness.  Ha
 
     <div class="fc-translation" data-sec="translation">Endeavors merely for sense gratification or material happiness through economic development are not to be performed, for they result only in a loss of time and energy, with no actual profit. If one’s endeavors are directed toward Kṛṣṇa consciousness, one can surely attain the spiritual platform of self-realization. There is no such benefit from engaging oneself in economic development.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1751,18 +1756,6 @@ By that method (tathā) one does not gain benefit.  One gains benefit from worsh
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Endeavors for sense gratification and economic advancement lose time and energy with no real profit. Effort directed toward Kṛṣṇa-consciousness reaches the spiritual platform. Same hours, completely different destinations — choose where the labor points.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where is your current labor pointing — toward sense gratification or toward Kṛṣṇa?</li><li>What single hour of your week could you redirect this month?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -1931,7 +1924,6 @@ By that method (tathā) one does not gain benefit.  One gains benefit from worsh
 
     <div class="fc-translation" data-sec="translation">Therefore, while in material existence [bhavam āśritaḥ], a person fully competent to distinguish wrong from right must endeavor to achieve the highest goal of life as long as the body is stout and strong and is not embarrassed by dwindling.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2012,18 +2004,6 @@ By that method (tathā) one does not gain benefit.  One gains benefit from worsh
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">While the body is stout and strong — before age and disease arrive — a wise person endeavors for the highest goal. Bhayam āśritaḥ: take refuge in the fear of saṁsāra to act now. Useful fear is fuel; useless fear is paralysis.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What spiritual goal are you postponing as if the body will always cooperate?</li><li>How could a clear-eyed view of mortality energize one practice this week?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -2237,7 +2217,6 @@ By that method (tathā) one does not gain benefit.  One gains benefit from worsh
 
     <div class="fc-translation" data-sec="translation">Every human being has a maximum duration of life of one hundred years, but for one who cannot control his senses, half of those years are completely lost because at night he sleeps twelve hours, being covered by ignorance. Therefore such a person has a lifetime of only fifty years.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2336,18 +2315,6 @@ The way in which one wastes one’s life is described.</div>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Of a hundred-year life, twelve hours of nightly sleep — fifty whole years — vanish in ignorance. The uncontrolled-sense life is half-asleep on its face. Examine how many of your hours actually carry intentional awareness.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What percentage of your day passes in unconsciousness or autopilot?</li><li>What practice would tag more of your hours with intentional awareness?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -2516,7 +2483,6 @@ The way in which one wastes one’s life is described.</div>
 
     <div class="fc-translation" data-sec="translation">In the tender age of childhood, when everyone is bewildered, one passes ten years. Similarly, in boyhood, engaged in sporting and playing, one passes another ten years. In this way, twenty years are wasted. Similarly, in old age, when one is an invalid, unable to perform even material activities, one passes another twenty years wastefully.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2610,18 +2576,6 @@ Kṛiḍataḥ means playing with other boys and girls.</div>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Ten years are lost in childhood bewilderment, ten more in boyhood play, twenty more in old-age invalidity. Most of life is taken before bhakti has even been considered. Notice how little time is actually &#39;in your hands&#39; to choose differently.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Honestly, how many years of conscious devotional practice do you imagine remain to you?</li><li>What changes when you say that number aloud?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -2790,7 +2744,6 @@ Kṛiḍataḥ means playing with other boys and girls.</div>
 
     <div class="fc-translation" data-sec="translation">One whose mind and senses are uncontrolled becomes increasingly attached to family life because of insatiable lusty desires and very strong illusion. In such a madman’s life, the remaining years are also wasted because even during those years he cannot engage himself in devotional service.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2869,18 +2822,6 @@ Kṛiḍataḥ means playing with other boys and girls.</div>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Uncontrolled senses pull the heart deeper into family entanglement; insatiable lust and strong illusion eat the remaining years. The &#39;madman&#39; of attachment cannot serve even in the time left. Without sense-control, even good intentions yield nothing.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which sense-attachment most reliably steals the time you intended for devotion?</li><li>What single restraint, if added, would free a real chunk of weekly time?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -3049,7 +2990,6 @@ Kṛiḍataḥ means playing with other boys and girls.</div>
 
     <div class="fc-translation" data-sec="translation">What person too attached to household life due to being unable to control his senses can liberate himself? An attached householder is bound very strongly by ropes of affection for his family [wife, children and other relatives].</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3180,18 +3120,6 @@ Even though the person may realize that he should worship Kṛṣṇa, he is una
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Who, too attached to household life and unable to control senses, can liberate himself? The ropes of family affection are stronger than they look. Loving your family does not require being bound by māyā through them.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which &#39;rope&#39; of family affection is currently binding more than it is blessing?</li><li>How could you love each family member while keeping the Lord as the center of your love?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -3390,7 +3318,6 @@ Even though the person may realize that he should worship Kṛṣṇa, he is una
 
     <div class="fc-translation" data-sec="translation">Money is so dear that one conceives of money as being sweeter than honey. Therefore, who can give up the desire to accumulate money, especially in household life? Thieves, professional servants [soldiers] and merchants try to acquire money even by risking their very dear lives.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3491,18 +3418,6 @@ This verse illustrates the strength of material attachment. Wealth is dearer tha
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Money is conceived as sweeter than honey; thieves, soldiers, and merchants risk their lives to acquire it. The pursuit of money repeatedly trades life-time for money-time. Note the conversion rate you have implicitly agreed to.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What exchange rate of life-hours for money have you quietly accepted?</li><li>Where is the trade clearly disfavorable and yet you keep making it?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -4045,7 +3960,6 @@ This verse illustrates the strength of material attachment. Wealth is dearer tha
 
     <div class="fc-translation" data-sec="translation">How can a person who is most affectionate to his family, the core of his heart being always filled with their pictures, give up their association? Specifically, a wife is always very kind and sympathetic and always pleases her husband in a solitary place. Who could give up the association of such a dear and affectionate wife? Small children talk in broken language, very pleasing to hear, and their affectionate father always thinks of their sweet words. How could he give up their association? One’s elderly parents and one’s sons and daughters are also very dear. A daughter is especially dear to her father, and while living at her husband’s house she is always in his mind. Who could give up that association? Aside from this, in household affairs there are many decorated items of household furniture, and there are also animals and servants. Who could give up such comforts? The attached householder is like a silkworm, which weaves a cocoon in which it becomes imprisoned, unable to get out. Simply for the satisfaction of two important senses — the genitals and the tongue — one is bound by material conditions. How can one escape?</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -4154,18 +4068,6 @@ The strength of attachment to wife and sons is shown.  Remembering association w
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Sweet wife, broken-language children, dear daughter, aging parents, decorated home, animals, servants — who can give all this up? The attached householder is like a silkworm spinning its own cocoon, all for the satisfaction of tongue and genitals. Two small senses bind a whole life.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which two senses are most often deciding the shape of your life?</li><li>How could devotion, not deprivation, gradually free you from that pattern?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -4381,7 +4283,6 @@ The strength of attachment to wife and sons is shown.  Remembering association w
 
     <div class="fc-translation" data-sec="translation">One who is too attached cannot understand that he is wasting his valuable life for the maintenance of his family. He also fails to understand that the purpose of human life, a life suitable for realization of the Absolute Truth, is being imperceptibly spoiled. However, he is very cleverly attentive to seeing that not a single farthing is lost by mismanagement. Thus although an attached person in material existence always suffers from threefold miseries, he does not develop a distaste for the way of material existence.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -4485,18 +4386,6 @@ He does not understand that his lifespan is dwindling and the goal of human life
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The too-attached cannot see that valuable life is being squandered on family maintenance, while purpose-of-life slowly spoils — yet he tracks every penny vigilantly. Misallocated attention is the deeper bankruptcy. Cāṇakya: a moment of life cannot be bought back for millions.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where is your attention finely tuned that does not matter, and crudely numb where it does?</li><li>What recent hour, if you could buy it back, would you?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -4703,7 +4592,6 @@ He does not understand that his lifespan is dwindling and the goal of human life
 
     <div class="fc-translation" data-sec="translation">If a person too attached to the duties of family maintenance is unable to control his senses, the core of his heart is immersed in how to accumulate money. Although he knows that one who takes the wealth of others will be punished by the law of the government, and by the laws of Yamarāja after death, he continues cheating others to acquire money.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -4797,18 +4685,6 @@ Though he knows that after dying he will experience hell and in this life get pu
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Knowing the laws of government and Yamarāja, the sense-bound person still cheats to acquire money. Knowledge alone cannot stop sinful action when senses are uncontrolled. Without restraint, more information is not more virtue.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where do you keep doing what you know is wrong because sense-control has not caught up to knowledge?</li><li>What practice could close that gap, even slightly?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -5051,7 +4927,6 @@ Though he knows that after dying he will experience hell and in this life get pu
 
     <div class="fc-translation" data-sec="translation">O my friends, sons of demons! In this material world, even those who are apparently advanced in education have the propensity to consider, “This is mine, and that is for others.” Thus they are always engaged in providing the necessities of life to their families in a limited conception of family life, just like uneducated cats and dogs. They are unable to take to spiritual knowledge; instead, they are bewildered and overcome by ignorance.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -5150,18 +5025,6 @@ Though he knows scripture (vidvān api), he is incapable of contemplating concer
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Even apparently educated people think &#39;this is mine, that is for others&#39; and engage in narrow family maintenance, like cats and dogs. Without spiritual knowledge, sophistication is just dressed-up ignorance. Real education starts with &#39;who am I?&#39;</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where does your sophistication mask the same animal logic of &#39;mine vs others&#39;?</li><li>When did you last ask, in earnest, &#39;who am I?&#39;</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -5558,7 +5421,6 @@ Though he knows scripture (vidvān api), he is incapable of contemplating concer
 
     <div class="fc-translation" data-sec="translation">My dear friends, O sons of the demons, it is certain that no one bereft of knowledge of the Supreme Personality of Godhead has been able to liberate himself from material bondage at any time or in any country. Rather, those bereft of knowledge of the Lord are bound by the material laws. They are factually addicted to sense gratification, and their target is woman. Indeed, they are actually playthings in the hands of attractive women. Victimized by such a conception of life, they become surrounded by children, grandchildren and great-grandchildren, and thus they are shackled to material bondage. Those who are very much addicted to this conception of life are called demons. Therefore, although you are sons of demons, keep aloof from such persons and take shelter of the Supreme Personality of Godhead, Nārāyaṇa, the origin of all the demigods, because the ultimate goal for the devotees of Nārāyaṇa is liberation from the bondage of material existence.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -5652,18 +5514,6 @@ Since no one, even knowing scripture, in any place or time, has been able to fre
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">No one bereft of knowledge of God has ever been liberated anywhere, anytime. Sense-gratifiers become playthings of attractive partners and bound by descendants. Even from a demon family, take shelter of Nārāyaṇa — origin of even the demigods — and walk free.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where do you treat your background as a verdict instead of a starting point?</li><li>What single act of shelter-taking could you offer this week?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -5839,7 +5689,6 @@ Since no one, even knowing scripture, in any place or time, has been able to fre
 
     <div class="fc-translation" data-sec="translation">My dear sons of demons, the Supreme Personality of Godhead, Nārāyaṇa, is the original Supersoul, the father of all living entities. Consequently there are no impediments to pleasing Him or worshiping Him under any conditions, whether one be a child or an old man. The relationship between the living entities and the Supreme Personality of Godhead is always a fact, and therefore there is no difficulty in pleasing the Lord.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -5961,18 +5810,6 @@ It is not a great endeavor to please the Lord by service. One also pleases the f
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Nārāyaṇa is the Supersoul and father of all living entities — there are no obstacles to pleasing Him in any condition. The relationship is always already there; one need only act on it. Devotion has no entrance fee but sincerity.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which &#39;obstacle&#39; to devotion is real, and which is your imagination?</li><li>What simple act today would express the relationship that is already in place?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -6484,7 +6321,6 @@ It is not a great endeavor to please the Lord by service. One also pleases the f
 
     <div class="fc-translation" data-sec="translation">The Supreme Personality of Godhead, the supreme controller, who is infallible and indefatigable, is present in different forms of life, from the inert living beings [sthāvara], such as the plants, to Brahmā, the foremost created living being. He is also present in the varieties of material creations and in the material elements, the total material energy and the modes of material nature [sattva-guṇa, rajo-guṇa and tamo-guṇa], as well as the unmanifested material nature and the false ego. Although He is one, He is present everywhere, and He is also the transcendental Supersoul, the cause of all causes, who is present as the observer in the cores of the hearts of all living entities. He is indicated as that which is pervaded and as the all-pervading Supersoul, but actually He cannot be indicated. He is changeless and undivided. He is simply perceived as the supreme sac-cid-ānanda [eternity, knowledge and bliss]. Being covered by the curtain of the external energy, to the atheist He appears nonexistent.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -6586,18 +6422,6 @@ Thus when māyā is overcome by bhakti to the Lord, the Lord becomes visible acc
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The Lord pervades everything — plants, Brahmā, elements, modes, even unmanifested nature and false ego — yet remains one, changeless, undivided, the eternal sac-cid-ānanda Supersoul. To the atheist, behind māyā&#39;s curtain, He appears nonexistent. Reality is a question of vision.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where in your day do you forget the Lord is present — and what would remembering change?</li><li>What practice trains the vision that sees the Lord behind the curtain of māyā?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -6775,7 +6599,6 @@ Thus when māyā is overcome by bhakti to the Lord, the Lord becomes visible acc
 
     <div class="fc-translation" data-sec="translation">Therefore, my dear young friends born of demons, please act in such a way that the Supreme Lord, who is beyond the conception of material knowledge, will be satisfied. Give up your demoniac nature and act without enmity or duality. Show mercy to all living entities by enlightening them in devotional service, thus becoming their well-wishers.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -6882,18 +6705,6 @@ Since the Lord can be realized by bhakti, bhakti should be made steady, without 
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Act so the Lord is satisfied — give up the demoniac mood of enmity and duality, and show mercy to all by enlightening them in devotional service. Preaching is the highest service. To share the path is to walk it more fully.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Whom in your life are you withholding the path from out of social awkwardness?</li><li>How could enlightening even one person this week deepen your own practice?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -7172,7 +6983,6 @@ Since the Lord can be realized by bhakti, bhakti should be made steady, without 
 
     <div class="fc-translation" data-sec="translation">Nothing is unobtainable for devotees who have satisfied the Supreme Personality of Godhead, who is the cause of all causes, the original source of everything. The Lord is the reservoir of unlimited spiritual qualities. For devotees, therefore, who are transcendental to the modes of material nature, what is the use of following the principles of religion, economic development, sense gratification and liberation, which are all automatically obtainable under the influence of the modes of nature? We devotees always glorify the lotus feet of the Lord, and therefore we need not ask for anything in terms of dharma, kāma, artha and mokṣa.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -7262,18 +7072,6 @@ If the Lord is satisfied, what is use of other goals of aspiration?  They have n
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">For devotees, nothing is unobtainable — dharma, artha, kāma, mokṣa all wait at the door. Why ask for them when the Lord Himself is being glorified? When you have the source, you do not need to bargain for the secondary effects.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What lesser benediction are you currently bargaining for that would arrive on its own with surrender?</li><li>Where does grasping for the secondary distract you from the primary?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -7559,7 +7357,6 @@ If the Lord is satisfied, what is use of other goals of aspiration?  They have n
 
     <div class="fc-translation" data-sec="translation">Religion, economic development and sense gratification — these are described in the Vedas as tri-varga, or three ways to salvation. Within these three categories are education and self-realization; ritualistic ceremonies performed according to Vedic injunction; logic; the science of law and order; and the various means of earning one’s livelihood. These are the external subject matters of study in the Vedas, and therefore I consider them material. However, I consider surrender to the lotus feet of Lord Viṣṇu to be transcendental.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -7642,18 +7439,6 @@ If the Lord is satisfied, what is use of other goals of aspiration?  They have n
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The Vedas describe dharma, artha, and kāma as tri-varga — material paths including ritual, logic, law, and livelihood. Surrender to Viṣṇu&#39;s lotus feet alone is transcendental. Within the Vedas themselves there is a hierarchy of material and transcendental teachings.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which of your spiritual practices remain in the tri-varga zone, and which actually approach surrender?</li><li>Where could you elevate one habit from material to transcendental?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -7896,7 +7681,6 @@ If the Lord is satisfied, what is use of other goals of aspiration?  They have n
 
     <div class="fc-translation" data-sec="translation">Nārāyaṇa, the Supreme Personality of Godhead, the well-wisher and friend of all living entities, formerly explained this transcendental knowledge to the great saint Nārada. Such knowledge is extremely difficult to understand without the mercy of a saintly person like Nārada, but everyone who has taken shelter of Nārada’s disciplic succession can understand this confidential knowledge.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -7980,18 +7764,6 @@ To give the boys faith, Prahlāda explains the guru sampradāya. “If Nārada i
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Nārāyaṇa Himself explained this knowledge to Nārada — and through Nārada&#39;s disciplic line it can still be received. Confidential knowledge is hard alone but easy through a real lineage. Belonging to a real paramparā is itself a major mercy.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Whose disciplic line are you connected to, even tenuously, and how could you strengthen that link?</li><li>Where are you trying to figure out alone what is meant to come through a line?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -8170,7 +7942,6 @@ To give the boys faith, Prahlāda explains the guru sampradāya. “If Nārada i
     <div class="fc-translation" data-sec="translation">Prahlāda Mahārāja continued: I received this knowledge from the great saint Nārada Muni, who is always engaged in devotional service. This knowledge, which is called bhāgavata-dharma, is fully scientific. It is based on logic and philosophy and is free from all material contamination.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -8204,18 +7975,6 @@ To give the boys faith, Prahlāda explains the guru sampradāya. “If Nārada i
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Prahlāda explicitly names his source: he received bhāgavata-dharma from Nārada. It is scientific, logical, philosophical, and free from material contamination. Real teaching has both a source and a structure — not just feelings, but a method.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which teachings in your life have a clear named source, and which are vague?</li><li>What would clarifying the source of your most important practice add?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -8562,7 +8321,6 @@ To give the boys faith, Prahlāda explains the guru sampradāya. “If Nārada i
 
     <div class="fc-translation" data-sec="translation">The sons of the demons replied: Dear Prahlāda, neither you nor we know any teacher or spiritual master other than Ṣaṇḍa and Amarka, the sons of Śukrācārya. After all, we are children and they our controllers. For you especially, who always remain within the palace, it is very difficult to associate with a great personality. Dear friend, most gentle one, would you kindly explain how it was possible for you to hear Nārada? Kindly dispel our doubts in this regard.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -8601,18 +8359,6 @@ When Hiraṇyakaśipu left his kingdom and went to the mountain known as Mandar�
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The demon-children object: we have only ever known Ṣaṇḍa and Amarka; you live in the palace — how did you ever meet Nārada? An honest doubt is welcome. Prahlāda will answer with the story of how Nārada taught him inside his mother&#39;s womb.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What honest doubt have you been afraid to voice in a spiritual community?</li><li>Where might your own unlikely access to a great teacher deserve to be acknowledged?</li></ul>
-
-
-
-
-
-    </section>
 
 
 

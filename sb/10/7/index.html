@@ -25,19 +25,25 @@
     <link rel="icon" href="../../../assets/icons/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="../../../assets/icons/icon.svg">
     <link rel="stylesheet" href="../../../assets/css/site.css">
+    <link rel="alternate" hreflang="te-IN" href="../../../te/sb/10/7/">
+    <link rel="alternate" hreflang="x-default" href="../../../">
     <script>window.FC_TO_ROOT = "../../../";</script>
     <script src="../../../assets/js/toggle.js"></script>
 </head>
 <body class="has-sidebar" data-chapter="7">
 <header class="fc-site-header">
     <button type="button" class="fc-mobile-trigger fc-mobile-trigger-left" data-overlay="left" aria-label="Open settings drawer">⚙</button>
-<a class="fc-brand" href="../../../">FolioCorpus<span class="fc-sub">Śrīmad-Bhāgavatam</span></a>
+    <a class="fc-brand" href="../../../">FolioCorpus<span class="fc-sub">Bhagavad-gītā</span></a>
     <nav class="fc-site-nav">
         <a href="../../../">Home</a>
         <a href="../../../bg/">Bhagavad-gītā</a>
         <a href="../../../sb/">Śrīmad-Bhāgavatam</a>
         <a href="../../../search/" title="Search across all integrated works">🔍 Search</a>
         <button type="button" id="fc-random-verse" class="fc-nav-btn" title="Jump to a random verse">🎲 Random</button>
+        <span class="fc-lang-switch" aria-label="Script">
+            <a class="active" href="#" title="Devanāgarī edition">EN</a>
+            <a class="" href="../../../te/sb/10/7/" title="Telugu lipi edition">తె</a>
+        </span>
     </nav>
     <button type="button" class="fc-mobile-trigger fc-mobile-trigger-right" data-overlay="right" aria-label="Open chapter index drawer">📚</button>
 </header>
@@ -46,8 +52,8 @@
     <button class="fc-sb-collapse" type="button" data-sb="left" title="Collapse left sidebar" aria-label="Collapse"></button>
 
     <div class="fc-sb-body">
-        <details class="fc-sb-section" data-sbsec="reading" open>
-            <summary class="fc-sb-title">Reading</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Reading</div>
             <div class="fc-sb-sub">Theme</div>
             <div class="fc-segmented" data-setting="theme">
                 <button type="button" data-val="light">Light</button>
@@ -73,10 +79,10 @@
                 <button type="button" data-val="single">Single</button>
                 <button type="button" data-val="side">Side-by-side</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="display" open>
-            <summary class="fc-sb-title">Display</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Display</div>
             <div class="fc-sb-grid">
                 <label><input type="checkbox" data-section="devanagari" checked> Devanāgarī</label>
                 <label><input type="checkbox" data-section="iast" checked> IAST transliteration</label>
@@ -99,10 +105,33 @@
                 <button type="button" data-action="expand-all">Expand all</button>
                 <button type="button" data-action="collapse-all">Collapse all</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="tools" open>
-            <summary class="fc-sb-title">Tools</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Find your starting point</div>
+            <div class="fc-persona-links">
+                <a class="fc-persona-link" href="../../../daily/">🌅 Daily (one value a week)</a>
+                <a class="fc-persona-link" href="../../../householder/">🏠 Householder (family & work)</a>
+                <a class="fc-persona-link" href="../../../parenting/">👨‍👩‍👧 Parenting (stories for kids)</a>
+                <a class="fc-persona-link" href="../../../themes/">📚 All themes</a>
+                <a class="fc-persona-link" href="../../../values/" style="background:#F0F6F2;border-left-color:#1F4632;">ॐ Vedic Value System ↗</a>
+                <a class="fc-persona-link" href="../../../vidya/" style="background:#FBF6E4;border-left-color:#C8860B;">📚 Vidyā Karaṇa (kids, multi-lang) ↗</a>
+            </div>
+        </div>
+
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Audience</div>
+            <div class="fc-audience-filter">
+                <label><input type="radio" name="fc-audience" value="all" checked> All levels</label>
+                <label><input type="radio" name="fc-audience" value="primary"> Primary (children)</label>
+                <label><input type="radio" name="fc-audience" value="middle"> Middle (teens)</label>
+                <label><input type="radio" name="fc-audience" value="senior"> Senior (adults)</label>
+                <label><input type="radio" name="fc-audience" value="college"> College / scholar</label>
+            </div>
+        </div>
+
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Tools</div>
             <div class="fc-sb-tools">
                 <button type="button" id="fc-presentation-toggle" class="fc-tool-btn"><span>🖥 Presentation</span><kbd class="fc-kbd">F</kbd></button>
                 <button type="button" id="fc-pen-toggle" class="fc-tool-btn"><span>✏️ Pen mode</span><kbd class="fc-kbd">P</kbd></button>
@@ -117,10 +146,26 @@
                 <button type="button" id="fc-clear-highlights" class="fc-tool-btn">🩷 Clear highlights (page)</button>
                 <button type="button" id="fc-notes-modal-open" class="fc-tool-btn">📓 My annotations</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="progress" id="fc-progress-section" open>
-            <summary class="fc-sb-title">Progress</summary>
+        <div class="fc-sb-section" id="fc-tts-controls" hidden>
+            <div class="fc-sb-title">
+                Read-aloud
+                <label class="fc-tts-master">
+                    <input type="checkbox" id="fc-tts-enabled" checked>
+                    <span class="fc-tts-master-label">On</span>
+                </label>
+            </div>
+            <div class="fc-tts-inner">
+                <div class="fc-sb-sub">Voice</div>
+                <select id="fc-tts-voice" class="fc-tts-select" aria-label="TTS voice"></select>
+                <div class="fc-sb-sub">Rate <span class="fc-tts-rate-val">1.0×</span></div>
+                <input type="range" id="fc-tts-rate" min="0.5" max="2" step="0.1" value="1" class="fc-tts-rate" aria-label="Reading rate">
+            </div>
+        </div>
+
+        <div class="fc-sb-section" id="fc-progress-section">
+            <div class="fc-sb-title">Progress</div>
             <div class="fc-progress-row">
                 <span class="fc-progress-num" id="fc-progress-num">0</span>
                 <span class="fc-progress-divider">/</span>
@@ -135,29 +180,29 @@
                 <span class="fc-progress-spacer"></span>
                 <button type="button" class="fc-progress-reset" id="fc-progress-reset" title="Reset progress">↺</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="bookmarks" open>
-            <summary class="fc-sb-title">Bookmarks <span class="fc-sb-count" id="fc-bookmarks-count">0</span></summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Bookmarks <span class="fc-sb-count" id="fc-bookmarks-count">0</span></div>
             <ul class="fc-bookmark-list" id="fc-bookmarks-list">
                 <li class="fc-sb-empty">No bookmarks yet — click ☆ on any verse.</li>
             </ul>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="notes" open>
-            <summary class="fc-sb-title">Notes <span class="fc-sb-count" id="fc-notes-count">0</span></summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Notes <span class="fc-sb-count" id="fc-notes-count">0</span></div>
             <ul class="fc-bookmark-list" id="fc-notes-list">
                 <li class="fc-sb-empty">No notes yet — open any verse and write in the 📝 block.</li>
             </ul>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="export">
-            <summary class="fc-sb-title">Export</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Export</div>
             <div class="fc-sb-tools">
                 <button type="button" id="fc-export-md" class="fc-tool-btn">📥 Download Markdown</button>
                 <button type="button" id="fc-export-json" class="fc-tool-btn">💾 Download JSON backup</button>
             </div>
-        </details>
+        </div>
     </div>
 </aside>    <main class="fc-container">
 <nav class="fc-breadcrumbs">
@@ -668,7 +713,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <div class="fc-translation" data-sec="translation">King Parīkṣit said: My lord, Śukadeva Gosvāmī, all the various activities exhibited by the incarnations of the Supreme Personality of Godhead are certainly pleasing to the ear and to the mind. Simply by one’s hearing of these activities, the dirty things in one’s mind immediately vanish. Generally we are reluctant to hear about the activities of the Lord, but Kṛṣṇa’s childhood activities are so attractive that they are automatically pleasing to the mind and ear. Thus one’s attachment for hearing about material things, which is the root cause of material existence, vanishes, and one gradually develops devotional service to the Supreme Lord, attachment for Him, and friendship with devotees who give us the contribution of Kṛṣṇa consciousness. If you think it fit, kindly speak about those activities of the Lord.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1004,7 +1048,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <div class="fc-translation" data-sec="translation">Please describe other pastimes of Kṛṣṇa, the Supreme Personality, who appeared on this planet earth, imitating a human child and performing wonderful activities like killing Pūtanā.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1318,7 +1361,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
     </section>
 
     <div class="fc-translation" data-sec="translation">Śukadeva Gosvāmī said: When mother Yaśodā’s baby was slanting His body to attempt to rise and turn around, this attempt was observed by a Vedic ceremony. In such a ceremony, called utthāna, which is performed when a child is due to leave the house for the first time, the child is properly bathed. Just after Kṛṣṇa turned three months old, mother Yaśodā celebrated this ceremony with other women of the neighborhood. On that day, there was a conjunction of the moon with the constellation Rohiṇī. As the brāhmaṇas joined by chanting Vedic hymns and professional musicians also took part, this great ceremony was observed by mother Yaśodā.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -1655,7 +1697,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <div class="fc-translation" data-sec="translation">After completing the bathing ceremony for the child, mother Yaśodā received the brāhmaṇas by worshiping them with proper respect and giving them ample food grains and other eatables, clothing, desirable cows, and garlands. The brāhmaṇas properly chanted Vedic hymns to observe the auspicious ceremony, and when they finished and mother Yaśodā saw that the child felt sleepy, she lay down on the bed with the child until He was peacefully asleep.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1989,7 +2030,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <div class="fc-translation" data-sec="translation">The liberal mother Yaśodā, absorbed in celebrating the utthāna ceremony, was busy receiving guests, worshiping them with all respect and offering them clothing, cows, garlands and grains. Thus she could not hear the child crying for His mother. At that time, the child Kṛṣṇa, demanding to drink the milk of His mother’s breast, angrily threw His legs upward.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2308,7 +2348,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
     </section>
 
     <div class="fc-translation" data-sec="translation">Lord Śrī Kṛṣṇa was lying down underneath the handcart in one corner of the courtyard, and although His little legs were as soft as leaves, when He struck the cart with His legs, it turned over violently and collapsed. The wheels separated from the axle, the hubs and spokes fell apart, and the pole of the handcart broke. On the cart there were many little utensils made of various metals, and all of them scattered hither and thither.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -2676,7 +2715,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
     <div class="fc-translation" data-sec="translation">When mother Yaśodā and the other ladies who had assembled for the utthāna festival, and all the men, headed by Nanda Mahārāja, saw the wonderful situation, they began to wonder how the handcart had collapsed by itself. They began to wander here and there, trying to find the cause, but were unable to do so.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -2976,7 +3014,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
     </section>
 
     <div class="fc-translation" data-sec="translation">The assembled cowherd men and ladies began to contemplate how this thing had happened. “Is it the work of some demon or evil planet?” they asked. At that time, the small children present asserted that the cart had been kicked apart by the baby Kṛṣṇa. As soon as the crying baby had kicked the cart’s wheel, the cart had collapsed. There was no doubt about it.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -3287,7 +3324,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
     <div class="fc-translation" data-sec="translation">The assembled gopīs and gopas, unaware that Kṛṣṇa is always unlimited, could not believe that baby Kṛṣṇa had such inconceivable power. They could not believe the statements of the children, and therefore they neglected these statements as being childish talk.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -3594,7 +3630,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
     </section>
 
     <div class="fc-translation" data-sec="translation">Thinking that some bad planet had attacked Kṛṣṇa, mother Yaśodā picked up the crying child and allowed Him to suck her breast. Then she called for experienced brāhmaṇas to chant Vedic hymns and perform an auspicious ritualistic ceremony.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -3913,7 +3948,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
     </section>
 
     <div class="fc-translation" data-sec="translation">After the strong, stout cowherd men assembled the pots and paraphernalia on the handcart and set it up as before, the brāhmaṇas performed a ritualistic ceremony with a fire sacrifice to appease the bad planet, and then, with rice grains, kuśa, water and curd, they worshiped the Supreme Lord.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -4494,7 +4528,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <div class="fc-translation" data-sec="translation">When brāhmaṇas are free from envy, untruthfulness, unnecessary pride, grudges, disturbance by the opulence of others, and false prestige, their blessings never go in vain. Considering this, Nanda Mahārāja soberly took Kṛṣṇa on his lap and invited such truthful brāhmaṇas to perform a ritualistic ceremony according to the holy hymns of the Sāma Veda, Ṛg Veda and Yajur Veda. Then, while the hymns were being chanted, he bathed the child with water mixed with pure herbs, and after performing a fire ceremony, he sumptuously fed all the brāhmaṇas with first-class grains and other food.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -4810,7 +4843,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
     </section>
 
     <div class="fc-translation" data-sec="translation">Nanda Mahārāja, for the sake of the affluence of his own son Kṛṣṇa, gave the brāhmaṇas cows fully decorated with garments, flower garlands and gold necklaces. These cows, fully qualified to give ample milk, were given to the brāhmaṇas in charity, and the brāhmaṇas accepted them and bestowed blessings upon the whole family, and especially upon Kṛṣṇa.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -5166,7 +5198,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <div class="fc-translation" data-sec="translation">The brāhmaṇas, who were completely expert in chanting the Vedic hymns, were all yogīs fully equipped with mystic powers. Whatever blessings they spoke were certainly never fruitless.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -5473,7 +5504,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
     </section>
 
     <div class="fc-translation" data-sec="translation">One day, a year after Kṛṣṇa’s appearance, mother Yaśodā was patting her son on her lap. But suddenly she felt the child to be heavier than a mountain peak, and she could no longer bear His weight.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -5828,7 +5858,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <div class="fc-translation" data-sec="translation">Feeling the child to be as heavy as the entire universe and therefore being anxious, thinking that perhaps the child was being attacked by some other ghost or demon, the astonished mother Yaśodā put the child down on the ground and began to think of Nārāyaṇa. Foreseeing disturbances, she called for the brāhmaṇas to counteract this heaviness, and then she engaged in her other household affairs. She had no alternative than to remember the lotus feet of Nārāyaṇa, for she could not understand that Kṛṣṇa was the original source of everything.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -6162,7 +6191,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <div class="fc-translation" data-sec="translation">While the child was sitting on the ground, a demon named Tṛṇāvarta, who was a servant of Kaṁsa’s, came there as a whirlwind, at Kaṁsa’s instigation, and very easily carried the child away into the air.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -6483,7 +6511,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <div class="fc-translation" data-sec="translation">Covering the whole land of Gokula with particles of dust, that demon, acting as a strong whirlwind, covered everyone’s vision and began vibrating everywhere with a greatly fearful sound.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -6795,7 +6822,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
     <div class="fc-translation" data-sec="translation">For a moment, the whole pasturing ground was overcast with dense darkness from the dust storm, and mother Yaśodā was unable to find her son where she had placed Him.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -7059,7 +7085,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
     </section>
 
     <div class="fc-translation" data-sec="translation">Because of the bits of sand thrown about by Tṛṇāvarta, people could not see themselves or anyone else, and thus they were illusioned and disturbed.</div>
-
 
 
     <section class="fc-section" data-sec="gaudiya">
@@ -7381,7 +7406,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
     <div class="fc-translation" data-sec="translation">Because of the dust storm stirred up by the strong whirlwind, mother Yaśodā could find no trace of her son, nor could she understand why. Thus she fell down on the ground like a cow who has lost her calf and began to lament very pitifully.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -7683,7 +7707,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <div class="fc-translation" data-sec="translation">When the force of the dust storm and the winds subsided, Yaśodā’s friends, the other gopīs, approached mother Yaśodā, hearing her pitiful crying. Not seeing Kṛṣṇa present, they too felt very much aggrieved and joined mother Yaśodā in crying, their eyes full of tears.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -7966,7 +7989,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
     </section>
 
     <div class="fc-translation" data-sec="translation">Having assumed the form of a forceful whirlwind, the demon Tṛṇāvarta took Kṛṣṇa very high in the sky, but when Kṛṣṇa became heavier than the demon, the demon had to stop his force and could go no further.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -8265,7 +8287,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <div class="fc-translation" data-sec="translation">Because of Kṛṣṇa’s weight, Tṛṇāvarta considered Him to be like a great mountain or a hunk of iron. But because Kṛṣṇa had caught the demon’s neck, the demon was unable to throw Him off. He therefore thought of the child as wonderful, since he could neither bear the child nor cast aside the burden.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -8535,7 +8556,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
     </section>
 
     <div class="fc-translation" data-sec="translation">With Kṛṣṇa grasping him by the throat, Tṛṇāvarta choked, unable to make even a sound or even to move his hands and legs. His eyes popping out, the demon lost his life and fell, along with the little boy, down to the ground of Vraja.</div>
-
 
 
     <section class="fc-section" data-sec="gaudiya">
@@ -8872,7 +8892,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
     </section>
 
     <div class="fc-translation" data-sec="translation">While the gopīs who had gathered were crying for Kṛṣṇa, the demon fell from the sky onto a big slab of stone, his limbs dislocated, as if he had been pierced by the arrow of Lord Śiva like Tripurāsura.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -9301,7 +9320,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <div class="fc-translation" data-sec="translation">The gopīs immediately picked Kṛṣṇa up from the chest of the demon and delivered Him, free from all inauspiciousness, to mother Yaśodā. Because the child, although taken into the sky by the demon, was unhurt and now free from all danger and misfortune, the gopīs and cowherd men, headed by Nanda Mahārāja, were extremely happy.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -9675,7 +9693,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
     </section>
 
     <div class="fc-translation" data-sec="translation">It is most astonishing that although this innocent child was taken away by the Rākṣasa to be eaten, He has returned without having been killed or even injured. Because this demon was envious, cruel and sinful, he has been killed for his own sinful activities. This is the law of nature. An innocent devotee is always protected by the Supreme Personality of Godhead, and a sinful person is always vanquished for his sinful life.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -10073,7 +10090,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <div class="fc-translation" data-sec="translation">Nanda Mahārāja and the others said: We must previously have performed austerities for a very long time, worshiped the Supreme Personality of Godhead, performed pious activities for public life, constructing public roads and wells, and also given charity, as a result of which this boy, although faced with death, has returned to give happiness to His relatives.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -10381,7 +10397,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
     <div class="fc-translation" data-sec="translation">Having seen all these incidents in Bṛhadvana, Nanda Mahārāja became more and more astonished, and he remembered the words spoken to him by Vasudeva in Mathurā.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -10678,7 +10693,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
     </section>
 
     <div class="fc-translation" data-sec="translation">One day mother Yaśodā, having taken Kṛṣṇa up and placed Him on her lap, was feeding Him milk from her breast with maternal affection. The milk was flowing from her breast, and the child was drinking it.</div>
-
 
 
     <section class="fc-section" data-sec="gaudiya">
@@ -11130,7 +11144,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <div class="fc-translation" data-sec="translation">O King Parīkṣit, when the child Kṛṣṇa was almost finished drinking His mother’s milk and mother Yaśodā was touching Him and looking at His beautiful, brilliantly smiling face, the baby yawned, and mother Yaśodā saw in His mouth the whole sky, the higher planetary system and the earth, the luminaries in all directions, the sun, the moon, fire, air, the seas, islands, mountains, rivers, forests, and all kinds of living entities, moving and nonmoving.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -11437,7 +11450,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
     </section>
 
     <div class="fc-translation" data-sec="translation">When mother Yaśodā saw the whole universe within the mouth of her child, her heart began to throb, and in astonishment she wanted to close her restless eyes.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>

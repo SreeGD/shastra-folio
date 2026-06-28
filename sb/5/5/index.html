@@ -25,19 +25,25 @@
     <link rel="icon" href="../../../assets/icons/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="../../../assets/icons/icon.svg">
     <link rel="stylesheet" href="../../../assets/css/site.css">
+    <link rel="alternate" hreflang="te-IN" href="../../../te/sb/5/5/">
+    <link rel="alternate" hreflang="x-default" href="../../../">
     <script>window.FC_TO_ROOT = "../../../";</script>
     <script src="../../../assets/js/toggle.js"></script>
 </head>
 <body class="has-sidebar" data-chapter="5">
 <header class="fc-site-header">
     <button type="button" class="fc-mobile-trigger fc-mobile-trigger-left" data-overlay="left" aria-label="Open settings drawer">⚙</button>
-<a class="fc-brand" href="../../../">FolioCorpus<span class="fc-sub">Śrīmad-Bhāgavatam</span></a>
+    <a class="fc-brand" href="../../../">FolioCorpus<span class="fc-sub">Bhagavad-gītā</span></a>
     <nav class="fc-site-nav">
         <a href="../../../">Home</a>
         <a href="../../../bg/">Bhagavad-gītā</a>
         <a href="../../../sb/">Śrīmad-Bhāgavatam</a>
         <a href="../../../search/" title="Search across all integrated works">🔍 Search</a>
         <button type="button" id="fc-random-verse" class="fc-nav-btn" title="Jump to a random verse">🎲 Random</button>
+        <span class="fc-lang-switch" aria-label="Script">
+            <a class="active" href="#" title="Devanāgarī edition">EN</a>
+            <a class="" href="../../../te/sb/5/5/" title="Telugu lipi edition">తె</a>
+        </span>
     </nav>
     <button type="button" class="fc-mobile-trigger fc-mobile-trigger-right" data-overlay="right" aria-label="Open chapter index drawer">📚</button>
 </header>
@@ -46,8 +52,8 @@
     <button class="fc-sb-collapse" type="button" data-sb="left" title="Collapse left sidebar" aria-label="Collapse"></button>
 
     <div class="fc-sb-body">
-        <details class="fc-sb-section" data-sbsec="reading" open>
-            <summary class="fc-sb-title">Reading</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Reading</div>
             <div class="fc-sb-sub">Theme</div>
             <div class="fc-segmented" data-setting="theme">
                 <button type="button" data-val="light">Light</button>
@@ -73,10 +79,10 @@
                 <button type="button" data-val="single">Single</button>
                 <button type="button" data-val="side">Side-by-side</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="display" open>
-            <summary class="fc-sb-title">Display</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Display</div>
             <div class="fc-sb-grid">
                 <label><input type="checkbox" data-section="devanagari" checked> Devanāgarī</label>
                 <label><input type="checkbox" data-section="iast" checked> IAST transliteration</label>
@@ -99,10 +105,33 @@
                 <button type="button" data-action="expand-all">Expand all</button>
                 <button type="button" data-action="collapse-all">Collapse all</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="tools" open>
-            <summary class="fc-sb-title">Tools</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Find your starting point</div>
+            <div class="fc-persona-links">
+                <a class="fc-persona-link" href="../../../daily/">🌅 Daily (one value a week)</a>
+                <a class="fc-persona-link" href="../../../householder/">🏠 Householder (family & work)</a>
+                <a class="fc-persona-link" href="../../../parenting/">👨‍👩‍👧 Parenting (stories for kids)</a>
+                <a class="fc-persona-link" href="../../../themes/">📚 All themes</a>
+                <a class="fc-persona-link" href="../../../values/" style="background:#F0F6F2;border-left-color:#1F4632;">ॐ Vedic Value System ↗</a>
+                <a class="fc-persona-link" href="../../../vidya/" style="background:#FBF6E4;border-left-color:#C8860B;">📚 Vidyā Karaṇa (kids, multi-lang) ↗</a>
+            </div>
+        </div>
+
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Audience</div>
+            <div class="fc-audience-filter">
+                <label><input type="radio" name="fc-audience" value="all" checked> All levels</label>
+                <label><input type="radio" name="fc-audience" value="primary"> Primary (children)</label>
+                <label><input type="radio" name="fc-audience" value="middle"> Middle (teens)</label>
+                <label><input type="radio" name="fc-audience" value="senior"> Senior (adults)</label>
+                <label><input type="radio" name="fc-audience" value="college"> College / scholar</label>
+            </div>
+        </div>
+
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Tools</div>
             <div class="fc-sb-tools">
                 <button type="button" id="fc-presentation-toggle" class="fc-tool-btn"><span>🖥 Presentation</span><kbd class="fc-kbd">F</kbd></button>
                 <button type="button" id="fc-pen-toggle" class="fc-tool-btn"><span>✏️ Pen mode</span><kbd class="fc-kbd">P</kbd></button>
@@ -117,10 +146,26 @@
                 <button type="button" id="fc-clear-highlights" class="fc-tool-btn">🩷 Clear highlights (page)</button>
                 <button type="button" id="fc-notes-modal-open" class="fc-tool-btn">📓 My annotations</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="progress" id="fc-progress-section" open>
-            <summary class="fc-sb-title">Progress</summary>
+        <div class="fc-sb-section" id="fc-tts-controls" hidden>
+            <div class="fc-sb-title">
+                Read-aloud
+                <label class="fc-tts-master">
+                    <input type="checkbox" id="fc-tts-enabled" checked>
+                    <span class="fc-tts-master-label">On</span>
+                </label>
+            </div>
+            <div class="fc-tts-inner">
+                <div class="fc-sb-sub">Voice</div>
+                <select id="fc-tts-voice" class="fc-tts-select" aria-label="TTS voice"></select>
+                <div class="fc-sb-sub">Rate <span class="fc-tts-rate-val">1.0×</span></div>
+                <input type="range" id="fc-tts-rate" min="0.5" max="2" step="0.1" value="1" class="fc-tts-rate" aria-label="Reading rate">
+            </div>
+        </div>
+
+        <div class="fc-sb-section" id="fc-progress-section">
+            <div class="fc-sb-title">Progress</div>
             <div class="fc-progress-row">
                 <span class="fc-progress-num" id="fc-progress-num">0</span>
                 <span class="fc-progress-divider">/</span>
@@ -135,29 +180,29 @@
                 <span class="fc-progress-spacer"></span>
                 <button type="button" class="fc-progress-reset" id="fc-progress-reset" title="Reset progress">↺</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="bookmarks" open>
-            <summary class="fc-sb-title">Bookmarks <span class="fc-sb-count" id="fc-bookmarks-count">0</span></summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Bookmarks <span class="fc-sb-count" id="fc-bookmarks-count">0</span></div>
             <ul class="fc-bookmark-list" id="fc-bookmarks-list">
                 <li class="fc-sb-empty">No bookmarks yet — click ☆ on any verse.</li>
             </ul>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="notes" open>
-            <summary class="fc-sb-title">Notes <span class="fc-sb-count" id="fc-notes-count">0</span></summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Notes <span class="fc-sb-count" id="fc-notes-count">0</span></div>
             <ul class="fc-bookmark-list" id="fc-notes-list">
                 <li class="fc-sb-empty">No notes yet — open any verse and write in the 📝 block.</li>
             </ul>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="export">
-            <summary class="fc-sb-title">Export</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Export</div>
             <div class="fc-sb-tools">
                 <button type="button" id="fc-export-md" class="fc-tool-btn">📥 Download Markdown</button>
                 <button type="button" id="fc-export-json" class="fc-tool-btn">💾 Download JSON backup</button>
             </div>
-        </details>
+        </div>
     </div>
 </aside>    <main class="fc-container">
 <nav class="fc-breadcrumbs">
@@ -175,7 +220,7 @@
         <h1 class="fc-verse-heading">5.5 · Lord Ṛṣabhadeva&#39;s Teachings to His Sons</h1>
         <span class="fc-ribbon-meta">
             31 verses
- · <a class="fc-ribbon-link" href="class-prep/">🖨 Class prep</a>        </span>
+        </span>
         <input type="search" class="fc-search" id="fc-search" placeholder="🔍 Search in this chapter" aria-label="Search verses in this chapter">
         <span class="fc-ribbon-current" id="fc-ribbon-current" aria-live="polite"></span>
     </div>
@@ -542,7 +587,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
 
     <div class="fc-translation" data-sec="translation">Lord Ṛṣabhadeva told His sons: My dear boys, of all the living entities who have accepted material bodies in this world, one who has been awarded this human form should not work hard day and night simply for sense gratification, which is available even for dogs and hogs that eat stool. One should engage in penance and austerity to attain the divine position of devotional service. By such activity, one’s heart is purified, and when one attains this position, he attains eternal, blissful life, which is transcendental to material happiness and which continues forever.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -937,18 +981,6 @@ In the Fifth Chapter, after giving instructions on bhakti to the Lord to his son
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The human form is uniquely precious because it can be used for self-realization. Spending it only on eating, sleeping, mating and defending wastes a rare opportunity that even animals already have. Voluntary discipline is the doorway to purified existence.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where is your daily routine indistinguishable from that of any well-fed animal?</li><li>What voluntary austerity could you take on this week to start using your human form for its actual purpose?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -1164,7 +1196,6 @@ In the Fifth Chapter, after giving instructions on bhakti to the Lord to his son
 
     <div class="fc-translation" data-sec="translation">One can attain the path of liberation from material bondage only by rendering service to highly advanced spiritual personalities. These personalities are impersonalists and devotees. Whether one wants to merge into the Lord’s existence or wants to associate with the Personality of Godhead, one should render service to the mahātmās. For those who are not interested in such activities, who associate with people fond of women and sex, the path to hell is wide open. The mahātmās are equipoised. They do not see any difference between one living entity and another. They are very peaceful and are fully engaged in devotional service. They are devoid of anger, and they work for the benefit of everyone. They do not behave in any abominable way. Such people are known as mahātmās.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1355,18 +1386,6 @@ From the human body, one can gain deliverance or fall down. The cause for both l
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Liberation comes through serving advanced spiritual personalities. Your trajectory is determined by whose company you keep — sādhus pull you toward freedom; sense-attached associates pull you toward bondage. Choose company with the seriousness of choosing a destination.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Whose company is currently shaping your direction most strongly, and where is that direction headed?</li><li>What concrete step could you take this week to deepen association with mahātmās?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -1591,7 +1610,6 @@ From the human body, one can gain deliverance or fall down. The cause for both l
 
     <div class="fc-translation" data-sec="translation">Those who are interested in reviving Kṛṣṇa consciousness and increasing their love of Godhead do not like to do anything that is not related to Kṛṣṇa. They are not interested in mingling with people who are busy maintaining their bodies, eating, sleeping, mating and defending. They are not attached to their homes, although they may be householders. Nor are they attached to wives, children, friends or wealth. At the same time, they are not indifferent to the execution of their duties. Such people are interested in collecting only enough money to keep the body and soul together.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1710,18 +1728,6 @@ The extraordinary qualities of the second type of person are described.  Those d
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Those serious about Kṛṣṇa do not waste energy on what has no relation to Him. Even householders can hold home, family and wealth lightly when their hearts are fixed elsewhere. Detachment is an inner posture, not a change of address.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where in your life are you spending major energy on what has no relation to Kṛṣṇa?</li><li>How tightly are you gripping the things you call &#39;mine&#39; — and what would a looser grip feel like?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -1955,7 +1961,6 @@ The extraordinary qualities of the second type of person are described.  Those d
 
     <div class="fc-translation" data-sec="translation">When a person considers sense gratification the aim of life, he certainly becomes mad after materialistic living and engages in all kinds of sinful activity. He does not know that due to his past misdeeds he has already received a body which, although temporary, is the cause of his misery. Actually the living entity should not have taken on a material body, but he has been awarded the material body for sense gratification. Therefore I think it not befitting an intelligent man to involve himself again in the activities of sense gratification by which he perpetually gets material bodies one after another.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2094,18 +2099,6 @@ He already stated that those persons who are attached to women fall down.  He il
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Treating sense gratification as life&#39;s aim leads inexorably into sinful acts that produce future bodies of suffering. The four pillars — illicit sex, meat, intoxication, gambling — quietly build the next prison while we think we are enjoying.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which of these four sinful patterns has the strongest grip on you right now, even subtly?</li><li>What single boundary, kept firmly, would most weaken that grip over the coming year?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -2321,7 +2314,6 @@ He already stated that those persons who are attached to women fall down.  He il
 
     <div class="fc-translation" data-sec="translation">As long as one does not inquire about the spiritual values of life, one is defeated and subjected to miseries arising from ignorance. Be it sinful or pious, karma has its resultant actions. If a person is engaged in any kind of karma, his mind is called karmātmaka, colored with fruitive activity. As long as the mind is impure, consciousness is unclear, and as long as one is absorbed in fruitive activity, he has to accept a material body.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2458,18 +2450,6 @@ He already stated that those persons who are attached to women fall down.  He il
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Pious karma is still karma — it produces results but does not liberate. Only inquiry into one&#39;s true spiritual position cuts the root. Don&#39;t settle for being a better prisoner; aim for the door.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where are you congratulating yourself on pious activity that still leaves you bound?</li><li>What deeper question about your real identity have you been postponing?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -2685,7 +2665,6 @@ He already stated that those persons who are attached to women fall down.  He il
 
     <div class="fc-translation" data-sec="translation">When the living entity is covered by the mode of ignorance, he does not understand the individual living being and the supreme living being, and his mind is subjugated by fruitive activity. Therefore, until one has love for Lord Vāsudeva, who is none other than Myself, he is certainly not delivered from having to accept a material body again and again.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2806,18 +2785,6 @@ How does the mind become absorbed in action? Ancient or recent karmas make the m
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Without love for Vāsudeva, the soul keeps cycling through material bodies regardless of how &#39;good&#39; it tries to be. Devotion is not one option among many; it is the only exit. Anything less is rearranging cell furniture.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What kind of &#39;improvement&#39; have you been pursuing that, however worthy, does not actually point toward Kṛṣṇa?</li><li>How could you start to cultivate genuine love for Vāsudeva today, not someday?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -3042,7 +3009,6 @@ How does the mind become absorbed in action? Ancient or recent karmas make the m
 
     <div class="fc-translation" data-sec="translation">Even though one may be very learned and wise, he is mad if he does not understand that the endeavor for sense gratification is a useless waste of time. Being forgetful of his own interest, he tries to be happy in the material world, centering his interests around his home, which is based on sexual intercourse and which brings him all kinds of material miseries. In this way one is no better than a foolish animal.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3131,18 +3097,6 @@ Freedom from karma takes place at the mature stage of jṣāna mixed with bhakti
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Centering life on home and sexual partnership locks even the learned into recurring misery. Cleverness without renunciation just builds more elaborate cages. The only real freedom is breaking the centering itself.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What is currently the actual emotional center of your life, and is it serving liberation or bondage?</li><li>Where has your intelligence been quietly recruited to defend an attachment you secretly know is binding you?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -3394,7 +3348,6 @@ Freedom from karma takes place at the mature stage of jṣāna mixed with bhakti
 
     <div class="fc-translation" data-sec="translation">The attraction between male and female is the basic principle of material existence. On the basis of this misconception, which ties together the hearts of the male and female, one becomes attracted to his body, home, property, children, relatives and wealth. In this way one increases life’s illusions and thinks in terms of “I and mine.”</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3525,18 +3478,6 @@ When one identifies the action of one’s senses with oneself, the illusion aris
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The knot of male-female attraction is the seed-knot of all &#39;I and mine.&#39; From it grows attachment to home, children, property and identity. This knot is hard to see precisely because everyone takes it as natural.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What attachment in your life is rooted in this original knot, even though it now wears other clothes?</li><li>Where do you mistake the language of &#39;I and mine&#39; for the language of reality?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -3752,7 +3693,6 @@ When one identifies the action of one’s senses with oneself, the illusion aris
 
     <div class="fc-translation" data-sec="translation">When the strong knot in the heart of a person implicated in material life due to the results of past action is slackened, one turns away from his attachment to home, wife and children. In this way, one gives up the basic principle of illusion [I and mine] and becomes liberated. Thus one goes to the transcendental world.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3847,18 +3787,6 @@ This verse explains when liberation takes place.  When the knot in the heart, in
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Once the knot in the heart starts to loosen, detachment from spouse, children and home arises naturally and the soul becomes eligible to return home. Liberation is not engineered; it is what is left when the knot slips.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What spiritual practice in your life has actually loosened the knot, even slightly?</li><li>What would you have to be willing to lose to let further loosening happen?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -4528,7 +4456,6 @@ This verse explains when liberation takes place.  When the knot in the heart, in
 
     <div class="fc-translation" data-sec="translation">O My sons, you should accept a highly elevated paramahaṁsa, a spiritually advanced spiritual master. In this way, you should place your faith and love in Me, the Supreme Personality of Godhead. You should detest sense gratification and tolerate the duality of pleasure and pain, which are like the seasonal changes of summer and winter. Try to realize the miserable condition of living entities, who are miserable even in the higher planetary systems. Philosophically inquire about the truth. Then undergo all kinds of austerities and penances for the sake of devotional service. Give up the endeavor for sense enjoyment and engage in the service of the Lord. Listen to discussions about the Supreme Personality of Godhead, and always associate with devotees. Chant about and glorify the Supreme Lord, and look upon everyone equally on the spiritual platform. Give up enmity and subdue anger and lamentation. Abandon identifying the self with the body and the home, and practice reading the revealed scriptures. Live in a secluded place and practice the process by which you can completely control your life air, mind and senses. Have full faith in the revealed scriptures, the Vedic literatures, and always observe celibacy. Perform your prescribed duties and avoid unnecessary talks. Always thinking of the Supreme Personality of Godhead, acquire knowledge from the right source. Thus practicing bhakti-yoga, you will patiently and enthusiastically be elevated in knowledge and will be able to give up the false ego.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -4723,18 +4650,6 @@ One should also associate with the devatās of whom I am the master. One should 
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The path is concrete: take a real guru, love Kṛṣṇa, detest sense gratification, tolerate dualities, look honestly at others&#39; misery, live simply, study scripture, practice silence, control breath and senses, fix the mind on the Lord. Spirituality is a daily curriculum, not a vague feeling.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which of these specific instructions are you weakest at, and what would step one of strengthening it look like?</li><li>Where do you keep waiting for transformation to happen by feeling, when this verse describes it happening by practice?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -4923,7 +4838,6 @@ One should also associate with the devatās of whom I am the master. One should 
 
     <div class="fc-translation" data-sec="translation">As I have advised you, My dear sons, you should act accordingly. Be very careful. By these means you will be freed from the ignorance of the desire for fruitive activity, and the knot of bondage in the heart will be completely severed. For further advancement, you should also give up the means. That is, you should not become attached to the process of liberation itself.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -5040,18 +4954,6 @@ And even if one attains realization of the Lord, one does not give up bhakti at 
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Even the means of liberation must eventually be released; clinging to the method becomes its own subtle bondage. The point is not to be a great practitioner forever, but to arrive — and then to let even the practice rest.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Are you starting to identify with being a &#39;serious practitioner&#39; in a way that has become its own subtle ego?</li><li>What would it look like to hold your spiritual methods with the lightness of a means rather than the grip of an identity?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -5371,7 +5273,6 @@ And even if one attains realization of the Lord, one does not give up bhakti at 
 
     <div class="fc-translation" data-sec="translation">If one is serious about going back home, back to Godhead, he must consider the mercy of the Supreme Personality of Godhead the summum bonum and chief aim of life. If he is a father instructing his sons, a spiritual master instructing his disciples, or a king instructing his citizens, he must instruct them as I have advised. Without being angry, he should continue giving instructions, even if his disciple, son or citizen is sometimes unable to follow his order. Ignorant people who engage in pious and impious activities should be engaged in devotional service by all means. They should always avoid fruitive activity. If one puts into the bondage of karmic activity his disciple, son or citizen who is bereft of transcendental vision, how will one profit? It is like leading a blind man to a dark well and causing him to fall in.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -5459,18 +5360,6 @@ That instruction is meant for those instructing jṣāna, but not bhakti.</div>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">When you instruct others — as parent, teacher, or leader — keep teaching steadily and patiently, even when they cannot follow. Anger is not a teaching tool. The mercy of the Lord remains the summum bonum, and that is what you point them toward, repeatedly.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Whom have you given up instructing because they &#39;never listen&#39; — and how could you return to it without anger?</li><li>Is your instruction actually pointing toward the Lord&#39;s mercy, or only toward your preferences?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -5675,7 +5564,6 @@ That instruction is meant for those instructing jṣāna, but not bhakti.</div>
 
     <div class="fc-translation" data-sec="translation">Due to ignorance, the materialistic person does not know anything about his real self-interest, the auspicious path in life. He is simply bound to material enjoyment by lusty desires, and all his plans are made for this purpose. For temporary sense gratification, such a person creates a society of envy, and due to this mentality, he plunges into the ocean of suffering. Such a foolish person does not even know about this.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -5752,18 +5640,6 @@ Three verses expand on this point.  Arthān means visible and invisible objects 
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The materialist cannot see beyond this life, so he creates a society of envy and competition that drowns him. Without long sight, every action becomes a short-term grab that lands the actor deeper in trouble.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where in your life are you acting as if there is no future life — and how would acknowledging it change today&#39;s choice?</li><li>Whose envy and competition are you participating in that you could simply step out of?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -5980,7 +5856,6 @@ Three verses expand on this point.  Arthān means visible and invisible objects 
     <div class="fc-translation" data-sec="translation">If someone is ignorant and addicted to the path of saṁsāra, how can one who is actually learned, merciful and advanced in spiritual knowledge engage him in fruitive activity and thus further entangle him in material existence? If a blind man is walking down the wrong path, how can a gentleman allow him to continue on his way to danger? How can he approve this method? No wise or kind man can allow this.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -6026,18 +5901,6 @@ Seeing such a person’s foolishness, should one encourage him?  Not at all.  Wh
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">A truly merciful person cannot in good conscience push the ignorant deeper into karma. If you really care about someone walking the wrong way, you do not cheerfully send them further down it. Real kindness sometimes contradicts surface niceness.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Whom are you supporting on a path you know is destructive, simply because correcting them would be uncomfortable?</li><li>Where does real mercy require you to interrupt instead of encourage?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -6370,7 +6233,6 @@ Seeing such a person’s foolishness, should one encourage him?  Not at all.  Wh
 
     <div class="fc-translation" data-sec="translation">One who cannot deliver his dependents from the path of repeated birth and death should never become a spiritual master, a father, a husband, a mother or a worshipable demigod.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -6537,18 +6399,6 @@ If one acknowledges the teacher of bhakti, this implies that others are not to b
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Do not take on the role of guru, parent, spouse, or worshipable elder unless you can actually liberate those who depend on you from birth and death. Roles of responsibility are not titles; they are duties measured against the highest standard.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which role of responsibility in your life are you holding without seriously equipping yourself to fulfill its deepest purpose?</li><li>What would it take to actually become qualified for the role you have already claimed?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -6818,7 +6668,6 @@ If one acknowledges the teacher of bhakti, this implies that others are not to b
 
     <div class="fc-translation" data-sec="translation">My transcendental body [sac-cid-ānanda-vigraha] looks exactly like a human form, but it is not a material human body. It is inconceivable. I am not forced by nature to accept a particular type of body; I take on a body by My own sweet will. My heart is also spiritual, and I always think of the welfare of My devotees. Therefore within My heart can be found the process of devotional service, which is meant for the devotees. Far from My heart have I abandoned irreligion [adharma] and nondevotional activities. They do not appeal to Me. Due to all these transcendental qualities, people generally pray to Me as Ṛṣabhadeva, the Supreme Personality of Godhead, the best of all living entities.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -6895,18 +6744,6 @@ Where is the Lord to whom we should perform bhakti, and where is the devotee who
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The Lord&#39;s body is not material; He takes form by His own sweet will, and within His heart lives the very process of devotional service. The path you are seeking is already alive inside the One you are seeking.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>How might it change your practice to know that bhakti itself lives within the Lord&#39;s heart, ready to be transmitted?</li><li>Where have you treated devotional service as a technique rather than a gift from a Person?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -7104,7 +6941,6 @@ Where is the Lord to whom we should perform bhakti, and where is the devotee who
 
     <div class="fc-translation" data-sec="translation">My dear boys, you are all born of My heart, which is the seat of all spiritual qualities. Therefore you should not be like materialistic and envious men. You should accept your eldest brother, Bharata, who is exalted in devotional service. If you engage yourselves in Bharata’s service, your service to him will include My service, and you will rule the citizens automatically.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -7159,18 +6995,6 @@ You have been produced from my chest or urasā (hṛdayena) and thus are called 
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Real family is heart-born, not just blood-born. When the eldest is exalted in devotion, serving him becomes a way of serving the Lord. Rank without devotion is empty; rank rooted in devotion becomes a channel of grace.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Whom in your family or community has the Lord placed above you whose service you have been resisting?</li><li>How could honoring an advanced devotee become a doorway to honoring the Lord?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -7549,7 +7373,6 @@ You have been produced from my chest or urasā (hṛdayena) and thus are called 
 
     <div class="fc-translation" data-sec="translation">Of the two energies manifest [spirit and dull matter], beings possessing living force [vegetables, grass, trees and plants] are superior to dull matter [stone, earth, etc.]. Superior to nonmoving plants and vegetables are worms and snakes, which can move. Superior to worms and snakes are animals that have developed intelligence. Superior to animals are human beings, and superior to human beings are ghosts because they have no material bodies. Superior to ghosts are the Gandharvas, and superior to them are the Siddhas. Superior to the Siddhas are the Kinnaras, and superior to them are the asuras. Superior to the asuras are the demigods, and of the demigods, Indra, the King of heaven, is supreme. Superior to Indra are the direct sons of Lord Brahmā, sons like King Dakṣa, and supreme among Brahmā’s sons is Lord Śiva. Since Lord Śiva is the son of Lord Brahmā, Brahmā is considered superior, but Brahmā is also subordinate to Me, the Supreme Personality of Godhead. Because I am inclined to the brāhmaṇas, the brāhmaṇas are best of all.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -7646,18 +7469,6 @@ In order to teach that the brāhmaṇas should be served, he shows that they are
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">There is a real hierarchy in creation: matter, plants, animals, humans, brāhmaṇas, devotees of the Lord, and the Lord Himself. Recognizing this ladder helps us know whom to serve and whom to learn from, rather than treating everyone as equally authoritative.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Whose guidance have you been weighing equally with truly advanced devotees&#39;, when they do not belong on the same rung?</li><li>Where do you need to look upward rather than sideways for direction in your spiritual life?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -7918,7 +7729,6 @@ In order to teach that the brāhmaṇas should be served, he shows that they are
 
     <div class="fc-translation" data-sec="translation">O respectful brāhmaṇas, as far as I am concerned, no one is equal or superior to the brāhmaṇas in this world. I do not find anyone comparable to them. When people know My motive, after performing rituals according to the Vedic principles they offer food to Me with faith and love through the mouth of a brāhmaṇa. When food is thus offered unto Me, I eat it with full satisfaction. Indeed, I derive more pleasure from food offered in that way than from the food offered in the sacrificial fire.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -8008,18 +7818,6 @@ I cannot compare any other living being to the brāhmaṇas. Do I see anyone sup
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The Lord delights when food offered to Him is eaten by qualified brāhmaṇas — that act pleases Him even more than the offering itself. Honoring those who carry His knowledge is itself a form of feeding the Lord.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>How are you honoring those who carry genuine spiritual knowledge into your life?</li><li>Where could you redirect resources from indulgence into supporting devoted teachers?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -8271,7 +8069,6 @@ I cannot compare any other living being to the brāhmaṇas. Do I see anyone sup
 
     <div class="fc-translation" data-sec="translation">The Vedas are My eternal transcendental sound incarnation. Therefore the Vedas are śabda-brahma. In this world, the brāhmaṇas thoroughly study all the Vedas, and because they assimilate the Vedic conclusions, they are also to be considered the Vedas personified. The brāhmaṇas are situated in the supreme transcendental mode of nature — sattva-guṇa. Because of this, they are fixed in mind control [śama], sense control [dama], and truthfulness [satya]. They describe the Vedas in their original sense, and out of mercy [anugraha] they preach the purpose of the Vedas to all conditioned souls. They practice penance [tapasya] and tolerance [titikṣā], and they realize the position of the living entity and the Supreme Lord [anubhava]. These are the eight qualifications of the brāhmaṇas. Therefore among all living entities, no one is superior to the brāhmaṇas.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -8365,18 +8162,6 @@ There is no one superior to the brāhmaṇa who supports my body in the form of 
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">A real brāhmaṇa has assimilated the Vedas and embodied sense control, knowledge, and truthfulness. The title means nothing without these qualities; the qualities mean everything regardless of the title.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which brāhmaṇa-like qualities are you actively cultivating in yourself, regardless of birth or label?</li><li>Whose example of these qualities deserves more attention in your life?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -8590,7 +8375,6 @@ There is no one superior to the brāhmaṇa who supports my body in the form of 
 
     <div class="fc-translation" data-sec="translation">I am fully opulent, almighty and superior to Lord Brahmā and Indra, the King of the heavenly planets. I am also the bestower of all happiness obtained in the heavenly kingdom and by liberation. Nonetheless, the brāhmaṇas do not seek material comforts from Me. They are very pure and do not want to possess anything. They simply engage in My devotional service. What is the need of their asking for material benefits from anyone else?</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -8687,18 +8471,6 @@ Superior to the jṣānī is the person who fully dedicates his activities such 
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Pure brāhmaṇas and devotees do not ask the Lord for material comforts even though He could grant anything. To be akiñcana — to have no material want — is the perfection of relationship with the Lord.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What are you still secretly hoping the Lord will give you that has nothing to do with Him?</li><li>What would it feel like to approach Him with the prayer of having nothing, wanting only Him?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -8905,7 +8677,6 @@ Superior to the jṣānī is the person who fully dedicates his activities such 
 
     <div class="fc-translation" data-sec="translation">My dear sons, you should not envy any living entity — be he moving or nonmoving. Knowing that I am situated in them, you should offer respect to all of them at every moment. In this way, you offer respect to Me.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -9010,18 +8781,6 @@ One should give respect to all living beings in order to destroy faults such as 
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The Lord lives in every living being. Therefore offering respect to all — moving and nonmoving — is itself a way of worshiping Him. Envy of anyone is, in this light, envy of God&#39;s own dwelling.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Whom have you been quietly envying without realizing you were envying the Lord&#39;s residence in them?</li><li>How could your daily encounters become opportunities to offer respect to the Paramātmā within others?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -9246,7 +9005,6 @@ One should give respect to all living beings in order to destroy faults such as 
 
     <div class="fc-translation" data-sec="translation">The true activity of the sense organs — mind, sight, words and all the knowledge-gathering and working senses — is to engage fully in My service. Unless his senses are thus engaged, a living entity cannot think of getting out of the great entanglement of material existence, which is exactly like Yamarāja’s stringent rope.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -9322,18 +9080,6 @@ He concludes the subject by describing the general quality of bhakti and saying 
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The senses are not the problem — their misuse is. Eyes, ears, voice, hands and mind, when fully engaged in the Lord&#39;s service, become instruments of liberation rather than chains. Don&#39;t reject the senses; redirect them.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which of your senses is most badly aimed right now, and what is one way to redirect it toward Kṛṣṇa today?</li><li>What devotional task could employ a sense you usually use only for personal pleasure?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -9796,7 +9542,6 @@ He concludes the subject by describing the general quality of bhakti and saying 
 
     <div class="fc-translation" data-sec="translation">Śukadeva Gosvāmī said: Thus the great well-wisher of everyone, the Supreme Lord Ṛṣabhadeva, instructed His own sons. Although they were perfectly educated and cultured, He instructed them just to set an example of how a father should instruct his sons before retiring from family life. Sannyāsīs, who are no longer bound by fruitive activity and who have taken to devotional service after all their material desires have been vanquished, also learn by these instructions. Lord Ṛṣabhadeva instructed His one hundred sons, of whom the eldest, Bharata, was a very advanced devotee and a follower of Vaiṣṇavas. In order to rule the whole world, the Lord enthroned His eldest son on the royal seat. Thereafter, although still at home, Lord Ṛṣabhadeva lived like a madman, naked and with disheveled hair. Then the Lord took the sacrificial fire within Himself, and He left Brahmāvarta to tour the whole world.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -9870,18 +9615,6 @@ He concludes the subject by describing the general quality of bhakti and saying 
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Even those who already know are instructed for the benefit of all who are listening. Public teaching by a parent is also a public service. Don&#39;t refuse to teach the obvious; someone present needs to hear it.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What &#39;obvious&#39; truth have you stopped saying out loud because you assumed everyone already knew it?</li><li>Whom might overhear, and benefit, if you started saying it again?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -10067,7 +9800,6 @@ He concludes the subject by describing the general quality of bhakti and saying 
 
     <div class="fc-translation" data-sec="translation">After accepting the feature of avadhūta, a great saintly person without material cares, Lord Ṛṣabhadeva passed through human society like a blind, deaf and dumb man, an idle stone, a ghost or a madman. Although people called Him such names, He remained silent and did not speak to anyone.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -10134,18 +9866,6 @@ He concludes the subject by describing the general quality of bhakti and saying 
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">An avadhūta surpasses social conventions because he is fully absorbed in the Lord. Without that inner absorption, dropping social norms is just rudeness. The freedom to bypass rules belongs only to those who have already fulfilled their purpose.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Are you tempted to abandon disciplines that you have not yet truly mastered, in the name of freedom?</li><li>Where could deepening absorption in the Lord do the work you were trying to do by rebellion?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -10601,7 +10321,6 @@ He concludes the subject by describing the general quality of bhakti and saying 
 
     <div class="fc-translation" data-sec="translation">Ṛṣabhadeva began to tour through cities, villages, mines, countrysides, valleys, gardens, military camps, cow pens, the homes of cowherd men, transient hotels, hills, forests and hermitages. Wherever He traveled, all bad elements surrounded Him, just as flies surround the body of an elephant coming from a forest. He was always being threatened, beaten, urinated upon and spat upon. Sometimes people threw stones, stool and dust at Him, and sometimes people passed foul air before Him. Thus people called Him many bad names and gave Him a great deal of trouble, but He did not care about this, for He understood that the body is simply meant for such an end. He was situated on the spiritual platform, and, being in His spiritual glory, He did not care for all these material insults. In other words, He completely understood that matter and spirit are separate, and He had no bodily conception. Thus, without being angry at anyone, He walked through the whole world alone.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -10688,18 +10407,6 @@ The word etasmin should not therefore indicate his body, but the universe, since
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Even the Lord, when traveling among ordinary people, was insulted, beaten and abused. Mistreatment by the world is not a sign of failure; it is sometimes the price of staying true. Equanimity in the face of it is the real strength.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What recent mistreatment have you been taking too personally, when it might be the predictable cost of your direction?</li><li>What practice helps you respond to insult without losing your inner ground?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -11200,7 +10907,6 @@ The word etasmin should not therefore indicate his body, but the universe, since
 
     <div class="fc-translation" data-sec="translation">Lord Ṛṣabhadeva’s hands, feet and chest were very long. His shoulders, face and limbs were all very delicate and symmetrically proportioned. His mouth was beautifully decorated with His natural smile, and He appeared all the more lovely with His reddish eyes spread wide like the petals of a newly grown lotus flower covered with dew in the early morning. The irises of His eyes were so pleasing that they removed all the troubles of everyone who saw Him. His forehead, ears, neck, nose and all His other features were very beautiful. His gentle smile always made His face beautiful, so much so that He even attracted the hearts of married women. It was as though they had been pierced by arrows of Cupid. About His head was an abundance of curly, matted brown hair. His hair was disheveled because His body was dirty and not taken care of. He appeared as if He were haunted by a ghost.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -11289,18 +10995,6 @@ Sadṛśa means extreme.  He had an extremely attractive forehead.</div>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">True spiritual beauty radiates even through outward neglect — Ṛṣabhadeva&#39;s loveliness still attracted hearts despite His dirtied body. What we radiate is more powerful than what we polish on the surface.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where have you been over-investing in surface presentation while neglecting inner cultivation?</li><li>Whom do you know whose inner light shines through despite ordinary appearance, and what can you learn from them?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -11615,7 +11309,6 @@ Sadṛśa means extreme.  He had an extremely attractive forehead.</div>
 
     <div class="fc-translation" data-sec="translation">When Lord Ṛṣabhadeva saw that the general populace was very antagonistic to His execution of mystic yoga, He accepted the behavior of a python in order to counteract their opposition. Thus He stayed in one place and lay down. While lying down, He ate and drank, and He passed stool and urine and rolled in it. Indeed, He smeared His whole body with His own stool and urine so that opposing elements might not come and disturb Him.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -11669,18 +11362,6 @@ He saw that the world was not favorable to his yoga because of disturbances caus
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">When the world keeps disturbing your inner work, sometimes the right response is not to fight but to lie low and let opposition lose interest. Not every battle needs to be engaged; some need to be outlasted.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What current &#39;battle&#39; might be better outlasted than fought head-on?</li><li>Where could a quieter, more inward season of practice serve you better than continued engagement?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -11859,7 +11540,6 @@ He saw that the world was not favorable to his yoga because of disturbances caus
 
     <div class="fc-translation" data-sec="translation">Because Lord Ṛṣabhadeva remained in that condition, the public did not disturb Him, but no bad aroma emanated from His stool and urine. Quite the contrary, His stool and urine were so aromatic that they filled eighty miles of the countryside with a pleasant fragrance.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -11908,18 +11588,6 @@ One may think that this condition is disgusting for a spiritual body.  This vers
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">What flows from a fully spiritual life carries a different fragrance than ordinary outputs. People sense the difference even if they cannot name it. Holiness changes the atmosphere around you whether you intend it or not.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What &#39;atmosphere&#39; do you currently carry into the rooms you enter?</li><li>What inner change would actually shift the fragrance, rather than just the words you speak?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -12096,7 +11764,6 @@ One may think that this condition is disgusting for a spiritual body.  This vers
 
     <div class="fc-translation" data-sec="translation">In this way Lord Ṛṣabhadeva followed the behavior of cows, deer and crows. Sometimes He moved or walked, and sometimes He sat down in one place. Sometimes He lay down, behaving exactly like cows, deer and crows. In that way, He ate, drank, passed stool and urine and cheated the people in this way.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -12140,18 +11807,6 @@ He displayed this nature for the people who were equivalent to crows and other a
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">When society cannot accept genuine spiritual behavior, the realized soul may seem to behave like an animal — but this is a screen, not a fall. Don&#39;t judge by appearance what arises from depths you cannot see.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Whom are you judging by appearance whose inner state may be far higher than you imagine?</li><li>Where in your own life have you let public expectation police your spiritual eccentricities into bland conformity?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -12571,7 +12226,6 @@ He displayed this nature for the people who were equivalent to crows and other a
 
     <div class="fc-translation" data-sec="translation">O King Parīkṣit, just to show all the yogīs the mystic process, Lord Ṛṣabhadeva, the plenary expansion of Lord Kṛṣṇa, performed wonderful activities. Actually He was the master of liberation and was fully absorbed in transcendental bliss, which increased a thousandfold. Lord Kṛṣṇa, Vāsudeva, the son of Vasudeva, is the original source of Lord Ṛṣabhadeva. There is no difference in Their constitution, and consequently Lord Ṛṣabhadeva awakened the loving symptoms of crying, laughing and shivering. He was always absorbed in transcendental love. Due to this, all mystic powers automatically approached Him, such as the ability to travel in outer space at the speed of mind, to appear and disappear, to enter the bodies of others, and to see things far, far away. Although He could do all this, He did not exercise these powers.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -12660,18 +12314,6 @@ Chapter Six
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Ṛṣabhadeva and Kṛṣṇa are non-different in essence; demonstrating yoga in the world is itself an act of supreme mercy. Real peace belongs only to those whose desires are entirely satisfied in the Lord — everyone else remains restless.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which of your unfulfilled desires is most reliably stealing your peace right now?</li><li>What would it look like to bring that desire to Kṛṣṇa instead of trying to satisfy it on your own?</li></ul>
-
-
-
-
-
-    </section>
 
 
 

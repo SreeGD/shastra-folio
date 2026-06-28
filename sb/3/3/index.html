@@ -25,19 +25,25 @@
     <link rel="icon" href="../../../assets/icons/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="../../../assets/icons/icon.svg">
     <link rel="stylesheet" href="../../../assets/css/site.css">
+    <link rel="alternate" hreflang="te-IN" href="../../../te/sb/3/3/">
+    <link rel="alternate" hreflang="x-default" href="../../../">
     <script>window.FC_TO_ROOT = "../../../";</script>
     <script src="../../../assets/js/toggle.js"></script>
 </head>
 <body class="has-sidebar" data-chapter="3">
 <header class="fc-site-header">
     <button type="button" class="fc-mobile-trigger fc-mobile-trigger-left" data-overlay="left" aria-label="Open settings drawer">⚙</button>
-<a class="fc-brand" href="../../../">FolioCorpus<span class="fc-sub">Śrīmad-Bhāgavatam</span></a>
+    <a class="fc-brand" href="../../../">FolioCorpus<span class="fc-sub">Bhagavad-gītā</span></a>
     <nav class="fc-site-nav">
         <a href="../../../">Home</a>
         <a href="../../../bg/">Bhagavad-gītā</a>
         <a href="../../../sb/">Śrīmad-Bhāgavatam</a>
         <a href="../../../search/" title="Search across all integrated works">🔍 Search</a>
         <button type="button" id="fc-random-verse" class="fc-nav-btn" title="Jump to a random verse">🎲 Random</button>
+        <span class="fc-lang-switch" aria-label="Script">
+            <a class="active" href="#" title="Devanāgarī edition">EN</a>
+            <a class="" href="../../../te/sb/3/3/" title="Telugu lipi edition">తె</a>
+        </span>
     </nav>
     <button type="button" class="fc-mobile-trigger fc-mobile-trigger-right" data-overlay="right" aria-label="Open chapter index drawer">📚</button>
 </header>
@@ -46,8 +52,8 @@
     <button class="fc-sb-collapse" type="button" data-sb="left" title="Collapse left sidebar" aria-label="Collapse"></button>
 
     <div class="fc-sb-body">
-        <details class="fc-sb-section" data-sbsec="reading" open>
-            <summary class="fc-sb-title">Reading</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Reading</div>
             <div class="fc-sb-sub">Theme</div>
             <div class="fc-segmented" data-setting="theme">
                 <button type="button" data-val="light">Light</button>
@@ -73,10 +79,10 @@
                 <button type="button" data-val="single">Single</button>
                 <button type="button" data-val="side">Side-by-side</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="display" open>
-            <summary class="fc-sb-title">Display</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Display</div>
             <div class="fc-sb-grid">
                 <label><input type="checkbox" data-section="devanagari" checked> Devanāgarī</label>
                 <label><input type="checkbox" data-section="iast" checked> IAST transliteration</label>
@@ -99,10 +105,33 @@
                 <button type="button" data-action="expand-all">Expand all</button>
                 <button type="button" data-action="collapse-all">Collapse all</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="tools" open>
-            <summary class="fc-sb-title">Tools</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Find your starting point</div>
+            <div class="fc-persona-links">
+                <a class="fc-persona-link" href="../../../daily/">🌅 Daily (one value a week)</a>
+                <a class="fc-persona-link" href="../../../householder/">🏠 Householder (family & work)</a>
+                <a class="fc-persona-link" href="../../../parenting/">👨‍👩‍👧 Parenting (stories for kids)</a>
+                <a class="fc-persona-link" href="../../../themes/">📚 All themes</a>
+                <a class="fc-persona-link" href="../../../values/" style="background:#F0F6F2;border-left-color:#1F4632;">ॐ Vedic Value System ↗</a>
+                <a class="fc-persona-link" href="../../../vidya/" style="background:#FBF6E4;border-left-color:#C8860B;">📚 Vidyā Karaṇa (kids, multi-lang) ↗</a>
+            </div>
+        </div>
+
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Audience</div>
+            <div class="fc-audience-filter">
+                <label><input type="radio" name="fc-audience" value="all" checked> All levels</label>
+                <label><input type="radio" name="fc-audience" value="primary"> Primary (children)</label>
+                <label><input type="radio" name="fc-audience" value="middle"> Middle (teens)</label>
+                <label><input type="radio" name="fc-audience" value="senior"> Senior (adults)</label>
+                <label><input type="radio" name="fc-audience" value="college"> College / scholar</label>
+            </div>
+        </div>
+
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Tools</div>
             <div class="fc-sb-tools">
                 <button type="button" id="fc-presentation-toggle" class="fc-tool-btn"><span>🖥 Presentation</span><kbd class="fc-kbd">F</kbd></button>
                 <button type="button" id="fc-pen-toggle" class="fc-tool-btn"><span>✏️ Pen mode</span><kbd class="fc-kbd">P</kbd></button>
@@ -117,10 +146,26 @@
                 <button type="button" id="fc-clear-highlights" class="fc-tool-btn">🩷 Clear highlights (page)</button>
                 <button type="button" id="fc-notes-modal-open" class="fc-tool-btn">📓 My annotations</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="progress" id="fc-progress-section" open>
-            <summary class="fc-sb-title">Progress</summary>
+        <div class="fc-sb-section" id="fc-tts-controls" hidden>
+            <div class="fc-sb-title">
+                Read-aloud
+                <label class="fc-tts-master">
+                    <input type="checkbox" id="fc-tts-enabled" checked>
+                    <span class="fc-tts-master-label">On</span>
+                </label>
+            </div>
+            <div class="fc-tts-inner">
+                <div class="fc-sb-sub">Voice</div>
+                <select id="fc-tts-voice" class="fc-tts-select" aria-label="TTS voice"></select>
+                <div class="fc-sb-sub">Rate <span class="fc-tts-rate-val">1.0×</span></div>
+                <input type="range" id="fc-tts-rate" min="0.5" max="2" step="0.1" value="1" class="fc-tts-rate" aria-label="Reading rate">
+            </div>
+        </div>
+
+        <div class="fc-sb-section" id="fc-progress-section">
+            <div class="fc-sb-title">Progress</div>
             <div class="fc-progress-row">
                 <span class="fc-progress-num" id="fc-progress-num">0</span>
                 <span class="fc-progress-divider">/</span>
@@ -135,29 +180,29 @@
                 <span class="fc-progress-spacer"></span>
                 <button type="button" class="fc-progress-reset" id="fc-progress-reset" title="Reset progress">↺</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="bookmarks" open>
-            <summary class="fc-sb-title">Bookmarks <span class="fc-sb-count" id="fc-bookmarks-count">0</span></summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Bookmarks <span class="fc-sb-count" id="fc-bookmarks-count">0</span></div>
             <ul class="fc-bookmark-list" id="fc-bookmarks-list">
                 <li class="fc-sb-empty">No bookmarks yet — click ☆ on any verse.</li>
             </ul>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="notes" open>
-            <summary class="fc-sb-title">Notes <span class="fc-sb-count" id="fc-notes-count">0</span></summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Notes <span class="fc-sb-count" id="fc-notes-count">0</span></div>
             <ul class="fc-bookmark-list" id="fc-notes-list">
                 <li class="fc-sb-empty">No notes yet — open any verse and write in the 📝 block.</li>
             </ul>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="export">
-            <summary class="fc-sb-title">Export</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Export</div>
             <div class="fc-sb-tools">
                 <button type="button" id="fc-export-md" class="fc-tool-btn">📥 Download Markdown</button>
                 <button type="button" id="fc-export-json" class="fc-tool-btn">💾 Download JSON backup</button>
             </div>
-        </details>
+        </div>
     </div>
 </aside>    <main class="fc-container">
 <nav class="fc-breadcrumbs">
@@ -175,7 +220,7 @@
         <h1 class="fc-verse-heading">3.3 · The Lord&#39;s Pastimes Out of Vṛndāvana</h1>
         <span class="fc-ribbon-meta">
             28 verses
- · <a class="fc-ribbon-link" href="class-prep/">🖨 Class prep</a>        </span>
+        </span>
         <input type="search" class="fc-search" id="fc-search" placeholder="🔍 Search in this chapter" aria-label="Search verses in this chapter">
         <span class="fc-ribbon-current" id="fc-ribbon-current" aria-live="polite"></span>
     </div>
@@ -504,7 +549,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <div class="fc-translation" data-sec="translation">Śrī Uddhava said: Thereafter Lord Kṛṣṇa went to Mathurā City with Śrī Baladeva, and to please Their parents They dragged Kaṁsa, the leader of public enemies, down from his throne and killed him, pulling him along the ground with great strength.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -635,18 +679,6 @@ In order to give happiness to his parents (śaṁ cikīrsayā) he came to Mathur
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Krsna and Balarama dragged the tyrant down so their parents could see the deed completed. When you act to relieve someone&#39;s long-standing suffering, finish the job so their fear can finally rest, not only the threat itself.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Whose fear of an old danger has not yet been put to bed because you never showed them the result?</li><li>What &#39;Kamsa&#39; in your life is technically gone but emotionally still alive?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -833,7 +865,6 @@ In order to give happiness to his parents (śaṁ cikīrsayā) he came to Mathur
 
     <div class="fc-translation" data-sec="translation">The Lord learned all the Vedas with their different branches simply by hearing them once from His teacher, Sāndīpani Muni, whom He rewarded by bringing back his dead son from the region of Yamaloka.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -942,18 +973,6 @@ After learning the Vedas (brahma) with its six aṅgas (sa-vistaram), piercing t
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Krsna learned Vedas in one hearing yet served His teacher as if dependent on him. Even when you can outpace your teacher, accept the discipline and offer guru-daksina. Service to the source is itself the curriculum.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which teacher in your life have you started outgrowing without yet offering them gratitude?</li><li>What &#39;impossible&#39; favor could you offer a mentor as guru-daksina this year?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -1178,7 +1197,6 @@ After learning the Vedas (brahma) with its six aṅgas (sa-vistaram), piercing t
 
     <div class="fc-translation" data-sec="translation">Attracted by the beauty and fortune of Rukmiṇī, the daughter of King Bhīṣmaka, many great princes and kings assembled to marry her. But Lord Kṛṣṇa, stepping over the other hopeful candidates, carried her away as His own share, as Garuḍa carried away nectar.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1262,18 +1280,6 @@ The kings assembled (samāhutā), being attracted by the beauty of Rukmiṇī, w
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Rukmini wrote, declared her love for Krsna, and waited for Him to come. When something or someone truly belongs to Krsna, do not let convention marry them off elsewhere. Stake your claim through honest invitation, not through manipulation.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What &#39;belongs&#39; to Krsna in your life that you have allowed to drift to other allegiances?</li><li>Where could you write a Rukmini-style letter, plainly inviting Krsna into a situation?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -1472,7 +1478,6 @@ The kings assembled (samāhutā), being attracted by the beauty of Rukmiṇī, w
     <div class="fc-translation" data-sec="translation">By subduing seven bulls whose noses were not pierced, the Lord achieved the hand of Princess Nāgnijitī in the open competition to select her bridegroom. Although the Lord was victorious, His competitors asked the hand of the princess, and thus there was a fight. Well equipped with weapons, the Lord killed or wounded all of them, but He Himself was not hurt.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -1548,18 +1553,6 @@ Taming the bulls (kakudminaḥ) which did not have rings in their noses, he marr
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Subduing wild bulls and surviving the rivals&#39; attack is what it took to marry Nagnijiti. Sometimes the right relationship or service is hidden behind multiple tests in series. Do not give up at the first bull; the second princess is on the other side.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What test have you stopped at, mistaking it for the whole obstacle when more remained?</li><li>Which &#39;unpierced bull&#39; in your discipline could you face this month rather than next year?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -1802,7 +1795,6 @@ Taming the bulls (kakudminaḥ) which did not have rings in their noses, he marr
 
     <div class="fc-translation" data-sec="translation">Just to please His dear wife, the Lord brought back the pārijāta tree from heaven, just as an ordinary husband would do. But Indra, the King of heaven, induced by his wives (henpecked as he was), ran after the Lord with full force to fight Him.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1897,18 +1889,6 @@ Kṛṣṇa appeared to be an ordinary husband controlled by his wife. However, 
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Even the Lord brings a small gift to please His wife. Greatness does not exempt anyone from ordinary tenderness toward their spouse. Doing small thoughtful things for the one you love is not beneath the spiritual life; it is part of it.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What &#39;parijata&#39; could you fetch for your spouse this week, with no spiritual rationale needed?</li><li>Where have you used &#39;spiritual seriousness&#39; to excuse yourself from being thoughtful at home?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -2124,7 +2104,6 @@ Kṛṣṇa appeared to be an ordinary husband controlled by his wife. However, 
 
     <div class="fc-translation" data-sec="translation">Narakāsura, the son of Dharitrī, the earth, tried to grasp the whole sky, and for this he was killed by the Lord in a fight. His mother then prayed to the Lord. This led to the return of the kingdom to the son of Narakāsura, and thus the Lord entered the house of the demon.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2203,18 +2182,6 @@ Seeing that her son Narakāsura (sutam), who swallowed the sky with his form, ha
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Even a child born of good parents becomes a demon through bad association. Birth-status is no shield; daily company is destiny. Audit who you spend most hours with and what their influence is doing to you.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which company in your week is most quietly shaping your character, for better or worse?</li><li>Whose &#39;Bana&#39; influence is in your circle, slowly demonizing someone you love?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -2421,7 +2388,6 @@ Seeing that her son Narakāsura (sutam), who swallowed the sky with his form, ha
 
     <div class="fc-translation" data-sec="translation">There in the house of the demon, all the princesses kidnapped by Narakāsura at once became alert upon seeing the Lord, the friend of the distressed. They looked upon Him with eagerness, joy and shyness and offered to be His wives.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2505,18 +2471,6 @@ Within the palace (tatra) there were many princesses stolen by Narakāsura (kuje
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The Lord is the only friend of those whose options have run out. When you are &#39;too damaged&#39; for ordinary acceptance, the door to Krsna is precisely open. He receives the rejected without making them earn it.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What part of yourself feels too compromised to bring to Krsna, and what if He is waiting for exactly that?</li><li>Whom in your life has been rejected by &#39;good society&#39; that you could welcome instead?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -2676,7 +2630,6 @@ Within the palace (tatra) there were many princesses stolen by Narakāsura (kuje
 
     <div class="fc-translation" data-sec="translation">All those princesses were lodged in different apartments, and the Lord simultaneously assumed different bodily expansions exactly matching each and every princess. He accepted their hands in perfect rituals by His internal potency.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2777,18 +2730,6 @@ He accepted them according to the regulations of marriage (sa-vidham). He perfor
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Krsna expanded into many forms to give each princess full presence. The Lord is not stretched thin between His devotees; each receives the whole of Him. Trust that your bond with Him is not diluted by His attention to others.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Do you sometimes feel you are competing for Krsna&#39;s attention? Where does that doubt come from?</li><li>What would change if you trusted that your relationship with Him is unique and undiminished?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -2949,7 +2890,6 @@ He accepted them according to the regulations of marriage (sa-vidham). He perfor
     <div class="fc-translation" data-sec="translation">Just to expand Himself according to His transcendental features, the Lord begot in each and every one of them ten offspring with exactly His own qualities.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -3030,18 +2970,6 @@ Prakṛter vibubhūṣayā means “with a desire to show his nature,” since i
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The Lord begets children with His own qualities. What you devote yourself to determines the qualities of what your life produces. Aligning with Krsna means even your outcomes start to carry His character.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Look at recent &#39;children&#39; of your effort: which qualities do they carry, and what does that reveal?</li><li>What would you have to align with so that your projects start to express Krsna&#39;s character?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -3228,7 +3156,6 @@ Prakṛter vibubhūṣayā means “with a desire to show his nature,” since i
 
     <div class="fc-translation" data-sec="translation">Kālayavana, the King of Magadha and Sālva attacked the city of Mathurā, but when the city was encircled by their soldiers, the Lord refrained from killing them personally, just to show the power of His own men.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3302,18 +3229,6 @@ Kālah means Kālayavana. He alone killed those who surrounded (rundhataḥ) his
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The Lord refrained from killing certain enemies personally so His devotees could share the glory. He prefers to act through devotees. Do not insist God do everything directly; allow yourself to be His instrument and let others be too.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where are you waiting for Krsna&#39;s direct intervention when He may be wanting to act through you?</li><li>Whom have you been bypassing because you doubted Krsna would use them?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -3492,7 +3407,6 @@ Kālah means Kālayavana. He alone killed those who surrounded (rundhataḥ) his
     <div class="fc-translation" data-sec="translation">Of kings like Śambara, Dvivida, Bāṇa, Mura, Balvala and many other demons, such as Dantavakra, some He killed Himself, and some He caused to be killed by others [Śrī Baladeva, etc.].</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -3543,18 +3457,6 @@ After that, he had others kill other kings. Ghātayat should be aghātayat (he h
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Some battles the Lord fought Himself, some He delegated to Baladeva. Discern which fights are yours to wage and which to entrust to those alongside you. Not every demon is yours to slay personally.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which battle in your life are you fighting that you should hand to a more suitable warrior?</li><li>Which battle that is truly yours have you been outsourcing out of fear?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -3733,7 +3635,6 @@ After that, he had others kill other kings. Ghātayat should be aghātayat (he h
     <div class="fc-translation" data-sec="translation">Then, O Vidura, the Lord caused all the kings, both the enemies and those on the side of your fighting nephews, to be killed in the Battle of Kurukṣetra. All those kings were so great and strong that the earth seemed to shake as they traversed the warfield.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -3779,18 +3680,6 @@ Who were the others mentioned in the last verse? He killed or had killed other k
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The Lord arranged for many great but corrupted leaders to fall together on one battlefield. He waits to clean house at once. If your time looks chaotic, suspect a larger arrangement is collapsing the dross all at the same time.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What &#39;collapsing&#39; situations in your wider world might be part of one larger cleansing?</li><li>How would you act differently if you saw the upheaval as a Kuruksetra in progress?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -4006,7 +3895,6 @@ Who were the others mentioned in the last verse? He killed or had killed other k
 
     <div class="fc-translation" data-sec="translation">Duryodhana was bereft of his fortune and duration of life because of the intricacy of ill advice given by Karṇa, Duḥśāsana and Saubala. When he lay on the ground with his followers, his thighs broken although he was powerful, the Lord was not happy to see the scene.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -4055,18 +3943,6 @@ Sa refers to Kṛṣṇa. Seeing this, he was not pleased.</div>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Bad advice from close associates can cost a strong man his fortune and life. The Lord takes no pleasure in punishing wrongdoers. Choose your council carefully; their words become the policies that determine your ending.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Whose advice are you currently following that runs against the principles you value?</li><li>Where in your past did &#39;a Karna&#39; lead you somewhere disastrous, and have you learned the lesson?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -4305,7 +4181,6 @@ Sa refers to Kṛṣṇa. Seeing this, he was not pleased.</div>
 
     <div class="fc-translation" data-sec="translation">[After the end of the Battle of Kurukṣetra, the Lord said:] The abatement of the earth’s great burden, eighteen akṣauhiṇīs, has now been effected with the help of Droṇa, Bhīṣma, Arjuna and Bhīma. But what is this? There is still the great strength of the Yadu dynasty, born of Myself, which may be a more unbearable burden.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -4437,18 +4312,6 @@ Thus the burden of the Yadus should not be considered a burden on the earth (in 
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The earth is burdened not by population but by miscreants who violate the Lord&#39;s order. Your worry about external scarcity may be misplaced; the real overload is moral, not material. Address dharma, and the rest balances.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What &#39;overpopulation&#39; anxiety in your thinking is actually a disguised lament about ethics?</li><li>Where would your situation feel less burdensome if you focused on dharma instead of logistics?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -4678,7 +4541,6 @@ Thus the burden of the Yadus should not be considered a burden on the earth (in 
 
     <div class="fc-translation" data-sec="translation">When they quarrel among themselves, influenced by intoxication, with their eyes red like copper because of drinking [madhu], then only will they disappear; otherwise, it will not be possible. On My disappearance, this incident will take place.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -4812,18 +4674,6 @@ The Yadus cannot be destroyed like others. They must be destroyed only amongst t
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Even the Lord&#39;s family disappeared through quarrel under intoxication. Wine and pride can dismantle even the holy. Guard against intoxicants (literal and figurative) that turn brothers against each other.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What &#39;intoxicant&#39; (substance, ideology, ambition) is currently fueling quarrels in your community?</li><li>Where is your own group dynamic one drink away from a fight that ends an era?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -4993,7 +4843,6 @@ The Yadus cannot be destroyed like others. They must be destroyed only amongst t
     <div class="fc-translation" data-sec="translation">Lord Śrī Kṛṣṇa, thus thinking to Himself, established Mahārāja Yudhiṣṭhira in the position of supreme control of the world in order to show the ideal of administration on the path of piety.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -5059,18 +4908,6 @@ Sthāpya stands for sthāyapityvā.</div>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Krsna installed Yudhisthira to model administration on the path of piety. Where you have authority, use it to show what dharma-led leadership looks like, not just to manage outcomes. Your style is itself a teaching.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What does your leadership style currently teach the people under you about dharma?</li><li>Whom are you grooming, and would they replicate something Krsna would want replicated?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -5248,7 +5085,6 @@ Sthāpya stands for sthāyapityvā.</div>
 
     <div class="fc-translation" data-sec="translation">The embryo of Pūru’s descendant begotten by the great hero Abhimanyu in the womb of Uttarā, his wife, was burnt by the weapon of the son of Droṇa, but later he was again protected by the Lord.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -5297,18 +5133,6 @@ Dhṛtaḥ means placed. The second dhrṭaḥ means saved.</div>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The Lord personally entered the womb to protect a single embryo destined for service. Whatever vulnerable beginning you are nurturing, He can guard it from inside. Pray for His omnipresence in the unseen places of your life.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What fragile beginning in your life needs the Lord&#39;s presence inside, not just around?</li><li>Where do you doubt that protection reaches because you cannot see it?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -5495,7 +5319,6 @@ Dhṛtaḥ means placed. The second dhrṭaḥ means saved.</div>
 
     <div class="fc-translation" data-sec="translation">The Supreme Lord induced the son of Dharma to perform three horse sacrifices, and Mahārāja Yudhiṣṭhira, constantly following Kṛṣṇa, the Personality of Godhead, protected and enjoyed the earth, assisted by his younger brothers.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -5579,18 +5402,6 @@ Reme means “he ruled.”</div>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Yudhisthira ruled by constantly following Krsna, supported by his brothers. Authority works best when it is downstream from devotion and shared with kin. Govern your sphere as Krsna&#39;s representative, not as His replacement.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>How clearly is your authority anchored upstream in Krsna rather than in your own will?</li><li>Which &#39;younger brothers&#39; are you partnering with, and are you sharing the rule generously?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -5768,7 +5579,6 @@ Reme means “he ruled.”</div>
 
     <div class="fc-translation" data-sec="translation">Simultaneously, the Personality of Godhead enjoyed life in the city of Dvārakā, strictly in conformity with the Vedic customs of society. He was situated in detachment and knowledge, as enunciated by the Sāṅkhya system of philosophy.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -5817,18 +5627,6 @@ This verse describes the fifth and sixth qualities of Bhagavān: jṣāna and va
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Krsna lived in Dvaraka following Vedic customs, situated in knowledge and detachment. Even householders can live in full samkhya-like clarity. Eat, work, and enjoy, but stay anchored in the awareness that this is not your final identity.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which &#39;Vedic custom&#39; in your daily life are you bending out of convenience?</li><li>Where are you mistaking necessary household activity for who you actually are?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -5988,7 +5786,6 @@ This verse describes the fifth and sixth qualities of Bhagavān: jṣāna and va
 
     <div class="fc-translation" data-sec="translation">He was there in His transcendental body, the residence of the goddess of fortune, with His usual gentle and sweetly smiling face, His nectarean words and His flawless character.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -6070,18 +5867,6 @@ This will be described in detail in the Tenth Canto.</div>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Lakshmi resides where Krsna&#39;s gentle face is. The smile, the words, the spotless character; that is where fortune naturally clusters. If wealth seems to flee you, examine whether your home invites a gentle, gracious presence.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What about your home&#39;s atmosphere is welcoming or repelling Krsna&#39;s gentle presence?</li><li>Where could a softer face and sweeter words shift the kind of fortune that visits you?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -6286,7 +6071,6 @@ This will be described in detail in the Tenth Canto.</div>
 
     <div class="fc-translation" data-sec="translation">The Lord enjoyed His pastimes, both in this world and in other worlds [higher planets], specifically in the association of the Yadu dynasty. At leisure hours offered by night, He enjoyed the friendship of conjugal love with women.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -6368,18 +6152,6 @@ This will be described in detail in the Tenth Canto.</div>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The Lord visited higher worlds and enjoyed friendship and conjugal love in this one. Devotion does not require monotone existence; it can include relationship, leisure, and joy when oriented around Him.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where have you flattened your life under a false spiritual seriousness that Krsna Himself would not endorse?</li><li>What joyful relationship could you re-enter as an act of devotion rather than distraction?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -6539,7 +6311,6 @@ This will be described in detail in the Tenth Canto.</div>
 
     <div class="fc-translation" data-sec="translation">The Lord was thus engaged in household life for many, many years, but at last His detachment from ephemeral sex life was fully manifested.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -6588,18 +6359,6 @@ Kṛṣṇa showed complete (samajāyata) indifference (virāgaḥ) to the path 
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Krsna lived as a householder for many years, then His detachment from sex-life was fully manifest. Detachment ripens in time; do not force it prematurely or pretend it before it is real. Stay honest about your stage.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where are you faking detachment that is not yet ripe, and what would honesty look like instead?</li><li>Where have you held on to attachments long past their natural shelf-life?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -6768,7 +6527,6 @@ Kṛṣṇa showed complete (samajāyata) indifference (virāgaḥ) to the path 
 
     <div class="fc-translation" data-sec="translation">Every living entity is controlled by a supernatural force, and thus his sense enjoyment is also under the control of that supernatural force. No one, therefore, can put his faith in Lord Kṛṣṇa’s transcendental sense activities but one who has become a devotee of the Lord by rendering devotional service.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -6842,18 +6600,6 @@ This verse explains the Lord’s detachment in his activities. If the Lord has d
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Only one engaged in devotion can rightly understand Krsna&#39;s transcendental enjoyments. Without bhakti, His pastimes get reduced to scandal. Read His life from inside service, not from spectator distance.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which pastime of Krsna have you read as a spectator that you might re-enter as a server?</li><li>What devotional practice would change the way scripture sounds to you?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -7031,7 +6777,6 @@ This verse explains the Lord’s detachment in his activities. If the Lord has d
 
     <div class="fc-translation" data-sec="translation">Once upon a time, great sages were made angry by the sporting activities of the princely descendants of the Yadu and Bhoja dynasties, and thus, as desired by the Lord, the sages cursed them.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -7120,18 +6865,6 @@ The sages knew the intention of the Lord (bhagavān-mata-kovidāḥ). Thus they 
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Even the Lord&#39;s own descendants were cursed for offending sages. Status near God does not protect you from offending His devotees. Guard your tongue and your sport when saints are present.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>When did you last casually mock or test a devotee, assuming closeness made it safe?</li><li>Whom in your life are you treating with less reverence than their sadhana deserves?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -7310,7 +7043,6 @@ The sages knew the intention of the Lord (bhagavān-mata-kovidāḥ). Thus they 
     <div class="fc-translation" data-sec="translation">A few months passed, and then, bewildered by Kṛṣṇa, all the descendants of Vṛṣṇi, Bhoja and Andhaka who were incarnations of demigods went to Prabhāsa, while those who were eternal devotees of the Lord did not leave but remained in Dvārakā.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -7396,18 +7128,6 @@ The Vṛṣṇis eternally remain in Dvārakā. They do not leave. They remained
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Some went to Prabhasa; the eternal devotees stayed at Dvaraka with Him. When a community begins to scatter under the Lord&#39;s bewildering arrangement, ask which group you belong to and whether you should follow or stay.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Are you about to follow a movement of people that may be leading away from where the Lord still resides?</li><li>Where is staying put with Krsna more devotional than going on a pilgrimage of activity?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -7612,7 +7332,6 @@ The Vṛṣṇis eternally remain in Dvārakā. They do not leave. They remained
 
     <div class="fc-translation" data-sec="translation">After arriving there, all of them took bath, and with the water of this place of pilgrimage they offered their respects to the forefathers, demigods and great sages and thus satisfied them. They gave cows to the brāhmaṇas in royal charity.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -7683,18 +7402,6 @@ Gāvaḥ should be gāḥ. Bahu-guṇāḥ means the cows gave plentiful milk.</
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Visiting holy places to honor forefathers and saints is meaningful, but the highest devotee finds devotional service everywhere. If you cannot reach a tirtha, do not despair; the service of the Lord wherever you are is itself the perfection.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Are you postponing devotion until you reach a holy place that you may never visit?</li><li>What &#39;pilgrimage&#39; could you do right now in your own city through service?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -7881,7 +7588,6 @@ Gāvaḥ should be gāḥ. Bahu-guṇāḥ means the cows gave plentiful milk.</
 
     <div class="fc-translation" data-sec="translation">The brāhmaṇas were not only given well-fed cows in charity, but also gold, gold coins, bedding, clothing, animal-skin seats, blankets, horses, elephants, girls and sufficient land for maintenance.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -7955,18 +7661,6 @@ Vṛttikarīm means land by which they could support themselves.</div>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">When brahmanas were generously supported, society&#39;s spiritual backbone stood strong. Identify who in your community is genuinely living a brahmana role and ensure they have what they need. Their wellbeing is yours.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Whom in your circle is doing real brahminical work that you should be quietly supporting?</li><li>Where has &#39;I will pay if I get value&#39; replaced &#39;I sustain because they sustain dharma&#39; in your giving?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -8162,7 +7856,6 @@ Vṛttikarīm means land by which they could support themselves.</div>
 
     <div class="fc-translation" data-sec="translation">Thereafter they offered the brāhmaṇas highly delicious foodstuffs first offered to the Personality of Godhead and offered their respectful obeisances by touching their heads to the ground. They lived perfectly by protecting the cows and the brāhmaṇas.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -8275,18 +7968,6 @@ Departure of Uddhava</div>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Offering food first to the Lord, then to brahmanas, and protecting cows is the three-fold backbone of cultured life. Try this week to eat nothing un-offered. The plate itself becomes a sadhana.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>How often do you actually offer food to Krsna before eating, and what stops you from making it constant?</li><li>Where could &#39;cow and brahmana protection&#39; translate into a real choice in your week (diet, donation, vote)?</li></ul>
-
-
-
-
-
-    </section>
 
 
 

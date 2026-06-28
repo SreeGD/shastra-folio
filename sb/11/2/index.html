@@ -25,19 +25,25 @@
     <link rel="icon" href="../../../assets/icons/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="../../../assets/icons/icon.svg">
     <link rel="stylesheet" href="../../../assets/css/site.css">
+    <link rel="alternate" hreflang="te-IN" href="../../../te/sb/11/2/">
+    <link rel="alternate" hreflang="x-default" href="../../../">
     <script>window.FC_TO_ROOT = "../../../";</script>
     <script src="../../../assets/js/toggle.js"></script>
 </head>
 <body class="has-sidebar" data-chapter="2">
 <header class="fc-site-header">
     <button type="button" class="fc-mobile-trigger fc-mobile-trigger-left" data-overlay="left" aria-label="Open settings drawer">⚙</button>
-<a class="fc-brand" href="../../../">FolioCorpus<span class="fc-sub">Śrīmad-Bhāgavatam</span></a>
+    <a class="fc-brand" href="../../../">FolioCorpus<span class="fc-sub">Bhagavad-gītā</span></a>
     <nav class="fc-site-nav">
         <a href="../../../">Home</a>
         <a href="../../../bg/">Bhagavad-gītā</a>
         <a href="../../../sb/">Śrīmad-Bhāgavatam</a>
         <a href="../../../search/" title="Search across all integrated works">🔍 Search</a>
         <button type="button" id="fc-random-verse" class="fc-nav-btn" title="Jump to a random verse">🎲 Random</button>
+        <span class="fc-lang-switch" aria-label="Script">
+            <a class="active" href="#" title="Devanāgarī edition">EN</a>
+            <a class="" href="../../../te/sb/11/2/" title="Telugu lipi edition">తె</a>
+        </span>
     </nav>
     <button type="button" class="fc-mobile-trigger fc-mobile-trigger-right" data-overlay="right" aria-label="Open chapter index drawer">📚</button>
 </header>
@@ -46,8 +52,8 @@
     <button class="fc-sb-collapse" type="button" data-sb="left" title="Collapse left sidebar" aria-label="Collapse"></button>
 
     <div class="fc-sb-body">
-        <details class="fc-sb-section" data-sbsec="reading" open>
-            <summary class="fc-sb-title">Reading</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Reading</div>
             <div class="fc-sb-sub">Theme</div>
             <div class="fc-segmented" data-setting="theme">
                 <button type="button" data-val="light">Light</button>
@@ -73,10 +79,10 @@
                 <button type="button" data-val="single">Single</button>
                 <button type="button" data-val="side">Side-by-side</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="display" open>
-            <summary class="fc-sb-title">Display</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Display</div>
             <div class="fc-sb-grid">
                 <label><input type="checkbox" data-section="devanagari" checked> Devanāgarī</label>
                 <label><input type="checkbox" data-section="iast" checked> IAST transliteration</label>
@@ -99,10 +105,33 @@
                 <button type="button" data-action="expand-all">Expand all</button>
                 <button type="button" data-action="collapse-all">Collapse all</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="tools" open>
-            <summary class="fc-sb-title">Tools</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Find your starting point</div>
+            <div class="fc-persona-links">
+                <a class="fc-persona-link" href="../../../daily/">🌅 Daily (one value a week)</a>
+                <a class="fc-persona-link" href="../../../householder/">🏠 Householder (family & work)</a>
+                <a class="fc-persona-link" href="../../../parenting/">👨‍👩‍👧 Parenting (stories for kids)</a>
+                <a class="fc-persona-link" href="../../../themes/">📚 All themes</a>
+                <a class="fc-persona-link" href="../../../values/" style="background:#F0F6F2;border-left-color:#1F4632;">ॐ Vedic Value System ↗</a>
+                <a class="fc-persona-link" href="../../../vidya/" style="background:#FBF6E4;border-left-color:#C8860B;">📚 Vidyā Karaṇa (kids, multi-lang) ↗</a>
+            </div>
+        </div>
+
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Audience</div>
+            <div class="fc-audience-filter">
+                <label><input type="radio" name="fc-audience" value="all" checked> All levels</label>
+                <label><input type="radio" name="fc-audience" value="primary"> Primary (children)</label>
+                <label><input type="radio" name="fc-audience" value="middle"> Middle (teens)</label>
+                <label><input type="radio" name="fc-audience" value="senior"> Senior (adults)</label>
+                <label><input type="radio" name="fc-audience" value="college"> College / scholar</label>
+            </div>
+        </div>
+
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Tools</div>
             <div class="fc-sb-tools">
                 <button type="button" id="fc-presentation-toggle" class="fc-tool-btn"><span>🖥 Presentation</span><kbd class="fc-kbd">F</kbd></button>
                 <button type="button" id="fc-pen-toggle" class="fc-tool-btn"><span>✏️ Pen mode</span><kbd class="fc-kbd">P</kbd></button>
@@ -117,10 +146,26 @@
                 <button type="button" id="fc-clear-highlights" class="fc-tool-btn">🩷 Clear highlights (page)</button>
                 <button type="button" id="fc-notes-modal-open" class="fc-tool-btn">📓 My annotations</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="progress" id="fc-progress-section" open>
-            <summary class="fc-sb-title">Progress</summary>
+        <div class="fc-sb-section" id="fc-tts-controls" hidden>
+            <div class="fc-sb-title">
+                Read-aloud
+                <label class="fc-tts-master">
+                    <input type="checkbox" id="fc-tts-enabled" checked>
+                    <span class="fc-tts-master-label">On</span>
+                </label>
+            </div>
+            <div class="fc-tts-inner">
+                <div class="fc-sb-sub">Voice</div>
+                <select id="fc-tts-voice" class="fc-tts-select" aria-label="TTS voice"></select>
+                <div class="fc-sb-sub">Rate <span class="fc-tts-rate-val">1.0×</span></div>
+                <input type="range" id="fc-tts-rate" min="0.5" max="2" step="0.1" value="1" class="fc-tts-rate" aria-label="Reading rate">
+            </div>
+        </div>
+
+        <div class="fc-sb-section" id="fc-progress-section">
+            <div class="fc-sb-title">Progress</div>
             <div class="fc-progress-row">
                 <span class="fc-progress-num" id="fc-progress-num">0</span>
                 <span class="fc-progress-divider">/</span>
@@ -135,29 +180,29 @@
                 <span class="fc-progress-spacer"></span>
                 <button type="button" class="fc-progress-reset" id="fc-progress-reset" title="Reset progress">↺</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="bookmarks" open>
-            <summary class="fc-sb-title">Bookmarks <span class="fc-sb-count" id="fc-bookmarks-count">0</span></summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Bookmarks <span class="fc-sb-count" id="fc-bookmarks-count">0</span></div>
             <ul class="fc-bookmark-list" id="fc-bookmarks-list">
                 <li class="fc-sb-empty">No bookmarks yet — click ☆ on any verse.</li>
             </ul>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="notes" open>
-            <summary class="fc-sb-title">Notes <span class="fc-sb-count" id="fc-notes-count">0</span></summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Notes <span class="fc-sb-count" id="fc-notes-count">0</span></div>
             <ul class="fc-bookmark-list" id="fc-notes-list">
                 <li class="fc-sb-empty">No notes yet — open any verse and write in the 📝 block.</li>
             </ul>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="export">
-            <summary class="fc-sb-title">Export</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Export</div>
             <div class="fc-sb-tools">
                 <button type="button" id="fc-export-md" class="fc-tool-btn">📥 Download Markdown</button>
                 <button type="button" id="fc-export-json" class="fc-tool-btn">💾 Download JSON backup</button>
             </div>
-        </details>
+        </div>
     </div>
 </aside>    <main class="fc-container">
 <nav class="fc-breadcrumbs">
@@ -498,7 +543,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <div class="fc-translation" data-sec="translation">Śrī Śukadeva Gosvāmī said: Eager to engage in the worship of Lord Kṛṣṇa, O best of the Kurus, Nārada Muni stayed for some time in Dvārakā, which was always protected by the arms of Govinda.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -746,7 +790,6 @@ Nārada stayed in Dvārakā constantly.  By the influence of Kṛṣṇa, it cou
 
 
     <div class="fc-translation" data-sec="translation">My dear King, in the material world the conditioned souls are confronted by death at every step of life. Therefore, who among the conditioned souls would not render service to the lotus feet of Lord Mukunda, who is worshipable even for the greatest of liberated souls?</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -1017,7 +1060,6 @@ Who would not worship Kṛṣṇa, since the Lord binds even liberated persons t
     <div class="fc-translation" data-sec="translation">One day the sage among the demigods, Nārada, came to the house of Vasudeva. After worshiping Nārada with suitable paraphernalia, seating him comfortably and respectfully bowing down to him, Vasudeva spoke as follows.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -1273,7 +1315,6 @@ Who would not worship Kṛṣṇa, since the Lord binds even liberated persons t
 
 
     <div class="fc-translation" data-sec="translation">Śrī Vasudeva said: My lord, your visit, like that of a father to his children, is for the benefit of all living beings. You especially help the most wretched among them, as well as those who are advanced on the path toward the Supreme Lord, Uttamaśloka.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -1538,7 +1579,6 @@ You come for the benefit of ordinary beings, for the very low and for the highes
 
 
     <div class="fc-translation" data-sec="translation">The activities of demigods lead to both misery and happiness for living beings, but the activities of great saints like you, who have accepted the infallible Lord as their very soul, result only in the happiness of all beings.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -1850,7 +1890,6 @@ It is improper to compare the devotees with the devatās.  Sometimes the devatā
 
     <div class="fc-translation" data-sec="translation">Those who worship the demigods receive reciprocation from the demigods in a way just corresponding to the offering. The demigods are attendants of karma, like a person’s shadow, but sādhus are actually merciful to the fallen.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2133,7 +2172,6 @@ As a person acts, his shadow follows. Similarly the devatās respond to acts of 
 
     <div class="fc-translation" data-sec="translation">O brāhmaṇa, although I am satisfied simply by seeing you, I still wish to inquire about those duties which give pleasure to the Supreme Personality of Godhead. Any mortal who faithfully hears about them is freed from all kinds of fear.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2396,7 +2434,6 @@ Though I am satisfied just with seeing you, I am asking.  Having heard bhagavad-
 
 
     <div class="fc-translation" data-sec="translation">In a previous birth on this earth, I worshiped the Supreme Lord, Ananta, who alone can award liberation, but because I desired to have a child, I did not worship Him for liberation. Thus I was bewildered by the Lord’s illusory energy.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -2686,7 +2723,6 @@ Though I am satisfied just with seeing you, I am asking.  Having heard bhagavad-
 
     <div class="fc-translation" data-sec="translation">My dear lord, you are always true to your vow. Please instruct me clearly, so that by your mercy I may easily free myself from material existence, which is full of many dangers and keeps us constantly bound in fear.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2970,7 +3006,6 @@ Viśvato-bhayāt means “from saṁsāra.”</div>
     <div class="fc-translation" data-sec="translation">Śukadeva Gosvāmī said: O King, Devarṣi Nārada was pleased by the questions of the highly intelligent Vasudeva. Because they suggested the transcendental qualities of the Supreme Personality of Godhead, they reminded Nārada of Lord Kṛṣṇa. Thus Nārada replied to Vasudeva as follows.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -3213,7 +3248,6 @@ He remembered the Lord along with his qualities.  There is a rule adhīg artha-d
 
 
     <div class="fc-translation" data-sec="translation">Śrī Nārada said: O best of the Sātvatas, you have quite correctly asked about the eternal duty of the living entity toward the Supreme Lord. Such devotional service to the Lord is so potent that its performance can purify the entire universe.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -3498,7 +3532,6 @@ He remembered the Lord along with his qualities.  There is a rule adhīg artha-d
 
     <div class="fc-translation" data-sec="translation">Pure devotional service rendered to the Supreme Lord is spiritually so potent that simply by hearing about such transcendental service, by chanting its glories in response, by meditating on it, by respectfully and faithfully accepting it, or by praising the devotional service of others, even persons who hate the demigods and all other living beings can be immediately purified.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3742,7 +3775,6 @@ He remembered the Lord along with his qualities.  There is a rule adhīg artha-d
 
     <div class="fc-translation" data-sec="translation">Today you have made me remember my Lord, the supremely blissful Personality of Godhead, Nārāyaṇa. The Supreme Lord is so auspicious that whoever hears and chants about Him becomes completely pious.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3975,7 +4007,6 @@ He remembered the Lord along with his qualities.  There is a rule adhīg artha-d
 
 
     <div class="fc-translation" data-sec="translation">To explain the devotional service of the Lord, sages have related the ancient history of the conversation between the great soul King Videha and the sons of Ṛṣabha.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -4237,7 +4268,6 @@ He remembered the Lord along with his qualities.  There is a rule adhīg artha-d
 
 
     <div class="fc-translation" data-sec="translation">Svāyambhuva Manu had a son named Mahārāja Priyavrata, and among Priyavrata’s sons was Āgnīdhra. From Āgnīdhra was born Nābhi, whose son was known as Ṛṣabhadeva.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -4513,7 +4543,6 @@ The sons of Ṛṣabha were mentioned in the previous verse.  Who was Ṛṣabha
     <div class="fc-translation" data-sec="translation">Śrī Ṛṣabhadeva is accepted as an expansion of the Supreme Lord, Vāsudeva. He incarnated in this world to propagate those religious principles that lead living entities to ultimate liberation. He had one hundred sons, all perfect in Vedic knowledge.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -4747,7 +4776,6 @@ The sons of Ṛṣabha were mentioned in the previous verse.  Who was Ṛṣabha
 
 
     <div class="fc-translation" data-sec="translation">Of the one hundred sons of Lord Ṛṣabhadeva, the eldest, Bharata, was completely devoted to Lord Nārāyaṇa. It is because of Bharata’s fame that this planet is now celebrated as the great Bhārata-varṣa.</div>
-
 
 
     <section class="fc-section" data-sec="gaudiya">
@@ -5011,7 +5039,6 @@ The sons of Ṛṣabha were mentioned in the previous verse.  Who was Ṛṣabha
 
     <div class="fc-translation" data-sec="translation">King Bharata rejected this material world, considering all types of material pleasure temporary and useless. Leaving his beautiful young wife and family, he worshiped Lord Hari by severe austerities and attained the abode of the Lord after three lifetimes.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -5244,7 +5271,6 @@ The sons of Ṛṣabha were mentioned in the previous verse.  Who was Ṛṣabha
 
 
     <div class="fc-translation" data-sec="translation">Nine of the remaining sons of Ṛṣabhadeva became the rulers of the nine islands of Bhārata-varṣa, and they exercised complete sovereignty over this planet. Eighty-one sons became twice-born brāhmaṇas and helped initiate the Vedic path of fruitive sacrifices [karma-kāṇḍa].</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -5561,7 +5587,6 @@ Among the sons of Ṛṣabha, nine became rulers of nine islands such as Brahmā
 
     <div class="fc-translation" data-sec="translation">The nine remaining sons of Ṛṣabha were greatly fortunate sages who worked vigorously to spread knowledge of the Absolute Truth. They wandered about naked and were very well versed in spiritual science. Their names were Kavi, Havir, Antarīkṣa, Prabuddha, Pippalāyana, Āvirhotra, Drumila, Camasa and Karabhājana.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -5810,7 +5835,6 @@ They were discerners of the highest truth (artha-śaṁsinaḥ), making great en
 
 
     <div class="fc-translation" data-sec="translation">These sages wandered the earth seeing the entire universe, with all its gross and subtle objects, as a manifestation of the Supreme Lord and as nondifferent from the self.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -6180,7 +6204,6 @@ They were discerners of the highest truth (artha-śaṁsinaḥ), making great en
     <div class="fc-translation" data-sec="translation">The nine Yogendras are liberated souls who travel freely to the planets of the demigods, the perfected mystics, the Sādhyas, the heavenly musicians, the Yakṣas, the human beings, and the minor demigods such as the Kinnaras and the serpents. No mundane force can check their free movement, and exactly as they wish they can travel as well to the worlds of the sages, the angels, the ghostly followers of Lord Śiva, the Vidyādharas, the brāhmaṇas and the cows.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -6420,7 +6443,6 @@ They were discerners of the highest truth (artha-śaṁsinaḥ), making great en
 
 
     <div class="fc-translation" data-sec="translation">Once in Ajanābha [the former name of the earth], they came upon the sacrificial performance of the great soul Mahārāja Nimi, which was being carried out under the direction of elevated sages.</div>
-
 
 
     <section class="fc-section" data-sec="gaudiya">
@@ -6667,7 +6689,6 @@ They were discerners of the highest truth (artha-śaṁsinaḥ), making great en
     <div class="fc-translation" data-sec="translation">My dear King, seeing those pure devotees of the Lord, who rival the sun in brilliance, everyone present — the performer of the sacrifice, the brāhmaṇas and even the sacrificial fires — stood in respect.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -6874,7 +6895,6 @@ They were discerners of the highest truth (artha-śaṁsinaḥ), making great en
 
 
     <div class="fc-translation" data-sec="translation">King Videha [Nimi] understood that the nine sages were exalted devotees of the Supreme Personality of Godhead. Therefore, overjoyed at their auspicious arrival, he offered them suitable sitting places and worshiped them in a proper way, just as one would worship the Supreme Personality of Godhead.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -7124,7 +7144,6 @@ Yathārhataḥ means “properly.”</div>
 
 
     <div class="fc-translation" data-sec="translation">Overwhelmed by transcendental joy, the King humbly bowed his head and then proceeded to question the nine sages. These nine great souls glowed with their own effulgence and thus appeared equal to the four Kumāras, the sons of Lord Brahmā.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -7423,7 +7442,6 @@ Yathārhataḥ means “properly.”</div>
 
     <div class="fc-translation" data-sec="translation">King Videha said: I think that you must be direct associates of the Supreme Personality of Godhead, who is famous as the enemy of the demon Madhu. Indeed, the pure devotees of Lord Viṣṇu wander throughout the universe not for their personal, selfish interest, but to purify all the conditioned souls.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -7678,7 +7696,6 @@ Two verses describe how the King welcomed them.  “Why would the associates of 
 
 
     <div class="fc-translation" data-sec="translation">For the conditioned souls, the human body is most difficult to achieve, and it can be lost at any moment. But I think that even those who have achieved human life rarely gain the association of pure devotees, who are dear to the Lord of Vaikuṇṭha.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -7993,7 +8010,6 @@ Today, I have seen my good fortune.  Human birth is rare for attaining liberatio
 
     <div class="fc-translation" data-sec="translation">Therefore, O completely sinless ones, I ask you to kindly tell me what the supreme good is. After all, even half a moment’s association with pure devotees within this world of birth and death is a priceless treasure for any man.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -8272,7 +8288,6 @@ The meaning is this. When a guest comes one must ask about his welfare.  But to 
 
 
     <div class="fc-translation" data-sec="translation">Please speak about how one engages in the devotional service of the Supreme Lord, if you consider me capable of properly hearing these topics. When a living entity offers loving service to the Supreme Lord, the Lord is immediately satisfied, and in return He will give even His own self to the surrendered soul.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -8557,7 +8572,6 @@ The meaning is this. When a guest comes one must ask about his welfare.  But to 
 
 
     <div class="fc-translation" data-sec="translation">Śrī Nārada said: O Vasudeva, when Mahārāja Nimi had thus inquired from the nine Yogendras about devotional service to the Lord, those best of saintly persons sincerely thanked the King for his questions and spoke to him with affection in the presence of the members of the sacrificial assembly and the brāhmaṇa priests.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -8855,7 +8869,6 @@ The meaning is this. When a guest comes one must ask about his welfare.  But to 
 
 
     <div class="fc-translation" data-sec="translation">Śrī Kavi said: I consider that one whose intelligence is constantly disturbed by his falsely identifying himself with the temporary material world can achieve real freedom from fear only by worshiping the lotus feet of the infallible Supreme Lord. In such devotional service, all fear ceases entirely.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -9157,7 +9170,6 @@ O King! I see that all dharmas have an element of fear. But bhakti gives fearles
 
     <div class="fc-translation" data-sec="translation">Even ignorant living entities can very easily come to know the Supreme Lord if they adopt those means prescribed by the Supreme Lord Himself. The process recommended by the Lord is to be known as bhāgavata-dharma, or devotional service to the Supreme Personality of Godhead.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -9438,7 +9450,6 @@ The characteristics of bhāgavata-dharma are described.  Varṇāśrama was spok
 
 
     <div class="fc-translation" data-sec="translation">O King, one who accepts this process of devotional service to the Supreme Personality of Godhead will never blunder on his path in this world. Even while running with eyes closed, he will never trip or fall.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -9782,7 +9793,6 @@ In the next verse it is said bhaktyaikayeśaṁ guru-devatātmā.The word ekayā
 
 
     <div class="fc-translation" data-sec="translation">In accordance with the particular nature one has acquired in conditioned life, whatever one does with body, words, mind, senses, intelligence or purified consciousness one should offer to the Supreme, thinking, “This is for the pleasure of Lord Nārāyaṇa.”</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -10147,7 +10157,6 @@ The intelligent person who begins the process described later in verse 39 should
 
 
     <div class="fc-translation" data-sec="translation">Fear arises when a living entity misidentifies himself as the material body because of absorption in the external, illusory energy of the Lord. When the living entity thus turns away from the Supreme Lord, he also forgets his own constitutional position as a servant of the Lord. This bewildering, fearful condition is effected by the potency for illusion, called māyā. Therefore, an intelligent person should engage unflinchingly in the unalloyed devotional service of the Lord, under the guidance of a bona fide spiritual master, whom he should accept as his worshipable deity and as his very life and soul.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -10531,7 +10540,6 @@ That fear or saṁsāra takes two forms: the form of reversal and the form of fo
 
     <div class="fc-translation" data-sec="translation">Although the duality of the material world does not ultimately exist, the conditioned soul experiences it as real under the influence of his own conditioned intelligence. This imaginary experience of a world separate from Kṛṣṇa can be compared to the acts of dreaming and desiring. When the conditioned soul dreams at night of something desirable or horrible, or when he daydreams of what he would like to have or avoid, he creates a reality that has no existence beyond his own imagination. The tendency of the mind is to accept and reject various activities based on sense gratification. Therefore an intelligent person should control the mind, restricting it from the illusion of seeing things separate from Kṛṣṇa, and when the mind is thus controlled he will experience actual fearlessness.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -10865,7 +10873,6 @@ This has been said in the previous verse as well.</div>
 
     <div class="fc-translation" data-sec="translation">An intelligent person who has controlled his mind and conquered fear should give up all attachment to material objects such as wife, family and nation and should wander freely without embarrassment, hearing and chanting the holy names of the Lord, the bearer of the chariot wheel. The holy names of Kṛṣṇa are all-auspicious because they describe His transcendental birth and activities, which He performs within this world for the salvation of the conditioned souls. Thus the holy names of the Lord are sung throughout the world.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -11184,7 +11191,6 @@ It has just been said that one should worship the Lord with devotion.  What is t
 
 
     <div class="fc-translation" data-sec="translation">By chanting the holy name of the Supreme Lord, one comes to the stage of love of Godhead. Then the devotee is fixed in his vow as an eternal servant of the Lord, and he gradually becomes very much attached to a particular name and form of the Supreme Personality of Godhead. As his heart melts with ecstatic love, he laughs very loudly or cries or shouts. Sometimes he sings and dances like a madman, for he is indifferent to public opinion.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -11548,7 +11554,6 @@ This verse describes the transcendental activities of the person beyond saṁsā
 
     <div class="fc-translation" data-sec="translation">A devotee should not see anything as being separate from the Supreme Personality of Godhead, Kṛṣṇa. Ether, fire, air, water, earth, the sun and other luminaries, all living beings, the directions, trees and other plants, the rivers and oceans — whatever a devotee experiences he should consider to be an expansion of Kṛṣṇa. Thus seeing everything that exists within creation as the body of the Supreme Lord, Hari, the devotee should offer his sincere respects to the entire expansion of the Lord’s body.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -11878,7 +11883,6 @@ That is illustrated in this verse.  The potential mood of the verb is used. What
 
 
     <div class="fc-translation" data-sec="translation">Devotion, direct experience of the Supreme Lord, and detachment from other things — these three occur simultaneously for one who has taken shelter of the Supreme Personality of Godhead, in the same way that pleasure, nourishment and relief from hunger come simultaneously and increasingly, with each bite, for a person engaged in eating.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -12219,7 +12223,6 @@ An example is given to show that even at the stage of sādhana, which gives grea
 
     <div class="fc-translation" data-sec="translation">My dear King, the devotee who worships the lotus feet of the infallible Personality of Godhead with constant endeavor thus achieves unflinching devotion, detachment and experienced knowledge of the Personality of Godhead. In this way the successful devotee of the Lord achieves supreme spiritual peace.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -12524,7 +12527,6 @@ This verse supports the meaning of the previous verse. That person achieves extr
 
     <div class="fc-translation" data-sec="translation">Mahārāja Nimi said: Now please tell me in greater detail about the devotees of the Supreme Lord. What are the natural symptoms by which I can distinguish between the most advanced devotees, those on the middle level and those who are neophytes? What are the typical religious activities of a Vaiṣṇava, and how does he speak? Specifically, please describe those symptoms and characteristics by which Vaiṣṇavas become dear to the Supreme Personality of Godhead.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -12801,7 +12803,6 @@ The previous verse mentioned the devotees. He asks concerning their qualities.  
 
 
     <div class="fc-translation" data-sec="translation">Śrī Havir said: The most advanced devotee sees within everything the soul of all souls, the Supreme Personality of Godhead, Śrī Kṛṣṇa. Consequently he sees everything in relation to the Supreme Lord and understands that everything that exists is eternally situated within the Lord.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -13171,7 +13172,6 @@ One should see in this way. This implies that one must gain qualification for se
 
     <div class="fc-translation" data-sec="translation">An intermediate or second-class devotee, called madhyama-adhikārī, offers his love to the Supreme Personality of Godhead, is a sincere friend to all the devotees of the Lord, shows mercy to ignorant people who are innocent and disregards those who are envious of the Supreme Personality of Godhead.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -13523,7 +13523,6 @@ They avoid those who hate the Lord, since they know the mercy will be useless.  
 
     <div class="fc-translation" data-sec="translation">A devotee who faithfully engages in the worship of the Deity in the temple but does not behave properly toward other devotees or people in general is called a prākṛta-bhakta, a materialistic devotee, and is considered to be in the lowest position.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -13837,7 +13836,6 @@ They avoid those who hate the Lord, since they know the mercy will be useless.  
 
 
     <div class="fc-translation" data-sec="translation">Even while engaging his senses in contact with their objects, one who sees this whole world as the energy of Lord Viṣṇu is neither repelled nor elated. He is indeed the greatest among devotees.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -14177,7 +14175,6 @@ Other qualities of the uttama devotees are now mentioned in eight verses accordi
 
     <div class="fc-translation" data-sec="translation">Within the material world, one’s material body is always subject to birth and decay. Similarly, the life air [prāṇa] is harassed by hunger and thirst, the mind is always anxious, the intelligence hankers for that which cannot be obtained, and all of the senses are ultimately exhausted by constant struggle in the material nature. A person who is not bewildered by the inevitable miseries of material existence, and who remains aloof from them simply by remembering the lotus feet of the Supreme Personality of Godhead, is to be considered bhāgavata-pradhāna, the foremost devotee of the Lord.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -14449,7 +14446,6 @@ One who is not bewildered by the qualities of saṁsāra such as birth in differ
 
 
     <div class="fc-translation" data-sec="translation">One who has taken exclusive shelter of the Supreme Lord, Vāsudeva, becomes free from fruitive activities, which are based on material lust. In fact, one who has taken shelter of the lotus feet of the Lord is freed from even the desire to enjoy material sense gratification. Plans for enjoying sex life, social prestige and money cannot develop within his mind. Thus he is considered bhāgavatottama, a pure devotee of the Lord on the highest platform.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -14743,7 +14739,6 @@ Impressions do not arise in his mind. Furthermore desires for women etc, and act
 
     <div class="fc-translation" data-sec="translation">Birth in an aristocratic family and the execution of austere and pious activities certainly cause one to take pride in himself. Similarly, if one enjoys a prestigious position within society because his parents are highly respected members of the varṇāśrama social system, one becomes even more infatuated with himself. But if despite these excellent material qualifications one does not feel even a tinge of pride within himself, he is to be considered the dearmost servitor of the Supreme Personality of Godhead.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -15020,7 +15015,6 @@ Janma refers to being born in a good family. Karma means activities like japa an
 
 
     <div class="fc-translation" data-sec="translation">When a devotee gives up the selfish conception by which one thinks “This is my property, and that is his,” and when he is no longer concerned with the pleasures of his own material body or indifferent to the discomforts of others, he becomes fully peaceful and satisfied. He considers himself simply one among all the living beings who are equally part and parcel of the Supreme Personality of Godhead. Such a satisfied Vaiṣṇava is considered to be at the highest standard of devotional service.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -15338,7 +15332,6 @@ Svaḥ means one’s own group and para means an enemy.  He does not consider we
 
 
     <div class="fc-translation" data-sec="translation">The lotus feet of the Supreme Personality of Godhead are sought even by the greatest of demigods, such as Brahmā and Śiva, who have all accepted the Supreme Personality of Godhead as their life and soul. A pure devotee of the Lord can never forget those lotus feet in any circumstance. He will not give up his shelter at the lotus feet of the Lord for a single moment — indeed, not for half a moment — even in exchange for the benediction of ruling and enjoying the opulence of the entire universe. Such a devotee of the Lord is to be considered the best of the Vaiṣṇavas.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -15687,7 +15680,6 @@ He does not move for half a second from the lotus feet of the Lord, which are ha
 
     <div class="fc-translation" data-sec="translation">How can the fire of material suffering continue to burn the hearts of those who worship the Supreme Lord? The Lord’s lotus feet have performed innumerable heroic deeds, and the beautiful nails on His toes resemble valuable jewels. The effulgence emanating from those nails resembles cooling moonshine, for it instantly relieves the suffering within the heart of the pure devotee, just as the appearance of the moon’s cooling light relieves the burning heat of the sun.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -16030,7 +16022,6 @@ If there is agitation of lust by seeking material enjoyment, the devotee will be
 
 
     <div class="fc-translation" data-sec="translation">The Supreme Personality of Godhead is so kind to the conditioned souls that if they call upon Him by speaking His holy name, even unintentionally or unwillingly, the Lord is inclined to destroy innumerable sinful reactions in their hearts. Therefore, when a devotee who has taken shelter of the Lord’s lotus feet chants the holy name of Kṛṣṇa with genuine love, the Supreme Personality of Godhead can never give up the heart of such a devotee. One who has thus captured the Supreme Lord within his heart is to be known as bhāgavata-pradhāna, the most exalted devotee of the Lord.</div>
-
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>

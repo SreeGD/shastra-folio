@@ -25,19 +25,25 @@
     <link rel="icon" href="../../../assets/icons/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="../../../assets/icons/icon.svg">
     <link rel="stylesheet" href="../../../assets/css/site.css">
+    <link rel="alternate" hreflang="te-IN" href="../../../te/sb/9/5/">
+    <link rel="alternate" hreflang="x-default" href="../../../">
     <script>window.FC_TO_ROOT = "../../../";</script>
     <script src="../../../assets/js/toggle.js"></script>
 </head>
 <body class="has-sidebar" data-chapter="5">
 <header class="fc-site-header">
     <button type="button" class="fc-mobile-trigger fc-mobile-trigger-left" data-overlay="left" aria-label="Open settings drawer">⚙</button>
-<a class="fc-brand" href="../../../">FolioCorpus<span class="fc-sub">Śrīmad-Bhāgavatam</span></a>
+    <a class="fc-brand" href="../../../">FolioCorpus<span class="fc-sub">Bhagavad-gītā</span></a>
     <nav class="fc-site-nav">
         <a href="../../../">Home</a>
         <a href="../../../bg/">Bhagavad-gītā</a>
         <a href="../../../sb/">Śrīmad-Bhāgavatam</a>
         <a href="../../../search/" title="Search across all integrated works">🔍 Search</a>
         <button type="button" id="fc-random-verse" class="fc-nav-btn" title="Jump to a random verse">🎲 Random</button>
+        <span class="fc-lang-switch" aria-label="Script">
+            <a class="active" href="#" title="Devanāgarī edition">EN</a>
+            <a class="" href="../../../te/sb/9/5/" title="Telugu lipi edition">తె</a>
+        </span>
     </nav>
     <button type="button" class="fc-mobile-trigger fc-mobile-trigger-right" data-overlay="right" aria-label="Open chapter index drawer">📚</button>
 </header>
@@ -46,8 +52,8 @@
     <button class="fc-sb-collapse" type="button" data-sb="left" title="Collapse left sidebar" aria-label="Collapse"></button>
 
     <div class="fc-sb-body">
-        <details class="fc-sb-section" data-sbsec="reading" open>
-            <summary class="fc-sb-title">Reading</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Reading</div>
             <div class="fc-sb-sub">Theme</div>
             <div class="fc-segmented" data-setting="theme">
                 <button type="button" data-val="light">Light</button>
@@ -73,10 +79,10 @@
                 <button type="button" data-val="single">Single</button>
                 <button type="button" data-val="side">Side-by-side</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="display" open>
-            <summary class="fc-sb-title">Display</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Display</div>
             <div class="fc-sb-grid">
                 <label><input type="checkbox" data-section="devanagari" checked> Devanāgarī</label>
                 <label><input type="checkbox" data-section="iast" checked> IAST transliteration</label>
@@ -99,10 +105,33 @@
                 <button type="button" data-action="expand-all">Expand all</button>
                 <button type="button" data-action="collapse-all">Collapse all</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="tools" open>
-            <summary class="fc-sb-title">Tools</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Find your starting point</div>
+            <div class="fc-persona-links">
+                <a class="fc-persona-link" href="../../../daily/">🌅 Daily (one value a week)</a>
+                <a class="fc-persona-link" href="../../../householder/">🏠 Householder (family & work)</a>
+                <a class="fc-persona-link" href="../../../parenting/">👨‍👩‍👧 Parenting (stories for kids)</a>
+                <a class="fc-persona-link" href="../../../themes/">📚 All themes</a>
+                <a class="fc-persona-link" href="../../../values/" style="background:#F0F6F2;border-left-color:#1F4632;">ॐ Vedic Value System ↗</a>
+                <a class="fc-persona-link" href="../../../vidya/" style="background:#FBF6E4;border-left-color:#C8860B;">📚 Vidyā Karaṇa (kids, multi-lang) ↗</a>
+            </div>
+        </div>
+
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Audience</div>
+            <div class="fc-audience-filter">
+                <label><input type="radio" name="fc-audience" value="all" checked> All levels</label>
+                <label><input type="radio" name="fc-audience" value="primary"> Primary (children)</label>
+                <label><input type="radio" name="fc-audience" value="middle"> Middle (teens)</label>
+                <label><input type="radio" name="fc-audience" value="senior"> Senior (adults)</label>
+                <label><input type="radio" name="fc-audience" value="college"> College / scholar</label>
+            </div>
+        </div>
+
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Tools</div>
             <div class="fc-sb-tools">
                 <button type="button" id="fc-presentation-toggle" class="fc-tool-btn"><span>🖥 Presentation</span><kbd class="fc-kbd">F</kbd></button>
                 <button type="button" id="fc-pen-toggle" class="fc-tool-btn"><span>✏️ Pen mode</span><kbd class="fc-kbd">P</kbd></button>
@@ -117,10 +146,26 @@
                 <button type="button" id="fc-clear-highlights" class="fc-tool-btn">🩷 Clear highlights (page)</button>
                 <button type="button" id="fc-notes-modal-open" class="fc-tool-btn">📓 My annotations</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="progress" id="fc-progress-section" open>
-            <summary class="fc-sb-title">Progress</summary>
+        <div class="fc-sb-section" id="fc-tts-controls" hidden>
+            <div class="fc-sb-title">
+                Read-aloud
+                <label class="fc-tts-master">
+                    <input type="checkbox" id="fc-tts-enabled" checked>
+                    <span class="fc-tts-master-label">On</span>
+                </label>
+            </div>
+            <div class="fc-tts-inner">
+                <div class="fc-sb-sub">Voice</div>
+                <select id="fc-tts-voice" class="fc-tts-select" aria-label="TTS voice"></select>
+                <div class="fc-sb-sub">Rate <span class="fc-tts-rate-val">1.0×</span></div>
+                <input type="range" id="fc-tts-rate" min="0.5" max="2" step="0.1" value="1" class="fc-tts-rate" aria-label="Reading rate">
+            </div>
+        </div>
+
+        <div class="fc-sb-section" id="fc-progress-section">
+            <div class="fc-sb-title">Progress</div>
             <div class="fc-progress-row">
                 <span class="fc-progress-num" id="fc-progress-num">0</span>
                 <span class="fc-progress-divider">/</span>
@@ -135,29 +180,29 @@
                 <span class="fc-progress-spacer"></span>
                 <button type="button" class="fc-progress-reset" id="fc-progress-reset" title="Reset progress">↺</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="bookmarks" open>
-            <summary class="fc-sb-title">Bookmarks <span class="fc-sb-count" id="fc-bookmarks-count">0</span></summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Bookmarks <span class="fc-sb-count" id="fc-bookmarks-count">0</span></div>
             <ul class="fc-bookmark-list" id="fc-bookmarks-list">
                 <li class="fc-sb-empty">No bookmarks yet — click ☆ on any verse.</li>
             </ul>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="notes" open>
-            <summary class="fc-sb-title">Notes <span class="fc-sb-count" id="fc-notes-count">0</span></summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Notes <span class="fc-sb-count" id="fc-notes-count">0</span></div>
             <ul class="fc-bookmark-list" id="fc-notes-list">
                 <li class="fc-sb-empty">No notes yet — open any verse and write in the 📝 block.</li>
             </ul>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="export">
-            <summary class="fc-sb-title">Export</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Export</div>
             <div class="fc-sb-tools">
                 <button type="button" id="fc-export-md" class="fc-tool-btn">📥 Download Markdown</button>
                 <button type="button" id="fc-export-json" class="fc-tool-btn">💾 Download JSON backup</button>
             </div>
-        </details>
+        </div>
     </div>
 </aside>    <main class="fc-container">
 <nav class="fc-breadcrumbs">
@@ -175,7 +220,7 @@
         <h1 class="fc-verse-heading">9.5 · Durvāsā Muni&#39;s Life Spared</h1>
         <span class="fc-ribbon-meta">
             28 verses
- · <a class="fc-ribbon-link" href="class-prep/">🖨 Class prep</a>        </span>
+        </span>
         <input type="search" class="fc-search" id="fc-search" placeholder="🔍 Search in this chapter" aria-label="Search verses in this chapter">
         <span class="fc-ribbon-current" id="fc-ribbon-current" aria-live="polite"></span>
     </div>
@@ -445,7 +490,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
     <div class="fc-translation" data-sec="translation">Śukadeva Gosvāmī said: When thus advised by Lord Viṣṇu, Durvāsā Muni, who was very much harassed by the Sudarśana cakra, immediately approached Mahārāja Ambarīṣa. Being very much aggrieved, the muni fell down and clasped the King’s lotus feet.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -496,18 +540,6 @@ The Fifth Chapter describes Durvāsā touching Ambarīṣa’s feet, Ambarīṣa
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Even a powerful mystic, when chastened, runs to the feet of a pure devotee. Real spiritual stature is measured not by raw power but by the humility to seek shelter when our limits are exposed.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>When I have been humbled by life, whose feet do I run to — and is that source actually a devotee of God?</li><li>Do I judge people by their outward power and titles, or by where they take shelter when in trouble?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -675,7 +707,6 @@ The Fifth Chapter describes Durvāsā touching Ambarīṣa’s feet, Ambarīṣa
     <div class="fc-translation" data-sec="translation">When Durvāsā touched his lotus feet, Mahārāja Ambarīṣa was very much ashamed, and when he saw Durvāsā attempting to offer prayers, because of mercy he was aggrieved even more. Thus he immediately began offering prayers to the great weapon of the Supreme Personality of Godhead.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -696,18 +727,6 @@ Seeing his attempts at praising, Ambarīṣa was embarrassed.</div>
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">A devotee feels embarrassed, not victorious, when a great soul falls at his feet. Ambarīṣa&#39;s first response to his persecutor&#39;s suffering is to pray for him — that compassionate reflex is the signature of a pure heart.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>When someone who wronged me suffers the consequences, do I feel quiet satisfaction or genuine concern?</li><li>Where in my life is my ego still hoping to receive apologies and praise from those who have hurt me?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -956,7 +975,6 @@ Seeing his attempts at praising, Ambarīṣa was embarrassed.</div>
     <div class="fc-translation" data-sec="translation">Mahārāja Ambarīṣa said: O Sudarśana cakra, you are fire, you are the most powerful sun, and you are the moon, the master of all luminaries. You are water, earth and sky, you are the air, you are the five sense objects [sound, touch, form, taste and smell], and you are the senses also.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -975,18 +993,6 @@ Seeing his attempts at praising, Ambarīṣa was embarrassed.</div>
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Ambarīṣa addresses the Lord&#39;s weapon as the very fabric of the cosmos — fire, sun, moon, elements, senses. Seeing everything as belonging to the Lord transforms even a fearsome force into something we can speak to with reverence.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Do I relate to the elements and senses as random matter or as instruments of a higher will?</li><li>What &#39;frightening&#39; force in my life might soften if I addressed it as part of God&#39;s arrangement?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -1147,7 +1153,6 @@ Seeing his attempts at praising, Ambarīṣa was embarrassed.</div>
     <div class="fc-translation" data-sec="translation">O most favorite of Acyuta, the Supreme Personality of Godhead, you have thousands of spokes. O master of the material world, destroyer of all weapons, original vision of the Personality of Godhead, I offer my respectful obeisances unto you. Kindly give shelter and be auspicious to this brāhmaṇa.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -1168,18 +1173,6 @@ O thousand-spoked wheel! O master of the earth (idaspate)!</div>
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Ambarīṣa, the victim, prays for protection of his attacker. The mark of a Vaiṣṇava is the ability to wish auspiciousness for the very person who has tried to harm him, recognizing that all of us ultimately need the Lord&#39;s mercy.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Can I name someone who has hurt me and sincerely wish them spiritual auspiciousness?</li><li>What would change in my heart if I prayed daily for the person I find hardest to forgive?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -1393,7 +1386,6 @@ O thousand-spoked wheel! O master of the earth (idaspate)!</div>
 
     <div class="fc-translation" data-sec="translation">O Sudarśana wheel, you are religion, you are truth, you are encouraging statements, you are sacrifice, and you are the enjoyer of the fruits of sacrifice. You are the maintainer of the entire universe, and you are the supreme transcendental prowess in the hands of the Supreme Personality of Godhead. You are the original vision of the Lord, and therefore you are known as Sudarśana. Everything has been created by your activities, and therefore you are all-pervading.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1422,18 +1414,6 @@ O thousand-spoked wheel! O master of the earth (idaspate)!</div>
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Creation is not a random explosion of matter but the Lord&#39;s auspicious glance — sudarśana — falling upon energy. Recognizing the world as the product of a conscious vision changes how I see every moment of my own life.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Do I treat reality as accidental matter, or as the unfolding of a meaningful divine glance?</li><li>What does it shift in me to remember that I am living inside something the Lord is actively seeing?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -1640,7 +1620,6 @@ O thousand-spoked wheel! O master of the earth (idaspate)!</div>
 
     <div class="fc-translation" data-sec="translation">O Sudarśana, you have a very auspicious hub, and therefore you are the upholder of all religion. You are just like an inauspicious comet for the irreligious demons. Indeed, you are the maintainer of the three worlds, you are full of transcendental effulgence, you are as quick as the mind, and you are able to work wonders. I can simply utter the word “namaḥ,” offering all obeisances unto you.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1709,18 +1688,6 @@ I offer respects to the maintainer of bhakti-dharma.  “I, the cakra, will give
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Birth, robes, or learning do not make one a true brāhmaṇa — actions toward devotees do. A scholar who attacks a devotee is, in śāstric reckoning, a demon, while a humble bhakta is the upholder of dharma.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Am I more impressed by externals — degrees, titles, vocabulary — than by how a person treats devotees?</li><li>Where might my own credentials be masking conduct that does not match the role I claim?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -1927,7 +1894,6 @@ I offer respects to the maintainer of bhakti-dharma.  “I, the cakra, will give
 
     <div class="fc-translation" data-sec="translation">O master of speech, by your effulgence, full of religious principles, the darkness of the world is dissipated, and the knowledge of learned persons or great souls is manifested. Indeed, no one can surpass your effulgence, for all things, manifested and unmanifested, gross and subtle, superior and inferior, are but various forms of you that are manifested by your effulgence.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2006,18 +1972,6 @@ I offer respects to the maintainer of bhakti-dharma.  “I, the cakra, will give
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Real seeing is not biological; it depends on the Lord&#39;s illuminating glance. The very capacity to distinguish higher from lower, real from false, is itself a mercy — not a personal achievement.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>When I make a wise distinction today, can I trace that clarity back to grace rather than to my intellect?</li><li>Where am I still trying to &#39;see&#39; something purely through my own effort, without inviting illumination from above?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -2250,7 +2204,6 @@ I offer respects to the maintainer of bhakti-dharma.  “I, the cakra, will give
     <div class="fc-translation" data-sec="translation">O indefatigable one, when you are sent by the Supreme Personality of Godhead to enter among the soldiers of the Daityas and the Dānavas, you stay on the battlefield and unendingly separate their arms, bellies, thighs, legs and heads.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -2301,18 +2254,6 @@ I offer respects to the maintainer of bhakti-dharma.  “I, the cakra, will give
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The Lord&#39;s protective power is tireless. When He is engaged on behalf of His devotee, no opposition — however organized or fierce — can stand against Him for long.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Do I really believe the Lord defends His devotees, or do I act as if I must engineer all protection myself?</li><li>What &#39;army of difficulties&#39; am I facing that I have not yet consciously placed under the Lord&#39;s protection?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -2538,7 +2479,6 @@ I offer respects to the maintainer of bhakti-dharma.  “I, the cakra, will give
     <div class="fc-translation" data-sec="translation">O protector of the universe, you are engaged by the Supreme Personality of Godhead as His all-powerful weapon in killing the envious enemies. For the benefit of our entire dynasty, kindly favor this poor brāhmaṇa. This will certainly be a favor for all of us.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -2574,18 +2514,6 @@ I offer respects to the maintainer of bhakti-dharma.  “I, the cakra, will give
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Ambarīṣa asks the cakra not to destroy his attacker but to bless him for the welfare of the whole dynasty. A devotee&#39;s prayer is never selfishly narrow; it widens to include even the offender and future generations.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Do my prayers include the people I wish would simply go away?</li><li>How might my family or community be affected, generations from now, by the kind of prayers I make today?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -2791,7 +2719,6 @@ I offer respects to the maintainer of bhakti-dharma.  “I, the cakra, will give
     <div class="fc-translation" data-sec="translation">If our family has given charity to the proper persons, if we have performed ritualistic ceremonies and sacrifices, if we have properly carried out our occupational duties, and if we have been guided by learned brāhmaṇas, I wish, in exchange, that this brāhmaṇa be freed from the burning caused by the Sudarśana cakra.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -2812,18 +2739,6 @@ Seeing that the cakra would not give up pursuing Durvāsā, Ambarīṣa makes an
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Ambarīṣa cashes in the merit of charity, sacrifice, and dharma — not for personal gain but to save the very brāhmaṇa who attacked him. True piety is wealth meant to be spent on others.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What spiritual &#39;credit&#39; have I been hoarding for myself instead of offering for someone else&#39;s welfare?</li><li>Whose suffering today could I take into my prayer as if I were spending savings to relieve it?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -2984,7 +2899,6 @@ Seeing that the cakra would not give up pursuing Durvāsā, Ambarīṣa makes an
     <div class="fc-translation" data-sec="translation">If the Supreme Personality of Godhead, who is one without a second, who is the reservoir of all transcendental qualities, and who is the life and soul of all living entities, is pleased with us, we wish that this brāhmaṇa, Durvāsā Muni, be freed from the pain of being burned.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -3005,18 +2919,6 @@ Seeing the cakra disregard his oath, he made a stronger oath.  If the Lord is pl
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Ambarīṣa&#39;s final appeal is not to merit but to the Lord&#39;s pleasure with His devotees. The deepest cause for blessing in our lives is not what we have done but the Lord&#39;s affection for those who love Him.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Do I lean more on my track record of religiosity or on the Lord&#39;s loving relationship with His devotees?</li><li>What heavy situation could I release today by simply trusting that the Lord is pleased with sincere love?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -3202,7 +3104,6 @@ Seeing the cakra disregard his oath, he made a stronger oath.  If the Lord is pl
     <div class="fc-translation" data-sec="translation">Śukadeva Gosvāmī continued: When the King offered prayers to the Sudarśana cakra and Lord Viṣṇu, because of his prayers the Sudarśana cakra became peaceful and stopped burning the brāhmaṇa known as Durvāsā Muni.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -3233,18 +3134,6 @@ Though the cakra was burning the brāhmaṇa completely, it became peaceful.</di
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The cakra responds not to Ambarīṣa&#39;s power but to his prayer. Forces that look implacable can be pacified the instant a devotee opens his mouth on behalf of another.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Is there a situation in my life I have given up on because it feels too &#39;set in motion&#39; to change?</li><li>Whose intercessory prayer might I need today — and for whom should I be praying in turn?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -3414,7 +3303,6 @@ Though the cakra was burning the brāhmaṇa completely, it became peaceful.</di
     <div class="fc-translation" data-sec="translation">Durvāsā Muni, the greatly powerful mystic, was indeed satisfied when freed from the fire of the Sudarśana cakra. Thus he praised the qualities of Mahārāja Ambarīṣa and offered him the highest benedictions.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -3443,18 +3331,6 @@ Though the cakra was burning the brāhmaṇa completely, it became peaceful.</di
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Once relieved, Durvāsā does not sulk — he openly praises the very person whose devotee status he had questioned. Honest praise after a humbling is a great spiritual achievement in itself.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>After being corrected or humbled, do I praise the person who proved more advanced — or quietly resent them?</li><li>Where in my life is a public acknowledgment of someone&#39;s greater devotion still owed?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -3640,7 +3516,6 @@ Though the cakra was burning the brāhmaṇa completely, it became peaceful.</di
     <div class="fc-translation" data-sec="translation">Durvāsā Muni said: My dear King, today I have experienced the greatness of devotees of the Supreme Personality of Godhead, for although I have committed an offense, you have prayed for my good fortune.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -3661,18 +3536,6 @@ Though I desired your misfortune (krṭāgasaḥ), you desired my good fortune.<
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Durvāsā discovers that real greatness is not in mystic power but in praying for one&#39;s offender. The proof of bhakti is what a devotee asks for on behalf of the one who has wronged him.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>When I think of &#39;great devotees,&#39; am I picturing impressive abilities or surprising compassion?</li><li>If someone observed how I respond to those who offend me, what would they conclude about my devotion?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -3860,7 +3723,6 @@ Though I desired your misfortune (krṭāgasaḥ), you desired my good fortune.<
     <div class="fc-translation" data-sec="translation">For those who have achieved the Supreme Personality of Godhead, the master of the pure devotees, what is impossible to do, and what is impossible to give up?</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -3881,18 +3743,6 @@ What mercy is impossible for them to give, and what offense is impossible for th
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Those who have truly attained the Lord can do the seemingly impossible — including giving up the things ordinary spiritual life clings to. Attainment of Kṛṣṇa rearranges what is hard and easy.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What do I currently regard as &#39;impossible to give up&#39; that might soften if I deepened my relationship with the Lord?</li><li>Where am I treating my present limits as fixed, instead of as symptoms of how much I have yet to taste of bhakti?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -4053,7 +3903,6 @@ What mercy is impossible for them to give, and what offense is impossible for th
     <div class="fc-translation" data-sec="translation">What is impossible for the servants of the Lord? By the very hearing of His holy name one is purified.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -4072,18 +3921,6 @@ What mercy is impossible for them to give, and what offense is impossible for th
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The mere hearing of the Lord&#39;s name purifies. We do not have to wait until we are ready or worthy — sound itself carries the cleansing potency of Kṛṣṇa.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Do I treat hearing the holy name as decoration or as actual purification happening inside me?</li><li>What in my routine could be rearranged so that I hear or chant the Lord&#39;s name with more presence today?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -4260,7 +4097,6 @@ What mercy is impossible for them to give, and what offense is impossible for th
     <div class="fc-translation" data-sec="translation">O King, overlooking my offenses, you have saved my life. Thus I am very much obliged to you because you are so merciful.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -4279,18 +4115,6 @@ What mercy is impossible for them to give, and what offense is impossible for th
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Durvāsā openly thanks Ambarīṣa for mercy, not justice. When we have been spared a deserved consequence by someone&#39;s kindness, gratitude must be spoken, not merely felt.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Whose mercy in my past have I never properly thanked aloud?</li><li>Where am I still demanding strict justice toward others while hoping for mercy toward myself?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -4442,7 +4266,6 @@ What mercy is impossible for them to give, and what offense is impossible for th
     <div class="fc-translation" data-sec="translation">Expecting the return of Durvāsā Muni, the King had not taken his food. Therefore, when the sage returned, the King fell at his lotus feet, pleasing him in all respects, and fed him sumptuously.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -4461,18 +4284,6 @@ What mercy is impossible for them to give, and what offense is impossible for th
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Ambarīṣa would not eat while his guest was suffering. Spiritual life is full of these quiet, costly disciplines — refusing personal comfort until those entrusted to us are cared for.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What &#39;small&#39; comfort am I taking today while someone in my circle is still in distress I could ease?</li><li>Where is hospitality in my life still a performance rather than a sacrifice?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -4647,7 +4458,6 @@ What mercy is impossible for them to give, and what offense is impossible for th
     <div class="fc-translation" data-sec="translation">Thus the King respectfully received Durvāsā Muni, who after eating varieties of palatable food was so satisfied that with great affection he requested the King to eat also, saying, “Please take your meal.”</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -4668,18 +4478,6 @@ Durvāsā ate the food (ātithyam) with respect.</div>
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">After being fed by his offended host, Durvāsā affectionately insists the host eat too. Real reconciliation is not just the end of conflict but the resumption of shared joy at the same table.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>With whom have I &#39;made peace&#39; but not yet sat down and shared food, time, or laughter?</li><li>What gesture of warmth could turn a cordial truce into actual friendship today?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -4857,7 +4655,6 @@ Durvāsā ate the food (ātithyam) with respect.</div>
 
     <div class="fc-translation" data-sec="translation">Durvāsā Muni said: I am very pleased with you, my dear King. At first I thought of you as an ordinary human being and accepted your hospitality, but later I could understand, by my own intelligence, that you are the most exalted devotee of the Lord. Therefore, simply by seeing you, touching your feet and talking with you, I have been pleased and have become obliged to you.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -4901,18 +4698,6 @@ I have been favored by seeing you, and thus I am pleased.  Asmi is in the presen
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Even great mystics initially misjudge pure devotees as ordinary people. We should be slow to size up the spiritual life of others by appearances — and slow to assume our own first impressions are wisdom.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Whom in my circle have I quietly written off as &#39;just ordinary&#39; without really looking?</li><li>Where has time later revealed someone to be far more spiritually advanced than I first assumed?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -5100,7 +4885,6 @@ I have been favored by seeing you, and thus I am pleased.  Asmi is in the presen
     <div class="fc-translation" data-sec="translation">All the blessed women in the heavenly planets will continuously chant about your spotless character at every moment, and the people of this world will also chant your glories continuously.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -5161,18 +4945,6 @@ Avadātam means pure.</div>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Pure character is not a private matter — it becomes sung about in higher worlds and lower ones alike. The way we live now is already being recorded in the memory of devotees yet to come.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>If my character were sung about a hundred years from now, what verses would be true?</li><li>What single habit, if I corrected it, would most improve the &#39;song&#39; my life is currently composing?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -5348,7 +5120,6 @@ Avadātam means pure.</div>
 
     <div class="fc-translation" data-sec="translation">Śrī Śukadeva Gosvāmī continued: Thus being satisfied in all respects, the great mystic yogī Durvāsā took permission and left, continuously glorifying the King. Through the skyways, he went to Brahmaloka, which is devoid of agnostics and dry philosophical speculators.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -5397,18 +5168,6 @@ Durvāsā went to Brahmaloka to speak to his Brahma-realized friends about his d
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Mystic perfections can take one through the skies, but the destination still depends on character. Genuine devotional culture leaves no room for cynicism or dry speculation, even at the highest levels.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where in my own learning do dry speculation and cynicism still take up space that devotion should occupy?</li><li>What kind of company — physical or digital — am I keeping that pulls me toward or away from sincere faith?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -5596,7 +5355,6 @@ Durvāsā went to Brahmaloka to speak to his Brahma-realized friends about his d
     <div class="fc-translation" data-sec="translation">Durvāsā Muni had left the place of Mahārāja Ambarīṣa, and as long as he had not returned — for one complete year — the King had fasted, maintaining himself simply by drinking water.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -5637,18 +5395,6 @@ As long as the sage had gone and not returned, with one year passing, he fasted.
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Ambarīṣa fasts a full year on water alone, simply because his guest has not returned. Vows undertaken on another&#39;s behalf become a quiet, sustained form of love that we rarely measure in ourselves.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What sustained, costly commitment am I currently keeping for the sake of someone else?</li><li>Where might a small, private vow on behalf of another deepen my own spiritual seriousness?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -5873,7 +5619,6 @@ As long as the sage had gone and not returned, with one year passing, he fasted.
 
     <div class="fc-translation" data-sec="translation">After one year, when Durvāsā Muni had returned, King Ambarīṣa sumptuously fed him all varieties of pure food, and then he himself also ate. When the King saw that the brāhmaṇa Durvāsā had been released from the great danger of being burned, he could understand that by the grace of the Lord he himself was also powerful, but he did not take any credit, for everything had been done by the Lord.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -5919,18 +5664,6 @@ He took food purified by being remnants of a brāhmaṇa. He considered his qual
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Ambarīṣa takes no credit when the danger passes. The mature devotee notices that when things go well, the Lord acted — and gives the glory immediately, without false modesty or hidden ownership.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>When something goes right today, what is my reflex — to explain how I did it, or to acknowledge whose grace it was?</li><li>Where am I quietly keeping credit that, if honestly examined, belongs to others or to the Lord?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -6128,7 +5861,6 @@ He took food purified by being remnants of a brāhmaṇa. He considered his qual
 
     <div class="fc-translation" data-sec="translation">In this way, because of devotional service, Mahārāja Ambarīṣa, who was endowed with varieties of transcendental qualities, was completely aware of Brahman, Paramātmā and the Supreme Personality of Godhead, and thus he executed devotional service perfectly. Because of his devotion, he thought even the topmost planet of this material world no better than the hellish planets.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -6214,18 +5946,6 @@ Vāsudeva contained Brahman, Paramātmā and Bhagavān.  By activities such as c
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">A real devotee sees even the highest material planet as no better than hell. When the heart is anchored in Kṛṣṇa, the relative value of all material situations collapses into a single category: not-Him.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which &#39;higher&#39; material destinations — wealth, status, comfort — am I still ranking above closeness to the Lord?</li><li>What would shift in my decisions if I genuinely felt that the best of this world is incomparable to a moment of bhakti?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -6448,7 +6168,6 @@ Vāsudeva contained Brahman, Paramātmā and Bhagavān.  By activities such as c
 
     <div class="fc-translation" data-sec="translation">Śrīla Śukadeva Gosvāmī continued: Thereafter, because of his advanced position in devotional life, Mahārāja Ambarīṣa, who no longer desired to live with material things, retired from active family life. He divided his property among his sons, who were equally as qualified, and he himself took the order of vānaprastha and went to the forest to concentrate his mind fully upon Lord Vāsudeva.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -6514,18 +6233,6 @@ He entered the forest to concentrate his mind on Vāsudeva.</div>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Ambarīṣa retires not because he has failed at family life but because he has perfected its purpose. Renunciation done in due season is a fruit, not an escape, and it is best when one&#39;s responsibilities have been handed off in good order.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Am I treating my present āśrama as a stage to ripen in, or as a permanent identity?</li><li>What would &#39;leaving things in good order&#39; look like in the responsibilities I currently carry?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -6685,7 +6392,6 @@ He entered the forest to concentrate his mind on Vāsudeva.</div>
 
     <div class="fc-translation" data-sec="translation">Anyone who chants this narration or even thinks of this narration about the activities of Mahārāja Ambarīṣa certainly becomes a pure devotee of the Lord.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -6729,18 +6435,6 @@ Even a householder can concentrate his mind perfectly on the Lord as illustrated
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Devotees are never satisfied with how much devotion they already have. The same restless hunger the world spends on money, a sincere bhakta spends on more remembrance of the Lord.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where is my hunger for &#39;more&#39; currently directed — money, recognition, comfort, or Kṛṣṇa?</li><li>What would it look like for me to be as discontent with my current bhakti as I am with my current bank balance?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -6918,7 +6612,6 @@ Even a householder can concentrate his mind perfectly on the Lord as illustrated
 
     <div class="fc-translation" data-sec="translation">By the grace of the Lord, those who hear about the activities of Mahārāja Ambarīṣa, the great devotee, certainly become liberated or become devotees without delay.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -6971,18 +6664,6 @@ In this connection, Śukadeva Gosvāmī described the history of Saubhari Muni, 
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Even hearing about a great devotee&#39;s life is enough to plant the seed of liberation. We are shaped by the stories we keep returning to — and Ambarīṣa&#39;s is one designed to make devotees of those who linger over it.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which devotee&#39;s story have I been meaning to hear or re-hear more carefully?</li><li>What is the steady diet of narratives shaping me — and how closely does it resemble the stories the Bhāgavatam recommends?</li></ul>
-
-
-
-
-
-    </section>
 
 
 

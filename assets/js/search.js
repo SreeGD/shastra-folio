@@ -14,10 +14,7 @@
 
     var DOCS_URL = window.FC_SEARCH_DOCS_URL ||
                    document.documentElement.getAttribute("data-root") + "assets/data/search-docs.json";
-    var INDEX_URL = DOCS_URL.replace("search-docs.json", "search-index.json");
-    var HASH_URL  = DOCS_URL.replace("search-docs.json", "search-index-hash.json");
-    var IDB_DB    = "fc-search";
-    var IDB_STORE = "blobs";
+    var DOCS_CACHE_KEY = "fc-search-docs-v1";
     var PAGE_SIZE = 30;
 
     var docs = null;
@@ -50,9 +47,7 @@
              .replace(/\bcaitanya\b/g, "chaitanya")
              .replace(/\bvis+nu\b/g, "vishnu")
              .replace(/\bsiva\b/g, "shiva")
-             .replace(/\bganga\b/g, "ganga")
-             .replace(/\bvrndavana?\b/g, "vrindavan")
-             .replace(/\bvrindavana\b/g, "vrindavan");
+             .replace(/\bganga\b/g, "ganga");
         return t;
     }
 
@@ -98,124 +93,30 @@
         return snip;
     }
 
-    // The trimmer/stemmer fcStrip function — registered once at module load
-    // so both the in-browser build path AND lunr.Index.load() can find it.
-    // (Lunr's serialized index references its pipeline functions by name.)
-    var fcStripFn = function (token) {
-        return token.update(function (str) { return aliasNormalise(str); });
-    };
-    lunr.Pipeline.registerFunction(fcStripFn, "fcStrip");
-
-    // ───── IndexedDB cache (cross-session, key includes content hash) ─────
-    function idbOpen() {
-        return new Promise(function (resolve, reject) {
-            var req = indexedDB.open(IDB_DB, 1);
-            req.onupgradeneeded = function () {
-                req.result.createObjectStore(IDB_STORE);
-            };
-            req.onsuccess = function () { resolve(req.result); };
-            req.onerror = function () { reject(req.error); };
-        });
-    }
-    function idbGet(key) {
-        if (!window.indexedDB) return Promise.resolve(null);
-        return idbOpen().then(function (db) {
-            return new Promise(function (resolve) {
-                var tx = db.transaction(IDB_STORE, "readonly");
-                var req = tx.objectStore(IDB_STORE).get(key);
-                req.onsuccess = function () { resolve(req.result || null); };
-                req.onerror = function () { resolve(null); };
-            });
-        }).catch(function () { return null; });
-    }
-    function idbPut(key, value) {
-        if (!window.indexedDB) return Promise.resolve();
-        return idbOpen().then(function (db) {
-            return new Promise(function (resolve) {
-                var tx = db.transaction(IDB_STORE, "readwrite");
-                tx.objectStore(IDB_STORE).put(value, key);
-                tx.oncomplete = function () { resolve(); };
-                tx.onerror = function () { resolve(); };
-            });
-        }).catch(function () {});
-    }
-
-    // ───── Index loading — fast path with IDB cache + pre-built index ─────
+    // ───── Index loading ───────────────────────────────────────────────────
     function loadDocs(cb) {
-        setStatus("Loading search index…");
+        setStatus("Loading search index… (one-time ~11 MB download, then cached)");
         var t0 = performance.now();
-
-        // Step 1: fetch the small hash file to know which index version we want.
-        fetch(HASH_URL, { cache: "no-store" })
-            .then(function (r) { return r.ok ? r.json() : null; })
-            .catch(function () { return null; })
-            .then(function (meta) {
-                var hash = meta && meta.index_hash;
-                // Step 2: try IndexedDB cache for THIS specific hash.
-                if (!hash) return loadFromNetwork(t0, null, cb);
-                return Promise.all([idbGet("docs-" + hash), idbGet("index-" + hash)])
-                    .then(function (pair) {
-                        if (pair[0] && pair[1]) {
-                            return loadFromCache(t0, hash, pair[0], pair[1], cb);
-                        }
-                        return loadFromNetwork(t0, hash, cb);
-                    });
+        fetch(DOCS_URL)
+            .then(function (r) {
+                if (!r.ok) throw new Error("HTTP " + r.status);
+                return r.json();
+            })
+            .then(function (data) {
+                docs = data;
+                docById = {};
+                for (var i = 0; i < docs.length; i++) docById[docs[i].id] = docs[i];
+                var dt = ((performance.now() - t0) / 1000).toFixed(1);
+                setStatus("Building search index over " + docs.length.toLocaleString() +
+                          " verses (took " + dt + " s to fetch)…");
+                setTimeout(function () { buildIndex(cb); }, 50);
             })
             .catch(function (e) {
                 setStatus("⚠ Failed to load search index: " + e.message);
             });
     }
 
-    function loadFromCache(t0, hash, docsBlob, indexBlob, cb) {
-        docs = docsBlob;
-        docById = {};
-        for (var i = 0; i < docs.length; i++) docById[docs[i].id] = docs[i];
-        idx = lunr.Index.load(indexBlob);
-        var dt = ((performance.now() - t0) / 1000).toFixed(2);
-        setStatus("Search ready in " + dt + " s — " + docs.length.toLocaleString() +
-                  " verses (cached locally).");
-        cb();
-    }
-
-    function loadFromNetwork(t0, hash, cb) {
-        // Fetch docs (for snippets) + pre-built index in parallel.
-        return Promise.all([
-            fetch(DOCS_URL).then(function (r) {
-                if (!r.ok) throw new Error("docs HTTP " + r.status);
-                return r.json();
-            }),
-            fetch(INDEX_URL).then(function (r) {
-                return r.ok ? r.json() : null; // tolerate missing index → rebuild path
-            }).catch(function () { return null; }),
-        ]).then(function (pair) {
-            docs = pair[0];
-            docById = {};
-            for (var i = 0; i < docs.length; i++) docById[docs[i].id] = docs[i];
-
-            if (pair[1]) {
-                // Fast path: load pre-built serialized index
-                var tLoad = performance.now();
-                idx = lunr.Index.load(pair[1]);
-                var loadMs = (performance.now() - tLoad).toFixed(0);
-                var dt = ((performance.now() - t0) / 1000).toFixed(2);
-                setStatus("Search ready in " + dt + " s — " + docs.length.toLocaleString() +
-                          " verses (index loaded in " + loadMs + " ms).");
-                if (hash) {
-                    // Best-effort cache to IDB; do not block UI.
-                    idbPut("docs-" + hash, docs);
-                    idbPut("index-" + hash, pair[1]);
-                }
-                cb();
-            } else {
-                // Fallback: rebuild from docs (the original slow path)
-                setStatus("Building search index over " + docs.length.toLocaleString() +
-                          " verses…");
-                setTimeout(function () { buildIndexFromDocs(cb); }, 50);
-            }
-        });
-    }
-
-    function buildIndexFromDocs(cb) {
+    function buildIndex(cb) {
         var t0 = performance.now();
         idx = lunr(function () {
             this.ref("id");
@@ -224,74 +125,28 @@
             this.field("iast", { boost: 2 });
             this.field("synonyms", { boost: 1 });
             this.field("ref", { boost: 5 });
-            this.field("guidance", { boost: 1 });
-            // chapter_label + position metadata intentionally omitted to
-            // match the pre-built index shape (smaller, faster).
-            this.pipeline.before(lunr.trimmer, fcStripFn);
-            this.searchPipeline.before(lunr.stemmer, fcStripFn);
-            for (var i = 0; i < docs.length; i++) this.add(docs[i]);
+            this.field("chapter_label", { boost: 1 });
+            this.metadataWhitelist = ["position"];
+            // Custom pipeline: strip diacritics + aliasNormalise before
+            // Lunr's built-in stemmer.
+            var stripFn = function (token) {
+                return token.update(function (str) { return aliasNormalise(str); });
+            };
+            lunr.Pipeline.registerFunction(stripFn, "fcStrip");
+            this.pipeline.before(lunr.stemmer, stripFn);
+            this.searchPipeline.before(lunr.stemmer, stripFn);
+
+            for (var i = 0; i < docs.length; i++) {
+                this.add(docs[i]);
+            }
         });
         var dt = ((performance.now() - t0) / 1000).toFixed(1);
-        setStatus("Search ready (built locally in " + dt + " s over " +
+        setStatus("Search ready (index built in " + dt + " s over " +
                   docs.length.toLocaleString() + " verses).");
         cb();
     }
 
     // ───── Search ──────────────────────────────────────────────────────────
-    // ─── Boolean operator translator (Vedabase-compatible syntax) ─────────
-    // Translates VB-style query syntax into Lunr's +term / -term form.
-    //   "A and B"  /  "A & B"  /  "A B"        →  +A +B
-    //   "A or B"   /  "A | B"                  →  A B   (Lunr default OR)
-    //   "A not B"  /  "A ^ B"  /  "not A"      →  A -B  /  -A
-    // Pure pass-through when no boolean operators are present, so existing
-    // habits (typing "karma yoga" with no operators) keep ranked-OR semantics.
-    var _BOOL_RE = /(^|\s)(?:or|and|not)(\s|$)|[|&^]/i;
-    function translateBooleanQuery(q) {
-        if (!_BOOL_RE.test(q)) return q;
-        // Strip parens (precedence grouping not supported)
-        var s = q.replace(/[()]/g, " ");
-        // Normalise symbol operators to keywords
-        s = s.replace(/\s*\|\s*/g, " or ")
-             .replace(/\s*&\s*/g, " and ")
-             .replace(/\s*\^\s*/g, " not ");
-        // Tokenise: quoted phrases stay intact, everything else is whitespace-split
-        var tokens = [];
-        var re = /"[^"]*"|\S+/g, m;
-        while ((m = re.exec(s)) !== null) {
-            var tok = m[0], lower = tok.toLowerCase();
-            if (lower === "or" || lower === "and" || lower === "not") {
-                tokens.push({ type: "op", val: lower });
-            } else {
-                tokens.push({ type: "term", val: tok });
-            }
-        }
-        // Walk tokens: default each term to "+term" (required); 'or' makes the
-        // previous + next term optional; 'not' negates the next term.
-        var out = [], i = 0;
-        while (i < tokens.length) {
-            var t = tokens[i];
-            if (t.type === "op") {
-                if (t.val === "not" && i + 1 < tokens.length && tokens[i + 1].type === "term") {
-                    out.push("-" + tokens[i + 1].val);
-                    i += 2; continue;
-                }
-                if (t.val === "or") {
-                    // Drop the leading + on the most recent emitted term
-                    if (out.length) out[out.length - 1] = out[out.length - 1].replace(/^\+/, "");
-                    if (i + 1 < tokens.length && tokens[i + 1].type === "term") {
-                        out.push(tokens[i + 1].val);
-                        i += 2; continue;
-                    }
-                }
-                // 'and' is implicit; just skip
-                i++; continue;
-            }
-            out.push("+" + t.val);
-            i++;
-        }
-        return out.join(" ");
-    }
-
     function performSearch(q) {
         if (!idx) return;
         lastQuery = q;
@@ -305,22 +160,13 @@
             setStatus("Type a query to search.");
             return;
         }
-        // Translate VB-style boolean syntax before sending to Lunr
-        var translated = translateBooleanQuery(query);
         try {
             // Plain query, then if empty try with wildcard fallback
-            var hits = idx.search(translated);
+            var hits = idx.search(query);
             if (hits.length === 0) {
-                // Try wildcard on each non-operator term
-                var wq = translated.split(/\s+/).map(function (t) {
-                    if (!t) return t;
-                    var prefix = "";
-                    if (t[0] === "+" || t[0] === "-") {
-                        prefix = t[0];
-                        t = t.slice(1);
-                    }
-                    if (t[0] === '"') return prefix + t; // leave phrases alone
-                    return prefix + (t.length >= 2 ? t + "*" : t);
+                // Try wildcard on each term
+                var wq = query.split(/\s+/).map(function (t) {
+                    return t.length >= 2 ? t + "*" : t;
                 }).join(" ");
                 hits = idx.search(wq);
             }

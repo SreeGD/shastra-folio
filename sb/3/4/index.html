@@ -25,19 +25,25 @@
     <link rel="icon" href="../../../assets/icons/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="../../../assets/icons/icon.svg">
     <link rel="stylesheet" href="../../../assets/css/site.css">
+    <link rel="alternate" hreflang="te-IN" href="../../../te/sb/3/4/">
+    <link rel="alternate" hreflang="x-default" href="../../../">
     <script>window.FC_TO_ROOT = "../../../";</script>
     <script src="../../../assets/js/toggle.js"></script>
 </head>
 <body class="has-sidebar" data-chapter="4">
 <header class="fc-site-header">
     <button type="button" class="fc-mobile-trigger fc-mobile-trigger-left" data-overlay="left" aria-label="Open settings drawer">⚙</button>
-<a class="fc-brand" href="../../../">FolioCorpus<span class="fc-sub">Śrīmad-Bhāgavatam</span></a>
+    <a class="fc-brand" href="../../../">FolioCorpus<span class="fc-sub">Bhagavad-gītā</span></a>
     <nav class="fc-site-nav">
         <a href="../../../">Home</a>
         <a href="../../../bg/">Bhagavad-gītā</a>
         <a href="../../../sb/">Śrīmad-Bhāgavatam</a>
         <a href="../../../search/" title="Search across all integrated works">🔍 Search</a>
         <button type="button" id="fc-random-verse" class="fc-nav-btn" title="Jump to a random verse">🎲 Random</button>
+        <span class="fc-lang-switch" aria-label="Script">
+            <a class="active" href="#" title="Devanāgarī edition">EN</a>
+            <a class="" href="../../../te/sb/3/4/" title="Telugu lipi edition">తె</a>
+        </span>
     </nav>
     <button type="button" class="fc-mobile-trigger fc-mobile-trigger-right" data-overlay="right" aria-label="Open chapter index drawer">📚</button>
 </header>
@@ -46,8 +52,8 @@
     <button class="fc-sb-collapse" type="button" data-sb="left" title="Collapse left sidebar" aria-label="Collapse"></button>
 
     <div class="fc-sb-body">
-        <details class="fc-sb-section" data-sbsec="reading" open>
-            <summary class="fc-sb-title">Reading</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Reading</div>
             <div class="fc-sb-sub">Theme</div>
             <div class="fc-segmented" data-setting="theme">
                 <button type="button" data-val="light">Light</button>
@@ -73,10 +79,10 @@
                 <button type="button" data-val="single">Single</button>
                 <button type="button" data-val="side">Side-by-side</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="display" open>
-            <summary class="fc-sb-title">Display</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Display</div>
             <div class="fc-sb-grid">
                 <label><input type="checkbox" data-section="devanagari" checked> Devanāgarī</label>
                 <label><input type="checkbox" data-section="iast" checked> IAST transliteration</label>
@@ -99,10 +105,33 @@
                 <button type="button" data-action="expand-all">Expand all</button>
                 <button type="button" data-action="collapse-all">Collapse all</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="tools" open>
-            <summary class="fc-sb-title">Tools</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Find your starting point</div>
+            <div class="fc-persona-links">
+                <a class="fc-persona-link" href="../../../daily/">🌅 Daily (one value a week)</a>
+                <a class="fc-persona-link" href="../../../householder/">🏠 Householder (family & work)</a>
+                <a class="fc-persona-link" href="../../../parenting/">👨‍👩‍👧 Parenting (stories for kids)</a>
+                <a class="fc-persona-link" href="../../../themes/">📚 All themes</a>
+                <a class="fc-persona-link" href="../../../values/" style="background:#F0F6F2;border-left-color:#1F4632;">ॐ Vedic Value System ↗</a>
+                <a class="fc-persona-link" href="../../../vidya/" style="background:#FBF6E4;border-left-color:#C8860B;">📚 Vidyā Karaṇa (kids, multi-lang) ↗</a>
+            </div>
+        </div>
+
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Audience</div>
+            <div class="fc-audience-filter">
+                <label><input type="radio" name="fc-audience" value="all" checked> All levels</label>
+                <label><input type="radio" name="fc-audience" value="primary"> Primary (children)</label>
+                <label><input type="radio" name="fc-audience" value="middle"> Middle (teens)</label>
+                <label><input type="radio" name="fc-audience" value="senior"> Senior (adults)</label>
+                <label><input type="radio" name="fc-audience" value="college"> College / scholar</label>
+            </div>
+        </div>
+
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Tools</div>
             <div class="fc-sb-tools">
                 <button type="button" id="fc-presentation-toggle" class="fc-tool-btn"><span>🖥 Presentation</span><kbd class="fc-kbd">F</kbd></button>
                 <button type="button" id="fc-pen-toggle" class="fc-tool-btn"><span>✏️ Pen mode</span><kbd class="fc-kbd">P</kbd></button>
@@ -117,10 +146,26 @@
                 <button type="button" id="fc-clear-highlights" class="fc-tool-btn">🩷 Clear highlights (page)</button>
                 <button type="button" id="fc-notes-modal-open" class="fc-tool-btn">📓 My annotations</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="progress" id="fc-progress-section" open>
-            <summary class="fc-sb-title">Progress</summary>
+        <div class="fc-sb-section" id="fc-tts-controls" hidden>
+            <div class="fc-sb-title">
+                Read-aloud
+                <label class="fc-tts-master">
+                    <input type="checkbox" id="fc-tts-enabled" checked>
+                    <span class="fc-tts-master-label">On</span>
+                </label>
+            </div>
+            <div class="fc-tts-inner">
+                <div class="fc-sb-sub">Voice</div>
+                <select id="fc-tts-voice" class="fc-tts-select" aria-label="TTS voice"></select>
+                <div class="fc-sb-sub">Rate <span class="fc-tts-rate-val">1.0×</span></div>
+                <input type="range" id="fc-tts-rate" min="0.5" max="2" step="0.1" value="1" class="fc-tts-rate" aria-label="Reading rate">
+            </div>
+        </div>
+
+        <div class="fc-sb-section" id="fc-progress-section">
+            <div class="fc-sb-title">Progress</div>
             <div class="fc-progress-row">
                 <span class="fc-progress-num" id="fc-progress-num">0</span>
                 <span class="fc-progress-divider">/</span>
@@ -135,29 +180,29 @@
                 <span class="fc-progress-spacer"></span>
                 <button type="button" class="fc-progress-reset" id="fc-progress-reset" title="Reset progress">↺</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="bookmarks" open>
-            <summary class="fc-sb-title">Bookmarks <span class="fc-sb-count" id="fc-bookmarks-count">0</span></summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Bookmarks <span class="fc-sb-count" id="fc-bookmarks-count">0</span></div>
             <ul class="fc-bookmark-list" id="fc-bookmarks-list">
                 <li class="fc-sb-empty">No bookmarks yet — click ☆ on any verse.</li>
             </ul>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="notes" open>
-            <summary class="fc-sb-title">Notes <span class="fc-sb-count" id="fc-notes-count">0</span></summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Notes <span class="fc-sb-count" id="fc-notes-count">0</span></div>
             <ul class="fc-bookmark-list" id="fc-notes-list">
                 <li class="fc-sb-empty">No notes yet — open any verse and write in the 📝 block.</li>
             </ul>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="export">
-            <summary class="fc-sb-title">Export</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Export</div>
             <div class="fc-sb-tools">
                 <button type="button" id="fc-export-md" class="fc-tool-btn">📥 Download Markdown</button>
                 <button type="button" id="fc-export-json" class="fc-tool-btn">💾 Download JSON backup</button>
             </div>
-        </details>
+        </div>
     </div>
 </aside>    <main class="fc-container">
 <nav class="fc-breadcrumbs">
@@ -175,7 +220,7 @@
         <h1 class="fc-verse-heading">3.4 · Vidura Approaches Maitreya</h1>
         <span class="fc-ribbon-meta">
             36 verses
- · <a class="fc-ribbon-link" href="class-prep/">🖨 Class prep</a>        </span>
+        </span>
         <input type="search" class="fc-search" id="fc-search" placeholder="🔍 Search in this chapter" aria-label="Search verses in this chapter">
         <span class="fc-ribbon-current" id="fc-ribbon-current" aria-live="polite"></span>
     </div>
@@ -483,7 +528,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
 
     <div class="fc-translation" data-sec="translation">Thereafter, all of them [the descendants of Vṛṣṇi and Bhoja], being permitted by the brāhmaṇas, partook of the remnants of prasāda and also drank liquor made of rice. By drinking they all became delirious, and, bereft of knowledge, they touched the cores of each other’s hearts with harsh words.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -582,18 +626,6 @@ In the Fourth Chapter, having heard from Uddhava of the disappearance of Kṛṣ
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Even cultured devotees fell apart when alcohol entered the gathering, and harsh words touched the deepest places. One intoxicant can undo years of training. Do not invite into your circle anything that loosens the tongue beyond truth.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What &#39;permitted&#39; substance or pastime has been making your speech sharper than your sadhana?</li><li>Where did harsh words land in someone&#39;s heart recently because you were not fully present?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -762,7 +794,6 @@ In the Fourth Chapter, having heard from Uddhava of the disappearance of Kṛṣ
 
     <div class="fc-translation" data-sec="translation">As by the friction of bamboos destruction takes place, so also, at sunset, by the interaction of the faults of intoxication, all their minds became unbalanced, and destruction took place.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -806,18 +837,6 @@ By the fault of liquor (maireya) they destroyed each other (mardanam) as the sun
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">What no external enemy could touch, the Yadus undid themselves. Self-destruction often arrives through internal friction at the close of an era. Guard the inside of your community more carefully than its borders.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where is your community&#39;s biggest threat currently internal rather than external?</li><li>What &#39;friction&#39; between bamboos in your life is one match away from a fire?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -977,7 +996,6 @@ By the fault of liquor (maireya) they destroyed each other (mardanam) as the sun
 
     <div class="fc-translation" data-sec="translation">The Personality of Godhead, Lord Śrī Kṛṣṇa, after foreseeing the end [of His family] by His internal potency, went to the bank of the river Sarasvatī, sipped water, and sat down underneath a tree.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1059,18 +1077,6 @@ Because the Yādavas are eternal associates of the Lord, they will never be dest
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Even the Lord sat alone by a river to absorb what was coming. Solitude is not failure of community; it is a posture for transition. When a chapter ends, the right place may be at the base of a tree, alone with the Lord.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where in your life are you avoiding the solitary tree because you are afraid of what you would feel there?</li><li>What riverbank could you go to this week to sit and let the next phase form?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -1257,7 +1263,6 @@ Because the Yādavas are eternal associates of the Lord, they will never be dest
 
     <div class="fc-translation" data-sec="translation">The Lord is the vanquisher of the distresses of one who is surrendered unto Him. Thus He who desired to destroy His family told me previously to go to Badarikāśrama.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1306,18 +1311,6 @@ Now I shall leave the vision of this world, and I see that Uddhava, the foremost
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Krsna told Uddhava in advance where to go. The Lord often warns His servants of coming distress and offers a destination. Listen carefully; the next instruction is usually already in your heart.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What instruction has Krsna already given you for the next phase that you have not yet acted on?</li><li>Whose &#39;Badarikasrama&#39; did the Lord point you toward that you keep postponing?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -1478,7 +1471,6 @@ Now I shall leave the vision of this world, and I see that Uddhava, the foremost
     <div class="fc-translation" data-sec="translation">Yet in spite of my knowing His desire [to destroy the dynasty], O Arindama [Vidura], I followed Him because it was impossible for me to bear separation from the lotus feet of the master.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -1519,18 +1511,6 @@ Abhipretam (intention) means that though the Lord ordered that he go to Badarik�
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Uddhava could not bear separation from the Lord even when separation was the Lord&#39;s plan. Devotion sometimes makes us &#39;disobey&#39; a direct instruction to leave. The Lord understands; what He measures is the heart&#39;s attachment, not the literal compliance.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>When did you last &#39;fail&#39; to leave because love overrode strategy?</li><li>Where are you justifying staying out of attachment dressed up as devotion?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -1690,7 +1670,6 @@ Abhipretam (intention) means that though the Lord ordered that he go to Badarik�
 
     <div class="fc-translation" data-sec="translation">Thus following, I saw my patron and master [Lord Śrī Kṛṣṇa] sitting alone and deeply thinking, taking shelter on the bank of the river Sarasvatī although He is the shelter of the goddess of fortune.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1729,18 +1708,6 @@ Kṛṣṇa is addressed as having no shelter because he is the shelter of all m
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The proprietor of everything sat under a tree like an unsheltered man. The Lord models the renounced posture even when He does not need it. Try the unsheltered posture occasionally to remember what really shelters you.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>When did you last sit somewhere with nothing protecting you but the Lord?</li><li>What &#39;shelter&#39; in your life are you mistaking for security rather than convenience?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -1919,7 +1886,6 @@ Kṛṣṇa is addressed as having no shelter because he is the shelter of all m
     <div class="fc-translation" data-sec="translation">The Lord’s body is blackish, but is eternal, full of bliss and knowledge, and very, very beautiful. His eyes are always peaceful, and they are reddish like the rising morning sun. I could immediately recognize Him as the Supreme Personality of Godhead by His four hands, different symbolic representations, and yellow silk garments.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -1953,18 +1919,6 @@ Kṛṣṇa is addressed as having no shelter because he is the shelter of all m
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Recognition of the Lord can be immediate when you have inwardly trained to see Him. Yellow silk, four hands, peaceful eyes; the form is meant to be perceptible. Memorize it now so you can recognize Him later.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>How well do you know the Lord&#39;s form, that you could recognize Him in any condition?</li><li>What feature of Krsna&#39;s form do you keep most vividly in mind through the day?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -2124,7 +2078,6 @@ Kṛṣṇa is addressed as having no shelter because he is the shelter of all m
 
     <div class="fc-translation" data-sec="translation">The Lord was sitting, taking rest against a young banyan tree, with His right lotus foot on His left thigh, and although He had left all household comforts, He looked quite cheerful in that posture.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2173,18 +2126,6 @@ Two companion birds sit together in the shelter of the same pippala tree. One of
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Krsna leaned cheerfully against a young banyan having renounced everything. Joy and renunciation are compatible. Stop assuming detachment must look grim; the highest renunciate sat smiling.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where has your renunciation become heavy because you forgot to be cheerful inside it?</li><li>What posture of ease could you adopt today as proof that letting go is not the same as grieving?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -2344,7 +2285,6 @@ Two companion birds sit together in the shelter of the same pippala tree. One of
 
     <div class="fc-translation" data-sec="translation">At that time, after traveling in many parts of the world, Maitreya, a great devotee of the Lord and a friend and well-wisher of the great sage Kṛṣṇa-dvaipāyana Vyāsa, reached that spot out of his own perfect accord.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2388,18 +2328,6 @@ Maitreya is called a close friend of Dvaipāyana because he was like a son to hi
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Maitreya arrived &#39;by accident&#39; which the verse calls perfect accord. The Lord arranges meetings that look like luck. Pay attention when a saintly person crosses your path unannounced.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which &#39;accidental&#39; meeting in your life this year may have been an arrangement of the Lord?</li><li>Whom in your circle could you be that arranged accident for, if you showed up at the right time?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -2588,7 +2516,6 @@ Maitreya is called a close friend of Dvaipāyana because he was like a son to hi
 
     <div class="fc-translation" data-sec="translation">Maitreya Muni was greatly attached to Him [the Lord], and he was listening in a pleasing attitude, with his shoulder lowered. With a smile and a particular glance upon me, having allowed me to rest, the Lord spoke as follows.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2662,18 +2589,6 @@ Though Maitreya is described by Uddhava with many pleasing words, Kṛṣṇa ac
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The Lord smiles at one devotee and instructs another, attending to each according to capacity. Pure unmixed devotion attracts His most intimate exchange. Mixed knowledge gets philosophy; pure love gets the smile.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Is your devotion currently mixed with speculation, ambition, or pride? How can you purify it this week?</li><li>What would your spiritual life look like if you wanted Krsna&#39;s smile more than His teaching?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -2932,7 +2847,6 @@ Though Maitreya is described by Uddhava with many pleasing words, Kṛṣṇa ac
 
     <div class="fc-translation" data-sec="translation">O Vasu, I know from within your mind what you desired in the days of yore when the Vasus and other demigods responsible for expanding the universal affairs performed sacrifices. You particularly desired to achieve My association. This is very difficult for others to obtain, but I award it unto you.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3000,18 +2914,6 @@ Veda stands from vedmi (I know).  I will give you what is difficult for others t
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The Lord remembers what you desired lifetimes ago. The wish you sincerely planted in worship long ago is what is now ripening. Trust that He has been tracking your unspoken longings across many lives.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which apparently odd desire in you may be the ripening of an old prayer you no longer remember making?</li><li>What would you ask for now if you knew the Lord would remember it lifetimes later?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -3245,7 +3147,6 @@ Veda stands from vedmi (I know).  I will give you what is difficult for others t
 
     <div class="fc-translation" data-sec="translation">O honest one, your present life is the last and the supermost because in this term of life you have been awarded My ultimate favor. Now you can go to My transcendental abode, Vaikuṇṭha, by leaving this universe of conditioned living entities. Your visit to Me in this lonely place because of your pure and unflinching devotional service is a great boon for you.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3299,18 +3200,6 @@ He pacifies Uddhava.  Among many births (bhavānām), this birth, in which (yad)
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">When you are finally fit, the Lord opens a doorway out of this realm. Visiting Krsna in a lonely moment of pure devotion is the boon. Cultivate moments of lonely uncluttered communion; that is the door.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>When did you last meet Krsna in a &#39;lonely place&#39; rather than in crowded ritual?</li><li>What habit could create more such lonely meetings in your daily routine?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -3535,7 +3424,6 @@ He pacifies Uddhava.  Among many births (bhavānām), this birth, in which (yad)
 
     <div class="fc-translation" data-sec="translation">O Uddhava, in the lotus millennium in the days of yore, at the beginning of the creation, I spoke unto Brahmā, who is situated on the lotus that grows out of My navel, about My transcendental glories, which the great sages describe as Śrīmad-Bhāgavatam.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3579,18 +3467,6 @@ Here the Lord describes what he promised to give Uddhava.  Adi-sarge means the f
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Krsna Himself identifies Srimad-Bhagavatam as the description of His glories given to Brahma. When you read Bhagavatam, you are receiving exactly what the Lord chose to disclose about Himself. Treat it as His direct self-introduction.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>How does your relationship to Bhagavatam shift if you treat it as Krsna&#39;s own self-introduction?</li><li>What would &#39;reading more reverently&#39; actually look like in your daily routine?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -3823,7 +3699,6 @@ Here the Lord describes what he promised to give Uddhava.  Adi-sarge means the f
     <div class="fc-translation" data-sec="translation">Uddhava said: O Vidura, when I was thus favored at every moment by the Supreme Personality of Godhead and addressed by Him with great affection, my words failed in tears, and the hairs on my body erupted. After smearing my tears, I, with folded hands, spoke like this.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -3864,18 +3739,6 @@ In this way the Lord respected and spoke to me.  Pratīkṣaṇa means considera
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">When the Lord speaks affectionately to you, tears and goosebumps are appropriate responses. Devotion is meant to make the body undignified in beautiful ways. Do not edit out the emotion to sound mature.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where have you suppressed devotional emotion because it felt undignified?</li><li>When did you last let yourself be physically moved by the Lord&#39;s attention?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -4085,7 +3948,6 @@ In this way the Lord respected and spoke to me.  Pratīkṣaṇa means considera
 
     <div class="fc-translation" data-sec="translation">O my Lord, devotees who engage in the transcendental loving service of Your lotus feet have no difficulty in achieving anything within the realm of the four principles of religiosity, economic development, sense gratification and liberation. But, O great one, as far as I am concerned, I have preferred only to engage in the loving service of Your lotus feet.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -4114,18 +3976,6 @@ Do you desire to give knowledge of yourself so that I, your servant, can attain 
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Devotees can have anything from religiosity to liberation, but Uddhava chose only service at the Lord&#39;s feet. Set service above all four standard pursuits in your own list. Otherwise the lesser ones quietly take first place.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which of dharma, artha, kama, or moksa secretly outranks pure service in your daily priorities?</li><li>What would you have to refuse, even from Krsna Himself, to demonstrate you only want His service?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -4368,7 +4218,6 @@ Do you desire to give knowledge of yourself so that I, your servant, can attain 
 
     <div class="fc-translation" data-sec="translation">My Lord, even the learned sages become disturbed in their intelligence when they see that Your Greatness engages in fruitive work although You are free from all desires, that You take birth although You are unborn, that You flee out of fear of the enemy and take shelter in a fort although You are the controller of invincible time, and that You enjoy householder life surrounded by many women although You enjoy in Your Self.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -4436,18 +4285,6 @@ O King! No one can understand the plan of Kṛṣṇa because even those engaged
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The Lord&#39;s apparent fear, work, birth, and indulgence puzzle even sages. Stop trying to resolve every paradox in His life; live the devotion and the contradictions become beautiful, not problematic.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which of Krsna&#39;s seemingly contradictory pastimes have you been silently arguing with?</li><li>How would you read those pastimes differently if you trusted the Lord more than your logic?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -4717,7 +4554,6 @@ O King! No one can understand the plan of Kṛṣṇa because even those engaged
 
     <div class="fc-translation" data-sec="translation">O my Lord, Your eternal Self is never divided by the influence of time, and there is no limitation to Your perfect knowledge. Thus You were sufficiently able to consult with Yourself, yet You called upon me for consultation, as if bewildered, although You are never bewildered. And this act of Yours bewilders me.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -4773,18 +4609,6 @@ One could explain that this means that he appeared like a fool but was not.  Thu
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The all-knowing Lord still &#39;consulted&#39; His devotee. Receiving consultation from someone you outrank is itself an act of grace and teaching. Practice it: ask juniors for their view even when you already know.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Whose view have you not asked for because you assumed you already knew better?</li><li>Where could your asking elevate someone else even though you do not need their answer?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -5027,7 +4851,6 @@ One could explain that this means that he appeared like a fool but was not.  Thu
 
     <div class="fc-translation" data-sec="translation">My Lord, kindly explain to us, if You think us competent to receive it, that transcendental knowledge which gives enlightenment about Yourself and which You explained before to Brahmājī.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -5071,18 +4894,6 @@ Therefore I desire knowledge which will eradicate these doubts.  This means know
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">A pure devotee feels afflicted when separated from the Lord and asks for the same instruction once given to Brahma. Reach for the highest teaching, not what is easy. The Lord gives in proportion to what is requested.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Are your requests of the Lord scaled down to what feels reasonable rather than to what He could give?</li><li>What &#39;Brahma-level&#39; instruction have you been afraid to ask for?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -5251,7 +5062,6 @@ Therefore I desire knowledge which will eradicate these doubts.  This means know
 
     <div class="fc-translation" data-sec="translation">When I thus expressed my heartfelt desires unto the Supreme Personality of Godhead, the lotus-eyed Lord instructed me about His transcendental situation.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -5326,18 +5136,6 @@ If contradiction was not a fact, then those wise sages would not have been bewil
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Uddhava received from Krsna a confidential teaching about His transcendental situation, not given even to Brahma. Some teachings only come in intimate moments and to those who already love. Become trustworthy first; the rare disclosures follow.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where are you asking for advanced knowledge before establishing basic trustworthiness in service?</li><li>What would the Lord trust you with that He has not yet, and what needs to change for that?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -5562,7 +5360,6 @@ If contradiction was not a fact, then those wise sages would not have been bewil
 
     <div class="fc-translation" data-sec="translation">I have studied the path of understanding self-knowledge from my spiritual master, the Personality of Godhead, and thus after circumambulating Him I have come to this place, very much aggrieved due to separation.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -5619,18 +5416,6 @@ I (saḥ), having the path of knowledge of the Lord after studying it from the g
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Uddhava studied self-knowledge directly from the Lord and circumambulated Him with grief. Even after receiving the highest teaching, devotional bereavement remains; knowledge does not cancel love. Do not expect philosophy to dry your tears.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where have you tried to use philosophy to numb grief that should be allowed to mature?</li><li>What loss have you intellectualized when the right response is to keep loving the lost one?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -5808,7 +5593,6 @@ I (saḥ), having the path of knowledge of the Lord after studying it from the g
 
     <div class="fc-translation" data-sec="translation">My dear Vidura, now I am mad for want of the pleasure of seeing Him, and just to mitigate this I am now proceeding to Badarikāśrama in the Himālayas for association, as I have been instructed by Him.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -5857,18 +5641,6 @@ How will you live in pain of separation?  At every moment I experience joy from 
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">When separated from the Lord, Uddhava followed His order; obeying the Lord&#39;s instruction is itself a form of association. If you ache for connection, do the thing He last asked you to do; the bond is restored in the doing.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What last instruction from the Lord are you ignoring while waiting to &#39;feel&#39; His presence?</li><li>How does executing His order become your way back to communion with Him?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -6055,7 +5827,6 @@ How will you live in pain of separation?  At every moment I experience joy from 
 
     <div class="fc-translation" data-sec="translation">There in Badarikāśrama the Personality of Godhead, in His incarnation as the sages Nara and Nārāyaṇa, has been undergoing great penance since time immemorial for the welfare of all amiable living entities.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -6114,18 +5885,6 @@ There the Lord’s aṁśa, Nārāyaṇa, dwells.  They give happiness to all (m
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Badarikasrama hosts the eternal penance of Nara-Narayana for the welfare of all. Some sacrifices are quietly ongoing for your benefit. Live with awareness that incarnations have been performing tapas for you across eons.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>How does it feel to know penance is being done somewhere right now for the welfare of beings like you?</li><li>What small tapas could you do for the welfare of others, in modest imitation?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -6319,7 +6078,6 @@ There the Lord’s aṁśa, Nārāyaṇa, dwells.  They give happiness to all (m
 
     <div class="fc-translation" data-sec="translation">Śrī Śukadeva Gosvāmī said: After hearing from Uddhava all about the annihilation of his friends and relatives, the learned Vidura pacified his overwhelming bereavement by dint of his transcendental knowledge.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -6383,18 +6141,6 @@ Vidura heard in this way (iti) from Uddhava the intolerable destruction of his f
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Vidura pacified great grief with transcendental knowledge. Knowledge of the soul is not a luxury for sunny days; it is the medicine for the hardest news. Build your understanding now so it is ready when bereavement comes.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What transcendental knowledge are you postponing studying that you will need at the next bad news?</li><li>Where have you tried to soothe grief with distraction instead of with truth?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -6563,7 +6309,6 @@ Vidura heard in this way (iti) from Uddhava the intolerable destruction of his f
 
     <div class="fc-translation" data-sec="translation">While Uddhava, the chief and most confidential amongst the devotees of the Lord, was going away, Vidura, in affection and confidence, questioned him.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -6607,18 +6352,6 @@ Viśvrambhāt means out of trust.  Though Uddhava was younger than himself, Uddh
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">An older devotee may humbly defer to a junior more advanced in devotion. Years do not equal advancement; sadhana does. Speak to fellow devotees in terms of where they actually are, not where age would place them.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Whom younger than you should you be deferring to in spiritual matters?</li><li>Where has age become a reason for you to assume seniority you have not actually earned?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -6886,7 +6619,6 @@ Viśvrambhāt means out of trust.  Though Uddhava was younger than himself, Uddh
 
     <div class="fc-translation" data-sec="translation">Vidura said: O Uddhava, because the servants of Viṣṇu, the Lord, wander in the interest of serving others, it is quite fit that you kindly describe the self-knowledge with which you have been enlightened by the Lord Himself.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -6941,18 +6673,6 @@ Naḥ (we) here indicates the two of us, Vidura and Maitreya. The plural can be 
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Servants of Visnu wander to serve others; their travel is not tourism but distribution of knowledge. If you go somewhere, ask what you are carrying for the people there. Movement without service is just movement.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>When you travel, what do you carry to give, beyond your presence and your photos?</li><li>Whom on your route this month could you serve with knowledge they have been seeking?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -7137,7 +6857,6 @@ Naḥ (we) here indicates the two of us, Vidura and Maitreya. The plural can be 
 
     <div class="fc-translation" data-sec="translation">Śrī Uddhava said: You may take lessons from the great learned sage Maitreya, who is nearby and who is worshipable for reception of transcendental knowledge. He was directly instructed by the Personality of Godhead while He was about to quit this mortal world.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -7207,18 +6926,6 @@ Certainly (nanu) Maitreya should be worshipped (saṁrādhyaḥ) as guru concern
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Uddhava refused the disciple&#39;s offer because Maitreya was nearby and senior. Do not accept service or status that should go to another. Direct the seeker to the right teacher; this is itself a high act of humility.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Whose recognition or role have you accepted that should have gone to someone more suitable?</li><li>Where could you redirect a seeker toward a better teacher rather than keeping them with you?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -7450,7 +7157,6 @@ Certainly (nanu) Maitreya should be worshipped (saṁrādhyaḥ) as guru concern
 
     <div class="fc-translation" data-sec="translation">Śukadeva Gosvāmī said: O King, after thus discussing with Vidura the transcendental name, fame, qualities, etc., on the bank of the Yamunā, Uddhava was overwhelmed with great affliction. He passed the night as if it were a moment, and thereafter he went away.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -7509,18 +7215,6 @@ He remained for the night which passed like a moment. Uddhava is a descendent of
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Discussion of Krsna&#39;s name and qualities made the long night feel like a moment. Time bends around real conversation about the Lord. If your evenings feel long, examine whether they contain enough Krsna-katha.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>When did a conversation about Krsna last bend time for you, and what made it possible?</li><li>What &#39;all night&#39; Krsna-katha could you set up with one trusted devotee this month?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -7779,7 +7473,6 @@ He remained for the night which passed like a moment. Uddhava is a descendent of
 
     <div class="fc-translation" data-sec="translation">The King inquired: At the end of the pastimes of the Lord of the three worlds, Śrī Kṛṣṇa, and after the disappearance of the members of the Vṛṣṇi and Bhoja dynasties, who were the best of the great commanders, why did Uddhava alone remain?</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -7846,18 +7539,6 @@ Nidhanam  upagateṣu vṛṣṇi-bhojeṣv superficially means “When the Vṛ
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Uddhava alone remained because the Lord needed someone to carry the message after His departure. If you have been kept back from joining others &#39;home,&#39; it may be because there is work here that only you can do.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What message or service has the Lord kept you alive to carry that others around you cannot?</li><li>Where have you envied those who &#39;left&#39; instead of accepting the dignity of being kept?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -8042,7 +7723,6 @@ Nidhanam  upagateṣu vṛṣṇi-bhojeṣv superficially means “When the Vṛ
 
     <div class="fc-translation" data-sec="translation">Śukadeva Gosvāmī replied: My dear King, the cursing of the brāhmaṇas was only a plea, but the actual fact was the supreme desire of the Lord. He wanted to disappear from the face of the earth after dispatching His excessively numerous family members. He thought to Himself as follows.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -8135,18 +7815,6 @@ There are many statements in the śruti and smṛti showing that the Lord has an
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The brahmana&#39;s curse was a pretext; the actual cause was the Lord&#39;s supreme desire. Look behind apparent causes for the Lord&#39;s larger arrangement. Quarrels, illnesses, and timings are often surface explanations for deeper plans.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which recent event are you blaming on a &#39;cause&#39; when a larger arrangement may be in play?</li><li>How would you act differently if you saw the Lord&#39;s desire behind the apparent trigger?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -8333,7 +8001,6 @@ There are many statements in the śruti and smṛti showing that the Lord has an
 
     <div class="fc-translation" data-sec="translation">Now I shall leave the vision of this mundane world, and I see that Uddhava, the foremost of My devotees, is the only one who can be directly entrusted with knowledge about Me.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -8382,18 +8049,6 @@ When I disappear from this planet with my shower of sweet form, qualities and pa
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Krsna entrusted His knowledge to one person He had personally prepared. He still does this today. Become the kind of person who could be entrusted; the Lord is always looking for clear vessels.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What &#39;specific knowledge&#39; would the Lord be willing to entrust you with if you were ready?</li><li>Which preparation step have you been avoiding that would make you a worthy carrier?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -8612,7 +8267,6 @@ When I disappear from this planet with my shower of sweet form, qualities and pa
 
     <div class="fc-translation" data-sec="translation">Uddhava is not inferior to Me in any way because he is never affected by the modes of material nature. Therefore he may remain in this world in order to disseminate specific knowledge of the Personality of Godhead.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -8683,18 +8337,6 @@ This verse describes Uddhava’s qualification as a replica of the Lord. Uddhava
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">A pure devotee, untouched by the modes, is &#39;not inferior&#39; to the Lord in qualification to act as His representative. Aim beyond goodness to suddha-sattva: unmixed devotion. Even a perfect brahmana stops short of this.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which mode (passion, ignorance, even goodness) is still subtly running your devotional life?</li><li>What in your sadhana would have to deepen for you to be a clean instrument of the Lord?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -8854,7 +8496,6 @@ This verse describes Uddhava’s qualification as a replica of the Lord. Uddhava
 
     <div class="fc-translation" data-sec="translation">Śukadeva Gosvāmī informed the King that Uddhava, being thus instructed by the Supreme Personality of Godhead, who is the source of all Vedic knowledge and the spiritual master of the three worlds, reached the pilgrimage site of Badarikāśrama and engaged himself there in trance to satisfy the Lord.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -8901,18 +8542,6 @@ The Lord is the guru of all three worlds, and is thus the guru for the inhabitan
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Uddhava reached Badarikasrama and entered trance to satisfy the Lord. Pilgrimage culminates not in sightseeing but in sustained absorption. Wherever you end up traveling, complete it with deep silent service.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>When you reach a holy place, do you also enter the silence that the place is meant to evoke?</li><li>What &#39;trance to satisfy the Lord&#39; would look like in your version of pilgrimage?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -9090,7 +8719,6 @@ The Lord is the guru of all three worlds, and is thus the guru for the inhabitan
 
     <div class="fc-translation" data-sec="translation">Vidura also heard from Uddhava about the appearance and disappearance of Lord Kṛṣṇa, the Supersoul, in the mortal world, which is a subject matter sought after with great perseverance by the great sages.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -9154,18 +8782,6 @@ Kṛṣṇa has permanently accepted (upa ātta) a body because of his pastimes.
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Even great sages strive to grasp how Krsna appears and disappears. Do not be discouraged when the mystery resists you; the chase itself sanctifies. Keep meditating on it; the search is the spiritual life.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What mystery of Krsna&#39;s pastimes have you given up on understanding, and could you re-enter the inquiry?</li><li>How can you let unsolved questions sharpen rather than dull your devotion?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -9343,7 +8959,6 @@ Kṛṣṇa has permanently accepted (upa ātta) a body because of his pastimes.
 
     <div class="fc-translation" data-sec="translation">The Lord’s glorious acts and His acceptance of various transcendental forms for the performance of extraordinary pastimes in the mortal world are very difficult for anyone other than His devotees to understand, and for the beasts they are simply a mental disturbance.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -9388,18 +9003,6 @@ Kṛṣṇa has permanently accepted (upa ātta) a body because of his pastimes.
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Non-devotees experience the Lord&#39;s pastimes as mental disturbance; devotees taste them as nectar. The same content reads opposite based on the reader&#39;s heart. Cultivate the heart and the text rewrites itself.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Which scriptures still feel like disturbance to you, and what does that reveal about your inner state?</li><li>What inner change would you need so today&#39;s nectar can actually taste like nectar?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -9568,7 +9171,6 @@ Kṛṣṇa has permanently accepted (upa ātta) a body because of his pastimes.
 
     <div class="fc-translation" data-sec="translation">Understanding that he was remembered by Lord Kṛṣṇa [while quitting this world], Vidura began to cry loudly, overwhelmed by the ecstasy of love.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -9627,18 +9229,6 @@ Kṛṣṇa has permanently accepted (upa ātta) a body because of his pastimes.
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Vidura wept on learning the Lord had remembered him at the last moment. Crying for the Lord is described as the culmination of devotion. If your eyes never wet for Him, your sadhana has more depth to find.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>When did you last cry for Krsna, and what brought it on?</li><li>What practice could soften your heart so tears become available again?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -9798,7 +9388,6 @@ Kṛṣṇa has permanently accepted (upa ātta) a body because of his pastimes.
 
     <div class="fc-translation" data-sec="translation">After passing a few days on the bank of the river Yamunā, Vidura, the self-realized soul, reached the bank of the Ganges, where the great sage Maitreya was situated.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -9845,18 +9434,6 @@ Maitreya Describes Creation
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Vidura, the self-realized soul, traveled to where Maitreya was located. Even realized souls keep moving toward higher teachings. Stay on the road; spiritual life is not a place of settling but a steady journey to deeper teachers.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where have you settled spiritually, thinking your current level is the destination?</li><li>Who is the next teacher you should be moving toward, even if it requires travel and discomfort?</li></ul>
-
-
-
-
-
-    </section>
 
 
 

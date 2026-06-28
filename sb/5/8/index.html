@@ -25,19 +25,25 @@
     <link rel="icon" href="../../../assets/icons/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="../../../assets/icons/icon.svg">
     <link rel="stylesheet" href="../../../assets/css/site.css">
+    <link rel="alternate" hreflang="te-IN" href="../../../te/sb/5/8/">
+    <link rel="alternate" hreflang="x-default" href="../../../">
     <script>window.FC_TO_ROOT = "../../../";</script>
     <script src="../../../assets/js/toggle.js"></script>
 </head>
 <body class="has-sidebar" data-chapter="8">
 <header class="fc-site-header">
     <button type="button" class="fc-mobile-trigger fc-mobile-trigger-left" data-overlay="left" aria-label="Open settings drawer">⚙</button>
-<a class="fc-brand" href="../../../">FolioCorpus<span class="fc-sub">Śrīmad-Bhāgavatam</span></a>
+    <a class="fc-brand" href="../../../">FolioCorpus<span class="fc-sub">Bhagavad-gītā</span></a>
     <nav class="fc-site-nav">
         <a href="../../../">Home</a>
         <a href="../../../bg/">Bhagavad-gītā</a>
         <a href="../../../sb/">Śrīmad-Bhāgavatam</a>
         <a href="../../../search/" title="Search across all integrated works">🔍 Search</a>
         <button type="button" id="fc-random-verse" class="fc-nav-btn" title="Jump to a random verse">🎲 Random</button>
+        <span class="fc-lang-switch" aria-label="Script">
+            <a class="active" href="#" title="Devanāgarī edition">EN</a>
+            <a class="" href="../../../te/sb/5/8/" title="Telugu lipi edition">తె</a>
+        </span>
     </nav>
     <button type="button" class="fc-mobile-trigger fc-mobile-trigger-right" data-overlay="right" aria-label="Open chapter index drawer">📚</button>
 </header>
@@ -46,8 +52,8 @@
     <button class="fc-sb-collapse" type="button" data-sb="left" title="Collapse left sidebar" aria-label="Collapse"></button>
 
     <div class="fc-sb-body">
-        <details class="fc-sb-section" data-sbsec="reading" open>
-            <summary class="fc-sb-title">Reading</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Reading</div>
             <div class="fc-sb-sub">Theme</div>
             <div class="fc-segmented" data-setting="theme">
                 <button type="button" data-val="light">Light</button>
@@ -73,10 +79,10 @@
                 <button type="button" data-val="single">Single</button>
                 <button type="button" data-val="side">Side-by-side</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="display" open>
-            <summary class="fc-sb-title">Display</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Display</div>
             <div class="fc-sb-grid">
                 <label><input type="checkbox" data-section="devanagari" checked> Devanāgarī</label>
                 <label><input type="checkbox" data-section="iast" checked> IAST transliteration</label>
@@ -99,10 +105,33 @@
                 <button type="button" data-action="expand-all">Expand all</button>
                 <button type="button" data-action="collapse-all">Collapse all</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="tools" open>
-            <summary class="fc-sb-title">Tools</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Find your starting point</div>
+            <div class="fc-persona-links">
+                <a class="fc-persona-link" href="../../../daily/">🌅 Daily (one value a week)</a>
+                <a class="fc-persona-link" href="../../../householder/">🏠 Householder (family & work)</a>
+                <a class="fc-persona-link" href="../../../parenting/">👨‍👩‍👧 Parenting (stories for kids)</a>
+                <a class="fc-persona-link" href="../../../themes/">📚 All themes</a>
+                <a class="fc-persona-link" href="../../../values/" style="background:#F0F6F2;border-left-color:#1F4632;">ॐ Vedic Value System ↗</a>
+                <a class="fc-persona-link" href="../../../vidya/" style="background:#FBF6E4;border-left-color:#C8860B;">📚 Vidyā Karaṇa (kids, multi-lang) ↗</a>
+            </div>
+        </div>
+
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Audience</div>
+            <div class="fc-audience-filter">
+                <label><input type="radio" name="fc-audience" value="all" checked> All levels</label>
+                <label><input type="radio" name="fc-audience" value="primary"> Primary (children)</label>
+                <label><input type="radio" name="fc-audience" value="middle"> Middle (teens)</label>
+                <label><input type="radio" name="fc-audience" value="senior"> Senior (adults)</label>
+                <label><input type="radio" name="fc-audience" value="college"> College / scholar</label>
+            </div>
+        </div>
+
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Tools</div>
             <div class="fc-sb-tools">
                 <button type="button" id="fc-presentation-toggle" class="fc-tool-btn"><span>🖥 Presentation</span><kbd class="fc-kbd">F</kbd></button>
                 <button type="button" id="fc-pen-toggle" class="fc-tool-btn"><span>✏️ Pen mode</span><kbd class="fc-kbd">P</kbd></button>
@@ -117,10 +146,26 @@
                 <button type="button" id="fc-clear-highlights" class="fc-tool-btn">🩷 Clear highlights (page)</button>
                 <button type="button" id="fc-notes-modal-open" class="fc-tool-btn">📓 My annotations</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="progress" id="fc-progress-section" open>
-            <summary class="fc-sb-title">Progress</summary>
+        <div class="fc-sb-section" id="fc-tts-controls" hidden>
+            <div class="fc-sb-title">
+                Read-aloud
+                <label class="fc-tts-master">
+                    <input type="checkbox" id="fc-tts-enabled" checked>
+                    <span class="fc-tts-master-label">On</span>
+                </label>
+            </div>
+            <div class="fc-tts-inner">
+                <div class="fc-sb-sub">Voice</div>
+                <select id="fc-tts-voice" class="fc-tts-select" aria-label="TTS voice"></select>
+                <div class="fc-sb-sub">Rate <span class="fc-tts-rate-val">1.0×</span></div>
+                <input type="range" id="fc-tts-rate" min="0.5" max="2" step="0.1" value="1" class="fc-tts-rate" aria-label="Reading rate">
+            </div>
+        </div>
+
+        <div class="fc-sb-section" id="fc-progress-section">
+            <div class="fc-sb-title">Progress</div>
             <div class="fc-progress-row">
                 <span class="fc-progress-num" id="fc-progress-num">0</span>
                 <span class="fc-progress-divider">/</span>
@@ -135,29 +180,29 @@
                 <span class="fc-progress-spacer"></span>
                 <button type="button" class="fc-progress-reset" id="fc-progress-reset" title="Reset progress">↺</button>
             </div>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="bookmarks" open>
-            <summary class="fc-sb-title">Bookmarks <span class="fc-sb-count" id="fc-bookmarks-count">0</span></summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Bookmarks <span class="fc-sb-count" id="fc-bookmarks-count">0</span></div>
             <ul class="fc-bookmark-list" id="fc-bookmarks-list">
                 <li class="fc-sb-empty">No bookmarks yet — click ☆ on any verse.</li>
             </ul>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="notes" open>
-            <summary class="fc-sb-title">Notes <span class="fc-sb-count" id="fc-notes-count">0</span></summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Notes <span class="fc-sb-count" id="fc-notes-count">0</span></div>
             <ul class="fc-bookmark-list" id="fc-notes-list">
                 <li class="fc-sb-empty">No notes yet — open any verse and write in the 📝 block.</li>
             </ul>
-        </details>
+        </div>
 
-        <details class="fc-sb-section" data-sbsec="export">
-            <summary class="fc-sb-title">Export</summary>
+        <div class="fc-sb-section">
+            <div class="fc-sb-title">Export</div>
             <div class="fc-sb-tools">
                 <button type="button" id="fc-export-md" class="fc-tool-btn">📥 Download Markdown</button>
                 <button type="button" id="fc-export-json" class="fc-tool-btn">💾 Download JSON backup</button>
             </div>
-        </details>
+        </div>
     </div>
 </aside>    <main class="fc-container">
 <nav class="fc-breadcrumbs">
@@ -175,7 +220,7 @@
         <h1 class="fc-verse-heading">5.8 · A Description of the Character of Bharata Mahārāja</h1>
         <span class="fc-ribbon-meta">
             31 verses
- · <a class="fc-ribbon-link" href="class-prep/">🖨 Class prep</a>        </span>
+        </span>
         <input type="search" class="fc-search" id="fc-search" placeholder="🔍 Search in this chapter" aria-label="Search verses in this chapter">
         <span class="fc-ribbon-current" id="fc-ribbon-current" aria-live="polite"></span>
     </div>
@@ -427,7 +472,6 @@ Last updated 1 year ago</p>                <p class="fc-bb-summary-attrib">— S
     <div class="fc-translation" data-sec="translation">Śrī Śukadeva Gosvāmī continued: My dear King, one day, after finishing his morning duties — evacuating, urinating and bathing — Mahārāja Bharata sat down on the bank of the river Gaṇḍakī for a few minutes and began chanting his mantra, beginning with oṁkāra.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -515,18 +559,6 @@ He had performed his daily rites, necessities like passing urine and bathing.  A
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Bharata, even after retiring to the forest, kept a structured morning sādhana: cleanliness, bathing, and chanting in solitude. Real spiritual life is not improvised; it is a daily architecture that holds you up when emotion does not.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What does your first hour after waking look like, and what is it telling you about your priorities?</li><li>Which single morning practice could you install this week to start building a stronger daily architecture?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -659,7 +691,6 @@ He had performed his daily rites, necessities like passing urine and bathing.  A
     <div class="fc-translation" data-sec="translation">O King, while Bharata Mahārāja was sitting on the bank of that river, a doe, being very thirsty, came there to drink.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -688,18 +719,6 @@ He had performed his daily rites, necessities like passing urine and bathing.  A
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">A thirsty being arrives at the river to drink — a small, ordinary scene that becomes the hinge of an entire spiritual life. The smallest moments often turn into the largest pivots; pay attention to what you let into the frame.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What &#39;small arrival&#39; in your life right now might become more consequential than it appears?</li><li>Where do you treat ordinary moments carelessly that may be quietly shaping your destiny?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -848,19 +867,6 @@ He had performed his daily rites, necessities like passing urine and bathing.  A
 
 
 
-
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">A sudden roar can disrupt the most peaceful scene. The material world is full of such roars — losses, shocks, alarming news — that destabilize even the careful. Inner steadiness is the only real shelter; the outer world will keep roaring.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What recent &#39;roar&#39; in your life knocked you off-balance more than it should have?</li><li>What practice is steadily building your immunity to the next one?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -1056,7 +1062,6 @@ He had performed his daily rites, necessities like passing urine and bathing.  A
     <div class="fc-translation" data-sec="translation">By nature the doe was always afraid of being killed by others, and it was always looking about suspiciously. When it heard the lion’s tumultuous roar, it became very agitated. Looking here and there with disturbed eyes, the doe, although it had not fully satisfied itself by drinking water, suddenly leaped across the river.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -1077,18 +1082,6 @@ Sahasā means at the same time as the roar.  Bhayāt means in terror. She jumped
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Fear can make us leap before our work is finished — leaving the water half-drunk, the task half-done. Reactive flight rarely lands well. When alarm rises, pausing first is itself a spiritual act.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where in your life are you about to leap away from something half-finished out of fear?</li><li>What would a more grounded response, instead of reactive flight, look like in that situation?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -1220,7 +1213,6 @@ Sahasā means at the same time as the roar.  Bhayāt means in terror. She jumped
 
     <div class="fc-translation" data-sec="translation">The doe was pregnant, and when it jumped out of fear, the baby deer fell from its womb into the flowing waters of the river.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1249,18 +1241,6 @@ Antarvatnyāḥ means pregnant.</div>
 
 
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Strong emotion at the wrong moment can cause irreversible loss — a miscarriage of what was meant to be born. Whether physical or metaphorical, what we carry within us is fragile and deserves protection from sudden disturbance.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What is currently gestating in you — a project, a child, a relationship, an insight — and how are you protecting it from disturbance?</li><li>Whose emotional storms are you letting near something delicate that needs calm to grow?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -1438,7 +1418,6 @@ Antarvatnyāḥ means pregnant.</div>
     <div class="fc-translation" data-sec="translation">Being separated from its flock and distressed by its miscarriage, the black doe, having crossed the river, was very much distressed. Indeed, it fell down in a cave and died immediately.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -1469,18 +1448,6 @@ Utprasava [Note: This is an alternate reading.] means giving birth from a high p
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Separated from her herd and her pregnancy, the doe collapses in a cave and dies. When we lose connection and lose what we were carrying, the body and heart can simply give out. Community and inner cargo both matter for survival.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where have you become isolated from your spiritual herd in a way that endangers you?</li><li>What loss are you absorbing alone that you should be processing in community?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -1675,7 +1642,6 @@ Utprasava [Note: This is an alternate reading.] means giving birth from a high p
 
     <div class="fc-translation" data-sec="translation">The great King Bharata, while sitting on the bank of the river, saw the small deer, bereft of its mother, floating down the river. Seeing this, he felt great compassion. Like a sincere friend, he lifted the infant deer from the waves, and, knowing it to be motherless, brought it to his āśrama.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1729,18 +1695,6 @@ The deer was a baby, separated from its kind.  Because it was small, helpless an
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Compassion is a beautiful instinct, but unguarded compassion can divert even an advanced devotee. Bharata&#39;s tender heart was not the problem; his lack of caution about new attachments was. Even kindness needs spiritual supervision.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where has a compassionate impulse begun to pull you off your spiritual track?</li><li>What discernment can you apply so that real compassion does not become subtle attachment?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -1998,7 +1952,6 @@ The deer was a baby, separated from its kind.  Because it was small, helpless an
 
     <div class="fc-translation" data-sec="translation">Gradually Mahārāja Bharata became very affectionate toward the deer. He began to raise it and maintain it by giving it grass. He was always careful to protect it from the attacks of tigers and other animals. When it itched, he petted it, and in this way he always tried to keep it in a comfortable condition. He sometimes kissed it out of love. Being attached to raising the deer, Mahārāja Bharata forgot the rules and regulations for the advancement of spiritual life, and he gradually forgot to worship the Supreme Personality of Godhead. After a few days, he forgot everything about his spiritual advancement.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2069,18 +2022,6 @@ He fed the deer grass, protected it from wild animals, gave affection by petting
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">What begins as occasional care quickly becomes constant tending — feeding, protecting, petting, kissing. Attachment grows in small, daily gestures that nobody notices, including ourselves. Watch the building blocks, not just the obvious dangers.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What small daily gesture in your life is quietly building an attachment you have not named yet?</li><li>Where could you keep the same activity but loosen the inner clutch around it?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -2473,7 +2414,6 @@ He fed the deer grass, protected it from wild animals, gave affection by petting
 
     <div class="fc-translation" data-sec="translation">The great King Mahārāja Bharata began to think: Alas, this helpless young deer, by the force of time, an agent of the Supreme Personality of Godhead, has now lost its relatives and friends and has taken shelter of me. It does not know anyone but me, as I have become its father, mother, brother and relatives. This deer is thinking in this way, and it has full faith in me. It does not know anyone but me; therefore I should not be envious and think that for the deer my own welfare will be destroyed. I should certainly raise, protect, gratify and fondle it. When it has taken shelter with me, how can I neglect it? Even though the deer is disturbing my spiritual life, I realize that a helpless person who has taken shelter cannot be neglected. That would be a great fault.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2537,18 +2477,6 @@ From this verse till verse 11, his attachment is shown.   The deer has been sepa
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Material sympathy — even for a helpless creature — can quietly displace remembrance of the Lord. The &#39;father, mother, brother&#39; role we take on for another being can become a deeper bond than we suspect, and then a chain.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Whose dependency on you has become a hidden form of your dependency on them?</li><li>What relationship of caretaking might be subtly diverting you from your devotional core?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -2689,7 +2617,6 @@ From this verse till verse 11, his attachment is shown.   The deer has been sepa
 
     <div class="fc-translation" data-sec="translation">Even though one is in the renounced order, one who is advanced certainly feels compassion for suffering living entities. One should certainly neglect his own personal interests, although they may be very important, to protect one who has surrendered.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2788,18 +2715,6 @@ This is actually for my own good.</div>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">True compassion for the suffering is to raise them in spiritual consciousness, not merely to relieve bodily distress that karma has already arranged. Worldly philanthropy without devotion redecorates the prison; spiritual help opens the gate.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where is your charity stopping at material relief when spiritual help is what is most needed?</li><li>How could you bring the holy name into a service you are already performing materially?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -2950,7 +2865,6 @@ This is actually for my own good.</div>
     <div class="fc-translation" data-sec="translation">Due to attachment for the deer, Mahārāja Bharata lay down with it, walked about with it, bathed with it and even ate with it. Thus his heart became bound to the deer in affection.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -3006,18 +2920,6 @@ Anusaṅgaḥ means attachment.  Mṛga-jahunā means “with the young deer.”
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Eating, sleeping, walking, bathing with the object of attachment binds the heart in countless threads. Shared ordinary life is the deepest cement of attachment — far deeper than dramatic moments. Notice with whom your ordinary life is shared.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Whose ordinary daily rhythms are you most deeply entangled with, and where is that leading you?</li><li>What ordinary rhythm could you share more deliberately with the Lord — eating, walking, sleeping?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -3212,7 +3114,6 @@ Anusaṅgaḥ means attachment.  Mṛga-jahunā means “with the young deer.”
 
     <div class="fc-translation" data-sec="translation">When Mahārāja Bharata wanted to enter the forest to collect kuśa grass, flowers, wood, leaves, fruits, roots and water, he would fear that dogs, jackals, tigers and other ferocious animals might kill the deer. He would therefore always take the deer with him when entering the forest.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3266,18 +3167,6 @@ This verse describes his affection.  Śālāvṛka means a jackal. He feared the
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Attachment, once installed, dictates our movements: where we can go, what we can do, what we must keep nearby. Bharata could not even enter the forest alone anymore. Watch what your attachments require you to carry with you everywhere.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What attachment now dictates your schedule, your travel, your possibilities of solitude?</li><li>Where would freedom of movement return if you could lay down even one such load?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -3508,7 +3397,6 @@ This verse describes his affection.  Śālāvṛka means a jackal. He feared the
 
     <div class="fc-translation" data-sec="translation">When entering the forest, the animal would appear very attractive to Mahārāja Bharata due to its childish behavior. Mahārāja Bharata would even take the deer on his shoulders and carry it due to affection. His heart was so filled with great love for the deer that he would sometimes keep it on his lap or, when sleeping, on his chest. In this way he felt great pleasure in fondling the animal.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3562,18 +3450,6 @@ He would walk on the muddy earth, where there was grass for the deer.  He was un
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Bharata gave up wife, children, kingdom, and ended up clinging to a pet deer. The smallest unwatched attachment can undo the largest renunciation. There is no &#39;safely small&#39; attraction once the heart is set on Kṛṣṇa alone.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What &#39;safely small&#39; attachment in your life would, in honesty, undo years of spiritual work if it grew?</li><li>Where do you mistake the size of the object for the size of the danger?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -3813,7 +3689,6 @@ He would walk on the muddy earth, where there was grass for the deer.  He was un
 
     <div class="fc-translation" data-sec="translation">When Mahārāja Bharata was actually worshiping the Lord or was engaged in some ritualistic ceremony, although his activities were unfinished, he would still, at intervals, get up and see where the deer was. In this way he would look for it, and when he could see that the deer was comfortably situated, his mind and heart would be very satisfied, and he would bestow his blessings upon the deer, saying, “My dear calf, may you be happy in all respects.”</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3882,18 +3757,6 @@ While performing worship of the Lord he would think, “I do not know where the 
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">When the mind is somewhere else during worship, the worship is hollow. Bharata kept jumping up to check on the deer — outwardly worshiping, inwardly elsewhere. The location of the mind during sādhana is the real measure of sādhana.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where is your mind actually going during your daily worship or chanting?</li><li>What recurring &#39;deer check&#39; interrupts your absorption, and how could you address it directly?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -4151,7 +4014,6 @@ While performing worship of the Lord he would think, “I do not know where the 
 
     <div class="fc-translation" data-sec="translation">If Bharata Mahārāja sometimes could not see the deer, his mind would be very agitated. He would become like a miser, who, having obtained some riches, had lost them and had then become very unhappy. When the deer was gone, he would be filled with anxiety and would lament due to separation. Thus he would become illusioned and speak as follows.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -4225,18 +4087,6 @@ Sometimes, not seeing the deer, he would become bewildered out of longing to see
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">When the object of attachment is absent, anxiety floods in like a miser who has lost his coins. The very intensity of our distress reveals where our wealth has secretly been stored. Inventory your panics — they map your attachments.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What recent absence or loss caused disproportionate panic in you, and what does that reveal about where your treasure is buried?</li><li>If that panic-energy could be redirected toward longing for Kṛṣṇa, what would change?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -4458,7 +4308,6 @@ Sometimes, not seeing the deer, he would become bewildered out of longing to see
 
     <div class="fc-translation" data-sec="translation">Bharata Mahārāja would think: Alas, the deer is now helpless. I am now very unfortunate, and my mind is like a cunning hunter, for it is always filled with cheating propensities and cruelty. The deer has put its faith in me, just as a good man who has a natural interest in good behavior forgets the misbehavior of a cunning friend and puts his faith in him. Although I have proved faithless, will this deer return and place its faith in me?</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -4527,18 +4376,6 @@ Api indicates possibility.  Bata indicates compassion. Aho indicates surprise du
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Under attachment we paint our objects with virtues they may not have, and blame ourselves for their absence. The mind becomes a &#39;cunning hunter&#39; dressed in compassionate language. Honesty about our own delusion is the first crack of light.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What virtue have you painted onto someone or something to justify continuing the attachment?</li><li>Where could honest naming of the delusion start to free you?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -4652,7 +4489,6 @@ Api indicates possibility.  Bata indicates compassion. Aho indicates surprise du
 
     <div class="fc-translation" data-sec="translation">Alas, is it possible that I shall again see this animal protected by the Lord and fearless of tigers and other animals? Shall I again see him wandering in the garden eating soft grass?</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -4706,18 +4542,6 @@ Maybe the deer has been protected by my merciful Lord (deva-guptam).</div>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Endless rehearsal of &#39;will I see them again, will they be safe&#39; substitutes itself for the work of devotion. Even noble worry can quietly become a mental occupation that crowds out the Lord. Notice when concern has become its own attachment.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Whose welfare are you mentally rehearsing so often that it has become its own form of bondage?</li><li>What would it look like to entrust them to the Lord and turn your mind elsewhere?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -4858,7 +4682,6 @@ Maybe the deer has been protected by my merciful Lord (deva-guptam).</div>
 
     <div class="fc-translation" data-sec="translation">I do not know, but the deer might have been eaten by a wolf or a dog or by the boars that flock together or the tiger who travels alone.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -4907,18 +4730,6 @@ Those traveling in groups are wild boars.  Those traveling alone are tigers and 
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The fearful mind invents disaster after disaster, walking through every possible ending before any has occurred. Most of the suffering of attachment is suffering for events that will never happen. Notice how often imagination tortures you for free.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What invented disaster is your mind currently rehearsing about someone you love?</li><li>How could you interrupt that loop and return your attention to what is actually present?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -5068,7 +4879,6 @@ Those traveling in groups are wild boars.  Those traveling alone are tigers and 
 
     <div class="fc-translation" data-sec="translation">Alas, when the sun rises, all auspicious things begin. Unfortunately, they have not begun for me. The sun-god is the Vedas personified, but I am bereft of all Vedic principles. That sun-god is now setting, yet the poor animal who trusted in me since its mother died has not returned.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -5119,18 +4929,6 @@ The sun now sets.  By rising it gives benefit to the whole world.  But to me alo
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">When attachment dominates, even the sun&#39;s rising brings no auspiciousness, and Vedic discipline feels distant. Loss of devotional anchor turns a once-bright life dim. The dimness is a signal — return to the practices you have abandoned.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What part of your day has lost its auspicious feel, and which devotional anchor has been quietly let go?</li><li>What one practice, restored, would begin to brighten the daily picture again?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -5316,7 +5114,6 @@ The sun now sets.  By rising it gives benefit to the whole world.  But to me alo
 
     <div class="fc-translation" data-sec="translation">That deer is exactly like a prince. When will it return? When will it again display its personal activities, which are so pleasing? When will it again pacify a wounded heart like mine? I certainly must have no pious assets, otherwise the deer would have returned by now.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -5365,18 +5162,6 @@ Out of affection he glorifies the deer while lamenting.</div>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Attachment escalates objects into &#39;princes,&#39; invests them with importance they cannot bear, and blames our &#39;lack of piety&#39; for their absence. The mind under attachment is a poor judge of facts. Don&#39;t let it have the final word.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What ordinary thing or being have you elevated into something it cannot actually be?</li><li>Where are you treating a setback as cosmic punishment when it is just a setback?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -5544,7 +5329,6 @@ Out of affection he glorifies the deer while lamenting.</div>
 
     <div class="fc-translation" data-sec="translation">Alas, the small deer, while playing with me and seeing me feigning meditation with closed eyes, would circumambulate me due to anger arising from love, and it would fearfully touch me with the points of its soft horns, which felt like drops of water.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -5593,18 +5377,6 @@ Kṣvelikāyām means “while playing.”   He will approach me with my eyes cl
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">When supposedly meditating, Bharata was actually enjoying the deer&#39;s touch. Outward stillness can disguise inward indulgence. Real meditation is not measured by closed eyes but by where the mind goes when nobody is watching.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where is your outward meditation hiding an inward enjoyment of something other than Kṛṣṇa?</li><li>What would change if you tracked your mind honestly during practice and named what you found?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -5763,7 +5535,6 @@ Kṣvelikāyām means “while playing.”   He will approach me with my eyes cl
 
     <div class="fc-translation" data-sec="translation">When I placed all the sacrificial ingredients on the kuśa grass, the deer, when playing, would touch the grass with its teeth and thus pollute it. When I chastised the deer by pushing it away, it would immediately become fearful and sit down motionless, exactly like the son of a saintly person. Thus it would stop its play.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -5802,18 +5573,6 @@ The deer would contaminate the ingredients places on the kuśa grass by touching
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Once attachment is established, even mishaps and chastisements feel sweet because they involve the beloved object. Even discipline becomes part of the bond. Don&#39;t trust the sweetness of suffering for the wrong object.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where are you cherishing even painful interactions with someone because at least they involve them?</li><li>What would it look like to cherish similar engagement with the Lord, even in difficulty?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -6134,7 +5893,6 @@ The deer would contaminate the ingredients places on the kuśa grass by touching
 
     <div class="fc-translation" data-sec="translation">After speaking like a madman in this way, Mahārāja Bharata got up and went outside. Seeing the footprints of the deer on the ground, he praised the footprints out of love, saying: O unfortunate Bharata, your austerities and penances are very insignificant compared to the penance and austerity undergone by this earth planet. Due to the earth’s severe penances, the footprints of this deer, which are small, beautiful, most auspicious and soft, are imprinted on the surface of this fortunate planet. This series of footprints show a person like me, who am bereaved due to loss of the deer, how the animal has passed through the forest and how I can regain my lost wealth. By these footprints, this land has become a proper place for brāhmaṇas who desire heavenly planets or liberation to execute sacrifices to the demigods.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -6200,18 +5958,6 @@ Talking in this way, he would then rise up and go outside.  Seeing the earth mar
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Attachment makes us praise even footprints, mistake the trivial for the divine, and call it love. The blind father naming his son &#39;lotus-eyed&#39; is each of us when we are gone in attachment. Sanity returns when we step back from our own poetry.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What &#39;footprints&#39; in your life are you praising disproportionately because of who you imagine left them?</li><li>Where has affection deformed your judgment without your noticing?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -6371,7 +6117,6 @@ Talking in this way, he would then rise up and go outside.  Seeing the earth mar
     <div class="fc-translation" data-sec="translation">Mahārāja Bharata continued to speak like a madman. Seeing above his head the dark marks on the rising moon, which resembled a deer, he said: Can it be that the moon, who is so kind to an unhappy man, might also be kind upon my deer, knowing that it has strayed from home and has become motherless? This moon has given the deer shelter near itself just to protect it from the fearful attacks of a lion.</div>
 
 
-
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -6417,18 +6162,6 @@ Looking in the sky, and seeing the moon, he thinks that he sees his small deer o
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">The fevered mind sees the beloved everywhere — in moon-marks, in clouds, in shadows. Projection is the close cousin of obsession. The very world becomes a mirror of our missing object, and that is a sign of how thoroughly we have lost our ground.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where are you seeing a particular person, situation, or grievance projected onto every part of your day?</li><li>What ground can you return to so that the world looks like itself again, not like your obsession?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -6659,7 +6392,6 @@ Looking in the sky, and seeing the moon, he thinks that he sees his small deer o
 
     <div class="fc-translation" data-sec="translation">After perceiving the moonshine, Mahārāja Bharata continued speaking like a crazy person. He said: The deer’s son was so submissive and dear to me that due to its separation I am feeling separation from my own son. Due to the burning fever of this separation, I am suffering as if inflamed by a forest fire. My heart, which is like the lily of the land, is now burning. Seeing me so distressed, the moon is certainly splashing its shining nectar upon me — just as a friend throws water on another friend who has a high fever. In this way, the moon is bringing me happiness.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -6698,18 +6430,6 @@ Noticing that the rays of the moon are burning him, he expresses his desire.  �
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Separation pain can grow so intense that it imagines comforts that are not really happening. Even the moon&#39;s light becomes &#39;healing gargle water.&#39; The mind under loss invents its own consolations, and they are often unreliable.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What &#39;comfort&#39; are you inventing to ease a separation when the only real comfort would be to return to the Lord?</li><li>Where are you confusing pleasant imagination with actual healing?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -7192,7 +6912,6 @@ Noticing that the rays of the moon are burning him, he expresses his desire.  �
 
     <div class="fc-translation" data-sec="translation">Śukadeva Gosvāmī continued: My dear King, in this way Bharata Mahārāja was overwhelmed by an uncontrollable desire which was manifest in the form of the deer. Due to the fruitive results of his past deeds, he fell down from mystic yoga, austerity and worship of the Supreme Personality of Godhead. If it were not due to his past fruitive activity, how could he have been attracted to the deer after giving up the association of his own son and family, considering them stumbling blocks on the path of spiritual life? How could he show such uncontrollable affection for a deer? This was definitely due to his past karma. The King was so engrossed in petting and maintaining the deer that he fell down from his spiritual activities. In due course of time, insurmountable death, which is compared to a venomous snake that enters the hole created by a mouse, situated itself before him.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -7260,18 +6979,6 @@ He did not think of himself.  Death (kālaḥ) arrived, like a snake approaching
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Even after years of yoga, austerity and worship, an unhealed past karma can pull a devotee down through an unexpected attachment. None of us are post-vulnerability. The work of vigilance is permanent until liberation is complete.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where are you assuming yourself &#39;past&#39; a temptation that, in truth, you have only avoided rather than transcended?</li><li>What humility about ongoing vulnerability would actually protect you better than confidence?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -7538,7 +7245,6 @@ He did not think of himself.  Death (kālaḥ) arrived, like a snake approaching
 
     <div class="fc-translation" data-sec="translation">At the time of death, the King saw that the deer was sitting by his side, exactly like his own son, and was lamenting his death. Actually the mind of the King was absorbed in the body of the deer, and consequently — like those bereft of Kṛṣṇa consciousness — he left the world, the deer, and his material body and acquired the body of a deer. However, there was one advantage. Although he lost his human body and received the body of a deer, he did not forget the incidents of his past life.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -7607,18 +7313,6 @@ He saw the deer by his side lamenting like his own son.  Giving up his body (lok
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">What occupies the mind at death determines the next body. Bharata, thinking of the deer at the end, became one — but his devotional past gave him one mercy: memory. Even partial devotion is never wasted; it builds an asset that survives.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>If your current mental occupation became your destination, where would you go?</li><li>What devotional asset are you building now that you trust will survive even your worst future moment?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -7761,7 +7455,6 @@ He saw the deer by his side lamenting like his own son.  Giving up his body (lok
 
     <div class="fc-translation" data-sec="translation">Although in the body of a deer, Bharata Mahārāja, due to his rigid devotional service in his past life, could understand the cause of his birth in that body. Considering his past and present life, he constantly repented his activities, speaking in the following way.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -7808,18 +7501,6 @@ He saw the deer by his side lamenting like his own son.  Giving up his body (lok
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Bharata, even as a deer, remembered who he had been and where he had fallen. Genuine devotional work leaves a trace that no degraded form can erase. Investment in bhakti is never lost; only its expression may be temporarily constrained.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>What spiritual investments are you making now that will survive even severe future setbacks?</li><li>How does the certainty that bhakti accumulates change the urgency of your current practice?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -8221,7 +7902,6 @@ He saw the deer by his side lamenting like his own son.  Giving up his body (lok
 
     <div class="fc-translation" data-sec="translation">In the body of a deer, Bharata Mahārāja began to lament: What misfortune! I have fallen from the path of the self-realized. I gave up my real sons, wife and home to advance in spiritual life, and I took shelter in a solitary holy place in the forest. I became self-controlled and self-realized, and I engaged constantly in devotional service — hearing, thinking, chanting, worshiping and remembering the Supreme Personality of Godhead, Vāsudeva. I was successful in my attempt, so much so that my mind was always absorbed in devotional service. However, due to my personal foolishness, my mind again became attached — this time to a deer. Now I have obtained the body of a deer and have fallen far from my devotional practices.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -8285,18 +7965,6 @@ He saw the deer by his side lamenting like his own son.  Giving up his body (lok
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">From the deer&#39;s body, Bharata reviews his fall — what he renounced, where he was advancing, and the single small attachment that derailed everything. Genuine repentance is detailed and honest, not vague. Naming the exact misstep is the start of correction.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Can you name the precise small attachment that has most weakened your devotional progress?</li><li>What would honest, detailed repentance look like for you, without self-flagellation?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -8482,7 +8150,6 @@ He saw the deer by his side lamenting like his own son.  Giving up his body (lok
 
     <div class="fc-translation" data-sec="translation">Although Bharata Mahārāja received the body of a deer, by constant repentance he became completely detached from all material things. He did not disclose these things to anyone, but he left his mother deer in a place known as Kālaṣjara Mountain, where he was born. He again went to the forest of Śālagrāma and to the āśrama of Pulastya and Pulaha.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -8561,18 +8228,6 @@ Kālaṣjarāt means “from his birth place on the mountain called Kālaṣjara
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Even in a fallen form, by detachment and silent return to holy places, the soul can re-establish its trajectory. The path back from a fall is the same path forward: holy places, holy company, holy practice. Begin where you are.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Where in your life do you need a quiet, unannounced return to holy places and practices?</li><li>What &#39;Pulaha-āśrama&#39; is available to you this week, and have you actually visited it?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
@@ -8776,7 +8431,6 @@ Kālaṣjarāt means “from his birth place on the mountain called Kālaṣjara
 
     <div class="fc-translation" data-sec="translation">Remaining in that āśrama, the great King Bharata Mahārāja was now very careful not to fall victim to bad association. Without disclosing his past to anyone, he remained in that āśrama and ate dry leaves only. He was not exactly alone, for he had the association of the Supersoul. In this way he waited for death in the body of a deer. Bathing in that holy place, he finally gave up that body.</div>
 
-
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -8834,18 +8488,6 @@ Jaḍa Bharata Is Protected by Kālī</div>
         </ul>
     </section>
 
-    <section class="fc-section" data-sec="personal_guidance">
-        <div class="fc-section-label">Personal Guidance</div>
-<div class="fc-pg-essence">Bharata in his last days as a deer remained alert against bad association, ate sparingly, and stayed near the Supersoul, awaiting death without complaint. Even in a difficult form, the devotee turns the situation toward Kṛṣṇa. There is no body in which devotion cannot continue.</div>
-
-        <div class="fc-pg-sub">Reflection Questions</div>
-        <ul class="fc-pg-list"><li>Whatever your current &#39;form&#39; — your health, role, limitations — how are you using it toward Kṛṣṇa?</li><li>What would it look like to stay alert against bad association even in a season of weakness?</li></ul>
-
-
-
-
-
-    </section>
 
 
 
