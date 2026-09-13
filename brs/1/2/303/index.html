@@ -31,11 +31,13 @@
 <body class="has-sidebar">
 <header class="fc-site-header">
     <button type="button" class="fc-mobile-trigger fc-mobile-trigger-left" data-overlay="left" aria-label="Open settings drawer">⚙</button>
-    <a class="fc-brand" href="../../../../">FolioCorpus<span class="fc-sub">Bhagavad-gītā</span></a>
+<a class="fc-brand" href="../../../../">FolioCorpus<span class="fc-sub">Bhakti-rasāmṛta-sindhu</span></a>
     <nav class="fc-site-nav">
         <a href="../../../../">Home</a>
         <a href="../../../../bg/">Bhagavad-gītā</a>
         <a href="../../../../sb/">Śrīmad-Bhāgavatam</a>
+        <a href="../../../../brs/" title="Bhakti-rasāmṛta-sindhu with Jīva Gosvāmī's and Viśvanātha Cakravartī's commentaries">Bhakti-rasāmṛta-sindhu</a>
+        <a href="../../../../nod/" title="Nectar of Devotion">Nectar of Devotion</a>
         <a href="../../../../search/" title="Search across all integrated works">🔍 Search</a>
         <button type="button" id="fc-random-verse" class="fc-nav-btn" title="Jump to a random verse">🎲 Random</button>
     </nav>
@@ -46,8 +48,8 @@
     <button class="fc-sb-collapse" type="button" data-sb="left" title="Collapse left sidebar" aria-label="Collapse"></button>
 
     <div class="fc-sb-body">
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Reading</div>
+        <details class="fc-sb-section" data-sbsec="reading" open>
+            <summary class="fc-sb-title">Reading</summary>
             <div class="fc-sb-sub">Theme</div>
             <div class="fc-segmented" data-setting="theme">
                 <button type="button" data-val="light">Light</button>
@@ -73,10 +75,10 @@
                 <button type="button" data-val="single">Single</button>
                 <button type="button" data-val="side">Side-by-side</button>
             </div>
-        </div>
+        </details>
 
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Display</div>
+        <details class="fc-sb-section" data-sbsec="display" open>
+            <summary class="fc-sb-title">Display</summary>
             <div class="fc-sb-grid">
                 <label><input type="checkbox" data-section="devanagari" checked> Devanāgarī</label>
                 <label><input type="checkbox" data-section="iast" checked> IAST transliteration</label>
@@ -98,33 +100,10 @@
                 <button type="button" data-action="expand-all">Expand all</button>
                 <button type="button" data-action="collapse-all">Collapse all</button>
             </div>
-        </div>
+        </details>
 
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Find your starting point</div>
-            <div class="fc-persona-links">
-                <a class="fc-persona-link" href="../../../../daily/">🌅 Daily (one value a week)</a>
-                <a class="fc-persona-link" href="../../../../householder/">🏠 Householder (family & work)</a>
-                <a class="fc-persona-link" href="../../../../parenting/">👨‍👩‍👧 Parenting (stories for kids)</a>
-                <a class="fc-persona-link" href="../../../../themes/">📚 All themes</a>
-                <a class="fc-persona-link" href="../../../../values/" style="background:#F0F6F2;border-left-color:#1F4632;">ॐ Vedic Value System ↗</a>
-                <a class="fc-persona-link" href="../../../../vidya/" style="background:#FBF6E4;border-left-color:#C8860B;">📚 Vidyā Karaṇa (kids, multi-lang) ↗</a>
-            </div>
-        </div>
-
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Audience</div>
-            <div class="fc-audience-filter">
-                <label><input type="radio" name="fc-audience" value="all" checked> All levels</label>
-                <label><input type="radio" name="fc-audience" value="primary"> Primary (children)</label>
-                <label><input type="radio" name="fc-audience" value="middle"> Middle (teens)</label>
-                <label><input type="radio" name="fc-audience" value="senior"> Senior (adults)</label>
-                <label><input type="radio" name="fc-audience" value="college"> College / scholar</label>
-            </div>
-        </div>
-
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Tools</div>
+        <details class="fc-sb-section" data-sbsec="tools" open>
+            <summary class="fc-sb-title">Tools</summary>
             <div class="fc-sb-tools">
                 <button type="button" id="fc-presentation-toggle" class="fc-tool-btn"><span>🖥 Presentation</span><kbd class="fc-kbd">F</kbd></button>
                 <button type="button" id="fc-pen-toggle" class="fc-tool-btn"><span>✏️ Pen mode</span><kbd class="fc-kbd">P</kbd></button>
@@ -139,26 +118,10 @@
                 <button type="button" id="fc-clear-highlights" class="fc-tool-btn">🩷 Clear highlights (page)</button>
                 <button type="button" id="fc-notes-modal-open" class="fc-tool-btn">📓 My annotations</button>
             </div>
-        </div>
+        </details>
 
-        <div class="fc-sb-section" id="fc-tts-controls" hidden>
-            <div class="fc-sb-title">
-                Read-aloud
-                <label class="fc-tts-master">
-                    <input type="checkbox" id="fc-tts-enabled" checked>
-                    <span class="fc-tts-master-label">On</span>
-                </label>
-            </div>
-            <div class="fc-tts-inner">
-                <div class="fc-sb-sub">Voice</div>
-                <select id="fc-tts-voice" class="fc-tts-select" aria-label="TTS voice"></select>
-                <div class="fc-sb-sub">Rate <span class="fc-tts-rate-val">1.0×</span></div>
-                <input type="range" id="fc-tts-rate" min="0.5" max="2" step="0.1" value="1" class="fc-tts-rate" aria-label="Reading rate">
-            </div>
-        </div>
-
-        <div class="fc-sb-section" id="fc-progress-section">
-            <div class="fc-sb-title">Progress</div>
+        <details class="fc-sb-section" data-sbsec="progress" id="fc-progress-section" open>
+            <summary class="fc-sb-title">Progress</summary>
             <div class="fc-progress-row">
                 <span class="fc-progress-num" id="fc-progress-num">0</span>
                 <span class="fc-progress-divider">/</span>
@@ -173,29 +136,29 @@
                 <span class="fc-progress-spacer"></span>
                 <button type="button" class="fc-progress-reset" id="fc-progress-reset" title="Reset progress">↺</button>
             </div>
-        </div>
+        </details>
 
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Bookmarks <span class="fc-sb-count" id="fc-bookmarks-count">0</span></div>
+        <details class="fc-sb-section" data-sbsec="bookmarks" open>
+            <summary class="fc-sb-title">Bookmarks <span class="fc-sb-count" id="fc-bookmarks-count">0</span></summary>
             <ul class="fc-bookmark-list" id="fc-bookmarks-list">
                 <li class="fc-sb-empty">No bookmarks yet — click ☆ on any verse.</li>
             </ul>
-        </div>
+        </details>
 
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Notes <span class="fc-sb-count" id="fc-notes-count">0</span></div>
+        <details class="fc-sb-section" data-sbsec="notes" open>
+            <summary class="fc-sb-title">Notes <span class="fc-sb-count" id="fc-notes-count">0</span></summary>
             <ul class="fc-bookmark-list" id="fc-notes-list">
                 <li class="fc-sb-empty">No notes yet — open any verse and write in the 📝 block.</li>
             </ul>
-        </div>
+        </details>
 
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Export</div>
+        <details class="fc-sb-section" data-sbsec="export">
+            <summary class="fc-sb-title">Export</summary>
             <div class="fc-sb-tools">
                 <button type="button" id="fc-export-md" class="fc-tool-btn">📥 Download Markdown</button>
                 <button type="button" id="fc-export-json" class="fc-tool-btn">💾 Download JSON backup</button>
             </div>
-        </div>
+        </details>
     </div>
 </aside>    <main class="fc-container">
 <nav class="fc-breadcrumbs">
@@ -238,6 +201,7 @@
 
     <div class="fc-translation" data-sec="translation">A person who serves on the path of vaidhi-bhakti with a desire for a conjugal relationship with the Lord and a high position, but without desire for the gopis’ type of love, after some time becomes a queen in Dvārakā.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -250,9 +214,44 @@
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
             <div class="cr-acarya-name">
+                Viśvanātha Cakravartī Ṭhākura
+                <span class="cr-samp-badge">Gauḍīya</span>
+            </div>
+            <div class="cr-acarya-work">Bhakti-sāra-pradarśinī</div>
+            <div class="cr-acarya-label">Commentary</div>
+            <div class="cr-acarya-purp">
+                <p>Though the sentence is in masculine gender, it refers to people in general, men or women. Even though a person develops a strong desire for a conjugal relationship with Kṛṣṇa, if that person thinks that giving up all the rules in the scripture is improper, and unfavorable for nourishing his sentiments, then he attains the position of being an associate of the queens in Dvārakā. Kevalena eva indicates “completely, that much.” Thus, he completely follows the rules of vaidhi-bhakti—without rejecting any portions, such as, meditation on Dvārakā and worship of the queens, as being unfavorable for his bhāva. That is signified by the word eva (exactly). Amara-kośa definition of kevalam is: nirṇīte kevalam iti tri-liṅgaṁ tv eka-kṛtsnayoḥ: kevalam has the sense of fixing or ascertaining. (Thus, the meaning is “He serves according to vaidhi-bhakti as ascertained by rules exactly — not rejecting anything.”)
+Those who have a desire to taste the sweetness of Rādhā and Kṛṣṇa in Vṛndāvana, but worship according to vaidhi-bhakti, using nyāsas and mudrās, do not attain Kṛṣṇa in Dvārakā with Rukmiṇī, because they do not have that aspiration. Nor can they attain Rādhā and Kṛṣṇa in Vṛndāvana, because they lack the worship on the path of rāga. Therefore, since they have a predominance of awareness of Kṛṣṇa as the Lord (āiśvarya-jñāna) in worship according to the path of rules (vidhi), they attain Rādhā and Kṛṣṇa in a portion of Vṛndāvana called Goloka, in correspondence to that worship. It is understood that they do not attain the Vṛndāvana of pure sweetness. Śrī Rūpa Gosvāmī has praised this Goloka as a portion of Vṛndāvana in Stava-mālā:
+loko ramyaḥ ko ’pi vṛndāṭavīto
+nāsti kvāpīty añjasā bandhu-vargam |
+vaikuṇṭhaṁ yaḥ suṣṭhu sandarśya bhūyo
+goṣṭhaṁ ninye pātu sa tvāṁ mukundaḥ ||
+After thoroughly showing Vaikuṇṭha to His friends and relatives, with ease He brought them back to Vṛndāvana, since that place did not have pleasant inhabitants or a Vṛndāvana. May that Mukunda protect you! Nandāpaharaṇa, Chando ’ṣṭādaśakam 13, Stava-mālā
+The word vaikuṇṭha in this verse means Kṛṣṇa-vaikuṇṭha-goloka, the place where Kṛṣṇa resides with majesty. In the Tenth Canto it is described how Kṛṣṇa took all the cowherd men to Goloka, a Vaikuṇṭha (place of majesty) belonging to Kṛṣṇa, in order to illustrate the special sweetness of Vṛndāvana to them.
+iti sañcintya bhagavān mahā-kāruṇiko hariḥ
+darśayām āsa lokaṁ svaṁ gopānāṁ tamasaḥ param
+Thus, deeply considering the situation, the all-merciful Supreme Personality of Godhead Hari revealed to the cowherd men His own abode, which is beyond material darkness. SB 10.28.14
+te tu brahma-hradam nītā magnāḥ kṛṣṇena coddhṛtāḥ
+dadṛśur brahmaṇo lokaṁ yatrākrūro ’dhyagāt purā
+The cowherd men were brought by Lord Kṛṣṇa to the Brahma-hrada — where Akrura had gone prior to the Bhāgavatam narration — and were submerged in the water, and then lifted up. The cowherd men then saw the abode of the Lord. SB 10.28.16
+nandādayas tu taṁ dṛṣṭvā paramānanda-nivṛtāḥ
+kṛṣṇaṁ ca tatra cchandobhiḥ stūyamānaṁ su-vismitāḥ
+Nanda Mahārāja and the other cowherd men felt the greatest happiness when they saw that transcendental abode. They were especially amazed to see Kṛṣṇa Himself there, surrounded by the personified Vedas, who were offering Him prayers. SB 10.28.17
+Brahmano lokam (planet of brahman) described in SB 10.28.16 is Goloka, the planet of Kṛṣṇa, who is the Supreme Brahman in human form. It is not the Vaikuṇṭha planet with Lakṣmī. The Bhāgavatam verse 10.28.14 says that Kṛṣṇa showed them svam lokam, His own planet. Kṛṣṇa does not have a planet of Vaikuṇṭha with Lakṣmī. Verse 10.28.17 describes Kṛṣṇa being praised by the Vedas. It is impossible that there would be pastimes of Kṛṣṇa in Lakṣmī’s Vaikuṇṭha. Thus, brahmano lokam refers to a planet of Kṛṣṇa (not Viṣṇu) called Goloka (with majesty). This is explained in Vaiṣṇava-toṣaṇī, and in Laghu-bhāgavatāmṛta 1.5.498 with the words yat tu goloka-nāma syāt tac ca gokula-vaibhavam: what is called Goloka is Gokula with a majestic aspect (aiśvarya-goloka). Also in that book, it is said tad-ātma-vaibhavatvaṁ ca tasya tan-mahimonnateḥ: Gokula’s form of majesty (Goloka) arises from showing greater powers. (1.5.502)
+Though it is a divergence from the topic, the meaning is this. What is called Goloka (yad-goloka-nāma) is but the majesty of Gokula (gokula-vaibhavam). Gokula is known for its supreme sweetness. Goloka is a portion of Gokula which displays majesty. Thus, tad-ātma-vaibhavatvam means “Gokula’s majestic aspect.” Goloka is but the majestic aspect of Gokula because Gokula displays a superior position (tan-mahimonnateḥ). In the Pātāla-khaṇḍa of Padma Purāṇa it is said:
+aho madhupurī dhanyā vaikuṇṭhād api garīyasī |
+dinam ekaṁ nivāsena harau bhaktiḥ prajāyate ||
+Auspicious Gokula (madhupurī) [Note: Laghu-bhāgavatāmṛta explains that Mathurā has two parts: Gokula and the city of Mathurā. Gokula has a majestic part called Goloka. Thus, Madhupurī refers to Gokula as well as the city of Mathurā.] is superior to Goloka (vaikuṇṭhāt). By staying there, for only one day, devotion to the Lord arises.
+The word vaikuṇṭhād, in this verse, means “more than majestic Goloka,” (rather than “more than Vaikuṇṭha”) because it is quoted by Rūpa Gosvāmī in Laghu-bhāgavatāmṛta to illustrate the greater position of Gokula in comparison to Goloka.
+In the text, the word tadā (then) indicates “at some time”, even with some delay—not quickly as the attainment through rāgānuga-bhakti.</p>
+            </div>
+        </div>
+        <div class="cr-acarya-card gaudiya">
+            <div class="cr-acarya-name">
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Yaḥ is in the masculine, but indicates any person, either man or woman. This person serves according to the path of vaidhi, with the desire for an amorous relation (riraṁsām) with Kṛṣṇa, but not with the quality of the gopīs’ love. The word suṣṭhu (excellent) indicates that the desire is tinged with the bhāva like that of a queen of Dvārakā, rather than with the conjugal bhāva of a maidservant. Serving according to vaidhi-bhakti, though using mantras for meditating on the love of the gopīs, and of course, using mantras and procedures for meditating on the love of the queens of Dvārakā, they will achieve the bhāva of the queens rather than the gopīs’. Kevalena means they execute this service without having desires for a relationship in Vraja. Thus, when they perform service in vaidhi-bhakti, desiring a conjugal relationship like the queens (suṣṭhu), but without the desire for a relationship like that of the gopīs (kevalena), they attain the status of a follower of the queens in Dvārakā. This is because of the great respect they have for the queens of Dvārakā in the āvaraṇa pūja (secondary worship after worshipping Kṛṣṇa) using the ten syllable mantra. [Note: The ten-syllable mantra is “govindāya gopījana-vallabhaya svāhā.” Even though some devotees may use this mantra indicating gopī-bhāva while doing deity service, they have aspiration for the bhāva of the queens of Dvārakā, and real attraction for the worship of the queens in the secondary rituals of worship, performed after the worship of Kṛṣṇa. They use the ten-syllable mantra indicating His Vṛndāvana form. This secondary worship (āvaraṇa-pūja) is prescribed in vaidhi-bhakti arcana. It is described in Hari-bhakti-vilāsa 7.364. In the first āvaraṇa the sakhas are worshipped, in the second, the devatās of the body; in the third āvaraṇa, the queens of Dvārakā; in the fourth āvaraṇa, the elders and the gopīs; in the fifth āvaraṇa, the trees; in the sixth āvaraṇa, the deities of the directions; in the seventh āvaraṇa, the weapons.] They attain this status some time in the future, after some delay (tadā), but not as quickly as in rāgānuga-bhakti.</p>

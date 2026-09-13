@@ -31,11 +31,13 @@
 <body class="has-sidebar">
 <header class="fc-site-header">
     <button type="button" class="fc-mobile-trigger fc-mobile-trigger-left" data-overlay="left" aria-label="Open settings drawer">⚙</button>
-    <a class="fc-brand" href="../../../">FolioCorpus<span class="fc-sub">Bhagavad-gītā</span></a>
+<a class="fc-brand" href="../../../">FolioCorpus<span class="fc-sub">Bhakti-rasāmṛta-sindhu</span></a>
     <nav class="fc-site-nav">
         <a href="../../../">Home</a>
         <a href="../../../bg/">Bhagavad-gītā</a>
         <a href="../../../sb/">Śrīmad-Bhāgavatam</a>
+        <a href="../../../brs/" title="Bhakti-rasāmṛta-sindhu with Jīva Gosvāmī's and Viśvanātha Cakravartī's commentaries">Bhakti-rasāmṛta-sindhu</a>
+        <a href="../../../nod/" title="Nectar of Devotion">Nectar of Devotion</a>
         <a href="../../../search/" title="Search across all integrated works">🔍 Search</a>
         <button type="button" id="fc-random-verse" class="fc-nav-btn" title="Jump to a random verse">🎲 Random</button>
     </nav>
@@ -46,8 +48,8 @@
     <button class="fc-sb-collapse" type="button" data-sb="left" title="Collapse left sidebar" aria-label="Collapse"></button>
 
     <div class="fc-sb-body">
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Reading</div>
+        <details class="fc-sb-section" data-sbsec="reading" open>
+            <summary class="fc-sb-title">Reading</summary>
             <div class="fc-sb-sub">Theme</div>
             <div class="fc-segmented" data-setting="theme">
                 <button type="button" data-val="light">Light</button>
@@ -73,10 +75,10 @@
                 <button type="button" data-val="single">Single</button>
                 <button type="button" data-val="side">Side-by-side</button>
             </div>
-        </div>
+        </details>
 
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Display</div>
+        <details class="fc-sb-section" data-sbsec="display" open>
+            <summary class="fc-sb-title">Display</summary>
             <div class="fc-sb-grid">
                 <label><input type="checkbox" data-section="devanagari" checked> Devanāgarī</label>
                 <label><input type="checkbox" data-section="iast" checked> IAST transliteration</label>
@@ -98,33 +100,10 @@
                 <button type="button" data-action="expand-all">Expand all</button>
                 <button type="button" data-action="collapse-all">Collapse all</button>
             </div>
-        </div>
+        </details>
 
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Find your starting point</div>
-            <div class="fc-persona-links">
-                <a class="fc-persona-link" href="../../../daily/">🌅 Daily (one value a week)</a>
-                <a class="fc-persona-link" href="../../../householder/">🏠 Householder (family & work)</a>
-                <a class="fc-persona-link" href="../../../parenting/">👨‍👩‍👧 Parenting (stories for kids)</a>
-                <a class="fc-persona-link" href="../../../themes/">📚 All themes</a>
-                <a class="fc-persona-link" href="../../../values/" style="background:#F0F6F2;border-left-color:#1F4632;">ॐ Vedic Value System ↗</a>
-                <a class="fc-persona-link" href="../../../vidya/" style="background:#FBF6E4;border-left-color:#C8860B;">📚 Vidyā Karaṇa (kids, multi-lang) ↗</a>
-            </div>
-        </div>
-
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Audience</div>
-            <div class="fc-audience-filter">
-                <label><input type="radio" name="fc-audience" value="all" checked> All levels</label>
-                <label><input type="radio" name="fc-audience" value="primary"> Primary (children)</label>
-                <label><input type="radio" name="fc-audience" value="middle"> Middle (teens)</label>
-                <label><input type="radio" name="fc-audience" value="senior"> Senior (adults)</label>
-                <label><input type="radio" name="fc-audience" value="college"> College / scholar</label>
-            </div>
-        </div>
-
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Tools</div>
+        <details class="fc-sb-section" data-sbsec="tools" open>
+            <summary class="fc-sb-title">Tools</summary>
             <div class="fc-sb-tools">
                 <button type="button" id="fc-presentation-toggle" class="fc-tool-btn"><span>🖥 Presentation</span><kbd class="fc-kbd">F</kbd></button>
                 <button type="button" id="fc-pen-toggle" class="fc-tool-btn"><span>✏️ Pen mode</span><kbd class="fc-kbd">P</kbd></button>
@@ -139,26 +118,10 @@
                 <button type="button" id="fc-clear-highlights" class="fc-tool-btn">🩷 Clear highlights (page)</button>
                 <button type="button" id="fc-notes-modal-open" class="fc-tool-btn">📓 My annotations</button>
             </div>
-        </div>
+        </details>
 
-        <div class="fc-sb-section" id="fc-tts-controls" hidden>
-            <div class="fc-sb-title">
-                Read-aloud
-                <label class="fc-tts-master">
-                    <input type="checkbox" id="fc-tts-enabled" checked>
-                    <span class="fc-tts-master-label">On</span>
-                </label>
-            </div>
-            <div class="fc-tts-inner">
-                <div class="fc-sb-sub">Voice</div>
-                <select id="fc-tts-voice" class="fc-tts-select" aria-label="TTS voice"></select>
-                <div class="fc-sb-sub">Rate <span class="fc-tts-rate-val">1.0×</span></div>
-                <input type="range" id="fc-tts-rate" min="0.5" max="2" step="0.1" value="1" class="fc-tts-rate" aria-label="Reading rate">
-            </div>
-        </div>
-
-        <div class="fc-sb-section" id="fc-progress-section">
-            <div class="fc-sb-title">Progress</div>
+        <details class="fc-sb-section" data-sbsec="progress" id="fc-progress-section" open>
+            <summary class="fc-sb-title">Progress</summary>
             <div class="fc-progress-row">
                 <span class="fc-progress-num" id="fc-progress-num">0</span>
                 <span class="fc-progress-divider">/</span>
@@ -173,29 +136,29 @@
                 <span class="fc-progress-spacer"></span>
                 <button type="button" class="fc-progress-reset" id="fc-progress-reset" title="Reset progress">↺</button>
             </div>
-        </div>
+        </details>
 
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Bookmarks <span class="fc-sb-count" id="fc-bookmarks-count">0</span></div>
+        <details class="fc-sb-section" data-sbsec="bookmarks" open>
+            <summary class="fc-sb-title">Bookmarks <span class="fc-sb-count" id="fc-bookmarks-count">0</span></summary>
             <ul class="fc-bookmark-list" id="fc-bookmarks-list">
                 <li class="fc-sb-empty">No bookmarks yet — click ☆ on any verse.</li>
             </ul>
-        </div>
+        </details>
 
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Notes <span class="fc-sb-count" id="fc-notes-count">0</span></div>
+        <details class="fc-sb-section" data-sbsec="notes" open>
+            <summary class="fc-sb-title">Notes <span class="fc-sb-count" id="fc-notes-count">0</span></summary>
             <ul class="fc-bookmark-list" id="fc-notes-list">
                 <li class="fc-sb-empty">No notes yet — open any verse and write in the 📝 block.</li>
             </ul>
-        </div>
+        </details>
 
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Export</div>
+        <details class="fc-sb-section" data-sbsec="export">
+            <summary class="fc-sb-title">Export</summary>
             <div class="fc-sb-tools">
                 <button type="button" id="fc-export-md" class="fc-tool-btn">📥 Download Markdown</button>
                 <button type="button" id="fc-export-json" class="fc-tool-btn">💾 Download JSON backup</button>
             </div>
-        </div>
+        </details>
     </div>
 </aside>    <main class="fc-container">
 <nav class="fc-breadcrumbs">
@@ -203,14 +166,14 @@
     <span class="sep">›</span>
     <a href="../../../brs/">Bhakti-rasāmṛta-sindhu</a>
     <span class="sep">›</span>
-    <a href="../../../brs/4/">Section 4</a>
+    <a href="../../../brs/4/">Division 4</a>
     <span class="sep">›</span>
-    <span>Chapter 5</span>
+    <span>Wave 5</span>
 </nav>
 
 <div class="fc-ribbon">
     <div class="fc-ribbon-row">
-        <h1 class="fc-verse-heading">4.5</h1>
+        <h1 class="fc-verse-heading">4.5 · Raudra-rasa</h1>
         <span class="fc-ribbon-meta">33 verses</span>
         <input type="search" class="fc-search" id="fc-search" placeholder="🔍 Search in this chapter" aria-label="Search verses in this chapter">
         <span class="fc-ribbon-current" id="fc-ribbon-current" aria-live="polite"></span>
@@ -285,6 +248,7 @@
 
     <div class="fc-translation" data-sec="translation">When krodha-rati is nourished in the devotee’s heart by vibhāvas and other elements suitable to himself, it becomes raudra-bhakti-rasa.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -350,6 +314,7 @@
 
     <div class="fc-translation" data-sec="translation">There are three viṣayas for krodha-rati: Kṛṣṇa, friendly persons and unfriendly persons. All types of devotees such as the sakhīs and elderly women are the āśrayas for krodha directed towards Kṛṣṇa, and for krodha directed against the friendly or unfriendly.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -412,6 +377,7 @@
     <div class="fc-translation" data-sec="translation">Sakhīs’ anger at Kṛṣṇa: The sakhīs will manifest anger towards Kṛṣṇa when their leader experiences great alarm caused by Kṛṣṇa.</div>
 
 
+
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -419,6 +385,7 @@
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Atyāhite means having great fear or danger. Ablative case (kṛṣṇāt) is used with atyāhite according to the rule bhītrānāṁ bhaya-hetuḥ: with words implying fear and protection from danger, ablative case is used for the cause of the danger or fear (Pāṇini 1.4.25).</p>
@@ -460,8 +427,8 @@
     <div class="cr-iast-block" data-sec="iast">
         <div class="cr-iast-line">yathā vidagdha-mādhave (2.37) –</div>
 <div class="cr-pron-line" data-sec="pronunciation">[yathaa vidagdha-maadhave (2.37) –]</div>        <div class="cr-iast-line">antaḥ-kleśa-kalaṅkitāḥ kila vayaṁ yāmo &#39;dya yāmyāṁ purīṁ</div>
-<div class="cr-pron-line" data-sec="pronunciation">[antah-klesha-kalankitaah kila vayam yaamo &#39;dya yaamyaam pureem]</div>        <div class="cr-iast-line">nāyaṁ vaṣcana-saṣcaya-praṇayinaṁ hāsaṁ tathāpy ujjhati |</div>
-<div class="cr-pron-line" data-sec="pronunciation">[naayam vashchana-sashchaya-pranayinam haasam tathaapy ujjhati |]</div>        <div class="cr-iast-line">asmin sampuṭite gabhīra-kapaṭair ābhīra-pallī-viṭe</div>
+<div class="cr-pron-line" data-sec="pronunciation">[antah-klesha-kalankitaah kila vayam yaamo &#39;dya yaamyaam pureem]</div>        <div class="cr-iast-line">nāyaṁ vañcana-sañcaya-praṇayinaṁ hāsaṁ tathāpy ujjhati |</div>
+<div class="cr-pron-line" data-sec="pronunciation">[naayam vanchana-sanchaya-pranayinam haasam tathaapy ujjhati |]</div>        <div class="cr-iast-line">asmin sampuṭite gabhīra-kapaṭair ābhīra-pallī-viṭe</div>
 <div class="cr-pron-line" data-sec="pronunciation">[asmin samputite gabheera-kapatair aabheera-pallee-vite]</div>        <div class="cr-iast-line">hā medhāvini rādhike tava kathaṁ premā garīyān abhūt ||4||</div>
 <div class="cr-pron-line" data-sec="pronunciation">[haa medhaavini raadhike tava katham premaa gareeyaan abhoot ||4||]</div>    </div>
 
@@ -476,7 +443,7 @@
                 <div class="cr-blend-iast-line">antaḥ-kleśa-kalaṅkitāḥ kila vayaṁ yāmo &#39;dya yāmyāṁ purīṁ</div>
             </div>
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">nāyaṁ vaṣcana-saṣcaya-praṇayinaṁ hāsaṁ tathāpy ujjhati |</div>
+                <div class="cr-blend-iast-line">nāyaṁ vañcana-sañcaya-praṇayinaṁ hāsaṁ tathāpy ujjhati |</div>
             </div>
             <div class="cr-blend-block">
                 <div class="cr-blend-iast-line">asmin sampuṭite gabhīra-kapaṭair ābhīra-pallī-viṭe</div>
@@ -489,6 +456,7 @@
 
 
     <div class="fc-translation" data-sec="translation">From Vidagdha-mādhava: Today we will die, being afflicted by such great suffering. Kṛṣṇa cannot stop His cheating smiles. O intelligent Rādhā! Why were you so much in love with the lusty cowherd Kṛṣṇa covered with so much deceit?</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -505,6 +473,7 @@
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>On this occasion, Rādhā was greatly fearful because Kṛṣṇa put on a show of indifference in order to test her.</p>
@@ -575,6 +544,7 @@
 
 
 
+
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-5-5" data-note-label="BG 5.5" data-note-chapter="5" data-note-vlabel="5">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 5.5…" rows="4"></textarea>
@@ -629,6 +599,7 @@
 
 
     <div class="fc-translation" data-sec="translation">Govardhana’s mother: Young thief! I see clearly on your chest a woman’s shawl. Why are you denying this? People of Vraja! Hear my shouting! Can you not hear? The son of Nanda has set fire to my son’s house.</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -692,6 +663,7 @@
     <div class="fc-translation" data-sec="translation">Except for the strong Govardhana (husband of Candrāvalī), all the inhabitants of Vraja possess the highest stage of rati for Govinda.</div>
 
 
+
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -699,6 +671,7 @@
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Why would an old woman become angry with Kṛṣṇa? By evidence of hundreds of descriptions in the Bhāgavatam, it is not possible that the inhabitants of Vraja, who were always engaged in serving Kṛṣṇa favorably, overcoming all obstacles and offering everything, had any selfishness.
@@ -773,6 +746,7 @@ This verse answers. Govardhana was only the apparent husband of Candrāvalī. He
 
 
 
+
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-5-8" data-note-label="BG 5.8" data-note-chapter="5" data-note-vlabel="8">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 5.8…" rows="4"></textarea>
@@ -821,6 +795,7 @@ This verse answers. Govardhana was only the apparent husband of Candrāvalī. He
     <div class="fc-translation" data-sec="translation">The inattentive person: Those who are responsible for protecting Kṛṣṇa but, because of being absorbed in some service, become careless in their duties are called anavahita (inattentive).</div>
 
 
+
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -828,6 +803,7 @@ This verse answers. Govardhana was only the apparent husband of Candrāvalī. He
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>In protecting Kṛṣṇa, sometimes a devotee becomes inattentive by mental confusion, caused by his absorption in a bhāva relating to Kṛṣṇa. The devotee cannot put aside that state even though it is extremely detrimental for himself and Kṛṣṇa. This person is called inattentive.</p>
@@ -899,6 +875,7 @@ This verse answers. Govardhana was only the apparent husband of Candrāvalī. He
 
     <div class="fc-translation" data-sec="translation">An example: Oh! You have fainted! Get up, and do not delay uselessly. You think yourself so skilful in teaching your son! O friend! Your bound-up son is moving between the two broken arjuna trees.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -914,6 +891,7 @@ This verse answers. Govardhana was only the apparent husband of Candrāvalī. He
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Paṇḍita-māninī (thinking yourself learned) here means “you think you know how to train your son.” Truṭyat means “is being broken.” Though the breaking took place in the past, the present tense is used. There is a rule vartamāna-sāmīpye vartamānavat vā: affixes applied for the present tense can be used to indicate action of the past or future not remote from the present (Pāṇini 3.3.131). Rohiṇī had gone with Balarāma to the house of Upananda on invitation on that day. On hearing the sound of the breaking trees, Rohiṇī came to the spot. Seeing that Nanda and others had come there for Kṛṣṇa, she entered Yaśodā’s house. These are words of Rohiṇī on entering the house and seeing Yaśodā just getting up after fainting from fear when she heard the sound of the falling trees.</p>
@@ -984,6 +962,7 @@ This verse answers. Govardhana was only the apparent husband of Candrāvalī. He
 
 
 
+
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-5-11" data-note-label="BG 5.11" data-note-chapter="5" data-note-vlabel="11">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 5.11…" rows="4"></textarea>
@@ -1039,6 +1018,7 @@ This verse answers. Govardhana was only the apparent husband of Candrāvalī. He
 
     <div class="fc-translation" data-sec="translation">“Kṛṣṇa has gone to Tālavan on the instructions of His dear friends.” Hearing this, Yaśodā began staring at the faces of the boys while her eyebrows moved up and down with a frown.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1054,6 +1034,7 @@ This verse answers. Govardhana was only the apparent husband of Candrāvalī. He
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Sthapuṭita means made uneven. Sthapuṭa means “uneven” according to the Trikāṇdaśeṣa commentary on Amara-kośa. In this context, it means raising and lowering the eyebrows.</p>
@@ -1113,6 +1094,7 @@ This verse answers. Govardhana was only the apparent husband of Candrāvalī. He
 
     <div class="fc-translation" data-sec="translation">Spiteful persons: The woman with abundant pride and deep malice is called īrṣyu (spiteful).</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1157,9 +1139,9 @@ This verse answers. Govardhana was only the apparent husband of Candrāvalī. He
         <div class="cr-iast-line">yathā –</div>
 <div class="cr-pron-line" data-sec="pronunciation">[yathaa –]</div>        <div class="cr-iast-line">durmāna-mantha-mathite kathayāmi kiṁ te</div>
 <div class="cr-pron-line" data-sec="pronunciation">[durmaana-mantha-mathite kathayaami kim te]</div>        <div class="cr-iast-line">dūraṁ prayāhi savidhe tava jājjvalīmi |</div>
-<div class="cr-pron-line" data-sec="pronunciation">[dooram prayaahi savidhe tava jaajjvaleemi |]</div>        <div class="cr-iast-line">hā dhik priyeṇa cikurāṣcita-piṣcha-koṭyā</div>
-<div class="cr-pron-line" data-sec="pronunciation">[haa dhik priyena chikuraashchita-pishcha-kotyaa]</div>        <div class="cr-iast-line">nirmaṣchitāgra-caraṇāpy aruṇānanāsi ||14||</div>
-<div class="cr-pron-line" data-sec="pronunciation">[nirmashchitaagra-charanaapy arunaananaasi ||14||]</div>    </div>
+<div class="cr-pron-line" data-sec="pronunciation">[dooram prayaahi savidhe tava jaajjvaleemi |]</div>        <div class="cr-iast-line">hā dhik priyeṇa cikurāñcita-piñcha-koṭyā</div>
+<div class="cr-pron-line" data-sec="pronunciation">[haa dhik priyena chikuraanchita-pincha-kotyaa]</div>        <div class="cr-iast-line">nirmañchitāgra-caraṇāpy aruṇānanāsi ||14||</div>
+<div class="cr-pron-line" data-sec="pronunciation">[nirmanchitaagra-charanaapy arunaananaasi ||14||]</div>    </div>
 
 
     <details class="cr-blend-details" data-sec="blended">
@@ -1175,16 +1157,17 @@ This verse answers. Govardhana was only the apparent husband of Candrāvalī. He
                 <div class="cr-blend-iast-line">dūraṁ prayāhi savidhe tava jājjvalīmi |</div>
             </div>
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">hā dhik priyeṇa cikurāṣcita-piṣcha-koṭyā</div>
+                <div class="cr-blend-iast-line">hā dhik priyeṇa cikurāñcita-piñcha-koṭyā</div>
             </div>
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">nirmaṣchitāgra-caraṇāpy aruṇānanāsi ||14||</div>
+                <div class="cr-blend-iast-line">nirmañchitāgra-caraṇāpy aruṇānanāsi ||14||</div>
             </div>
         </div>
     </details>
 
 
     <div class="fc-translation" data-sec="translation">An example: O Rādhā! You were agitated by the churning rod of indignation. What shall I say to you? Go away! I am burning up just being near you! Though the peacock feather decorating Kṛṣṇa’s hair was fanning the tips of your toes when He bowed down to you, you were red-faced with anger.</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -1258,6 +1241,7 @@ This verse answers. Govardhana was only the apparent husband of Candrāvalī. He
 
 
 
+
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-5-15" data-note-label="BG 5.15" data-note-chapter="5" data-note-vlabel="15">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 5.15…" rows="4"></textarea>
@@ -1300,6 +1284,7 @@ This verse answers. Govardhana was only the apparent husband of Candrāvalī. He
 
 
     <div class="fc-translation" data-sec="translation">Those who act as an obstacle for attaining Kṛṣṇa are unfriendly to oneself.</div>
+
 
 
 
@@ -1366,6 +1351,7 @@ This verse answers. Govardhana was only the apparent husband of Candrāvalī. He
 
 
     <div class="fc-translation" data-sec="translation">From Uddhava-sandeśa: O Akrūra! Look closely! When you mount your chariot and start to go to Mathurā, millions of our life airs will also depart. O merciless one, Akrūra! You are cruel, forcibly taking Kṛṣṇa away from Vraja. Do not destroy respect for the Yadu dynasty!</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -1439,6 +1425,7 @@ This verse answers. Govardhana was only the apparent husband of Candrāvalī. He
 
 
 
+
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-5-18" data-note-label="BG 5.18" data-note-chapter="5" data-note-vlabel="18">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 5.18…" rows="4"></textarea>
@@ -1494,10 +1481,11 @@ This verse answers. Govardhana was only the apparent husband of Candrāvalī. He
 
     <div class="fc-translation" data-sec="translation">An example: Bhīma, forcefully placing his left foot--fearful as the punishment of Yama--on top of Śiśupāla’s crown, kicked him decisively three times. This Śiśupāla had insulted the Lord whose lotus feet are lit by and worshipped by the rays emanating from the crest jewels of the Vedas (Upaniṣads).</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
-            <p>When Kṛṣṇa was insulted by Śiśupāla in the assembly of the Rājasūya yajṣa convened by Mahārāja Yudhiṣṭhira, there was a great turmoil among the Pāṇḍavas and Kurus, involving grandfather Bhīṣma. At that time Nakula said with great anger, “Kṛṣṇa is the Supreme Personality of Godhead, and the nails of His toes are beautified by the light emanating from the jeweled helmets of the authorities of the Vedas. If He is derided by anyone, I declare herewith as a Pāṇḍava that I will kick his helmet with my left foot and I will strike him with my arrows, which are as good as yama-daṇḍa, the scepter of Yamarāja!” This is an instance of ecstatic love for Kṛṣṇa in anger.</p>
+            <p>When Kṛṣṇa was insulted by Śiśupāla in the assembly of the Rājasūya yajña convened by Mahārāja Yudhiṣṭhira, there was a great turmoil among the Pāṇḍavas and Kurus, involving grandfather Bhīṣma. At that time Nakula said with great anger, “Kṛṣṇa is the Supreme Personality of Godhead, and the nails of His toes are beautified by the light emanating from the jeweled helmets of the authorities of the Vedas. If He is derided by anyone, I declare herewith as a Pāṇḍava that I will kick his helmet with my left foot and I will strike him with my arrows, which are as good as yama-daṇḍa, the scepter of Yamarāja!” This is an instance of ecstatic love for Kṛṣṇa in anger.</p>
         </div>
         <div class="cr-purport-attrib">— A.C. Bhaktivedanta Swami Prabhupāda</div>
     </section>
@@ -1554,6 +1542,7 @@ This verse answers. Govardhana was only the apparent husband of Candrāvalī. He
 
 
     <div class="fc-translation" data-sec="translation">In raudra-bhakti-rasa, the uddīpanas for becoming angry are sarcastic laughs, deceptive speaking, frowns and disrespect expressed by enemies of Kṛṣṇa and by friendly persons.</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -1632,6 +1621,7 @@ This verse answers. Govardhana was only the apparent husband of Candrāvalī. He
 
     <div class="fc-translation" data-sec="translation">The anubhāvas of raudra-bhakti-rasa are wringing the hands, grinding the teeth, reddening of the eyes, biting the lips, deeply contracting the brows, flinging the arms, beating others, silence, hanging the head down, heavy breathing, glancing with hostility, cursing, shaking the head, having the edges of the eyes turn pink, frowning, and quivering of the lower lip. All the sāttvika-bhāvas such as paralysis manifest.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1708,6 +1698,7 @@ This verse answers. Govardhana was only the apparent husband of Candrāvalī. He
 
 
     <div class="fc-translation" data-sec="translation">The anubhāvas of raudra-bhakti-rasa are wringing the hands, grinding the teeth, reddening of the eyes, biting the lips, deeply contracting the brows, flinging the arms, beating others, silence, hanging the head down, heavy breathing, glancing with hostility, cursing, shaking the head, having the edges of the eyes turn pink, frowning, and quivering of the lower lip. All the sāttvika-bhāvas such as paralysis manifest.</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -1786,6 +1777,7 @@ This verse answers. Govardhana was only the apparent husband of Candrāvalī. He
 
     <div class="fc-translation" data-sec="translation">The anubhāvas of raudra-bhakti-rasa are wringing the hands, grinding the teeth, reddening of the eyes, biting the lips, deeply contracting the brows, flinging the arms, beating others, silence, hanging the head down, heavy breathing, glancing with hostility, cursing, shaking the head, having the edges of the eyes turn pink, frowning, and quivering of the lower lip. All the sāttvika-bhāvas such as paralysis manifest.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1846,6 +1838,7 @@ This verse answers. Govardhana was only the apparent husband of Candrāvalī. He
 
 
     <div class="fc-translation" data-sec="translation">Typical vyabhicāri-bhāvas are āvega, jaḍatā, garva, nirveda, moha, cāpalya, asūyā, augrya, amarṣa, and śrama.</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -1916,6 +1909,7 @@ This verse answers. Govardhana was only the apparent husband of Candrāvalī. He
 
     <div class="fc-translation" data-sec="translation">In raudra-bhakti-rasa, krodha-rati is the sthāyi-bhāva. It has three types: kopa, manyu and roṣa. Kopa is anger directed towards enemies. Manyu is anger directed to one’s friends. Friends are of three types: superior, equal and inferior. Roṣa is a woman’s anger directed against Kṛṣṇa. This actually becomes a vyabhicāri-bhāva in madhura-rasa.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1931,6 +1925,7 @@ This verse answers. Govardhana was only the apparent husband of Candrāvalī. He
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>In madhura-rasa (between the gopīs and Kṛṣṇa), this anger (roṣa) becomes a vyabhicāri-bhāva. For the elder women and the sakhīs, kopa and manyu become a sthāyi-bhāva, but for the women lovers in madhura-rasa, anger, called roṣa, directed to Kṛṣṇa, does not become a sthāyi-bhāva in raudra-rasa. [Note: Thus it is not discussed here.] Among the previously mentioned vyabhicāri-bhāvas, when augrya (ferocity) is prominent, it is directed to enemies. When amarṣa (indignation) is prominent it is directed to friends. When asūyā (fault-finding) is prominent it is directed to the lover.</p>
@@ -1997,6 +1992,7 @@ This verse answers. Govardhana was only the apparent husband of Candrāvalī. He
 
 
     <div class="fc-translation" data-sec="translation">In raudra-bhakti-rasa, krodha-rati is the sthāyi-bhāva. It has three types: kopa, manyu and roṣa. Kopa is anger directed towards enemies. Manyu is anger directed to one’s friends. Friends are of three types: superior, equal and inferior. Roṣa is a woman’s anger directed against Kṛṣṇa. This actually becomes a vyabhicāri-bhāva in madhura-rasa.</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -2083,6 +2079,7 @@ This verse answers. Govardhana was only the apparent husband of Candrāvalī. He
 
 
 
+
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-5-27" data-note-label="BG 5.27" data-note-chapter="5" data-note-vlabel="27">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 5.27…" rows="4"></textarea>
@@ -2138,6 +2135,7 @@ This verse answers. Govardhana was only the apparent husband of Candrāvalī. He
 
     <div class="fc-translation" data-sec="translation">Kopa against an enemy: When crazy Jarāsandha, surrounding Mathurā, hurled unspeakable abuses at Kṛṣṇa, who possesses an unfathomable wealth of strength in battle, Balarāma, with eyes read as burning coals, glanced at His plow capable of devouring the flesh of a multitude of enemies.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2153,6 +2151,7 @@ This verse answers. Govardhana was only the apparent husband of Candrāvalī. He
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Kavalita-dviṣad-visara-jāṅgale (lāṅgale) nunoda means (glanced at the plow capable of devouring the flesh of all his enemies). Iṅgala means coals.</p>
@@ -2224,6 +2223,7 @@ This verse answers. Govardhana was only the apparent husband of Candrāvalī. He
 
     <div class="fc-translation" data-sec="translation">Manyu against elders, from Vidagdha-mādhava: O angry mother! When I shout to call someone, strong Kṛṣṇa immediately covers my mouth with His soft hand. When I try to flee in fear, He stretches His arms and blocks the path. When I bite my lower lip in anger, He falls down at my feet repeatedly. Please tell me how can I protect myself from Kṛṣṇa?</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2239,6 +2239,7 @@ This verse answers. Govardhana was only the apparent husband of Candrāvalī. He
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>These are the angry words of Rādhā to Paurṇamāsī, who was testing her love. She describes the behavior of Kṛṣṇa when He makes His appearance before her, as if He were actually present.</p>
@@ -2310,6 +2311,7 @@ This verse answers. Govardhana was only the apparent husband of Candrāvalī. He
 
     <div class="fc-translation" data-sec="translation">Manyu against equals: Jaṭilā: Ugly faced Mukharā! Hearing your words the core of my life is burning up. Mukharā: O Jaṭilā! Hearing your words, my head is burning up. Tell me, fool, when did Kṛṣṇa arrogantly touch my grand-daughter?</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2325,6 +2327,7 @@ This verse answers. Govardhana was only the apparent husband of Candrāvalī. He
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>This is a private quarrel between Jaṭilā, Rādhā’s mother-in-law, and Mukharā, who acted like a grandmother to Kṛṣṇa. Murmuraḥ means “burning chaff.” Niṭile means “on the head.”</p>
@@ -2367,9 +2370,9 @@ This verse answers. Govardhana was only the apparent husband of Candrāvalī. He
         <div class="cr-iast-line">nyūne, yathā –</div>
 <div class="cr-pron-line" data-sec="pronunciation">[nyoone, yathaa –]</div>        <div class="cr-iast-line">hanta svakīya-kuca-mūrdhni manoharo ’yaṁ</div>
 <div class="cr-pron-line" data-sec="pronunciation">[hanta svakeeya-kucha-moordhni manoharo ’yam]</div>        <div class="cr-iast-line">hāraś cakāsti hari-kaṇṭha-taṭī-cariṣṇuḥ |</div>
-<div class="cr-pron-line" data-sec="pronunciation">[haarash chakaasti hari-kantha-tatee-charishnuh |]</div>        <div class="cr-iast-line">bhoḥ paśyata svakula-kajjala-maṣjarīyaṁ</div>
-<div class="cr-pron-line" data-sec="pronunciation">[bhoh pashyata svakula-kajjala-mashjareeyam]</div>        <div class="cr-iast-line">kuṭena māṁ tad api vaṣcayate vadhūṭī ||31||</div>
-<div class="cr-pron-line" data-sec="pronunciation">[kutena maam tad api vashchayate vadhootee ||31||]</div>    </div>
+<div class="cr-pron-line" data-sec="pronunciation">[haarash chakaasti hari-kantha-tatee-charishnuh |]</div>        <div class="cr-iast-line">bhoḥ paśyata svakula-kajjala-mañjarīyaṁ</div>
+<div class="cr-pron-line" data-sec="pronunciation">[bhoh pashyata svakula-kajjala-manjareeyam]</div>        <div class="cr-iast-line">kuṭena māṁ tad api vañcayate vadhūṭī ||31||</div>
+<div class="cr-pron-line" data-sec="pronunciation">[kutena maam tad api vanchayate vadhootee ||31||]</div>    </div>
 
 
     <details class="cr-blend-details" data-sec="blended">
@@ -2385,16 +2388,17 @@ This verse answers. Govardhana was only the apparent husband of Candrāvalī. He
                 <div class="cr-blend-iast-line">hāraś cakāsti hari-kaṇṭha-taṭī-cariṣṇuḥ |</div>
             </div>
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">bhoḥ paśyata svakula-kajjala-maṣjarīyaṁ</div>
+                <div class="cr-blend-iast-line">bhoḥ paśyata svakula-kajjala-mañjarīyaṁ</div>
             </div>
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">kuṭena māṁ tad api vaṣcayate vadhūṭī ||31||</div>
+                <div class="cr-blend-iast-line">kuṭena māṁ tad api vañcayate vadhūṭī ||31||</div>
             </div>
         </div>
     </details>
 
 
     <div class="fc-translation" data-sec="translation">Manyu against inferiors: Hey everyone! Look! This attractive necklace from Kṛṣṇa’s throat looks so nice on Rādhā’s breast! Aagh! This little girl, a black sprout in my family, is cheating me with duplicity.</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -2411,6 +2415,7 @@ This verse answers. Govardhana was only the apparent husband of Candrāvalī. He
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>These are the words of Jaṭilā to Rādhā’s sakhīs, on seeing a pearl necklace of Kṛṣṇa being quickly removed from Rādhā’s body.</p>
@@ -2471,6 +2476,7 @@ This verse answers. Govardhana was only the apparent husband of Candrāvalī. He
     <div class="fc-translation" data-sec="translation">Rati (love for Kṛṣṇa) does not clearly manifest in this manyu (anger against friends). Thus, manyu is discussed here just to give examples.</div>
 
 
+
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -2478,6 +2484,7 @@ This verse answers. Govardhana was only the apparent husband of Candrāvalī. He
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Na tādśrsaḥ means “not clear.” Since it was explained in verse 7 that all inhabitants of Vraja are filled with rati for Kṛṣṇa, with the exception of Govardhana, husband of Candrāvalī, the appearance of manyu among the inhabitants of Vraja along with the disappearance of rati is not factual.</p>
@@ -2536,6 +2543,7 @@ This verse answers. Govardhana was only the apparent husband of Candrāvalī. He
 
 
     <div class="fc-translation" data-sec="translation">The inherent anger of enemies like Śiśupāla, being devoid of rati, does not become bhakti-rasa. Thus ends the Fifth Wave, concerning raudra-bhakti-rasa, in the Northern Section of Bhakti-rasāmṛta-sindhu.</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>

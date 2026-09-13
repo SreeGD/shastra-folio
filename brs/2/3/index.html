@@ -31,11 +31,13 @@
 <body class="has-sidebar">
 <header class="fc-site-header">
     <button type="button" class="fc-mobile-trigger fc-mobile-trigger-left" data-overlay="left" aria-label="Open settings drawer">⚙</button>
-    <a class="fc-brand" href="../../../">FolioCorpus<span class="fc-sub">Bhagavad-gītā</span></a>
+<a class="fc-brand" href="../../../">FolioCorpus<span class="fc-sub">Bhakti-rasāmṛta-sindhu</span></a>
     <nav class="fc-site-nav">
         <a href="../../../">Home</a>
         <a href="../../../bg/">Bhagavad-gītā</a>
         <a href="../../../sb/">Śrīmad-Bhāgavatam</a>
+        <a href="../../../brs/" title="Bhakti-rasāmṛta-sindhu with Jīva Gosvāmī's and Viśvanātha Cakravartī's commentaries">Bhakti-rasāmṛta-sindhu</a>
+        <a href="../../../nod/" title="Nectar of Devotion">Nectar of Devotion</a>
         <a href="../../../search/" title="Search across all integrated works">🔍 Search</a>
         <button type="button" id="fc-random-verse" class="fc-nav-btn" title="Jump to a random verse">🎲 Random</button>
     </nav>
@@ -46,8 +48,8 @@
     <button class="fc-sb-collapse" type="button" data-sb="left" title="Collapse left sidebar" aria-label="Collapse"></button>
 
     <div class="fc-sb-body">
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Reading</div>
+        <details class="fc-sb-section" data-sbsec="reading" open>
+            <summary class="fc-sb-title">Reading</summary>
             <div class="fc-sb-sub">Theme</div>
             <div class="fc-segmented" data-setting="theme">
                 <button type="button" data-val="light">Light</button>
@@ -73,10 +75,10 @@
                 <button type="button" data-val="single">Single</button>
                 <button type="button" data-val="side">Side-by-side</button>
             </div>
-        </div>
+        </details>
 
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Display</div>
+        <details class="fc-sb-section" data-sbsec="display" open>
+            <summary class="fc-sb-title">Display</summary>
             <div class="fc-sb-grid">
                 <label><input type="checkbox" data-section="devanagari" checked> Devanāgarī</label>
                 <label><input type="checkbox" data-section="iast" checked> IAST transliteration</label>
@@ -98,33 +100,10 @@
                 <button type="button" data-action="expand-all">Expand all</button>
                 <button type="button" data-action="collapse-all">Collapse all</button>
             </div>
-        </div>
+        </details>
 
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Find your starting point</div>
-            <div class="fc-persona-links">
-                <a class="fc-persona-link" href="../../../daily/">🌅 Daily (one value a week)</a>
-                <a class="fc-persona-link" href="../../../householder/">🏠 Householder (family & work)</a>
-                <a class="fc-persona-link" href="../../../parenting/">👨‍👩‍👧 Parenting (stories for kids)</a>
-                <a class="fc-persona-link" href="../../../themes/">📚 All themes</a>
-                <a class="fc-persona-link" href="../../../values/" style="background:#F0F6F2;border-left-color:#1F4632;">ॐ Vedic Value System ↗</a>
-                <a class="fc-persona-link" href="../../../vidya/" style="background:#FBF6E4;border-left-color:#C8860B;">📚 Vidyā Karaṇa (kids, multi-lang) ↗</a>
-            </div>
-        </div>
-
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Audience</div>
-            <div class="fc-audience-filter">
-                <label><input type="radio" name="fc-audience" value="all" checked> All levels</label>
-                <label><input type="radio" name="fc-audience" value="primary"> Primary (children)</label>
-                <label><input type="radio" name="fc-audience" value="middle"> Middle (teens)</label>
-                <label><input type="radio" name="fc-audience" value="senior"> Senior (adults)</label>
-                <label><input type="radio" name="fc-audience" value="college"> College / scholar</label>
-            </div>
-        </div>
-
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Tools</div>
+        <details class="fc-sb-section" data-sbsec="tools" open>
+            <summary class="fc-sb-title">Tools</summary>
             <div class="fc-sb-tools">
                 <button type="button" id="fc-presentation-toggle" class="fc-tool-btn"><span>🖥 Presentation</span><kbd class="fc-kbd">F</kbd></button>
                 <button type="button" id="fc-pen-toggle" class="fc-tool-btn"><span>✏️ Pen mode</span><kbd class="fc-kbd">P</kbd></button>
@@ -139,26 +118,10 @@
                 <button type="button" id="fc-clear-highlights" class="fc-tool-btn">🩷 Clear highlights (page)</button>
                 <button type="button" id="fc-notes-modal-open" class="fc-tool-btn">📓 My annotations</button>
             </div>
-        </div>
+        </details>
 
-        <div class="fc-sb-section" id="fc-tts-controls" hidden>
-            <div class="fc-sb-title">
-                Read-aloud
-                <label class="fc-tts-master">
-                    <input type="checkbox" id="fc-tts-enabled" checked>
-                    <span class="fc-tts-master-label">On</span>
-                </label>
-            </div>
-            <div class="fc-tts-inner">
-                <div class="fc-sb-sub">Voice</div>
-                <select id="fc-tts-voice" class="fc-tts-select" aria-label="TTS voice"></select>
-                <div class="fc-sb-sub">Rate <span class="fc-tts-rate-val">1.0×</span></div>
-                <input type="range" id="fc-tts-rate" min="0.5" max="2" step="0.1" value="1" class="fc-tts-rate" aria-label="Reading rate">
-            </div>
-        </div>
-
-        <div class="fc-sb-section" id="fc-progress-section">
-            <div class="fc-sb-title">Progress</div>
+        <details class="fc-sb-section" data-sbsec="progress" id="fc-progress-section" open>
+            <summary class="fc-sb-title">Progress</summary>
             <div class="fc-progress-row">
                 <span class="fc-progress-num" id="fc-progress-num">0</span>
                 <span class="fc-progress-divider">/</span>
@@ -173,29 +136,29 @@
                 <span class="fc-progress-spacer"></span>
                 <button type="button" class="fc-progress-reset" id="fc-progress-reset" title="Reset progress">↺</button>
             </div>
-        </div>
+        </details>
 
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Bookmarks <span class="fc-sb-count" id="fc-bookmarks-count">0</span></div>
+        <details class="fc-sb-section" data-sbsec="bookmarks" open>
+            <summary class="fc-sb-title">Bookmarks <span class="fc-sb-count" id="fc-bookmarks-count">0</span></summary>
             <ul class="fc-bookmark-list" id="fc-bookmarks-list">
                 <li class="fc-sb-empty">No bookmarks yet — click ☆ on any verse.</li>
             </ul>
-        </div>
+        </details>
 
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Notes <span class="fc-sb-count" id="fc-notes-count">0</span></div>
+        <details class="fc-sb-section" data-sbsec="notes" open>
+            <summary class="fc-sb-title">Notes <span class="fc-sb-count" id="fc-notes-count">0</span></summary>
             <ul class="fc-bookmark-list" id="fc-notes-list">
                 <li class="fc-sb-empty">No notes yet — open any verse and write in the 📝 block.</li>
             </ul>
-        </div>
+        </details>
 
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Export</div>
+        <details class="fc-sb-section" data-sbsec="export">
+            <summary class="fc-sb-title">Export</summary>
             <div class="fc-sb-tools">
                 <button type="button" id="fc-export-md" class="fc-tool-btn">📥 Download Markdown</button>
                 <button type="button" id="fc-export-json" class="fc-tool-btn">💾 Download JSON backup</button>
             </div>
-        </div>
+        </details>
     </div>
 </aside>    <main class="fc-container">
 <nav class="fc-breadcrumbs">
@@ -203,14 +166,14 @@
     <span class="sep">›</span>
     <a href="../../../brs/">Bhakti-rasāmṛta-sindhu</a>
     <span class="sep">›</span>
-    <a href="../../../brs/2/">Section 2</a>
+    <a href="../../../brs/2/">Division 2</a>
     <span class="sep">›</span>
-    <span>Chapter 3</span>
+    <span>Wave 3</span>
 </nav>
 
 <div class="fc-ribbon">
     <div class="fc-ribbon-row">
-        <h1 class="fc-verse-heading">2.3</h1>
+        <h1 class="fc-verse-heading">2.3 · Sāttvika-bhāva</h1>
         <span class="fc-ribbon-meta">96 verses</span>
         <input type="search" class="fc-search" id="fc-search" placeholder="🔍 Search in this chapter" aria-label="Search verses in this chapter">
         <span class="fc-ribbon-current" id="fc-ribbon-current" aria-live="polite"></span>
@@ -328,8 +291,8 @@
     </header>
 
     <div class="cr-iast-block" data-sec="iast">
-        <div class="cr-iast-line">kṛṣna-sambandhibhiḥ sākṣāt kiṣcid vā vyavadhānataḥ |</div>
-<div class="cr-pron-line" data-sec="pronunciation">[krishna-sambandhibhih saakshaat kishchid vaa vyavadhaanatah |]</div>        <div class="cr-iast-line">bhāvaiś cittam ihākrāntaṁ sattvam ity ucyate budhaiḥ ||1||</div>
+        <div class="cr-iast-line">kṛṣna-sambandhibhiḥ sākṣāt kiñcid vā vyavadhānataḥ |</div>
+<div class="cr-pron-line" data-sec="pronunciation">[krishna-sambandhibhih saakshaat kinchid vaa vyavadhaanatah |]</div>        <div class="cr-iast-line">bhāvaiś cittam ihākrāntaṁ sattvam ity ucyate budhaiḥ ||1||</div>
 <div class="cr-pron-line" data-sec="pronunciation">[bhaavaish chittam ihaakraantam sattvam ity uchyate budhaih ||1||]</div>    </div>
 
 
@@ -337,7 +300,7 @@
         <summary>Blended reading (Sanskrit + English inline)</summary>
         <div class="cr-blend-grid">
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">kṛṣna-sambandhibhiḥ sākṣāt kiṣcid vā vyavadhānataḥ |</div>
+                <div class="cr-blend-iast-line">kṛṣna-sambandhibhiḥ sākṣāt kiñcid vā vyavadhānataḥ |</div>
             </div>
             <div class="cr-blend-block">
                 <div class="cr-blend-iast-line">bhāvaiś cittam ihākrāntaṁ sattvam ity ucyate budhaiḥ ||1||</div>
@@ -347,6 +310,7 @@
 
 
     <div class="fc-translation" data-sec="translation">On the topic of rasa, when the heart becomes overwhelmed by ratis or bhāvas in relation to Kṛṣṇa, either directly or indirectly, the learned call this sattva.</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -410,6 +374,7 @@ When a devotee is always intensely affected by love for Kṛṣṇa in a direct 
 
     <div class="fc-translation" data-sec="translation">The transformations which arise solely from this sattva are called sāttvika-bhāvas. There are three types of sāttvi­ka-bhāvas: snigdha (affectionate, arising from genuine rati), digdha (tainted, arising from other emotions) and rukṣa (contami­nated, arising in a person without rati).</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -425,6 +390,7 @@ When a devotee is always intensely affected by love for Kṛṣṇa in a direct 
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>In this definition, it should be understood that transformations arising from sattva (sattvād asmāt samutpannā) should really mean transformations arising solely from sattva. That is because the anubhāvas such as dancing also arise from sattva (heart overwhelmed by rati), but in combination with the intelligence. The sāttvika-bhāvas such as being stunned (stambha) arise from sattva alone, with no help from the intelligence. Thus there is no overlapping of items between anubhāva and sāttvika-bhāva. [Note: Sāttvika-bhāvas can be defined as completely spontaneous transformations of body, without any use of intellect. Another meaning of sāttvika is nature, unaffected by other elements.]</p>
@@ -484,6 +450,7 @@ When a devotee is always intensely affected by love for Kṛṣṇa in a direct 
 
     <div class="fc-translation" data-sec="translation">Snigdha-sāttvika-bhāva: Snigdha-sāttvika has two divisions: principal and secondary.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -527,8 +494,8 @@ When a devotee is always intensely affected by love for Kṛṣṇa in a direct 
     <div class="cr-iast-block" data-sec="iast">
         <div class="cr-iast-line">tatra mukhyāḥ –</div>
 <div class="cr-pron-line" data-sec="pronunciation">[tatra mukhyaah –]</div>        <div class="cr-iast-line">ākramān mukhyayā ratyā mukhyāḥ syuḥ sāttvikā amī |</div>
-<div class="cr-pron-line" data-sec="pronunciation">[aakramaan mukhyayaa ratyaa mukhyaah syuh saattvikaa amee |]</div>        <div class="cr-iast-line">vijṣeyaḥ kṛṣṇa-sambandhaḥ sākṣād evātra sūribhiḥ ||4||</div>
-<div class="cr-pron-line" data-sec="pronunciation">[vijsheyah krishna-sambandhah saakshaad evaatra sooribhih ||4||]</div>    </div>
+<div class="cr-pron-line" data-sec="pronunciation">[aakramaan mukhyayaa ratyaa mukhyaah syuh saattvikaa amee |]</div>        <div class="cr-iast-line">vijñeyaḥ kṛṣṇa-sambandhaḥ sākṣād evātra sūribhiḥ ||4||</div>
+<div class="cr-pron-line" data-sec="pronunciation">[vijneyah krishna-sambandhah saakshaad evaatra sooribhih ||4||]</div>    </div>
 
 
     <details class="cr-blend-details" data-sec="blended">
@@ -541,13 +508,14 @@ When a devotee is always intensely affected by love for Kṛṣṇa in a direct 
                 <div class="cr-blend-iast-line">ākramān mukhyayā ratyā mukhyāḥ syuḥ sāttvikā amī |</div>
             </div>
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">vijṣeyaḥ kṛṣṇa-sambandhaḥ sākṣād evātra sūribhiḥ ||4||</div>
+                <div class="cr-blend-iast-line">vijñeyaḥ kṛṣṇa-sambandhaḥ sākṣād evātra sūribhiḥ ||4||</div>
             </div>
         </div>
     </details>
 
 
     <div class="fc-translation" data-sec="translation">Principal snigdha-sāttvika-bhāva: The principal sāttvika-bhāvas arise from a principal rati. The wise call this relationship with Kṛṣṇa direct.</div>
+
 
 
     <section class="fc-section" data-sec="gaudiya">
@@ -557,6 +525,7 @@ When a devotee is always intensely affected by love for Kṛṣṇa in a direct 
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>The nature of snigdha-sāttvika-bhāvas is that the heart is overcome by either the principal or the secondary ratis, which will be explained. In general, the characteristic of all snigdha-sāttvika-bhāvas should be understood in this way. The heart should be agitated by any one of these types of ratis.</p>
@@ -628,6 +597,7 @@ When a devotee is always intensely affected by love for Kṛṣṇa in a direct 
 
     <div class="fc-translation" data-sec="translation">An example of principal snigdha- sāttvika-bhāva: Rādhā, whose teeth were whiter than the kunda flower, while making an excellent garland of kunda flowers for Mukunda, heard the sweet song of the flute. She became stunned.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -669,21 +639,22 @@ When a devotee is always intensely affected by love for Kṛṣṇa in a direct 
     </header>
 
     <div class="cr-iast-block" data-sec="iast">
-        <div class="cr-iast-line">mukhyaḥ stambha ’yam itthaṁ te jṣeyāḥ svedādayo ’pi ca ||6||</div>
-<div class="cr-pron-line" data-sec="pronunciation">[mukhyah stambha ’yam ittham te jsheyaah svedaadayo ’pi cha ||6||]</div>    </div>
+        <div class="cr-iast-line">mukhyaḥ stambha ’yam itthaṁ te jñeyāḥ svedādayo ’pi ca ||6||</div>
+<div class="cr-pron-line" data-sec="pronunciation">[mukhyah stambha ’yam ittham te jneyaah svedaadayo ’pi cha ||6||]</div>    </div>
 
 
     <details class="cr-blend-details" data-sec="blended">
         <summary>Blended reading (Sanskrit + English inline)</summary>
         <div class="cr-blend-grid">
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">mukhyaḥ stambha ’yam itthaṁ te jṣeyāḥ svedādayo ’pi ca ||6||</div>
+                <div class="cr-blend-iast-line">mukhyaḥ stambha ’yam itthaṁ te jñeyāḥ svedādayo ’pi ca ||6||</div>
             </div>
         </div>
     </details>
 
 
     <div class="fc-translation" data-sec="translation">In this example, being stunned is a principal snigdha-sāttvika-bhāva (since it arises from a principal rati, madhura-rati). In the same way, the appearance of other sāttvika-bhāvas such as perspiring should be understood.</div>
+
 
 
 
@@ -721,8 +692,8 @@ When a devotee is always intensely affected by love for Kṛṣṇa in a direct 
     <div class="cr-iast-block" data-sec="iast">
         <div class="cr-iast-line">atha gauṇāḥ –</div>
 <div class="cr-pron-line" data-sec="pronunciation">[atha gaunaah –]</div>        <div class="cr-iast-line">ratyākramaṇataḥ proktā gauṇās te gauṇa-bhūtayā |</div>
-<div class="cr-pron-line" data-sec="pronunciation">[ratyaakramanatah proktaa gaunaas te gauna-bhootayaa |]</div>        <div class="cr-iast-line">atra kṛṣṇasya sambandhaḥ syāt kiṣcid vyavadhānataḥ ||7||</div>
-<div class="cr-pron-line" data-sec="pronunciation">[atra krishnasya sambandhah syaat kishchid vyavadhaanatah ||7||]</div>    </div>
+<div class="cr-pron-line" data-sec="pronunciation">[ratyaakramanatah proktaa gaunaas te gauna-bhootayaa |]</div>        <div class="cr-iast-line">atra kṛṣṇasya sambandhaḥ syāt kiñcid vyavadhānataḥ ||7||</div>
+<div class="cr-pron-line" data-sec="pronunciation">[atra krishnasya sambandhah syaat kinchid vyavadhaanatah ||7||]</div>    </div>
 
 
     <details class="cr-blend-details" data-sec="blended">
@@ -735,13 +706,14 @@ When a devotee is always intensely affected by love for Kṛṣṇa in a direct 
                 <div class="cr-blend-iast-line">ratyākramaṇataḥ proktā gauṇās te gauṇa-bhūtayā |</div>
             </div>
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">atra kṛṣṇasya sambandhaḥ syāt kiṣcid vyavadhānataḥ ||7||</div>
+                <div class="cr-blend-iast-line">atra kṛṣṇasya sambandhaḥ syāt kiñcid vyavadhānataḥ ||7||</div>
             </div>
         </div>
     </details>
 
 
     <div class="fc-translation" data-sec="translation">Secondary snigdha-sāttvika-bhāva. Sāttvika-bhāvas which arise from a secondary rati are called secondary snigdha-sāttvika-bhāvas. The relationship with Kṛṣṇa is somewhat indirect.</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -820,6 +792,7 @@ When a devotee is always intensely affected by love for Kṛṣṇa in a direct 
 
     <div class="fc-translation" data-sec="translation">An example: When Kṛṣṇa, the rain cloud for the cātaka birds of her eyes, was brought to Mathurā, Yaśodā, turning red-faced in anger, began to scold Nanda Mahārāja with a choked voice. In this example, the change of color and choked voice of Yaśodā have been caused by the secondary rati of anger (krodha-rati).</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -835,6 +808,7 @@ When a devotee is always intensely affected by love for Kṛṣṇa in a direct 
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Overcome with krodha-rati, a secondary rati, Yaśodā had changes in her color and voice. These sāttvika-bhāvas are classed as secondary. [Note: It is indirectly related to Kṛṣṇa because the anger is not directed to Kṛṣṇa but to Nanda.]</p>
@@ -898,6 +872,7 @@ When a devotee is always intensely affected by love for Kṛṣṇa in a direct 
 
     <div class="fc-translation" data-sec="translation">Digdha-sāttvika-bhāva: When the heart of a person who possesses genuine rati is overcome by an emotion other than the primary or secondary rati and if this emotion appears along with a genuine rati, it is called digdha-sāttvika-bhāva.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -942,8 +917,8 @@ When a devotee is always intensely affected by love for Kṛṣṇa in a direct 
         <div class="cr-iast-line">yathā –</div>
 <div class="cr-pron-line" data-sec="pronunciation">[yathaa –]</div>        <div class="cr-iast-line">pūtanām iha niśāmya niśāyāṁ</div>
 <div class="cr-pron-line" data-sec="pronunciation">[pootanaam iha nishaamya nishaayaam]</div>        <div class="cr-iast-line">sā niśānta-luṭhad-udbhaṭa-gātrīm |</div>
-<div class="cr-pron-line" data-sec="pronunciation">[saa nishaanta-luthad-udbhata-gaatreem |]</div>        <div class="cr-iast-line">kampitāṅga-latikā vraja-rājṣī</div>
-<div class="cr-pron-line" data-sec="pronunciation">[kampitaanga-latikaa vraja-raajshee]</div>        <div class="cr-iast-line">putram ākula-matir vicinoti ||10||</div>
+<div class="cr-pron-line" data-sec="pronunciation">[saa nishaanta-luthad-udbhata-gaatreem |]</div>        <div class="cr-iast-line">kampitāṅga-latikā vraja-rājñī</div>
+<div class="cr-pron-line" data-sec="pronunciation">[kampitaanga-latikaa vraja-raajnee]</div>        <div class="cr-iast-line">putram ākula-matir vicinoti ||10||</div>
 <div class="cr-pron-line" data-sec="pronunciation">[putram aakula-matir vichinoti ||10||]</div>    </div>
 
 
@@ -960,7 +935,7 @@ When a devotee is always intensely affected by love for Kṛṣṇa in a direct 
                 <div class="cr-blend-iast-line">sā niśānta-luṭhad-udbhaṭa-gātrīm |</div>
             </div>
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">kampitāṅga-latikā vraja-rājṣī</div>
+                <div class="cr-blend-iast-line">kampitāṅga-latikā vraja-rājñī</div>
             </div>
             <div class="cr-blend-block">
                 <div class="cr-blend-iast-line">putram ākula-matir vicinoti ||10||</div>
@@ -970,6 +945,7 @@ When a devotee is always intensely affected by love for Kṛṣṇa in a direct 
 
 
     <div class="fc-translation" data-sec="translation">An example: One time, Yaśodā, while dreaming at night, saw the huge body of Pūtanā rolling on the ground in her house. Her body began shaking. Then, and in great agitation, she began to search for Kṛṣṇa.</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -983,9 +959,21 @@ When a devotee is always intensely affected by love for Kṛṣṇa in a direct 
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
             <div class="cr-acarya-name">
+                Viśvanātha Cakravartī Ṭhākura
+                <span class="cr-samp-badge">Gauḍīya</span>
+            </div>
+            <div class="cr-acarya-work">Bhakti-sāra-pradarśinī</div>
+            <div class="cr-acarya-label">Commentary</div>
+            <div class="cr-acarya-purp">
+                <p>She began to shake (sāttvika-bhāva) because of seeing in a dream the body of Pūtanā rolling around in her house. Thus the sāttvik­a-bhāva did not arise from either a primary or secondary rati. Then she began to search for Kṛṣṇa. This indicates an appearance of her genuine rati along with the sāttvika-bhāva.</p>
+            </div>
+        </div>
+        <div class="cr-acarya-card gaudiya">
+            <div class="cr-acarya-name">
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>This verse describes what happened in Yaśodā’s dream, since there is no scriptural description of the real event happening in her house. Because of the bewilderment caused by the dream, she immediately developed fear for Kṛṣṇa (an accompanying secondary rati) because of not seeing Him present.</p>
@@ -1041,6 +1029,7 @@ When a devotee is always intensely affected by love for Kṛṣṇa in a direct 
 
     <div class="fc-translation" data-sec="translation">Since this shaking of her body accompanies the actual rati for Kṛṣṇa, it is called digdha.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1056,6 +1045,7 @@ When a devotee is always intensely affected by love for Kṛṣṇa in a direct 
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>The shaking of her body arose solely from seeing the dreadful dream. [Note: Bhaya-rati is fear for Kṛṣṇa’s safety. She did not have fear related to Kṛṣṇa until later. Her reaction to the dream about Pūtanā can be considered as anurasa (4.9.33). That produced trembling in her body. However, she has real rati for Kṛṣṇa at all times. Thus the shaking of her body is classed as digdha-sāttvika-bhāva.] In verse 8 Yaśodā’s anger (secondary rati) due to separation from Kṛṣṇa caused change of her color and choking of her voice.</p>
@@ -1118,6 +1108,7 @@ When a devotee is always intensely affected by love for Kṛṣṇa in a direct 
 
 
     <div class="fc-translation" data-sec="translation">Rukṣa-sāttvika-bhāva. Sometimes there are apparent sāttvika-bhāvas similar to those of persons possessing rati, appearing in persons without real rati, through astonishment or bliss caused by hearing about the sweet and astonishing Lord. This is called rukṣa-sāttvika-bhāva.</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -1192,6 +1183,7 @@ When a devotee is always intensely affected by love for Kṛṣṇa in a direct 
 
     <div class="fc-translation" data-sec="translation">An example: A person who is revealed to be devoid of rati by absorbing himself in the pursuit of material enjoyment may develop hairs standing on end after being excited by songs concerning the pastimes of Mādhava.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1233,9 +1225,9 @@ When a devotee is always intensely affected by love for Kṛṣṇa in a direct 
     </header>
 
     <div class="cr-iast-block" data-sec="iast">
-        <div class="cr-iast-line">rukṣa eṣa romāṣcāḥ –</div>
-<div class="cr-pron-line" data-sec="pronunciation">[ruksha esha romaashchaah –]</div>        <div class="cr-iast-line">rukṣo ’yaṁ rati-śūnyatvād romāṣcaṁ kathito budhaiḥ |</div>
-<div class="cr-pron-line" data-sec="pronunciation">[ruksho ’yam rati-shoonyatvaad romaashcham kathito budhaih |]</div>        <div class="cr-iast-line">mumukṣu-prabhṛtau pūrvaṁ yo ratābhyāsa īritaḥ ||14||</div>
+        <div class="cr-iast-line">rukṣa eṣa romāñcāḥ –</div>
+<div class="cr-pron-line" data-sec="pronunciation">[ruksha esha romaanchaah –]</div>        <div class="cr-iast-line">rukṣo ’yaṁ rati-śūnyatvād romāñcaṁ kathito budhaiḥ |</div>
+<div class="cr-pron-line" data-sec="pronunciation">[ruksho ’yam rati-shoonyatvaad romaancham kathito budhaih |]</div>        <div class="cr-iast-line">mumukṣu-prabhṛtau pūrvaṁ yo ratābhyāsa īritaḥ ||14||</div>
 <div class="cr-pron-line" data-sec="pronunciation">[mumukshu-prabhritau poorvam yo rataabhyaasa eeritah ||14||]</div>    </div>
 
 
@@ -1243,10 +1235,10 @@ When a devotee is always intensely affected by love for Kṛṣṇa in a direct 
         <summary>Blended reading (Sanskrit + English inline)</summary>
         <div class="cr-blend-grid">
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">rukṣa eṣa romāṣcāḥ –</div>
+                <div class="cr-blend-iast-line">rukṣa eṣa romāñcāḥ –</div>
             </div>
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">rukṣo ’yaṁ rati-śūnyatvād romāṣcaṁ kathito budhaiḥ |</div>
+                <div class="cr-blend-iast-line">rukṣo ’yaṁ rati-śūnyatvād romāñcaṁ kathito budhaiḥ |</div>
             </div>
             <div class="cr-blend-block">
                 <div class="cr-blend-iast-line">mumukṣu-prabhṛtau pūrvaṁ yo ratābhyāsa īritaḥ ||14||</div>
@@ -1256,6 +1248,7 @@ When a devotee is always intensely affected by love for Kṛṣṇa in a direct 
 
 
     <div class="fc-translation" data-sec="translation">The standing of hairs on end which arises without real rati being present in the person is an example of rukṣa-sāttvika-bhāva. Raty-abhāsa which appears in persons desiring liberation, as described previously (1.3.44), gives rise to rukṣa-sāttvika-bhāvas. [Note: A person with bhāvābhāsa may show rukṣa-sāttvika-bhāvas.]</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -1333,6 +1326,7 @@ When a devotee is always intensely affected by love for Kṛṣṇa in a direct 
 
 
 
+
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-15" data-note-label="BG 3.15" data-note-chapter="3" data-note-vlabel="15">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.15…" rows="4"></textarea>
@@ -1356,8 +1350,8 @@ When a devotee is always intensely affected by love for Kṛṣṇa in a direct 
     </header>
 
     <div class="cr-iast-block" data-sec="iast">
-        <div class="cr-iast-line">te stambha-sveda-romāṣcāḥ svara-bhedo ’tha vepathuḥ |</div>
-<div class="cr-pron-line" data-sec="pronunciation">[te stambha-sveda-romaashchaah svara-bhedo ’tha vepathuh |]</div>        <div class="cr-iast-line">vaivarṇyam aśru pralaya ity aṣṭau sāttvikāḥ smṛtāḥ ||16||</div>
+        <div class="cr-iast-line">te stambha-sveda-romāñcāḥ svara-bhedo ’tha vepathuḥ |</div>
+<div class="cr-pron-line" data-sec="pronunciation">[te stambha-sveda-romaanchaah svara-bhedo ’tha vepathuh |]</div>        <div class="cr-iast-line">vaivarṇyam aśru pralaya ity aṣṭau sāttvikāḥ smṛtāḥ ||16||</div>
 <div class="cr-pron-line" data-sec="pronunciation">[vaivarnyam ashru pralaya ity ashtau saattvikaah smritaah ||16||]</div>    </div>
 
 
@@ -1365,7 +1359,7 @@ When a devotee is always intensely affected by love for Kṛṣṇa in a direct 
         <summary>Blended reading (Sanskrit + English inline)</summary>
         <div class="cr-blend-grid">
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">te stambha-sveda-romāṣcāḥ svara-bhedo ’tha vepathuḥ |</div>
+                <div class="cr-blend-iast-line">te stambha-sveda-romāñcāḥ svara-bhedo ’tha vepathuḥ |</div>
             </div>
             <div class="cr-blend-block">
                 <div class="cr-blend-iast-line">vaivarṇyam aśru pralaya ity aṣṭau sāttvikāḥ smṛtāḥ ||16||</div>
@@ -1375,6 +1369,7 @@ When a devotee is always intensely affected by love for Kṛṣṇa in a direct 
 
 
     <div class="fc-translation" data-sec="translation">The eight sāttvika bhāvas are paralysis, perspiration, hairs standing on end, choking of the voice, trembling, changing color, tears, and fainting.</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -1437,6 +1432,7 @@ When a devotee is always intensely affected by love for Kṛṣṇa in a direct 
 
     <div class="fc-translation" data-sec="translation">The prāṇa takes shelter of the four elements earth, water, fire and ether, and sometimes takes shelter of itself. The prāṇa then moves throughout the body.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1498,6 +1494,7 @@ When a devotee is always intensely affected by love for Kṛṣṇa in a direct 
 
     <div class="fc-translation" data-sec="translation">When the prāṇa takes shelter of the earth element, paralysis arises. When the prāṇa takes shelter of the water element, tears arise. When the prāṇa takes shelter of the fire element, perspiration and change of color arise. When the prāṇa takes shelter of the ether element, fainting arises.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1540,8 +1537,8 @@ When a devotee is always intensely affected by love for Kṛṣṇa in a direct 
 
     <div class="cr-iast-block" data-sec="iast">
         <div class="cr-iast-line">svastha eva kramān manda-madhya-tīvratva-bheda-bhāk |</div>
-<div class="cr-pron-line" data-sec="pronunciation">[svastha eva kramaan manda-madhya-teevratva-bheda-bhaak |]</div>        <div class="cr-iast-line">romāṣca-kampa-vaisvarṇyāṇy atra trīṇi tanoty asau ||19||</div>
-<div class="cr-pron-line" data-sec="pronunciation">[romaashcha-kampa-vaisvarnyaany atra treeni tanoty asau ||19||]</div>    </div>
+<div class="cr-pron-line" data-sec="pronunciation">[svastha eva kramaan manda-madhya-teevratva-bheda-bhaak |]</div>        <div class="cr-iast-line">romāñca-kampa-vaisvarṇyāṇy atra trīṇi tanoty asau ||19||</div>
+<div class="cr-pron-line" data-sec="pronunciation">[romaancha-kampa-vaisvarnyaany atra treeni tanoty asau ||19||]</div>    </div>
 
 
     <details class="cr-blend-details" data-sec="blended">
@@ -1551,13 +1548,14 @@ When a devotee is always intensely affected by love for Kṛṣṇa in a direct 
                 <div class="cr-blend-iast-line">svastha eva kramān manda-madhya-tīvratva-bheda-bhāk |</div>
             </div>
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">romāṣca-kampa-vaisvarṇyāṇy atra trīṇi tanoty asau ||19||</div>
+                <div class="cr-blend-iast-line">romāñca-kampa-vaisvarṇyāṇy atra trīṇi tanoty asau ||19||</div>
             </div>
         </div>
     </details>
 
 
     <div class="fc-translation" data-sec="translation">When the prāṇa takes shelter of itself to a small degree the hairs stand on end. When the prāṇa takes shelter of itself to a moderate degree, the body shakes. When the prāṇa takes shelter of itself to the extreme, the voice chokes up.</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -1567,6 +1565,20 @@ When a devotee is always intensely affected by love for Kṛṣṇa in a direct 
         <div class="cr-purport-attrib">— A.C. Bhaktivedanta Swami Prabhupāda</div>
     </section>
 
+    <section class="fc-section" data-sec="gaudiya">
+        <div class="fc-section-label">Gauḍīya Ācāryas</div>
+        <div class="cr-acarya-card gaudiya">
+            <div class="cr-acarya-name">
+                Viśvanātha Cakravartī Ṭhākura
+                <span class="cr-samp-badge">Gauḍīya</span>
+            </div>
+            <div class="cr-acarya-work">Bhakti-sāra-pradarśinī</div>
+            <div class="cr-acarya-label">Commentary</div>
+            <div class="cr-acarya-purp">
+                <p>These verses describe the way in which one particular sāttvika-bhāva appears. The prāṇa (after the heart has become overcome with emotion and offered itself to the prāṇa) sometimes takes shelter of earth, water, fire or ether, and sometimes of air, which is the basis of prāṇa itself, and moves throughout the body. If the prāṇa takes shelter of earth element stambha or paralysis spreads throughout the body. When the prāṇa becomes fixed in the air element (sva-stha) to a small degree, then hair stands on end. When the prāṇa becomes fixed in the air element to a moderate degree, then shaking of the body occurs. When the prāṇa becomes extremely fixed in the air element, then the voice chokes up.</p>
+            </div>
+        </div>
+    </section>
 
 
 
@@ -1620,6 +1632,7 @@ When a devotee is always intensely affected by love for Kṛṣṇa in a direct 
 
     <div class="fc-translation" data-sec="translation">Because of this, the sāttvika-bhāvas produce intense disturbance both externally and internally. The wise call the disturbance to the body (external), the anubhāva aspect of the sāttvika-bhāva, and the disturbance to the heart (internal), the vyabhicāri aspect of the sāttvika-bhāva.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1635,6 +1648,7 @@ When a devotee is always intensely affected by love for Kṛṣṇa in a direct 
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Because of what has been explained (ataḥ), there are manifest strong (sphuṭam) disturbances externally and internally. This distinguishes the sāttvika-bhāvas from the anubhāvas which are called udbhāsvaras, affecting the body only. Bhāvatā in the verse refers to the vyabhicāri aspect of the sāttvika-bhāvas.</p>
@@ -1698,6 +1712,7 @@ When a devotee is always intensely affected by love for Kṛṣṇa in a direct 
 
     <div class="fc-translation" data-sec="translation">Paralysis: Paralysis arises from joy, fear, astonishment, disappointment and indignation. [Note: In the list of causes, only fear is a secondary rati. The others are vyabhicāri-bhāvas. This would produce an absence of mukhya-rati-snigdha-sāttvika-bhāvas. However, when vyabhicāri-bhāvas are mentioned as causes, this implies as well the mukhya-ratis as causes. Otherwise most of the sāttvika-bhāvas described would be digdha, arising from vyabhicāri-bhāvas rather than a primary or secondary rati. For instance, harṣa is cited as a cause of stambha in verse 22. This is similar to the example of mukhya-snigdha-sāttvika-bhāva given in verse 5, where Rādhā develops stambha on hearing Kṛṣṇa’s flute. Thus, the sequence in verse 5 or verse 22 would be mukhya-rati, a particular uddīpana, harṣa, sattva, and then stambha.] There is immobility of the action senses and knowledge gathering senses.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1714,6 +1729,7 @@ The symptom of being stunned is caused by ecstatic tribulation, fearfulness, ast
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Stambha is a particular condition of the mind. However, absence of voice and other elements (vāg-ādi-rāhityam) mentioned in the last lime of this verse are transformations of only the external body. Stambha or paralysis belongs to the sāttvika-bhāvas because of being situated both internally and externally. The first stage of stambha is subtle (internal) and later stage becomes gross (external). From the external transformations, one should understand that internal transformations have occurred. The two states manifest in that order. Thus the particular condition is called stambha which arises from joy, fear, astonishment, disappointment and anger, (which produce internal disturbance, sattva, where the prāṇa takes shelter of the various elements), followed by (tatra) absence of speaking (vāgādi-rāhityam). The explanations of the other sāttvika-bhāvas follow the same pattern. Emotions causing internal transformation produce external effects.
@@ -1785,6 +1801,7 @@ There is inactivity of the action senses (naiścalyam) and there is also inactio
 
 
     <div class="fc-translation" data-sec="translation">Paralysis arising from joy, from the Third Canto: The damsels of Vraja, after pastimes of laughter, humor and exchanges of glances, used to follow Him with their eyes, and thus they sat down with stunned intelligence and could not finish their household duties. SB 3.2.14</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -1859,6 +1876,7 @@ There is inactivity of the action senses (naiścalyam) and there is also inactio
 
     <div class="fc-translation" data-sec="translation">From fear: When Devakī saw her son Kṛṣṇa, dearer than billions of her lives, being attacked by the wrestlers, her eyes become dry and she became paralyzed.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1874,6 +1892,7 @@ There is inactivity of the action senses (naiścalyam) and there is also inactio
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Kṛṣṇa was more valuable or excellent (prārdhyam) than 100,000 billion of her lives (prāṇa-parārdhataḥ).</p>
@@ -1937,6 +1956,7 @@ There is inactivity of the action senses (naiścalyam) and there is also inactio
 
     <div class="fc-translation" data-sec="translation">From astonishment, from the Tenth Canto: Then, by the power of the effulgence of those Viṣṇu forms, Lord Brahmā, his eleven senses jolted by astonishment and stunned by transcendental bliss, became silent, just like a child’s clay doll in the presence of the village deity. SB 10.13.56</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1952,6 +1972,7 @@ There is inactivity of the action senses (naiścalyam) and there is also inactio
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Atikutukodvṛtya-stimitaikādaśendriyaḥ means that Brahmā’s mind, agitated by extreme astonishment, became totally inactive and inundated with prema.</p>
@@ -2015,6 +2036,7 @@ There is inactivity of the action senses (naiścalyam) and there is also inactio
 
     <div class="fc-translation" data-sec="translation">Another example of stambha arising from astonishment: Seeing that Govardhana Mountain, touching the sky, was held up by the hand of the small child, the inhabitants of Vraja became immobile like figures in a painting.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2030,6 +2052,7 @@ There is inactivity of the action senses (naiścalyam) and there is also inactio
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Citrārpita means that they became unable to use their senses, like painted pictures. Citrāyamāṇa (being like pictures) is an alternate version of the phrase.</p>
@@ -2101,6 +2124,7 @@ There is inactivity of the action senses (naiścalyam) and there is also inactio
 
     <div class="fc-translation" data-sec="translation">From sorrow: Seeing before them that Kṛṣṇa was entering the stomach of Aghāsura, who was the brother of Bakāsura, the devatās in the sky, overcome with sorrow, became clearly like painted pictures.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2116,6 +2140,7 @@ There is inactivity of the action senses (naiścalyam) and there is also inactio
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Citrapaṭāyate means that the host of devatās (diviṣan-nikaraḥ) became like paintings. Another version of the verse has citratatīyate.</p>
@@ -2187,6 +2212,7 @@ There is inactivity of the action senses (naiścalyam) and there is also inactio
 
     <div class="fc-translation" data-sec="translation">From indignation: When merciless Aśvatthāma became eager to shoot arrows at Kṛṣṇa, Arjuna, though hasty to respond to his enemy, became motionless for some time because of his anger.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2248,6 +2274,7 @@ There is inactivity of the action senses (naiścalyam) and there is also inactio
 
     <div class="fc-translation" data-sec="translation">Perspiration: Perspiration arises from joy, fear and anger. It makes the body damp.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2292,8 +2319,8 @@ There is inactivity of the action senses (naiścalyam) and there is also inactio
         <div class="cr-iast-line">tatra harṣād, yathā –</div>
 <div class="cr-pron-line" data-sec="pronunciation">[tatra harshaad, yathaa –]</div>        <div class="cr-iast-line">kim atra sūryātapam ākṣipantī</div>
 <div class="cr-pron-line" data-sec="pronunciation">[kim atra sooryaatapam aakshipantee]</div>        <div class="cr-iast-line">mugdhākṣi cāturyam urīkaroṣi |</div>
-<div class="cr-pron-line" data-sec="pronunciation">[mugdhaakshi chaaturyam ureekaroshi |]</div>        <div class="cr-iast-line">jṣātaṁ puraḥ prekṣya saroruhākṣaṁ</div>
-<div class="cr-pron-line" data-sec="pronunciation">[jshaatam purah prekshya saroruhaaksham]</div>        <div class="cr-iast-line">svinnāsi bhinnā kusumāyudhena ||29||</div>
+<div class="cr-pron-line" data-sec="pronunciation">[mugdhaakshi chaaturyam ureekaroshi |]</div>        <div class="cr-iast-line">jñātaṁ puraḥ prekṣya saroruhākṣaṁ</div>
+<div class="cr-pron-line" data-sec="pronunciation">[jnaatam purah prekshya saroruhaaksham]</div>        <div class="cr-iast-line">svinnāsi bhinnā kusumāyudhena ||29||</div>
 <div class="cr-pron-line" data-sec="pronunciation">[svinnaasi bhinnaa kusumaayudhena ||29||]</div>    </div>
 
 
@@ -2310,7 +2337,7 @@ There is inactivity of the action senses (naiścalyam) and there is also inactio
                 <div class="cr-blend-iast-line">mugdhākṣi cāturyam urīkaroṣi |</div>
             </div>
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">jṣātaṁ puraḥ prekṣya saroruhākṣaṁ</div>
+                <div class="cr-blend-iast-line">jñātaṁ puraḥ prekṣya saroruhākṣaṁ</div>
             </div>
             <div class="cr-blend-block">
                 <div class="cr-blend-iast-line">svinnāsi bhinnā kusumāyudhena ||29||</div>
@@ -2320,6 +2347,7 @@ There is inactivity of the action senses (naiścalyam) and there is also inactio
 
 
     <div class="fc-translation" data-sec="translation">From Joy: O Rādhā with joyful eyes! Why are you deriding the heat of the sun and emanating such an amiable nature? I understand that you have been pierced by the arrows of love, for you are perspiring on seeing lotus-eyed Kṛṣṇa in front of you.</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -2336,9 +2364,10 @@ There is inactivity of the action senses (naiścalyam) and there is also inactio
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
-                <p>What is understood (jṣātam)? It is understood that you have been pierced by the flower weapon (arrows of Cupid). How is this understood? You are perspiring after seeing the lotus-eyed Kṛṣṇa.</p>
+                <p>What is understood (jñātam)? It is understood that you have been pierced by the flower weapon (arrows of Cupid). How is this understood? You are perspiring after seeing the lotus-eyed Kṛṣṇa.</p>
             </div>
         </div>
     </section>
@@ -2407,6 +2436,7 @@ There is inactivity of the action senses (naiścalyam) and there is also inactio
 
     <div class="fc-translation" data-sec="translation">From Fear: Kṛṣṇa one time put on the dress of Abhimanyu for fun. His servant, Raktaka, thinking that He was Abhimanyu, called out to Him using impudent words. After understanding that He was actually Kṛṣṇa, he became every frightened and for some time became covered with perspiration.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2422,6 +2452,7 @@ There is inactivity of the action senses (naiścalyam) and there is also inactio
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Abhimanyu, one of the cowherd men, was the purported husband of Rādhā. However, Bhāgavatam says:
@@ -2466,8 +2497,8 @@ According to this hint, it should be accepted that Abhimanyu was a creation of t
 
     <div class="cr-iast-block" data-sec="iast">
         <div class="cr-iast-line">krodhād, yathā –</div>
-<div class="cr-pron-line" data-sec="pronunciation">[krodhaad, yathaa –]</div>        <div class="cr-iast-line">yajṣasya bhaṅgād ativṛṣṭi-kāriṇaṁ</div>
-<div class="cr-pron-line" data-sec="pronunciation">[yajshasya bhangaad ativrishti-kaarinam]</div>        <div class="cr-iast-line">samīkṣya śakraṁ saruṣo garutmataḥ |</div>
+<div class="cr-pron-line" data-sec="pronunciation">[krodhaad, yathaa –]</div>        <div class="cr-iast-line">yajñasya bhaṅgād ativṛṣṭi-kāriṇaṁ</div>
+<div class="cr-pron-line" data-sec="pronunciation">[yajnasya bhangaad ativrishti-kaarinam]</div>        <div class="cr-iast-line">samīkṣya śakraṁ saruṣo garutmataḥ |</div>
 <div class="cr-pron-line" data-sec="pronunciation">[sameekshya shakram sarusho garutmatah |]</div>        <div class="cr-iast-line">ghanopariṣṭād api tiṣṭhatas tadā</div>
 <div class="cr-pron-line" data-sec="pronunciation">[ghanoparishtaad api tishthatas tadaa]</div>        <div class="cr-iast-line">nipetur aṅgād ghana-nīra-bindavaḥ ||31||</div>
 <div class="cr-pron-line" data-sec="pronunciation">[nipetur angaad ghana-neera-bindavah ||31||]</div>    </div>
@@ -2480,7 +2511,7 @@ According to this hint, it should be accepted that Abhimanyu was a creation of t
                 <div class="cr-blend-iast-line">krodhād, yathā –</div>
             </div>
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">yajṣasya bhaṅgād ativṛṣṭi-kāriṇaṁ</div>
+                <div class="cr-blend-iast-line">yajñasya bhaṅgād ativṛṣṭi-kāriṇaṁ</div>
             </div>
             <div class="cr-blend-block">
                 <div class="cr-blend-iast-line">samīkṣya śakraṁ saruṣo garutmataḥ |</div>
@@ -2497,6 +2528,7 @@ According to this hint, it should be accepted that Abhimanyu was a creation of t
 
     <div class="fc-translation" data-sec="translation">From anger: Seeing Indra showering down excessive rain because his sacrifice had been stopped, Garuḍa, though situated on a cloud at a distance, became filled with anger. Profuse drops of perspiration fell from his limbs.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2512,6 +2544,7 @@ According to this hint, it should be accepted that Abhimanyu was a creation of t
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>“Being situated on a cloud” implies that Garuḍa was present at a distance, and did not participate in the pastime. With the use of the word api, virodhālaṅkāra is introduced. Though Garuḍa was situated on a cloud (ghana), which is already filled with water, water drops fell from his body.</p>
@@ -2551,9 +2584,9 @@ According to this hint, it should be accepted that Abhimanyu was a creation of t
     </header>
 
     <div class="cr-iast-block" data-sec="iast">
-        <div class="cr-iast-line">atha romāṣcaḥ –</div>
-<div class="cr-pron-line" data-sec="pronunciation">[atha romaashchah –]</div>        <div class="cr-iast-line">romāṣco ’yaṁ kilāścarya-harṣotsāha-bhayādijaḥ |</div>
-<div class="cr-pron-line" data-sec="pronunciation">[romaashcho ’yam kilaashcharya-harshotsaaha-bhayaadijah |]</div>        <div class="cr-iast-line">romāṇām abhyudgamas tatra gātra-saṁsparśanādayaḥ ||32||</div>
+        <div class="cr-iast-line">atha romāñcaḥ –</div>
+<div class="cr-pron-line" data-sec="pronunciation">[atha romaanchah –]</div>        <div class="cr-iast-line">romāñco ’yaṁ kilāścarya-harṣotsāha-bhayādijaḥ |</div>
+<div class="cr-pron-line" data-sec="pronunciation">[romaancho ’yam kilaashcharya-harshotsaaha-bhayaadijah |]</div>        <div class="cr-iast-line">romāṇām abhyudgamas tatra gātra-saṁsparśanādayaḥ ||32||</div>
 <div class="cr-pron-line" data-sec="pronunciation">[romaanaam abhyudgamas tatra gaatra-samsparshanaadayah ||32||]</div>    </div>
 
 
@@ -2561,10 +2594,10 @@ According to this hint, it should be accepted that Abhimanyu was a creation of t
         <summary>Blended reading (Sanskrit + English inline)</summary>
         <div class="cr-blend-grid">
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">atha romāṣcaḥ –</div>
+                <div class="cr-blend-iast-line">atha romāñcaḥ –</div>
             </div>
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">romāṣco ’yaṁ kilāścarya-harṣotsāha-bhayādijaḥ |</div>
+                <div class="cr-blend-iast-line">romāñco ’yaṁ kilāścarya-harṣotsāha-bhayādijaḥ |</div>
             </div>
             <div class="cr-blend-block">
                 <div class="cr-blend-iast-line">romāṇām abhyudgamas tatra gātra-saṁsparśanādayaḥ ||32||</div>
@@ -2574,6 +2607,7 @@ According to this hint, it should be accepted that Abhimanyu was a creation of t
 
 
     <div class="fc-translation" data-sec="translation">Standing of hairs on end: Standing of hairs on end takes place from astonishment, joy, enthusiasm and fear. In this state, all the hairs of the body stand on end, which sends a thrill throughout the body.</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -2648,6 +2682,7 @@ According to this hint, it should be accepted that Abhimanyu was a creation of t
 
     <div class="fc-translation" data-sec="translation">From astonishment: Yaśodā became astonished at seeing the heavenly, middle and lower planetary systems within the mouth of Kṛṣṇa when He was beginning to crawl about. The creeper of her body began to blossom with hairs standing on end.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2663,6 +2698,7 @@ According to this hint, it should be accepted that Abhimanyu was a creation of t
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Vailakṣyavatī here means filled with astonishment. Amara-kośa says, vilakṣo vismayānvita: vilakṣa means “filled with astonishment.”</p>
@@ -2734,6 +2770,7 @@ According to this hint, it should be accepted that Abhimanyu was a creation of t
 
     <div class="fc-translation" data-sec="translation">From Joy from the Tenth Canto: O mother earth, what austerity did you perform to attain the touch of Lord Keśava’s lotus feet, which has brought you such great joy that your bodily hairs are standing on end? You appear very beautiful in this condition. Was it during the Lord’s current appearance that you acquired this ecstatic symptom, or was it perhaps much earlier, when He stepped upon you in His form of the dwarf Vāmanadeva, or even earlier, when He embraced you in His form of the boar Varāhadeva? SB 10.30.10</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2749,6 +2786,7 @@ According to this hint, it should be accepted that Abhimanyu was a creation of t
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Keśava means Kṛṣṇa. Api means kim. Thus the meaning is “Or was it similar to the contact with His feet (aṅghri-sambhava) when Vāmana placed His foot upon you? Or was it similar to the touch when Varāha embraced you? No, these contacts have not produced your present ecstasy.”</p>
@@ -2790,8 +2828,8 @@ According to this hint, it should be accepted that Abhimanyu was a creation of t
     <div class="cr-iast-block" data-sec="iast">
         <div class="cr-iast-line">utsāhād, yathā –</div>
 <div class="cr-pron-line" data-sec="pronunciation">[utsaahaad, yathaa –]</div>        <div class="cr-iast-line">śṛṅgaṁ kelir aṇārambhe raṇayaty agha-mardane |</div>
-<div class="cr-pron-line" data-sec="pronunciation">[shringam kelir anaarambhe ranayaty agha-mardane |]</div>        <div class="cr-iast-line">śrīdāmno yoddhu-kāmasya reme romāṣcitaṁ vapuḥ ||35||</div>
-<div class="cr-pron-line" data-sec="pronunciation">[shreedaamno yoddhu-kaamasya reme romaashchitam vapuh ||35||]</div>    </div>
+<div class="cr-pron-line" data-sec="pronunciation">[shringam kelir anaarambhe ranayaty agha-mardane |]</div>        <div class="cr-iast-line">śrīdāmno yoddhu-kāmasya reme romāñcitaṁ vapuḥ ||35||</div>
+<div class="cr-pron-line" data-sec="pronunciation">[shreedaamno yoddhu-kaamasya reme romaanchitam vapuh ||35||]</div>    </div>
 
 
     <details class="cr-blend-details" data-sec="blended">
@@ -2804,13 +2842,14 @@ According to this hint, it should be accepted that Abhimanyu was a creation of t
                 <div class="cr-blend-iast-line">śṛṅgaṁ kelir aṇārambhe raṇayaty agha-mardane |</div>
             </div>
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">śrīdāmno yoddhu-kāmasya reme romāṣcitaṁ vapuḥ ||35||</div>
+                <div class="cr-blend-iast-line">śrīdāmno yoddhu-kāmasya reme romāñcitaṁ vapuḥ ||35||</div>
             </div>
         </div>
     </details>
 
 
     <div class="fc-translation" data-sec="translation">From eagerness: When Kṛṣṇa sounded His horn during a mock battle, Śrīdāma became eager to fight and his body hairs stood on end.</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -2885,6 +2924,7 @@ According to this hint, it should be accepted that Abhimanyu was a creation of t
 
     <div class="fc-translation" data-sec="translation">From fear: When Arjuna saw before him the Supreme Lord Kṛṣṇa as the astonishing universal form, his face dried up, and the hairs of his body suddenly stood on end.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2950,6 +2990,7 @@ According to this hint, it should be accepted that Abhimanyu was a creation of t
 
     <div class="fc-translation" data-sec="translation">Choking of the voice: Distortion of the voice is called svara-bheda. It arises from sorrow, astonishment, anger, joy and fear. It causes convulsions in speaking.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2965,6 +3006,7 @@ According to this hint, it should be accepted that Abhimanyu was a creation of t
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Vaisvarya (distortion of the voice) and svara-bheda (broken voice) are synonyms. The use of synonyms is found in the other definitions as well.</p>
@@ -3005,8 +3047,8 @@ According to this hint, it should be accepted that Abhimanyu was a creation of t
 
     <div class="cr-iast-block" data-sec="iast">
         <div class="cr-iast-line">tatra viṣādād , yathā –</div>
-<div class="cr-pron-line" data-sec="pronunciation">[tatra vishaadaad , yathaa –]</div>        <div class="cr-iast-line">vraja-rājṣi rathāt puro hariṁ</div>
-<div class="cr-pron-line" data-sec="pronunciation">[vraja-raajshi rathaat puro harim]</div>        <div class="cr-iast-line">svayam ity ardha-viśīrṇa-jalpayā |</div>
+<div class="cr-pron-line" data-sec="pronunciation">[tatra vishaadaad , yathaa –]</div>        <div class="cr-iast-line">vraja-rājñi rathāt puro hariṁ</div>
+<div class="cr-pron-line" data-sec="pronunciation">[vraja-raajni rathaat puro harim]</div>        <div class="cr-iast-line">svayam ity ardha-viśīrṇa-jalpayā |</div>
 <div class="cr-pron-line" data-sec="pronunciation">[svayam ity ardha-visheerna-jalpayaa |]</div>        <div class="cr-iast-line">hriyam eṇadṛśā gurāv api</div>
 <div class="cr-pron-line" data-sec="pronunciation">[hriyam enadrishaa guraav api]</div>        <div class="cr-iast-line">ślathayantyā kila roditā sakhī ||38||</div>
 <div class="cr-pron-line" data-sec="pronunciation">[shlathayantyaa kila roditaa sakhee ||38||]</div>    </div>
@@ -3019,7 +3061,7 @@ According to this hint, it should be accepted that Abhimanyu was a creation of t
                 <div class="cr-blend-iast-line">tatra viṣādād , yathā –</div>
             </div>
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">vraja-rājṣi rathāt puro hariṁ</div>
+                <div class="cr-blend-iast-line">vraja-rājñi rathāt puro hariṁ</div>
             </div>
             <div class="cr-blend-block">
                 <div class="cr-blend-iast-line">svayam ity ardha-viśīrṇa-jalpayā |</div>
@@ -3036,6 +3078,7 @@ According to this hint, it should be accepted that Abhimanyu was a creation of t
 
     <div class="fc-translation" data-sec="translation">From lamentation: “O queen of Vraja, Yaśodā! Please personally take Kṛṣṇa from the chariot in front of you (embarking for Mathurā).” Doe-eyed Rādhā has made her friends weep by giving up bashfulness in front of elders and uttering half of these words in a choked voice.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3051,6 +3094,7 @@ According to this hint, it should be accepted that Abhimanyu was a creation of t
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>The phrase rathāt puro hariṁ svayam should be completed with the verb “remove (nivartaya).”</p>
@@ -3093,8 +3137,8 @@ According to this hint, it should be accepted that Abhimanyu was a creation of t
         <div class="cr-iast-line">vismayād, yathā śrī-daśame–</div>
 <div class="cr-pron-line" data-sec="pronunciation">[vismayaad, yathaa shree-dashame–]</div>        <div class="cr-iast-line">śanair athotthāya vimṛjya locane</div>
 <div class="cr-pron-line" data-sec="pronunciation">[shanair athotthaaya vimrijya lochane]</div>        <div class="cr-iast-line">mukundam udvīkṣya vinamra-kandharaḥ |</div>
-<div class="cr-pron-line" data-sec="pronunciation">[mukundam udveekshya vinamra-kandharah |]</div>        <div class="cr-iast-line">kṛtāṣjaliḥ praśrayavān samāhitaḥ</div>
-<div class="cr-pron-line" data-sec="pronunciation">[kritaashjalih prashrayavaan samaahitah]</div>        <div class="cr-iast-line">sa-vepathur gadgadayailatelayā ||39||</div>
+<div class="cr-pron-line" data-sec="pronunciation">[mukundam udveekshya vinamra-kandharah |]</div>        <div class="cr-iast-line">kṛtāñjaliḥ praśrayavān samāhitaḥ</div>
+<div class="cr-pron-line" data-sec="pronunciation">[kritaanjalih prashrayavaan samaahitah]</div>        <div class="cr-iast-line">sa-vepathur gadgadayailatelayā ||39||</div>
 <div class="cr-pron-line" data-sec="pronunciation">[sa-vepathur gadgadayailatelayaa ||39||]</div>    </div>
 
 
@@ -3111,7 +3155,7 @@ According to this hint, it should be accepted that Abhimanyu was a creation of t
                 <div class="cr-blend-iast-line">mukundam udvīkṣya vinamra-kandharaḥ |</div>
             </div>
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">kṛtāṣjaliḥ praśrayavān samāhitaḥ</div>
+                <div class="cr-blend-iast-line">kṛtāñjaliḥ praśrayavān samāhitaḥ</div>
             </div>
             <div class="cr-blend-block">
                 <div class="cr-blend-iast-line">sa-vepathur gadgadayailatelayā ||39||</div>
@@ -3121,6 +3165,7 @@ According to this hint, it should be accepted that Abhimanyu was a creation of t
 
 
     <div class="fc-translation" data-sec="translation">From astonishment, from the Tenth Canto: Then, rising very gradually and wiping his two eyes, Lord Brahmā looked up at Mukunda. Lord Brahmā, his head bent low, his mind concentrated and his body trembling, very humbly began, with faltering words, to offer praises to Lord Kṛṣṇa. SB 10.13.64</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -3137,6 +3182,7 @@ According to this hint, it should be accepted that Abhimanyu was a creation of t
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Ilayā means “with words.” Ailata means “he praised.”</p>
@@ -3179,8 +3225,8 @@ According to this hint, it should be accepted that Abhimanyu was a creation of t
         <div class="cr-iast-line">amarṣād, yathā tatraiva–</div>
 <div class="cr-pron-line" data-sec="pronunciation">[amarshaad, yathaa tatraiva–]</div>        <div class="cr-iast-line">preṣṭhaṁ priyetaram iva pratibhāṣamāṇaṁ</div>
 <div class="cr-pron-line" data-sec="pronunciation">[preshtham priyetaram iva pratibhaashamaanam]</div>        <div class="cr-iast-line">kṛṣṇaṁ tad-artha-vinivartita-sarva-kāmāḥ |</div>
-<div class="cr-pron-line" data-sec="pronunciation">[krishnam tad-artha-vinivartita-sarva-kaamaah |]</div>        <div class="cr-iast-line">netre vimṛjya ruditopahate sma kiṣcit</div>
-<div class="cr-pron-line" data-sec="pronunciation">[netre vimrijya ruditopahate sma kishchit]</div>        <div class="cr-iast-line">saṁrambha-gadgada-giro ’bruvatānuraktāḥ ||40||</div>
+<div class="cr-pron-line" data-sec="pronunciation">[krishnam tad-artha-vinivartita-sarva-kaamaah |]</div>        <div class="cr-iast-line">netre vimṛjya ruditopahate sma kiñcit</div>
+<div class="cr-pron-line" data-sec="pronunciation">[netre vimrijya ruditopahate sma kinchit]</div>        <div class="cr-iast-line">saṁrambha-gadgada-giro ’bruvatānuraktāḥ ||40||</div>
 <div class="cr-pron-line" data-sec="pronunciation">[samrambha-gadgada-giro ’bruvataanuraktaah ||40||]</div>    </div>
 
 
@@ -3197,7 +3243,7 @@ According to this hint, it should be accepted that Abhimanyu was a creation of t
                 <div class="cr-blend-iast-line">kṛṣṇaṁ tad-artha-vinivartita-sarva-kāmāḥ |</div>
             </div>
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">netre vimṛjya ruditopahate sma kiṣcit</div>
+                <div class="cr-blend-iast-line">netre vimṛjya ruditopahate sma kiñcit</div>
             </div>
             <div class="cr-blend-block">
                 <div class="cr-blend-iast-line">saṁrambha-gadgada-giro ’bruvatānuraktāḥ ||40||</div>
@@ -3207,6 +3253,7 @@ According to this hint, it should be accepted that Abhimanyu was a creation of t
 
 
     <div class="fc-translation" data-sec="translation">From anger, also from the Tenth Canto: Although Kṛṣṇa was their beloved, and although they had abandoned all other objects of desire for His sake, He had been speaking to them unfavorably. Nonetheless, they remained unflinching in their attachment to Him. Stopping their crying, they wiped their eyes and began to speak, their voices stammering with agitation. SB 10.29.30</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -3252,8 +3299,8 @@ According to this hint, it should be accepted that Abhimanyu was a creation of t
         <div class="cr-iast-line">harṣād, yathā tatraiva–</div>
 <div class="cr-pron-line" data-sec="pronunciation">[harshaad, yathaa tatraiva–]</div>        <div class="cr-iast-line">hṛṣyat-tanūruho bhāva-pariklinnātma-locanaḥ ||</div>
 <div class="cr-pron-line" data-sec="pronunciation">[hrishyat-tanooruho bhaava-pariklinnaatma-lochanah ||]</div>        <div class="cr-iast-line">girā gadgadayāstauṣīt sattvam ālambya sātvataḥ |</div>
-<div class="cr-pron-line" data-sec="pronunciation">[giraa gadgadayaastausheet sattvam aalambya saatvatah |]</div>        <div class="cr-iast-line">praṇamya mūrdhnāvahitaḥ kṛtāṣjali-puṭaḥ śanaiḥ ||41||</div>
-<div class="cr-pron-line" data-sec="pronunciation">[pranamya moordhnaavahitah kritaashjali-putah shanaih ||41||]</div>    </div>
+<div class="cr-pron-line" data-sec="pronunciation">[giraa gadgadayaastausheet sattvam aalambya saatvatah |]</div>        <div class="cr-iast-line">praṇamya mūrdhnāvahitaḥ kṛtāñjali-puṭaḥ śanaiḥ ||41||</div>
+<div class="cr-pron-line" data-sec="pronunciation">[pranamya moordhnaavahitah kritaanjali-putah shanaih ||41||]</div>    </div>
 
 
     <details class="cr-blend-details" data-sec="blended">
@@ -3269,13 +3316,14 @@ According to this hint, it should be accepted that Abhimanyu was a creation of t
                 <div class="cr-blend-iast-line">girā gadgadayāstauṣīt sattvam ālambya sātvataḥ |</div>
             </div>
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">praṇamya mūrdhnāvahitaḥ kṛtāṣjali-puṭaḥ śanaiḥ ||41||</div>
+                <div class="cr-blend-iast-line">praṇamya mūrdhnāvahitaḥ kṛtāñjali-puṭaḥ śanaiḥ ||41||</div>
             </div>
         </div>
     </details>
 
 
     <div class="fc-translation" data-sec="translation">From joy, also from the Tenth Canto: As the great devotee Akrūra beheld all this, he became extremely pleased and felt enthused with transcendental devotion. His intense ecstasy caused His bodily hairs to stand on end and tears to flow from his eyes, drenching his entire body. Somehow managing to steady himself, Akrūra bowed his head to the ground. Then he joined his palms in supplication and, in a voice choked with emotion, very slowly and attentively began to pray. SB 10.39.56-57</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -3292,6 +3340,7 @@ According to this hint, it should be accepted that Abhimanyu was a creation of t
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Sātvataḥ here refers to the great devotee Akrūra.</p>
@@ -3363,6 +3412,7 @@ According to this hint, it should be accepted that Abhimanyu was a creation of t
 
     <div class="fc-translation" data-sec="translation">From Fear: I said to your servant Patrī, “Give me that flute kept with you.” Hearing my words, the careless Patrī suddenly changed color, and his voice choked up. O Mukunda! Because of his inattention, Your flute has been lost.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3378,6 +3428,7 @@ According to this hint, it should be accepted that Abhimanyu was a creation of t
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Patrī is the name of one of Kṛṣṇa’s servant as is Raktaka. The formation of udīrṇa is explained as follows. It is formed from the verb ṝ with the prefix ut. In forming a past participle of verbs of the ninth class (kryādi) and verbs ending in ṛ or ṝ the particle na is added at the end instead of ta. The ṝ changes to ir and this is changed to īr because a consonant immediately follows. Haritah (stolen) implies that the flute had disappeared because of his inattention.</p>
@@ -3436,6 +3487,7 @@ According to this hint, it should be accepted that Abhimanyu was a creation of t
 
 
     <div class="fc-translation" data-sec="translation">Trembling: Quivering of the limbs (gātra-laulya-kṛt) due to extreme fear, anger or joy is called vepathu or trembling.</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -3510,6 +3562,7 @@ According to this hint, it should be accepted that Abhimanyu was a creation of t
 
     <div class="fc-translation" data-sec="translation">From fear: When Śaṅkhacūḍa, with increasing display of his prowess, stretched out his hand to grab Rādhā, she cried out, “O son of the king of Vraja!” Because of fear, her whole body began to shake.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3575,6 +3628,7 @@ According to this hint, it should be accepted that Abhimanyu was a creation of t
 
     <div class="fc-translation" data-sec="translation">From anger: Becoming unsteady with anger on hearing criticism of Kṛṣṇa (by Śiśupāla), Sahadeva began to shake like a great mountain during an earthquake.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3618,8 +3672,8 @@ According to this hint, it should be accepted that Abhimanyu was a creation of t
     <div class="cr-iast-block" data-sec="iast">
         <div class="cr-iast-line">harṣeṇa, yathā –</div>
 <div class="cr-pron-line" data-sec="pronunciation">[harshena, yathaa –]</div>        <div class="cr-iast-line">vihasasi kathaṁ hatāśe paśya bhayenādya kampamānāsmi |</div>
-<div class="cr-pron-line" data-sec="pronunciation">[vihasasi katham hataashe pashya bhayenaadya kampamaanaasmi |]</div>        <div class="cr-iast-line">caṣcalam upasīdantaṁ nivāraya vraja-pates tanayam ||46||</div>
-<div class="cr-pron-line" data-sec="pronunciation">[chashchalam upaseedantam nivaaraya vraja-pates tanayam ||46||]</div>    </div>
+<div class="cr-pron-line" data-sec="pronunciation">[vihasasi katham hataashe pashya bhayenaadya kampamaanaasmi |]</div>        <div class="cr-iast-line">cañcalam upasīdantaṁ nivāraya vraja-pates tanayam ||46||</div>
+<div class="cr-pron-line" data-sec="pronunciation">[chanchalam upaseedantam nivaaraya vraja-pates tanayam ||46||]</div>    </div>
 
 
     <details class="cr-blend-details" data-sec="blended">
@@ -3632,13 +3686,14 @@ According to this hint, it should be accepted that Abhimanyu was a creation of t
                 <div class="cr-blend-iast-line">vihasasi kathaṁ hatāśe paśya bhayenādya kampamānāsmi |</div>
             </div>
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">caṣcalam upasīdantaṁ nivāraya vraja-pates tanayam ||46||</div>
+                <div class="cr-blend-iast-line">cañcalam upasīdantaṁ nivāraya vraja-pates tanayam ||46||</div>
             </div>
         </div>
     </details>
 
 
     <div class="fc-translation" data-sec="translation">From joy: O foolish friend! Why are you smiling? See--I am now trembling with fear. Keep away the fickle son of Nanda who is approaching. [Note: In this case, a contrary statement is made to cover the joy on seeing Kṛṣṇa.]</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -3683,8 +3738,8 @@ According to this hint, it should be accepted that Abhimanyu was a creation of t
     <div class="cr-iast-block" data-sec="iast">
         <div class="cr-iast-line">atha vaivarṇyam –</div>
 <div class="cr-pron-line" data-sec="pronunciation">[atha vaivarnyam –]</div>        <div class="cr-iast-line">viṣāda-roṣa-bhīty-āder vaivarṇyaṁ varṇa-vikriyā |</div>
-<div class="cr-pron-line" data-sec="pronunciation">[vishaada-rosha-bheety-aader vaivarnyam varna-vikriyaa |]</div>        <div class="cr-iast-line">bhāva-jṣair atra mālinya-kārśyādyāḥ parikīrtitāḥ ||47||</div>
-<div class="cr-pron-line" data-sec="pronunciation">[bhaava-jshair atra maalinya-kaarshyaadyaah parikeertitaah ||47||]</div>    </div>
+<div class="cr-pron-line" data-sec="pronunciation">[vishaada-rosha-bheety-aader vaivarnyam varna-vikriyaa |]</div>        <div class="cr-iast-line">bhāva-jñair atra mālinya-kārśyādyāḥ parikīrtitāḥ ||47||</div>
+<div class="cr-pron-line" data-sec="pronunciation">[bhaava-jnair atra maalinya-kaarshyaadyaah parikeertitaah ||47||]</div>    </div>
 
 
     <details class="cr-blend-details" data-sec="blended">
@@ -3697,13 +3752,14 @@ According to this hint, it should be accepted that Abhimanyu was a creation of t
                 <div class="cr-blend-iast-line">viṣāda-roṣa-bhīty-āder vaivarṇyaṁ varṇa-vikriyā |</div>
             </div>
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">bhāva-jṣair atra mālinya-kārśyādyāḥ parikīrtitāḥ ||47||</div>
+                <div class="cr-blend-iast-line">bhāva-jñair atra mālinya-kārśyādyāḥ parikīrtitāḥ ||47||</div>
             </div>
         </div>
     </details>
 
 
     <div class="fc-translation" data-sec="translation">Changing of color: Change of a person’s complexion (varṇa-vikriyā) due to grief, anger [Note: Roṣa, anger is described as vyabhicāri-bhāva for women towards Kṛṣṇa in 4.5.26.] or fear is called vaivarṇya or change of color.</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -3770,6 +3826,7 @@ According to this hint, it should be accepted that Abhimanyu was a creation of t
 
     <div class="fc-translation" data-sec="translation">From grief: O Kṛṣṇa! In separation from You, all the inhabitants of Vraja have now turned white, such that Nārada has mistaken Gokula for Svetadvīpa.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3785,6 +3842,7 @@ According to this hint, it should be accepted that Abhimanyu was a creation of t
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>The inhabitants of Svetadvīpa are described in the Mokṣa-dharma section of the Nārāyaṇīya:
@@ -3831,8 +3889,8 @@ In the commentary on this verse, it is explained that the word śvetatām (white
 
     <div class="cr-iast-block" data-sec="iast">
         <div class="cr-iast-line">roṣād, yathā –</div>
-<div class="cr-pron-line" data-sec="pronunciation">[roshaad, yathaa –]</div>        <div class="cr-iast-line">kaṁsa-śatrum abhiyuṣjataḥ puro</div>
-<div class="cr-pron-line" data-sec="pronunciation">[kamsa-shatrum abhiyushjatah puro]</div>        <div class="cr-iast-line">vīkṣya kaṁsa-sahajānudāyudhān |</div>
+<div class="cr-pron-line" data-sec="pronunciation">[roshaad, yathaa –]</div>        <div class="cr-iast-line">kaṁsa-śatrum abhiyuñjataḥ puro</div>
+<div class="cr-pron-line" data-sec="pronunciation">[kamsa-shatrum abhiyunjatah puro]</div>        <div class="cr-iast-line">vīkṣya kaṁsa-sahajānudāyudhān |</div>
 <div class="cr-pron-line" data-sec="pronunciation">[veekshya kamsa-sahajaanudaayudhaan |]</div>        <div class="cr-iast-line">śrī-balasya sakhi tasya ruṣyataḥ</div>
 <div class="cr-pron-line" data-sec="pronunciation">[shree-balasya sakhi tasya rushyatah]</div>        <div class="cr-iast-line">prodyad-indu-nibham ānanaṁ babhau ||49||</div>
 <div class="cr-pron-line" data-sec="pronunciation">[prodyad-indu-nibham aananam babhau ||49||]</div>    </div>
@@ -3845,7 +3903,7 @@ In the commentary on this verse, it is explained that the word śvetatām (white
                 <div class="cr-blend-iast-line">roṣād, yathā –</div>
             </div>
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">kaṁsa-śatrum abhiyuṣjataḥ puro</div>
+                <div class="cr-blend-iast-line">kaṁsa-śatrum abhiyuñjataḥ puro</div>
             </div>
             <div class="cr-blend-block">
                 <div class="cr-blend-iast-line">vīkṣya kaṁsa-sahajānudāyudhān |</div>
@@ -3862,6 +3920,7 @@ In the commentary on this verse, it is explained that the word śvetatām (white
 
     <div class="fc-translation" data-sec="translation">From anger: O friend! See how the face of angry Balarāma is glowing red like the newly risen moon on seeing in front of Him the assistants of Kaṁsa with weapons in hand ready to fight with Kṛṣṇa.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3877,9 +3936,10 @@ In the commentary on this verse, it is explained that the word śvetatām (white
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
-                <p>Abhiyuṣjataḥ means gathering together facing the enemy with the intention of fighting. “The brothers of Kaṁṣa (kaṁsa-sahajān)” refers to Kaṅka, Nyagrodha and others. Sometimes paśya (see) is substituted for tasya in the verse but this version has been rejected.</p>
+                <p>Abhiyuñjataḥ means gathering together facing the enemy with the intention of fighting. “The brothers of Kaṁṣa (kaṁsa-sahajān)” refers to Kaṅka, Nyagrodha and others. Sometimes paśya (see) is substituted for tasya in the verse but this version has been rejected.</p>
             </div>
         </div>
     </section>
@@ -3948,6 +4008,7 @@ In the commentary on this verse, it is explained that the word śvetatām (white
 
     <div class="fc-translation" data-sec="translation">From fear: When the inhabitants of Vraja were protected by Kṛṣṇa, the enemy of Baka, as He lifted the huge mountain casually, the face of Indra turned black. This indicated the fear in his mind.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3963,6 +4024,7 @@ In the commentary on this verse, it is explained that the word śvetatām (white
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Kālimā (black) means “turning black” in the context. Bala-ripoḥ means “of Indra the enemy of Bala.” This change of color indicated (ūcivān) the fear which arose (utthitām) in his mind.</p>
@@ -4033,6 +4095,7 @@ In the commentary on this verse, it is explained that the word śvetatām (white
 
 
 
+
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-51" data-note-label="BG 3.51" data-note-chapter="3" data-note-vlabel="51">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.51…" rows="4"></textarea>
@@ -4076,6 +4139,7 @@ In the commentary on this verse, it is explained that the word śvetatām (white
 
     <div class="fc-translation" data-sec="translation">When it arises from joy the color is sometimes red, and but since this is not universal, examples of turning red from joy are not given.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -4091,6 +4155,7 @@ In the commentary on this verse, it is explained that the word śvetatām (white
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Asya here refers to the redness.</p>
@@ -4158,6 +4223,7 @@ In the commentary on this verse, it is explained that the word śvetatām (white
 
     <div class="fc-translation" data-sec="translation">Tears: Where water flows from the eyes (jalodgamaḥ) out of joy, anger or grief it is called tears (aśru). Tears generated out of joy are cool, and tears generated out of anger are warm. In all cases, there is unsteady movement of the eyes, redness of the eyes and rubbing the eyes.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -4174,6 +4240,7 @@ Out of jubilation, anger or separation there may be the pouring down of tears fr
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>The word yatra (where) should be added in the first line: yatre netre jalodgamaḥ. This is because it should be understood that the sāttvika-bhāvas have both internal and external changes. (In this case the flowing of water from the eyes is the external symptom defining this particular sāttvika-bhāva). The other definitions should be understood in the same way. It should be understood that a characteristic accompanying symptom will also be a runny nose.</p>
@@ -4237,6 +4304,7 @@ Out of jubilation, anger or separation there may be the pouring down of tears fr
 
     <div class="fc-translation" data-sec="translation">From joy: The lotus-eyed Rukmiṇī derided bliss because the flow of tears arising from the bliss blocked her vision of Govinda.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -4252,6 +4320,7 @@ Out of jubilation, anger or separation there may be the pouring down of tears fr
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Here, ānanda is criticized because of the flow of her tears arising from bliss. However, it should be understood that ānanda itself is not actually criticized. This is according to the rule sa-viśeṣaṇe vidhi-niṣedhau viśesaṇam upasaṁkrāmataḥ sati viśeṣye bādhe: statements of affirmation and denial change the meaning of their particular descriptive elements if there is a contradiction to the principal subject. [Note: This rule is found in Nyāya-vartika-tātparya by Vacaspati Miśra.]</p>
@@ -4315,6 +4384,7 @@ Out of jubilation, anger or separation there may be the pouring down of tears fr
 
     <div class="fc-translation" data-sec="translation">From anger, from Hari-vaṁśa: From the lotus-petal eyes of Satyabhāmā fell tears generated by angry affection, like drops of dew.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -4330,6 +4400,7 @@ Out of jubilation, anger or separation there may be the pouring down of tears fr
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Tasyāḥ (her) indicates Satyabhāmā. In describing the tears as dew, the intention is to show the brilliance of the tears, not their coldness, since the tears generated through anger are actually warm, not cold.</p>
@@ -4401,6 +4472,7 @@ Out of jubilation, anger or separation there may be the pouring down of tears fr
 
     <div class="fc-translation" data-sec="translation">Another example: When Bhīma desired to kill Śiśupāla, his face turned red and became covered with tears of anger. It appeared like the rising full moon covered with drops of water and tinged with red in the dawn.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -4416,6 +4488,7 @@ Out of jubilation, anger or separation there may be the pouring down of tears fr
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Bhīma’s face shone (reje) like the rising (udyat) full moon (indu-bimbam). Bimba (disk) here indicates the fullness of the moon.</p>
@@ -4457,9 +4530,9 @@ Out of jubilation, anger or separation there may be the pouring down of tears fr
     <div class="cr-iast-block" data-sec="iast">
         <div class="cr-iast-line">viṣādena, yathā śrī-daśame–</div>
 <div class="cr-pron-line" data-sec="pronunciation">[vishaadena, yathaa shree-dashame–]</div>        <div class="cr-iast-line">padā sujātena nakhāruṇa-śriyā</div>
-<div class="cr-pron-line" data-sec="pronunciation">[padaa sujaatena nakhaaruna-shriyaa]</div>        <div class="cr-iast-line">bhuvaṁ likhanty aśrubhir aṣjanāsitaiḥ |</div>
-<div class="cr-pron-line" data-sec="pronunciation">[bhuvam likhanty ashrubhir ashjanaasitaih |]</div>        <div class="cr-iast-line">āsiṣcatī kuṅkuma-rūṣitau stanau</div>
-<div class="cr-pron-line" data-sec="pronunciation">[aasishchatee kunkuma-rooshitau stanau]</div>        <div class="cr-iast-line">tasthāv adho-mukhy atiduḥkha-ruddha-vāk ||57||</div>
+<div class="cr-pron-line" data-sec="pronunciation">[padaa sujaatena nakhaaruna-shriyaa]</div>        <div class="cr-iast-line">bhuvaṁ likhanty aśrubhir añjanāsitaiḥ |</div>
+<div class="cr-pron-line" data-sec="pronunciation">[bhuvam likhanty ashrubhir anjanaasitaih |]</div>        <div class="cr-iast-line">āsiñcatī kuṅkuma-rūṣitau stanau</div>
+<div class="cr-pron-line" data-sec="pronunciation">[aasinchatee kunkuma-rooshitau stanau]</div>        <div class="cr-iast-line">tasthāv adho-mukhy atiduḥkha-ruddha-vāk ||57||</div>
 <div class="cr-pron-line" data-sec="pronunciation">[tasthaav adho-mukhy atiduhkha-ruddha-vaak ||57||]</div>    </div>
 
 
@@ -4473,10 +4546,10 @@ Out of jubilation, anger or separation there may be the pouring down of tears fr
                 <div class="cr-blend-iast-line">padā sujātena nakhāruṇa-śriyā</div>
             </div>
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">bhuvaṁ likhanty aśrubhir aṣjanāsitaiḥ |</div>
+                <div class="cr-blend-iast-line">bhuvaṁ likhanty aśrubhir añjanāsitaiḥ |</div>
             </div>
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">āsiṣcatī kuṅkuma-rūṣitau stanau</div>
+                <div class="cr-blend-iast-line">āsiñcatī kuṅkuma-rūṣitau stanau</div>
             </div>
             <div class="cr-blend-block">
                 <div class="cr-blend-iast-line">tasthāv adho-mukhy atiduḥkha-ruddha-vāk ||57||</div>
@@ -4486,6 +4559,7 @@ Out of jubilation, anger or separation there may be the pouring down of tears fr
 
 
     <div class="fc-translation" data-sec="translation">From disappointment, from the Tenth Canto: With her tender foot, effulgent with the reddish glow of her nails, she scratched the ground, and tears darkened by her eye makeup sprinkled her kuṁkuma-reddened breasts. There she stood, face downward, her voice choked up by extreme sorrow. SB 10.60.23</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -4502,6 +4576,7 @@ Out of jubilation, anger or separation there may be the pouring down of tears fr
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>This verse refers to Rukmiṇī.</p>
@@ -4542,8 +4617,8 @@ Out of jubilation, anger or separation there may be the pouring down of tears fr
 
     <div class="cr-iast-block" data-sec="iast">
         <div class="cr-iast-line">atha pralayaḥ –</div>
-<div class="cr-pron-line" data-sec="pronunciation">[atha pralayah –]</div>        <div class="cr-iast-line">pralayaḥ sukha-duḥkhābhyāṁ ceṣṭā-jṣāna-nirākṛtiḥ |</div>
-<div class="cr-pron-line" data-sec="pronunciation">[pralayah sukha-duhkhaabhyaam cheshtaa-jshaana-niraakritih |]</div>        <div class="cr-iast-line">atrānubhāvāḥ kathitā mahī-nipatanādayaḥ ||58||</div>
+<div class="cr-pron-line" data-sec="pronunciation">[atha pralayah –]</div>        <div class="cr-iast-line">pralayaḥ sukha-duḥkhābhyāṁ ceṣṭā-jñāna-nirākṛtiḥ |</div>
+<div class="cr-pron-line" data-sec="pronunciation">[pralayah sukha-duhkhaabhyaam cheshtaa-jnaana-niraakritih |]</div>        <div class="cr-iast-line">atrānubhāvāḥ kathitā mahī-nipatanādayaḥ ||58||</div>
 <div class="cr-pron-line" data-sec="pronunciation">[atraanubhaavaah kathitaa mahee-nipatanaadayah ||58||]</div>    </div>
 
 
@@ -4554,7 +4629,7 @@ Out of jubilation, anger or separation there may be the pouring down of tears fr
                 <div class="cr-blend-iast-line">atha pralayaḥ –</div>
             </div>
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">pralayaḥ sukha-duḥkhābhyāṁ ceṣṭā-jṣāna-nirākṛtiḥ |</div>
+                <div class="cr-blend-iast-line">pralayaḥ sukha-duḥkhābhyāṁ ceṣṭā-jñāna-nirākṛtiḥ |</div>
             </div>
             <div class="cr-blend-block">
                 <div class="cr-blend-iast-line">atrānubhāvāḥ kathitā mahī-nipatanādayaḥ ||58||</div>
@@ -4564,6 +4639,7 @@ Out of jubilation, anger or separation there may be the pouring down of tears fr
 
 
     <div class="fc-translation" data-sec="translation">Pralaya: Pralaya or fainting refers to absence of action of the body and absence of mental functions which distinguish self and objects. This arises from either happiness or distress. It is characterized by falling on the ground etc.</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -4581,9 +4657,10 @@ When a person is confused by simultaneous happiness and tribulation and does not
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
-                <p>Jṣana-nirākṛtiḥ refers to the disappearance of distinction of self and any object of awareness in the mind.</p>
+                <p>Jñana-nirākṛtiḥ refers to the disappearance of distinction of self and any object of awareness in the mind.</p>
             </div>
         </div>
     </section>
@@ -4621,9 +4698,9 @@ When a person is confused by simultaneous happiness and tribulation and does not
 
     <div class="cr-iast-block" data-sec="iast">
         <div class="cr-iast-line">tatra sukhena, yathā –</div>
-<div class="cr-pron-line" data-sec="pronunciation">[tatra sukhena, yathaa –]</div>        <div class="cr-iast-line">milantaṁ harim ālokya latā-puṣjād atarkitam |</div>
-<div class="cr-pron-line" data-sec="pronunciation">[milantam harim aalokya lataa-pushjaad atarkitam |]</div>        <div class="cr-iast-line">jṣapti-śūnya-manā reje niścalāṅgī vrajāṅganā ||59||</div>
-<div class="cr-pron-line" data-sec="pronunciation">[jshapti-shoonya-manaa reje nishchalaangee vrajaanganaa ||59||]</div>    </div>
+<div class="cr-pron-line" data-sec="pronunciation">[tatra sukhena, yathaa –]</div>        <div class="cr-iast-line">milantaṁ harim ālokya latā-puñjād atarkitam |</div>
+<div class="cr-pron-line" data-sec="pronunciation">[milantam harim aalokya lataa-punjaad atarkitam |]</div>        <div class="cr-iast-line">jñapti-śūnya-manā reje niścalāṅgī vrajāṅganā ||59||</div>
+<div class="cr-pron-line" data-sec="pronunciation">[jnapti-shoonya-manaa reje nishchalaangee vrajaanganaa ||59||]</div>    </div>
 
 
     <details class="cr-blend-details" data-sec="blended">
@@ -4633,16 +4710,17 @@ When a person is confused by simultaneous happiness and tribulation and does not
                 <div class="cr-blend-iast-line">tatra sukhena, yathā –</div>
             </div>
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">milantaṁ harim ālokya latā-puṣjād atarkitam |</div>
+                <div class="cr-blend-iast-line">milantaṁ harim ālokya latā-puñjād atarkitam |</div>
             </div>
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">jṣapti-śūnya-manā reje niścalāṅgī vrajāṅganā ||59||</div>
+                <div class="cr-blend-iast-line">jñapti-śūnya-manā reje niścalāṅgī vrajāṅganā ||59||</div>
             </div>
         </div>
     </details>
 
 
     <div class="fc-translation" data-sec="translation">From happiness: When Kṛṣṇa suddenly appeared out of the tangle of creepers, the gopīs, seeing that they were again united with Him, became motionless and devoid of external consciousness.</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -4709,6 +4787,7 @@ When a person is confused by simultaneous happiness and tribulation and does not
 
     <div class="fc-translation" data-sec="translation">From distress, from the Tenth Canto: Other gopīs entirely stopped their sensory activities and became fixed in meditation on Kṛṣṇa. They lost all awareness of the external world, just like those who attain the platform of self-realization. SB 10.39.15</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -4724,6 +4803,7 @@ When a person is confused by simultaneous happiness and tribulation and does not
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Anyāḥ refers to gopīs who were lamenting at the departure of Kṛṣṇa for Mathurā.
@@ -4784,6 +4864,7 @@ Giving up all sense activity by meditation on the Lord and losing all awareness 
 
     <div class="fc-translation" data-sec="translation">All the anubhāvas could be called sāttvika, since their root is a transformation of the mind arising from rati. [Note: This transformation of the mind by rati is called sattva.] However, since the eight states just mentioned, beginning with stambha, arise solely from transformations arising from rati, they are called sāttvika-bhāvas.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -4800,6 +4881,7 @@ Out of the many ecstatic symptoms of the body, the symptom of being stunned is e
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Here bhāvāh refers specifically to the anubhāvas (in reference to verse 2.3.2 [Note: The commentary on that verse is as follows: In this definition, it should be understood that transformations arising from sattva (sattvād asmāt samutpannā) should really mean transformations arising solely from sattva. That is because the anubhāvas such as dancing also arise from sattva (heart overwhelmed by rati), but in combination with the intelligence. The sāttvika-bhāvas like being stunned arise from sattva alone, with no help from the intelligence.] which arise from sattva (transformations due to rati.) That verse is further explained in this verse. Stambha etc. (amīṣām) are known as sāttvika-bhāvas (sāttvika-prathā) because of having only sattva as their cause.</p>
@@ -4859,6 +4941,7 @@ Out of the many ecstatic symptoms of the body, the symptom of being stunned is e
 
     <div class="fc-translation" data-sec="translation">Because of the variations in sattva (disturbance of the mind due to rati), there is variation in the disturbance of the life airs and body. In other words, there are various degrees of all the sāttvika-bhāvas.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -4900,8 +4983,8 @@ Out of the many ecstatic symptoms of the body, the symptom of being stunned is e
     </header>
 
     <div class="cr-iast-block" data-sec="iast">
-        <div class="cr-iast-line">dhūmāyitās te jvalitā dīptā uddīpta-saṁjṣitāḥ |</div>
-<div class="cr-pron-line" data-sec="pronunciation">[dhoomaayitaas te jvalitaa deeptaa uddeepta-samjshitaah |]</div>        <div class="cr-iast-line">vṛddhiṁ yathottaraṁ yāntaḥ sāttvikāḥ syuś catur-vidhāḥ ||63||</div>
+        <div class="cr-iast-line">dhūmāyitās te jvalitā dīptā uddīpta-saṁjñitāḥ |</div>
+<div class="cr-pron-line" data-sec="pronunciation">[dhoomaayitaas te jvalitaa deeptaa uddeepta-samjnitaah |]</div>        <div class="cr-iast-line">vṛddhiṁ yathottaraṁ yāntaḥ sāttvikāḥ syuś catur-vidhāḥ ||63||</div>
 <div class="cr-pron-line" data-sec="pronunciation">[vriddhim yathottaram yaantah saattvikaah syush chatur-vidhaah ||63||]</div>    </div>
 
 
@@ -4909,7 +4992,7 @@ Out of the many ecstatic symptoms of the body, the symptom of being stunned is e
         <summary>Blended reading (Sanskrit + English inline)</summary>
         <div class="cr-blend-grid">
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">dhūmāyitās te jvalitā dīptā uddīpta-saṁjṣitāḥ |</div>
+                <div class="cr-blend-iast-line">dhūmāyitās te jvalitā dīptā uddīpta-saṁjñitāḥ |</div>
             </div>
             <div class="cr-blend-block">
                 <div class="cr-blend-iast-line">vṛddhiṁ yathottaraṁ yāntaḥ sāttvikāḥ syuś catur-vidhāḥ ||63||</div>
@@ -4919,6 +5002,7 @@ Out of the many ecstatic symptoms of the body, the symptom of being stunned is e
 
 
     <div class="fc-translation" data-sec="translation">The sāttvika-bhāvas are of four types when they attain increasing degrees of intensity: dhūmāyita (smoky), jvalita (luminous); dīpta (brilliant); uddīpta (very brilliant).</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -4981,6 +5065,7 @@ Out of the many ecstatic symptoms of the body, the symptom of being stunned is e
 
     <div class="fc-translation" data-sec="translation">The increase is of three types: duration of the symptoms, pervasion of the symptoms in different parts of the body, and exhibition of the essential nature of the sāttvika-bhāva.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -5042,6 +5127,7 @@ Out of the many ecstatic symptoms of the body, the symptom of being stunned is e
 
     <div class="fc-translation" data-sec="translation">Except for tears and choking of the voice, the other sāttvika-bhāvas can spread through many parts of body. Tears and choking of the voice have some special features.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -5057,6 +5143,7 @@ Out of the many ecstatic symptoms of the body, the symptom of being stunned is e
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>The other sāttvika-bhāvas (amīṣām) refers to stambha (paralysis) and the other five sāttvika-bhāvas. There are special features of two (tayoḥ)—tears and choking of the voice.</p>
@@ -5120,6 +5207,7 @@ Out of the many ecstatic symptoms of the body, the symptom of being stunned is e
 
     <div class="fc-translation" data-sec="translation">The special features of tears are swelling of the eyes and whiteness of the eyes. The pupils of the eyes become extremely colorful. The special features of choking of the voice are breaking of the voice, weakness of the voice and fluctuation of tone.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -5181,6 +5269,7 @@ Out of the many ecstatic symptoms of the body, the symptom of being stunned is e
 
     <div class="fc-translation" data-sec="translation">Breaking of the voice means failure of the vocal cords to pronounce properly. Weakness means inability to make any sound. Fluctuation means high, low, indistinct and inaudible tones.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -5196,6 +5285,7 @@ Out of the many ecstatic symptoms of the body, the symptom of being stunned is e
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Failure of the vocal chords results in making a gurgling sound. Inability to make sound means that no sound is able to come from the throat. Fluctuation means that at every moment there are various volumes of sound.</p>
@@ -5254,6 +5344,7 @@ Out of the many ecstatic symptoms of the body, the symptom of being stunned is e
 
 
     <div class="fc-translation" data-sec="translation">All the sāttvika-bhāvas in the rukṣa state (in persons without real rati) remain generally at the dhūmāyita level. The sāttvika-bhāvas in the snigdha state appear in all the four levels (dhūmāyita, jvalita, dīpta and uddīpta).</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -5316,6 +5407,7 @@ Out of the many ecstatic symptoms of the body, the symptom of being stunned is e
 
     <div class="fc-translation" data-sec="translation">Sometimes, however, the rukṣa-sāttvika-bhāvas of a person who is enthusiastic to dance or perform other devotional acts amongst the devotees on the occasion of festivals reaches the jvalita stage.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -5377,6 +5469,7 @@ Out of the many ecstatic symptoms of the body, the symptom of being stunned is e
 
     <div class="fc-translation" data-sec="translation">Rati is the cause of all types of bliss. Therefore, rati is called the most excellent bhāva. Being devoid of this rati, rukṣa or other types of bhāva can never be the shelter of bliss.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -5392,6 +5485,7 @@ Out of the many ecstatic symptoms of the body, the symptom of being stunned is e
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Since rati is the cause of all types of astonishing bliss, it is called the most excellent bhāva. The correct version of the last line is na camatkāritāśrayāḥ</p>
@@ -5455,6 +5549,7 @@ Out of the many ecstatic symptoms of the body, the symptom of being stunned is e
 
     <div class="fc-translation" data-sec="translation">Smoky sāttvika-bhāva: Any sāttvika-bhāva which appears alone or with others, which manifests slightly and can be hidden by the individual, is called dhūmāyita-sāttvika-bhāva.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -5470,6 +5565,7 @@ Out of the many ecstatic symptoms of the body, the symptom of being stunned is e
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>The plural case is used to emphasize each sāttvika-bhāva, either alone or combined with one other sāttvika-bhāva. Thus paralysis or stambha may occur alone or in combination with another sāttvika-bhāva. Standing of hair on end may occur alone or in combination. Quivering of the body may occur alone or in combination. Among these sāttvika-bhāvas, each one may manifest alone, or along with a second sāttvika- bhāva. It is possible to conceal (apahnotum) the symptoms by a mood of indifference to the rati. [Note: Apa here represents apakṛṣṭa, depressed. One can hide the symptoms by a mood of indifference to the rati.] This is seen even in those persons who have completely developed their internal rati:
@@ -5544,6 +5640,7 @@ The female relatives, whose eyes were flooded with tears out of anxiety for Kṛ
 
     <div class="fc-translation" data-sec="translation">An example: When the performer of sacrifice heard the glories of Kṛṣṇa killing Aghāsura, the tips of his eyes filled with a few tears, hairs stood up on his cheeks and a few drops of perspiration appears on his nose. In this way his lotus face shone. [Note: The symptoms are slight. The person has rukṣa-sāttvika-bhāvas.]</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -5609,6 +5706,7 @@ The female relatives, whose eyes were flooded with tears out of anxiety for Kṛ
 
     <div class="fc-translation" data-sec="translation">Luminous sāttvika-bhāva: When two or three of the sāttvika-bhāvas appear very clearly, and can be concealed only with difficulty, they are called jvalita-sāttvika-bhāvas.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -5651,9 +5749,9 @@ The female relatives, whose eyes were flooded with tears out of anxiety for Kṛ
 
     <div class="cr-iast-block" data-sec="iast">
         <div class="cr-iast-line">yathā –</div>
-<div class="cr-pron-line" data-sec="pronunciation">[yathaa –]</div>        <div class="cr-iast-line">na guṣjām ādātuṁ prabhavati karaḥ kampa-taralo</div>
-<div class="cr-pron-line" data-sec="pronunciation">[na gushjaam aadaatum prabhavati karah kampa-taralo]</div>        <div class="cr-iast-line">dṛśau sāsre piṣchaṁ na paricinutaḥ satvara-kṛti |</div>
-<div class="cr-pron-line" data-sec="pronunciation">[drishau saasre pishcham na parichinutah satvara-kriti |]</div>        <div class="cr-iast-line">kṣamāv ūrū stabdhau padam api na gantuṁ tava sakhe</div>
+<div class="cr-pron-line" data-sec="pronunciation">[yathaa –]</div>        <div class="cr-iast-line">na guñjām ādātuṁ prabhavati karaḥ kampa-taralo</div>
+<div class="cr-pron-line" data-sec="pronunciation">[na gunjaam aadaatum prabhavati karah kampa-taralo]</div>        <div class="cr-iast-line">dṛśau sāsre piñchaṁ na paricinutaḥ satvara-kṛti |</div>
+<div class="cr-pron-line" data-sec="pronunciation">[drishau saasre pincham na parichinutah satvara-kriti |]</div>        <div class="cr-iast-line">kṣamāv ūrū stabdhau padam api na gantuṁ tava sakhe</div>
 <div class="cr-pron-line" data-sec="pronunciation">[kshamaav ooroo stabdhau padam api na gantum tava sakhe]</div>        <div class="cr-iast-line">vanād vaṁśī-dhvāne parisaram avāpte śravaṇayoḥ ||74||</div>
 <div class="cr-pron-line" data-sec="pronunciation">[vanaad vamshee-dhvaane parisaram avaapte shravanayoh ||74||]</div>    </div>
 
@@ -5665,10 +5763,10 @@ The female relatives, whose eyes were flooded with tears out of anxiety for Kṛ
                 <div class="cr-blend-iast-line">yathā –</div>
             </div>
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">na guṣjām ādātuṁ prabhavati karaḥ kampa-taralo</div>
+                <div class="cr-blend-iast-line">na guñjām ādātuṁ prabhavati karaḥ kampa-taralo</div>
             </div>
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">dṛśau sāsre piṣchaṁ na paricinutaḥ satvara-kṛti |</div>
+                <div class="cr-blend-iast-line">dṛśau sāsre piñchaṁ na paricinutaḥ satvara-kṛti |</div>
             </div>
             <div class="cr-blend-block">
                 <div class="cr-blend-iast-line">kṣamāv ūrū stabdhau padam api na gantuṁ tava sakhe</div>
@@ -5680,7 +5778,8 @@ The female relatives, whose eyes were flooded with tears out of anxiety for Kṛ
     </details>
 
 
-    <div class="fc-translation" data-sec="translation">An example: One sakhī said to Kṛṣṇa, “When the sound of Your flute comes from the forest and arrives at my ears, my hands begin to shake, and I cannot quickly pluck the guṣja berries. My eyes become filled with tears, and I cannot immediately recognize the peacock feather. My two thighs become paralyzed and I cannot easily walk one step.”</div>
+    <div class="fc-translation" data-sec="translation">An example: One sakhī said to Kṛṣṇa, “When the sound of Your flute comes from the forest and arrives at my ears, my hands begin to shake, and I cannot quickly pluck the guñja berries. My eyes become filled with tears, and I cannot immediately recognize the peacock feather. My two thighs become paralyzed and I cannot easily walk one step.”</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -5697,9 +5796,10 @@ The female relatives, whose eyes were flooded with tears out of anxiety for Kṛ
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
-                <p>Because of the shaking of the hands, it was possible to pluck the guṣja berries slowly, but not quickly (na satvara-kṛti). Substituting prārthitam api (even though I desire to do so) instead of satvara-kṛti is rejected.</p>
+                <p>Because of the shaking of the hands, it was possible to pluck the guñja berries slowly, but not quickly (na satvara-kṛti). Substituting prārthitam api (even though I desire to do so) instead of satvara-kṛti is rejected.</p>
             </div>
         </div>
     </section>
@@ -5740,8 +5840,8 @@ The female relatives, whose eyes were flooded with tears out of anxiety for Kṛ
 <div class="cr-pron-line" data-sec="pronunciation">[yathaa vaa –]</div>        <div class="cr-iast-line">niruddhaṁ bāṣpāmbhaḥ katham api mayā gadgada-giro</div>
 <div class="cr-pron-line" data-sec="pronunciation">[niruddham baashpaambhah katham api mayaa gadgada-giro]</div>        <div class="cr-iast-line">hriyā sadyo gūḍhāḥ sakhi vighaṭito vepathur api |</div>
 <div class="cr-pron-line" data-sec="pronunciation">[hriyaa sadyo goodhaah sakhi vighatito vepathur api |]</div>        <div class="cr-iast-line">giri-droṇyāṁ veṇau dhvanati nipuṇair iṅgita-maye</div>
-<div class="cr-pron-line" data-sec="pronunciation">[giri-dronyaam venau dhvanati nipunair ingita-maye]</div>        <div class="cr-iast-line">tathāpy ūhāṣcakre mama manasi rāgaḥ parijanaiḥ ||75||</div>
-<div class="cr-pron-line" data-sec="pronunciation">[tathaapy oohaashchakre mama manasi raagah parijanaih ||75||]</div>    </div>
+<div class="cr-pron-line" data-sec="pronunciation">[giri-dronyaam venau dhvanati nipunair ingita-maye]</div>        <div class="cr-iast-line">tathāpy ūhāñcakre mama manasi rāgaḥ parijanaiḥ ||75||</div>
+<div class="cr-pron-line" data-sec="pronunciation">[tathaapy oohaanchakre mama manasi raagah parijanaih ||75||]</div>    </div>
 
 
     <details class="cr-blend-details" data-sec="blended">
@@ -5760,13 +5860,14 @@ The female relatives, whose eyes were flooded with tears out of anxiety for Kṛ
                 <div class="cr-blend-iast-line">giri-droṇyāṁ veṇau dhvanati nipuṇair iṅgita-maye</div>
             </div>
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">tathāpy ūhāṣcakre mama manasi rāgaḥ parijanaiḥ ||75||</div>
+                <div class="cr-blend-iast-line">tathāpy ūhāñcakre mama manasi rāgaḥ parijanaiḥ ||75||</div>
             </div>
         </div>
     </details>
 
 
     <div class="fc-translation" data-sec="translation">Another example: O friend! When the sound of the flute indicating the presence of Kṛṣṇa manifests in the ravine, I stop the flow of tears, I hide my choked voice and conceal the trembling of my body. However, skilful persons have guessed that I have attraction for Kṛṣṇa in my heart.</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -5810,8 +5911,8 @@ The female relatives, whose eyes were flooded with tears out of anxiety for Kṛ
 
     <div class="cr-iast-block" data-sec="iast">
         <div class="cr-iast-line">atha dīptāḥ –</div>
-<div class="cr-pron-line" data-sec="pronunciation">[atha deeptaah –]</div>        <div class="cr-iast-line">prauḍhāṁ tri-caturā vyaktiṁ paṣca vā yugapad-gatāḥ |</div>
-<div class="cr-pron-line" data-sec="pronunciation">[praudhaam tri-chaturaa vyaktim pashcha vaa yugapad-gataah |]</div>        <div class="cr-iast-line">saṁvarītum aśakyās te dīptā dhīrair udāhṛtāḥ ||76||</div>
+<div class="cr-pron-line" data-sec="pronunciation">[atha deeptaah –]</div>        <div class="cr-iast-line">prauḍhāṁ tri-caturā vyaktiṁ pañca vā yugapad-gatāḥ |</div>
+<div class="cr-pron-line" data-sec="pronunciation">[praudhaam tri-chaturaa vyaktim pancha vaa yugapad-gataah |]</div>        <div class="cr-iast-line">saṁvarītum aśakyās te dīptā dhīrair udāhṛtāḥ ||76||</div>
 <div class="cr-pron-line" data-sec="pronunciation">[samvareetum ashakyaas te deeptaa dheerair udaahritaah ||76||]</div>    </div>
 
 
@@ -5822,7 +5923,7 @@ The female relatives, whose eyes were flooded with tears out of anxiety for Kṛ
                 <div class="cr-blend-iast-line">atha dīptāḥ –</div>
             </div>
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">prauḍhāṁ tri-caturā vyaktiṁ paṣca vā yugapad-gatāḥ |</div>
+                <div class="cr-blend-iast-line">prauḍhāṁ tri-caturā vyaktiṁ pañca vā yugapad-gatāḥ |</div>
             </div>
             <div class="cr-blend-block">
                 <div class="cr-blend-iast-line">saṁvarītum aśakyās te dīptā dhīrair udāhṛtāḥ ||76||</div>
@@ -5832,6 +5933,7 @@ The female relatives, whose eyes were flooded with tears out of anxiety for Kṛ
 
 
     <div class="fc-translation" data-sec="translation">Brilliant sāttvika-bhāva: When three, four or five sāttvika-bhāvas appear strongly and cannot be concealed, they are called dīpta-sāttvika-bhāvas.</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -5906,6 +6008,7 @@ The female relatives, whose eyes were flooded with tears out of anxiety for Kṛ
 
     <div class="fc-translation" data-sec="translation">An example: When Nārada saw Kṛṣṇa appear before him, he lost control of his body. Due to trembling of his body, for a long time he was unable to play his vīṇā, and due to choked voice, he was unable to recite verses of praise. Because his eyes were filled with tears, he could not see Kṛṣṇa.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -5948,9 +6051,9 @@ The female relatives, whose eyes were flooded with tears out of anxiety for Kṛ
 
     <div class="cr-iast-block" data-sec="iast">
         <div class="cr-iast-line">yathā vā –</div>
-<div class="cr-pron-line" data-sec="pronunciation">[yathaa vaa –]</div>        <div class="cr-iast-line">kim unmīlaty asre kusumaja-rajo gaṣjasi mudhā</div>
-<div class="cr-pron-line" data-sec="pronunciation">[kim unmeelaty asre kusumaja-rajo gashjasi mudhaa]</div>        <div class="cr-iast-line">sa-romāṣce kampe himam anilam ākrośasi kutaḥ |</div>
-<div class="cr-pron-line" data-sec="pronunciation">[sa-romaashche kampe himam anilam aakroshasi kutah |]</div>        <div class="cr-iast-line">kim ūru-stambhe vā vana-viharaṇaṁ dvekṣi sakhi te</div>
+<div class="cr-pron-line" data-sec="pronunciation">[yathaa vaa –]</div>        <div class="cr-iast-line">kim unmīlaty asre kusumaja-rajo gañjasi mudhā</div>
+<div class="cr-pron-line" data-sec="pronunciation">[kim unmeelaty asre kusumaja-rajo ganjasi mudhaa]</div>        <div class="cr-iast-line">sa-romāñce kampe himam anilam ākrośasi kutaḥ |</div>
+<div class="cr-pron-line" data-sec="pronunciation">[sa-romaanche kampe himam anilam aakroshasi kutah |]</div>        <div class="cr-iast-line">kim ūru-stambhe vā vana-viharaṇaṁ dvekṣi sakhi te</div>
 <div class="cr-pron-line" data-sec="pronunciation">[kim ooru-stambhe vaa vana-viharanam dvekshi sakhi te]</div>        <div class="cr-iast-line">nirābādhā rādhe vadati madanādhiṁ svara-bhidā ||78||</div>
 <div class="cr-pron-line" data-sec="pronunciation">[niraabaadhaa raadhe vadati madanaadhim svara-bhidaa ||78||]</div>    </div>
 
@@ -5962,10 +6065,10 @@ The female relatives, whose eyes were flooded with tears out of anxiety for Kṛ
                 <div class="cr-blend-iast-line">yathā vā –</div>
             </div>
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">kim unmīlaty asre kusumaja-rajo gaṣjasi mudhā</div>
+                <div class="cr-blend-iast-line">kim unmīlaty asre kusumaja-rajo gañjasi mudhā</div>
             </div>
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">sa-romāṣce kampe himam anilam ākrośasi kutaḥ |</div>
+                <div class="cr-blend-iast-line">sa-romāñce kampe himam anilam ākrośasi kutaḥ |</div>
             </div>
             <div class="cr-blend-block">
                 <div class="cr-blend-iast-line">kim ūru-stambhe vā vana-viharaṇaṁ dvekṣi sakhi te</div>
@@ -5978,6 +6081,7 @@ The female relatives, whose eyes were flooded with tears out of anxiety for Kṛ
 
 
     <div class="fc-translation" data-sec="translation">Another example: O Rādhā, my friend! Because tears have come to your eyes, why are you uselessly scolding the flower pollen? Because your hairs are standing on end and your body is quivering, why are you uselessly scolding the cool wind? Because your limbs have become paralyzed, why are you uselessly showing anger about walking in the forest? Your choked voice which you cannot hide reveals the pain of love.</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -5994,6 +6098,7 @@ The female relatives, whose eyes were flooded with tears out of anxiety for Kṛ
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Kim here means “why.” The word uselessly (mudhā) should be supplied to all the statements. By the word rādhe in the vocative case, it is understood that the person being described is Rādhā. The exceptional state of her love is indicated by describing her attainment of sāttvika-bhāvas for Kṛṣṇa. Nirābādha means that it is not possible for her to do otherwise by some deception.</p>
@@ -6034,8 +6139,8 @@ The female relatives, whose eyes were flooded with tears out of anxiety for Kṛ
 
     <div class="cr-iast-block" data-sec="iast">
         <div class="cr-iast-line">atha uddīptāḥ –</div>
-<div class="cr-pron-line" data-sec="pronunciation">[atha uddeeptaah –]</div>        <div class="cr-iast-line">ekadā vyaktim āpannāḥ paṣca-ṣāḥ sarva eva vā |</div>
-<div class="cr-pron-line" data-sec="pronunciation">[ekadaa vyaktim aapannaah pashcha-shaah sarva eva vaa |]</div>        <div class="cr-iast-line">ārūḍhā paramotkarṣam uddīptā iti kīrtitāḥ ||79||</div>
+<div class="cr-pron-line" data-sec="pronunciation">[atha uddeeptaah –]</div>        <div class="cr-iast-line">ekadā vyaktim āpannāḥ pañca-ṣāḥ sarva eva vā |</div>
+<div class="cr-pron-line" data-sec="pronunciation">[ekadaa vyaktim aapannaah pancha-shaah sarva eva vaa |]</div>        <div class="cr-iast-line">ārūḍhā paramotkarṣam uddīptā iti kīrtitāḥ ||79||</div>
 <div class="cr-pron-line" data-sec="pronunciation">[aaroodhaa paramotkarsham uddeeptaa iti keertitaah ||79||]</div>    </div>
 
 
@@ -6046,7 +6151,7 @@ The female relatives, whose eyes were flooded with tears out of anxiety for Kṛ
                 <div class="cr-blend-iast-line">atha uddīptāḥ –</div>
             </div>
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">ekadā vyaktim āpannāḥ paṣca-ṣāḥ sarva eva vā |</div>
+                <div class="cr-blend-iast-line">ekadā vyaktim āpannāḥ pañca-ṣāḥ sarva eva vā |</div>
             </div>
             <div class="cr-blend-block">
                 <div class="cr-blend-iast-line">ārūḍhā paramotkarṣam uddīptā iti kīrtitāḥ ||79||</div>
@@ -6056,6 +6161,7 @@ The female relatives, whose eyes were flooded with tears out of anxiety for Kṛ
 
 
     <div class="fc-translation" data-sec="translation">Very brilliant sāttvika-bhāva: When five, six or all the sāttvika-bhāvas manifest at once, in their most extreme form, they are called uddīpta-sāttvika-bhāvas.</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -6130,6 +6236,7 @@ The female relatives, whose eyes were flooded with tears out of anxiety for Kṛ
 
     <div class="fc-translation" data-sec="translation">O Kṛṣṇa, wearing yellow cloth! Today the inhabitants of Gokula are covered in perspiration out of separation from You. Their limbs are paralyzed and their body hairs are standing on end. In distress they converse in choked voices. They have become faded in complexion due to the extreme heat of separation, and they have become wet with the profuse flow of tears. They are now repeatedly fainting out of separation.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -6145,6 +6252,7 @@ The female relatives, whose eyes were flooded with tears out of anxiety for Kṛ
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>They are wet (stimyati) with tears which appear like flower clusters (stabakitaiḥ) because of being fixed in the eyes (ambaka). Some of the tears however fall from their eyes and moisten their bodies.</p>
@@ -6203,6 +6311,7 @@ The female relatives, whose eyes were flooded with tears out of anxiety for Kṛ
 
 
     <div class="fc-translation" data-sec="translation">When all the uddīpta-sāttvika-bhāvas appear in mahā-bhāva they are called sūddīpta-sāttvika-bhāvas. All the sāttvika-bhāvas attain their highest state in mahā-bhāva.</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -6273,6 +6382,7 @@ The female relatives, whose eyes were flooded with tears out of anxiety for Kṛ
 
     <div class="fc-translation" data-sec="translation">However, four types of ābhāsas of sāttvika-bhāva should be described. They are called ratyābhāsa-bhava (generated from raty-ābhāsa), sattvābhāsa-bhava (generated from sattvābhāsa), niḥsattva (false sattva) and pratīpa (enmity). They are listed in order from superior to inferior.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -6288,6 +6398,7 @@ The female relatives, whose eyes were flooded with tears out of anxiety for Kṛ
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>They appear like sāttvika-bhāvas but are not actually sāttvika-bhāvas and thus are called ābhāsa. Thus they are given the name sāttvikābhāsa. There are four types. Ratyābhāsa-bhava refers to symptoms of sāttvika-bhāvas generated through ratyābhāsa of two types mentioned earlier: pratibimba and chāyā. [Note: They are also called rukṣa-sāttvika-bhāvas as explained in verse 12.] Sattvābhāsa-bhava refers to symptoms similar to sāttvika-bhāvas, which manifest when the heart is overcome with only a trace of joy, astonishment etc. Niḥsattva refers to symptoms when not even a shadow of joy, astonishment etc. affects the heart or the external body (and thus any symptoms are only conscious imitation using the external body). Pratīpa is to be detested since it arises from hostile feelings</p>
@@ -6354,6 +6465,7 @@ The female relatives, whose eyes were flooded with tears out of anxiety for Kṛ
 
 
     <div class="fc-translation" data-sec="translation">However, four types of ābhāsas of sāttvika-bhāva should be described. They are called ratyābhāsa-bhava (generated from raty-ābhāsa), sattvābhāsa-bhava (generated from sattvābhāsa), niḥsattva (false sattva) and pratīpa (enmity). They are listed in order from superior to inferior.</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -6429,6 +6541,7 @@ The female relatives, whose eyes were flooded with tears out of anxiety for Kṛ
 
     <div class="fc-translation" data-sec="translation">Ratyābhāsa-bhava-sattvikābhāsa, symptoms which appear to be sāttvika-bhāvas, generated from the ratyābhāsa described previously, arises in people desiring liberation.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -6472,8 +6585,8 @@ The female relatives, whose eyes were flooded with tears out of anxiety for Kṛ
     <div class="cr-iast-block" data-sec="iast">
         <div class="cr-iast-line">yathā –</div>
 <div class="cr-pron-line" data-sec="pronunciation">[yathaa –]</div>        <div class="cr-iast-line">vārāṇasī-nivāsī kaścid ayaṁ vyāharan hareś caritam |</div>
-<div class="cr-pron-line" data-sec="pronunciation">[vaaraanasee-nivaasee kashchid ayam vyaaharan haresh charitam |]</div>        <div class="cr-iast-line">yati-goṣṭhyām utpulakaḥ siṣcati gaṇḍa-dvayīm asraiḥ ||85||</div>
-<div class="cr-pron-line" data-sec="pronunciation">[yati-goshthyaam utpulakah sishchati ganda-dvayeem asraih ||85||]</div>    </div>
+<div class="cr-pron-line" data-sec="pronunciation">[vaaraanasee-nivaasee kashchid ayam vyaaharan haresh charitam |]</div>        <div class="cr-iast-line">yati-goṣṭhyām utpulakaḥ siñcati gaṇḍa-dvayīm asraiḥ ||85||</div>
+<div class="cr-pron-line" data-sec="pronunciation">[yati-goshthyaam utpulakah sinchati ganda-dvayeem asraih ||85||]</div>    </div>
 
 
     <details class="cr-blend-details" data-sec="blended">
@@ -6486,13 +6599,14 @@ The female relatives, whose eyes were flooded with tears out of anxiety for Kṛ
                 <div class="cr-blend-iast-line">vārāṇasī-nivāsī kaścid ayaṁ vyāharan hareś caritam |</div>
             </div>
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">yati-goṣṭhyām utpulakaḥ siṣcati gaṇḍa-dvayīm asraiḥ ||85||</div>
+                <div class="cr-blend-iast-line">yati-goṣṭhyām utpulakaḥ siñcati gaṇḍa-dvayīm asraiḥ ||85||</div>
             </div>
         </div>
     </details>
 
 
     <div class="fc-translation" data-sec="translation">An example: When a person living in Vārānasī glorified the qualities of Hari repeatedly in the assembly of sannyāsīs, his hairs stood on end and tears moistened his cheeks.</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -6509,6 +6623,7 @@ The female relatives, whose eyes were flooded with tears out of anxiety for Kṛ
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Living in Vārānasī indicates the person was aspiring for liberation.</p>
@@ -6571,6 +6686,7 @@ The female relatives, whose eyes were flooded with tears out of anxiety for Kṛ
 
 
     <div class="fc-translation" data-sec="translation">When a shadow (ābhāsa) of joy, astonishment or other emotions appears in the heart of a person who is soft by nature (sentimental), the heart is said to have developed a state of sattvābhāsa. From this state of sattvābhāsa arise symptoms similar to sāttvika-bhāvas. They are called sattvābhāsa-bhava.</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -6636,6 +6752,7 @@ The female relatives, whose eyes were flooded with tears out of anxiety for Kṛ
 
 
     <div class="fc-translation" data-sec="translation">An example: When an aged person expert in Mīmāṁsa scriptures heard the pastimes of Kṛṣṇa, he became joyful in heart and his hairs stood on end. [Note: These persons do not even have superficial attraction for the Lord, whereas those with ratyābhāsa have superficial attraction for the Lord. Thus it is considered inferior to ratyābhāsa-bhava-sāttvābhāsa. However, they develop some temporary emotions such as joy or astonishment, which produce ecstatic symptoms such as hair standing on end.]</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -6710,6 +6827,7 @@ The female relatives, whose eyes were flooded with tears out of anxiety for Kṛ
 
     <div class="fc-translation" data-sec="translation">Another example: How can I describe the sweetness of your skilful words pouring a stream of nectar with descriptions of the pastimes of Mukunda? When the materialists who do not even desire to hear about Mukunda hear the pastimes of Mukunda from your mouth, their eyes quickly become filled with tears.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -6725,6 +6843,7 @@ The female relatives, whose eyes were flooded with tears out of anxiety for Kṛ
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>It is suggested in this verse that the tears immediately appear.</p>
@@ -6788,6 +6907,7 @@ The female relatives, whose eyes were flooded with tears out of anxiety for Kṛ
 
     <div class="fc-translation" data-sec="translation">When a person has a hard heart and practices exhibiting the sāttvika-bhāvas, without even a touch of emotion, the appearance of tears or other symptoms are called niḥsattva.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -6803,6 +6923,7 @@ The female relatives, whose eyes were flooded with tears out of anxiety for Kṛ
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>This person has a soft external appearance but internally is very hard. That is the meaning of picchila. Because of this condition the symptoms in niḥsattva are not fixed. The word ślatha in verse 86 means internally and externally soft. Because of this, the symptoms in sattvābhāsa-bhava are more fixed. This determines the difference between the two states. The word nisarga (have a nature) is employed to indicate this internal state. Whoever has a hard interior must depend on practice (abhyāsa-pare), concentrating with attention in order to produce the symptoms of sāttvika-bhāvas. Thus the person develops tears or hairs standing on end without even a shadow of emotion (sattvābhāsa). This niḥsattva, or external manifestation of symptoms, arises by practice in persons who have hardness (no emotions) internally. Thus the phrase “who are by nature internally hard (nisarga-picchala-svante)” is explained by the phrase “without even a shadow of emotion (sattvābhāsaṁ vināpi).” They depend on intense concentration to induce the symptoms. Because of being manifesting only through this special concentration, they do not occur distinctly. Thus only one example will be given. The wise who consider niḥsattva among the types of sāttvikābhāsa do so only because they appear similar to the sāttvika-bhāvas.</p>
@@ -6866,6 +6987,7 @@ The female relatives, whose eyes were flooded with tears out of anxiety for Kṛ
 
     <div class="fc-translation" data-sec="translation">An example: When a person, though hearing the pastimes of the Lord, does not feel either happiness or distress because of hardness of the heart, how can tears constantly flow from his eyes? It must be from practice alone that the tears flow.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -6881,6 +7003,7 @@ The female relatives, whose eyes were flooded with tears out of anxiety for Kṛ
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>For a person who does not become absorbed in the Lord (anabhiniveśāt), because he has a hard heart, how can real bhāva manifest? It cannot manifest at all. The lack of absorption in the Lord is constant. Therefore, how can tears constantly flow from his eyes? This indicates that it must be due to practice only.</p>
@@ -6940,6 +7063,7 @@ The female relatives, whose eyes were flooded with tears out of anxiety for Kṛ
 
     <div class="fc-translation" data-sec="translation">Those whose minds are either soft or hard generally show sāttvikābhasa only in festive gatherings of chanting the names of the Lord.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -6955,6 +7079,7 @@ The female relatives, whose eyes were flooded with tears out of anxiety for Kṛ
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Samsadi is connected with eva in the verse. Generally, it occurs only in public gatherings (saṁsadi eva) such as festivals, where chanting occurs. The word “generally” is used, because sometimes those with soft hearts will manifest the symptoms under other circumstances.</p>
@@ -7014,6 +7139,7 @@ The female relatives, whose eyes were flooded with tears out of anxiety for Kṛ
 
     <div class="fc-translation" data-sec="translation">Sāttvikābhāsa within the enemies of Kṛṣṇa generated from anger or fear is called pratīpa-sāttvikābhāsa.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -7029,6 +7155,7 @@ The female relatives, whose eyes were flooded with tears out of anxiety for Kṛ
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Krṣṇasya hitād means persons other than those who are favorable to Kṛṣṇa, His enemies. Pratīpa-sāttvikābhāsa appears in persons who are Kṛṣṇa’s enemies, through anger or fear.</p>
@@ -7091,6 +7218,7 @@ The female relatives, whose eyes were flooded with tears out of anxiety for Kṛ
 
 
     <div class="fc-translation" data-sec="translation">From anger, from Hari-vaṁśa: With red lower lip and trembling upper lip, Kaṁsa’s face appeared like the sun, red with anger.</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -7165,6 +7293,7 @@ The female relatives, whose eyes were flooded with tears out of anxiety for Kṛ
 
     <div class="fc-translation" data-sec="translation">From fear: Seeing Kṛṣṇa in the arena the wrestler’s face turned pale, and drops of perspiration appeared on his forehead. It seemed that his forehead like a conch shell was offering arghya with great reverence to the goddess of liberation who had just arrived in front of him.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -7180,6 +7309,7 @@ The female relatives, whose eyes were flooded with tears out of anxiety for Kṛ
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>The hint in this verse is that the wrestler, being afraid, surrendered to Kṛṣṇa. Instead of mlanānanaḥ kṛṣṇam, sometimes mlānāsya govindam is sometimes found in the text. This alternative is rejected.</p>
@@ -7251,6 +7381,7 @@ The female relatives, whose eyes were flooded with tears out of anxiety for Kṛ
 
     <div class="fc-translation" data-sec="translation">Another example of fear: Hearing of Kaṁsa’s extreme fear during a recital of the Purāṇas, one person (identifying with Kaṁsa’s fear) began to tremble within and his face darkened.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -7311,6 +7442,7 @@ The female relatives, whose eyes were flooded with tears out of anxiety for Kṛ
 
 
     <div class="fc-translation" data-sec="translation">Though there is no necessity of describing sāttvikābhāsa, a sketch has been given in order to become familiar with all aspects of sāttvika-bhāvas. Thus ends the Third Wave concerning sāttvika-bhāva in the Southern Section of Bhakti-rasāmṛta-sindhu. 2.4 The Fourth Wave Concerning Vyabhicāri-bhāva In the Southern Section of the Bhakti-rasāmṛta-sindhu Outline of Vyabhicāri-bhavas I. Definition of Vyabhicāri-bhāva II. Enumeration of Thirty-three Vyabhicāri-bhāvas III. Examples of the Vyabhicāri-bhāvas from different causes IV. Causes and Effects of Vyabhicāri-bhāvas V. Types of Vyabhicāri-bhāvas A. Paratantra: Dependent on Rati, in a Devotee 1. Vara: Superior a) Sākṣat: Related to Primary Rati b) Vyavahita: Related to Secondary Rati 2. Avara: Inferior: caused by a Rati not related to Kṛṣṇa in a devotee B. Svatantra: indirect relation to Rati, in Devotees 1. Rati-śūnya: in impure devotees with chāyā-rati 2. Rati-anusparśana: in the devotee with genuine Rati, not related to Kṛṣṇa 3. Rati-gandha: in devotees with Rati, indirectly related to Kṛṣṇa VI. Vyabhicāry-ābhāsa A. Pratikūlya: in hostile persons B. Anaucitya: in objects incapable of rasa 1. Asatya: in plants 2. Ayogya: in animals VII. Stages of Vyabhicāri-bhāvas A. Utpatti: Appearance B. Sandhi: Mixing C. Śābalya: Conflict D. Śānta: Disappearance VIII. Varieties of Mind Which Affect the Strength of Vyabhicāri-bhāvas A. Repressive 1. Gariṣṭha: heavy 2. Gambhīra: deep 3. Mahiṣṭha: expansive 4. Karkaśa: hard B. Receptive 1. Laghiṣṭha: light 2. Uttāna: on the surface 3. Kṣodiṣṭha: small 4. Komala: soft</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>

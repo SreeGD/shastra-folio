@@ -31,11 +31,13 @@
 <body class="has-sidebar">
 <header class="fc-site-header">
     <button type="button" class="fc-mobile-trigger fc-mobile-trigger-left" data-overlay="left" aria-label="Open settings drawer">⚙</button>
-    <a class="fc-brand" href="../../../">FolioCorpus<span class="fc-sub">Bhagavad-gītā</span></a>
+<a class="fc-brand" href="../../../">FolioCorpus<span class="fc-sub">Bhakti-rasāmṛta-sindhu</span></a>
     <nav class="fc-site-nav">
         <a href="../../../">Home</a>
         <a href="../../../bg/">Bhagavad-gītā</a>
         <a href="../../../sb/">Śrīmad-Bhāgavatam</a>
+        <a href="../../../brs/" title="Bhakti-rasāmṛta-sindhu with Jīva Gosvāmī's and Viśvanātha Cakravartī's commentaries">Bhakti-rasāmṛta-sindhu</a>
+        <a href="../../../nod/" title="Nectar of Devotion">Nectar of Devotion</a>
         <a href="../../../search/" title="Search across all integrated works">🔍 Search</a>
         <button type="button" id="fc-random-verse" class="fc-nav-btn" title="Jump to a random verse">🎲 Random</button>
     </nav>
@@ -46,8 +48,8 @@
     <button class="fc-sb-collapse" type="button" data-sb="left" title="Collapse left sidebar" aria-label="Collapse"></button>
 
     <div class="fc-sb-body">
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Reading</div>
+        <details class="fc-sb-section" data-sbsec="reading" open>
+            <summary class="fc-sb-title">Reading</summary>
             <div class="fc-sb-sub">Theme</div>
             <div class="fc-segmented" data-setting="theme">
                 <button type="button" data-val="light">Light</button>
@@ -73,10 +75,10 @@
                 <button type="button" data-val="single">Single</button>
                 <button type="button" data-val="side">Side-by-side</button>
             </div>
-        </div>
+        </details>
 
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Display</div>
+        <details class="fc-sb-section" data-sbsec="display" open>
+            <summary class="fc-sb-title">Display</summary>
             <div class="fc-sb-grid">
                 <label><input type="checkbox" data-section="devanagari" checked> Devanāgarī</label>
                 <label><input type="checkbox" data-section="iast" checked> IAST transliteration</label>
@@ -98,33 +100,10 @@
                 <button type="button" data-action="expand-all">Expand all</button>
                 <button type="button" data-action="collapse-all">Collapse all</button>
             </div>
-        </div>
+        </details>
 
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Find your starting point</div>
-            <div class="fc-persona-links">
-                <a class="fc-persona-link" href="../../../daily/">🌅 Daily (one value a week)</a>
-                <a class="fc-persona-link" href="../../../householder/">🏠 Householder (family & work)</a>
-                <a class="fc-persona-link" href="../../../parenting/">👨‍👩‍👧 Parenting (stories for kids)</a>
-                <a class="fc-persona-link" href="../../../themes/">📚 All themes</a>
-                <a class="fc-persona-link" href="../../../values/" style="background:#F0F6F2;border-left-color:#1F4632;">ॐ Vedic Value System ↗</a>
-                <a class="fc-persona-link" href="../../../vidya/" style="background:#FBF6E4;border-left-color:#C8860B;">📚 Vidyā Karaṇa (kids, multi-lang) ↗</a>
-            </div>
-        </div>
-
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Audience</div>
-            <div class="fc-audience-filter">
-                <label><input type="radio" name="fc-audience" value="all" checked> All levels</label>
-                <label><input type="radio" name="fc-audience" value="primary"> Primary (children)</label>
-                <label><input type="radio" name="fc-audience" value="middle"> Middle (teens)</label>
-                <label><input type="radio" name="fc-audience" value="senior"> Senior (adults)</label>
-                <label><input type="radio" name="fc-audience" value="college"> College / scholar</label>
-            </div>
-        </div>
-
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Tools</div>
+        <details class="fc-sb-section" data-sbsec="tools" open>
+            <summary class="fc-sb-title">Tools</summary>
             <div class="fc-sb-tools">
                 <button type="button" id="fc-presentation-toggle" class="fc-tool-btn"><span>🖥 Presentation</span><kbd class="fc-kbd">F</kbd></button>
                 <button type="button" id="fc-pen-toggle" class="fc-tool-btn"><span>✏️ Pen mode</span><kbd class="fc-kbd">P</kbd></button>
@@ -139,26 +118,10 @@
                 <button type="button" id="fc-clear-highlights" class="fc-tool-btn">🩷 Clear highlights (page)</button>
                 <button type="button" id="fc-notes-modal-open" class="fc-tool-btn">📓 My annotations</button>
             </div>
-        </div>
+        </details>
 
-        <div class="fc-sb-section" id="fc-tts-controls" hidden>
-            <div class="fc-sb-title">
-                Read-aloud
-                <label class="fc-tts-master">
-                    <input type="checkbox" id="fc-tts-enabled" checked>
-                    <span class="fc-tts-master-label">On</span>
-                </label>
-            </div>
-            <div class="fc-tts-inner">
-                <div class="fc-sb-sub">Voice</div>
-                <select id="fc-tts-voice" class="fc-tts-select" aria-label="TTS voice"></select>
-                <div class="fc-sb-sub">Rate <span class="fc-tts-rate-val">1.0×</span></div>
-                <input type="range" id="fc-tts-rate" min="0.5" max="2" step="0.1" value="1" class="fc-tts-rate" aria-label="Reading rate">
-            </div>
-        </div>
-
-        <div class="fc-sb-section" id="fc-progress-section">
-            <div class="fc-sb-title">Progress</div>
+        <details class="fc-sb-section" data-sbsec="progress" id="fc-progress-section" open>
+            <summary class="fc-sb-title">Progress</summary>
             <div class="fc-progress-row">
                 <span class="fc-progress-num" id="fc-progress-num">0</span>
                 <span class="fc-progress-divider">/</span>
@@ -173,29 +136,29 @@
                 <span class="fc-progress-spacer"></span>
                 <button type="button" class="fc-progress-reset" id="fc-progress-reset" title="Reset progress">↺</button>
             </div>
-        </div>
+        </details>
 
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Bookmarks <span class="fc-sb-count" id="fc-bookmarks-count">0</span></div>
+        <details class="fc-sb-section" data-sbsec="bookmarks" open>
+            <summary class="fc-sb-title">Bookmarks <span class="fc-sb-count" id="fc-bookmarks-count">0</span></summary>
             <ul class="fc-bookmark-list" id="fc-bookmarks-list">
                 <li class="fc-sb-empty">No bookmarks yet — click ☆ on any verse.</li>
             </ul>
-        </div>
+        </details>
 
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Notes <span class="fc-sb-count" id="fc-notes-count">0</span></div>
+        <details class="fc-sb-section" data-sbsec="notes" open>
+            <summary class="fc-sb-title">Notes <span class="fc-sb-count" id="fc-notes-count">0</span></summary>
             <ul class="fc-bookmark-list" id="fc-notes-list">
                 <li class="fc-sb-empty">No notes yet — open any verse and write in the 📝 block.</li>
             </ul>
-        </div>
+        </details>
 
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Export</div>
+        <details class="fc-sb-section" data-sbsec="export">
+            <summary class="fc-sb-title">Export</summary>
             <div class="fc-sb-tools">
                 <button type="button" id="fc-export-md" class="fc-tool-btn">📥 Download Markdown</button>
                 <button type="button" id="fc-export-json" class="fc-tool-btn">💾 Download JSON backup</button>
             </div>
-        </div>
+        </details>
     </div>
 </aside>    <main class="fc-container">
 <nav class="fc-breadcrumbs">
@@ -203,14 +166,14 @@
     <span class="sep">›</span>
     <a href="../../../brs/">Bhakti-rasāmṛta-sindhu</a>
     <span class="sep">›</span>
-    <a href="../../../brs/4/">Section 4</a>
+    <a href="../../../brs/4/">Division 4</a>
     <span class="sep">›</span>
-    <span>Chapter 8</span>
+    <span>Wave 8</span>
 </nav>
 
 <div class="fc-ribbon">
     <div class="fc-ribbon-row">
-        <h1 class="fc-verse-heading">4.8</h1>
+        <h1 class="fc-verse-heading">4.8 · Maitrī-vairī-sthiti</h1>
         <span class="fc-ribbon-meta">85 verses</span>
         <input type="search" class="fc-search" id="fc-search" placeholder="🔍 Search in this chapter" aria-label="Search verses in this chapter">
         <span class="fc-ribbon-current" id="fc-ribbon-current" aria-live="polite"></span>
@@ -337,6 +300,7 @@
 
     <div class="fc-translation" data-sec="translation">Next, the friends and enemies among the various rasas starting with śānta-rasa will be described in order.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -398,6 +362,7 @@
 
     <div class="fc-translation" data-sec="translation">The friends of śānta-rasa are dāsya (prīti-rasa), bībhatsa-rasa, dharma-vīra-rasa, and adbhuta-rasa. Adbhuta-rasa is the friend of the other four rasas as well (dāsya, sakhya, vatsala and madhura-rasa.)</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -413,13 +378,14 @@
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>In this discussion of friendly and inimical rasas, the rasas displayed by five types of persons are indicated as friendly or inimical to the devotee’s rasa. 1. The devotee with his predominant rasa may show other friendly or inimical rasas within himself. 2. He may observe Kṛṣṇa exhibiting rasas friendly or inimical to his primary or secondary rasas. 3. He may observe other devotees exhibiting friendly or inimical rasas. 4. He may observe neutral parties exhibiting friendly or inimical rasas. 5. He may observe enemies exhibiting friendly or inimical rasas. For a person experiencing a particular dominant rasa (called aṅgī, which may be either primary or secondary), certain rasas manifesting in any of these five persons (including himself), will restrict that particular rasa, being inappropriate (called enemies). Other rasas in these five persons, being favorable, will nourish that aṅgī-rasa (dominant rasa). This will be explained in this chapter.
 Two types of śānta-rasa--that of the tapasvī and the ātmārāma— [Note: These two types are described starting with BRS 3.1.11.] are indicated here. Bībhatsa and dharma-vīra-rasa are the friends of tapasvī-śānta-rasa. Tapasvī-śānta-rasa is nourished by thoughts of the disgust (bībhatsa) displayed by those who are neutral or opposed to him. [Note: The enemies would show disgust at the renunciation of the tapasvī. This would increase his sense of tolerance and determination. The neutral person would show disgust for his own body, or some aspect of the material world. This would reinforce his own sense of renunciation.] It is also nourished by his contemplation of the practice of dharma followed by Kṛṣṇa and His devotees (dharma-vīra). [Note: The actions of the dharma-vīra are proper conduct, adherence to scriptural rules, tolerance, and following rules of sense control. These actions are inspiring for the tapasvī-śānta-bhakta.]
 However, śānta-rasa of the ātmārāma is not nourished by a poet’s descriptions of Kṛṣṇa’s or His devotees’ practice of dharma, though he is not disrespectful towards them, nor is he nourished by thoughts about the disgust displayed towards material life or himself by neutral or inimical persons. [Note: He is neutral towards all actions in the world including practice of dharma, since he is fixed in rati with the Lord.] Adbhuta-rasa is the friend of śānta-rasa. This same adbhuta-rasa is the friend of dāsya, sakhya, vatsala and madhura-rasa as well.
 The persons situated in śānta-rasa (ātmārāmas), including even the tapasvī-śanta-bhaktas, experience adbhuta or amazement for the Lord in two ways: by experiencing the bliss of the Lord’s sweetness as greater than the bliss of impersonal brahman, and by appreciating the Lord’s pastimes of subduing opposing parties. These two causes of amazement are illustrated in the following verses:
-tasyāravinda-nayanasya padāravinda-kiṣjalka-miśra-tulasī-makaranda-vāyuḥ
+tasyāravinda-nayanasya padāravinda-kiñjalka-miśra-tulasī-makaranda-vāyuḥ
 antar-gataḥ sva-vivareṇa cakāra teṣāṁ saṅkṣobham akṣara-juṣām api citta-tanvoḥ
 When the breeze carrying the aroma of tulasī leaves from the toes of the lotus feet of the Personality of Godhead entered the nostrils of those sages, they experienced a change both in body and in mind, even though they were attached to the impersonal Brahman understanding. [Note: The Kumāras are examples of ātmārāma-śānta-bhaktas. They here exhibit amazement on experiencing the superior bliss related to the personal Lord.] SB 3.15.43
 sthity-udbhavāntaṁ bhuvana-trayasya yaḥ samīhite ’nanta-guṇaḥ sva-līlayā
@@ -478,6 +444,7 @@ Martyānuvidhasya (imitating human beings) in the last quoted verse of Bhāgavat
 
     <div class="fc-translation" data-sec="translation">Madhura-rasa and yuddha-vīra-rasa are the enemies of both types of śānta-rasa. Raudra-rasa and bhayānaka-rasa are the enemies of ātmārāma-śānta-rasa, and raudra-rasa is an enemy of tapasvī-śānta-rasa.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -493,6 +460,7 @@ Martyānuvidhasya (imitating human beings) in the last quoted verse of Bhāgavat
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Bhayānaka-rasa is not an enemy for tapasvī-śānta-rasa, since that type of śānta-rasa is nourished by the appearance of fear related to repeated birth, generated from seeing the ferocity of Yama (punisher after death) and others. But raudra-rasa, if experienced within himself, is an enemy of his śānta-rasa. [Note: Experiencing anger towards anyone disturbing his peace.]</p>
@@ -552,6 +520,7 @@ Martyānuvidhasya (imitating human beings) in the last quoted verse of Bhāgavat
 
     <div class="fc-translation" data-sec="translation">Bībhatsa, śānta, dharma-vīra and dāna-vīra-rasas are the friends of dāsya-rasa. Madhura-rasa, yuddha-vīra-rasa directed to Kṛṣṇa, and raudra-rasa directed to Kṛṣṇa by the dāsya-bhakta are enemies of his dāsya-rasa.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -567,6 +536,7 @@ Martyānuvidhasya (imitating human beings) in the last quoted verse of Bhāgavat
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Bībhatsa displayed by the neutral person or the enemy towards a person in dāsya-rasa is friendly because it nourishes his dāsya-rasa for the Lord. And, śānta-rasa, by its detachment from material enjoyment, is also a friend. Dharma-vīra-rasa and dāna-vīra-rasa (vīra-dvayam) are also friends, nourishing his dāsya-rasa, when displayed in the dāsya-bhakta himself, in Kṛṣṇa and in other devotees. Yuddha-vīra-rasa and raudra-rasa, directed towards Kṛṣṇa (eka-vibhāvakaḥ), are enemies. The desire of the dāsya-bhakta to fight with Kṛṣṇa and the dāsya-bhakta manifesting anger at Kṛṣṇa are unfavorable for his dāsya-rasa (since they cause loss of respect for the Lord). [Note: However yuddha-vīra and raudra-rasa displayed by Kṛṣṇa or other devotees against demons inspire the dāsya-rasa of that devotee, since those rasas will display the power of the Lord.] Other statements following this will be explained in the same way (directed towards Kṛṣṇa), by implication (using the word pūrvavat to indicate eka-vibhāvakaḥ), though there is no direct statement to that effect.</p>
@@ -626,6 +596,7 @@ Martyānuvidhasya (imitating human beings) in the last quoted verse of Bhāgavat
 
     <div class="fc-translation" data-sec="translation">Madhura, hāsya and yuddha-vīra-rasa are the friends of sakhya-rasa. Vatsala-rasa, raudra-rasa, and bhayānaka-rasa directed to Kṛṣṇa are the enemies of sakhya-rasa.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -641,6 +612,7 @@ Martyānuvidhasya (imitating human beings) in the last quoted verse of Bhāgavat
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Madhura-rasa manifested in Kṛṣṇa towards the gopīs is favorable for the devotee with sakhya-rasa. [Note: The cowherd boys, the priya-narma-sakhas, assist Kṛṣṇa in His pastimes with the gopīs.] Hāsya-rasa manifested in the sakhya-bhakta himself and in other devotees as well is favorable for his sakhya-rasa. Yuddha-vīra-rasa which manifests in all except the neutral party is favorable for sakhya-rasa. [Note: The fighting mood of the devotee in sakhya-rasa, in Kṛṣṇa and in other devotees, is mock battle only. The fighting spirit displayed in demons towards Kṛṣṇa acts as a stimulus for friendship with Kṛṣṇa. A neutral person would not fight at all.] Pūrvavat means “directed towards Kṛṣṇa,” referring to eka vibhāvakaḥ of the previous verse. Thus, vatsala-rasa, raudra-rasa and bhayānaka-rasa (bhīṣmaḥ) directed towards Kṛṣṇa are all unfavorable if displayed in the sakhya-rasa devotee and directed towards Kṛṣṇa.</p>
@@ -700,6 +672,7 @@ Martyānuvidhasya (imitating human beings) in the last quoted verse of Bhāgavat
 
     <div class="fc-translation" data-sec="translation">Hāsya, karuṇa and bhayānaka-rasa are the friends of vatsala-rasa. Madhura, yuddha-vīra, dāsya and raudra-rasas directed to Kṛṣṇa are the enemies of vatsala-rasa.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -716,6 +689,7 @@ With the ecstasy of parental love a mixture of conjugal love, chivalry or anger 
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Hāsya-rasa and karuṇa-rasa, manifested in the vatsala-rasa-bhakta, in Kṛṣṇa and in other devotees, is favorable to vatsala-rasa. Bhayānaka-rasa caused by enemies is also favorable. Madhura-rasa manifested in all types of persons is unfavorable for vatsala-rasa. Yuddha-vīra-rasa and raudra-rasa exchanged between Kṛṣṇa and the vatsala-bhakta are unfavorable. [Note: The competitive spirit of yuddha-vīra-rasa or mutual hostility would destroy the relationship of parents protecting their son. However if the parents see Kṛṣṇa competing with his friends there is no obstacle to their parental affection. The parents may show anger, but it would be a show only, in which case Kṛṣṇa acts fearful. Kṛṣṇa may make a show of anger, in which case the parents act remorseful.] Dāsya also directed towards Kṛṣṇa is unfavorable in the vatsala-rasa-bhakta. [Note: In dāsya-rasa the devotee looks to the Lord as his master, and in vatsala-rasa the devotee sees the Lord as his dependent.] Pūrvavat indicates “directed towards Kṛṣṇa,” as in the previous verse.</p>
@@ -779,6 +753,7 @@ With the ecstasy of parental love a mixture of conjugal love, chivalry or anger 
 
     <div class="fc-translation" data-sec="translation">Hāsya and sakhya-rasa are the friends of madhura-rasa. Vatsala, bībhatsa, śānta, raudra and bhayānaka-rasas are the enemies of madhura-rasa. Some say that yuddha-vīra and dharma-vīra-rasas are friends of madhura-rasa, though others say those two are enemies of madhura-rasa.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -795,6 +770,7 @@ According to certain expert opinions, in the ecstasy of conjugal love the feelin
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Hāsya and sakhya-rasa in the madhura-rasa devotee and expressed in Kṛṣṇa are favorable for that devotee’s madhura-rasa. Śānta-rasa manifested in the madhura-rasa devotee and in Kṛṣṇa is unfavorable for madhura-rasa. Hāsya and sakhya are favorable to some degree when displayed in other devotees, specifically the sakhīs. Vatsala-rasa manifested in the madhura-rasa devotee, in Kṛṣṇa and in other devotees, is unfavorable for the devotee’s madhura-rasa. Bībhatsa-rasa is unfavorable when manifested in all five types of persons (the devotee, Kṛṣṇa, other devotees, neutrals and enemies). Raudra and bhayānaka-rasas are unfavorable generally when manifested in all five types of persons. Some say that yuddha-vīra and dharma-vīra-rasas (vīra-yugmam) are favorable in the devotee, in Kṛṣṇa and in other devotees. Others say that those two rasas are unfavorable, though this is not the author’s opinion.</p>
@@ -854,6 +830,7 @@ According to certain expert opinions, in the ecstasy of conjugal love the feelin
 
     <div class="fc-translation" data-sec="translation">Bībhatsa, madhura, sakhya and vatsala-rasas are favorable for hāsya-rasa. Karuṇa and bhayānaka-rasas are unfavorable.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -869,6 +846,7 @@ According to certain expert opinions, in the ecstasy of conjugal love the feelin
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Bībhatsa or disgust experienced in the devotee himself is favorable for his hāsya-rasa, when seeing jesting devotees wearing disgusting clothing for instance, but it is not favorable when experiencing disgust at bad smells or other similar items. In the following verses, the reasons for friendship or animosity and the persons manifesting the rasas should be inferred.</p>
@@ -908,8 +886,8 @@ According to certain expert opinions, in the ecstasy of conjugal love the feelin
     </header>
 
     <div class="cr-iast-block" data-sec="iast">
-        <div class="cr-iast-line">adbhutasya suhṛd vīraḥ paṣca śāntādayas tathā |</div>
-<div class="cr-pron-line" data-sec="pronunciation">[adbhutasya suhrid veerah pashcha shaantaadayas tathaa |]</div>        <div class="cr-iast-line">pratipakṣo bhaved asya raudro bībhatsa eva ca ||9||</div>
+        <div class="cr-iast-line">adbhutasya suhṛd vīraḥ pañca śāntādayas tathā |</div>
+<div class="cr-pron-line" data-sec="pronunciation">[adbhutasya suhrid veerah pancha shaantaadayas tathaa |]</div>        <div class="cr-iast-line">pratipakṣo bhaved asya raudro bībhatsa eva ca ||9||</div>
 <div class="cr-pron-line" data-sec="pronunciation">[pratipaksho bhaved asya raudro beebhatsa eva cha ||9||]</div>    </div>
 
 
@@ -917,7 +895,7 @@ According to certain expert opinions, in the ecstasy of conjugal love the feelin
         <summary>Blended reading (Sanskrit + English inline)</summary>
         <div class="cr-blend-grid">
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">adbhutasya suhṛd vīraḥ paṣca śāntādayas tathā |</div>
+                <div class="cr-blend-iast-line">adbhutasya suhṛd vīraḥ pañca śāntādayas tathā |</div>
             </div>
             <div class="cr-blend-block">
                 <div class="cr-blend-iast-line">pratipakṣo bhaved asya raudro bībhatsa eva ca ||9||</div>
@@ -927,6 +905,7 @@ According to certain expert opinions, in the ecstasy of conjugal love the feelin
 
 
     <div class="fc-translation" data-sec="translation">The five primary rasas and vīra-rasa are favorable for adbhuta-rasa. Raudra and bībhatsa are unfavorable.</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -943,6 +922,7 @@ According to certain expert opinions, in the ecstasy of conjugal love the feelin
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Here it is stated that the experience of raudra and bībhatsa obstruct the astonishment caused by experiencing something unusual (adbhuta-rasa). This however does not rule out the fact that feelings of anger or disgust in rasa are also causes for astonishment; for it is said rase sāraś camatkāraḥ: the essence of rasa (any rasa) is astonishment. [Note: rase sāraś camatkāraḥ sarvatrāpy anubhūyate | tac-camatkāra-sāratve sarvatrāpy adbhuto rasaḥ | tasmād adbhutam evāha kṛtī nārāyaṇo rasam ||  This is from a work of Dharmadatta, quoted in Sāhitya-darpaṇa.]</p>
@@ -1002,6 +982,7 @@ According to certain expert opinions, in the ecstasy of conjugal love the feelin
 
     <div class="fc-translation" data-sec="translation">Adbhuta, hāsya, sakhya and dāsya-rasas are favorable for vīra-rasa. Bhayānaka and śānta-rasas are unfavorable for yuddha-vīra-rasa. For dāna-vīra, dayā-vīra and dharma-vīra-rasas, bhayānaka-rasa is unfavorable.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1017,6 +998,7 @@ According to certain expert opinions, in the ecstasy of conjugal love the feelin
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Vatsala-rasa is sometimes favorable for vīra-rasa as well. This is the case of Balarāma and others for whom vatsala-rasa is favorable to their yuddha-vīra-rasa, and the inhabitants of Vraja, for whom vatsala is favorable for their dāna-vīra-rasa. Bhayānaka-rasa and śānta-rasa are unfavorable for the yuddha-vīra (indicted by kasyacit--in some cases). Bhayānaka-rasa is unfavorable for the other types of vīra-rasa.</p>
@@ -1076,6 +1058,7 @@ According to certain expert opinions, in the ecstasy of conjugal love the feelin
 
     <div class="fc-translation" data-sec="translation">Raudra-rasa and vatsala-rasa are favorable for karuṇa-rasa. Hāsya, the sambhoga portion of madhura-rasa (meeting Kṛṣṇa) and adbhuta-rasas are unfavorable.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1091,6 +1074,7 @@ According to certain expert opinions, in the ecstasy of conjugal love the feelin
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Raudra here refers to anger generated during a period of suffering by the remembrance of previous painful treatment by the lover. If painful treatment were at the present time, while in a state of suffering, it would generate fear.</p>
@@ -1150,6 +1134,7 @@ According to certain expert opinions, in the ecstasy of conjugal love the feelin
 
     <div class="fc-translation" data-sec="translation">Karuṇa and vīra-rasas are favorable to raudra-rasa. Hāsya, madhura and bhayānaka-rasa are the enemies.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1165,6 +1150,7 @@ According to certain expert opinions, in the ecstasy of conjugal love the feelin
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Bhīśaṇa means bhayānaka-rasa. It is unfavorable for raudra-rasa when manifested in the devotee experiencing raudra-rasa.</p>
@@ -1224,6 +1210,7 @@ According to certain expert opinions, in the ecstasy of conjugal love the feelin
 
     <div class="fc-translation" data-sec="translation">Bībhatsa and karuṇa-rasa are favorable for bhayānaka-rasa. Vīra, madhura, hāsya and raudra are unfavorable.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1240,6 +1227,7 @@ With the ecstasy of chivalry in devotional service a mixture of conjugal union, 
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Karuṇa-rasa nourishes fear by thinking of future separation from the lover and the consequent suffering. Vīra, madhura, hāsya and raudra-rasas are unfavorable for nourishing fear when manifested in the person experiencing fear.</p>
@@ -1280,8 +1268,8 @@ With the ecstasy of chivalry in devotional service a mixture of conjugal union, 
 
     <div class="cr-iast-block" data-sec="iast">
         <div class="cr-iast-line">bībhatsasya bhavec chānto hāsyaḥ prītis tathā suhṛt |</div>
-<div class="cr-pron-line" data-sec="pronunciation">[beebhatsasya bhavech chaanto haasyah preetis tathaa suhrit |]</div>        <div class="cr-iast-line">śatruḥ śucis tathā preyān jṣeyā yuktyā pare ca te ||14||</div>
-<div class="cr-pron-line" data-sec="pronunciation">[shatruh shuchis tathaa preyaan jsheyaa yuktyaa pare cha te ||14||]</div>    </div>
+<div class="cr-pron-line" data-sec="pronunciation">[beebhatsasya bhavech chaanto haasyah preetis tathaa suhrit |]</div>        <div class="cr-iast-line">śatruḥ śucis tathā preyān jñeyā yuktyā pare ca te ||14||</div>
+<div class="cr-pron-line" data-sec="pronunciation">[shatruh shuchis tathaa preyaan jneyaa yuktyaa pare cha te ||14||]</div>    </div>
 
 
     <details class="cr-blend-details" data-sec="blended">
@@ -1291,13 +1279,14 @@ With the ecstasy of chivalry in devotional service a mixture of conjugal union, 
                 <div class="cr-blend-iast-line">bībhatsasya bhavec chānto hāsyaḥ prītis tathā suhṛt |</div>
             </div>
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">śatruḥ śucis tathā preyān jṣeyā yuktyā pare ca te ||14||</div>
+                <div class="cr-blend-iast-line">śatruḥ śucis tathā preyān jñeyā yuktyā pare ca te ||14||</div>
             </div>
         </div>
     </details>
 
 
     <div class="fc-translation" data-sec="translation">Tapasvī-śānta-rasa, hāsya-rasa and dāsya-rasa are favorable for bībhatsa-rasa. Madhura and sakhya-rasas are unfavorable for bībhatsa-rasa. Thus, by logic one can understand the other friends and enemies of the rasas.</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -1314,6 +1303,7 @@ With the ecstasy of chivalry in devotional service a mixture of conjugal union, 
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Śānta-rasa here means the tapasvī-śānta-rasa (explained in verse 2). The dāsya-rasa of a person who has just come to the stage of rati is favorable for bībhatsa-rasa (since he shows disgust for material life.) Not all hāsya-rasa is favorable for bhībhatsa. Only when clowning persons assume disgusting dress for instance is it favorable for bhībhatsa-rasa.</p>
@@ -1373,6 +1363,7 @@ With the ecstasy of chivalry in devotional service a mixture of conjugal union, 
 
     <div class="fc-translation" data-sec="translation">Rasas other than the friendly and inimical rasas just mentioned, or that can be logically inferred as such, should be considered neutral.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1389,6 +1380,7 @@ The topic of incompatibility is a very important one, and those who are pure dev
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Kathitebhyaḥ pare (others than those just mentioned) should also include those that can be inferred logically to be friend or enemy.</p>
@@ -1443,6 +1435,7 @@ The topic of incompatibility is a very important one, and those who are pure dev
 
 
     <div class="fc-translation" data-sec="translation">When friendly rasas mix, rasa becomes sweeter.</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -1506,6 +1499,7 @@ The topic of incompatibility is a very important one, and those who are pure dev
 
     <div class="fc-translation" data-sec="translation">When two rasas mix, they cannot be experienced equally. Thus, the wise have said that there is a mixture of a predominant rasa (aṅgī) and subsidiary rasas (aṅgas).</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1521,6 +1515,7 @@ The topic of incompatibility is a very important one, and those who are pure dev
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>The two parts of the verse should be read together. If two rasas appear, it is impossible that they can be experienced in an absolutely equal way. Therefore, they can be experienced at one time (melanam) only if one is predominant and the others are subsidiary.</p>
@@ -1579,6 +1574,7 @@ The topic of incompatibility is a very important one, and those who are pure dev
 
 
     <div class="fc-translation" data-sec="translation">When either a primary or secondary rasa becomes most prominent (aṅgī), all the friendly rasas become subordinate (aṅga).</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -1640,6 +1636,7 @@ The topic of incompatibility is a very important one, and those who are pure dev
 
 
     <div class="fc-translation" data-sec="translation">In this work, first the primary rasas starting with śānta-rasa will be taken as the predominant rasa (aṅgī). In such cases, the friendly primary rasas and friendly secondary rasas become the subordinate rasas (aṅgas).</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -1710,6 +1707,7 @@ The topic of incompatibility is a very important one, and those who are pure dev
 
     <div class="fc-translation" data-sec="translation">An example with śānta-rasa as the aṅgī and dāsya-rasa as the aṅga (both being primary rasas): How will I ever be able to massage the two lotus feet of Your effulgent self, endowed with a form of eternity, knowledge, and bliss, similar to a fire emanating sparks in the form of the jīvas?</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1725,6 +1723,7 @@ The topic of incompatibility is a very important one, and those who are pure dev
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>The example of a fire emanating sparks (the jīvas) is a reference to the Upaniṣads. [Note: Bṛhad-āraṇyaka Upaniṣad 2.1] This is stated in order to show that the jīva is subordinate to the Lord (aṁśa and aṁśī). The param brahma (svarūpasya) has a form (ghana) which is eternal, conscious and blissful (cit). Cit stands for sac-cid-ānanda. This form of the Lord serves as the ālambana (viṣaya) for the speaker, and establishes the person’s devotion to Him. This illustrates śānta-rasa as the predominating rasa, or aṅgī. Its superior position is indicated by its being embraced by its great friend (dāsya-rasa). Because dāsya-rasa is subordinate (aṅga), śānta-rasa becomes even more prominent, just as yogurt attains greater taste by the addition of sugar. And even the desire to massage the feet of the Lord (the touch of dāsya-rasa in the verse) is actually the desire to attain bliss by touching the form of the Lord who is full of the highest bliss, rather than to give bliss to the Lord, because the devotee realizes the Lord as an object full of bliss (rather than as his master).</p>
@@ -1800,6 +1799,7 @@ The topic of incompatibility is a very important one, and those who are pure dev
 
     <div class="fc-translation" data-sec="translation">An example with śānta-rasa (primary rasa) as aṅgī and bībhatsa (secondary rasa) as aṅga: My wicked self, happily situated in this body, eager to enjoy various tastes, and absorbed in this leather container made of phlegm, semen and blood, is lethargic to remember Paramātmā.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1815,6 +1815,7 @@ The topic of incompatibility is a very important one, and those who are pure dev
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Kutupa is a small leather container. Kutukī means “enthusiastic to taste various pleasures.” The predominant rasa or aṅgī is śānta. In that rasa (tatra), bībhatsa is the aṅga.</p>
@@ -1858,8 +1859,8 @@ The topic of incompatibility is a very important one, and those who are pure dev
 <div class="cr-pron-line" data-sec="pronunciation">[tatraiva preetasyaadbhuta-beebhatsayosh cha, yathaa –]</div>        <div class="cr-iast-line">hitvāsmin piśitopanaddha-rudhira-klinne mudaṁ vigrahe</div>
 <div class="cr-pron-line" data-sec="pronunciation">[hitvaasmin pishitopanaddha-rudhira-klinne mudam vigrahe]</div>        <div class="cr-iast-line">prīty-utsikta-manāḥ kadāham asakṛd-dustarka-caryāspadam |</div>
 <div class="cr-pron-line" data-sec="pronunciation">[preety-utsikta-manaah kadaaham asakrid-dustarka-charyaaspadam |]</div>        <div class="cr-iast-line">āsīnaṁ puraṭāsanopari paraṁ brahmāmbuda-śyāmalaṁ</div>
-<div class="cr-pron-line" data-sec="pronunciation">[aaseenam purataasanopari param brahmaambuda-shyaamalam]</div>        <div class="cr-iast-line">seviṣye cala-cāru-cāmara-marut-saṣcāra cāturyataḥ ||</div>
-<div class="cr-pron-line" data-sec="pronunciation">[sevishye chala-chaaru-chaamara-marut-sashchaara chaaturyatah ||]</div>        <div class="cr-iast-line">atra mukhya eva mukhyasya gauṇayoś ca | ||22||</div>
+<div class="cr-pron-line" data-sec="pronunciation">[aaseenam purataasanopari param brahmaambuda-shyaamalam]</div>        <div class="cr-iast-line">seviṣye cala-cāru-cāmara-marut-sañcāra cāturyataḥ ||</div>
+<div class="cr-pron-line" data-sec="pronunciation">[sevishye chala-chaaru-chaamara-marut-sanchaara chaaturyatah ||]</div>        <div class="cr-iast-line">atra mukhya eva mukhyasya gauṇayoś ca | ||22||</div>
 <div class="cr-pron-line" data-sec="pronunciation">[atra mukhya eva mukhyasya gaunayosh cha | ||22||]</div>    </div>
 
 
@@ -1879,7 +1880,7 @@ The topic of incompatibility is a very important one, and those who are pure dev
                 <div class="cr-blend-iast-line">āsīnaṁ puraṭāsanopari paraṁ brahmāmbuda-śyāmalaṁ</div>
             </div>
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">seviṣye cala-cāru-cāmara-marut-saṣcāra cāturyataḥ ||</div>
+                <div class="cr-blend-iast-line">seviṣye cala-cāru-cāmara-marut-sañcāra cāturyataḥ ||</div>
             </div>
             <div class="cr-blend-block">
                 <div class="cr-blend-iast-line">atra mukhya eva mukhyasya gauṇayoś ca | ||22||</div>
@@ -1889,6 +1890,7 @@ The topic of incompatibility is a very important one, and those who are pure dev
 
 
     <div class="fc-translation" data-sec="translation">An example where śānta-rasa is the aṅgī and dāsya-rasa (primary rasa) as well adbhuta and bībhatsa-rasas (both secondary rasas) are the aṅgas: Having rejected the bliss of this body composed of flesh and moistened by blood, my mind being filled with affection, when will I, skillfully waving an attractive cāmara, serve the dark-complexioned param brahma, who is seated calmly on a golden throne and who performs inconceivable actions?</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -1905,6 +1907,7 @@ The topic of incompatibility is a very important one, and those who are pure dev
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Asakṛd-dustarka-caryāspadam (constantly performing inconceivable actions) indicates adbhuta-rasa. (Bībhatsa is represented by disgust with the material body.) As in the case of desiring to massage the feet of the Lord in verse 20, the desire to serve the Lord by fanning Him with a cāmara (dāsya-rasa) is actually a desire to experience the excellence of the Lord’s fragrance. This is similar to Sanaka and the other Kumāras who attained bliss by smelling the fragrance of the Lord’s lotus feet mixed with tulasī.</p>
@@ -1980,6 +1983,7 @@ The topic of incompatibility is a very important one, and those who are pure dev
 
     <div class="fc-translation" data-sec="translation">An example where dāsya-rasa (primary rasa) is the aṅgī and śānta-rasa (primary rasa) is the aṅga: Free from ignorance and without fault, when will I serve the Lord, with the complexion of a blue lotus, who has lotus eyes, and whose sweetness allows immediate surrender?</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1995,6 +1999,7 @@ The topic of incompatibility is a very important one, and those who are pure dev
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Being free of ignorance (niravidyatayā) indicates the influence of śānta-rasa.</p>
@@ -2062,6 +2067,7 @@ The topic of incompatibility is a very important one, and those who are pure dev
 
     <div class="fc-translation" data-sec="translation">An example with dāsya-rasa (primary) as aṅgī, and bībhatsa (secondary) as aṅga: The Vaiṣṇava who feels disgust upon seeing lotus-like women wanders about dancing on remembering the lotus feet of the Lord.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2077,6 +2083,7 @@ The topic of incompatibility is a very important one, and those who are pure dev
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Aṭati means “he wanders about.” Hṛṇīyate means “he feels disgust.” Other versions of the text are rejected.</p>
@@ -2152,6 +2159,7 @@ The topic of incompatibility is a very important one, and those who are pure dev
 
     <div class="fc-translation" data-sec="translation">An example with dāsya-rasa (primary rasa) as the aṅgī, with śānta (primary), bībhatsa and vīra (secondary) as the aṅgas: O Lord! When I think of the enjoyment I had with young women, my mouth curls up in distain (bībhatsa). I have sufficiently absorbed my mind in hearing and contemplating in order to attain samādhi in the brahman (śānta). I have no desire for siddhis, even though they are given by You (dāna-vīra). I am satisfied only with worshipping Your feet.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2167,6 +2175,7 @@ The topic of incompatibility is a very important one, and those who are pure dev
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Na tṛpyati na sarvataḥ sukha-maye samādhāv api means “My mind has achieved sufficient satisfaction with hearing and contemplating for the purpose of attaining samādhi in brahman.” (There is a double negative) Dīyamānāsv api means “even though the siddhis are given by You.” “By you” is not mentioned out of respect. Another version has labhyamānāsv api (though they have been obtained). The meaning is clear.</p>
@@ -2208,8 +2217,8 @@ The topic of incompatibility is a very important one, and those who are pure dev
     <div class="cr-iast-block" data-sec="iast">
         <div class="cr-iast-line">atha preyasi śucer, yathā –</div>
 <div class="cr-pron-line" data-sec="pronunciation">[atha preyasi shucher, yathaa –]</div>        <div class="cr-iast-line">dhanyānāṁ kila mūrdhanyāḥ subalāmur vrajābalāḥ |</div>
-<div class="cr-pron-line" data-sec="pronunciation">[dhanyaanaam kila moordhanyaah subalaamur vrajaabalaah |]</div>        <div class="cr-iast-line">adharaṁ piṣcha-cūḍasya calāś culūkayanti yāḥ ||</div>
-<div class="cr-pron-line" data-sec="pronunciation">[adharam pishcha-choodasya chalaash chulookayanti yaah ||]</div>        <div class="cr-iast-line">atra mukhye mukhyasya | ||26||</div>
+<div class="cr-pron-line" data-sec="pronunciation">[dhanyaanaam kila moordhanyaah subalaamur vrajaabalaah |]</div>        <div class="cr-iast-line">adharaṁ piñcha-cūḍasya calāś culūkayanti yāḥ ||</div>
+<div class="cr-pron-line" data-sec="pronunciation">[adharam pincha-choodasya chalaash chulookayanti yaah ||]</div>        <div class="cr-iast-line">atra mukhye mukhyasya | ||26||</div>
 <div class="cr-pron-line" data-sec="pronunciation">[atra mukhye mukhyasya | ||26||]</div>    </div>
 
 
@@ -2223,7 +2232,7 @@ The topic of incompatibility is a very important one, and those who are pure dev
                 <div class="cr-blend-iast-line">dhanyānāṁ kila mūrdhanyāḥ subalāmur vrajābalāḥ |</div>
             </div>
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">adharaṁ piṣcha-cūḍasya calāś culūkayanti yāḥ ||</div>
+                <div class="cr-blend-iast-line">adharaṁ piñcha-cūḍasya calāś culūkayanti yāḥ ||</div>
             </div>
             <div class="cr-blend-block">
                 <div class="cr-blend-iast-line">atra mukhye mukhyasya | ||26||</div>
@@ -2233,6 +2242,7 @@ The topic of incompatibility is a very important one, and those who are pure dev
 
 
     <div class="fc-translation" data-sec="translation">An example with sakhya-rasa (primary) as the aṅgī, with madhura-rasa (primary) as the aṅga: O Subala! The young women of Vraja, who drink the nectar of Kṛṣṇa’s lips, are the most fortunate of all women.</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -2249,6 +2259,7 @@ The topic of incompatibility is a very important one, and those who are pure dev
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>These are observations about madhura-rasa, but not with the desire to enjoy in a similar way with Kṛṣṇa. Those in sakhya-rasa are eternally situated in their sakhya forms (male).</p>
@@ -2324,6 +2335,7 @@ The topic of incompatibility is a very important one, and those who are pure dev
 
     <div class="fc-translation" data-sec="translation">An example with sakhya-rasa (primary) as aṅgī and hāsya-rasa (secondary) as aṅga: “O foolish girl! Go back to Vraja. Don’t flutter your eyes at Me. I am not the type of person that you think! Why speak so much?” When Kṛṣṇa spoke in a teasing manner with one new girlfriend, Subala, his eyes bursting with laughter, gazed at Kṛṣṇa’s face.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2339,6 +2351,7 @@ The topic of incompatibility is a very important one, and those who are pure dev
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Though madhura-rasa is also an aṅga, the example is illustrating hāsya-rasa.</p>
@@ -2379,8 +2392,8 @@ The topic of incompatibility is a very important one, and those who are pure dev
 
     <div class="cr-iast-block" data-sec="iast">
         <div class="cr-iast-line">tatraiva śucihāsyayor, yathā –</div>
-<div class="cr-pron-line" data-sec="pronunciation">[tatraiva shuchihaasyayor, yathaa –]</div>        <div class="cr-iast-line">mihira-duhitur udyad-vaṣjulaṁ maṣju-tīraṁ</div>
-<div class="cr-pron-line" data-sec="pronunciation">[mihira-duhitur udyad-vashjulam mashju-teeram]</div>        <div class="cr-iast-line">praviśati subalo ’yaṁ rādhikā-veṣa-gūḍhaḥ |</div>
+<div class="cr-pron-line" data-sec="pronunciation">[tatraiva shuchihaasyayor, yathaa –]</div>        <div class="cr-iast-line">mihira-duhitur udyad-vañjulaṁ mañju-tīraṁ</div>
+<div class="cr-pron-line" data-sec="pronunciation">[mihira-duhitur udyad-vanjulam manju-teeram]</div>        <div class="cr-iast-line">praviśati subalo ’yaṁ rādhikā-veṣa-gūḍhaḥ |</div>
 <div class="cr-pron-line" data-sec="pronunciation">[pravishati subalo ’yam raadhikaa-vesha-goodhah |]</div>        <div class="cr-iast-line">sa-rabhasam abhipaśyan kṛṣṇam abhyutthitaṁ yaḥ</div>
 <div class="cr-pron-line" data-sec="pronunciation">[sa-rabhasam abhipashyan krishnam abhyutthitam yah]</div>        <div class="cr-iast-line">smita-vikaśita-gaṇḍaṁ svīyam āsyaṁ vṛṇoti ||</div>
 <div class="cr-pron-line" data-sec="pronunciation">[smita-vikashita-gandam sveeyam aasyam vrinoti ||]</div>        <div class="cr-iast-line">atra mukhye mukhya-gauṇayoḥ | ||28||</div>
@@ -2394,7 +2407,7 @@ The topic of incompatibility is a very important one, and those who are pure dev
                 <div class="cr-blend-iast-line">tatraiva śucihāsyayor, yathā –</div>
             </div>
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">mihira-duhitur udyad-vaṣjulaṁ maṣju-tīraṁ</div>
+                <div class="cr-blend-iast-line">mihira-duhitur udyad-vañjulaṁ mañju-tīraṁ</div>
             </div>
             <div class="cr-blend-block">
                 <div class="cr-blend-iast-line">praviśati subalo ’yaṁ rādhikā-veṣa-gūḍhaḥ |</div>
@@ -2414,6 +2427,7 @@ The topic of incompatibility is a very important one, and those who are pure dev
 
     <div class="fc-translation" data-sec="translation">An example with sakhya-rasa (primary) as aṅgī and madhura (primary) and hāsya (secondary) as aṅgas: Subala, disguised in Rādhā’s clothing, came to the attractive bank of the Yamunā River with blossoming aśoka trees. When he saw Kṛṣṇa rise up with great joy in order to touch himself disguised as Rādhā, he covered his face with cheeks breaking into a smile.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2429,6 +2443,7 @@ The topic of incompatibility is a very important one, and those who are pure dev
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Vṛṇoti means “he covered.” Amara-kośa says: prācīraṁ prāntato vṛtiḥ: vṛtiḥ means a fence or enclosure.</p>
@@ -2496,6 +2511,7 @@ The topic of incompatibility is a very important one, and those who are pure dev
 
     <div class="fc-translation" data-sec="translation">An example with vatsala-rasa (primary) as the aṅgī and karuṇa-rasa (secondary) as aṅga: My beloved cowherd boy is herding the calves all the time on difficult paths without umbrella or shoes. Ah! Thinking of this, my mind is filled with pain.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2511,9 +2527,10 @@ The topic of incompatibility is a very important one, and those who are pure dev
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
-                <p>Bringing about lamentation by extreme worries, Yaśodā’s words reveal karuṇa or pathos in the manner of aniṣṭhāśaṅkīnīva bandhu-hṛdayāni: a relative or intimate friend is always fearful of some injury to his beloved. (Abhijṣāna-śakuntalā-nāṭaka)</p>
+                <p>Bringing about lamentation by extreme worries, Yaśodā’s words reveal karuṇa or pathos in the manner of aniṣṭhāśaṅkīnīva bandhu-hṛdayāni: a relative or intimate friend is always fearful of some injury to his beloved. (Abhijñāna-śakuntalā-nāṭaka)</p>
             </div>
         </div>
     </section>
@@ -2585,6 +2602,7 @@ The topic of incompatibility is a very important one, and those who are pure dev
 
 
     <div class="fc-translation" data-sec="translation">An example with vatsala-rasa (primary) as aṅgī and hāsya-rasa (secondary) as aṅga: “O Yaśodā! Your son stole a big lump of butter from within my house, put a little of it in the mouth of my sleeping baby, and then ran away.” When an elderly woman complained in this way, Yaśodā threw a smiling glance at the face of Kṛṣṇa who had worried frown on His face. May that queen of Vraja shower auspiciousness upon you!</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -2663,6 +2681,7 @@ The topic of incompatibility is a very important one, and those who are pure dev
 
     <div class="fc-translation" data-sec="translation">An example with vatsala-rasa (primary) as aṅgī, and bhayānaka, adbhuta, hāsya and karuṇa-rasas (secondary) as aṅgas: When perspiration became visible on the forehead of Kṛṣṇa as He held up Govardhana in His left hand, Yaśodā began trembling with fear, thinking that Govardhana would fall upon Him. Her eyes opened wide with astonishment on seeing the boldness of a seven-year-old boy, when He raised His left hand to lift the hill. But her cheeks were filled with laughter on seeing the playful expressions on His face as He smiled at His friends. Tears flowed from her eyes on seeing Him with His left hand held high for seven days. Her cloth became wet as milk flowed from her breasts out of affection for her son. May this queen of Vraja protect the whole world!</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2725,6 +2744,7 @@ The topic of incompatibility is a very important one, and those who are pure dev
     <div class="fc-translation" data-sec="translation">In pure vatsala-rasa, there is no friendship with other primary rasas. For this reason, primary rasas as aṅgas for vatsala-rasa as aṅgī have not been described.</div>
 
 
+
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -2732,6 +2752,7 @@ The topic of incompatibility is a very important one, and those who are pure dev
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>In pure (kevale) vatsala-rasa there is no friendship with primary rasas. This observation can be ascertained by looking elsewhere in the text (verse 6). Thus, in discussing vatsala-rasa, the other primary rasas (tasya) have not been described here as aṅgas.</p>
@@ -2773,9 +2794,9 @@ The topic of incompatibility is a very important one, and those who are pure dev
     <div class="cr-iast-block" data-sec="iast">
         <div class="cr-iast-line">atha ujjvale preyaso, yathā –</div>
 <div class="cr-pron-line" data-sec="pronunciation">[atha ujjvale preyaso, yathaa –]</div>        <div class="cr-iast-line">mad-veṣa-śīlita-tanoḥ subalasya paśya</div>
-<div class="cr-pron-line" data-sec="pronunciation">[mad-vesha-sheelita-tanoh subalasya pashya]</div>        <div class="cr-iast-line">vinyasya maṣju-bhuja-mūrdhni bhujaṁ mukundaḥ |</div>
-<div class="cr-pron-line" data-sec="pronunciation">[vinyasya mashju-bhuja-moordhni bhujam mukundah |]</div>        <div class="cr-iast-line">romāṣca-kaṣcuka-juṣaḥ sphuṭam asya karṇe</div>
-<div class="cr-pron-line" data-sec="pronunciation">[romaashcha-kashchuka-jushah sphutam asya karne]</div>        <div class="cr-iast-line">sandeśam arpayati tanvi mad-artham eva ||</div>
+<div class="cr-pron-line" data-sec="pronunciation">[mad-vesha-sheelita-tanoh subalasya pashya]</div>        <div class="cr-iast-line">vinyasya mañju-bhuja-mūrdhni bhujaṁ mukundaḥ |</div>
+<div class="cr-pron-line" data-sec="pronunciation">[vinyasya manju-bhuja-moordhni bhujam mukundah |]</div>        <div class="cr-iast-line">romāñca-kañcuka-juṣaḥ sphuṭam asya karṇe</div>
+<div class="cr-pron-line" data-sec="pronunciation">[romaancha-kanchuka-jushah sphutam asya karne]</div>        <div class="cr-iast-line">sandeśam arpayati tanvi mad-artham eva ||</div>
 <div class="cr-pron-line" data-sec="pronunciation">[sandesham arpayati tanvi mad-artham eva ||]</div>        <div class="cr-iast-line">atra mukhye mukhyasya | ||33||</div>
 <div class="cr-pron-line" data-sec="pronunciation">[atra mukhye mukhyasya | ||33||]</div>    </div>
 
@@ -2790,10 +2811,10 @@ The topic of incompatibility is a very important one, and those who are pure dev
                 <div class="cr-blend-iast-line">mad-veṣa-śīlita-tanoḥ subalasya paśya</div>
             </div>
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">vinyasya maṣju-bhuja-mūrdhni bhujaṁ mukundaḥ |</div>
+                <div class="cr-blend-iast-line">vinyasya mañju-bhuja-mūrdhni bhujaṁ mukundaḥ |</div>
             </div>
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">romāṣca-kaṣcuka-juṣaḥ sphuṭam asya karṇe</div>
+                <div class="cr-blend-iast-line">romāñca-kañcuka-juṣaḥ sphuṭam asya karṇe</div>
             </div>
             <div class="cr-blend-block">
                 <div class="cr-blend-iast-line">sandeśam arpayati tanvi mad-artham eva ||</div>
@@ -2806,6 +2827,7 @@ The topic of incompatibility is a very important one, and those who are pure dev
 
 
     <div class="fc-translation" data-sec="translation">An example of madhura-rasa (primary) as aṅgī with sakhya-rasa (primary) as aṅga: Look, thin-waisted woman! Placing His hand on the attractive shoulder of Subala, who is dressed in my clothes, and whose hairs are standing on end, Kṛṣṇa is speaking with him, thinking that He is talking to me.</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -2822,6 +2844,7 @@ The topic of incompatibility is a very important one, and those who are pure dev
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Subala put on Rādhā’s clothing as a joke.</p>
@@ -2865,8 +2888,8 @@ The topic of incompatibility is a very important one, and those who are pure dev
 <div class="cr-pron-line" data-sec="pronunciation">[tatraiva haasyasya, yathaa –]</div>        <div class="cr-iast-line">svasāsmi tava nirdaye paricinoṣi na tvaṁ kutaḥ</div>
 <div class="cr-pron-line" data-sec="pronunciation">[svasaasmi tava nirdaye parichinoshi na tvam kutah]</div>        <div class="cr-iast-line">kuru praṇaya-nirbharaṁ mama kṛśāṅgi kaṇṭha-graham |</div>
 <div class="cr-pron-line" data-sec="pronunciation">[kuru pranaya-nirbharam mama krishaangi kantha-graham |]</div>        <div class="cr-iast-line">iti bruvati peśalaṁ yuvati-veṣa-gūḍhe harau</div>
-<div class="cr-pron-line" data-sec="pronunciation">[iti bruvati peshalam yuvati-vesha-goodhe harau]</div>        <div class="cr-iast-line">kṛtaṁ smitam abhijṣayā guru-puras tadā rādhayā ||</div>
-<div class="cr-pron-line" data-sec="pronunciation">[kritam smitam abhijshayaa guru-puras tadaa raadhayaa ||]</div>        <div class="cr-iast-line">atra mukhye gauṇasya | ||34||</div>
+<div class="cr-pron-line" data-sec="pronunciation">[iti bruvati peshalam yuvati-vesha-goodhe harau]</div>        <div class="cr-iast-line">kṛtaṁ smitam abhijñayā guru-puras tadā rādhayā ||</div>
+<div class="cr-pron-line" data-sec="pronunciation">[kritam smitam abhijnayaa guru-puras tadaa raadhayaa ||]</div>        <div class="cr-iast-line">atra mukhye gauṇasya | ||34||</div>
 <div class="cr-pron-line" data-sec="pronunciation">[atra mukhye gaunasya | ||34||]</div>    </div>
 
 
@@ -2886,7 +2909,7 @@ The topic of incompatibility is a very important one, and those who are pure dev
                 <div class="cr-blend-iast-line">iti bruvati peśalaṁ yuvati-veṣa-gūḍhe harau</div>
             </div>
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">kṛtaṁ smitam abhijṣayā guru-puras tadā rādhayā ||</div>
+                <div class="cr-blend-iast-line">kṛtaṁ smitam abhijñayā guru-puras tadā rādhayā ||</div>
             </div>
             <div class="cr-blend-block">
                 <div class="cr-blend-iast-line">atra mukhye gauṇasya | ||34||</div>
@@ -2896,6 +2919,7 @@ The topic of incompatibility is a very important one, and those who are pure dev
 
 
     <div class="fc-translation" data-sec="translation">Madhura-rasa (primary) as aṅgī with hāsya-rasa (secondary) as aṅga: “O merciless one! Why do you not recognize me, your sister? O thin-waisted woman! Embrace me with love.” When Kṛṣṇa, disguised as a young woman, said these words, Rādhā, knowing the truth, smiled slightly in the presence of the elders.</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -2912,6 +2936,7 @@ The topic of incompatibility is a very important one, and those who are pure dev
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>There is another version: tavāsmi savayaś carī smarasi māṁ kathorena kim/ kuru praṇaya nirbharaṁ mama sukaṇthi kaṇṭhagraham: I am your friend. Having a cruel heart, why do you not remember me? O beautiful throated woman, embrace me with affection.</p>
@@ -2987,6 +3012,7 @@ The topic of incompatibility is a very important one, and those who are pure dev
 
     <div class="fc-translation" data-sec="translation">An example with madhura-rasa (primary) as aṅgī and sakhya and vīra-rasa (primary and secondary) as aṅga: Mukunda, from far off, is casting half a glance with a slight smile at the moon-like, trembling face of Candrāvalī. Placing His snake-like arm on His friend’s shoulder which is erupting in goose bumps, Kṛṣṇa, with a lion’s roar frightening to elephants, prepares to fight with Ariṣṭāsura.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3002,6 +3028,7 @@ The topic of incompatibility is a very important one, and those who are pure dev
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>This is the observation of one of Candrāvalī’s friends. This statement begins by supporting the madhura relation between Candrāvalī and Kṛṣṇa, while establishing sakhya and vīra-rasas as accompanying rasas. Thus it is appropriately stated tatraiva preyo-vīrayor yathā: an example of sakhya and vīra-rasa supporting madhura-rasa. The same (one aṅgī-rasa and other aṅga-rasas) should be understood in other examples also. Ibhāri-kṣveḍābhir means “with a lion’s roar, enemy of elephants, which drives away elephants.”</p>
@@ -3044,8 +3071,8 @@ The topic of incompatibility is a very important one, and those who are pure dev
         <div class="cr-iast-line">atha gauṇānām aṅgitā –</div>
 <div class="cr-pron-line" data-sec="pronunciation">[atha gaunaanaam angitaa –]</div>        <div class="cr-iast-line">hāsyādīnāṁ tu gauṇānāṁ yad-udāharaṇaṁ kṛtam |</div>
 <div class="cr-pron-line" data-sec="pronunciation">[haasyaadeenaam tu gaunaanaam yad-udaaharanam kritam |]</div>        <div class="cr-iast-line">tenaiṣām aṅgitā vyaktā mukhyānāṁ ca tathāṅgatā |</div>
-<div class="cr-pron-line" data-sec="pronunciation">[tenaishaam angitaa vyaktaa mukhyaanaam cha tathaangataa |]</div>        <div class="cr-iast-line">tathāpy alpa-viśeṣāya kiṣcid eva vilikhyate ||36||</div>
-<div class="cr-pron-line" data-sec="pronunciation">[tathaapy alpa-visheshaaya kishchid eva vilikhyate ||36||]</div>    </div>
+<div class="cr-pron-line" data-sec="pronunciation">[tenaishaam angitaa vyaktaa mukhyaanaam cha tathaangataa |]</div>        <div class="cr-iast-line">tathāpy alpa-viśeṣāya kiñcid eva vilikhyate ||36||</div>
+<div class="cr-pron-line" data-sec="pronunciation">[tathaapy alpa-visheshaaya kinchid eva vilikhyate ||36||]</div>    </div>
 
 
     <details class="cr-blend-details" data-sec="blended">
@@ -3061,13 +3088,14 @@ The topic of incompatibility is a very important one, and those who are pure dev
                 <div class="cr-blend-iast-line">tenaiṣām aṅgitā vyaktā mukhyānāṁ ca tathāṅgatā |</div>
             </div>
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">tathāpy alpa-viśeṣāya kiṣcid eva vilikhyate ||36||</div>
+                <div class="cr-blend-iast-line">tathāpy alpa-viśeṣāya kiñcid eva vilikhyate ||36||</div>
             </div>
         </div>
     </details>
 
 
     <div class="fc-translation" data-sec="translation">Examples will now be given to show the secondary rasas as the aṅgī and the primary rasas as the aṅga. They will be described a little to show their distinguishing properties.</div>
+
 
 
 
@@ -3105,8 +3133,8 @@ The topic of incompatibility is a very important one, and those who are pure dev
     <div class="cr-iast-block" data-sec="iast">
         <div class="cr-iast-line">atha hāsye ’ṅgini śucer aṅgatā, yathā –</div>
 <div class="cr-pron-line" data-sec="pronunciation">[atha haasye ’ngini shucher angataa, yathaa –]</div>        <div class="cr-iast-line">madanāndhatayā tri-vakrayā</div>
-<div class="cr-pron-line" data-sec="pronunciation">[madanaandhatayaa tri-vakrayaa]</div>        <div class="cr-iast-line">prasabhaṁ pīta-paṭāṣcale dhṛte |</div>
-<div class="cr-pron-line" data-sec="pronunciation">[prasabham peeta-pataashchale dhrite |]</div>        <div class="cr-iast-line">adadhād vinataṁ janāgrato</div>
+<div class="cr-pron-line" data-sec="pronunciation">[madanaandhatayaa tri-vakrayaa]</div>        <div class="cr-iast-line">prasabhaṁ pīta-paṭāñcale dhṛte |</div>
+<div class="cr-pron-line" data-sec="pronunciation">[prasabham peeta-pataanchale dhrite |]</div>        <div class="cr-iast-line">adadhād vinataṁ janāgrato</div>
 <div class="cr-pron-line" data-sec="pronunciation">[adadhaad vinatam janaagrato]</div>        <div class="cr-iast-line">harir utphulla-kapolam ānanam ||</div>
 <div class="cr-pron-line" data-sec="pronunciation">[harir utphulla-kapolam aananam ||]</div>        <div class="cr-iast-line">atra gauṇe ’ṅgini mukhyasyāṅgatā | ||37||</div>
 <div class="cr-pron-line" data-sec="pronunciation">[atra gaune ’ngini mukhyasyaangataa | ||37||]</div>    </div>
@@ -3122,7 +3150,7 @@ The topic of incompatibility is a very important one, and those who are pure dev
                 <div class="cr-blend-iast-line">madanāndhatayā tri-vakrayā</div>
             </div>
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">prasabhaṁ pīta-paṭāṣcale dhṛte |</div>
+                <div class="cr-blend-iast-line">prasabhaṁ pīta-paṭāñcale dhṛte |</div>
             </div>
             <div class="cr-blend-block">
                 <div class="cr-blend-iast-line">adadhād vinataṁ janāgrato</div>
@@ -3138,6 +3166,7 @@ The topic of incompatibility is a very important one, and those who are pure dev
 
 
     <div class="fc-translation" data-sec="translation">Hāsya-rasa (secondary) as the aṅgī, with madhura-rasa (primary) as the aṅga: When Kubja, blinded by lust, grabbed the edge of Kṛṣṇa’s yellow cloth, Kṛṣṇa, exhibiting full cheeks bursting with laughter, lowered His head before others.</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -3216,6 +3245,7 @@ The topic of incompatibility is a very important one, and those who are pure dev
 
     <div class="fc-translation" data-sec="translation">Vīra-rasa as aṅgī with sakhya-rasa as aṅga: Śrīdāma said: Viśāla! Seeing that the commander Bhadrasena has been defeated, why are You coming towards me to fight? Extremely powerful Śrīdāma does not consider even a hundred Balarāmas. Balarāma! What chance do you have in this battle?</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3231,6 +3261,7 @@ The topic of incompatibility is a very important one, and those who are pure dev
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Atrāpi gauṇe ’ṅgini mukhyasya: it becomes clear that sakhya-rasa is the primary rasa (mukhasya) but it is aṅga or subordinate in this example to vīra, where Śrīdāma on Kṛṣṇa’s side (sakhya) enters into combat (vīra) with Balarāma.</p>
@@ -3305,6 +3336,7 @@ The topic of incompatibility is a very important one, and those who are pure dev
 
 
     <div class="fc-translation" data-sec="translation">Raudra-rasa (secondary) as the aṅgī with sakhya (primary) and vīra (secondary) as aṅga: The Pāṇḍavas, red-eyed with anger, desiring to kill arrogant Śiśupāla in battle for criticizing Kṛṣṇa, took up their excellent weapons.</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -3383,6 +3415,7 @@ The topic of incompatibility is a very important one, and those who are pure dev
 
     <div class="fc-translation" data-sec="translation">Adbhuta-rasa (secondary) as aṅgī with sakhya (primary), vīra and hāsya (secondary) as aṅga: Seeing the skill of Śrīdāma swelling with pride in mock battle while uttering sarcastic words as he used a very small stick to defeat Balarāma--who thought himself the guru of club fighting and who was surrounded by his friends--Kṛṣṇa became joyful. His hairs stood on end and His eyes widened.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3398,6 +3431,7 @@ The topic of incompatibility is a very important one, and those who are pure dev
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>These are the words of some friend. These are examples of that friend’s experience of rasas (adbhuta, sakhya, vīra and hāsya), not Kṛṣṇa’s experience of the rasas, since the subject of discussion is the devotee’s experience of bhakti-rasa. Śrīdāma, using a weak little stick to defeat Balarāma infers that he learned the art especially well. Since these actions are performed out of friendship, such things become possible. Instead of keli-samarāṭopotsave (with profuse pride while engaging in mock battle) sometimes keli-samarāṭopakrame (in the course of manifesting pride during mock battle) is seen.</p>
@@ -3437,8 +3471,8 @@ The topic of incompatibility is a very important one, and those who are pure dev
     </header>
 
     <div class="cr-iast-block" data-sec="iast">
-        <div class="cr-iast-line">evam anyasya gauṇasya jṣeyā kavibhir aṅgitā |</div>
-<div class="cr-pron-line" data-sec="pronunciation">[evam anyasya gaunasya jsheyaa kavibhir angitaa |]</div>        <div class="cr-iast-line">tathā ca mukhya-gauṇānāṁ rasānām aṅgatāpi ca ||41||</div>
+        <div class="cr-iast-line">evam anyasya gauṇasya jñeyā kavibhir aṅgitā |</div>
+<div class="cr-pron-line" data-sec="pronunciation">[evam anyasya gaunasya jneyaa kavibhir angitaa |]</div>        <div class="cr-iast-line">tathā ca mukhya-gauṇānāṁ rasānām aṅgatāpi ca ||41||</div>
 <div class="cr-pron-line" data-sec="pronunciation">[tathaa cha mukhya-gaunaanaam rasaanaam angataapi cha ||41||]</div>    </div>
 
 
@@ -3446,7 +3480,7 @@ The topic of incompatibility is a very important one, and those who are pure dev
         <summary>Blended reading (Sanskrit + English inline)</summary>
         <div class="cr-blend-grid">
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">evam anyasya gauṇasya jṣeyā kavibhir aṅgitā |</div>
+                <div class="cr-blend-iast-line">evam anyasya gauṇasya jñeyā kavibhir aṅgitā |</div>
             </div>
             <div class="cr-blend-block">
                 <div class="cr-blend-iast-line">tathā ca mukhya-gauṇānāṁ rasānām aṅgatāpi ca ||41||</div>
@@ -3456,6 +3490,7 @@ The topic of incompatibility is a very important one, and those who are pure dev
 
 
     <div class="fc-translation" data-sec="translation">In this manner, the wise understand how a secondary rasa take prominence and primary and other secondary rasas become subordinate.</div>
+
 
 
 
@@ -3492,8 +3527,8 @@ The topic of incompatibility is a very important one, and those who are pure dev
 
     <div class="cr-iast-block" data-sec="iast">
         <div class="cr-iast-line">so ’ṅgī sarvātigo yaḥ syān mukhyo gauṇo ’thavā rasaḥ |</div>
-<div class="cr-pron-line" data-sec="pronunciation">[so ’ngee sarvaatigo yah syaan mukhyo gauno ’thavaa rasah |]</div>        <div class="cr-iast-line">sa evāṅgaṁ bhaved aṅgi-poṣī saṣcāritāṁ vrajan ||42||</div>
-<div class="cr-pron-line" data-sec="pronunciation">[sa evaangam bhaved angi-poshee sashchaaritaam vrajan ||42||]</div>    </div>
+<div class="cr-pron-line" data-sec="pronunciation">[so ’ngee sarvaatigo yah syaan mukhyo gauno ’thavaa rasah |]</div>        <div class="cr-iast-line">sa evāṅgaṁ bhaved aṅgi-poṣī sañcāritāṁ vrajan ||42||</div>
+<div class="cr-pron-line" data-sec="pronunciation">[sa evaangam bhaved angi-poshee sanchaaritaam vrajan ||42||]</div>    </div>
 
 
     <details class="cr-blend-details" data-sec="blended">
@@ -3503,13 +3538,14 @@ The topic of incompatibility is a very important one, and those who are pure dev
                 <div class="cr-blend-iast-line">so ’ṅgī sarvātigo yaḥ syān mukhyo gauṇo ’thavā rasaḥ |</div>
             </div>
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">sa evāṅgaṁ bhaved aṅgi-poṣī saṣcāritāṁ vrajan ||42||</div>
+                <div class="cr-blend-iast-line">sa evāṅgaṁ bhaved aṅgi-poṣī sañcāritāṁ vrajan ||42||</div>
             </div>
         </div>
     </details>
 
 
     <div class="fc-translation" data-sec="translation">In the mixture of rasas, the primary or secondary rasa which surpasses the others in taste is known as the aṅgī. The rasa which nourishes the aṅgī-rasa and takes on the nature of a vyabhicāri-bhāva (temporary emotion) is the aṅga-rasa.</div>
+
 
 
 
@@ -3568,6 +3604,7 @@ The topic of incompatibility is a very important one, and those who are pure dev
 
 
     <div class="fc-translation" data-sec="translation">The authors on drama say: the predominating rasa is the sthāyi-bhāva. All other rasas will become vyabhicāri in nature, since they follow the predominating rasa.</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -3634,6 +3671,7 @@ The topic of incompatibility is a very important one, and those who are pure dev
 
     <div class="fc-translation" data-sec="translation">Viṣṇu-dharmottara says: In a combination of rasas, that whose form is most prominent is considered to be the sthāyi-bhāva, and the rest should be considered to have the nature of vyabhicāri-bhāvas.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3649,6 +3687,7 @@ The topic of incompatibility is a very important one, and those who are pure dev
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Rūpam means svarūpam and bahu means “more in quantity.” Though the rest should be considered to be vyabhicāri-bhāvas, those bhāvas which never separate from their respective āśrayas, such as madhura or śānta-rasa, should be considered only to act as if they were vyabhicāri-bhāvas, though they actually are not. However, the secondary rasas like hāsya, which are separate from their āśrayas, are actually vyabhicāri-bhāvas. In distinguishing other rasas from the prominent rasa by the term vyabhicāri-bhāva, the intention is to point out the cooperative nature of the rasa as it assumes the role of nourishing the prominent rasa (just as vyabhicāri-bhāvas assist the main sthāyi-bhāva.) This was also shown in verse 42, where the other rasas (either primary or secondary) were considered aṅgas of the prominent rasa called aṅgī.</p>
@@ -3719,6 +3758,7 @@ The topic of incompatibility is a very important one, and those who are pure dev
 
 
 
+
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-8-45" data-note-label="BG 8.45" data-note-chapter="8" data-note-vlabel="45">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 8.45…" rows="4"></textarea>
@@ -3743,8 +3783,8 @@ The topic of incompatibility is a very important one, and those who are pure dev
 
     <div class="cr-iast-block" data-sec="iast">
         <div class="cr-iast-line">prodyan vibhāvanotkarṣāt puṣṭiṁ mukhyena lambhitaḥ |</div>
-<div class="cr-pron-line" data-sec="pronunciation">[prodyan vibhaavanotkarshaat pushtim mukhyena lambhitah |]</div>        <div class="cr-iast-line">kuṣcatā nija-nāthena gauṇo ’py aṅgitvam aśnute ||46||</div>
-<div class="cr-pron-line" data-sec="pronunciation">[kushchataa nija-naathena gauno ’py angitvam ashnute ||46||]</div>    </div>
+<div class="cr-pron-line" data-sec="pronunciation">[prodyan vibhaavanotkarshaat pushtim mukhyena lambhitah |]</div>        <div class="cr-iast-line">kuñcatā nija-nāthena gauṇo ’py aṅgitvam aśnute ||46||</div>
+<div class="cr-pron-line" data-sec="pronunciation">[kunchataa nija-naathena gauno ’py angitvam ashnute ||46||]</div>    </div>
 
 
     <details class="cr-blend-details" data-sec="blended">
@@ -3754,13 +3794,14 @@ The topic of incompatibility is a very important one, and those who are pure dev
                 <div class="cr-blend-iast-line">prodyan vibhāvanotkarṣāt puṣṭiṁ mukhyena lambhitaḥ |</div>
             </div>
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">kuṣcatā nija-nāthena gauṇo ’py aṅgitvam aśnute ||46||</div>
+                <div class="cr-blend-iast-line">kuñcatā nija-nāthena gauṇo ’py aṅgitvam aśnute ||46||</div>
             </div>
         </div>
     </details>
 
 
     <div class="fc-translation" data-sec="translation">But a secondary rasa, when it becomes prominent because of strong stimulus and is nourished by the primary rasa which then recedes in strength, becomes the predominating rasa (aṅgī).</div>
+
 
 
 
@@ -3816,6 +3857,7 @@ The topic of incompatibility is a very important one, and those who are pure dev
 
     <div class="fc-translation" data-sec="translation">Just as Vāmana concealed His powers and nourished Indra, the primary rasa takes a secondary role and nourishes the secondary rasa which becomes strong.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3858,8 +3900,8 @@ The topic of incompatibility is a very important one, and those who are pure dev
 
     <div class="cr-iast-block" data-sec="iast">
         <div class="cr-iast-line">anādi-vāsanodbhāsa-vāsite bhakta-cetasi |</div>
-<div class="cr-pron-line" data-sec="pronunciation">[anaadi-vaasanodbhaasa-vaasite bhakta-chetasi |]</div>        <div class="cr-iast-line">bhāty eva na tu līnaḥ syād eṣa saṣcāri-gauṇavat ||48||</div>
-<div class="cr-pron-line" data-sec="pronunciation">[bhaaty eva na tu leenah syaad esha sashchaari-gaunavat ||48||]</div>    </div>
+<div class="cr-pron-line" data-sec="pronunciation">[anaadi-vaasanodbhaasa-vaasite bhakta-chetasi |]</div>        <div class="cr-iast-line">bhāty eva na tu līnaḥ syād eṣa sañcāri-gauṇavat ||48||</div>
+<div class="cr-pron-line" data-sec="pronunciation">[bhaaty eva na tu leenah syaad esha sanchaari-gaunavat ||48||]</div>    </div>
 
 
     <details class="cr-blend-details" data-sec="blended">
@@ -3869,13 +3911,14 @@ The topic of incompatibility is a very important one, and those who are pure dev
                 <div class="cr-blend-iast-line">anādi-vāsanodbhāsa-vāsite bhakta-cetasi |</div>
             </div>
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">bhāty eva na tu līnaḥ syād eṣa saṣcāri-gauṇavat ||48||</div>
+                <div class="cr-blend-iast-line">bhāty eva na tu līnaḥ syād eṣa sañcāri-gauṇavat ||48||</div>
             </div>
         </div>
     </details>
 
 
     <div class="fc-translation" data-sec="translation">However, the primary rasa for a particular devotee, which manifests in the heart of a devotee by the power of beginningless previous experiences, does not disappear, as the vyabhicāri-bhāvas or secondary rasas do.</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -3893,6 +3936,7 @@ When an unconstitutional ecstasy of devotional service is manifested prominently
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>The word anādi (without beginning) is indicatory only (It represents the condition of the eternal associates, but the principle should also apply to those who have achieved a primary rasa by sādhana as well.) Thus anādi indicates only that the primary rasa has been previously firmly established. It is not like the vyabhicāri-bhāvas or secondary rasas. This comparison is used to indicate the difference of the main rasa in the devotee from the others. Though the vyabhicāri-bhāvas and secondary rasas disappear, the main primary rasa does not.</p>
@@ -3952,6 +3996,7 @@ When an unconstitutional ecstasy of devotional service is manifested prominently
 
     <div class="fc-translation" data-sec="translation">In a combination of rasas, the primary rasa which is main aṅgī-rasa, by strengthening itself through supportive bhāvas, which may be of the same variety or differing (but not enemies), remains independent.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3968,6 +4013,7 @@ When an unconstitutional ecstasy of devotional service is manifested prominently
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>The correct version is svam atrāṅgaiḥ. Vijātīyaiḥ means “by differing rasas, but not the enemies which were previously mentioned.”  [Note: This means friendly rasas, primary or secondary. Sajātiyaiḥ refers to other bhāvas connected with the same rasa.]</p>
@@ -4027,6 +4073,7 @@ When an unconstitutional ecstasy of devotional service is manifested prominently
 
     <div class="fc-translation" data-sec="translation">The primary rasa which is revealed as one’s own, for which the particular devotee is the constant āśraya, remains predominant in that devotee (aṅgī), and other primary rasas become aṅgas.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -4043,6 +4090,7 @@ When an unconstitutional ecstasy of devotional service is manifested prominently
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Mukhyasya means “of that particular primary rasa which is revealed as one’s own, through one’s pastimes with the Lord.”</p>
@@ -4106,6 +4154,7 @@ When an unconstitutional ecstasy of devotional service is manifested prominently
 
     <div class="fc-translation" data-sec="translation">Moreover, the other rasas assume the role of aṅga only in order to increase the taste. Except for this, their appearance would be useless.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -4122,6 +4171,7 @@ SKIP1</p>
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Other rasas assuming the role of aṅga in relation to the main rasa is for the purpose of increasing taste, and for no other purpose. This is explained in the next line: without that purpose, their appearance becomes useless.</p>
@@ -4161,8 +4211,8 @@ SKIP1</p>
     </header>
 
     <div class="cr-iast-block" data-sec="iast">
-        <div class="cr-iast-line">yathā mṛṣṭa-rasālāyāṁ yavasādeḥ kathaṣcana |</div>
-<div class="cr-pron-line" data-sec="pronunciation">[yathaa mrishta-rasaalaayaam yavasaadeh kathashchana |]</div>        <div class="cr-iast-line">tac-carvaṇe bhaved eva satṛṇābhyavahāritā ||52||</div>
+        <div class="cr-iast-line">yathā mṛṣṭa-rasālāyāṁ yavasādeḥ kathañcana |</div>
+<div class="cr-pron-line" data-sec="pronunciation">[yathaa mrishta-rasaalaayaam yavasaadeh kathanchana |]</div>        <div class="cr-iast-line">tac-carvaṇe bhaved eva satṛṇābhyavahāritā ||52||</div>
 <div class="cr-pron-line" data-sec="pronunciation">[tach-charvane bhaved eva satrinaabhyavahaaritaa ||52||]</div>    </div>
 
 
@@ -4170,7 +4220,7 @@ SKIP1</p>
         <summary>Blended reading (Sanskrit + English inline)</summary>
         <div class="cr-blend-grid">
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">yathā mṛṣṭa-rasālāyāṁ yavasādeḥ kathaṣcana |</div>
+                <div class="cr-blend-iast-line">yathā mṛṣṭa-rasālāyāṁ yavasādeḥ kathañcana |</div>
             </div>
             <div class="cr-blend-block">
                 <div class="cr-blend-iast-line">tac-carvaṇe bhaved eva satṛṇābhyavahāritā ||52||</div>
@@ -4180,6 +4230,7 @@ SKIP1</p>
 
 
     <div class="fc-translation" data-sec="translation">Useless aṅga-rasas are like sweet nectar in which grass has accidentally fallen. In taking the nectar, one also must eat the grass (and experience distaste).</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -4246,6 +4297,7 @@ SKIP1</p>
 
 
     <div class="fc-translation" data-sec="translation">Just as a sweet drink becomes distasteful by mixing with bitter or caustic tastes, the rasas become distasteful by mixing with inimical rasas.</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -4323,7 +4375,8 @@ As already described, if certain kinds of mellows become mixed and there is a jo
     </details>
 
 
-    <div class="fc-translation" data-sec="translation">Distaste caused by a mixture of śānta with madhura-rasa: Possessing brahma-jṣāna, I have spent a long time in vows of extreme concentration. But I have not seen from the corner of my left eye the form of brahman composed of concentrated bliss. [Note: Glancing from the corner of the eye is an action of lovers.]</div>
+    <div class="fc-translation" data-sec="translation">Distaste caused by a mixture of śānta with madhura-rasa: Possessing brahma-jñāna, I have spent a long time in vows of extreme concentration. But I have not seen from the corner of my left eye the form of brahman composed of concentrated bliss. [Note: Glancing from the corner of the eye is an action of lovers.]</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -4398,6 +4451,7 @@ As already described, if certain kinds of mellows become mixed and there is a jo
 
     <div class="fc-translation" data-sec="translation">Dāsya with madhura-rasa: My mind desires to see that Lord, more affectionate than a million fathers, whose lotus feet are worshipped by devatās and sages, who is the lord of Lakṣmī, and whose body shines with the nail marks of beautiful women.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -4463,6 +4517,7 @@ Incompatibility was expressed by a great devotee on the platform of neutrality w
 
 
     <div class="fc-translation" data-sec="translation">Sakhya-rasa with vatsala-rasa: O friend! Embrace me with your long arms, powerful as door bolts. O Kṛṣṇa! After smelling Your head, I will play with You. [Note: Smelling the head is an act of affection of parents’ towards their sons.]</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -4535,12 +4590,13 @@ Incompatibility was expressed by a great devotee on the platform of neutrality w
     </details>
 
 
-    <div class="fc-translation" data-sec="translation">Vatsala-rasa with dāsya-rasa: May my tongue rashly desire to address You as “my son,” whom the followers of Vedānta call the param brahman and whom the followers of Paṣcarātra call Vāsudeva.</div>
+    <div class="fc-translation" data-sec="translation">Vatsala-rasa with dāsya-rasa: May my tongue rashly desire to address You as “my son,” whom the followers of Vedānta call the param brahman and whom the followers of Pañcarātra call Vāsudeva.</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
-            <p>One devotee said, “My dear Kṛṣṇa, how can I address You as my son when You are addressed by the great Vedāntists as the Absolute Truth and by the Vaiṣṇavas who follow the principles of Nārada Paṣcarātra as the Supreme Personality of Godhead? You are the same Supreme Person, so how shall my tongue be so extraordinarily bold as to address You as an ordinary son?” In this statement there is a mixture of neutrality and parental love, and the result is incompatible.</p>
+            <p>One devotee said, “My dear Kṛṣṇa, how can I address You as my son when You are addressed by the great Vedāntists as the Absolute Truth and by the Vaiṣṇavas who follow the principles of Nārada Pañcarātra as the Supreme Personality of Godhead? You are the same Supreme Person, so how shall my tongue be so extraordinarily bold as to address You as an ordinary son?” In this statement there is a mixture of neutrality and parental love, and the result is incompatible.</p>
         </div>
         <div class="cr-purport-attrib">— A.C. Bhaktivedanta Swami Prabhupāda</div>
     </section>
@@ -4552,9 +4608,10 @@ Incompatibility was expressed by a great devotee on the platform of neutrality w
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
-                <p>Samasta-nigamāḥ literally means “those who acquire knowledge of everything.” However, Brahma-sūtra 1.1.4 says tat tu samanvayāt: because this brahman is the ultimate conclusion of all scriptures. Thus, the phrase means “those who acquire knowledge of the meaning of all scriptures.” This refers to the Vedāntists, who study Brahma-sūtras. Parameśam means parabrahman. Sātvatāḥ means followers of Paṣcarātra. Bhagavantam then means Vāsudeva (the name of the Lord in Paṣcarātra scriptures.)</p>
+                <p>Samasta-nigamāḥ literally means “those who acquire knowledge of everything.” However, Brahma-sūtra 1.1.4 says tat tu samanvayāt: because this brahman is the ultimate conclusion of all scriptures. Thus, the phrase means “those who acquire knowledge of the meaning of all scriptures.” This refers to the Vedāntists, who study Brahma-sūtras. Parameśam means parabrahman. Sātvatāḥ means followers of Pañcarātra. Bhagavantam then means Vāsudeva (the name of the Lord in Pañcarātra scriptures.)</p>
             </div>
         </div>
     </section>
@@ -4614,6 +4671,7 @@ Incompatibility was expressed by a great devotee on the platform of neutrality w
 
 
     <div class="fc-translation" data-sec="translation">Madhura-rasa with śānta-rasa: Messenger! The splendors of newly blooming youth are fickle like the play of lightning. [Note: This is the śānta-rasa aspect.] Therefore, today please arrange for Mādhava to enjoy with me.</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -4680,6 +4738,7 @@ Incompatibility was expressed by a great devotee on the platform of neutrality w
 
     <div class="fc-translation" data-sec="translation">Madhura-rasa with vatsala-rasa: A desirous woman living in Kailāsa said “May you live long” [Note: This is typical utterance of parents for their children.] and then embraced Kṛṣṇa with pleasure.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -4695,6 +4754,7 @@ Incompatibility was expressed by a great devotee on the platform of neutrality w
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>This case is imaginary, just for giving an example. Other examples should be understood to be similar.</p>
@@ -4734,8 +4794,8 @@ Incompatibility was expressed by a great devotee on the platform of neutrality w
     </header>
 
     <div class="cr-iast-block" data-sec="iast">
-        <div class="cr-iast-line">śuceḥ sambandha-gandho ’pi kathaṣcid yadi vatsale |</div>
-<div class="cr-pron-line" data-sec="pronunciation">[shucheh sambandha-gandho ’pi kathashchid yadi vatsale |]</div>        <div class="cr-iast-line">kvacid bhavet tataḥ suṣṭhu vairasyāyaiva kalpate ||60||</div>
+        <div class="cr-iast-line">śuceḥ sambandha-gandho ’pi kathañcid yadi vatsale |</div>
+<div class="cr-pron-line" data-sec="pronunciation">[shucheh sambandha-gandho ’pi kathanchid yadi vatsale |]</div>        <div class="cr-iast-line">kvacid bhavet tataḥ suṣṭhu vairasyāyaiva kalpate ||60||</div>
 <div class="cr-pron-line" data-sec="pronunciation">[kvachid bhavet tatah sushthu vairasyaayaiva kalpate ||60||]</div>    </div>
 
 
@@ -4743,7 +4803,7 @@ Incompatibility was expressed by a great devotee on the platform of neutrality w
         <summary>Blended reading (Sanskrit + English inline)</summary>
         <div class="cr-blend-grid">
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">śuceḥ sambandha-gandho ’pi kathaṣcid yadi vatsale |</div>
+                <div class="cr-blend-iast-line">śuceḥ sambandha-gandho ’pi kathañcid yadi vatsale |</div>
             </div>
             <div class="cr-blend-block">
                 <div class="cr-blend-iast-line">kvacid bhavet tataḥ suṣṭhu vairasyāyaiva kalpate ||60||</div>
@@ -4753,6 +4813,7 @@ Incompatibility was expressed by a great devotee on the platform of neutrality w
 
 
     <div class="fc-translation" data-sec="translation">If vatsala-rasa somehow or other contacts even a particle of madhura-rasa (as in the previous example), it becomes most distasteful.</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -4819,6 +4880,7 @@ Incompatibility was expressed by a great devotee on the platform of neutrality w
 
     <div class="fc-translation" data-sec="translation">Madhura-rasa with bībhatsa-rasa: O dark limbed lover! Because of my body of blood and flesh, I am not suitable for You. Mercifully accept me, since I have been pierced by the arrow of Your glance.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -4860,8 +4922,8 @@ Incompatibility was expressed by a great devotee on the platform of neutrality w
     </header>
 
     <div class="cr-iast-block" data-sec="iast">
-        <div class="cr-iast-line">evam anyāpi vijṣeyā prājṣai rasa-virodhitā |</div>
-<div class="cr-pron-line" data-sec="pronunciation">[evam anyaapi vijsheyaa praajshai rasa-virodhitaa |]</div>        <div class="cr-iast-line">prāyeṇeyaṁ rasābhāsa-kakṣāyāṁ paryavasyati ||62||</div>
+        <div class="cr-iast-line">evam anyāpi vijñeyā prājñai rasa-virodhitā |</div>
+<div class="cr-pron-line" data-sec="pronunciation">[evam anyaapi vijneyaa praajnai rasa-virodhitaa |]</div>        <div class="cr-iast-line">prāyeṇeyaṁ rasābhāsa-kakṣāyāṁ paryavasyati ||62||</div>
 <div class="cr-pron-line" data-sec="pronunciation">[praayeneyam rasaabhaasa-kakshaayaam paryavasyati ||62||]</div>    </div>
 
 
@@ -4869,7 +4931,7 @@ Incompatibility was expressed by a great devotee on the platform of neutrality w
         <summary>Blended reading (Sanskrit + English inline)</summary>
         <div class="cr-blend-grid">
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">evam anyāpi vijṣeyā prājṣai rasa-virodhitā |</div>
+                <div class="cr-blend-iast-line">evam anyāpi vijñeyā prājñai rasa-virodhitā |</div>
             </div>
             <div class="cr-blend-block">
                 <div class="cr-blend-iast-line">prāyeṇeyaṁ rasābhāsa-kakṣāyāṁ paryavasyati ||62||</div>
@@ -4879,6 +4941,7 @@ Incompatibility was expressed by a great devotee on the platform of neutrality w
 
 
     <div class="fc-translation" data-sec="translation">Those knowledgeable of the scriptures concerning rasa understand other contrary rasas in the same way. Generally this contradiction finally ends up as rasābhāsa.</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -4895,6 +4958,7 @@ Incompatibility was expressed by a great devotee on the platform of neutrality w
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>The word “generally” is used to indicate that some mixtures end up even lower than rasābhāsa.</p>
@@ -4971,6 +5035,7 @@ Incompatibility was expressed by a great devotee on the platform of neutrality w
     <div class="fc-translation" data-sec="translation">However, the combination of two unfriendly rasas will not produce distaste under the following conditions: where one of the two conflicting rasas is negated by a statement; where two conflicting rasas are present through remembrance; where two rasas are compared; where a friendly or neutral rasa intervenes between two conflicting rasas; where the viṣayas or āśrayas of two conflicting rasas (one of which is a secondary rasa) are different.</div>
 
 
+
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -4978,6 +5043,7 @@ Incompatibility was expressed by a great devotee on the platform of neutrality w
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Referring to the first condition, the word bādhya here means “suitable for being rejected.” One of the conflicting rasas should be rejected because of indications in the description that it is proper to do so. When two conflicting rasas are described, but with indications that one of those rasas should be rejected as being unsuitable, distaste does not arise. In the phrase smaryamāṇatayāpy (when a conflicting rasa appears through memory), the word api means that it is possible (though it will produce distaste in some cases.) Thus, in the midst of hāsya-rasa, even remembrance of karuṇa-rasa will produce distaste. The same possibility applies in statements where two rasas are compared as being similar. Thus, it is always improper to mix madhura-rasa with bībhatsa-rasa even in comparisons. Other cases can also be found. By mentioning api twice (thus putting conditions on those cases) and then adding ca, it should be understood that the cases mentioned in verse 64 also have exceptions.
@@ -5053,6 +5119,7 @@ Thus, in combining vatsala-rasa with an enemy rasa, even if there are hundreds o
 
 
     <div class="fc-translation" data-sec="translation">However, the combination of two unfriendly rasas will not produce distaste under the following conditions: where one of the two conflicting rasas is negated by a statement; where two conflicting rasas are present through remembrance; where two rasas are compared; where a friendly or neutral rasa intervenes between two conflicting rasas; where the viṣayas or āśrayas of two conflicting rasas (one of which is a secondary rasa) are different.</div>
+
 
 
     <section class="fc-section" data-sec="gaudiya">
@@ -5134,6 +5201,7 @@ Thus, in combining vatsala-rasa with an enemy rasa, even if there are hundreds o
 
     <div class="fc-translation" data-sec="translation">In the following description, the conflicting rasa (śānta) is negated, from Vidagdha-mādhava: The sage desires to withdraw his mind from sense objects and fix it just for a moment on Kṛṣṇa. But this young girl desires to withdraw her mind from that same Kṛṣṇa and fix it upon sense objects. Oh! The yogī is eager to realize Him in his heart even for a second, but this foolish girl desires to remove Him from her heart completely!</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -5149,6 +5217,7 @@ Thus, in combining vatsala-rasa with an enemy rasa, even if there are hundreds o
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>The first half of the verse presents the determination of the sage and the young girl. The second half of the verse presents the determination of a yogī and the young girl. The superiority of the young girl is clear.</p>
@@ -5204,6 +5273,7 @@ Thus, in combining vatsala-rasa with an enemy rasa, even if there are hundreds o
 
     <div class="fc-translation" data-sec="translation">In the above verse, as a result of describing the superior nature of madhura-rasa, śānta-rasa is negated.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -5219,6 +5289,7 @@ Thus, in combining vatsala-rasa with an enemy rasa, even if there are hundreds o
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>In the previous verse, Paurṇamāsī, who is the assistant in the confidential affairs of Rādhā and Mādhava, and also a tapasvinī (previously performing great austerities), appreciates both rasas. Śānta-rasa is expressed in accordance with the description of the sage. Madhura-rasa is expressed in accordance with the description of Rādhā, the young girl. Though the sage and yogī attempt to engage their minds in Kṛṣṇa by the power of yoga, there is no effect. Rādhā, out of fear of transgressing dharma, by trying to prevent her mind from thinking of Kṛṣṇa, only thinks of Him more. Thus, the position of sage and yogī is lowered, and Rādhā’s position is clearly elevated. However, because of the nature of speaker (Paurṇamāsī), no fault of distaste arises. But this is not always the case.</p>
@@ -5290,6 +5361,7 @@ Thus, in combining vatsala-rasa with an enemy rasa, even if there are hundreds o
 
     <div class="fc-translation" data-sec="translation">Memories producing two conflicting rasas (hāsya and karuṇa): He used to make us laugh by comical pastimes. But today, being pulled away by Kāliya and suffering in pain, He is making us lament.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -5305,6 +5377,7 @@ Thus, in combining vatsala-rasa with an enemy rasa, even if there are hundreds o
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>These are the words of some lesser devatās, since the words do not convey that they have intensely affectionate natures. The inhabitants of Vraja however display intense affection. The use of words such as vaihāsika (comical) is not fitting for the inhabitants of Vraja. These are not the words of Śiva or Brahmā however, for they are in knowledge of the position of the Lord.</p>
@@ -5368,6 +5441,7 @@ Thus, in combining vatsala-rasa with an enemy rasa, even if there are hundreds o
 
     <div class="fc-translation" data-sec="translation">Conflicting rasas used in comparisons: O Rādhā! You appear to have realized brahman, for you have given up the subtle body. You are devoid of seeing difference, devoid of the coverings of material nature, and full of joy. OR: You repose with the sixteen varieties of conjugal love; you are confirmed by direct perception, since you are not concealed by the creepers; and you are the personification of bliss.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -5383,6 +5457,7 @@ Thus, in combining vatsala-rasa with an enemy rasa, even if there are hundreds o
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>This verse has two meanings. Viśrānta means “attaining a relaxed state.” Ṣoḍaśa-kalā means “accomplishments in the arts of love.” Thus Rādhā is described as being accomplished in the arts of love in a relaxed way. The other meaning of viśrānta is “not making efforts.” Śoḍaśa-kalā means “the subtle body made of sixteen parts.” Thus, the phrase means “giving up the subtle body.” Nirvikalpā (without doubt) means “discerned very well by perception.” It also means “being without duality.” The reason Rādhā is discerned well is that she is not hidden by creepers or other objects (nirāvṛtiḥ). It also means “devoid of the material guṇas.” Brahma-vidyā means realization of brahman. A description such as this, filled with a joking mood, is conducive for rasa (even though śānta-rasa and madhura-rasa are enemies). Thus it is used as an example. Instead of brahma-vidyeva sometimes mukti-śrīr eva (wealth of liberation) is seen, but that version is rejected.</p>
@@ -5445,6 +5520,7 @@ Thus, in combining vatsala-rasa with an enemy rasa, even if there are hundreds o
 
 
     <div class="fc-translation" data-sec="translation">Another example: Rādhā is like śānta-rasa. She makes Me sleepless; she makes My eyes unblinking; she makes Me live in a mountain case, absorbed in meditation.</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -5523,6 +5599,7 @@ Thus, in combining vatsala-rasa with an enemy rasa, even if there are hundreds o
 
     <div class="fc-translation" data-sec="translation">Intervention of one rasa between two conflicting rasas: “Who are you?” “I am a person endowed with śānta-rati.” “Why are you floating in the sky?” “In order to see the param brahma.” “Why have your eyes become so large?” “O Rambhā! My heart has somehow become agitated by His astonishing beauty. I have now fallen in love.”</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -5538,6 +5615,7 @@ Thus, in combining vatsala-rasa with an enemy rasa, even if there are hundreds o
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>The śānta-rati of the woman is covered by astonishment at Kṛṣṇa’s beauty. This allows madhura-rati to appear. The word vyavadhi (intervention) has this usage. The direct contact of śānta-rati with madhura-rati would create distaste, but by the intervention of adbhuta-rasa, the combination is not forbidden. Direct contact of śānta and madhura-rasa is forbidden. The same rule should be applied in other cases.</p>
@@ -5609,6 +5687,7 @@ Thus, in combining vatsala-rasa with an enemy rasa, even if there are hundreds o
 
     <div class="fc-translation" data-sec="translation">Conflicting rasas concerning different objects (madhura-rasa for Kṛṣṇa, bībhatsa for common men), from the Tenth Canto: A woman who fails to relish the fragrance of the honey of Your lotus feet becomes totally befooled, and thus she accepts as her husband or lover a living corpse covered with skin, whiskers, nails, head-hair and body-hair and filled with flesh, bones, blood, parasites, feces, mucus, bile and air. SB 10.60.45</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -5651,8 +5730,8 @@ Thus, in combining vatsala-rasa with an enemy rasa, even if there are hundreds o
 
     <div class="cr-iast-block" data-sec="iast">
         <div class="cr-iast-line">yathā vā vidagdha-mādhave (2.31) –</div>
-<div class="cr-pron-line" data-sec="pronunciation">[yathaa vaa vidagdha-maadhave (2.31) –]</div>        <div class="cr-iast-line">tasyāḥ kānta-dyutini vadane maṣjule cākṣi-yugme</div>
-<div class="cr-pron-line" data-sec="pronunciation">[tasyaah kaanta-dyutini vadane mashjule chaakshi-yugme]</div>        <div class="cr-iast-line">tatrāsmākaṁ yad-avadhi sakhe dṛṣṭir eṣā niviṣṭā |</div>
+<div class="cr-pron-line" data-sec="pronunciation">[yathaa vaa vidagdha-maadhave (2.31) –]</div>        <div class="cr-iast-line">tasyāḥ kānta-dyutini vadane mañjule cākṣi-yugme</div>
+<div class="cr-pron-line" data-sec="pronunciation">[tasyaah kaanta-dyutini vadane manjule chaakshi-yugme]</div>        <div class="cr-iast-line">tatrāsmākaṁ yad-avadhi sakhe dṛṣṭir eṣā niviṣṭā |</div>
 <div class="cr-pron-line" data-sec="pronunciation">[tatraasmaakam yad-avadhi sakhe drishtir eshaa nivishtaa |]</div>        <div class="cr-iast-line">satyaṁ brūmas tad-avadhi bhaved indum indīvaraṁ ca</div>
 <div class="cr-pron-line" data-sec="pronunciation">[satyam broomas tad-avadhi bhaved indum indeevaram cha]</div>        <div class="cr-iast-line">smāraṁ smāraṁ mukha-kuṭilatā-kāriṇīyaṁ hṛṇīyā ||</div>
 <div class="cr-pron-line" data-sec="pronunciation">[smaaram smaaram mukha-kutilataa-kaarineeyam hrineeyaa ||]</div>        <div class="cr-iast-line">ubhayatra śuci-bībhatsayoḥ | ||72||</div>
@@ -5666,7 +5745,7 @@ Thus, in combining vatsala-rasa with an enemy rasa, even if there are hundreds o
                 <div class="cr-blend-iast-line">yathā vā vidagdha-mādhave (2.31) –</div>
             </div>
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">tasyāḥ kānta-dyutini vadane maṣjule cākṣi-yugme</div>
+                <div class="cr-blend-iast-line">tasyāḥ kānta-dyutini vadane mañjule cākṣi-yugme</div>
             </div>
             <div class="cr-blend-block">
                 <div class="cr-blend-iast-line">tatrāsmākaṁ yad-avadhi sakhe dṛṣṭir eṣā niviṣṭā |</div>
@@ -5686,6 +5765,7 @@ Thus, in combining vatsala-rasa with an enemy rasa, even if there are hundreds o
 
     <div class="fc-translation" data-sec="translation">Madhura-rasa towards Rādhā and bībhatsa-rasa towards the moon and blue lotus, from Vidagdha-mādhava: O friend! As long as my eyes are absorbed in seeing the splendid beautiful of Rādhā’s face and her charming eyes, on remembering the moon and the blue lotus, my mouth curls in disgust.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -5701,6 +5781,7 @@ Thus, in combining vatsala-rasa with an enemy rasa, even if there are hundreds o
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Smāraṁ smāraṁ hṛṇīyā means “remembering and remembering those things, I show disgust.” If two verbs have the same subject and the first action occurs previously, the first verb can be repeated twice, to express repeated action, with the ending “am” (ṇamul). [Note: Pāṇini 3.4.22]</p>
@@ -5776,6 +5857,7 @@ Thus, in combining vatsala-rasa with an enemy rasa, even if there are hundreds o
 
     <div class="fc-translation" data-sec="translation">Differing āśrayas for vīra and bhayānaka-rasas: Seeing Kṛṣṇa victorious as He enacted skilful fighting pastimes in the combat arena, the hairs of all His young friends stood on end in ecstasy. However, the complexions of Kaṁsa and other enemies became black with fear.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -5848,6 +5930,7 @@ Thus, in combining vatsala-rasa with an enemy rasa, even if there are hundreds o
 
 
 
+
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-8-74" data-note-label="BG 8.74" data-note-chapter="8" data-note-vlabel="74">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 8.74…" rows="4"></textarea>
@@ -5899,6 +5982,7 @@ Thus, in combining vatsala-rasa with an enemy rasa, even if there are hundreds o
 
     <div class="fc-translation" data-sec="translation">Madhura-rasa conflicting with dāsya-rasa, even though the viṣayas are different: O father! Unlock the door bolt without delay! I will go to the house of Sāndīpani Muni. My mind is attracted to the dark-complexioned youth.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -5914,6 +5998,7 @@ Thus, in combining vatsala-rasa with an enemy rasa, even if there are hundreds o
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Kāśya is Sāndīpani Muni. The girl shows dāsya-rasa (prītena) towards her father. [Note: Child to parent relationship is dāsya as with Kṛṣṇa’s children in Dvārakā.] By the strength of her feelings however even here is no interference with her madhura-rasa.
@@ -5986,6 +6071,7 @@ Trayīmayāt means from the sun.</p>
 
     <div class="fc-translation" data-sec="translation">Śānta-rasa of the speaker conflicting with madhura-rasa of Rukmiṇī: When will my eyes serve the eternally blissful form of param brahman whose chest is marked with the kuṁkuma from Rukmiṇī’s breasts?</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -6001,6 +6087,7 @@ Trayīmayāt means from the sun.</p>
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Rukmiṇī is the āśraya of madhura-rasa and the speaker is the āśraya of śānta-rasa (both are primary rasas). Since the speaker is thinking of becoming a shelter of madhura-rasa like Rukmiṇī, there is fault.</p>
@@ -6040,8 +6127,8 @@ Trayīmayāt means from the sun.</p>
     </header>
 
     <div class="cr-iast-block" data-sec="iast">
-        <div class="cr-iast-line">anurakta-dhiyo bhaktāḥ kecana jṣāna-vartmani |</div>
-<div class="cr-pron-line" data-sec="pronunciation">[anurakta-dhiyo bhaktaah kechana jshaana-vartmani |]</div>        <div class="cr-iast-line">śāntasyāśraya-bhinnatve vairasyaṁ nānumanvate ||77||</div>
+        <div class="cr-iast-line">anurakta-dhiyo bhaktāḥ kecana jñāna-vartmani |</div>
+<div class="cr-pron-line" data-sec="pronunciation">[anurakta-dhiyo bhaktaah kechana jnaana-vartmani |]</div>        <div class="cr-iast-line">śāntasyāśraya-bhinnatve vairasyaṁ nānumanvate ||77||</div>
 <div class="cr-pron-line" data-sec="pronunciation">[shaantasyaashraya-bhinnatve vairasyam naanumanvate ||77||]</div>    </div>
 
 
@@ -6049,7 +6136,7 @@ Trayīmayāt means from the sun.</p>
         <summary>Blended reading (Sanskrit + English inline)</summary>
         <div class="cr-blend-grid">
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">anurakta-dhiyo bhaktāḥ kecana jṣāna-vartmani |</div>
+                <div class="cr-blend-iast-line">anurakta-dhiyo bhaktāḥ kecana jñāna-vartmani |</div>
             </div>
             <div class="cr-blend-block">
                 <div class="cr-blend-iast-line">śāntasyāśraya-bhinnatve vairasyaṁ nānumanvate ||77||</div>
@@ -6058,7 +6145,8 @@ Trayīmayāt means from the sun.</p>
     </details>
 
 
-    <div class="fc-translation" data-sec="translation">Some devotees whose hearts are attached to the path of jṣāna do not consider it distasteful when the āśraya of śānta-rasa is different from the āśraya of the conflicting rasa (as in the previous example).</div>
+    <div class="fc-translation" data-sec="translation">Some devotees whose hearts are attached to the path of jñāna do not consider it distasteful when the āśraya of śānta-rasa is different from the āśraya of the conflicting rasa (as in the previous example).</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -6124,6 +6212,7 @@ Trayīmayāt means from the sun.</p>
 
 
     <div class="fc-translation" data-sec="translation">However, just as there is a conjoining of two natural enemies for service to a common master, their king, there is no fault in the mixing of two conflicting aṅga-rasas for nourishing the aṅgī-rasa.</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -6202,6 +6291,7 @@ Trayīmayāt means from the sun.</p>
 
     <div class="fc-translation" data-sec="translation">Vīra and bhayānaka-rasas nourishing vatsala-rasa: Dear Yaśodā! Your son is softer than a jasmine flower, and Keśī demon is harder than a mountain. Because of this, my mind is quivering. Let my son have all auspiciousness. Raising this pillar, I will pulverize this demon and make Gokula worthy of praise.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -6217,6 +6307,7 @@ Trayīmayāt means from the sun.</p>
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>In this verse, the different viṣayas of the conflicting rasas should also be considered factors in harmonizing the inimical rasas (bhayānaka towards the demon and vīra towards Gokula.) Śālinam means “praise.” Medhi is a pillar around which oxen tread in order to separate the grain from the chaff.</p>
@@ -6281,6 +6372,7 @@ Trayīmayāt means from the sun.</p>
     <div class="fc-translation" data-sec="translation">Verse 31 of this chapter is an example of vatsala-rasa nourished by hāsya and karuṇa-rasas, which are enemies. The verse is: When perspiration became visible on the forehead of Kṛṣṇa as He held up Govardhana in His left hand, Yaśodā began trembling with fear, thinking that Govardhana would fall upon Him. Her eyes opened wide with astonishment on seeing the boldness of a seven-year-old boy, when He raised His left hand to lift the hill. But her cheeks were filled with laughter on seeing the playful expressions on His face as He smiled at His friends (hāsya-rasa). Tears flowed from her eyes on seeing Him with His left hand held high for seven days (karuṇa-rasa). Her cloth became wet as milk flowed from her breasts out of affection for her son (vatsala-rasa). May this queen of Vraja protect the whole world!</div>
 
 
+
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -6288,6 +6380,7 @@ Trayīmayāt means from the sun.</p>
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>In this verse, however, the two conflicting rasas are also separated in time.</p>
@@ -6352,6 +6445,7 @@ Trayīmayāt means from the sun.</p>
     <div class="fc-translation" data-sec="translation">Moreover, since in persons such as Yudhiṣṭhira inimical rasas such as dāsya and vatsala manifest at two different times, there is no fault.</div>
 
 
+
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -6359,6 +6453,7 @@ Trayīmayāt means from the sun.</p>
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Though there are combinations of inimical bhāvas in Yudhiṣṭhira and others (dharma-sutādiṣu), such combinations are acceptable because they appear at different times. In Yudhiṣṭhira there are seen a combination of dāsya, vatsala and sakhya-rasas. He has dāsya towards Kṛṣṇa, from knowledge that He is his Lord. He has vatsala-rasa towards Kṛṣṇa because he identifies himself as Kṛṣṇa’s elder. He has sakhya-rasa towards Kṛṣṇa because he is not much older. This is similar to Balarāma, who has vatsala and sakhya relationships with Kṛṣṇa. There is fault if the rasas are unsuitable to the particular condition. However, in this case there is no fault. In other unsuitable cases, there will be fault. Those combinations which appear contradictory in the Bhāgavatam are resolved in the Bhagavat-sandarbha and Prīti-sandarbha.</p>
@@ -6419,6 +6514,7 @@ Trayīmayāt means from the sun.</p>
     <div class="fc-translation" data-sec="translation">Though in adhirūḍha-mahā-bhāva all the inimical rasas mix together, there is no distastefulness. This has already been shown in relation to the madhura-rasa of Rādhā and Kṛṣṇa</div>
 
 
+
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -6426,6 +6522,7 @@ Trayīmayāt means from the sun.</p>
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>This has been shown previously with the verse starting ghorā khaṇḍita-śaṅkhacūḍam (BRS 3.5.23).</p>
@@ -6486,6 +6583,7 @@ Trayīmayāt means from the sun.</p>
     <div class="fc-translation" data-sec="translation">Sometimes, the combination of all rasas appears producing an even greater taste for Kṛṣṇa, the culmination of all great persons, who is endowed with inconceivably great powers.</div>
 
 
+
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -6493,6 +6591,7 @@ Trayīmayāt means from the sun.</p>
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Generally when Kṛṣṇa is the viṣaya of various rasas for different individuals, there is no decrease in the taste. But even when Kṛṣṇa is the āśraya of all rasas, the combination manifests greater taste (and thus the rasas do not restrict each other).</p>
@@ -6535,8 +6634,8 @@ Trayīmayāt means from the sun.</p>
         <div class="cr-iast-line">tatra rasānāṁ viṣayatve, yathā lalita-mādhave (3.4) –</div>
 <div class="cr-pron-line" data-sec="pronunciation">[tatra rasaanaam vishayatve, yathaa lalita-maadhave (3.4) –]</div>        <div class="cr-iast-line">daityācāryās tadāsye vikṛtim aruṇatāṁ malla-varyāḥ sakhāyo</div>
 <div class="cr-pron-line" data-sec="pronunciation">[daityaachaaryaas tadaasye vikritim arunataam malla-varyaah sakhaayo]</div>        <div class="cr-iast-line">gaṇḍaunnatyaṁ khaleśāḥ pralayam ṛṣigaṇā dhyānam uṣṇāsram ambāḥ |</div>
-<div class="cr-pron-line" data-sec="pronunciation">[gandaunnatyam khaleshaah pralayam rishiganaa dhyaanam ushnaasram ambaah |]</div>        <div class="cr-iast-line">romāṣcaṁ sāṁyugīnāḥ kam api nava-camatkāram antaḥ sureśā</div>
-<div class="cr-pron-line" data-sec="pronunciation">[romaashcham saamyugeenaah kam api nava-chamatkaaram antah sureshaa]</div>        <div class="cr-iast-line">lāsyaṁ dāsāḥ kaṭākṣaṁ yayur asita-dṛśaḥ prekṣya raṅge</div>
+<div class="cr-pron-line" data-sec="pronunciation">[gandaunnatyam khaleshaah pralayam rishiganaa dhyaanam ushnaasram ambaah |]</div>        <div class="cr-iast-line">romāñcaṁ sāṁyugīnāḥ kam api nava-camatkāram antaḥ sureśā</div>
+<div class="cr-pron-line" data-sec="pronunciation">[romaancham saamyugeenaah kam api nava-chamatkaaram antah sureshaa]</div>        <div class="cr-iast-line">lāsyaṁ dāsāḥ kaṭākṣaṁ yayur asita-dṛśaḥ prekṣya raṅge</div>
 <div class="cr-pron-line" data-sec="pronunciation">[laasyam daasaah kataaksham yayur asita-drishah prekshya range]</div>        <div class="cr-iast-line">mukundam ||84||</div>
 <div class="cr-pron-line" data-sec="pronunciation">[mukundam ||84||]</div>    </div>
 
@@ -6554,7 +6653,7 @@ Trayīmayāt means from the sun.</p>
                 <div class="cr-blend-iast-line">gaṇḍaunnatyaṁ khaleśāḥ pralayam ṛṣigaṇā dhyānam uṣṇāsram ambāḥ |</div>
             </div>
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">romāṣcaṁ sāṁyugīnāḥ kam api nava-camatkāram antaḥ sureśā</div>
+                <div class="cr-blend-iast-line">romāñcaṁ sāṁyugīnāḥ kam api nava-camatkāram antaḥ sureśā</div>
             </div>
             <div class="cr-blend-block">
                 <div class="cr-blend-iast-line">lāsyaṁ dāsāḥ kaṭākṣaṁ yayur asita-dṛśaḥ prekṣya raṅge</div>
@@ -6567,6 +6666,7 @@ Trayīmayāt means from the sun.</p>
 
 
     <div class="fc-translation" data-sec="translation">Kṛṣṇa as the viṣaya of all rasas, from Lalita-mādhava: Seeing Kṛṣṇa in the combat arena, the priests of Kaṁsa showed disgust on their faces (bībhatsa), the wrestlers became red with anger (raudra), the cheeks of Kṛṣṇa’s friends raised up with smiles (hāsya, sakhya), the evil rulers became senseless (bhayānaka), the sages became fixed in meditation (śānta), the mothers wept with hot tears (karuṇa, vatsala), the expert warriors’ hairs stood on end (vīra), the devatās felt novel astonishment internally (adbhuta), the servants began to dance (dāsya) and the young women cast glances from the corners of their eyes (madhura).</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -6583,6 +6683,7 @@ Trayīmayāt means from the sun.</p>
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Daityācaryāḥ means the priests of Kaṁsa. At that time (tadā) the priests of Kaṁsa distorted their faces (āsye vikṛtim), on seeing Kṛṣṇa covered with the elephant’s blood and mada (juice excreted from the rutting elephant’s temples). This indicates bībhatsa-rasa (disgust). The smiling of Kṛṣṇa’s friends indicates both hāsya and sakhya-rasas. The evil rulers became devoid of all movement (pralaya) out of fear (bhayānaka-rasa). The sages became absorbed completely in meditation, indicating their śānta-rasa in relation to Kṛṣṇa. Mothers such as Devakī exhibited vatsala and karuṇa-rasas.</p>
@@ -6654,10 +6755,11 @@ Trayīmayāt means from the sun.</p>
 
     <div class="fc-translation" data-sec="translation">Kṛṣṇa as the āśraya of all rasas: Though lifting up Govardhana, He remained without pride in Himself (śānta). When the small children became eager to hold up the mountain, He smiled (hāsya, vatsala). He spat at some bad-smelling yogurt (bībhatsa). He showed off his great strength in lifting the mountain for the benefit of His dear friends (sakhya, vīra). He displayed red eyes in looking at Indra (raudra). He shed tears on seeing the suffering of the inhabitants of Vraja from rain and wind (karuṇa). He trembled in fear before the elders, having destroyed the sacrifice to Indra (dāsya, bhayānaka). His eyes opened wide with astonishment on seeing the great torrents of rain (adbhuta). His hairs stood on end when He saw the young girls (madhura). May this master, the lifter of Govardhana, protect you!</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
-            <p>A similar statement, which is free from incompatibility, is in the Lalita-mādhava, wherein the author blesses all the readers of the book in the following manner: “Although the Supreme Personality of Godhead is able to lift a mountain with a finger of His left hand, He is always humble and meek. He is always very kind to His loving devotees. He has frustrated Indra’s attempt at vengeance by refusing him the sacrifice of Indra-yajṣa. He is the cause of all pleasure to all young girls. May He be ever compassionate upon you all!”</p>
+            <p>A similar statement, which is free from incompatibility, is in the Lalita-mādhava, wherein the author blesses all the readers of the book in the following manner: “Although the Supreme Personality of Godhead is able to lift a mountain with a finger of His left hand, He is always humble and meek. He is always very kind to His loving devotees. He has frustrated Indra’s attempt at vengeance by refusing him the sacrifice of Indra-yajña. He is the cause of all pleasure to all young girls. May He be ever compassionate upon you all!”</p>
         </div>
         <div class="cr-purport-attrib">— A.C. Bhaktivedanta Swami Prabhupāda</div>
     </section>
@@ -6669,6 +6771,7 @@ Trayīmayāt means from the sun.</p>
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Amānī (prideless) means that Kṛṣṇa exhibited śānta-rasa in being devoid of pride at lifting Govardhana. Trembling in front of His elders on interrupting the sacrifice to Indra (hari-makhaṁ prāsya) indicates bhayānaka-rasa. Other rasas can similarly be understood in this verse.

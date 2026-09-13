@@ -31,11 +31,13 @@
 <body class="has-sidebar">
 <header class="fc-site-header">
     <button type="button" class="fc-mobile-trigger fc-mobile-trigger-left" data-overlay="left" aria-label="Open settings drawer">⚙</button>
-    <a class="fc-brand" href="../../../">FolioCorpus<span class="fc-sub">Bhagavad-gītā</span></a>
+<a class="fc-brand" href="../../../">FolioCorpus<span class="fc-sub">Bhakti-rasāmṛta-sindhu</span></a>
     <nav class="fc-site-nav">
         <a href="../../../">Home</a>
         <a href="../../../bg/">Bhagavad-gītā</a>
         <a href="../../../sb/">Śrīmad-Bhāgavatam</a>
+        <a href="../../../brs/" title="Bhakti-rasāmṛta-sindhu with Jīva Gosvāmī's and Viśvanātha Cakravartī's commentaries">Bhakti-rasāmṛta-sindhu</a>
+        <a href="../../../nod/" title="Nectar of Devotion">Nectar of Devotion</a>
         <a href="../../../search/" title="Search across all integrated works">🔍 Search</a>
         <button type="button" id="fc-random-verse" class="fc-nav-btn" title="Jump to a random verse">🎲 Random</button>
     </nav>
@@ -46,8 +48,8 @@
     <button class="fc-sb-collapse" type="button" data-sb="left" title="Collapse left sidebar" aria-label="Collapse"></button>
 
     <div class="fc-sb-body">
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Reading</div>
+        <details class="fc-sb-section" data-sbsec="reading" open>
+            <summary class="fc-sb-title">Reading</summary>
             <div class="fc-sb-sub">Theme</div>
             <div class="fc-segmented" data-setting="theme">
                 <button type="button" data-val="light">Light</button>
@@ -73,10 +75,10 @@
                 <button type="button" data-val="single">Single</button>
                 <button type="button" data-val="side">Side-by-side</button>
             </div>
-        </div>
+        </details>
 
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Display</div>
+        <details class="fc-sb-section" data-sbsec="display" open>
+            <summary class="fc-sb-title">Display</summary>
             <div class="fc-sb-grid">
                 <label><input type="checkbox" data-section="devanagari" checked> Devanāgarī</label>
                 <label><input type="checkbox" data-section="iast" checked> IAST transliteration</label>
@@ -98,33 +100,10 @@
                 <button type="button" data-action="expand-all">Expand all</button>
                 <button type="button" data-action="collapse-all">Collapse all</button>
             </div>
-        </div>
+        </details>
 
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Find your starting point</div>
-            <div class="fc-persona-links">
-                <a class="fc-persona-link" href="../../../daily/">🌅 Daily (one value a week)</a>
-                <a class="fc-persona-link" href="../../../householder/">🏠 Householder (family & work)</a>
-                <a class="fc-persona-link" href="../../../parenting/">👨‍👩‍👧 Parenting (stories for kids)</a>
-                <a class="fc-persona-link" href="../../../themes/">📚 All themes</a>
-                <a class="fc-persona-link" href="../../../values/" style="background:#F0F6F2;border-left-color:#1F4632;">ॐ Vedic Value System ↗</a>
-                <a class="fc-persona-link" href="../../../vidya/" style="background:#FBF6E4;border-left-color:#C8860B;">📚 Vidyā Karaṇa (kids, multi-lang) ↗</a>
-            </div>
-        </div>
-
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Audience</div>
-            <div class="fc-audience-filter">
-                <label><input type="radio" name="fc-audience" value="all" checked> All levels</label>
-                <label><input type="radio" name="fc-audience" value="primary"> Primary (children)</label>
-                <label><input type="radio" name="fc-audience" value="middle"> Middle (teens)</label>
-                <label><input type="radio" name="fc-audience" value="senior"> Senior (adults)</label>
-                <label><input type="radio" name="fc-audience" value="college"> College / scholar</label>
-            </div>
-        </div>
-
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Tools</div>
+        <details class="fc-sb-section" data-sbsec="tools" open>
+            <summary class="fc-sb-title">Tools</summary>
             <div class="fc-sb-tools">
                 <button type="button" id="fc-presentation-toggle" class="fc-tool-btn"><span>🖥 Presentation</span><kbd class="fc-kbd">F</kbd></button>
                 <button type="button" id="fc-pen-toggle" class="fc-tool-btn"><span>✏️ Pen mode</span><kbd class="fc-kbd">P</kbd></button>
@@ -139,26 +118,10 @@
                 <button type="button" id="fc-clear-highlights" class="fc-tool-btn">🩷 Clear highlights (page)</button>
                 <button type="button" id="fc-notes-modal-open" class="fc-tool-btn">📓 My annotations</button>
             </div>
-        </div>
+        </details>
 
-        <div class="fc-sb-section" id="fc-tts-controls" hidden>
-            <div class="fc-sb-title">
-                Read-aloud
-                <label class="fc-tts-master">
-                    <input type="checkbox" id="fc-tts-enabled" checked>
-                    <span class="fc-tts-master-label">On</span>
-                </label>
-            </div>
-            <div class="fc-tts-inner">
-                <div class="fc-sb-sub">Voice</div>
-                <select id="fc-tts-voice" class="fc-tts-select" aria-label="TTS voice"></select>
-                <div class="fc-sb-sub">Rate <span class="fc-tts-rate-val">1.0×</span></div>
-                <input type="range" id="fc-tts-rate" min="0.5" max="2" step="0.1" value="1" class="fc-tts-rate" aria-label="Reading rate">
-            </div>
-        </div>
-
-        <div class="fc-sb-section" id="fc-progress-section">
-            <div class="fc-sb-title">Progress</div>
+        <details class="fc-sb-section" data-sbsec="progress" id="fc-progress-section" open>
+            <summary class="fc-sb-title">Progress</summary>
             <div class="fc-progress-row">
                 <span class="fc-progress-num" id="fc-progress-num">0</span>
                 <span class="fc-progress-divider">/</span>
@@ -173,29 +136,29 @@
                 <span class="fc-progress-spacer"></span>
                 <button type="button" class="fc-progress-reset" id="fc-progress-reset" title="Reset progress">↺</button>
             </div>
-        </div>
+        </details>
 
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Bookmarks <span class="fc-sb-count" id="fc-bookmarks-count">0</span></div>
+        <details class="fc-sb-section" data-sbsec="bookmarks" open>
+            <summary class="fc-sb-title">Bookmarks <span class="fc-sb-count" id="fc-bookmarks-count">0</span></summary>
             <ul class="fc-bookmark-list" id="fc-bookmarks-list">
                 <li class="fc-sb-empty">No bookmarks yet — click ☆ on any verse.</li>
             </ul>
-        </div>
+        </details>
 
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Notes <span class="fc-sb-count" id="fc-notes-count">0</span></div>
+        <details class="fc-sb-section" data-sbsec="notes" open>
+            <summary class="fc-sb-title">Notes <span class="fc-sb-count" id="fc-notes-count">0</span></summary>
             <ul class="fc-bookmark-list" id="fc-notes-list">
                 <li class="fc-sb-empty">No notes yet — open any verse and write in the 📝 block.</li>
             </ul>
-        </div>
+        </details>
 
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Export</div>
+        <details class="fc-sb-section" data-sbsec="export">
+            <summary class="fc-sb-title">Export</summary>
             <div class="fc-sb-tools">
                 <button type="button" id="fc-export-md" class="fc-tool-btn">📥 Download Markdown</button>
                 <button type="button" id="fc-export-json" class="fc-tool-btn">💾 Download JSON backup</button>
             </div>
-        </div>
+        </details>
     </div>
 </aside>    <main class="fc-container">
 <nav class="fc-breadcrumbs">
@@ -203,14 +166,14 @@
     <span class="sep">›</span>
     <a href="../../../brs/">Bhakti-rasāmṛta-sindhu</a>
     <span class="sep">›</span>
-    <a href="../../../brs/1/">Section 1</a>
+    <a href="../../../brs/1/">Division 1</a>
     <span class="sep">›</span>
-    <span>Chapter 3</span>
+    <span>Wave 3</span>
 </nav>
 
 <div class="fc-ribbon">
     <div class="fc-ribbon-row">
-        <h1 class="fc-verse-heading">1.3</h1>
+        <h1 class="fc-verse-heading">1.3 · Bhāva-bhakti</h1>
         <span class="fc-ribbon-meta">61 verses</span>
         <input type="search" class="fc-search" id="fc-search" placeholder="🔍 Search in this chapter" aria-label="Search verses in this chapter">
         <span class="fc-ribbon-current" id="fc-ribbon-current" aria-live="polite"></span>
@@ -313,6 +276,7 @@
 
     <div class="fc-translation" data-sec="translation">That part of bhakti is called bhāva, whose essence is saṁvit and hlādinī śakti, which is one ray of the sun of prema which will soon rise in the heart, and which softens the heart with desires to meet, serve, and exchange love with the Lord.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -330,10 +294,11 @@ To clarify, in the previous chapters the symptoms of devotional service were exp
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Bhāva-bhakti should be defined. Previously two types of bhakti were delineated in discussing the general qualities of bhakti: ceṣṭā-rūpa and bhāva-rūpa. Ceṣṭā-rūpa-bhakti (bhakti consisting of action) has two types: sādhana-rūpa for attaining bhāva-bhakti (actions as practice for attaining bhāva), and kārya-rūpa (actions after attaining bhāva—the goal of practice). Kārya-rūpa-bhakti takes the form of anubhāvas when one experiences rasa. Sādhana-rūpa-bhakti has just been described. The anubhāvas of kārya-rūpa-bhakti will be shown in relation to rasa in the second wave of the Southern Section.
-Bhāva-rūpa-bhakti has two types: sthāyi-rūpa (permanent emotion) and saṣcāri-rūpa (transitory emotion). Sthāyi-rūpa has two types: 1) prema, which also indicates higher states such as praṇaya; and 2) bhāva, also called rati, which is the preliminary stage of bud of prema. Saṣcāri-rūpa-bhakti will be discussed later in relation to rasa, in the fourth wave of the Southern Section. [Note: Sthāyi-bhāva is discussed in the fifth wave of the Southern Section.]
+Bhāva-rūpa-bhakti has two types: sthāyi-rūpa (permanent emotion) and sañcāri-rūpa (transitory emotion). Sthāyi-rūpa has two types: 1) prema, which also indicates higher states such as praṇaya; and 2) bhāva, also called rati, which is the preliminary stage of bud of prema. Sañcāri-rūpa-bhakti will be discussed later in relation to rasa, in the fourth wave of the Southern Section. [Note: Sthāyi-bhāva is discussed in the fifth wave of the Southern Section.]
 śuddha-sattva-viśeṣātmā
 Now, this verse describes bhāva, also called rati, which is the general form of the sthāyi-bhāva, and the bud of the sthāyi-bhāva which continues to exist in the higher stages such as praṇaya and mahā-bhāva. By using the phrase śuddha-sattva-viśeṣātmā, the author indicates that, in the future, this bhāva will transform into more elevated states, culminating in mahā-bhāva.
 In the verse, śuddha-sattva refers to saṁvit, which is a transformation of the Lord’s svarūpa-śakti. Saṁvit means knowledge—whose intrinsic nature is that it is self-revealing. [Note: “Self-revealing” is a phrase used to indicate the essential nature of knowledge. Knowledge must have, as a basic component, an awareness of self. Based on this, awareness of other objects arises.] Śuddha-sattva, here, does not indicate the mode of goodness, which is also called sattva, but which belongs to material nature. This śuddha-sattva is described in the second part of the Bhagavat-sandarbha, and in the second chapter of the Vaiṣṇava-toṣaṇī.
@@ -414,7 +379,8 @@ This bhāva, whose very form is the essence of the hlādinī function of the Lor
     </details>
 
 
-    <div class="fc-translation" data-sec="translation">In a tantra, [Note: The word tantra can refer to the Paṣcarātra scriptures or other works of similar nature.] it is said: The preliminary state of prema is called bhāva. There are a few sāttvika-bhāvas such as tears in the eyes and hairs standing on end.</div>
+    <div class="fc-translation" data-sec="translation">In a tantra, [Note: The word tantra can refer to the Pañcarātra scriptures or other works of similar nature.] it is said: The preliminary state of prema is called bhāva. There are a few sāttvika-bhāvas such as tears in the eyes and hairs standing on end.</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -431,6 +397,7 @@ This bhāva, whose very form is the essence of the hlādinī function of the Lor
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>This verse shows that bhāva is the ray of prema or the sprout of prema.</p>
@@ -493,6 +460,7 @@ This bhāva, whose very form is the essence of the hlādinī function of the Lor
 
 
     <div class="fc-translation" data-sec="translation">An example of sāttvika-bhāvas appearing at this stage, from the Padma Purāṇa: Continually meditating on the lotus feet of the Lord, Ambarīṣa developed slight transformations of heart and tears in his eyes.</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -563,6 +531,7 @@ This bhāva, whose very form is the essence of the hlādinī function of the Lor
 
     <div class="fc-translation" data-sec="translation">Appearing in the mental functions, bhāva becomes the mental state it­self. Though bhāva is self-revealing, it appears to become manifest by the mind. Though in its essential nature bhāva is taste itself, it also acts as a cause of tasting the pastimes of Kṛṣṇa, His associates and His pastimes.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -578,6 +547,7 @@ This bhāva, whose very form is the essence of the hlādinī function of the Lor
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Two verses now describe in more detail that rati or bhāva, which was just described, when it appears in the Lord’s dear devotees in this world. That (asau), which has the form of śuddha-sattva-viśeṣa and has pleasure as its essence, is called rati, because, literally, the meaning of rati is “pleasure.” Though this rati is self-revealing (not dependent on anything else), since it reveals Kṛṣṇa and everything else, it (by its mercy) manifests within the functioning of the mind of the Lord’s dear devotees in this world, and then becomes one with their minds—it becomes their minds and their emotions (tat-svarūpatām vrajantī). It appears (bhāsamānā) in the mind as if by the actions of the mind (prakāśyavat) (though it is self-revealing, independent). This is like Brahman, the Supreme Lord, who, though self-revealing and independent, makes His appearance as if being born.
@@ -646,6 +616,7 @@ Vastutaḥ here means “what actually happens.” The word tu is used to show d
 
 
     <div class="fc-translation" data-sec="translation">Appearing in the mental functions, bhāva becomes the mental state it­self. Though bhāva is self-revealing, it appears to become manifest by the mind. Though in its essential nature bhāva is taste itself, it also acts as a cause of tasting the pastimes of Kṛṣṇa, His associates and His pastimes.</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -727,6 +698,7 @@ Vastutaḥ here means “what actually happens.” The word tu is used to show d
 
     <div class="fc-translation" data-sec="translation">Bhāva appears in very fortunate persons in two ways: by absorption in sādhana or by the mercy of Kṛṣṇa or His devotee. Its appearance by sādhana is normal, and its appearance by mercy is rare.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -739,9 +711,21 @@ Vastutaḥ here means “what actually happens.” The word tu is used to show d
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
             <div class="cr-acarya-name">
+                Viśvanātha Cakravartī Ṭhākura
+                <span class="cr-samp-badge">Gauḍīya</span>
+            </div>
+            <div class="cr-acarya-work">Bhakti-sāra-pradarśinī</div>
+            <div class="cr-acarya-label">Commentary</div>
+            <div class="cr-acarya-purp">
+                <p>This verse describes two ways in which bhāva appears: by sādhana and by the mercy of Kṛṣṇa and His devotees. Sādhanābhiniveṣena (absorption in sādhana) means “by bhakti at the stage of niṣṭhā, after anartha-nivṛtti.” Ati-dhanyānām means “of those who have the great fortune, which arises from previous association with great devotees.”</p>
+            </div>
+        </div>
+        <div class="cr-acarya-card gaudiya">
+            <div class="cr-acarya-name">
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>In this verse, the cause of bhāva arising in the devotees of this world is discussed. Persons become very fortunate (ati-dhanyānām) by prior association with great devotees.
@@ -826,6 +810,21 @@ Discussion that is more detailed will be found in the Bhakti-sandarbha.</p>
 
 
 
+    <section class="fc-section" data-sec="gaudiya">
+        <div class="fc-section-label">Gauḍīya Ācāryas</div>
+        <div class="cr-acarya-card gaudiya">
+            <div class="cr-acarya-name">
+                Viśvanātha Cakravartī Ṭhākura
+                <span class="cr-samp-badge">Gauḍīya</span>
+            </div>
+            <div class="cr-acarya-work">Bhakti-sāra-pradarśinī</div>
+            <div class="cr-acarya-label">Commentary</div>
+            <div class="cr-acarya-purp">
+                <p>Bhāva may arise by vaidhi-sādhana or rāgānuga-sādhana. This gives rise to two varieties of bhāva. “Sādhana gives rise to niṣṭhā. Without developing ruci and then āsakti, how will bhāva arise?” This verse answers by saying that one must go through those stages.</p>
+            </div>
+        </div>
+    </section>
+
 
 
 
@@ -901,6 +900,7 @@ Discussion that is more detailed will be found in the Bhakti-sandarbha.</p>
 
 
 
+
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-8" data-note-label="BG 3.8" data-note-chapter="3" data-note-vlabel="8">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.8…" rows="4"></textarea>
@@ -956,6 +956,7 @@ Discussion that is more detailed will be found in the Bhakti-sandarbha.</p>
 
     <div class="fc-translation" data-sec="translation">Bhāva arising from vaidhi-sādhana is illustrated: O Vyāsadeva, in that association, and by the mercy of those great Vedāntists, I could hear them describe the activities of Lord Kṛṣṇa. These became very attractive (ruci). Thus, listening attentively (āsakti), [Note: This meaning is from Viśvanātha’s Bhāgavatam commentary.] rati for the Personality of Godhead appeared. SB 1.5.26</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -968,9 +969,21 @@ Discussion that is more detailed will be found in the Bhakti-sandarbha.</p>
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
             <div class="cr-acarya-name">
+                Viśvanātha Cakravartī Ṭhākura
+                <span class="cr-samp-badge">Gauḍīya</span>
+            </div>
+            <div class="cr-acarya-work">Bhakti-sāra-pradarśinī</div>
+            <div class="cr-acarya-label">Commentary</div>
+            <div class="cr-acarya-purp">
+                <p>“There, every day, by the mercy of the sages, who were reciting topics about Kṛṣṇa, hearing those topics, I developed rati for Kṛṣṇa, who has pleasing fame.” Mercy (anugraha) mentioned in this verse means that the devotees gave their permission to Nārada to hear, following the scriptural procedure. “You should also listen to these talks about Kṛṣṇa.” This indicates vaidhi-bhakti. The word manoharā means, “Causing the appearance of ruci.” Though one should mention that faith, as the starting point of all stages, is the cause of rati, the description is given in this way to show the quick appearance of rati from absorption in the stages arising after anartha-nivṛtti.</p>
+            </div>
+        </div>
+        <div class="cr-acarya-card gaudiya">
+            <div class="cr-acarya-name">
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>The mercy, or anugraha, mentioned in this verse means that the devotees gave their permission to Nārada to hear. This is the scriptural procedure. “You should also listen to these talks about Kṛṣṇa.” Manoharāḥ (attractive) indicates, “Causing the appearance of ruci.” Śraddhā, or faith, is not mentioned in the verse, since it is always a necessary element.</p>
@@ -1030,6 +1043,7 @@ Discussion that is more detailed will be found in the Bhakti-sandarbha.</p>
 
     <div class="fc-translation" data-sec="translation">The word rati in the Bhāgavatam verse indicates bhāva, not prema, because, two verses later, the appearance of prema is indicated with the words “My bhakti (prema) then appeared.”</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1045,6 +1059,7 @@ Discussion that is more detailed will be found in the Bhakti-sandarbha.</p>
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>In verse 1.5.28 of the Bhāgavatam (quoted in the next verse of the text), Nārada says bhaktiḥ pravṛttātma rajas-tamopahā. The word bhakti indicates prema. Thus in the context, rati, in this verse, means bhāva, since it is the preliminary state, and bhakti means prema, since it is the superior state. Thus, the difference between bhāva and prema, as stated in the definition of bhāva, is illustrated: bhāva is like a ray of the sun of prema.</p>
@@ -1115,6 +1130,7 @@ Discussion that is more detailed will be found in the Bhakti-sandarbha.</p>
 
 
     <div class="fc-translation" data-sec="translation">There it is also said: Thus during two seasons—the rainy season and autumn—I had the opportunity to hear these great-souled sages constantly chant the unadulterated glories of the Lord Hari. As the flow of my prema appeared, the coverings of the modes of passion and ignorance vanished. SB 1.5.28</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -1190,6 +1206,7 @@ This is a practical example of how one can develop to the stage of ecstatic love
 
     <div class="fc-translation" data-sec="translation">In the Third Canto, there is a similar usage of the word bhakti: In the association of pure devotees, discussion of the pastimes and activities of the Supreme Personality of Godhead is very pleasing and satisfying to the ear and the heart. By cultivating such knowledge, one gradually develops faith, rati and prema for Kṛṣṇa. SB 3.25.25</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1262,6 +1279,7 @@ This is a practical example of how one can develop to the stage of ecstatic love
 
 
 
+
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-13" data-note-label="BG 3.13" data-note-chapter="3" data-note-vlabel="13">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.13…" rows="4"></textarea>
@@ -1309,6 +1327,7 @@ This is a practical example of how one can develop to the stage of ecstatic love
 
     <div class="fc-translation" data-sec="translation">Bhāva arising from rāgānuga-sādhana is illustrated in the Padma Purāṇa: A young girl, having great joy in the heart and being very enthusiastic to dance, spent the whole night dancing in order to please the Lord.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1324,6 +1343,7 @@ This is a practical example of how one can develop to the stage of ecstatic love
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>The word manoratham (with joy in the heart) indicates rāgānuga-sādhana. By the influ­ence of the deity form, she developed rāga similar to that of Kṛṣṇa’s dear associ­ates. The girl has also said previously in the same Purāṇa:
@@ -1400,6 +1420,7 @@ In this way Rādhā has been described. It should be understood that the young g
 
     <div class="fc-translation" data-sec="translation">Now, bhāva arising from the mercy of Kṛṣṇa or His devotee is defined: That bhāva which appears suddenly without performance of sādhana is known as bhāva produced from the mercy of Kṛṣṇa or His devotee.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1461,6 +1482,7 @@ In this way Rādhā has been described. It should be understood that the young g
 
     <div class="fc-translation" data-sec="translation">Bhāva arising from Kṛṣṇa’s mercy is now considered: This mercy arises from the words of the Lord, the presence of the Lord, or just appears in the heart.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1476,6 +1498,7 @@ In this way Rādhā has been described. It should be understood that the young g
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>The mercy may be produced by the words spoken by the Lord (vācika). Alternatively, the Lord may be­stow mercy, producing bhāva, by showing Himself to the devotee (āloka-dāna). On the other hand, the mercy may simply manifest in the devotee’s heart (hārda). The verse starting smerāṁ bhaṅgi in the second part (BRS 1.2.239) illustrates mercy by seeing the Lord. Mercy given by Vṛndāvana and other items are included in the “mercy given by devo­tees.”</p>
@@ -1538,6 +1561,7 @@ In this way Rādhā has been described. It should be understood that the young g
 
 
     <div class="fc-translation" data-sec="translation">Verbal mercy is shown in the Nāradīya Purāṇa: O best of the brāhmaṇas, may you have undeviating bhakti (bhāva) for Me. That bhakti is the crest jewel of all auspiciousness and full of bliss eternally.</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -1604,6 +1628,7 @@ In this way Rādhā has been described. It should be understood that the young g
 
     <div class="fc-translation" data-sec="translation">Giving mercy by showing Himself, is illustrated in the Skanda Purāṇa: When they saw Kṛṣṇa, who appeared like nothing they had seen before, the hearts of the residents of Jāṅgala melted and they could not take their eyes away from His form.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1664,6 +1689,7 @@ In this way Rādhā has been described. It should be understood that the young g
 
 
     <div class="fc-translation" data-sec="translation">The definition of hārda is given: That mercy which arises from within is called hārda.</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -1730,6 +1756,7 @@ In this way Rādhā has been described. It should be understood that the young g
 
     <div class="fc-translation" data-sec="translation">Thus, it is said in the Śuka-saṁhitā: O Bādarāyaṇa, You have given birth to a great devotee as your son. Without sād­hana, which brings about the goal, bhakti to Viṣṇu has appeared within his heart.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1745,6 +1772,7 @@ In this way Rādhā has been described. It should be understood that the young g
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Bhakti to Viṣṇu, which is the goal (upeya), has appeared without sādhana (upāyaiḥ). The conclusion is that he attained bhāva only by the mercy of the Lord, since there is no evidence of performance of any sādhana, or of obtaining the mercy of devotees. This mercy must have appeared through the heart, because he developed bhakti in the form of remembering the Lord while still in the womb. While in the womb, he did not see the Lord or receive words of blessing from the Lord. Thus, mercy manifesting in the heart could have been the only way. The Brahma-vaivarta Purāṇa gives the details.</p>
@@ -1808,6 +1836,7 @@ In this way Rādhā has been described. It should be understood that the young g
 
     <div class="fc-translation" data-sec="translation">Bhāva arising from the devotee’s mercy is explained in the Seventh Canto: Who could list the innumerable transcendental qualities of Prahlāda Mahārāja? He had unflinching faith in Vāsudeva, Lord Kṛṣṇa, and unalloyed devotion to Him. His rati to Lord Kṛṣṇa was naisargikī, through mercy. Although his good qualities cannot be enumerated, they prove that he was a great soul. SB 7.4.36</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1868,6 +1897,7 @@ In this way Rādhā has been described. It should be understood that the young g
 
 
     <div class="fc-translation" data-sec="translation">Favor or nisarga was granted to Prahlāda by Nārada and this created devotional impressions. Thus his rati is called naisargikī (through mercy).</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -1934,6 +1964,7 @@ In this way Rādhā has been described. It should be understood that the young g
 
     <div class="fc-translation" data-sec="translation">Bhāva arising by a devotee’s mercy is also illustrated in the Skanda Purāṇa: O Nārada, you are noble. By your mercy the hunter, though low in nature, imme­diately developed goose bumps and attained rati for Lord Acyuta.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1975,25 +2006,26 @@ In this way Rādhā has been described. It should be understood that the young g
     </header>
 
     <div class="cr-iast-block" data-sec="iast">
-        <div class="cr-iast-line">bhaktānāṁ bhedataḥ seyaṁ ratiḥ paṣca-vidhā matā |</div>
-<div class="cr-pron-line" data-sec="pronunciation">[bhaktaanaam bhedatah seyam ratih pashcha-vidhaa mataa |]</div>        <div class="cr-iast-line">agre vivicya vaktavyā tena nātra prapaṣcyate ||24||</div>
-<div class="cr-pron-line" data-sec="pronunciation">[agre vivichya vaktavyaa tena naatra prapashchyate ||24||]</div>    </div>
+        <div class="cr-iast-line">bhaktānāṁ bhedataḥ seyaṁ ratiḥ pañca-vidhā matā |</div>
+<div class="cr-pron-line" data-sec="pronunciation">[bhaktaanaam bhedatah seyam ratih pancha-vidhaa mataa |]</div>        <div class="cr-iast-line">agre vivicya vaktavyā tena nātra prapañcyate ||24||</div>
+<div class="cr-pron-line" data-sec="pronunciation">[agre vivichya vaktavyaa tena naatra prapanchyate ||24||]</div>    </div>
 
 
     <details class="cr-blend-details" data-sec="blended">
         <summary>Blended reading (Sanskrit + English inline)</summary>
         <div class="cr-blend-grid">
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">bhaktānāṁ bhedataḥ seyaṁ ratiḥ paṣca-vidhā matā |</div>
+                <div class="cr-blend-iast-line">bhaktānāṁ bhedataḥ seyaṁ ratiḥ pañca-vidhā matā |</div>
             </div>
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">agre vivicya vaktavyā tena nātra prapaṣcyate ||24||</div>
+                <div class="cr-blend-iast-line">agre vivicya vaktavyā tena nātra prapañcyate ||24||</div>
             </div>
         </div>
     </details>
 
 
     <div class="fc-translation" data-sec="translation">According to the different types of devotees (with five different sthāyi-bhāvas), there are five different types of rati. These will be considered and ex­plained later, and thus will not be discussed here.</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -2064,6 +2096,7 @@ In this way Rādhā has been described. It should be understood that the young g
 
     <div class="fc-translation" data-sec="translation">The anubhāvas or characteristics of a person who has developed the bud of bhāva are as follows: tolerance, not wasting time, detachment from enjoy­ment, pridelessness, confidence in the Lord’s mercy, longing for the Lord, taste for chanting the name of the Lord, attachment to discussing about the Lord’s qualities, and attachment to living in the abode of the Lord.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2089,6 +2122,7 @@ Rūpa Gosvāmī next describes the characteristics of a person who has actually 
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>The main qualities of a person having bhāva are now explained.</p>
@@ -2155,6 +2189,7 @@ Rūpa Gosvāmī next describes the characteristics of a person who has actually 
 
 
     <div class="fc-translation" data-sec="translation">The anubhāvas or characteristics of a person who has developed the bud of bhāva are as follows: tolerance, not wasting time, detachment from enjoy­ment, pridelessness, confidence in the Lord’s mercy, longing for the Lord, taste for chanting the name of the Lord, attachment to discussing about the Lord’s qualities, and attachment to living in the abode of the Lord.</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -2240,6 +2275,7 @@ Rūpa Gosvāmī next describes the characteristics of a person who has actually 
 
     <div class="fc-translation" data-sec="translation">Tolerance is defined as follows: Tolerance means “being undisturbed, even when there is cause for disturbance.”</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2314,6 +2350,7 @@ When a person is undisturbed even in the presence of various causes of disturban
 
     <div class="fc-translation" data-sec="translation">In the First Canto, tolerance of the bhāva-bhakta is illustrated as follows: O brāhmaṇas, just accept me as a completely surrendered soul, and let mother Ganges, the representative of the Lord, also accept me in that way, for I have already taken the lotus feet of the Lord into my heart. Let the snake-bird—or whatever magical thing the brāhmaṇa created—bite me at once. I only desire that you all continue singing the deeds of Lord Viṣṇu. SB 1.19.15</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2327,9 +2364,21 @@ This example of Mahārāja Parīkṣit’s behavior, his remaining patient even 
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
             <div class="cr-acarya-name">
+                Viśvanātha Cakravartī Ṭhākura
+                <span class="cr-samp-badge">Gauḍīya</span>
+            </div>
+            <div class="cr-acarya-work">Bhakti-sāra-pradarśinī</div>
+            <div class="cr-acarya-label">Commentary</div>
+            <div class="cr-acarya-purp">
+                <p>…Parīkṣit was not disturbed, though understanding his approaching death, which was a cause for disturbance.</p>
+            </div>
+        </div>
+        <div class="cr-acarya-card gaudiya">
+            <div class="cr-acarya-name">
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>“May the brāhmaṇas accept (pratiyantu) me as a surrendered soul, since I have fixed my mind on the Lord. Gaṅgā should also accept me.” Just as the great tolerance of Parīkṣit is seen here because of his great prema, it is understood that when he had previously devel­oped bhāva, the sprout of prema, his tolerance also had sprouted in a similar way. Other examples should be understood in the same way.</p>
@@ -2401,6 +2450,7 @@ This example of Mahārāja Parīkṣit’s behavior, his remaining patient even 
 
     <div class="fc-translation" data-sec="translation">Not wasting time is illustrated in Hari-bhakti-sudhodaya: The devotees continually praise the Lord with words, remember Him with their minds, and offer respects with their bodies. Still they are not satisfied. With tears flowing from their eyes, they offer their complete lives to the Lord.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2463,6 +2513,7 @@ An unalloyed devotee who has developed ecstatic love for Kṛṣṇa is always e
 
     <div class="fc-translation" data-sec="translation">Detachment is defined as follows: Detachment means “having a natural distaste for the objects of the senses.”</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2479,6 +2530,7 @@ The senses are always desiring sense enjoyment, but when a devotee develops tran
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Here detachment is the cause, and distaste is the effect, but they are considered the same in the definition, because, they are mutually dependent.</p>
@@ -2518,8 +2570,8 @@ The senses are always desiring sense enjoyment, but when a devotee develops tran
     </header>
 
     <div class="cr-iast-block" data-sec="iast">
-        <div class="cr-iast-line">yathā paṣcame—</div>
-<div class="cr-pron-line" data-sec="pronunciation">[yathaa pashchame—]</div>        <div class="cr-iast-line">yo dustyajān dāra-sutān suhṛd rājyaṁ hṛdi-spṛśaḥ |</div>
+        <div class="cr-iast-line">yathā pañcame—</div>
+<div class="cr-pron-line" data-sec="pronunciation">[yathaa panchame—]</div>        <div class="cr-iast-line">yo dustyajān dāra-sutān suhṛd rājyaṁ hṛdi-spṛśaḥ |</div>
 <div class="cr-pron-line" data-sec="pronunciation">[yo dustyajaan daara-sutaan suhrid raajyam hridi-sprishah |]</div>        <div class="cr-iast-line">jahau yuvaiva malavad uttamaḥśloka-lālasaḥ ||31||</div>
 <div class="cr-pron-line" data-sec="pronunciation">[jahau yuvaiva malavad uttamahshloka-laalasah ||31||]</div>    </div>
 
@@ -2528,7 +2580,7 @@ The senses are always desiring sense enjoyment, but when a devotee develops tran
         <summary>Blended reading (Sanskrit + English inline)</summary>
         <div class="cr-blend-grid">
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">yathā paṣcame—</div>
+                <div class="cr-blend-iast-line">yathā pañcame—</div>
             </div>
             <div class="cr-blend-block">
                 <div class="cr-blend-iast-line">yo dustyajān dāra-sutān suhṛd rājyaṁ hṛdi-spṛśaḥ |</div>
@@ -2541,6 +2593,7 @@ The senses are always desiring sense enjoyment, but when a devotee develops tran
 
 
     <div class="fc-translation" data-sec="translation">Detachment is illustrated in the Fifth Canto: While in the prime of life, the great Mahārāja Bharata gave up everything because he was fond of serving the Supreme Personality of Godhead, Uttamaśloka. He gave up his beautiful wife, nice children, great friends and an enormous empire. Although these things were very difficult to give up, Mahārāja Bharata was so exalted that he gave them up just as one gives up stool after evacuating. Such was the greatness of His Majesty. SB 5.14.43</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -2603,6 +2656,7 @@ Emperor Bharata provides a typical example of detachment. He had everything enjo
 
 
     <div class="fc-translation" data-sec="translation">Pridelessness is defined as follows: Pridelessness means “in spite of having a high position, remaining humble.”</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -2670,6 +2724,7 @@ When a devotee, in spite of possessing all the qualities of pure realization, is
 
     <div class="fc-translation" data-sec="translation">Pridelessness is illustrated in the Padma Purāṇa: King Bhagīratha, though the crest jewel among kings, went out begging at the house of his enemies, and offered respects to the dog-eaters, because he had rati for the Lord.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2732,6 +2787,7 @@ There are many similar instances in the history of India. Even very recently, ab
 
     <div class="fc-translation" data-sec="translation">Confidence is defined as follows: Confidence means “firm assumption that one will attain the Lord.”</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2776,8 +2832,8 @@ The strong conviction that one will certainly receive the favor of the Supreme P
     <div class="cr-iast-block" data-sec="iast">
         <div class="cr-iast-line">yathā śrīmat-prabhupādānāṁ—</div>
 <div class="cr-pron-line" data-sec="pronunciation">[yathaa shreemat-prabhupaadaanaam—]</div>        <div class="cr-iast-line">na premā śravaṇādi-bhaktir api vā yogo ’thavā vaiṣṇavo</div>
-<div class="cr-pron-line" data-sec="pronunciation">[na premaa shravanaadi-bhaktir api vaa yogo ’thavaa vaishnavo]</div>        <div class="cr-iast-line">jṣānaṁ vā śubha-karma vā kiyad aho saj-jātir apy asti vā |</div>
-<div class="cr-pron-line" data-sec="pronunciation">[jshaanam vaa shubha-karma vaa kiyad aho saj-jaatir apy asti vaa |]</div>        <div class="cr-iast-line">hīnārthādhika-sādhake tvayi tathāpy acchedya-mūlā satī</div>
+<div class="cr-pron-line" data-sec="pronunciation">[na premaa shravanaadi-bhaktir api vaa yogo ’thavaa vaishnavo]</div>        <div class="cr-iast-line">jñānaṁ vā śubha-karma vā kiyad aho saj-jātir apy asti vā |</div>
+<div class="cr-pron-line" data-sec="pronunciation">[jnaanam vaa shubha-karma vaa kiyad aho saj-jaatir apy asti vaa |]</div>        <div class="cr-iast-line">hīnārthādhika-sādhake tvayi tathāpy acchedya-mūlā satī</div>
 <div class="cr-pron-line" data-sec="pronunciation">[heenaarthaadhika-saadhake tvayi tathaapy achchedya-moolaa satee]</div>        <div class="cr-iast-line">he gopī-jana-vallabha vyathayate hā hā mad-āśaiva mām ||35||</div>
 <div class="cr-pron-line" data-sec="pronunciation">[he gopee-jana-vallabha vyathayate haa haa mad-aashaiva maam ||35||]</div>    </div>
 
@@ -2792,7 +2848,7 @@ The strong conviction that one will certainly receive the favor of the Supreme P
                 <div class="cr-blend-iast-line">na premā śravaṇādi-bhaktir api vā yogo ’thavā vaiṣṇavo</div>
             </div>
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">jṣānaṁ vā śubha-karma vā kiyad aho saj-jātir apy asti vā |</div>
+                <div class="cr-blend-iast-line">jñānaṁ vā śubha-karma vā kiyad aho saj-jātir apy asti vā |</div>
             </div>
             <div class="cr-blend-block">
                 <div class="cr-blend-iast-line">hīnārthādhika-sādhake tvayi tathāpy acchedya-mūlā satī</div>
@@ -2804,7 +2860,8 @@ The strong conviction that one will certainly receive the favor of the Supreme P
     </details>
 
 
-    <div class="fc-translation" data-sec="translation">An example of confidence is the following statement of Sanātana Gosvāmī: I do not have prema or the practices of hearing or chanting in bhakti. I have no practice of meditation of Viṣṇu in the aṣtāṅga-yoga process, nor do I have practices of jṣāna or varṇāśrama duties. I do not even have good birth to execute these actions properly. But since you are most merciful to the least qualified, O dear lover of the gopīs, though I have impure desires, my aspiration for You continues to agitate me.</div>
+    <div class="fc-translation" data-sec="translation">An example of confidence is the following statement of Sanātana Gosvāmī: I do not have prema or the practices of hearing or chanting in bhakti. I have no practice of meditation of Viṣṇu in the aṣtāṅga-yoga process, nor do I have practices of jñāna or varṇāśrama duties. I do not even have good birth to execute these actions properly. But since you are most merciful to the least qualified, O dear lover of the gopīs, though I have impure desires, my aspiration for You continues to agitate me.</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -2818,12 +2875,24 @@ The strong conviction that one will certainly receive the favor of the Supreme P
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
             <div class="cr-acarya-name">
+                Viśvanātha Cakravartī Ṭhākura
+                <span class="cr-samp-badge">Gauḍīya</span>
+            </div>
+            <div class="cr-acarya-work">Bhakti-sāra-pradarśinī</div>
+            <div class="cr-acarya-label">Commentary</div>
+            <div class="cr-acarya-purp">
+                <p>The yoga is Vaiṣṇava-yoga. The jñānam is knowledge concerning the Lord. The śubha-karma is services performed by the devotee. Thus the meaning is “I do not perform hearing and chanting with devotion, I do not concentrate my mind on the Lord, I have no knowledge of the Lord, nor do I perform any service for the Lord. I do not have a birth suitable for serving the Lord. I have been born among the lowest people. By seeing or touching them, one must bathe for purification. My unflinching desire for You, who make Yourself readily available to the least qualified, gives me great disturbance.” It should be understood that the desire expressed in this verse is a desire only for attaining service at the level of prema arising from pure bhakti devoid of jñāna, karma or yoga, because it is supposed to be an example of āśā-bandha, confidence expressed at the stage of bhāva. Other explanations are not mentioned because they are impossible.</p>
+            </div>
+        </div>
+        <div class="cr-acarya-card gaudiya">
+            <div class="cr-acarya-name">
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
-                <p>Yoga indicates aṣṭāṅga-yoga. When meditation on Viṣṇu is prominent in that yoga, it becomes Vaiṣṇava-yoga. This meditation incorporating Viṣṇu (or other deities in meditation) is called sagarbha in the yoga system. Jṣāna refers to steadiness in brahman. Śubha-karma refers, mainly, to varṇāśrama activities. Good birth is the cause of attaining qualification for the previously mentioned items of yoga, jṣāna and karma. These other processes are shown as causes of attaining the Lord, only because of the accompanying performance of bhakti, which is also mentioned in the list. Concerning yoga, Kapila shows, in the Third Canto of Bhāgavatam [Note: In chapter 28, Kapila describes the process of aṣṭāṅga-yoga, with meditation on the form of the Lord.] how yoga can be combined with bhakti. The position of jṣāna, in relation to bhakti, is shown in the Gītā in the verse brahma-bhūtaḥ prasannātmā.  [Note: Even to perfect jṣāna or realization of brahman, a person must perform bhakti. ] (BG 18.54) Śubha-karma should also be practiced with bhakti, as illustrated by sa vai puṁsāṁ paro dharmo yato bhaktir adhokṣaje—the culmination of religion is that varṇāśrama from which bhakti to the Lord arises. (SB 1.2.6)
+                <p>Yoga indicates aṣṭāṅga-yoga. When meditation on Viṣṇu is prominent in that yoga, it becomes Vaiṣṇava-yoga. This meditation incorporating Viṣṇu (or other deities in meditation) is called sagarbha in the yoga system. Jñāna refers to steadiness in brahman. Śubha-karma refers, mainly, to varṇāśrama activities. Good birth is the cause of attaining qualification for the previously mentioned items of yoga, jñāna and karma. These other processes are shown as causes of attaining the Lord, only because of the accompanying performance of bhakti, which is also mentioned in the list. Concerning yoga, Kapila shows, in the Third Canto of Bhāgavatam [Note: In chapter 28, Kapila describes the process of aṣṭāṅga-yoga, with meditation on the form of the Lord.] how yoga can be combined with bhakti. The position of jñāna, in relation to bhakti, is shown in the Gītā in the verse brahma-bhūtaḥ prasannātmā.  [Note: Even to perfect jñāna or realization of brahman, a person must perform bhakti. ] (BG 18.54) Śubha-karma should also be practiced with bhakti, as illustrated by sa vai puṁsāṁ paro dharmo yato bhaktir adhokṣaje—the culmination of religion is that varṇāśrama from which bhakti to the Lord arises. (SB 1.2.6)
 “I have a thirst (āśā) for attaining the Lord, not motivated by prema for the Lord, but by desire for my own happiness, since I have deeply rooted desires for personal enjoyment, which are difficult to remove (acchedya-mūlā). Then what should I do? I continue to hanker for You, because I think that You can turn that material desire into prema, since You are extra merciful to those who are most deficient (hīnārthādhika-sādhake).”
 Vyathayate is in the atmanepada form instead of the parasmaipada because of the rule aṇāv akarmakāc cittavat kartṛtvāt (Pāṇini 1.3.88). Generally causative forms are in the parasmaipada, but if the agent is non-sentient, then the causative verb takes the atmanepada. The author considers himself insentient, and this is indicated by the atmanepada form. The lack of qualification expressed in this verse is only an expression of humility (since he is actually not fallen), and thus the verse is used as an example of a person at the stage of rati.</p>
             </div>
@@ -2881,6 +2950,7 @@ Vyathayate is in the atmanepada form instead of the parasmaipada because of the 
 
 
     <div class="fc-translation" data-sec="translation">Longing is now defined: Longing means “having intense greed for attaining service to the Lord.”</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -2956,6 +3026,7 @@ When one is sufficiently eager to achieve success in devotional service, that ea
 
     <div class="fc-translation" data-sec="translation">An example of longing for the Lord is given in Kṛṣṇa-karṇāmṛta (54): I long to see that young Kṛṣṇa who enchants the universe with His bent, black eye brows, with His thick eye lashes, with His attractive, shifty eyes, with His soft words which melt the heart, with his sweet, red lips, and with the intoxicating sound emanating from the clear notes of His flute.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2964,6 +3035,20 @@ When one is sufficiently eager to achieve success in devotional service, that ea
         <div class="cr-purport-attrib">— A.C. Bhaktivedanta Swami Prabhupāda</div>
     </section>
 
+    <section class="fc-section" data-sec="gaudiya">
+        <div class="fc-section-label">Gauḍīya Ācāryas</div>
+        <div class="cr-acarya-card gaudiya">
+            <div class="cr-acarya-name">
+                Viśvanātha Cakravartī Ṭhākura
+                <span class="cr-samp-badge">Gauḍīya</span>
+            </div>
+            <div class="cr-acarya-work">Bhakti-sāra-pradarśinī</div>
+            <div class="cr-acarya-label">Commentary</div>
+            <div class="cr-acarya-purp">
+                <p>“My eyes long for the form of Kṛṣṇa which enchants the universe.” This expresses his desire to see the Lord. How does that Lord look? He has two dark eyebrows, slightly curved. What else? His eyelashes are beautiful with densely growing, strong hairs. His sweet lips are intensely red. The clear sounds emanating from His flute are intoxicating.</p>
+            </div>
+        </div>
+    </section>
 
 
 
@@ -3020,6 +3105,7 @@ When one is sufficiently eager to achieve success in devotional service, that ea
 
 
     <div class="fc-translation" data-sec="translation">Taste for chanting the name of the Lord is illustrated: O Govinda! Today, the young girl with a sweet voice, whose lotus eyes are streaming with tears of honey, is singing Your names.</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -3095,6 +3181,7 @@ In the same Kṛṣṇa-karṇāmṛta there is another statement, about the cha
 
     <div class="fc-translation" data-sec="translation">Attachment to discussing about the Lord’s qualities is described in the Kṛṣṇa-karṇāmṛta (88): That youthful Kṛṣṇa, with the qualities of Cupid, who is extremely sweet and extremely fickle, has stolen my heart. What should I do?</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3111,6 +3198,7 @@ Attachment for chanting the glories of the Lord is also expressed in the Kṛṣ
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Mādhuryād api madhuraṁ (sweeter than sweet) means the form is extremely sweet. Manmatha-tātasya (the father of Cupid) means that the form invokes feelings of conjugal love. Or it can mean that Kṛṣṇa’s youthful form has the qualities of Cupid, by dividing the word differently manmathatā tasya.</p>
@@ -3151,8 +3239,8 @@ Attachment for chanting the glories of the Lord is also expressed in the Kṛṣ
 
     <div class="cr-iast-block" data-sec="iast">
         <div class="cr-iast-line">tad vasati-sthale prītiḥ, yathā padyāvalyām—</div>
-<div class="cr-pron-line" data-sec="pronunciation">[tad vasati-sthale preetih, yathaa padyaavalyaam—]</div>        <div class="cr-iast-line">atrāsīt kila nanda-sadma śakaṭasyātrābhavad bhaṣjanaṁ</div>
-<div class="cr-pron-line" data-sec="pronunciation">[atraaseet kila nanda-sadma shakatasyaatraabhavad bhashjanam]</div>        <div class="cr-iast-line">bandha-ccheda-karo ’pi dāmabhir abhūd baddho ’tra dāmodaraḥ |</div>
+<div class="cr-pron-line" data-sec="pronunciation">[tad vasati-sthale preetih, yathaa padyaavalyaam—]</div>        <div class="cr-iast-line">atrāsīt kila nanda-sadma śakaṭasyātrābhavad bhañjanaṁ</div>
+<div class="cr-pron-line" data-sec="pronunciation">[atraaseet kila nanda-sadma shakatasyaatraabhavad bhanjanam]</div>        <div class="cr-iast-line">bandha-ccheda-karo ’pi dāmabhir abhūd baddho ’tra dāmodaraḥ |</div>
 <div class="cr-pron-line" data-sec="pronunciation">[bandha-chcheda-karo ’pi daamabhir abhood baddho ’tra daamodarah |]</div>        <div class="cr-iast-line">itthaṁ māthura-vṛddha-vaktra-vigalat-pīyūṣa-dhārāṁ pibann</div>
 <div class="cr-pron-line" data-sec="pronunciation">[ittham maathura-vriddha-vaktra-vigalat-peeyoosha-dhaaraam pibann]</div>        <div class="cr-iast-line">ānandāśru-dharaḥ kadā madhu-purīṁ dhanyaś cariṣyāmy aham</div>
 <div class="cr-pron-line" data-sec="pronunciation">[aanandaashru-dharah kadaa madhu-pureem dhanyash charishyaamy aham]</div>        <div class="cr-iast-line">||40||</div>
@@ -3166,7 +3254,7 @@ Attachment for chanting the glories of the Lord is also expressed in the Kṛṣ
                 <div class="cr-blend-iast-line">tad vasati-sthale prītiḥ, yathā padyāvalyām—</div>
             </div>
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">atrāsīt kila nanda-sadma śakaṭasyātrābhavad bhaṣjanaṁ</div>
+                <div class="cr-blend-iast-line">atrāsīt kila nanda-sadma śakaṭasyātrābhavad bhañjanaṁ</div>
             </div>
             <div class="cr-blend-block">
                 <div class="cr-blend-iast-line">bandha-ccheda-karo ’pi dāmabhir abhūd baddho ’tra dāmodaraḥ |</div>
@@ -3186,6 +3274,7 @@ Attachment for chanting the glories of the Lord is also expressed in the Kṛṣ
 
     <div class="fc-translation" data-sec="translation">An example of attachment for the abode of the Lord is found in the Padyāvalī: “Nanda’s house was here. This is where Kṛṣṇa broke the cart. Here is where Dāmodara, who cuts material bondage, was bound up by ropes.” When will I be fortunate enough to wander about in Mathurā with tears in my eyes, drinking such streams of nectar flowing from the mouth of an elder of Mathurā? Padyāvalī 121</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3204,6 +3293,7 @@ Such attraction for remembering Kṛṣṇa’s activities is known as attachmen
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Mathurā, here, means the whole Mathurā maṇḍala (thus including Vraja, which is described in the verse). Sometimes the word vraja-bhūvam is found replacing the word madhu-pūrim.</p>
@@ -3267,6 +3357,7 @@ Such attraction for remembering Kṛṣṇa’s activities is known as attachmen
 
     <div class="fc-translation" data-sec="translation">However, it should be said: If softness of the heart, the symptom of rati, becomes clearly visible in persons desiring liberation, or in other unqualified persons, it is not real rati.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3282,6 +3373,7 @@ Such attraction for remembering Kṛṣṇa’s activities is known as attachmen
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>It has been stated that the quality of real rati is having the desire only to please the Lord. If other desires are present, it should not be considered rati, in spite of the presence of other symptoms, such as sāttvika-bhāvas. That is explained in this verse. The phrase api ca (moreover) should mean api tu (however). If the rati characterized by internal softness (melting of the heart), or what appears to be so, becomes visible in persons, such as those desiring liberation, it should not be considered real rati, because persons desiring liberation have other desires. One should not think that if a person has strong desires for things other than Kṛṣṇa, it can be called rati for that particular object (for instance rati for liberation).</p>
@@ -3349,6 +3441,7 @@ Such attraction for remembering Kṛṣṇa’s activities is known as attachmen
 
     <div class="fc-translation" data-sec="translation">How can rati appear in persons having desires for enjoyment or liberation? Those persons do not perform pure bhakti. Rati is sought out by those liberated from all desires and is not given immediately by Kṛṣṇa even to the devotees, since it is most secret.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3364,9 +3457,10 @@ Such attraction for remembering Kṛṣṇa’s activities is known as attachmen
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
-                <p>Here the author elaborates on the reason why it is not real rati. How is it possible for rati to appear where there are desires for material enjoyment or liberation? There is a fault in their sādhana: they do not perform pure bhakti. Pure bhakti means that it should not be mixed with jṣāna, karma or other unacceptable elements.</p>
+                <p>Here the author elaborates on the reason why it is not real rati. How is it possible for rati to appear where there are desires for material enjoyment or liberation? There is a fault in their sādhana: they do not perform pure bhakti. Pure bhakti means that it should not be mixed with jñāna, karma or other unacceptable elements.</p>
             </div>
         </div>
     </section>
@@ -3431,6 +3525,7 @@ Such attraction for remembering Kṛṣṇa’s activities is known as attachmen
 
     <div class="fc-translation" data-sec="translation">How can rati appear in persons having desires for enjoyment or liberation? Those persons do not perform pure bhakti. Rati is sought out by those liberated from all desires and is not given immediately by Kṛṣṇa even to the devotees, since it is most secret.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3448,7 +3543,7 @@ Such attraction for remembering Kṛṣṇa’s activities is known as attachmen
             </div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
-                <p>Here the author elaborates on the reason why it is not real rati. How is it possible for rati to appear where there are desires for material enjoyment or liberation? There is a fault in their sādhana: they do not perform pure bhakti. Pure bhakti means that it should not be mixed with jṣāna, karma or other unacceptable elements.</p>
+                <p>Here the author elaborates on the reason why it is not real rati. How is it possible for rati to appear where there are desires for material enjoyment or liberation? There is a fault in their sādhana: they do not perform pure bhakti. Pure bhakti means that it should not be mixed with jñāna, karma or other unacceptable elements.</p>
             </div>
         </div>
     </section>
@@ -3486,8 +3581,8 @@ Such attraction for remembering Kṛṣṇa’s activities is known as attachmen
 
     <div class="cr-iast-block" data-sec="iast">
         <div class="cr-iast-line">kintu bāla-camatkāra-karī tac-cihna-vīkṣayā |</div>
-<div class="cr-pron-line" data-sec="pronunciation">[kintu baala-chamatkaara-karee tach-chihna-veekshayaa |]</div>        <div class="cr-iast-line">abhijṣena subodho ’yaṁ raty-ābhāsaḥ prakīrtitaḥ ||44||</div>
-<div class="cr-pron-line" data-sec="pronunciation">[abhijshena subodho ’yam raty-aabhaasah prakeertitah ||44||]</div>        <div class="cr-iast-line">pratibimbas tathā cchāyā raty-ābhāso dvidhā mataḥ ||45||</div>
+<div class="cr-pron-line" data-sec="pronunciation">[kintu baala-chamatkaara-karee tach-chihna-veekshayaa |]</div>        <div class="cr-iast-line">abhijñena subodho ’yaṁ raty-ābhāsaḥ prakīrtitaḥ ||44||</div>
+<div class="cr-pron-line" data-sec="pronunciation">[abhijnena subodho ’yam raty-aabhaasah prakeertitah ||44||]</div>        <div class="cr-iast-line">pratibimbas tathā cchāyā raty-ābhāso dvidhā mataḥ ||45||</div>
 <div class="cr-pron-line" data-sec="pronunciation">[pratibimbas tathaa chchaayaa raty-aabhaaso dvidhaa matah ||45||]</div>    </div>
 
 
@@ -3498,7 +3593,7 @@ Such attraction for remembering Kṛṣṇa’s activities is known as attachmen
                 <div class="cr-blend-iast-line">kintu bāla-camatkāra-karī tac-cihna-vīkṣayā |</div>
             </div>
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">abhijṣena subodho ’yaṁ raty-ābhāsaḥ prakīrtitaḥ ||44||</div>
+                <div class="cr-blend-iast-line">abhijñena subodho ’yaṁ raty-ābhāsaḥ prakīrtitaḥ ||44||</div>
             </div>
             <div class="cr-blend-block">
                 <div class="cr-blend-iast-line">pratibimbas tathā cchāyā raty-ābhāso dvidhā mataḥ ||45||</div>
@@ -3508,6 +3603,7 @@ Such attraction for remembering Kṛṣṇa’s activities is known as attachmen
 
 
     <div class="fc-translation" data-sec="translation">Though this semblance of rati is very astounding to the innocent, those in knowledge understand what it really is by seeing the characteristics. This is called raty-ābhāsa, a semblance of rati. This semblance of rati has two types: reflection (pratibimba) and splendor (chāyā).</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -3552,8 +3648,8 @@ This imitative attachment can be divided into two headings—namely, shadow atta
 
     <div class="cr-iast-block" data-sec="iast">
         <div class="cr-iast-line">kintu bāla-camatkāra-karī tac-cihna-vīkṣayā |</div>
-<div class="cr-pron-line" data-sec="pronunciation">[kintu baala-chamatkaara-karee tach-chihna-veekshayaa |]</div>        <div class="cr-iast-line">abhijṣena subodho ’yaṁ raty-ābhāsaḥ prakīrtitaḥ ||44||</div>
-<div class="cr-pron-line" data-sec="pronunciation">[abhijshena subodho ’yam raty-aabhaasah prakeertitah ||44||]</div>        <div class="cr-iast-line">pratibimbas tathā cchāyā raty-ābhāso dvidhā mataḥ ||45||</div>
+<div class="cr-pron-line" data-sec="pronunciation">[kintu baala-chamatkaara-karee tach-chihna-veekshayaa |]</div>        <div class="cr-iast-line">abhijñena subodho ’yaṁ raty-ābhāsaḥ prakīrtitaḥ ||44||</div>
+<div class="cr-pron-line" data-sec="pronunciation">[abhijnena subodho ’yam raty-aabhaasah prakeertitah ||44||]</div>        <div class="cr-iast-line">pratibimbas tathā cchāyā raty-ābhāso dvidhā mataḥ ||45||</div>
 <div class="cr-pron-line" data-sec="pronunciation">[pratibimbas tathaa chchaayaa raty-aabhaaso dvidhaa matah ||45||]</div>    </div>
 
 
@@ -3564,7 +3660,7 @@ This imitative attachment can be divided into two headings—namely, shadow atta
                 <div class="cr-blend-iast-line">kintu bāla-camatkāra-karī tac-cihna-vīkṣayā |</div>
             </div>
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">abhijṣena subodho ’yaṁ raty-ābhāsaḥ prakīrtitaḥ ||44||</div>
+                <div class="cr-blend-iast-line">abhijñena subodho ’yaṁ raty-ābhāsaḥ prakīrtitaḥ ||44||</div>
             </div>
             <div class="cr-blend-block">
                 <div class="cr-blend-iast-line">pratibimbas tathā cchāyā raty-ābhāso dvidhā mataḥ ||45||</div>
@@ -3574,6 +3670,7 @@ This imitative attachment can be divided into two headings—namely, shadow atta
 
 
     <div class="fc-translation" data-sec="translation">Though this semblance of rati is very astounding to the innocent, those in knowledge understand what it really is by seeing the characteristics. This is called raty-ābhāsa, a semblance of rati. This semblance of rati has two types: reflection (pratibimba) and splendor (chāyā).</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -3619,8 +3716,8 @@ This imitative attachment can be divided into two headings—namely, shadow atta
     <div class="cr-iast-block" data-sec="iast">
         <div class="cr-iast-line">tatra pratibimbaḥ—</div>
 <div class="cr-pron-line" data-sec="pronunciation">[tatra pratibimbah—]</div>        <div class="cr-iast-line">aśramābhīṣṭa-nirvāhī rati-lakṣaṇa-lakṣitaḥ |</div>
-<div class="cr-pron-line" data-sec="pronunciation">[ashramaabheeshta-nirvaahee rati-lakshana-lakshitah |]</div>        <div class="cr-iast-line">bhogāpavarga-saukhyāṁśa-vyaṣjakaḥ pratibimbakaḥ ||46||</div>
-<div class="cr-pron-line" data-sec="pronunciation">[bhogaapavarga-saukhyaamsha-vyashjakah pratibimbakah ||46||]</div>    </div>
+<div class="cr-pron-line" data-sec="pronunciation">[ashramaabheeshta-nirvaahee rati-lakshana-lakshitah |]</div>        <div class="cr-iast-line">bhogāpavarga-saukhyāṁśa-vyañjakaḥ pratibimbakaḥ ||46||</div>
+<div class="cr-pron-line" data-sec="pronunciation">[bhogaapavarga-saukhyaamsha-vyanjakah pratibimbakah ||46||]</div>    </div>
 
 
     <details class="cr-blend-details" data-sec="blended">
@@ -3633,13 +3730,14 @@ This imitative attachment can be divided into two headings—namely, shadow atta
                 <div class="cr-blend-iast-line">aśramābhīṣṭa-nirvāhī rati-lakṣaṇa-lakṣitaḥ |</div>
             </div>
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">bhogāpavarga-saukhyāṁśa-vyaṣjakaḥ pratibimbakaḥ ||46||</div>
+                <div class="cr-blend-iast-line">bhogāpavarga-saukhyāṁśa-vyañjakaḥ pratibimbakaḥ ||46||</div>
             </div>
         </div>
     </details>
 
 
     <div class="fc-translation" data-sec="translation">Pratibimba or reflection is described as follows: When there are apparent qualities of rati, accompanied by desires for enjoyment and liberation, it is called the pratibimba (reflection) raty-ābhāsa. This pratibimba raty-ābhāsa awards the goals of enjoyment and liberation to those persons without their having to exert effort.</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -3653,9 +3751,21 @@ This imitative attachment can be divided into two headings—namely, shadow atta
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
             <div class="cr-acarya-name">
+                Viśvanātha Cakravartī Ṭhākura
+                <span class="cr-samp-badge">Gauḍīya</span>
+            </div>
+            <div class="cr-acarya-work">Bhakti-sāra-pradarśinī</div>
+            <div class="cr-acarya-label">Commentary</div>
+            <div class="cr-acarya-purp">
+                <p>Rati-lakṣaṇa-lakṣitaḥ means the person has the symptoms of rati. From the presence of one or two symptoms such as tears, the condition has the appearance of bhāva but it is actually raty-ābhāsa, a resemblance to rati. If this raty-ābhāsa has desires for the happiness of material enjoyment or liberation, then it is called pratibimba-raty-ābhāsa. This condition easily bestows the desired goals of liberation, without having to control the senses and mind, and without other practices necessary to achieve liberation. Awarding those goals of enjoyment and liberation without the sādhaka’s exertion shows the powers of pratibimba raty-ābhāsa.</p>
+            </div>
+        </div>
+        <div class="cr-acarya-card gaudiya">
+            <div class="cr-acarya-name">
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Rati without motivations for material enjoyment or liberation yields the main form of rati, whereas having attachments produces a semblance of rati. This semblance arises through secondary conditions. According to the conditions, there are two types of semblance. The first type is described here. The qualities of rati appear (rati-lakṣaṇa-lakṣitaḥ) in the form of a few tears or other symptoms. Though this seems to indicate a touch of rati, when the symptoms appear along with desires for enjoyment or liberation, it is called pratibimba. The type of rati for the Lord which is contaminated by desires for enjoyment or liberation is called pratibimba-raty-ābhāsa. This pratibimba awards liberation without extreme efforts because of two qualities existing in the Lord—His power to bestow material enjoyment and His power to bestow liberation. This is the extraordinary power of pratibimba-raty-ābhāsa.</p>
@@ -3697,8 +3807,8 @@ This imitative attachment can be divided into two headings—namely, shadow atta
     <div class="cr-iast-block" data-sec="iast">
         <div class="cr-iast-line">daivāt sad-bhakta-saṅgena kīrtanādy-anusāriṇām |</div>
 <div class="cr-pron-line" data-sec="pronunciation">[daivaat sad-bhakta-sangena keertanaady-anusaarinaam |]</div>        <div class="cr-iast-line">prāyaḥ prasanna-manasāṁ bhoga-mokṣādi rāgiṇām ||47||</div>
-<div class="cr-pron-line" data-sec="pronunciation">[praayah prasanna-manasaam bhoga-mokshaadi raaginaam ||47||]</div>        <div class="cr-iast-line">keṣāṁcit hṛdi bhāvendoḥ pratibimba udaṣcati |</div>
-<div class="cr-pron-line" data-sec="pronunciation">[keshaamchit hridi bhaavendoh pratibimba udashchati |]</div>        <div class="cr-iast-line">tad-bhakta-hṛn-nabhaḥ-sthasya tat-saṁsarga-prabhāvataḥ ||48||</div>
+<div class="cr-pron-line" data-sec="pronunciation">[praayah prasanna-manasaam bhoga-mokshaadi raaginaam ||47||]</div>        <div class="cr-iast-line">keṣāṁcit hṛdi bhāvendoḥ pratibimba udañcati |</div>
+<div class="cr-pron-line" data-sec="pronunciation">[keshaamchit hridi bhaavendoh pratibimba udanchati |]</div>        <div class="cr-iast-line">tad-bhakta-hṛn-nabhaḥ-sthasya tat-saṁsarga-prabhāvataḥ ||48||</div>
 <div class="cr-pron-line" data-sec="pronunciation">[tad-bhakta-hrin-nabhah-sthasya tat-samsarga-prabhaavatah ||48||]</div>    </div>
 
 
@@ -3712,7 +3822,7 @@ This imitative attachment can be divided into two headings—namely, shadow atta
                 <div class="cr-blend-iast-line">prāyaḥ prasanna-manasāṁ bhoga-mokṣādi rāgiṇām ||47||</div>
             </div>
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">keṣāṁcit hṛdi bhāvendoḥ pratibimba udaṣcati |</div>
+                <div class="cr-blend-iast-line">keṣāṁcit hṛdi bhāvendoḥ pratibimba udañcati |</div>
             </div>
             <div class="cr-blend-block">
                 <div class="cr-blend-iast-line">tad-bhakta-hṛn-nabhaḥ-sthasya tat-saṁsarga-prabhāvataḥ ||48||</div>
@@ -3722,6 +3832,7 @@ This imitative attachment can be divided into two headings—namely, shadow atta
 
 
     <div class="fc-translation" data-sec="translation">This reflection of the moon of bhāva appears in the hearts of some persons who are attached to enjoyment or liberation, but who become somewhat satisfied by following the aṅgas of bhakti through occasional association with real devotees. That moon of bhāva is situated in the sky of the real devotee’s heart, and it appears as a reflection in the non-devotee for some time by its impressions.</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -3738,6 +3849,7 @@ This imitative attachment can be divided into two headings—namely, shadow atta
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>The process by which pratibimba appears is described in this verse. Those who are attached to enjoyment and liberation, through occasional rather than constant association with devotees (daivāt), imitate devotional activities, such as chanting, but with their own goals in mind, and they achieve a general tranquility of mind. But their hearts are still contaminated with those desires, since they have not realized the fault of such desires. The devotee’s heart is like the sky, which is untouched by other objects, and is thus suitable for the rising of the moon of prema. The reflection of that moon situated in the devotee’s heart—not the moon itself—appears within the heart of such contaminated persons. A reflection appears because of the impositions (upādhi) caused by other desires. Thus, that reflection is not exactly the same as the original, since it takes support from only a few qualities of the original rati and is a blurred image possessing contamination of other desires. A desire for pure bhāva on the other hand produces a complete and pure reflection, because the aspirant takes support of a host of wonderful qualities of bhāva and makes efforts for the correct goal. When that person with other desires becomes separated from the devotee, will that reflection disappear? No, by the impressions it leaves in his heart, the reflection of bhāva remains there for some time.</p>
@@ -3779,8 +3891,8 @@ This imitative attachment can be divided into two headings—namely, shadow atta
     <div class="cr-iast-block" data-sec="iast">
         <div class="cr-iast-line">daivāt sad-bhakta-saṅgena kīrtanādy-anusāriṇām |</div>
 <div class="cr-pron-line" data-sec="pronunciation">[daivaat sad-bhakta-sangena keertanaady-anusaarinaam |]</div>        <div class="cr-iast-line">prāyaḥ prasanna-manasāṁ bhoga-mokṣādi rāgiṇām ||47||</div>
-<div class="cr-pron-line" data-sec="pronunciation">[praayah prasanna-manasaam bhoga-mokshaadi raaginaam ||47||]</div>        <div class="cr-iast-line">keṣāṁcit hṛdi bhāvendoḥ pratibimba udaṣcati |</div>
-<div class="cr-pron-line" data-sec="pronunciation">[keshaamchit hridi bhaavendoh pratibimba udashchati |]</div>        <div class="cr-iast-line">tad-bhakta-hṛn-nabhaḥ-sthasya tat-saṁsarga-prabhāvataḥ ||48||</div>
+<div class="cr-pron-line" data-sec="pronunciation">[praayah prasanna-manasaam bhoga-mokshaadi raaginaam ||47||]</div>        <div class="cr-iast-line">keṣāṁcit hṛdi bhāvendoḥ pratibimba udañcati |</div>
+<div class="cr-pron-line" data-sec="pronunciation">[keshaamchit hridi bhaavendoh pratibimba udanchati |]</div>        <div class="cr-iast-line">tad-bhakta-hṛn-nabhaḥ-sthasya tat-saṁsarga-prabhāvataḥ ||48||</div>
 <div class="cr-pron-line" data-sec="pronunciation">[tad-bhakta-hrin-nabhah-sthasya tat-samsarga-prabhaavatah ||48||]</div>    </div>
 
 
@@ -3794,7 +3906,7 @@ This imitative attachment can be divided into two headings—namely, shadow atta
                 <div class="cr-blend-iast-line">prāyaḥ prasanna-manasāṁ bhoga-mokṣādi rāgiṇām ||47||</div>
             </div>
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">keṣāṁcit hṛdi bhāvendoḥ pratibimba udaṣcati |</div>
+                <div class="cr-blend-iast-line">keṣāṁcit hṛdi bhāvendoḥ pratibimba udañcati |</div>
             </div>
             <div class="cr-blend-block">
                 <div class="cr-blend-iast-line">tad-bhakta-hṛn-nabhaḥ-sthasya tat-saṁsarga-prabhāvataḥ ||48||</div>
@@ -3804,6 +3916,7 @@ This imitative attachment can be divided into two headings—namely, shadow atta
 
 
     <div class="fc-translation" data-sec="translation">This reflection of the moon of bhāva appears in the hearts of some persons who are attached to enjoyment or liberation, but who become somewhat satisfied by following the aṅgas of bhakti through occasional association with real devotees. That moon of bhāva is situated in the sky of the real devotee’s heart, and it appears as a reflection in the non-devotee for some time by its impressions.</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -3860,8 +3973,8 @@ This imitative attachment can be divided into two headings—namely, shadow atta
 
     <div class="cr-iast-block" data-sec="iast">
         <div class="cr-iast-line">atha chāyā—</div>
-<div class="cr-pron-line" data-sec="pronunciation">[atha chaayaa—]</div>        <div class="cr-iast-line">kṣudra-kautūhala-mayī caṣcalā duḥkha-hāriṇī |</div>
-<div class="cr-pron-line" data-sec="pronunciation">[kshudra-kautoohala-mayee chashchalaa duhkha-haarinee |]</div>        <div class="cr-iast-line">rateś chāyā bhavet kiṁcit tat-sādṛśyāvalambinī ||49||</div>
+<div class="cr-pron-line" data-sec="pronunciation">[atha chaayaa—]</div>        <div class="cr-iast-line">kṣudra-kautūhala-mayī cañcalā duḥkha-hāriṇī |</div>
+<div class="cr-pron-line" data-sec="pronunciation">[kshudra-kautoohala-mayee chanchalaa duhkha-haarinee |]</div>        <div class="cr-iast-line">rateś chāyā bhavet kiṁcit tat-sādṛśyāvalambinī ||49||</div>
 <div class="cr-pron-line" data-sec="pronunciation">[ratesh chaayaa bhavet kimchit tat-saadrishyaavalambinee ||49||]</div>    </div>
 
 
@@ -3872,7 +3985,7 @@ This imitative attachment can be divided into two headings—namely, shadow atta
                 <div class="cr-blend-iast-line">atha chāyā—</div>
             </div>
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">kṣudra-kautūhala-mayī caṣcalā duḥkha-hāriṇī |</div>
+                <div class="cr-blend-iast-line">kṣudra-kautūhala-mayī cañcalā duḥkha-hāriṇī |</div>
             </div>
             <div class="cr-blend-block">
                 <div class="cr-blend-iast-line">rateś chāyā bhavet kiṁcit tat-sādṛśyāvalambinī ||49||</div>
@@ -3882,6 +3995,7 @@ This imitative attachment can be divided into two headings—namely, shadow atta
 
 
     <div class="fc-translation" data-sec="translation">The splendorous type of semblance of bhāva is now described: That which has some similarity to real rati, which possesses a small amount of interest in the Lord, which is unstable, and which destroys suffering, is called chāyā-raty-ābhāsa.</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -3898,9 +4012,10 @@ This imitative attachment can be divided into two headings—namely, shadow atta
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
-                <p>Here the word chāyā means beauty or splendor. The Amara-kośa, Nānārtha-varga, gives synonyms: chāyā sūrya-priyā kāntiḥ pratibimbam anātapaḥ: chāyā means the wife of the sun, splendor, reflection, and shade. Here it also means a reflection of or resemblance to beauty. This verse describes this chāyā-raty-ābhāsa, taking into account the meaning of chāyā as “resemblance to beauty” in combination with the word ābhāsa. Little interest (kṣudra-kautūhala) means that though the Lord and bhakti are spiritual, the person has interest in them only as material objects. Because there is curiosity relating to the Lord, even though material, there is an appearance of a little splendor (kānti). That is the meaning of chāyā here. Because of the slight attraction to the Lord, there will be slight symptoms similar to those of real rati. However, because of its nature as chāyā, it is also unsteady (caṣcalā), unlike the pratibimba-raty-ābhāsa. In pratibimba-raty-ābhāsa, the attraction to material enjoyment and liberation is very strong, but in chāyā-raty-ābhāsa, the material curiosity about the Lord is transient. Still, because of the influence of the Lord in chāyā-raty-ābhāsa, there is gradually a destruction of the suffering of material existence.
+                <p>Here the word chāyā means beauty or splendor. The Amara-kośa, Nānārtha-varga, gives synonyms: chāyā sūrya-priyā kāntiḥ pratibimbam anātapaḥ: chāyā means the wife of the sun, splendor, reflection, and shade. Here it also means a reflection of or resemblance to beauty. This verse describes this chāyā-raty-ābhāsa, taking into account the meaning of chāyā as “resemblance to beauty” in combination with the word ābhāsa. Little interest (kṣudra-kautūhala) means that though the Lord and bhakti are spiritual, the person has interest in them only as material objects. Because there is curiosity relating to the Lord, even though material, there is an appearance of a little splendor (kānti). That is the meaning of chāyā here. Because of the slight attraction to the Lord, there will be slight symptoms similar to those of real rati. However, because of its nature as chāyā, it is also unsteady (cañcalā), unlike the pratibimba-raty-ābhāsa. In pratibimba-raty-ābhāsa, the attraction to material enjoyment and liberation is very strong, but in chāyā-raty-ābhāsa, the material curiosity about the Lord is transient. Still, because of the influence of the Lord in chāyā-raty-ābhāsa, there is gradually a destruction of the suffering of material existence.
 One should not say “This type does not fit within the general category of raty-ābhāsa because it lacks desire for enjoyment and liberation.” It is classed as raty-ābhāsa because material curiosity is a form of enjoyment as well (a contamination). As well, it does not overlap with pratibimba-raty-ābhāsa, though both types have desire for enjoyment, because chāyā is connected with only a curiosity about the Lord (whereas pratibimba has a strong commitment to material enjoyment or liberation).</p>
             </div>
         </div>
@@ -3939,9 +4054,9 @@ One should not say “This type does not fit within the general category of raty
 
     <div class="cr-iast-block" data-sec="iast">
         <div class="cr-iast-line">hari-priya-kriyā-kāla-deśa-pātrādi-saṅgamāt |</div>
-<div class="cr-pron-line" data-sec="pronunciation">[hari-priya-kriyaa-kaala-desha-paatraadi-sangamaat |]</div>        <div class="cr-iast-line">apy ānuṣaṅgikād eṣa kvacid ajṣeṣv apīkṣyate ||50||</div>
-<div class="cr-pron-line" data-sec="pronunciation">[apy aanushangikaad esha kvachid ajsheshv apeekshyate ||50||]</div>        <div class="cr-iast-line">kintu bhāgyaṁ vinā nāsau bhāva-cchāyāpy udaṣcati |</div>
-<div class="cr-pron-line" data-sec="pronunciation">[kintu bhaagyam vinaa naasau bhaava-chchaayaapy udashchati |]</div>        <div class="cr-iast-line">yad abhyudayataḥ kṣemaṁ tatra syād uttarottaram ||51||</div>
+<div class="cr-pron-line" data-sec="pronunciation">[hari-priya-kriyaa-kaala-desha-paatraadi-sangamaat |]</div>        <div class="cr-iast-line">apy ānuṣaṅgikād eṣa kvacid ajñeṣv apīkṣyate ||50||</div>
+<div class="cr-pron-line" data-sec="pronunciation">[apy aanushangikaad esha kvachid ajneshv apeekshyate ||50||]</div>        <div class="cr-iast-line">kintu bhāgyaṁ vinā nāsau bhāva-cchāyāpy udañcati |</div>
+<div class="cr-pron-line" data-sec="pronunciation">[kintu bhaagyam vinaa naasau bhaava-chchaayaapy udanchati |]</div>        <div class="cr-iast-line">yad abhyudayataḥ kṣemaṁ tatra syād uttarottaram ||51||</div>
 <div class="cr-pron-line" data-sec="pronunciation">[yad abhyudayatah kshemam tatra syaad uttarottaram ||51||]</div>    </div>
 
 
@@ -3952,10 +4067,10 @@ One should not say “This type does not fit within the general category of raty
                 <div class="cr-blend-iast-line">hari-priya-kriyā-kāla-deśa-pātrādi-saṅgamāt |</div>
             </div>
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">apy ānuṣaṅgikād eṣa kvacid ajṣeṣv apīkṣyate ||50||</div>
+                <div class="cr-blend-iast-line">apy ānuṣaṅgikād eṣa kvacid ajñeṣv apīkṣyate ||50||</div>
             </div>
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">kintu bhāgyaṁ vinā nāsau bhāva-cchāyāpy udaṣcati |</div>
+                <div class="cr-blend-iast-line">kintu bhāgyaṁ vinā nāsau bhāva-cchāyāpy udañcati |</div>
             </div>
             <div class="cr-blend-block">
                 <div class="cr-blend-iast-line">yad abhyudayataḥ kṣemaṁ tatra syād uttarottaram ||51||</div>
@@ -3965,6 +4080,7 @@ One should not say “This type does not fit within the general category of raty
 
 
     <div class="fc-translation" data-sec="translation">This chāyā-raty-ābhāsa appears sometimes even in ignorant people by a combination of performing actions dear to the Lord, observing the festivals of the Lord, residing in the dhāma of the Lord, and associating with the devotees of the Lord. Even this chāyā-raty-ābhāsa, which eventually bestows auspiciousness to those people, appears only with great good fortune.</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -3978,9 +4094,21 @@ One should not say “This type does not fit within the general category of raty
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
             <div class="cr-acarya-name">
+                Viśvanātha Cakravartī Ṭhākura
+                <span class="cr-samp-badge">Gauḍīya</span>
+            </div>
+            <div class="cr-acarya-work">Bhakti-sāra-pradarśinī</div>
+            <div class="cr-acarya-label">Commentary</div>
+            <div class="cr-acarya-purp">
+                <p>Because of association with devotees, festivals and other items, this rati is sometimes seen even in ignorant persons who have no good qualities such as tolerance and have no desire to extinguish saṁsāra.</p>
+            </div>
+        </div>
+        <div class="cr-acarya-card gaudiya">
+            <div class="cr-acarya-name">
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>There should be simultaneous participation in the items listed (performing actions dear to the Lord, observing the festivals of the Lord, residing in the dhāma of the Lord, and associating with the devotees of the Lord) in order for chāyā-raty-ābhāsa to manifest in ignorant people.</p>
@@ -4021,9 +4149,9 @@ One should not say “This type does not fit within the general category of raty
 
     <div class="cr-iast-block" data-sec="iast">
         <div class="cr-iast-line">hari-priya-kriyā-kāla-deśa-pātrādi-saṅgamāt |</div>
-<div class="cr-pron-line" data-sec="pronunciation">[hari-priya-kriyaa-kaala-desha-paatraadi-sangamaat |]</div>        <div class="cr-iast-line">apy ānuṣaṅgikād eṣa kvacid ajṣeṣv apīkṣyate ||50||</div>
-<div class="cr-pron-line" data-sec="pronunciation">[apy aanushangikaad esha kvachid ajsheshv apeekshyate ||50||]</div>        <div class="cr-iast-line">kintu bhāgyaṁ vinā nāsau bhāva-cchāyāpy udaṣcati |</div>
-<div class="cr-pron-line" data-sec="pronunciation">[kintu bhaagyam vinaa naasau bhaava-chchaayaapy udashchati |]</div>        <div class="cr-iast-line">yad abhyudayataḥ kṣemaṁ tatra syād uttarottaram ||51||</div>
+<div class="cr-pron-line" data-sec="pronunciation">[hari-priya-kriyaa-kaala-desha-paatraadi-sangamaat |]</div>        <div class="cr-iast-line">apy ānuṣaṅgikād eṣa kvacid ajñeṣv apīkṣyate ||50||</div>
+<div class="cr-pron-line" data-sec="pronunciation">[apy aanushangikaad esha kvachid ajneshv apeekshyate ||50||]</div>        <div class="cr-iast-line">kintu bhāgyaṁ vinā nāsau bhāva-cchāyāpy udañcati |</div>
+<div class="cr-pron-line" data-sec="pronunciation">[kintu bhaagyam vinaa naasau bhaava-chchaayaapy udanchati |]</div>        <div class="cr-iast-line">yad abhyudayataḥ kṣemaṁ tatra syād uttarottaram ||51||</div>
 <div class="cr-pron-line" data-sec="pronunciation">[yad abhyudayatah kshemam tatra syaad uttarottaram ||51||]</div>    </div>
 
 
@@ -4034,10 +4162,10 @@ One should not say “This type does not fit within the general category of raty
                 <div class="cr-blend-iast-line">hari-priya-kriyā-kāla-deśa-pātrādi-saṅgamāt |</div>
             </div>
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">apy ānuṣaṅgikād eṣa kvacid ajṣeṣv apīkṣyate ||50||</div>
+                <div class="cr-blend-iast-line">apy ānuṣaṅgikād eṣa kvacid ajñeṣv apīkṣyate ||50||</div>
             </div>
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">kintu bhāgyaṁ vinā nāsau bhāva-cchāyāpy udaṣcati |</div>
+                <div class="cr-blend-iast-line">kintu bhāgyaṁ vinā nāsau bhāva-cchāyāpy udañcati |</div>
             </div>
             <div class="cr-blend-block">
                 <div class="cr-blend-iast-line">yad abhyudayataḥ kṣemaṁ tatra syād uttarottaram ||51||</div>
@@ -4047,6 +4175,7 @@ One should not say “This type does not fit within the general category of raty
 
 
     <div class="fc-translation" data-sec="translation">This chāyā-raty-ābhāsa appears sometimes even in ignorant people by a combination of performing actions dear to the Lord, observing the festivals of the Lord, residing in the dhāma of the Lord, and associating with the devotees of the Lord. Even this chāyā-raty-ābhāsa, which eventually bestows auspiciousness to those people, appears only with great good fortune.</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -4130,6 +4259,7 @@ One should not say “This type does not fit within the general category of raty
 
     <div class="fc-translation" data-sec="translation">By the great mercy of a dear devotee of the Lord, the semblance of bhāva suddenly becomes real bhāva. By offending that devotee, even the best bhāvābhāsa gradually wanes just as the full moon in the sky gradually wanes.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -4200,6 +4330,7 @@ As attachment can be invoked by the association of pure devotees, so attachment 
 
     <div class="fc-translation" data-sec="translation">By the great mercy of a dear devotee of the Lord, the semblance of bhāva suddenly becomes real bhāva. By offending that devotee, even the best bhāvābhāsa gradually wanes just as the full moon in the sky gradually wanes.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -4266,6 +4397,7 @@ As attachment can be invoked by the association of pure devotees, so attachment 
 
     <div class="fc-translation" data-sec="translation">Moreover, it should be stated: By an offense against the dearest devotee of the Lord, even real bhāva will be destroyed, if the offense is grave. If the offense is medium, the bhāva will turn to bhāvābhāsa. If the offense is slight, the bhāva will become an inferior type.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -4278,9 +4410,21 @@ As attachment can be invoked by the association of pure devotees, so attachment 
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
             <div class="cr-acarya-name">
+                Viśvanātha Cakravartī Ṭhākura
+                <span class="cr-samp-badge">Gauḍīya</span>
+            </div>
+            <div class="cr-acarya-work">Bhakti-sāra-pradarśinī</div>
+            <div class="cr-acarya-label">Commentary</div>
+            <div class="cr-acarya-purp">
+                <p>Bhāva will be destroyed by aparādha to the dearest devotees of Kṛṣṇa. An example is Dvivida the monkey, a follower of Rāma. By aparādha to Lakṣmaṇa, his bhāva disappeared. By medium aparādha, bhāva becomes bhāvābhāsa. If the aparādha is slight, the bhāva changes type. Madhura-rati becomes dāsya-rati. Dāsya-rati becomes śānta-rati.</p>
+            </div>
+        </div>
+        <div class="cr-acarya-card gaudiya">
+            <div class="cr-acarya-name">
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>By two types of grave offenses—offense to the dearest devotee, or to Kṛṣṇa Himself (kṛṣṇa-pṛeṣṭha aparādhataḥ)—even real bhāva is destroyed. By medium offense, bhāva becomes bhāvābhāsa. By slight offense, the bhāva degrades in category. Becoming an inferior type means that there will be degradation in term of the five rasas and the eight stages from mahā-bhāva to rati. [Note: Sādhya-rūpa or hārda-rūpa-bhakti has five types: bhāva, prema, praṇaya, sneha and rāga. In Ujjvala-nīla-maṇi three more types are mentioned: māna, anurāga and mahā-bhāva. Thus, there are eight types of sādhya-bhakti. This is explained in Jīva Gosvāmī’s commentary on BRS 1.2.1. However, since the topic is bhāva-bhakti, the lowest of the eight types, that bhāva could simply decrease in intensity. Furthermore, those at the level of bhāva still have impurities, and could make mistakes because of anarthas, whereas those at the level of prema are pure and could never commit real offense.] Thus, change in bhāva will take place according to the seriousness of the offense.</p>
@@ -4340,6 +4484,7 @@ As attachment can be invoked by the association of pure devotees, so attachment 
 
     <div class="fc-translation" data-sec="translation">By intimate association with a person who strongly desires impersonal liberation, real bhāva becomes bhāvābhāsa, or becomes worship of the self as the Lord.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -4352,9 +4497,21 @@ As attachment can be invoked by the association of pure devotees, so attachment 
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
             <div class="cr-acarya-name">
+                Viśvanātha Cakravartī Ṭhākura
+                <span class="cr-samp-badge">Gauḍīya</span>
+            </div>
+            <div class="cr-acarya-work">Bhakti-sāra-pradarśinī</div>
+            <div class="cr-acarya-label">Commentary</div>
+            <div class="cr-acarya-purp">
+                <p>By intimate association with a person desiring liberation, who is fixed in that philosophy and who uses logic from jñāna scriptures which establish the superiority of liberation over everything else (supratiṣṭhite), real bhāva becomes bhāvābhāsa. Alternatively, he identifies himself with the Lord who is worthy of worship. This becomes self-worship.</p>
+            </div>
+        </div>
+        <div class="cr-acarya-card gaudiya">
+            <div class="cr-acarya-name">
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Bhajanīyeśa-bhāvatām means identifying oneself as the Lord, who is the actual object of worship. Bhāva for the Lord becomes ahaṅgrahopāsanām, worship of the self.</p>
@@ -4414,6 +4571,7 @@ As attachment can be invoked by the association of pure devotees, so attachment 
 
     <div class="fc-translation" data-sec="translation">It is seen sometimes that new devotees, absorbed in the goals of different types of liberation, identify themselves with the Lord momentarily, during dancing or other acts of devotion.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -4429,6 +4587,7 @@ As attachment can be invoked by the association of pure devotees, so attachment 
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Kṣaṇam “for a moment” is only a representative term. It implies, as well, that the attempt to identify oneself as the Lord may last for a long time. Mukti-pakṣa-gaḥ means those who are absorbed in the goals of sārūpya, sārṣṭi, and sāmīpya.</p>
@@ -4488,6 +4647,7 @@ As attachment can be invoked by the association of pure devotees, so attachment 
 
     <div class="fc-translation" data-sec="translation">Bhāva sometimes appears suddenly in a person without performance of sādhana or mercy, and without scriptural knowledge. It should be inferred that, in a previous life, some obstacle interrupted that person’s skillful sādhana, and in this life the obstacle has finally been removed.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -4503,6 +4663,7 @@ As attachment can be invoked by the association of pure devotees, so attachment 
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Sādhana refers to all the causes of bhāva: sādhana-bhakti, the mercy of Kṛṣṇa and the mercy of the devotee. Īkṣā refers to the knowledge gained through scriptures. Sometimes, bhāva appears suddenly without knowledge of scriptures, and without sādhana, mercy of Kṛṣṇa or mercy of the devotee. It is seen and verified to be real bhāva (īkṣyate). One should then infer sādhana from a previous life, as in the case of Vṛtrāsura and others.</p>
@@ -4562,6 +4723,7 @@ As attachment can be invoked by the association of pure devotees, so attachment 
 
     <div class="fc-translation" data-sec="translation">That bhāva which is more amazing than anything in this world, which gives all powers, and which is very deep, is caused by the mercy of Kṛṣṇa.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -4577,6 +4739,7 @@ As attachment can be invoked by the association of pure devotees, so attachment 
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Previously, in verse 1.3.6, three causes of bhāva were mentioned: sādhana, mercy of the Lord and mercy of the devotee. Now, bhāva, arising due to sādhana in previous life, has just been mentioned. Which of these is the best? Hinting at examples such as Pūtana, the author says that bhāva caused by the mercy of Kṛṣṇa is the best.</p>
@@ -4636,6 +4799,7 @@ As attachment can be invoked by the association of pure devotees, so attachment 
 
     <div class="fc-translation" data-sec="translation">If some apparent fault is seen in a person who has developed real bhāva, one should not be hostile to him, because he has accomplished the goal in all respects.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -4651,6 +4815,7 @@ As attachment can be invoked by the association of pure devotees, so attachment 
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>There may be some external bad conduct (vaiguṇyam), but one should not be hostile to him, because by having bhāva the person cannot be contaminated by those external actions. [Note: BRS 2.1.276 points out that the bhāva-bhakta still has anarthas and could commit sin or aparādha. This distinguishes him from the prema-bhakta. However, even if he makes mistakes, because of his level of advancement, Kṛṣṇa takes care of him.] Thus, it is said:
@@ -4726,6 +4891,7 @@ This person cannot be criticized, because he has accomplished the goal—he has 
 
     <div class="fc-translation" data-sec="translation">Thus, it is said in the Narasiṁha Purāṇa: A person who is dedicated completely to the Lord may show, externally, serious contamination (but internally he is pure). The full moon, though marked by the figure of a rabbit, is never overcome by darkness.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -4741,9 +4907,10 @@ This person cannot be criticized, because he has accomplished the goal—he has 
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
-                <p>A person may show serious contamination. This means that it is seen externally that he performs forbidden activities. However, he shines with internal bhakti, which cannot be defeated by anyone (he is incomparable). A particular case, the moon, is introduced to support the general principle. This is called arthāntara-nyāsa. In the Hari-vaṁśa, it is said: loke cchāyā-mayaṁ lakṣma tavāṅke śaśa-saṁjṣitam: the dark spot on the moon is called a rabbit. Though there is a fault in the beauty of the moon, that fault is only superficial.</p>
+                <p>A person may show serious contamination. This means that it is seen externally that he performs forbidden activities. However, he shines with internal bhakti, which cannot be defeated by anyone (he is incomparable). A particular case, the moon, is introduced to support the general principle. This is called arthāntara-nyāsa. In the Hari-vaṁśa, it is said: loke cchāyā-mayaṁ lakṣma tavāṅke śaśa-saṁjñitam: the dark spot on the moon is called a rabbit. Though there is a fault in the beauty of the moon, that fault is only superficial.</p>
             </div>
         </div>
     </section>
@@ -4798,7 +4965,8 @@ This person cannot be criticized, because he has accomplished the goal—he has 
     </details>
 
 
-    <div class="fc-translation" data-sec="translation">Rati is naturally and eternally unstable because of its continuous, ever-increasing desires for pleasing the Lord and it is full of bliss. Manifesting this instability in the form of a variety of saṣcāri-bhāvas, it is tastier than millions of moons.</div>
+    <div class="fc-translation" data-sec="translation">Rati is naturally and eternally unstable because of its continuous, ever-increasing desires for pleasing the Lord and it is full of bliss. Manifesting this instability in the form of a variety of sañcāri-bhāvas, it is tastier than millions of moons.</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -4815,9 +4983,10 @@ This person cannot be criticized, because he has accomplished the goal—he has 
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
-                <p>Rati is described as unstable by nature (uṣṇa) due to ever-increasing desire for the Lord, and this state is without beginning, or continuous (aniśa). Rati is also described as ānanda because it is full of joy. Thus, rati is characterized by continuous instability and very strong bliss. Uṣmānam, in the second line, refers to various saṣcāri-bhāvas or vyabhicāri-bhāvas, [Note: Refer to BRS 2.4 for a description of the thirty-three vyabhicāri-bhāvas.] which cause that instability.
+                <p>Rati is described as unstable by nature (uṣṇa) due to ever-increasing desire for the Lord, and this state is without beginning, or continuous (aniśa). Rati is also described as ānanda because it is full of joy. Thus, rati is characterized by continuous instability and very strong bliss. Uṣmānam, in the second line, refers to various sañcāri-bhāvas or vyabhicāri-bhāvas, [Note: Refer to BRS 2.4 for a description of the thirty-three vyabhicāri-bhāvas.] which cause that instability.
 Thus ends the Third Wave, concerning bhāva-bhakti, in the Eastern Section of the Bhakti-rasāmṛta-sindhu.
 1.4 The Fourth Wave
 Concerning Prema-bhakti
@@ -4828,7 +4997,7 @@ II.   Cause of Prema-bhakti
 A.  From Vaidha-bhāva arising from Vaidhi-sādhana
 B.  From Rāgānugīya-bhāva arising from Rāgānuga-sādhana
 C.  From Kṛṣṇa’s Mercy
-1.   Māhātmya-jṣāna-yukta (for Vaidha-bhaktas)
+1.   Māhātmya-jñāna-yukta (for Vaidha-bhaktas)
 2.   Kevala (for Rāgānuga-bhaktas)
 III.   Stages leading to Prema</p>
             </div>

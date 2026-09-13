@@ -31,11 +31,13 @@
 <body class="has-sidebar">
 <header class="fc-site-header">
     <button type="button" class="fc-mobile-trigger fc-mobile-trigger-left" data-overlay="left" aria-label="Open settings drawer">⚙</button>
-    <a class="fc-brand" href="../../../">FolioCorpus<span class="fc-sub">Bhagavad-gītā</span></a>
+<a class="fc-brand" href="../../../">FolioCorpus<span class="fc-sub">Bhakti-rasāmṛta-sindhu</span></a>
     <nav class="fc-site-nav">
         <a href="../../../">Home</a>
         <a href="../../../bg/">Bhagavad-gītā</a>
         <a href="../../../sb/">Śrīmad-Bhāgavatam</a>
+        <a href="../../../brs/" title="Bhakti-rasāmṛta-sindhu with Jīva Gosvāmī's and Viśvanātha Cakravartī's commentaries">Bhakti-rasāmṛta-sindhu</a>
+        <a href="../../../nod/" title="Nectar of Devotion">Nectar of Devotion</a>
         <a href="../../../search/" title="Search across all integrated works">🔍 Search</a>
         <button type="button" id="fc-random-verse" class="fc-nav-btn" title="Jump to a random verse">🎲 Random</button>
     </nav>
@@ -46,8 +48,8 @@
     <button class="fc-sb-collapse" type="button" data-sb="left" title="Collapse left sidebar" aria-label="Collapse"></button>
 
     <div class="fc-sb-body">
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Reading</div>
+        <details class="fc-sb-section" data-sbsec="reading" open>
+            <summary class="fc-sb-title">Reading</summary>
             <div class="fc-sb-sub">Theme</div>
             <div class="fc-segmented" data-setting="theme">
                 <button type="button" data-val="light">Light</button>
@@ -73,10 +75,10 @@
                 <button type="button" data-val="single">Single</button>
                 <button type="button" data-val="side">Side-by-side</button>
             </div>
-        </div>
+        </details>
 
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Display</div>
+        <details class="fc-sb-section" data-sbsec="display" open>
+            <summary class="fc-sb-title">Display</summary>
             <div class="fc-sb-grid">
                 <label><input type="checkbox" data-section="devanagari" checked> Devanāgarī</label>
                 <label><input type="checkbox" data-section="iast" checked> IAST transliteration</label>
@@ -98,33 +100,10 @@
                 <button type="button" data-action="expand-all">Expand all</button>
                 <button type="button" data-action="collapse-all">Collapse all</button>
             </div>
-        </div>
+        </details>
 
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Find your starting point</div>
-            <div class="fc-persona-links">
-                <a class="fc-persona-link" href="../../../daily/">🌅 Daily (one value a week)</a>
-                <a class="fc-persona-link" href="../../../householder/">🏠 Householder (family & work)</a>
-                <a class="fc-persona-link" href="../../../parenting/">👨‍👩‍👧 Parenting (stories for kids)</a>
-                <a class="fc-persona-link" href="../../../themes/">📚 All themes</a>
-                <a class="fc-persona-link" href="../../../values/" style="background:#F0F6F2;border-left-color:#1F4632;">ॐ Vedic Value System ↗</a>
-                <a class="fc-persona-link" href="../../../vidya/" style="background:#FBF6E4;border-left-color:#C8860B;">📚 Vidyā Karaṇa (kids, multi-lang) ↗</a>
-            </div>
-        </div>
-
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Audience</div>
-            <div class="fc-audience-filter">
-                <label><input type="radio" name="fc-audience" value="all" checked> All levels</label>
-                <label><input type="radio" name="fc-audience" value="primary"> Primary (children)</label>
-                <label><input type="radio" name="fc-audience" value="middle"> Middle (teens)</label>
-                <label><input type="radio" name="fc-audience" value="senior"> Senior (adults)</label>
-                <label><input type="radio" name="fc-audience" value="college"> College / scholar</label>
-            </div>
-        </div>
-
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Tools</div>
+        <details class="fc-sb-section" data-sbsec="tools" open>
+            <summary class="fc-sb-title">Tools</summary>
             <div class="fc-sb-tools">
                 <button type="button" id="fc-presentation-toggle" class="fc-tool-btn"><span>🖥 Presentation</span><kbd class="fc-kbd">F</kbd></button>
                 <button type="button" id="fc-pen-toggle" class="fc-tool-btn"><span>✏️ Pen mode</span><kbd class="fc-kbd">P</kbd></button>
@@ -139,26 +118,10 @@
                 <button type="button" id="fc-clear-highlights" class="fc-tool-btn">🩷 Clear highlights (page)</button>
                 <button type="button" id="fc-notes-modal-open" class="fc-tool-btn">📓 My annotations</button>
             </div>
-        </div>
+        </details>
 
-        <div class="fc-sb-section" id="fc-tts-controls" hidden>
-            <div class="fc-sb-title">
-                Read-aloud
-                <label class="fc-tts-master">
-                    <input type="checkbox" id="fc-tts-enabled" checked>
-                    <span class="fc-tts-master-label">On</span>
-                </label>
-            </div>
-            <div class="fc-tts-inner">
-                <div class="fc-sb-sub">Voice</div>
-                <select id="fc-tts-voice" class="fc-tts-select" aria-label="TTS voice"></select>
-                <div class="fc-sb-sub">Rate <span class="fc-tts-rate-val">1.0×</span></div>
-                <input type="range" id="fc-tts-rate" min="0.5" max="2" step="0.1" value="1" class="fc-tts-rate" aria-label="Reading rate">
-            </div>
-        </div>
-
-        <div class="fc-sb-section" id="fc-progress-section">
-            <div class="fc-sb-title">Progress</div>
+        <details class="fc-sb-section" data-sbsec="progress" id="fc-progress-section" open>
+            <summary class="fc-sb-title">Progress</summary>
             <div class="fc-progress-row">
                 <span class="fc-progress-num" id="fc-progress-num">0</span>
                 <span class="fc-progress-divider">/</span>
@@ -173,29 +136,29 @@
                 <span class="fc-progress-spacer"></span>
                 <button type="button" class="fc-progress-reset" id="fc-progress-reset" title="Reset progress">↺</button>
             </div>
-        </div>
+        </details>
 
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Bookmarks <span class="fc-sb-count" id="fc-bookmarks-count">0</span></div>
+        <details class="fc-sb-section" data-sbsec="bookmarks" open>
+            <summary class="fc-sb-title">Bookmarks <span class="fc-sb-count" id="fc-bookmarks-count">0</span></summary>
             <ul class="fc-bookmark-list" id="fc-bookmarks-list">
                 <li class="fc-sb-empty">No bookmarks yet — click ☆ on any verse.</li>
             </ul>
-        </div>
+        </details>
 
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Notes <span class="fc-sb-count" id="fc-notes-count">0</span></div>
+        <details class="fc-sb-section" data-sbsec="notes" open>
+            <summary class="fc-sb-title">Notes <span class="fc-sb-count" id="fc-notes-count">0</span></summary>
             <ul class="fc-bookmark-list" id="fc-notes-list">
                 <li class="fc-sb-empty">No notes yet — open any verse and write in the 📝 block.</li>
             </ul>
-        </div>
+        </details>
 
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Export</div>
+        <details class="fc-sb-section" data-sbsec="export">
+            <summary class="fc-sb-title">Export</summary>
             <div class="fc-sb-tools">
                 <button type="button" id="fc-export-md" class="fc-tool-btn">📥 Download Markdown</button>
                 <button type="button" id="fc-export-json" class="fc-tool-btn">💾 Download JSON backup</button>
             </div>
-        </div>
+        </details>
     </div>
 </aside>    <main class="fc-container">
 <nav class="fc-breadcrumbs">
@@ -203,14 +166,14 @@
     <span class="sep">›</span>
     <a href="../../../brs/">Bhakti-rasāmṛta-sindhu</a>
     <span class="sep">›</span>
-    <a href="../../../brs/4/">Section 4</a>
+    <a href="../../../brs/4/">Division 4</a>
     <span class="sep">›</span>
-    <span>Chapter 3</span>
+    <span>Wave 3</span>
 </nav>
 
 <div class="fc-ribbon">
     <div class="fc-ribbon-row">
-        <h1 class="fc-verse-heading">4.3</h1>
+        <h1 class="fc-verse-heading">4.3 · Vīra-rasa</h1>
         <span class="fc-ribbon-meta">61 verses</span>
         <input type="search" class="fc-search" id="fc-search" placeholder="🔍 Search in this chapter" aria-label="Search verses in this chapter">
         <span class="fc-ribbon-current" id="fc-ribbon-current" aria-live="polite"></span>
@@ -313,6 +276,7 @@
 
     <div class="fc-translation" data-sec="translation">When utsāha-rati attains an enjoyable nature by suitable vibhāvas and other elements, it is called vīra-bhakti-rasa.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -375,6 +339,7 @@ When on account of love and devotional service for the Lord there is special val
 
     <div class="fc-translation" data-sec="translation">There are four types of vīra or valiant persons: yuddha-vīra, dāna-vīra, dayā-vīra and dharma-vīra. These devotees are the ālambana for vīra-bhakti-rasa.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -433,6 +398,7 @@ When on account of love and devotional service for the Lord there is special val
     <div class="fc-translation" data-sec="translation">It is possible for utsāha-rati to appear in all types of devotees.</div>
 
 
+
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -440,6 +406,7 @@ When on account of love and devotional service for the Lord there is special val
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Utsāhaḥ in the verse means utsāha-rati. Though utsāha-rati appears in all the devotees, it will appear in different forms in different devotees.</p>
@@ -503,6 +470,7 @@ When on account of love and devotional service for the Lord there is special val
 
     <div class="fc-translation" data-sec="translation">Yuddha-vīra: Special friends endowed with fortitude in fighting for satisfying Kṛṣṇa are called yuddha-vīra.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -564,6 +532,7 @@ When on account of love and devotional service for the Lord there is special val
 
     <div class="fc-translation" data-sec="translation">In this rasa, the friends fight against Kṛṣṇa, or fight against His best friends in Kṛṣṇa’s presence, according to Kṛṣṇa’s desire.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -609,8 +578,8 @@ When on account of love and devotional service for the Lord there is special val
 <div class="cr-pron-line" data-sec="pronunciation">[tatra krishno, yathaa –]</div>        <div class="cr-iast-line">aparājita-māninaṁ haṭhāc</div>
 <div class="cr-pron-line" data-sec="pronunciation">[aparaajita-maaninam hathaach]</div>        <div class="cr-iast-line">caṭulaṁ tvām abhibhūya mādhava |</div>
 <div class="cr-pron-line" data-sec="pronunciation">[chatulam tvaam abhibhooya maadhava |]</div>        <div class="cr-iast-line">dhinuyām adhunā suhṛd-gaṇaṁ</div>
-<div class="cr-pron-line" data-sec="pronunciation">[dhinuyaam adhunaa suhrid-ganam]</div>        <div class="cr-iast-line">yadi na tvaṁ samarāt parāṣcasi ||6||</div>
-<div class="cr-pron-line" data-sec="pronunciation">[yadi na tvam samaraat paraashchasi ||6||]</div>    </div>
+<div class="cr-pron-line" data-sec="pronunciation">[dhinuyaam adhunaa suhrid-ganam]</div>        <div class="cr-iast-line">yadi na tvaṁ samarāt parāñcasi ||6||</div>
+<div class="cr-pron-line" data-sec="pronunciation">[yadi na tvam samaraat paraanchasi ||6||]</div>    </div>
 
 
     <details class="cr-blend-details" data-sec="blended">
@@ -629,13 +598,14 @@ When on account of love and devotional service for the Lord there is special val
                 <div class="cr-blend-iast-line">dhinuyām adhunā suhṛd-gaṇaṁ</div>
             </div>
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">yadi na tvaṁ samarāt parāṣcasi ||6||</div>
+                <div class="cr-blend-iast-line">yadi na tvaṁ samarāt parāñcasi ||6||</div>
             </div>
         </div>
     </details>
 
 
     <div class="fc-translation" data-sec="translation">Fighting with Kṛṣṇa: O Mādhava! You are very unsteady, but You think that no one can beat You. If You do not flee from the fight, I will now defeat You and please Your friends!</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -652,9 +622,10 @@ When on account of love and devotional service for the Lord there is special val
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
-                <p>Yadi na tvam samarāt parāṣcasi means “If you do not avoid the fight by saying You have given up fighting for the day.”</p>
+                <p>Yadi na tvam samarāt parāñcasi means “If you do not avoid the fight by saying You have given up fighting for the day.”</p>
             </div>
         </div>
     </section>
@@ -723,6 +694,7 @@ When on account of love and devotional service for the Lord there is special val
 
     <div class="fc-translation" data-sec="translation">Another example: Śrīdāma and Kṛṣṇa who were the very best of friends displayed the splendor of fighting with anger on the bank of the Yamunā. This intense pride in fighting with increased desire to win was seen by all their friends with astonishment.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -738,6 +710,7 @@ When on account of love and devotional service for the Lord there is special val
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>The two boys looked glorious while undertaking a match (pratibhaṭa) which manifested anger (saṁrambha), in spite of the fact that they were best of friends (avyutthāpita-sakhyayoḥ). Śrīdāmnaś ca bake-dviṣaś ca stands for the two friends in the dual case, even though they are mentioned separately. There was an intense pride of fighting between the two, Śrīdāma and Kṛṣṇa. According to this meaning, the other descriptive elements are in the dual case (śriyoḥ and sakhyayoḥ).
@@ -785,8 +758,8 @@ Thus śrīdāmnaḥ ca bake-dviṣaś ca means the same thing as śrīdāma-bake
 <div class="cr-pron-line" data-sec="pronunciation">[suhrid-varo, yathaa –]</div>        <div class="cr-iast-line">sakhi-prakara-mārgaṇān agaṇitān kṣipan sarvatas</div>
 <div class="cr-pron-line" data-sec="pronunciation">[sakhi-prakara-maarganaan aganitaan kshipan sarvatas]</div>        <div class="cr-iast-line">tathādya laguḍaṁ kramād bhramayati sma dāmā kṛtī |</div>
 <div class="cr-pron-line" data-sec="pronunciation">[tathaadya lagudam kramaad bhramayati sma daamaa kritee |]</div>        <div class="cr-iast-line">amaṁsta racita-stutir vrajapates tanujo ’py amuṁ</div>
-<div class="cr-pron-line" data-sec="pronunciation">[amamsta rachita-stutir vrajapates tanujo ’py amum]</div>        <div class="cr-iast-line">samṛddha-pulako yathā laguḍa-paṣjarāntaḥ-sthitam ||8||</div>
-<div class="cr-pron-line" data-sec="pronunciation">[samriddha-pulako yathaa laguda-pashjaraantah-sthitam ||8||]</div>    </div>
+<div class="cr-pron-line" data-sec="pronunciation">[amamsta rachita-stutir vrajapates tanujo ’py amum]</div>        <div class="cr-iast-line">samṛddha-pulako yathā laguḍa-pañjarāntaḥ-sthitam ||8||</div>
+<div class="cr-pron-line" data-sec="pronunciation">[samriddha-pulako yathaa laguda-panjaraantah-sthitam ||8||]</div>    </div>
 
 
     <details class="cr-blend-details" data-sec="blended">
@@ -805,13 +778,14 @@ Thus śrīdāmnaḥ ca bake-dviṣaś ca means the same thing as śrīdāma-bake
                 <div class="cr-blend-iast-line">amaṁsta racita-stutir vrajapates tanujo ’py amuṁ</div>
             </div>
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">samṛddha-pulako yathā laguḍa-paṣjarāntaḥ-sthitam ||8||</div>
+                <div class="cr-blend-iast-line">samṛddha-pulako yathā laguḍa-pañjarāntaḥ-sthitam ||8||</div>
             </div>
         </div>
     </details>
 
 
     <div class="fc-translation" data-sec="translation">Fighting with His best friends: Skilful Śrīdāma stopped the countless arrows with leather tips fired by all his friends by whirling his stick around. The son of Nanda, with hairs standing on end, praised him, because it appeared that Śrīdāma was enclosed in a cage made by the whirling stick.</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -828,6 +802,7 @@ Thus śrīdāmnaḥ ca bake-dviṣaś ca means the same thing as śrīdāma-bake
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Mārgaṇān means “arrows with leather tips which filled up quivers.”</p>
@@ -886,6 +861,7 @@ Thus śrīdāmnaḥ ca bake-dviṣaś ca means the same thing as śrīdāma-bake
 
 
     <div class="fc-translation" data-sec="translation">Sometimes there are astonishing, intense mock battles between two natural fighters on the same side.</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -952,6 +928,7 @@ Thus śrīdāmnaḥ ca bake-dviṣaś ca means the same thing as śrīdāma-bake
 
     <div class="fc-translation" data-sec="translation">From Hari-vaṁśa: The Lord Madhusūdana in front of Kuntī defeated Arjuna, wielder of the Gāṇḍīva, the best of the Bharata dynasty, in mock battle.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1012,6 +989,7 @@ Thus śrīdāmnaḥ ca bake-dviṣaś ca means the same thing as śrīdāma-bake
 
 
     <div class="fc-translation" data-sec="translation">The uddīpanas of yuddha-vīra-rasa are boasting, striking the arms in challenge, rivalry, showing strength, taking up weapons, and being aroused by the words of the opponent.</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -1086,6 +1064,7 @@ Thus śrīdāmnaḥ ca bake-dviṣaś ca means the same thing as śrīdāma-bake
 
     <div class="fc-translation" data-sec="translation">Boasting as uddīpana: O Dāmodara! You are expert only at eating. Do not boast, after winning over weak Subala by cheating. This peacock in the form of Stoka-kṛṣṇa, destroyer of the snake of Your long arms, is dancing madly nearby while making loud sounds.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1101,6 +1080,7 @@ Thus śrīdāmnaḥ ca bake-dviṣaś ca means the same thing as śrīdāma-bake
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Piṇḍīśūra (brave at eating cake) means “skilful at eating.” Though Subala is weak, You won by cheating only. Kalāpī means peacock, who dances on hearing the thundering clouds, but it also, in reference to Stoka-kṛṣṇa, means “equipped with arrows or with ornaments.”</p>
@@ -1143,8 +1123,8 @@ Thus śrīdāmnaḥ ca bake-dviṣaś ca means the same thing as śrīdāma-bake
         <div class="cr-iast-line">katthitādyāḥ sva-saṁsthāś ced anubhāvāḥ prakīrtitāḥ |</div>
 <div class="cr-pron-line" data-sec="pronunciation">[katthitaadyaah sva-samsthaash ched anubhaavaah prakeertitaah |]</div>        <div class="cr-iast-line">tathaivāhopuruṣikā kṣveḍitākrośa-valganam ||13||</div>
 <div class="cr-pron-line" data-sec="pronunciation">[tathaivaahopurushikaa kshveditaakrosha-valganam ||13||]</div>        <div class="cr-iast-line">asahāye ’pi yuddhecchā samarād apalāyanam |</div>
-<div class="cr-pron-line" data-sec="pronunciation">[asahaaye ’pi yuddhechchaa samaraad apalaayanam |]</div>        <div class="cr-iast-line">bhītābhaya-pradānādyā vijṣeyāś cāpare budhaiḥ ||14||</div>
-<div class="cr-pron-line" data-sec="pronunciation">[bheetaabhaya-pradaanaadyaa vijsheyaash chaapare budhaih ||14||]</div>    </div>
+<div class="cr-pron-line" data-sec="pronunciation">[asahaaye ’pi yuddhechchaa samaraad apalaayanam |]</div>        <div class="cr-iast-line">bhītābhaya-pradānādyā vijñeyāś cāpare budhaiḥ ||14||</div>
+<div class="cr-pron-line" data-sec="pronunciation">[bheetaabhaya-pradaanaadyaa vijneyaash chaapare budhaih ||14||]</div>    </div>
 
 
     <details class="cr-blend-details" data-sec="blended">
@@ -1160,13 +1140,14 @@ Thus śrīdāmnaḥ ca bake-dviṣaś ca means the same thing as śrīdāma-bake
                 <div class="cr-blend-iast-line">asahāye ’pi yuddhecchā samarād apalāyanam |</div>
             </div>
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">bhītābhaya-pradānādyā vijṣeyāś cāpare budhaiḥ ||14||</div>
+                <div class="cr-blend-iast-line">bhītābhaya-pradānādyā vijñeyāś cāpare budhaiḥ ||14||</div>
             </div>
         </div>
     </details>
 
 
     <div class="fc-translation" data-sec="translation">If the above actions such as boasting are only for one’s own awareness they are anubhāvas. The wise say the other anubhāvas are self-pride, roaring like a lion, proud words, bounding about, enthusiasm to fight even without assistance, not fleeing from battle, and making the fearful fearless.</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -1183,6 +1164,7 @@ Thus śrīdāmnaḥ ca bake-dviṣaś ca means the same thing as śrīdāma-bake
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Āhopuruṣikā means “respect for oneself out of pride.” Kṣveḍita means “roar of a lion.” Ākrośa means “words uttered with pride.” Valganam is trotting about in a special way in preparation for battle. Yuddheccha means “enthusiasm to fight.”</p>
@@ -1225,8 +1207,8 @@ Thus śrīdāmnaḥ ca bake-dviṣaś ca means the same thing as śrīdāma-bake
         <div class="cr-iast-line">katthitādyāḥ sva-saṁsthāś ced anubhāvāḥ prakīrtitāḥ |</div>
 <div class="cr-pron-line" data-sec="pronunciation">[katthitaadyaah sva-samsthaash ched anubhaavaah prakeertitaah |]</div>        <div class="cr-iast-line">tathaivāhopuruṣikā kṣveḍitākrośa-valganam ||13||</div>
 <div class="cr-pron-line" data-sec="pronunciation">[tathaivaahopurushikaa kshveditaakrosha-valganam ||13||]</div>        <div class="cr-iast-line">asahāye ’pi yuddhecchā samarād apalāyanam |</div>
-<div class="cr-pron-line" data-sec="pronunciation">[asahaaye ’pi yuddhechchaa samaraad apalaayanam |]</div>        <div class="cr-iast-line">bhītābhaya-pradānādyā vijṣeyāś cāpare budhaiḥ ||14||</div>
-<div class="cr-pron-line" data-sec="pronunciation">[bheetaabhaya-pradaanaadyaa vijsheyaash chaapare budhaih ||14||]</div>    </div>
+<div class="cr-pron-line" data-sec="pronunciation">[asahaaye ’pi yuddhechchaa samaraad apalaayanam |]</div>        <div class="cr-iast-line">bhītābhaya-pradānādyā vijñeyāś cāpare budhaiḥ ||14||</div>
+<div class="cr-pron-line" data-sec="pronunciation">[bheetaabhaya-pradaanaadyaa vijneyaash chaapare budhaih ||14||]</div>    </div>
 
 
     <details class="cr-blend-details" data-sec="blended">
@@ -1242,13 +1224,14 @@ Thus śrīdāmnaḥ ca bake-dviṣaś ca means the same thing as śrīdāma-bake
                 <div class="cr-blend-iast-line">asahāye ’pi yuddhecchā samarād apalāyanam |</div>
             </div>
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">bhītābhaya-pradānādyā vijṣeyāś cāpare budhaiḥ ||14||</div>
+                <div class="cr-blend-iast-line">bhītābhaya-pradānādyā vijñeyāś cāpare budhaiḥ ||14||</div>
             </div>
         </div>
     </details>
 
 
     <div class="fc-translation" data-sec="translation">If the above actions such as boasting are only for one’s own awareness they are anubhāvas. The wise say the other anubhāvas are self-pride, roaring like a lion, proud words, bounding about, enthusiasm to fight even without assistance, not fleeing from battle, and making the fearful fearless.</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -1336,6 +1319,7 @@ Thus śrīdāmnaḥ ca bake-dviṣaś ca means the same thing as śrīdāma-bake
 
     <div class="fc-translation" data-sec="translation">Boasting as anubhāva: O killer of Keśi! You know that I am Bhadrasena. Why are you eager to fight with weak Baladeva? My arm rivaling a shining door bolt is ashamed of this.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1380,8 +1364,8 @@ Thus śrīdāmnaḥ ca bake-dviṣaś ca means the same thing as śrīdāma-bake
         <div class="cr-iast-line">āhopuruṣikā, yathā –</div>
 <div class="cr-pron-line" data-sec="pronunciation">[aahopurushikaa, yathaa –]</div>        <div class="cr-iast-line">dhṛtāṭope gopeśvara-jaladhi-candre parikaraṁ</div>
 <div class="cr-pron-line" data-sec="pronunciation">[dhritaatope gopeshvara-jaladhi-chandre parikaram]</div>        <div class="cr-iast-line">nibadhnaty ullāsād bhuja-samara-caryā-samucitam |</div>
-<div class="cr-pron-line" data-sec="pronunciation">[nibadhnaty ullaasaad bhuja-samara-charyaa-samuchitam |]</div>        <div class="cr-iast-line">sa-romāṣcaṁ kṣveḍā-niviḍa-mukha-bimbasya naṭataḥ</div>
-<div class="cr-pron-line" data-sec="pronunciation">[sa-romaashcham kshvedaa-nivida-mukha-bimbasya natatah]</div>        <div class="cr-iast-line">sudāmnaḥ sotkaṇṭhaṁ jayati muhur āhopuruṣikā ||16||</div>
+<div class="cr-pron-line" data-sec="pronunciation">[nibadhnaty ullaasaad bhuja-samara-charyaa-samuchitam |]</div>        <div class="cr-iast-line">sa-romāñcaṁ kṣveḍā-niviḍa-mukha-bimbasya naṭataḥ</div>
+<div class="cr-pron-line" data-sec="pronunciation">[sa-romaancham kshvedaa-nivida-mukha-bimbasya natatah]</div>        <div class="cr-iast-line">sudāmnaḥ sotkaṇṭhaṁ jayati muhur āhopuruṣikā ||16||</div>
 <div class="cr-pron-line" data-sec="pronunciation">[sudaamnah sotkantham jayati muhur aahopurushikaa ||16||]</div>    </div>
 
 
@@ -1398,7 +1382,7 @@ Thus śrīdāmnaḥ ca bake-dviṣaś ca means the same thing as śrīdāma-bake
                 <div class="cr-blend-iast-line">nibadhnaty ullāsād bhuja-samara-caryā-samucitam |</div>
             </div>
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">sa-romāṣcaṁ kṣveḍā-niviḍa-mukha-bimbasya naṭataḥ</div>
+                <div class="cr-blend-iast-line">sa-romāñcaṁ kṣveḍā-niviḍa-mukha-bimbasya naṭataḥ</div>
             </div>
             <div class="cr-blend-block">
                 <div class="cr-blend-iast-line">sudāmnaḥ sotkaṇṭhaṁ jayati muhur āhopuruṣikā ||16||</div>
@@ -1408,6 +1392,7 @@ Thus śrīdāmnaḥ ca bake-dviṣaś ca means the same thing as śrīdāma-bake
 
 
     <div class="fc-translation" data-sec="translation">Show of self-pride: O lord of the cowherds! All glories to Sudāma, who, displaying great self-confidence, and roaring like a lion, danced around till his hairs stood on end and his eagerness of fighting increased, when the proud Kṛṣṇa tightened His belt with great show.</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -1424,9 +1409,10 @@ Thus śrīdāmnaḥ ca bake-dviṣaś ca means the same thing as śrīdāma-bake
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
-                <p>The meaning is that he danced so that his hairs stood on end (sa-romāṣcam) and he became more eager for fighting (sotkaṇṭham).</p>
+                <p>The meaning is that he danced so that his hairs stood on end (sa-romāñcam) and he became more eager for fighting (sotkaṇṭham).</p>
             </div>
         </div>
     </section>
@@ -1486,6 +1472,7 @@ Thus śrīdāmnaḥ ca bake-dviṣaś ca means the same thing as śrīdāma-bake
 
 
     <div class="fc-translation" data-sec="translation">All the four types of heroes show all the sāttvika-bhāvas and all the vyabhicāri-bhāvas such as garva, āvega, dhṛti, vrīḍā, mati, harṣa, avahitthā, amarṣa, utsukatā, asūyā and smṛti.</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -1552,6 +1539,7 @@ Thus śrīdāmnaḥ ca bake-dviṣaś ca means the same thing as śrīdāma-bake
 
     <div class="fc-translation" data-sec="translation">The steady desire to win in fighting, either acquired or natural, induced either by one’s own strength or with encouragement of others’ help, which arises when yuddhotsāha-rati becomes the sthāyi-bhāva, is called yuddhotsāha.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1567,6 +1555,7 @@ Thus śrīdāmnaḥ ca bake-dviṣaś ca means the same thing as śrīdāma-bake
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>The description of yuddotsāha etc. with qualities like the desire to win are included with the general qualities of utsāha-rati mentioned previously (2.5.57): firm and immediate attachment of the mind to activities such as battle whose results are praised by the saintly persons is called utsāha. The intention here is to indicate a very deep desire for winning.</p>
@@ -1610,8 +1599,8 @@ Thus śrīdāmnaḥ ca bake-dviṣaś ca means the same thing as śrīdāma-bake
 <div class="cr-pron-line" data-sec="pronunciation">[tatra sva-shaktyaa aahaaryotsaaha-ratir, yathaa –]</div>        <div class="cr-iast-line">sva-tāta-śiṣṭyā sphuṭam apy anicchann</div>
 <div class="cr-pron-line" data-sec="pronunciation">[sva-taata-shishtyaa sphutam apy anichchann]</div>        <div class="cr-iast-line">āhūyamānaḥ puruṣottamena |</div>
 <div class="cr-pron-line" data-sec="pronunciation">[aahooyamaanah purushottamena |]</div>        <div class="cr-iast-line">sa stoka-kṛṣṇo dhṛta-yuddha-tṛṣṇaḥ</div>
-<div class="cr-pron-line" data-sec="pronunciation">[sa stoka-krishno dhrita-yuddha-trishnah]</div>        <div class="cr-iast-line">prodyamya daṇḍaṁ bhramayāṣcakāra ||19||</div>
-<div class="cr-pron-line" data-sec="pronunciation">[prodyamya dandam bhramayaashchakaara ||19||]</div>    </div>
+<div class="cr-pron-line" data-sec="pronunciation">[sa stoka-krishno dhrita-yuddha-trishnah]</div>        <div class="cr-iast-line">prodyamya daṇḍaṁ bhramayāñcakāra ||19||</div>
+<div class="cr-pron-line" data-sec="pronunciation">[prodyamya dandam bhramayaanchakaara ||19||]</div>    </div>
 
 
     <details class="cr-blend-details" data-sec="blended">
@@ -1630,13 +1619,14 @@ Thus śrīdāmnaḥ ca bake-dviṣaś ca means the same thing as śrīdāma-bake
                 <div class="cr-blend-iast-line">sa stoka-kṛṣṇo dhṛta-yuddha-tṛṣṇaḥ</div>
             </div>
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">prodyamya daṇḍaṁ bhramayāṣcakāra ||19||</div>
+                <div class="cr-blend-iast-line">prodyamya daṇḍaṁ bhramayāñcakāra ||19||</div>
             </div>
         </div>
     </details>
 
 
     <div class="fc-translation" data-sec="translation">Regaining desire to fight on one’s own: When his father discouraged him, Stoka-kṛṣṇa was not willing to fight with Kṛṣṇa. However, when challenged by Kṛṣṇa, he became eager to fight. He took up his stick and began to whirl it around.</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -1653,6 +1643,7 @@ Thus śrīdāmnaḥ ca bake-dviṣaś ca means the same thing as śrīdāma-bake
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Stoka-kṛṣṇa was instructed by his father, “How unfortunate you are, to fight with Kṛṣṇa, the life of us all.” Hearing that instruction, he clearly gave up the desire to fight. Instead of anicchann (not desiring) sometimes tyaktam (gave up) is seen.</p>
@@ -1724,6 +1715,7 @@ Thus śrīdāmnaḥ ca bake-dviṣaś ca means the same thing as śrīdāma-bake
 
     <div class="fc-translation" data-sec="translation">Natural desire to fight encouraged only by oneself: O wimpy Bhadrasena! I am Śrīdāma. Do not be afraid on seeing my arm thick like an elephant’s trunk. Today I will defeat Balarāma in a mock battle, and then challenge Kṛṣṇa to fight.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1739,6 +1731,7 @@ Thus śrīdāmnaḥ ca bake-dviṣaś ca means the same thing as śrīdāma-bake
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Āhvayeya is ātmanepada verb form (I should call out for Kṛṣṇa), meaning “I will challenge Him for my pleasure.”</p>
@@ -1810,6 +1803,7 @@ Thus śrīdāmnaḥ ca bake-dviṣaś ca means the same thing as śrīdāma-bake
 
     <div class="fc-translation" data-sec="translation">Another example: The deep voiced Bhadrasena, on Kṛṣṇa’s side, deafening the friends on strong Balarāma’s side by his harsh roaring, churned them all by himself like the Mandara Mountain churning the ocean. This gave great pleasure to Kṛṣṇa.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1825,6 +1819,7 @@ Thus śrīdāmnaḥ ca bake-dviṣaś ca means the same thing as śrīdāma-bake
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Ekakaḥ is the same as the more common ekākī, meaning alone, by oneself. This follows from the rule ekādākin cāsahāva: the word eka when it means alone can take the form ekākī or ekakaḥ (Pāṇini 5.3.52) Amara-kośa says ekākītveka ekakaḥ: ekākī means the same as eka and ekakaḥ. Sometimes instead of ekakaḥ the word ekala is found in the verse but this a writing mistake.</p>
@@ -1895,6 +1890,7 @@ Thus śrīdāmnaḥ ca bake-dviṣaś ca means the same thing as śrīdāma-bake
 
 
     <div class="fc-translation" data-sec="translation">Regaining enthusiasm for battle by other person’s assistance: “Since I am bursting with fierce prowess, do not accept defeat in this battle.” Hearing these words from a friend, Varūthapa, uttering unnatural sounds, charged towards the Lord.</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -1969,6 +1965,7 @@ Thus śrīdāmnaḥ ca bake-dviṣaś ca means the same thing as śrīdāma-bake
 
     <div class="fc-translation" data-sec="translation">Natural enthusiasm for battle, with additional encouragement: Expert Sudāma with arms eager for battle had sufficient strength to conquer Kṛṣṇa in combat. If he were to take the help of strong Subala, he would be like a jewel set in gold.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1984,6 +1981,7 @@ Thus śrīdāmnaḥ ca bake-dviṣaś ca means the same thing as śrīdāma-bake
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Jaṭ or jhaṭ means “to combine with.” Sujaṭita is the past participle form means “combined together very well.” Instead of sujaṭitaḥ sometimes jaṭilita is found, but this is not so acceptable. Jaṭila is formed in a group of words called picchādi which add the suffix “la” to mean “possessing.” Thus, from jāta comes jaṭila, meaning jaṭāvat (having shaggy locks of hair). (Pāṇini 5.2.100) This is inappropriate in the context.</p>
@@ -2046,6 +2044,7 @@ Thus śrīdāmnaḥ ca bake-dviṣaś ca means the same thing as śrīdāma-bake
 
 
     <div class="fc-translation" data-sec="translation">In vīra-bhakti-rasa the friends are the opponents of Kṛṣṇa. They are not the opponents of enemies. When there is an enemy giving agitation to the devotee, the devotee becomes the ālambana of raudra-rasa. In raudra-rasa the eyes become red etc. This is absent in vīra-rasa. This is the difference between vīra and raudra-rasa.</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -2112,6 +2111,7 @@ Thus śrīdāmnaḥ ca bake-dviṣaś ca means the same thing as śrīdāma-bake
 
     <div class="fc-translation" data-sec="translation">There are two types of dāna-vīras: the person who gives in plenty (bahu-prada) and the renounced person who does not want to accept what is offered by the Lord.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2177,6 +2177,7 @@ Thus śrīdāmnaḥ ca bake-dviṣaś ca means the same thing as śrīdāma-bake
 
     <div class="fc-translation" data-sec="translation">The person who will give everything immediately for Kṛṣṇa’s pleasure is called the bahu-prada (generous giver).</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2219,10 +2220,10 @@ Thus śrīdāmnaḥ ca bake-dviṣaś ca means the same thing as śrīdāma-bake
 
     <div class="cr-iast-block" data-sec="iast">
         <div class="cr-iast-line">sampradānasya vīkṣādyā asminn uddīpanā matāḥ |</div>
-<div class="cr-pron-line" data-sec="pronunciation">[sampradaanasya veekshaadyaa asminn uddeepanaa mataah |]</div>        <div class="cr-iast-line">vāṣchitādhika-dātṛtvaṁ smita-pūrvābhibhāṣaṇam ||27||</div>
-<div class="cr-pron-line" data-sec="pronunciation">[vaashchitaadhika-daatritvam smita-poorvaabhibhaashanam ||27||]</div>        <div class="cr-iast-line">sthairya-dākṣiṇya-dhairyādyā anubhāvā ihoditāḥ |</div>
-<div class="cr-pron-line" data-sec="pronunciation">[sthairya-daakshinya-dhairyaadyaa anubhaavaa ihoditaah |]</div>        <div class="cr-iast-line">vitarkautsukya-harṣādyā vijṣeyā vyabhicāriṇaḥ ||28||</div>
-<div class="cr-pron-line" data-sec="pronunciation">[vitarkautsukya-harshaadyaa vijsheyaa vyabhichaarinah ||28||]</div>    </div>
+<div class="cr-pron-line" data-sec="pronunciation">[sampradaanasya veekshaadyaa asminn uddeepanaa mataah |]</div>        <div class="cr-iast-line">vāñchitādhika-dātṛtvaṁ smita-pūrvābhibhāṣaṇam ||27||</div>
+<div class="cr-pron-line" data-sec="pronunciation">[vaanchitaadhika-daatritvam smita-poorvaabhibhaashanam ||27||]</div>        <div class="cr-iast-line">sthairya-dākṣiṇya-dhairyādyā anubhāvā ihoditāḥ |</div>
+<div class="cr-pron-line" data-sec="pronunciation">[sthairya-daakshinya-dhairyaadyaa anubhaavaa ihoditaah |]</div>        <div class="cr-iast-line">vitarkautsukya-harṣādyā vijñeyā vyabhicāriṇaḥ ||28||</div>
+<div class="cr-pron-line" data-sec="pronunciation">[vitarkautsukya-harshaadyaa vijneyaa vyabhichaarinah ||28||]</div>    </div>
 
 
     <details class="cr-blend-details" data-sec="blended">
@@ -2232,19 +2233,20 @@ Thus śrīdāmnaḥ ca bake-dviṣaś ca means the same thing as śrīdāma-bake
                 <div class="cr-blend-iast-line">sampradānasya vīkṣādyā asminn uddīpanā matāḥ |</div>
             </div>
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">vāṣchitādhika-dātṛtvaṁ smita-pūrvābhibhāṣaṇam ||27||</div>
+                <div class="cr-blend-iast-line">vāñchitādhika-dātṛtvaṁ smita-pūrvābhibhāṣaṇam ||27||</div>
             </div>
             <div class="cr-blend-block">
                 <div class="cr-blend-iast-line">sthairya-dākṣiṇya-dhairyādyā anubhāvā ihoditāḥ |</div>
             </div>
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">vitarkautsukya-harṣādyā vijṣeyā vyabhicāriṇaḥ ||28||</div>
+                <div class="cr-blend-iast-line">vitarkautsukya-harṣādyā vijñeyā vyabhicāriṇaḥ ||28||</div>
             </div>
         </div>
     </details>
 
 
     <div class="fc-translation" data-sec="translation">The uddīpana for the dāna-vīra is seeing a person worthy of charity. The anubhāvas are giving more than asked, talking with a slight smile, steadiness, kindness, and patience etc. The vyabhicāri-bhāvas are vitarka, autsukya and harṣa and others. [Note: In verse 17 it has been mentioned that all four types of vīras display all the sāttvika-bhāvas. Thus sāttvika-bhāvas are not mentioned here.]</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -2288,10 +2290,10 @@ Thus śrīdāmnaḥ ca bake-dviṣaś ca means the same thing as śrīdāma-bake
 
     <div class="cr-iast-block" data-sec="iast">
         <div class="cr-iast-line">sampradānasya vīkṣādyā asminn uddīpanā matāḥ |</div>
-<div class="cr-pron-line" data-sec="pronunciation">[sampradaanasya veekshaadyaa asminn uddeepanaa mataah |]</div>        <div class="cr-iast-line">vāṣchitādhika-dātṛtvaṁ smita-pūrvābhibhāṣaṇam ||27||</div>
-<div class="cr-pron-line" data-sec="pronunciation">[vaashchitaadhika-daatritvam smita-poorvaabhibhaashanam ||27||]</div>        <div class="cr-iast-line">sthairya-dākṣiṇya-dhairyādyā anubhāvā ihoditāḥ |</div>
-<div class="cr-pron-line" data-sec="pronunciation">[sthairya-daakshinya-dhairyaadyaa anubhaavaa ihoditaah |]</div>        <div class="cr-iast-line">vitarkautsukya-harṣādyā vijṣeyā vyabhicāriṇaḥ ||28||</div>
-<div class="cr-pron-line" data-sec="pronunciation">[vitarkautsukya-harshaadyaa vijsheyaa vyabhichaarinah ||28||]</div>    </div>
+<div class="cr-pron-line" data-sec="pronunciation">[sampradaanasya veekshaadyaa asminn uddeepanaa mataah |]</div>        <div class="cr-iast-line">vāñchitādhika-dātṛtvaṁ smita-pūrvābhibhāṣaṇam ||27||</div>
+<div class="cr-pron-line" data-sec="pronunciation">[vaanchitaadhika-daatritvam smita-poorvaabhibhaashanam ||27||]</div>        <div class="cr-iast-line">sthairya-dākṣiṇya-dhairyādyā anubhāvā ihoditāḥ |</div>
+<div class="cr-pron-line" data-sec="pronunciation">[sthairya-daakshinya-dhairyaadyaa anubhaavaa ihoditaah |]</div>        <div class="cr-iast-line">vitarkautsukya-harṣādyā vijñeyā vyabhicāriṇaḥ ||28||</div>
+<div class="cr-pron-line" data-sec="pronunciation">[vitarkautsukya-harshaadyaa vijneyaa vyabhichaarinah ||28||]</div>    </div>
 
 
     <details class="cr-blend-details" data-sec="blended">
@@ -2301,19 +2303,20 @@ Thus śrīdāmnaḥ ca bake-dviṣaś ca means the same thing as śrīdāma-bake
                 <div class="cr-blend-iast-line">sampradānasya vīkṣādyā asminn uddīpanā matāḥ |</div>
             </div>
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">vāṣchitādhika-dātṛtvaṁ smita-pūrvābhibhāṣaṇam ||27||</div>
+                <div class="cr-blend-iast-line">vāñchitādhika-dātṛtvaṁ smita-pūrvābhibhāṣaṇam ||27||</div>
             </div>
             <div class="cr-blend-block">
                 <div class="cr-blend-iast-line">sthairya-dākṣiṇya-dhairyādyā anubhāvā ihoditāḥ |</div>
             </div>
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">vitarkautsukya-harṣādyā vijṣeyā vyabhicāriṇaḥ ||28||</div>
+                <div class="cr-blend-iast-line">vitarkautsukya-harṣādyā vijñeyā vyabhicāriṇaḥ ||28||</div>
             </div>
         </div>
     </details>
 
 
     <div class="fc-translation" data-sec="translation">The uddīpana for the dāna-vīra is seeing a person worthy of charity. The anubhāvas are giving more than asked, talking with a slight smile, steadiness, kindness, and patience etc. The vyabhicāri-bhāvas are vitarka, autsukya and harṣa and others. [Note: In verse 17 it has been mentioned that all four types of vīras display all the sāttvika-bhāvas. Thus sāttvika-bhāvas are not mentioned here.]</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -2387,6 +2390,7 @@ Thus śrīdāmnaḥ ca bake-dviṣaś ca means the same thing as śrīdāma-bake
 
 
 
+
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-29" data-note-label="BG 3.29" data-note-chapter="3" data-note-vlabel="29">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.29…" rows="4"></textarea>
@@ -2429,6 +2433,7 @@ Thus śrīdāmnaḥ ca bake-dviṣaś ca means the same thing as śrīdāma-bake
 
 
     <div class="fc-translation" data-sec="translation">There are two types of plentiful givers: ābhyudayika (giving on auspicious occasions) and kṛṣṇa-sampradānaka (giving in surrender to Kṛṣṇa).</div>
+
 
 
 
@@ -2499,6 +2504,7 @@ Thus śrīdāmnaḥ ca bake-dviṣaś ca means the same thing as śrīdāma-bake
 
 
 
+
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-31" data-note-label="BG 3.31" data-note-chapter="3" data-note-vlabel="31">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.31…" rows="4"></textarea>
@@ -2524,8 +2530,8 @@ Thus śrīdāmnaḥ ca bake-dviṣaś ca means the same thing as śrīdāma-bake
     <div class="cr-iast-block" data-sec="iast">
         <div class="cr-iast-line">yathā –</div>
 <div class="cr-pron-line" data-sec="pronunciation">[yathaa –]</div>        <div class="cr-iast-line">vrajapatir iha sūnor jātakārthaṁ tathāsau</div>
-<div class="cr-pron-line" data-sec="pronunciation">[vrajapatir iha soonor jaatakaartham tathaasau]</div>        <div class="cr-iast-line">vyatarad amala-cetāḥ saṣcayaṁ naicikīnām |</div>
-<div class="cr-pron-line" data-sec="pronunciation">[vyatarad amala-chetaah sashchayam naichikeenaam |]</div>        <div class="cr-iast-line">pṛthur api nṛga-kīrtiḥ sāmprataṁ saṁvṛtāsīd</div>
+<div class="cr-pron-line" data-sec="pronunciation">[vrajapatir iha soonor jaatakaartham tathaasau]</div>        <div class="cr-iast-line">vyatarad amala-cetāḥ sañcayaṁ naicikīnām |</div>
+<div class="cr-pron-line" data-sec="pronunciation">[vyatarad amala-chetaah sanchayam naichikeenaam |]</div>        <div class="cr-iast-line">pṛthur api nṛga-kīrtiḥ sāmprataṁ saṁvṛtāsīd</div>
 <div class="cr-pron-line" data-sec="pronunciation">[prithur api nriga-keertih saampratam samvritaaseed]</div>        <div class="cr-iast-line">iti nijagadur uccair bhūsurā yena tṛptāḥ ||32||</div>
 <div class="cr-pron-line" data-sec="pronunciation">[iti nijagadur uchchair bhoosuraa yena triptaah ||32||]</div>    </div>
 
@@ -2540,7 +2546,7 @@ Thus śrīdāmnaḥ ca bake-dviṣaś ca means the same thing as śrīdāma-bake
                 <div class="cr-blend-iast-line">vrajapatir iha sūnor jātakārthaṁ tathāsau</div>
             </div>
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">vyatarad amala-cetāḥ saṣcayaṁ naicikīnām |</div>
+                <div class="cr-blend-iast-line">vyatarad amala-cetāḥ sañcayaṁ naicikīnām |</div>
             </div>
             <div class="cr-blend-block">
                 <div class="cr-blend-iast-line">pṛthur api nṛga-kīrtiḥ sāmprataṁ saṁvṛtāsīd</div>
@@ -2553,6 +2559,7 @@ Thus śrīdāmnaḥ ca bake-dviṣaś ca means the same thing as śrīdāma-bake
 
 
     <div class="fc-translation" data-sec="translation">An example: When the pure hearted Nanda gave all the best cows to the brāhamaṇas on the occasion of cerebrating Kṛṣṇa’s birth, the surrounding brāhmaṇas were so satisfied that they exclaimed loudly that it eclipsed the charity of King Nṛga.</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -2569,6 +2576,7 @@ Thus śrīdāmnaḥ ca bake-dviṣaś ca means the same thing as śrīdāma-bake
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>The reason that Nanda’s charity eclipsed that of King Nṛga was the purity of Nanda’s heart. He was absorbed only in the appearance of Kṛṣṇa as his son. He did not have the fault of desire for fame and acquisition of enjoyment in this world or the next.</p>
@@ -2609,8 +2617,8 @@ Thus śrīdāmnaḥ ca bake-dviṣaś ca means the same thing as śrīdāma-bake
 
     <div class="cr-iast-block" data-sec="iast">
         <div class="cr-iast-line">atha tat-sampradānakaḥ –</div>
-<div class="cr-pron-line" data-sec="pronunciation">[atha tat-sampradaanakah –]</div>        <div class="cr-iast-line">jṣātaye haraye svīyam ahaṁtā-mamatāspadam |</div>
-<div class="cr-pron-line" data-sec="pronunciation">[jshaataye haraye sveeyam ahamtaa-mamataaspadam |]</div>        <div class="cr-iast-line">sarvasvaṁ dīyate yena sa syāt tat-sampradānakaḥ ||33||</div>
+<div class="cr-pron-line" data-sec="pronunciation">[atha tat-sampradaanakah –]</div>        <div class="cr-iast-line">jñātaye haraye svīyam ahaṁtā-mamatāspadam |</div>
+<div class="cr-pron-line" data-sec="pronunciation">[jnaataye haraye sveeyam ahamtaa-mamataaspadam |]</div>        <div class="cr-iast-line">sarvasvaṁ dīyate yena sa syāt tat-sampradānakaḥ ||33||</div>
 <div class="cr-pron-line" data-sec="pronunciation">[sarvasvam deeyate yena sa syaat tat-sampradaanakah ||33||]</div>        <div class="cr-iast-line">tad-dānaṁ prīti-pūjābhyāṁ bhaved ity uditaṁ dvidhā ||34||</div>
 <div class="cr-pron-line" data-sec="pronunciation">[tad-daanam preeti-poojaabhyaam bhaved ity uditam dvidhaa ||34||]</div>    </div>
 
@@ -2622,7 +2630,7 @@ Thus śrīdāmnaḥ ca bake-dviṣaś ca means the same thing as śrīdāma-bake
                 <div class="cr-blend-iast-line">atha tat-sampradānakaḥ –</div>
             </div>
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">jṣātaye haraye svīyam ahaṁtā-mamatāspadam |</div>
+                <div class="cr-blend-iast-line">jñātaye haraye svīyam ahaṁtā-mamatāspadam |</div>
             </div>
             <div class="cr-blend-block">
                 <div class="cr-blend-iast-line">sarvasvaṁ dīyate yena sa syāt tat-sampradānakaḥ ||33||</div>
@@ -2635,6 +2643,7 @@ Thus śrīdāmnaḥ ca bake-dviṣaś ca means the same thing as śrīdāma-bake
 
 
     <div class="fc-translation" data-sec="translation">When a person realizes the real nature of the Lord and gives to the Lord all his possessions which are sources of material identity and possessiveness, he is called tat-sampradānaka. There are two types: giving out of affection and giving as worship.</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -2678,8 +2687,8 @@ Thus śrīdāmnaḥ ca bake-dviṣaś ca means the same thing as śrīdāma-bake
 
     <div class="cr-iast-block" data-sec="iast">
         <div class="cr-iast-line">atha tat-sampradānakaḥ –</div>
-<div class="cr-pron-line" data-sec="pronunciation">[atha tat-sampradaanakah –]</div>        <div class="cr-iast-line">jṣātaye haraye svīyam ahaṁtā-mamatāspadam |</div>
-<div class="cr-pron-line" data-sec="pronunciation">[jshaataye haraye sveeyam ahamtaa-mamataaspadam |]</div>        <div class="cr-iast-line">sarvasvaṁ dīyate yena sa syāt tat-sampradānakaḥ ||33||</div>
+<div class="cr-pron-line" data-sec="pronunciation">[atha tat-sampradaanakah –]</div>        <div class="cr-iast-line">jñātaye haraye svīyam ahaṁtā-mamatāspadam |</div>
+<div class="cr-pron-line" data-sec="pronunciation">[jnaataye haraye sveeyam ahamtaa-mamataaspadam |]</div>        <div class="cr-iast-line">sarvasvaṁ dīyate yena sa syāt tat-sampradānakaḥ ||33||</div>
 <div class="cr-pron-line" data-sec="pronunciation">[sarvasvam deeyate yena sa syaat tat-sampradaanakah ||33||]</div>        <div class="cr-iast-line">tad-dānaṁ prīti-pūjābhyāṁ bhaved ity uditaṁ dvidhā ||34||</div>
 <div class="cr-pron-line" data-sec="pronunciation">[tad-daanam preeti-poojaabhyaam bhaved ity uditam dvidhaa ||34||]</div>    </div>
 
@@ -2691,7 +2700,7 @@ Thus śrīdāmnaḥ ca bake-dviṣaś ca means the same thing as śrīdāma-bake
                 <div class="cr-blend-iast-line">atha tat-sampradānakaḥ –</div>
             </div>
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">jṣātaye haraye svīyam ahaṁtā-mamatāspadam |</div>
+                <div class="cr-blend-iast-line">jñātaye haraye svīyam ahaṁtā-mamatāspadam |</div>
             </div>
             <div class="cr-blend-block">
                 <div class="cr-blend-iast-line">sarvasvaṁ dīyate yena sa syāt tat-sampradānakaḥ ||33||</div>
@@ -2704,6 +2713,7 @@ Thus śrīdāmnaḥ ca bake-dviṣaś ca means the same thing as śrīdāma-bake
 
 
     <div class="fc-translation" data-sec="translation">When a person realizes the real nature of the Lord and gives to the Lord all his possessions which are sources of material identity and possessiveness, he is called tat-sampradānaka. There are two types: giving out of affection and giving as worship.</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -2777,6 +2787,7 @@ Thus śrīdāmnaḥ ca bake-dviṣaś ca means the same thing as śrīdāma-bake
 
 
 
+
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-35" data-note-label="BG 3.35" data-note-chapter="3" data-note-vlabel="35">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.35…" rows="4"></textarea>
@@ -2832,6 +2843,7 @@ Thus śrīdāmnaḥ ca bake-dviṣaś ca means the same thing as śrīdāma-bake
 
     <div class="fc-translation" data-sec="translation">After completing all the ceremonial functions at the rājasūya sacrifice, Yudhiṣṭhira desired to give Kṛṣṇa sandalwood, a vaijayantī garland, ornaments with the best rubies and gold, elephants, chariots, and horses decked in gold, his family and himself. Not seeing anything else worthy of giving, he became afflicted.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2847,6 +2859,7 @@ Thus śrīdāmnaḥ ca bake-dviṣaś ca means the same thing as śrīdāma-bake
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Karburān karbureṇa means mixed with gold. This event was not the agra-pūja performed before the sacrifice, for the words makha-sadasi (in the assembly of the sacrifice) indicates it occurred after. Actually it occurred after the rites were completed.</p>
@@ -2907,6 +2920,7 @@ Thus śrīdāmnaḥ ca bake-dviṣaś ca means the same thing as śrīdāma-bake
     <div class="fc-translation" data-sec="translation">What is given to the Lord Himself, or His form representing the devatās or the brāhmaṇas is called pujā-dāna.</div>
 
 
+
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -2914,6 +2928,7 @@ Thus śrīdāmnaḥ ca bake-dviṣaś ca means the same thing as śrīdāma-bake
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Vipra-rūpāya, the Lord as the form of the brāhamaṇas is representative, and indicates the Lord Himself, His form as the devatās and His form as the brāhmaṇas.</p>
@@ -2954,8 +2969,8 @@ Thus śrīdāmnaḥ ca bake-dviṣaś ca means the same thing as śrīdāma-bake
 
     <div class="cr-iast-block" data-sec="iast">
         <div class="cr-iast-line">yathā aṣṭame –</div>
-<div class="cr-pron-line" data-sec="pronunciation">[yathaa ashtame –]</div>        <div class="cr-iast-line">yajanti yajṣaṁ kratubhir yam ādṛtā</div>
-<div class="cr-pron-line" data-sec="pronunciation">[yajanti yajsham kratubhir yam aadritaa]</div>        <div class="cr-iast-line">bhavanta āmnāya-vidhāna-kovidāḥ |</div>
+<div class="cr-pron-line" data-sec="pronunciation">[yathaa ashtame –]</div>        <div class="cr-iast-line">yajanti yajñaṁ kratubhir yam ādṛtā</div>
+<div class="cr-pron-line" data-sec="pronunciation">[yajanti yajnam kratubhir yam aadritaa]</div>        <div class="cr-iast-line">bhavanta āmnāya-vidhāna-kovidāḥ |</div>
 <div class="cr-pron-line" data-sec="pronunciation">[bhavanta aamnaaya-vidhaana-kovidaah |]</div>        <div class="cr-iast-line">sa eva viṣṇur varado &#39;stu vā paro</div>
 <div class="cr-pron-line" data-sec="pronunciation">[sa eva vishnur varado &#39;stu vaa paro]</div>        <div class="cr-iast-line">dāsyāmy amuṣmai kṣitim īpsitāṁ mune ||38||</div>
 <div class="cr-pron-line" data-sec="pronunciation">[daasyaamy amushmai kshitim eepsitaam mune ||38||]</div>    </div>
@@ -2968,7 +2983,7 @@ Thus śrīdāmnaḥ ca bake-dviṣaś ca means the same thing as śrīdāma-bake
                 <div class="cr-blend-iast-line">yathā aṣṭame –</div>
             </div>
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">yajanti yajṣaṁ kratubhir yam ādṛtā</div>
+                <div class="cr-blend-iast-line">yajanti yajñaṁ kratubhir yam ādṛtā</div>
             </div>
             <div class="cr-blend-block">
                 <div class="cr-blend-iast-line">bhavanta āmnāya-vidhāna-kovidāḥ |</div>
@@ -2983,7 +2998,8 @@ Thus śrīdāmnaḥ ca bake-dviṣaś ca means the same thing as śrīdāma-bake
     </details>
 
 
-    <div class="fc-translation" data-sec="translation">From the Eighth Canto: O great sage, great saintly persons like you, being completely aware of the Vedic principles for performing ritualistic ceremonies and yajṣas, worship Lord Viṣṇu in all circumstances. Therefore, whether that same Lord Viṣṇu has come here to give me all benedictions or to punish me as an enemy, I must carry out His order and give Him the requested tract of land without hesitation. SB 8.20.11</div>
+    <div class="fc-translation" data-sec="translation">From the Eighth Canto: O great sage, great saintly persons like you, being completely aware of the Vedic principles for performing ritualistic ceremonies and yajñas, worship Lord Viṣṇu in all circumstances. Therefore, whether that same Lord Viṣṇu has come here to give me all benedictions or to punish me as an enemy, I must carry out His order and give Him the requested tract of land without hesitation. SB 8.20.11</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -3050,6 +3066,7 @@ Thus śrīdāmnaḥ ca bake-dviṣaś ca means the same thing as śrīdāma-bake
 
     <div class="fc-translation" data-sec="translation">From Daśa-rūpaka: Bali offered the ball of grains to the hand of the Lord which was colored with the kuṁkuma from the breast of Lakṣmī.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3065,6 +3082,7 @@ Thus śrīdāmnaḥ ca bake-dviṣaś ca means the same thing as śrīdāma-bake
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>The word pūrakaḥ (ball of ground grains) should be added to the sentence to complete the meaning.</p>
@@ -3128,6 +3146,7 @@ Thus śrīdāmnaḥ ca bake-dviṣaś ca means the same thing as śrīdāma-bake
 
     <div class="fc-translation" data-sec="translation">The person who does not want to accept even the five types of liberation offered by the Lord who is pleased with him is called the upasthita-durāpārtha-tyagī (one who is resolute to reject things rarely attained by others). [Note: This is a different meaning of dāna-vīra. The usual meaning of the phrase would be “a person determined in giving.” In this case it would mean “a person determined in regards to being given things.” He is determined to refuse them.]</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3143,6 +3162,7 @@ Thus śrīdāmnaḥ ca bake-dviṣaś ca means the same thing as śrīdāma-bake
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Though there are two types of this tyāgī: the sādhaka and the siddha, here the sādhaka with firm determination, who has developed some taste for the Lord is indicated, not a siddha who has realized the full sweetness of the Lord. It is not like the case of a person, having tasted nectar, showing natural distaste for sugar (the siddha would be like this). But rather, the Lord, satisfied with seeing the sādhaka’s one-pointed determination in regards to his performance of bhakti, sometimes becomes eager to give him things in order to show that person’s one-pointed stubbornness in devotion to the Lord. This person does not desire the benedictions (varaḥ) even though they are accepted by others.</p>
@@ -3185,8 +3205,8 @@ Thus śrīdāmnaḥ ca bake-dviṣaś ca means the same thing as śrīdāma-bake
         <div class="cr-iast-line">pūrvato ’tra viparyasta-kārakatvaṁ dvayor bhavet |</div>
 <div class="cr-pron-line" data-sec="pronunciation">[poorvato ’tra viparyasta-kaarakatvam dvayor bhavet |]</div>        <div class="cr-iast-line">asminn uddīpanāḥ kṛṣṇa-kṛpālāpa-smitādayaḥ ||41||</div>
 <div class="cr-pron-line" data-sec="pronunciation">[asminn uddeepanaah krishna-kripaalaapa-smitaadayah ||41||]</div>        <div class="cr-iast-line">anubhāvās tad-utkarṣa-varṇana-draḍhimādayaḥ |</div>
-<div class="cr-pron-line" data-sec="pronunciation">[anubhaavaas tad-utkarsha-varnana-dradhimaadayah |]</div>        <div class="cr-iast-line">atra saṣcāritā bhūmnā dhṛter eva samīkṣyate ||42||</div>
-<div class="cr-pron-line" data-sec="pronunciation">[atra sashchaaritaa bhoomnaa dhriter eva sameekshyate ||42||]</div>    </div>
+<div class="cr-pron-line" data-sec="pronunciation">[anubhaavaas tad-utkarsha-varnana-dradhimaadayah |]</div>        <div class="cr-iast-line">atra sañcāritā bhūmnā dhṛter eva samīkṣyate ||42||</div>
+<div class="cr-pron-line" data-sec="pronunciation">[atra sanchaaritaa bhoomnaa dhriter eva sameekshyate ||42||]</div>    </div>
 
 
     <details class="cr-blend-details" data-sec="blended">
@@ -3202,13 +3222,14 @@ Thus śrīdāmnaḥ ca bake-dviṣaś ca means the same thing as śrīdāma-bake
                 <div class="cr-blend-iast-line">anubhāvās tad-utkarṣa-varṇana-draḍhimādayaḥ |</div>
             </div>
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">atra saṣcāritā bhūmnā dhṛter eva samīkṣyate ||42||</div>
+                <div class="cr-blend-iast-line">atra sañcāritā bhūmnā dhṛter eva samīkṣyate ||42||</div>
             </div>
         </div>
     </details>
 
 
     <div class="fc-translation" data-sec="translation">This person is opposite of the sampradānaka-dānavīra (who gives to the Lord), for here the donor is the Lord and the beneficiary is the devotee. In this type of bhakti-rasa, the uddīpanas are the mercy of Kṛṣṇa, conversations of the Lord, and His smiles. The anubhāvas are conviction in the descriptions of the Lord’s qualities, and the vyabhicāri-bhāvas are such things as dhṛti (resoluteness).</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -3225,6 +3246,7 @@ Thus śrīdāmnaḥ ca bake-dviṣaś ca means the same thing as śrīdāma-bake
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Viparyasta-kārakatvam means that in this case the roles are reversed, and the gift comes from the Lord, and is given to the devotee.</p>
@@ -3267,8 +3289,8 @@ Thus śrīdāmnaḥ ca bake-dviṣaś ca means the same thing as śrīdāma-bake
         <div class="cr-iast-line">pūrvato ’tra viparyasta-kārakatvaṁ dvayor bhavet |</div>
 <div class="cr-pron-line" data-sec="pronunciation">[poorvato ’tra viparyasta-kaarakatvam dvayor bhavet |]</div>        <div class="cr-iast-line">asminn uddīpanāḥ kṛṣṇa-kṛpālāpa-smitādayaḥ ||41||</div>
 <div class="cr-pron-line" data-sec="pronunciation">[asminn uddeepanaah krishna-kripaalaapa-smitaadayah ||41||]</div>        <div class="cr-iast-line">anubhāvās tad-utkarṣa-varṇana-draḍhimādayaḥ |</div>
-<div class="cr-pron-line" data-sec="pronunciation">[anubhaavaas tad-utkarsha-varnana-dradhimaadayah |]</div>        <div class="cr-iast-line">atra saṣcāritā bhūmnā dhṛter eva samīkṣyate ||42||</div>
-<div class="cr-pron-line" data-sec="pronunciation">[atra sashchaaritaa bhoomnaa dhriter eva sameekshyate ||42||]</div>    </div>
+<div class="cr-pron-line" data-sec="pronunciation">[anubhaavaas tad-utkarsha-varnana-dradhimaadayah |]</div>        <div class="cr-iast-line">atra sañcāritā bhūmnā dhṛter eva samīkṣyate ||42||</div>
+<div class="cr-pron-line" data-sec="pronunciation">[atra sanchaaritaa bhoomnaa dhriter eva sameekshyate ||42||]</div>    </div>
 
 
     <details class="cr-blend-details" data-sec="blended">
@@ -3284,13 +3306,14 @@ Thus śrīdāmnaḥ ca bake-dviṣaś ca means the same thing as śrīdāma-bake
                 <div class="cr-blend-iast-line">anubhāvās tad-utkarṣa-varṇana-draḍhimādayaḥ |</div>
             </div>
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">atra saṣcāritā bhūmnā dhṛter eva samīkṣyate ||42||</div>
+                <div class="cr-blend-iast-line">atra sañcāritā bhūmnā dhṛter eva samīkṣyate ||42||</div>
             </div>
         </div>
     </details>
 
 
     <div class="fc-translation" data-sec="translation">This person is opposite of the sampradānaka-dānavīra (who gives to the Lord), for here the donor is the Lord and the beneficiary is the devotee. In this type of bhakti-rasa, the uddīpanas are the mercy of Kṛṣṇa, conversations of the Lord, and His smiles. The anubhāvas are conviction in the descriptions of the Lord’s qualities, and the vyabhicāri-bhāvas are such things as dhṛti (resoluteness).</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -3366,6 +3389,7 @@ Thus śrīdāmnaḥ ca bake-dviṣaś ca means the same thing as śrīdāma-bake
 
     <div class="fc-translation" data-sec="translation">The wise say that the sthāyi-bhāva of this rasa is tyāgotsāha-rati. Tyāgotsāha means the deep desire to reject things like the five types of liberation.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3381,6 +3405,7 @@ Thus śrīdāmnaḥ ca bake-dviṣaś ca means the same thing as śrīdāma-bake
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>In tyāgotsāha (resolution to renounce), there is full rejection of sārṣṭi etc. (and not things favorable for the devotee’s bhakti).</p>
@@ -3452,6 +3477,7 @@ Thus śrīdāmnaḥ ca bake-dviṣaś ca means the same thing as śrīdāma-bake
 
     <div class="fc-translation" data-sec="translation">From Hari-bhakti-sudhodaya: O Lord! I desired the king’s throne, but I attained You, who are hidden from even the chief devatās and sages. As a person on searching for glass and attaining jewels no longer desires the glass, I, having attained You, have become successful, and do not desire anything else.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3467,6 +3493,7 @@ Thus śrīdāmnaḥ ca bake-dviṣaś ca means the same thing as śrīdāma-bake
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>These are the words of Dhruva. They do not spring from full realization of the sweet aspect of the Lord. These words arose from the touch of the Lord’s conch. However, it is evident that gradually he obtained that realization. [Note: Thus, his words are those of a sādhaka.]</p>
@@ -3510,8 +3537,8 @@ Thus śrīdāmnaḥ ca bake-dviṣaś ca means the same thing as śrīdāma-bake
 <div class="cr-pron-line" data-sec="pronunciation">[yathaa vaa triteeye–]</div>        <div class="cr-iast-line">nātyantikaṁ vigaṇayanty api te prasādaṁ</div>
 <div class="cr-pron-line" data-sec="pronunciation">[naatyantikam viganayanty api te prasaadam]</div>        <div class="cr-iast-line">kiṁ vānyad arpita-bhayaṁ bhruva unnayais te |</div>
 <div class="cr-pron-line" data-sec="pronunciation">[kim vaanyad arpita-bhayam bhruva unnayais te |]</div>        <div class="cr-iast-line">ye &#39;ṅga tvad-aṅghri-śaraṇā bhavataḥ kathāyāḥ</div>
-<div class="cr-pron-line" data-sec="pronunciation">[ye &#39;nga tvad-anghri-sharanaa bhavatah kathaayaah]</div>        <div class="cr-iast-line">kīrtanya-tīrtha-yaśasaḥ kuśalā rasa-jṣāḥ ||45||</div>
-<div class="cr-pron-line" data-sec="pronunciation">[keertanya-teertha-yashasah kushalaa rasa-jshaah ||45||]</div>    </div>
+<div class="cr-pron-line" data-sec="pronunciation">[ye &#39;nga tvad-anghri-sharanaa bhavatah kathaayaah]</div>        <div class="cr-iast-line">kīrtanya-tīrtha-yaśasaḥ kuśalā rasa-jñāḥ ||45||</div>
+<div class="cr-pron-line" data-sec="pronunciation">[keertanya-teertha-yashasah kushalaa rasa-jnaah ||45||]</div>    </div>
 
 
     <details class="cr-blend-details" data-sec="blended">
@@ -3530,13 +3557,14 @@ Thus śrīdāmnaḥ ca bake-dviṣaś ca means the same thing as śrīdāma-bake
                 <div class="cr-blend-iast-line">ye &#39;ṅga tvad-aṅghri-śaraṇā bhavataḥ kathāyāḥ</div>
             </div>
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">kīrtanya-tīrtha-yaśasaḥ kuśalā rasa-jṣāḥ ||45||</div>
+                <div class="cr-blend-iast-line">kīrtanya-tīrtha-yaśasaḥ kuśalā rasa-jñāḥ ||45||</div>
             </div>
         </div>
     </details>
 
 
     <div class="fc-translation" data-sec="translation">From the Third Canto: Persons who are very expert and most intelligent in understanding things as they are engage in hearing narrations of the auspicious activities and pastimes of the Lord, which are worth chanting and worth hearing. Such persons do not care even for the highest material benediction, namely liberation, to say nothing of other less important benedictions like the material happiness of the heavenly kingdom, which are destroyed just by the raising of Your brow. What then to speak of those experiencing rasa? SB 3.15.48</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -3553,9 +3581,10 @@ Thus śrīdāmnaḥ ca bake-dviṣaś ca means the same thing as śrīdāma-bake
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
-                <p>These words are referring to the sādhaka. In this verse those who discern the meaning of things according to the scriptures dealing with bhakti (kuśalā) are used as the main subject. They are not those persons experiencing rasa (rasa-jṣāḥ), who are mentioned afterwards. If those who discern the meaning of bhakti scriptures take no interest in liberation, what to speak of those who directly experience the sweetness of the Lord? The raising of the Lord’s brow (te bruva unnayaiḥ) refers to the destructive nature of time.</p>
+                <p>These words are referring to the sādhaka. In this verse those who discern the meaning of things according to the scriptures dealing with bhakti (kuśalā) are used as the main subject. They are not those persons experiencing rasa (rasa-jñāḥ), who are mentioned afterwards. If those who discern the meaning of bhakti scriptures take no interest in liberation, what to speak of those who directly experience the sweetness of the Lord? The raising of the Lord’s brow (te bruva unnayaiḥ) refers to the destructive nature of time.</p>
             </div>
         </div>
     </section>
@@ -3613,6 +3642,7 @@ Thus śrīdāmnaḥ ca bake-dviṣaś ca means the same thing as śrīdāma-bake
     <div class="fc-translation" data-sec="translation">Some of these tyāgīs, by partaking of intense dāsya-bhāva, attain the level of vīra among the three types of pāriṣadas (dhuryā, dhīra and vīra). [Note: These are mentioned in BRS 3.2.48. The vīra-pāriṣada is described as the devotee who takes shelter of Kṛṣṇa and has incomparable attraction for Kṛṣṇa, at the expense of all other attractions. BRS 3.2.53]</div>
 
 
+
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -3620,6 +3650,7 @@ Thus śrīdāmnaḥ ca bake-dviṣaś ca means the same thing as śrīdāma-bake
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Some of the tyāgīs (as sādhakas) develop special, deep bhāva (prauḍha-bhāva-viśeṣa-bhāk). In this case, the word viśeṣa (special) means they develop a particular dāsya-bhāva corresponding to their resolute practice. That is because each and every devotee attains a position corresponding to his mood of practice, while following the principle of giving up all desires except those to please the Lord.</p>
@@ -3694,6 +3725,7 @@ Thus śrīdāmnaḥ ca bake-dviṣaś ca means the same thing as śrīdāma-bake
 
 
 
+
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-47" data-note-label="BG 3.47" data-note-chapter="3" data-note-vlabel="47">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.47…" rows="4"></textarea>
@@ -3717,18 +3749,18 @@ Thus śrīdāmnaḥ ca bake-dviṣaś ca means the same thing as śrīdāma-bake
     </header>
 
     <div class="cr-iast-block" data-sec="iast">
-        <div class="cr-iast-line">uddīpanā iha proktās tad-ārti-vyaṣjanādayaḥ |</div>
-<div class="cr-pron-line" data-sec="pronunciation">[uddeepanaa iha proktaas tad-aarti-vyashjanaadayah |]</div>        <div class="cr-iast-line">nija-prāṇa-vyayenāpi vipanna-trāṇa-śīlatā ||48||</div>
+        <div class="cr-iast-line">uddīpanā iha proktās tad-ārti-vyañjanādayaḥ |</div>
+<div class="cr-pron-line" data-sec="pronunciation">[uddeepanaa iha proktaas tad-aarti-vyanjanaadayah |]</div>        <div class="cr-iast-line">nija-prāṇa-vyayenāpi vipanna-trāṇa-śīlatā ||48||</div>
 <div class="cr-pron-line" data-sec="pronunciation">[nija-praana-vyayenaapi vipanna-traana-sheelataa ||48||]</div>        <div class="cr-iast-line">āśvāsanoktayaḥ sthairyam ity ādyās tatra vikriyāḥ |</div>
-<div class="cr-pron-line" data-sec="pronunciation">[aashvaasanoktayah sthairyam ity aadyaas tatra vikriyaah |]</div>        <div class="cr-iast-line">autsukyam atiharṣādyā jṣeyāḥ saṣcāriṇo budhaiḥ ||49||</div>
-<div class="cr-pron-line" data-sec="pronunciation">[autsukyam atiharshaadyaa jsheyaah sashchaarino budhaih ||49||]</div>    </div>
+<div class="cr-pron-line" data-sec="pronunciation">[aashvaasanoktayah sthairyam ity aadyaas tatra vikriyaah |]</div>        <div class="cr-iast-line">autsukyam atiharṣādyā jñeyāḥ sañcāriṇo budhaiḥ ||49||</div>
+<div class="cr-pron-line" data-sec="pronunciation">[autsukyam atiharshaadyaa jneyaah sanchaarino budhaih ||49||]</div>    </div>
 
 
     <details class="cr-blend-details" data-sec="blended">
         <summary>Blended reading (Sanskrit + English inline)</summary>
         <div class="cr-blend-grid">
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">uddīpanā iha proktās tad-ārti-vyaṣjanādayaḥ |</div>
+                <div class="cr-blend-iast-line">uddīpanā iha proktās tad-ārti-vyañjanādayaḥ |</div>
             </div>
             <div class="cr-blend-block">
                 <div class="cr-blend-iast-line">nija-prāṇa-vyayenāpi vipanna-trāṇa-śīlatā ||48||</div>
@@ -3737,13 +3769,14 @@ Thus śrīdāmnaḥ ca bake-dviṣaś ca means the same thing as śrīdāma-bake
                 <div class="cr-blend-iast-line">āśvāsanoktayaḥ sthairyam ity ādyās tatra vikriyāḥ |</div>
             </div>
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">autsukyam atiharṣādyā jṣeyāḥ saṣcāriṇo budhaiḥ ||49||</div>
+                <div class="cr-blend-iast-line">autsukyam atiharṣādyā jñeyāḥ sañcāriṇo budhaiḥ ||49||</div>
             </div>
         </div>
     </details>
 
 
     <div class="fc-translation" data-sec="translation">The uddīpanas for the dayā-vīra are such things as the appearance of suffering in a person who will be the object of mercy (Kṛṣṇa in disguise). The anubhāvas are steadiness, words of comfort, protecting those in distress, even at the expense of one’s life. The vyabhicāri-bhāvas are such things as autsukya, mati, and harṣa.</div>
+
 
 
 
@@ -3779,18 +3812,18 @@ Thus śrīdāmnaḥ ca bake-dviṣaś ca means the same thing as śrīdāma-bake
     </header>
 
     <div class="cr-iast-block" data-sec="iast">
-        <div class="cr-iast-line">uddīpanā iha proktās tad-ārti-vyaṣjanādayaḥ |</div>
-<div class="cr-pron-line" data-sec="pronunciation">[uddeepanaa iha proktaas tad-aarti-vyashjanaadayah |]</div>        <div class="cr-iast-line">nija-prāṇa-vyayenāpi vipanna-trāṇa-śīlatā ||48||</div>
+        <div class="cr-iast-line">uddīpanā iha proktās tad-ārti-vyañjanādayaḥ |</div>
+<div class="cr-pron-line" data-sec="pronunciation">[uddeepanaa iha proktaas tad-aarti-vyanjanaadayah |]</div>        <div class="cr-iast-line">nija-prāṇa-vyayenāpi vipanna-trāṇa-śīlatā ||48||</div>
 <div class="cr-pron-line" data-sec="pronunciation">[nija-praana-vyayenaapi vipanna-traana-sheelataa ||48||]</div>        <div class="cr-iast-line">āśvāsanoktayaḥ sthairyam ity ādyās tatra vikriyāḥ |</div>
-<div class="cr-pron-line" data-sec="pronunciation">[aashvaasanoktayah sthairyam ity aadyaas tatra vikriyaah |]</div>        <div class="cr-iast-line">autsukyam atiharṣādyā jṣeyāḥ saṣcāriṇo budhaiḥ ||49||</div>
-<div class="cr-pron-line" data-sec="pronunciation">[autsukyam atiharshaadyaa jsheyaah sashchaarino budhaih ||49||]</div>    </div>
+<div class="cr-pron-line" data-sec="pronunciation">[aashvaasanoktayah sthairyam ity aadyaas tatra vikriyaah |]</div>        <div class="cr-iast-line">autsukyam atiharṣādyā jñeyāḥ sañcāriṇo budhaiḥ ||49||</div>
+<div class="cr-pron-line" data-sec="pronunciation">[autsukyam atiharshaadyaa jneyaah sanchaarino budhaih ||49||]</div>    </div>
 
 
     <details class="cr-blend-details" data-sec="blended">
         <summary>Blended reading (Sanskrit + English inline)</summary>
         <div class="cr-blend-grid">
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">uddīpanā iha proktās tad-ārti-vyaṣjanādayaḥ |</div>
+                <div class="cr-blend-iast-line">uddīpanā iha proktās tad-ārti-vyañjanādayaḥ |</div>
             </div>
             <div class="cr-blend-block">
                 <div class="cr-blend-iast-line">nija-prāṇa-vyayenāpi vipanna-trāṇa-śīlatā ||48||</div>
@@ -3799,13 +3832,14 @@ Thus śrīdāmnaḥ ca bake-dviṣaś ca means the same thing as śrīdāma-bake
                 <div class="cr-blend-iast-line">āśvāsanoktayaḥ sthairyam ity ādyās tatra vikriyāḥ |</div>
             </div>
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">autsukyam atiharṣādyā jṣeyāḥ saṣcāriṇo budhaiḥ ||49||</div>
+                <div class="cr-blend-iast-line">autsukyam atiharṣādyā jñeyāḥ sañcāriṇo budhaiḥ ||49||</div>
             </div>
         </div>
     </details>
 
 
     <div class="fc-translation" data-sec="translation">The uddīpanas for the dayā-vīra are such things as the appearance of suffering in a person who will be the object of mercy (Kṛṣṇa in disguise). The anubhāvas are steadiness, words of comfort, protecting those in distress, even at the expense of one’s life. The vyabhicāri-bhāvas are such things as autsukya, mati, and harṣa.</div>
+
 
 
 
@@ -3872,6 +3906,7 @@ Thus śrīdāmnaḥ ca bake-dviṣaś ca means the same thing as śrīdāma-bake
 
 
 
+
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-50" data-note-label="BG 3.50" data-note-chapter="3" data-note-vlabel="50">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.50…" rows="4"></textarea>
@@ -3896,8 +3931,8 @@ Thus śrīdāmnaḥ ca bake-dviṣaś ca means the same thing as śrīdāma-bake
 
     <div class="cr-iast-block" data-sec="iast">
         <div class="cr-iast-line">yathā –</div>
-<div class="cr-pron-line" data-sec="pronunciation">[yathaa –]</div>        <div class="cr-iast-line">vande kuḍmalitāṣjalir muhur ahaṁ vīraṁ mayūra-dhvajaṁ</div>
-<div class="cr-pron-line" data-sec="pronunciation">[vande kudmalitaashjalir muhur aham veeram mayoora-dhvajam]</div>        <div class="cr-iast-line">yenārdhaṁ kapaṭa-dvijāya vapuṣaḥ kaṁsa-dviṣe ditsatā |</div>
+<div class="cr-pron-line" data-sec="pronunciation">[yathaa –]</div>        <div class="cr-iast-line">vande kuḍmalitāñjalir muhur ahaṁ vīraṁ mayūra-dhvajaṁ</div>
+<div class="cr-pron-line" data-sec="pronunciation">[vande kudmalitaanjalir muhur aham veeram mayoora-dhvajam]</div>        <div class="cr-iast-line">yenārdhaṁ kapaṭa-dvijāya vapuṣaḥ kaṁsa-dviṣe ditsatā |</div>
 <div class="cr-pron-line" data-sec="pronunciation">[yenaardham kapata-dvijaaya vapushah kamsa-dvishe ditsataa |]</div>        <div class="cr-iast-line">kaṣṭaṁ gadgadikākulo ’smi kathanārambhād aho dhīmatā</div>
 <div class="cr-pron-line" data-sec="pronunciation">[kashtam gadgadikaakulo ’smi kathanaarambhaad aho dheemataa]</div>        <div class="cr-iast-line">sollāsaṁ krakacena dāritam abhūt patnī-sutābhyāṁ śivaḥ ||51||</div>
 <div class="cr-pron-line" data-sec="pronunciation">[sollaasam krakachena daaritam abhoot patnee-sutaabhyaam shivah ||51||]</div>    </div>
@@ -3910,7 +3945,7 @@ Thus śrīdāmnaḥ ca bake-dviṣaś ca means the same thing as śrīdāma-bake
                 <div class="cr-blend-iast-line">yathā –</div>
             </div>
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">vande kuḍmalitāṣjalir muhur ahaṁ vīraṁ mayūra-dhvajaṁ</div>
+                <div class="cr-blend-iast-line">vande kuḍmalitāñjalir muhur ahaṁ vīraṁ mayūra-dhvajaṁ</div>
             </div>
             <div class="cr-blend-block">
                 <div class="cr-blend-iast-line">yenārdhaṁ kapaṭa-dvijāya vapuṣaḥ kaṁsa-dviṣe ditsatā |</div>
@@ -3927,6 +3962,7 @@ Thus śrīdāmnaḥ ca bake-dviṣaś ca means the same thing as śrīdāma-bake
 
     <div class="fc-translation" data-sec="translation">An example: I offer my respects with folded hands to Mayūradhvaja. [Note: King Mayūradhvaja’s son took the sacrificial horse of Yudhiṣṭhira for his fathers sacrifice. Kṛṣṇa disguised himself as a brāhmaṇa, and Arjuna as his son. They came to the king and Kṛṣṇa, disguised as a brāhmaṇa, told him that his son was to be married, but in the forest was attacked by lion. The lion agreed to free the son on the condition that King Mayūradhvaja should offer to the lion half his body. The King agreed, but then his wife offered her body, since she was considered the left half of the King. Kṛṣṇa said the lion wanted the right half. The King agreed to give his right half, and ordered his son and wife to cut him in two. Tears flowed from the King’s left eye. Kṛṣṇa said He could not accept this offering since it was made unwillingly. The king answered that his tears were not because of grief on dying, but the left side was crying because it was disappointed on not being offered to the brāhmaṇa as well. Hearing of such merciful nature in the King, Kṛṣṇa gave up his disguise and embraced the King. Mayūradhvaja completed his sacrifice, and then let the horse go to Yudhiṣṭhira’s sacrifice.] Alas! Desiring to offer half of his body to Kṛṣṇa disguised as a brāhmaṇa, he ordered his wife and son to cleave his head with a saw. Oh! In telling this tale, my voice chokes up.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3942,6 +3978,7 @@ Thus śrīdāmnaḥ ca bake-dviṣaś ca means the same thing as śrīdāma-bake
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>The incidental sentence starting the word kaṣṭaṁ, which is inserted within the other statement (garbhitatvam), may be regarded as a literary fault. But actually it indicates a good quality, since it nourishes astonishment. The Sāhitya-darpaṇa says the same thing in verse 7.27: garbhitatvam api guṇaḥ kvāpi: interior statements are sometimes an asset. Garbitatvam means a statement enclosed within another statement.</p>
@@ -3981,8 +4018,8 @@ Thus śrīdāmnaḥ ca bake-dviṣaś ca means the same thing as śrīdāma-bake
     </header>
 
     <div class="cr-iast-block" data-sec="iast">
-        <div class="cr-iast-line">hareś cet tattva-vijṣānaṁ naivāsya ghaṭate dayā |</div>
-<div class="cr-pron-line" data-sec="pronunciation">[haresh chet tattva-vijshaanam naivaasya ghatate dayaa |]</div>        <div class="cr-iast-line">tad-abhāve tv asau dāna-vīre ’ntar-bhavati sphuṭam ||52||</div>
+        <div class="cr-iast-line">hareś cet tattva-vijñānaṁ naivāsya ghaṭate dayā |</div>
+<div class="cr-pron-line" data-sec="pronunciation">[haresh chet tattva-vijnaanam naivaasya ghatate dayaa |]</div>        <div class="cr-iast-line">tad-abhāve tv asau dāna-vīre ’ntar-bhavati sphuṭam ||52||</div>
 <div class="cr-pron-line" data-sec="pronunciation">[tad-abhaave tv asau daana-veere ’ntar-bhavati sphutam ||52||]</div>    </div>
 
 
@@ -3990,7 +4027,7 @@ Thus śrīdāmnaḥ ca bake-dviṣaś ca means the same thing as śrīdāma-bake
         <summary>Blended reading (Sanskrit + English inline)</summary>
         <div class="cr-blend-grid">
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">hareś cet tattva-vijṣānaṁ naivāsya ghaṭate dayā |</div>
+                <div class="cr-blend-iast-line">hareś cet tattva-vijñānaṁ naivāsya ghaṭate dayā |</div>
             </div>
             <div class="cr-blend-block">
                 <div class="cr-blend-iast-line">tad-abhāve tv asau dāna-vīre ’ntar-bhavati sphuṭam ||52||</div>
@@ -4000,6 +4037,7 @@ Thus śrīdāmnaḥ ca bake-dviṣaś ca means the same thing as śrīdāma-bake
 
 
     <div class="fc-translation" data-sec="translation">If Mayūradhvaja were aware that the brāhmaṇa was actually Kṛṣṇa, he would not have displayed such compassion. Without the display of compassion, he would instead be a clear example of a dāna-vīra, one who gives to the Lord in surrender.</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -4016,6 +4054,7 @@ Thus śrīdāmnaḥ ca bake-dviṣaś ca means the same thing as śrīdāma-bake
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Without the Lord disguising Himself (as a helpless brāhmaṇa), Mayūradhvaja would not have manifested compassion (since he would know that the Lord is not helpless).</p>
@@ -4073,7 +4112,8 @@ Thus śrīdāmnaḥ ca bake-dviṣaś ca means the same thing as śrīdāma-bake
     </details>
 
 
-    <div class="fc-translation" data-sec="translation">Since this King was a devotee of the Lord, he always had rati for Kṛṣṇa. Thus, in showing bhakti to Kṛṣṇa in the disguised form of a brāhmaṇa, it was still an expression of his bhakti. [Note: If he had no bhakti for the Lord, then his expression of compassion would not be bhakti, but mere piety of a king. From that, he would get some ajṣāta-sukṛti. Thus the condition for being dayā-vīra is that the person should be a devotee, and Kṛṣṇa should be disguised in some form of a person who appears helpless. If Kṛṣṇa does not disguise Himself but appears helpless to the devotee, then the devotee has vātsalya-rasa or karuṇa-rasa.]</div>
+    <div class="fc-translation" data-sec="translation">Since this King was a devotee of the Lord, he always had rati for Kṛṣṇa. Thus, in showing bhakti to Kṛṣṇa in the disguised form of a brāhmaṇa, it was still an expression of his bhakti. [Note: If he had no bhakti for the Lord, then his expression of compassion would not be bhakti, but mere piety of a king. From that, he would get some ajñāta-sukṛti. Thus the condition for being dayā-vīra is that the person should be a devotee, and Kṛṣṇa should be disguised in some form of a person who appears helpless. If Kṛṣṇa does not disguise Himself but appears helpless to the devotee, then the devotee has vātsalya-rasa or karuṇa-rasa.]</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -4090,6 +4130,7 @@ Thus śrīdāmnaḥ ca bake-dviṣaś ca means the same thing as śrīdāma-bake
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Vaiṣṇava means “one who has veneration of Viṣṇu.” The sūtra bhaktih (Pāṇini 4.3.94) says that a word such as viṣṇu can be transformed into the word vaiṣṇava by the suffix called aṇ, with the meaning of “a person whose object of love is Viṣṇu.” Thus vaiṣṇavatvād means “because he was endowed with bhakti.”</p>
@@ -4160,6 +4201,7 @@ Thus śrīdāmnaḥ ca bake-dviṣaś ca means the same thing as śrīdāma-bake
 
 
 
+
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-54" data-note-label="BG 3.54" data-note-chapter="3" data-note-vlabel="54">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.54…" rows="4"></textarea>
@@ -4207,6 +4249,7 @@ Thus śrīdāmnaḥ ca bake-dviṣaś ca means the same thing as śrīdāma-bake
 
     <div class="fc-translation" data-sec="translation">The dhīra-śānta (peaceful devotee) [Note: The dhīra-śānta is defined as he who is peaceful, tolerates suffering, uses discrimination, and possesses qualities like modesty. BRS 2.1.233] who is fixed at all times in dharma pleasing to Kṛṣṇa alone is called dharma-vīra.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -4250,8 +4293,8 @@ Thus śrīdāmnaḥ ca bake-dviṣaś ca means the same thing as śrīdāma-bake
     <div class="cr-iast-block" data-sec="iast">
         <div class="cr-iast-line">uddīpanā iha proktāḥ sac-chāstra-śravaṇādayaḥ |</div>
 <div class="cr-pron-line" data-sec="pronunciation">[uddeepanaa iha proktaah sach-chaastra-shravanaadayah |]</div>        <div class="cr-iast-line">anubhāvā nayāstikya-sahiṣṇutva-yamādayaḥ</div>
-<div class="cr-pron-line" data-sec="pronunciation">[anubhaavaa nayaastikya-sahishnutva-yamaadayah]</div>        <div class="cr-iast-line">mati-smṛti-prabhṛtayo vijṣeyā vyabhicāriṇah  ||56||</div>
-<div class="cr-pron-line" data-sec="pronunciation">[mati-smriti-prabhritayo vijsheyaa vyabhichaarinah  ||56||]</div>    </div>
+<div class="cr-pron-line" data-sec="pronunciation">[anubhaavaa nayaastikya-sahishnutva-yamaadayah]</div>        <div class="cr-iast-line">mati-smṛti-prabhṛtayo vijñeyā vyabhicāriṇah  ||56||</div>
+<div class="cr-pron-line" data-sec="pronunciation">[mati-smriti-prabhritayo vijneyaa vyabhichaarinah  ||56||]</div>    </div>
 
 
     <details class="cr-blend-details" data-sec="blended">
@@ -4264,13 +4307,14 @@ Thus śrīdāmnaḥ ca bake-dviṣaś ca means the same thing as śrīdāma-bake
                 <div class="cr-blend-iast-line">anubhāvā nayāstikya-sahiṣṇutva-yamādayaḥ</div>
             </div>
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">mati-smṛti-prabhṛtayo vijṣeyā vyabhicāriṇah  ||56||</div>
+                <div class="cr-blend-iast-line">mati-smṛti-prabhṛtayo vijñeyā vyabhicāriṇah  ||56||</div>
             </div>
         </div>
     </details>
 
 
     <div class="fc-translation" data-sec="translation">The uddīpanas for the dharma-vīra are activities such as hearing authorized scriptures. The anubhāvas are proper conduct, adherence to scriptural rules, tolerance, and following rules of sense control. The vyabhicāri-bhāvas are mati, smṛti and others.</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -4332,6 +4376,7 @@ Thus śrīdāmnaḥ ca bake-dviṣaś ca means the same thing as śrīdāma-bake
 
 
     <div class="fc-translation" data-sec="translation">The wise say that dharmotsāha-rati is the sthāyi-bhāva of the dharma-vīra. Dharmotsāha means to be absorbed only in the subject of dharma.</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -4406,10 +4451,11 @@ Thus śrīdāmnaḥ ca bake-dviṣaś ca means the same thing as śrīdāma-bake
 
     <div class="fc-translation" data-sec="translation">An example: O Kṛṣṇa, defeater of demons! When Indra was called by Yudhiṣṭhira, who performed elaborate sacrifices for Your pleasure, his wife Śacī’s left cheek became marked with her hand print.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
-            <p>The best example of a dharma-vīra is Mahārāja Yudhiṣṭhira. A devotee once told Kṛṣṇa, “My dear Kṛṣṇa, O killer of all demons, Mahārāja Yudhiṣṭhira, the eldest son of Mahārāja Pāṇḍu, has performed all kinds of sacrifices just to please You. He has always invited the heavenly King, Indra, to take part in the yajṣas [sacrifices]. Because King Indra was thus absent so often from Śacīdevī, she had to pass much of her time pining over Indra’s absence, with her cheeks upon her hands.”</p>
+            <p>The best example of a dharma-vīra is Mahārāja Yudhiṣṭhira. A devotee once told Kṛṣṇa, “My dear Kṛṣṇa, O killer of all demons, Mahārāja Yudhiṣṭhira, the eldest son of Mahārāja Pāṇḍu, has performed all kinds of sacrifices just to please You. He has always invited the heavenly King, Indra, to take part in the yajñas [sacrifices]. Because King Indra was thus absent so often from Śacīdevī, she had to pass much of her time pining over Indra’s absence, with her cheeks upon her hands.”</p>
         </div>
         <div class="cr-purport-attrib">— A.C. Bhaktivedanta Swami Prabhupāda</div>
     </section>
@@ -4447,8 +4493,8 @@ Thus śrīdāmnaḥ ca bake-dviṣaś ca means the same thing as śrīdāma-bake
     </header>
 
     <div class="cr-iast-block" data-sec="iast">
-        <div class="cr-iast-line">yajṣaḥ pūjā-viśeṣo ’sya bhujādy-aṅgāni vaiṣṇavaḥ |</div>
-<div class="cr-pron-line" data-sec="pronunciation">[yajshah poojaa-vishesho ’sya bhujaady-angaani vaishnavah |]</div>        <div class="cr-iast-line">dhyātvendrādy-āśrayatvena yad eṣv āhutir arpyate ||59||</div>
+        <div class="cr-iast-line">yajñaḥ pūjā-viśeṣo ’sya bhujādy-aṅgāni vaiṣṇavaḥ |</div>
+<div class="cr-pron-line" data-sec="pronunciation">[yajnah poojaa-vishesho ’sya bhujaady-angaani vaishnavah |]</div>        <div class="cr-iast-line">dhyātvendrādy-āśrayatvena yad eṣv āhutir arpyate ||59||</div>
 <div class="cr-pron-line" data-sec="pronunciation">[dhyaatvendraady-aashrayatvena yad eshv aahutir arpyate ||59||]</div>    </div>
 
 
@@ -4456,7 +4502,7 @@ Thus śrīdāmnaḥ ca bake-dviṣaś ca means the same thing as śrīdāma-bake
         <summary>Blended reading (Sanskrit + English inline)</summary>
         <div class="cr-blend-grid">
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">yajṣaḥ pūjā-viśeṣo ’sya bhujādy-aṅgāni vaiṣṇavaḥ |</div>
+                <div class="cr-blend-iast-line">yajñaḥ pūjā-viśeṣo ’sya bhujādy-aṅgāni vaiṣṇavaḥ |</div>
             </div>
             <div class="cr-blend-block">
                 <div class="cr-blend-iast-line">dhyātvendrādy-āśrayatvena yad eṣv āhutir arpyate ||59||</div>
@@ -4467,10 +4513,11 @@ Thus śrīdāmnaḥ ca bake-dviṣaś ca means the same thing as śrīdāma-bake
 
     <div class="fc-translation" data-sec="translation">When the Vaiṣṇavas offer sacrifice to Indra, the Vaiṣṇavas consider the sacrifice as worship of the Lord, and meditate on worshipping the limbs of the Lord which give shelter to Indra and others.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
-            <p>The performance of different yajṣas for the demigods is considered to be worship of the limbs of the Supreme Lord. The demigods are considered to be different parts of the universal body of the Lord, and therefore the ultimate purpose in worshiping them is to please the Lord by partially worshiping His different limbs.</p>
+            <p>The performance of different yajñas for the demigods is considered to be worship of the limbs of the Supreme Lord. The demigods are considered to be different parts of the universal body of the Lord, and therefore the ultimate purpose in worshiping them is to please the Lord by partially worshiping His different limbs.</p>
         </div>
         <div class="cr-purport-attrib">— A.C. Bhaktivedanta Swami Prabhupāda</div>
     </section>
@@ -4527,6 +4574,7 @@ Thus śrīdāmnaḥ ca bake-dviṣaś ca means the same thing as śrīdāma-bake
 
 
     <div class="fc-translation" data-sec="translation">And, Yudhiṣṭhira, who is the ocean of prema and the highest devotee, undertook the sacrifice on the order of Kṛṣṇa alone.</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -4588,6 +4636,7 @@ Thus śrīdāmnaḥ ca bake-dviṣaś ca means the same thing as śrīdāma-bake
 
 
     <div class="fc-translation" data-sec="translation">Some experts such as Dhanika have accepted three types of vīras—dāna-vīra, dayā-vīra and yuddha-vīra and do not accept the dharma-vīra. Thus ends the third wave, concerning vīra-bhakti-rasa, in the Northern Section of the Bhakti-rasāmrṭa-sindhu. 4.4 The Fourth Wave Concerning Karuṇa-bhakti-rasa In the Northern Section of Bhakti-rasāmṛta-sindhu Outline of Karuṇa-rasa I. Definition II. Ālambana A. Viṣaya 1. Kṛṣṇa 2. Friends 3. Relatives and Others B. Āśraya: Friends of Kṛṣṇa III. Uddīpana IV. Anubhāvas V. Sāttvika-bhāvas VI. Vyabhicāri-bhāvas VII. Sthāyi-bhāva: śoka-rati A. Arises only because of intense Principle Rati B. Śoka-rati causes lack of awareness of Kṛṣṇa’s powers C. Lamentation produces happiness</div>
+
 
 
 

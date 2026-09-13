@@ -31,11 +31,13 @@
 <body class="has-sidebar">
 <header class="fc-site-header">
     <button type="button" class="fc-mobile-trigger fc-mobile-trigger-left" data-overlay="left" aria-label="Open settings drawer">⚙</button>
-    <a class="fc-brand" href="../../../../">FolioCorpus<span class="fc-sub">Bhagavad-gītā</span></a>
+<a class="fc-brand" href="../../../../">FolioCorpus<span class="fc-sub">Bhakti-rasāmṛta-sindhu</span></a>
     <nav class="fc-site-nav">
         <a href="../../../../">Home</a>
         <a href="../../../../bg/">Bhagavad-gītā</a>
         <a href="../../../../sb/">Śrīmad-Bhāgavatam</a>
+        <a href="../../../../brs/" title="Bhakti-rasāmṛta-sindhu with Jīva Gosvāmī's and Viśvanātha Cakravartī's commentaries">Bhakti-rasāmṛta-sindhu</a>
+        <a href="../../../../nod/" title="Nectar of Devotion">Nectar of Devotion</a>
         <a href="../../../../search/" title="Search across all integrated works">🔍 Search</a>
         <button type="button" id="fc-random-verse" class="fc-nav-btn" title="Jump to a random verse">🎲 Random</button>
     </nav>
@@ -46,8 +48,8 @@
     <button class="fc-sb-collapse" type="button" data-sb="left" title="Collapse left sidebar" aria-label="Collapse"></button>
 
     <div class="fc-sb-body">
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Reading</div>
+        <details class="fc-sb-section" data-sbsec="reading" open>
+            <summary class="fc-sb-title">Reading</summary>
             <div class="fc-sb-sub">Theme</div>
             <div class="fc-segmented" data-setting="theme">
                 <button type="button" data-val="light">Light</button>
@@ -73,10 +75,10 @@
                 <button type="button" data-val="single">Single</button>
                 <button type="button" data-val="side">Side-by-side</button>
             </div>
-        </div>
+        </details>
 
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Display</div>
+        <details class="fc-sb-section" data-sbsec="display" open>
+            <summary class="fc-sb-title">Display</summary>
             <div class="fc-sb-grid">
                 <label><input type="checkbox" data-section="devanagari" checked> Devanāgarī</label>
                 <label><input type="checkbox" data-section="iast" checked> IAST transliteration</label>
@@ -98,33 +100,10 @@
                 <button type="button" data-action="expand-all">Expand all</button>
                 <button type="button" data-action="collapse-all">Collapse all</button>
             </div>
-        </div>
+        </details>
 
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Find your starting point</div>
-            <div class="fc-persona-links">
-                <a class="fc-persona-link" href="../../../../daily/">🌅 Daily (one value a week)</a>
-                <a class="fc-persona-link" href="../../../../householder/">🏠 Householder (family & work)</a>
-                <a class="fc-persona-link" href="../../../../parenting/">👨‍👩‍👧 Parenting (stories for kids)</a>
-                <a class="fc-persona-link" href="../../../../themes/">📚 All themes</a>
-                <a class="fc-persona-link" href="../../../../values/" style="background:#F0F6F2;border-left-color:#1F4632;">ॐ Vedic Value System ↗</a>
-                <a class="fc-persona-link" href="../../../../vidya/" style="background:#FBF6E4;border-left-color:#C8860B;">📚 Vidyā Karaṇa (kids, multi-lang) ↗</a>
-            </div>
-        </div>
-
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Audience</div>
-            <div class="fc-audience-filter">
-                <label><input type="radio" name="fc-audience" value="all" checked> All levels</label>
-                <label><input type="radio" name="fc-audience" value="primary"> Primary (children)</label>
-                <label><input type="radio" name="fc-audience" value="middle"> Middle (teens)</label>
-                <label><input type="radio" name="fc-audience" value="senior"> Senior (adults)</label>
-                <label><input type="radio" name="fc-audience" value="college"> College / scholar</label>
-            </div>
-        </div>
-
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Tools</div>
+        <details class="fc-sb-section" data-sbsec="tools" open>
+            <summary class="fc-sb-title">Tools</summary>
             <div class="fc-sb-tools">
                 <button type="button" id="fc-presentation-toggle" class="fc-tool-btn"><span>🖥 Presentation</span><kbd class="fc-kbd">F</kbd></button>
                 <button type="button" id="fc-pen-toggle" class="fc-tool-btn"><span>✏️ Pen mode</span><kbd class="fc-kbd">P</kbd></button>
@@ -139,26 +118,10 @@
                 <button type="button" id="fc-clear-highlights" class="fc-tool-btn">🩷 Clear highlights (page)</button>
                 <button type="button" id="fc-notes-modal-open" class="fc-tool-btn">📓 My annotations</button>
             </div>
-        </div>
+        </details>
 
-        <div class="fc-sb-section" id="fc-tts-controls" hidden>
-            <div class="fc-sb-title">
-                Read-aloud
-                <label class="fc-tts-master">
-                    <input type="checkbox" id="fc-tts-enabled" checked>
-                    <span class="fc-tts-master-label">On</span>
-                </label>
-            </div>
-            <div class="fc-tts-inner">
-                <div class="fc-sb-sub">Voice</div>
-                <select id="fc-tts-voice" class="fc-tts-select" aria-label="TTS voice"></select>
-                <div class="fc-sb-sub">Rate <span class="fc-tts-rate-val">1.0×</span></div>
-                <input type="range" id="fc-tts-rate" min="0.5" max="2" step="0.1" value="1" class="fc-tts-rate" aria-label="Reading rate">
-            </div>
-        </div>
-
-        <div class="fc-sb-section" id="fc-progress-section">
-            <div class="fc-sb-title">Progress</div>
+        <details class="fc-sb-section" data-sbsec="progress" id="fc-progress-section" open>
+            <summary class="fc-sb-title">Progress</summary>
             <div class="fc-progress-row">
                 <span class="fc-progress-num" id="fc-progress-num">0</span>
                 <span class="fc-progress-divider">/</span>
@@ -173,29 +136,29 @@
                 <span class="fc-progress-spacer"></span>
                 <button type="button" class="fc-progress-reset" id="fc-progress-reset" title="Reset progress">↺</button>
             </div>
-        </div>
+        </details>
 
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Bookmarks <span class="fc-sb-count" id="fc-bookmarks-count">0</span></div>
+        <details class="fc-sb-section" data-sbsec="bookmarks" open>
+            <summary class="fc-sb-title">Bookmarks <span class="fc-sb-count" id="fc-bookmarks-count">0</span></summary>
             <ul class="fc-bookmark-list" id="fc-bookmarks-list">
                 <li class="fc-sb-empty">No bookmarks yet — click ☆ on any verse.</li>
             </ul>
-        </div>
+        </details>
 
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Notes <span class="fc-sb-count" id="fc-notes-count">0</span></div>
+        <details class="fc-sb-section" data-sbsec="notes" open>
+            <summary class="fc-sb-title">Notes <span class="fc-sb-count" id="fc-notes-count">0</span></summary>
             <ul class="fc-bookmark-list" id="fc-notes-list">
                 <li class="fc-sb-empty">No notes yet — open any verse and write in the 📝 block.</li>
             </ul>
-        </div>
+        </details>
 
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Export</div>
+        <details class="fc-sb-section" data-sbsec="export">
+            <summary class="fc-sb-title">Export</summary>
             <div class="fc-sb-tools">
                 <button type="button" id="fc-export-md" class="fc-tool-btn">📥 Download Markdown</button>
                 <button type="button" id="fc-export-json" class="fc-tool-btn">💾 Download JSON backup</button>
             </div>
-        </div>
+        </details>
     </div>
 </aside>    <main class="fc-container">
 <nav class="fc-breadcrumbs">
@@ -221,8 +184,8 @@
         <div class="cr-iast-line">tatra sambandha-rūpā—</div>
 <div class="cr-pron-line" data-sec="pronunciation">[tatra sambandha-roopaa—]</div>        <div class="cr-iast-line">sambandha-rūpā govinde pitṛtvādy-ābhimānitā |</div>
 <div class="cr-pron-line" data-sec="pronunciation">[sambandha-roopaa govinde pitritvaady-aabhimaanitaa |]</div>        <div class="cr-iast-line">atropalakṣaṇatayā vṛṣṇīnāṁ vallavā matāḥ |</div>
-<div class="cr-pron-line" data-sec="pronunciation">[atropalakshanatayaa vrishneenaam vallavaa mataah |]</div>        <div class="cr-iast-line">yadaiśya-jṣāna-śūnyatvād eṣāṁ rāge pradhānatā ||288||</div>
-<div class="cr-pron-line" data-sec="pronunciation">[yadaishya-jshaana-shoonyatvaad eshaam raage pradhaanataa ||288||]</div>    </div>
+<div class="cr-pron-line" data-sec="pronunciation">[atropalakshanatayaa vrishneenaam vallavaa mataah |]</div>        <div class="cr-iast-line">yadaiśya-jñāna-śūnyatvād eṣāṁ rāge pradhānatā ||288||</div>
+<div class="cr-pron-line" data-sec="pronunciation">[yadaishya-jnaana-shoonyatvaad eshaam raage pradhaanataa ||288||]</div>    </div>
 
 
     <details class="cr-blend-details" data-sec="blended">
@@ -238,13 +201,14 @@
                 <div class="cr-blend-iast-line">atropalakṣaṇatayā vṛṣṇīnāṁ vallavā matāḥ |</div>
             </div>
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">yadaiśya-jṣāna-śūnyatvād eṣāṁ rāge pradhānatā ||288||</div>
+                <div class="cr-blend-iast-line">yadaiśya-jñāna-śūnyatvād eṣāṁ rāge pradhānatā ||288||</div>
             </div>
         </div>
     </details>
 
 
     <div class="fc-translation" data-sec="translation">Next sambandha-rūpa-rāgātmika-bhakti will be discussed: Sambandha-rūpa-rāgātmika-bhakti is that bhakti inspired by great absorption arising from identifying oneself as the parent, friend or servant of Govinda. This refers to the bhakti of the cowherd people, which is indicated by the word, sambandhād vṛṣṇayaḥ, quoted in verse 275 as an example of sambandha. This is because these other relationships in Vraja also have a predominance of intense affection (rāga), caused by a lack of awareness of Kṛṣṇa as God.</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -260,9 +224,22 @@ In the attitude of the denizens of Vṛndāvana, such as Nanda Mahārāja and Mo
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
             <div class="cr-acarya-name">
+                Viśvanātha Cakravartī Ṭhākura
+                <span class="cr-samp-badge">Gauḍīya</span>
+            </div>
+            <div class="cr-acarya-work">Bhakti-sāra-pradarśinī</div>
+            <div class="cr-acarya-label">Commentary</div>
+            <div class="cr-acarya-purp">
+                <p>The word vṛṣṇayaḥ in the phrase sambandhād vṛṣṇayaḥ (the Vṛṣṇis attained perfection by relationship) indicates vallavā (cowherd men). The reason for indicating only the cowherd men instead of meaning both the cowherd men and the Yadus is then given by the phrase “because they have a predominance of spontaneous absorption (rāga), caused by lack of awareness of Kṛṣṇa as God.” The sense of the verse is as follows.
+Bhaktyā vayam referred to vaidhi-bhakti, and the Vṛṣṇis’ bhakti would be included in that type of bhakti. In the beginning of the verse, the gopīs were mentioned as the prime examples of kāmā-rūpa-rāgātmika-bhakti. Therefore, the residents of Vraja, the cowherd men should be considered as the chief examples of sambandha-rūpa-rāgātmika-bhakti. If the meaning of Vṛṣṇi is taken to be the relatives in Dvārakā, the enumeration of types of bhakti would be incomplete, with the fault of deficiency. [Note: In the Bhāgavatam list fear and hatred were discarded as bhakti. The remaining types were kāma, sambandha (sneha) and vaidhi-bhakti. Since vaidhi-bhakti and rāgānuga are the two sādhanas for attaining the Lord, and madhūrya-rāgānuga is represented by kāma, the other types of love in Vraja must be represented by sambandha of the cowherd people who are also called Vṛṣṇis.]</p>
+            </div>
+        </div>
+        <div class="cr-acarya-card gaudiya">
+            <div class="cr-acarya-name">
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Pitṛtvādy-abhimānitā (having identity as a father, etc. of Kṛṣṇa) actually means “inspired by intense affection (rāga) caused by that identity as father etc.” The refer­ence to the Vṛṣṇis is from the Bhāgavatam verse quoted in verse 275 of the text. One should take the word Vṛṣṇi to mean the cowherd men rather than the inhabitants of Mathurā and Dvārakā. This is an example of ajahal-lakṣana: the original meaning of the word is not given up completely. [Note: King Devamīḍha of the Yadu clan had two wives, one of kṣatriya family, the other of vaiśya family. Through the kṣatriya wife, he bore a son named Sura, and through the vaiśya wife, he bore a son named Parjanya. Sura had a son named Vasudeva, a kṣatriya, and Parjanya had a son named Nanda, a cowherd. Thus, Nanda and his family of cowherds should be considered Vṛṣṇis also. However, usually the term refers to the Vṛṣṇi family in Mathurā and Dvārakā. In lakṣaṇa, the direct meaning must be given up in favor of some other meaning where the direct meaning does not make sense. If the meaning is given up completely, then it is called jahal-lakṣaṇa. If only part of the original meaning is given up, it is called ajahal-lakṣaṇa. In this case, the complete meaning of Vṛṣṇi is not given up, but must refer only to Nanda’s lineage of cowherd men in the Vṛṣṇi line, and not the inhabitants of Mathurā and Dvārakā, since their devotion was mixed with aiśvarya.] It is similar to the use of the syllable num in the following sūtra says aṭ-kupvāṅ-num vyavāye ’pi. [Note: After r, ṣ or ṛ short or long in the same word, the cerebral ṇ takes the place of dental n even with intervention of a vowel, y,v,or h, a gutttural or labial, the preposition ā or the augment num. (Pāṇini 8.4.2) Num actually means the dental n, but in this rule it stands for anusvāra only.] Num means dental n but in the context, it must mean anusvāra. Just as the word, num, in the sūtra stands for anusvāra in practical application, so Vṛṣṇi stands for the cowherd men of Vraja in the context of the verse.

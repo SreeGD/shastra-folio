@@ -31,11 +31,13 @@
 <body class="has-sidebar">
 <header class="fc-site-header">
     <button type="button" class="fc-mobile-trigger fc-mobile-trigger-left" data-overlay="left" aria-label="Open settings drawer">⚙</button>
-    <a class="fc-brand" href="../../../../">FolioCorpus<span class="fc-sub">Bhagavad-gītā</span></a>
+<a class="fc-brand" href="../../../../">FolioCorpus<span class="fc-sub">Bhakti-rasāmṛta-sindhu</span></a>
     <nav class="fc-site-nav">
         <a href="../../../../">Home</a>
         <a href="../../../../bg/">Bhagavad-gītā</a>
         <a href="../../../../sb/">Śrīmad-Bhāgavatam</a>
+        <a href="../../../../brs/" title="Bhakti-rasāmṛta-sindhu with Jīva Gosvāmī's and Viśvanātha Cakravartī's commentaries">Bhakti-rasāmṛta-sindhu</a>
+        <a href="../../../../nod/" title="Nectar of Devotion">Nectar of Devotion</a>
         <a href="../../../../search/" title="Search across all integrated works">🔍 Search</a>
         <button type="button" id="fc-random-verse" class="fc-nav-btn" title="Jump to a random verse">🎲 Random</button>
     </nav>
@@ -46,8 +48,8 @@
     <button class="fc-sb-collapse" type="button" data-sb="left" title="Collapse left sidebar" aria-label="Collapse"></button>
 
     <div class="fc-sb-body">
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Reading</div>
+        <details class="fc-sb-section" data-sbsec="reading" open>
+            <summary class="fc-sb-title">Reading</summary>
             <div class="fc-sb-sub">Theme</div>
             <div class="fc-segmented" data-setting="theme">
                 <button type="button" data-val="light">Light</button>
@@ -73,10 +75,10 @@
                 <button type="button" data-val="single">Single</button>
                 <button type="button" data-val="side">Side-by-side</button>
             </div>
-        </div>
+        </details>
 
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Display</div>
+        <details class="fc-sb-section" data-sbsec="display" open>
+            <summary class="fc-sb-title">Display</summary>
             <div class="fc-sb-grid">
                 <label><input type="checkbox" data-section="devanagari" checked> Devanāgarī</label>
                 <label><input type="checkbox" data-section="iast" checked> IAST transliteration</label>
@@ -98,33 +100,10 @@
                 <button type="button" data-action="expand-all">Expand all</button>
                 <button type="button" data-action="collapse-all">Collapse all</button>
             </div>
-        </div>
+        </details>
 
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Find your starting point</div>
-            <div class="fc-persona-links">
-                <a class="fc-persona-link" href="../../../../daily/">🌅 Daily (one value a week)</a>
-                <a class="fc-persona-link" href="../../../../householder/">🏠 Householder (family & work)</a>
-                <a class="fc-persona-link" href="../../../../parenting/">👨‍👩‍👧 Parenting (stories for kids)</a>
-                <a class="fc-persona-link" href="../../../../themes/">📚 All themes</a>
-                <a class="fc-persona-link" href="../../../../values/" style="background:#F0F6F2;border-left-color:#1F4632;">ॐ Vedic Value System ↗</a>
-                <a class="fc-persona-link" href="../../../../vidya/" style="background:#FBF6E4;border-left-color:#C8860B;">📚 Vidyā Karaṇa (kids, multi-lang) ↗</a>
-            </div>
-        </div>
-
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Audience</div>
-            <div class="fc-audience-filter">
-                <label><input type="radio" name="fc-audience" value="all" checked> All levels</label>
-                <label><input type="radio" name="fc-audience" value="primary"> Primary (children)</label>
-                <label><input type="radio" name="fc-audience" value="middle"> Middle (teens)</label>
-                <label><input type="radio" name="fc-audience" value="senior"> Senior (adults)</label>
-                <label><input type="radio" name="fc-audience" value="college"> College / scholar</label>
-            </div>
-        </div>
-
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Tools</div>
+        <details class="fc-sb-section" data-sbsec="tools" open>
+            <summary class="fc-sb-title">Tools</summary>
             <div class="fc-sb-tools">
                 <button type="button" id="fc-presentation-toggle" class="fc-tool-btn"><span>🖥 Presentation</span><kbd class="fc-kbd">F</kbd></button>
                 <button type="button" id="fc-pen-toggle" class="fc-tool-btn"><span>✏️ Pen mode</span><kbd class="fc-kbd">P</kbd></button>
@@ -139,26 +118,10 @@
                 <button type="button" id="fc-clear-highlights" class="fc-tool-btn">🩷 Clear highlights (page)</button>
                 <button type="button" id="fc-notes-modal-open" class="fc-tool-btn">📓 My annotations</button>
             </div>
-        </div>
+        </details>
 
-        <div class="fc-sb-section" id="fc-tts-controls" hidden>
-            <div class="fc-sb-title">
-                Read-aloud
-                <label class="fc-tts-master">
-                    <input type="checkbox" id="fc-tts-enabled" checked>
-                    <span class="fc-tts-master-label">On</span>
-                </label>
-            </div>
-            <div class="fc-tts-inner">
-                <div class="fc-sb-sub">Voice</div>
-                <select id="fc-tts-voice" class="fc-tts-select" aria-label="TTS voice"></select>
-                <div class="fc-sb-sub">Rate <span class="fc-tts-rate-val">1.0×</span></div>
-                <input type="range" id="fc-tts-rate" min="0.5" max="2" step="0.1" value="1" class="fc-tts-rate" aria-label="Reading rate">
-            </div>
-        </div>
-
-        <div class="fc-sb-section" id="fc-progress-section">
-            <div class="fc-sb-title">Progress</div>
+        <details class="fc-sb-section" data-sbsec="progress" id="fc-progress-section" open>
+            <summary class="fc-sb-title">Progress</summary>
             <div class="fc-progress-row">
                 <span class="fc-progress-num" id="fc-progress-num">0</span>
                 <span class="fc-progress-divider">/</span>
@@ -173,29 +136,29 @@
                 <span class="fc-progress-spacer"></span>
                 <button type="button" class="fc-progress-reset" id="fc-progress-reset" title="Reset progress">↺</button>
             </div>
-        </div>
+        </details>
 
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Bookmarks <span class="fc-sb-count" id="fc-bookmarks-count">0</span></div>
+        <details class="fc-sb-section" data-sbsec="bookmarks" open>
+            <summary class="fc-sb-title">Bookmarks <span class="fc-sb-count" id="fc-bookmarks-count">0</span></summary>
             <ul class="fc-bookmark-list" id="fc-bookmarks-list">
                 <li class="fc-sb-empty">No bookmarks yet — click ☆ on any verse.</li>
             </ul>
-        </div>
+        </details>
 
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Notes <span class="fc-sb-count" id="fc-notes-count">0</span></div>
+        <details class="fc-sb-section" data-sbsec="notes" open>
+            <summary class="fc-sb-title">Notes <span class="fc-sb-count" id="fc-notes-count">0</span></summary>
             <ul class="fc-bookmark-list" id="fc-notes-list">
                 <li class="fc-sb-empty">No notes yet — open any verse and write in the 📝 block.</li>
             </ul>
-        </div>
+        </details>
 
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Export</div>
+        <details class="fc-sb-section" data-sbsec="export">
+            <summary class="fc-sb-title">Export</summary>
             <div class="fc-sb-tools">
                 <button type="button" id="fc-export-md" class="fc-tool-btn">📥 Download Markdown</button>
                 <button type="button" id="fc-export-json" class="fc-tool-btn">💾 Download JSON backup</button>
             </div>
-        </div>
+        </details>
     </div>
 </aside>    <main class="fc-container">
 <nav class="fc-breadcrumbs">
@@ -250,6 +213,7 @@
 
     <div class="fc-translation" data-sec="translation">Permanent association, from Vidagdha-mādhava: O Mukunda! Our mother, fixing her eyes on the beauty of Your moon-like face, fragrant as a lotus, out of great jubilation continually pours streams of milk from the mouths of the two pots in the form of her breasts. In this manner, her clothing becomes soaked.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -265,12 +229,13 @@
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Ambara-knopam means “wetness of the cloth.” Sthitiḥ here means being eternally situated with the Lord, after His returning to Vraja. At the end of the section on preyo-rasa, this was inferred as a suitable conclusion. (BRS 3.3.128) This will be explained here a little more.
 The Lord, who is glorified in the Vedas as being true to His promises, clearly made the promise to return to Vraja in the Tenth Canto of Bhāgavatam.
 yāta yūyaṁ vrajaṁn tāta vayaṁ ca sneha-duḥkhitān
-jṣātīn vo draṣṭum eṣyāmo vidhāya suhṛdāṁ sukham
+jñātīn vo draṣṭum eṣyāmo vidhāya suhṛdāṁ sukham
 Now you should all return to Vraja, dear Father. We shall come to see you, Our dear relatives who suffer in separation from Us, as soon as We have given some happiness to your well-wishing friends. SB 10.45.22
 Vo draṣṭum eṣyāmaḥ (we will come to see you) indicates that the goal of their efforts is to see Nanda and Yaśodā again, but should be understood to be an eternal situation of seeing (not that Kṛṣṇa would again leave Vraja). Draṣṭum (to see) can also mean “to be (and remain) the object of your sight.”
 This is similar to the usage of viboddhum in the following verse, which means “to be the object of understanding.” This means that the impersonal brahman it is the object of continuous realization for the non-devotees.
@@ -313,21 +278,21 @@ Thus, all the persons there, Nanda and the cowherd men, the children and their w
 The child of the chief person was Kṛṣṇa and the chief wife was Yaśodā. Thus, by the mention of the word putra (son), it is understood that Kṛṣṇa also entered that spiritual abode along with His parents and others in their own brilliant forms (divya-rūpa-dharā). In describing that the inhabitants of Vraja were endowed with divya forms by the mercy of Vāsudeva, the meaning is that the inhabitants took on brilliant forms out of jubilation for Kṛṣṇa’s mercy in returning to Vraja. [Note: It does not mean that they gave up material bodies and attained spiritual forms.] The description of attaining the supreme Vaikuṇṭha on an airplane is for deceiving materialistic persons. Actually, unseen by the materialists, they all entered into a special manifestation of Vṛndāvana (unmanifested), and having entered there, Kṛṣṇa made all their unmanifested forms which already existed there (in nitya-līlā) merge into the forms that they brought from the manifested pastimes. In a similar manner, after marrying sixteen thousand queens, by the potency of yoga-māyā as seen by Nārada, Kṛṣṇa, on leaving all of the palaces with sixteen thousand forms, would merge those forms into one form on entering the Sudharma hall.
 Śukadeva has also explained that Kṛṣṇa made them enter that same Vṛndāvana previously. Following is the description of that event.
 nandas tv atīndriyaṁ dṛṣṭvā loka-pāla-mahodayam
-kṛṣṇe ca sannatiṁ teṣāṁ jṣātibhyo vismito ’bravīt
+kṛṣṇe ca sannatiṁ teṣāṁ jñātibhyo vismito ’bravīt
 Nanda Mahārāja had been astonished to see for the first time the great opulence of Varuṇa, the ruler of the ocean planet, and also to see how Varuṇa and his servants had offered such humble respect to Kṛṣṇa. Nanda described all this to his fellow cowherd men.
 te cautsukya-dhiyo rājan matvā gopās tam īśvaram
 api naḥ sva-gatiṁ sūkṣmām upādhāsyad adhīśvaraḥ
 The cowherd men considered that Kṛṣṇa must be the Supreme Lord, and their minds, O King, were filled with eagerness. They thought, “Will the Supreme Lord bestow upon us His transcendental abode?”
-iti svānāṁ sa bhagavān vijṣāyākhila-dṛk svayam
+iti svānāṁ sa bhagavān vijñāyākhila-dṛk svayam
 saṅkalpa-siddhaye teṣāṁ kṛpayaitad acintayat
 Because He sees everything, Lord Kṛṣṇa, the Supreme Personality of Godhead, automatically understood what the cowherd men were conjecturing. Wanting to show His compassion to them by fulfilling their desires, the Lord thought as follows.
 jano vai loka etasminn avidyā-kāma-karmabhiḥ
 uccāvacāsu gatiṣu na veda svāṁ gatiṁ bhraman
 My own dearest people (janaḥ), the inhabitants of Vraja, thinking that they are wandering in this world (etasmin loke) in various destinations such as devatās, animals etc. (gatīṣu) by their own ignorance, do not know their real abode.
-iti saṣcintya bhagavān mahā-kāruṇiko hariḥ
+iti sañcintya bhagavān mahā-kāruṇiko hariḥ
 darśayām āsa lokaṁ svaṁ gopānāṁ tamasaḥ param
 Thus, deeply considering the situation, the all-merciful Supreme Personality of Godhead Hari revealed to the cowherd men His abode, which is beyond material darkness.
-satyaṁ jṣānam anantaṁ yad brahma-jyotiḥ sanātanam
+satyaṁ jñānam anantaṁ yad brahma-jyotiḥ sanātanam
 yad dhi paśyanti munayo guṇāpāye samāhitāḥ
 Lord Kṛṣṇa revealed the indestructible spiritual effulgence, which is unlimited, conscious and eternal. Sages see that spiritual existence in trance, when their consciousness is free of the modes of material nature.
 te tu brahma-hradam nītā magnāḥ kṛṣṇena coddhṛtāḥ
@@ -341,7 +306,7 @@ The brahma-hrada is described as that place where Akrūra had gone (which was no
 grīvāyāṁ janaloko ’sya tapolokaḥ stana-dvayāt
 mūrdhabhiḥ satyalokas tu brahmalokaḥ sanātanaḥ
 From the forefront of the chest up to the neck of the universal form of the Lord are situated the planetary systems named Janaloka and Tapoloka, whereas Satyaloka, the topmost planetary system, is situated on the head of the form. The spiritual planets, however, are eternal. SB 2.5.39
-Though the words sukṣma, tamasaḥ param, and satyaṁ jṣānam employed to describe brahma-loka in the above verses are only general terms (which could apply to the impersonal form); with the words naḥ svargatiṁ sūkṣmam, na veda svāṁ gatim, gopānāṁ svaṁ lokam, and kṛṣṇaṁ ca tatra, the planet of Gopāla is understood, because of the specific descriptive terms involving the Lord.
+Though the words sukṣma, tamasaḥ param, and satyaṁ jñānam employed to describe brahma-loka in the above verses are only general terms (which could apply to the impersonal form); with the words naḥ svargatiṁ sūkṣmam, na veda svāṁ gatim, gopānāṁ svaṁ lokam, and kṛṣṇaṁ ca tatra, the planet of Gopāla is understood, because of the specific descriptive terms involving the Lord.
 There, Kṛṣṇa was being praised by the Vedas. Kṛṣṇa arranged for testimony of the highest scriptures describing His birth and activities to make the cowherd men recognize His position. Only because they were the associates of the Lord, and He willed it, they could experience this, for there are no descriptions of others seeing this. Relishing only Kṛṣṇa, they experienced the highest bliss (paramānanda), losing memory of their previous existence (since nirvṛtāḥ means extinction.)
 When the Lord incarnated, they became ignorant of being associates of the Lord on His planet (and thus during this pastime, they requested Him to see the spiritual realm). This ignorance is explained in the verse starting jano vai. Jana can indicate svajana, Kṛṣṇa’s own associates. That the word jana indicates the Lord’s devotee is illustrated in the following verse:
 sālokya-sārṣṭi-sāmīpya-sārūpyaikatvam apy uta
@@ -369,7 +334,7 @@ This very special manifestation of Vṛndāvana is described in the Varāha Pur�
 tatrāpi mahad āścaryaṁ paśyanti paṇḍitāḥ narāḥ
 kāliya-hrada pūrveṇa kadambo mahito durmaḥ
 śata-śākhaṁ viśālākṣi puṇyaṁ surabhi gandhi ca
-sa ca dvādaśa-māsātimanojṣa śubha-śītalaḥ
+sa ca dvādaśa-māsātimanojña śubha-śītalaḥ
 puṣpāyati viśālākṣi prabhāsante diśo disaḥ
 O large-eyed woman! The wise see something very astonishing there. In front of the lake of Kāliya, there is a huge, pure kadamba tree with hundreds of branches and sweet fragrance. All year, attractive and cool, it continues to flower. All the directions are illuminated by this tree.
 tatrāścaryam pravakṣyāmi tac chṛṇu tvaṁ vasundhare
@@ -400,7 +365,7 @@ tatra ye pāśavaḥ pakṣi mṛgāḥ kīṭā narāmaraḥ
 ye vasanti mamādhiṣṇye mṛtā yanti mamālayam
 tatra yā gopakanyāś ca nivasanti mamālaye
 yoginyastā mayā nityaṁ mama sevā parāyaṇāḥ
-paṣca yojanam evāsti vanaṁ me deha-rūpakam
+pañca yojanam evāsti vanaṁ me deha-rūpakam
 kālindīyaṁ suṣumnākhyā paramāmṛta vāhinī
 atra devāś ca bhūtāni vartante sūkṣma-rūpataḥ
 sarva-devamayaś cāhaṁ na tyajāmi vanam kvacit
@@ -447,7 +412,7 @@ sad-veṣād iva pūtanāpi sa-kulā tvām eva devāpitā
 yad-dhāmārtha-suhṛt-priyātma-tanaya-prāṇāśayās tvat-kṛte
 My mind becomes bewildered just trying to think of what reward other than You could be found anywhere. You are the embodiment of all benedictions, which You bestow upon these residents of the cowherd community of Vṛndāvana. You have already arranged to give Yourself to Pūtanā and her family members in exchange for her disguising herself as a devotee. So, what is left for You to give these devotees of Vṛndāvana, whose homes, wealth, friends, dear relations, bodies, children and very lives and hearts are all dedicated only to You? SB 10.14.36
 tāsām avirataṁ kṛṣṇe kurvatīnāṁ sutekṣaṇam
-na punaḥ kalpate rājan saṁsāro ’jṣāna-sambhavaḥ
+na punaḥ kalpate rājan saṁsāro ’jñāna-sambhavaḥ
 Therefore, because of their eternal relationship as mother and son, although the gopīs were engaged in various family activities, one should never think that they returned to this material world as normal conditioned souls. SB 10.6.40
 In the first of the two verses just quoted, because of having previous indebtedness to them, and because of their being with each other for beginningless kalpas, it should be understood that He must stay with them at all times. Sad-veśād means “because Pūtana disguised herself as a devotee, as a nurse.” In the second verse quoted, the meaning is “taking birth again in the material world did not occur, because they regarded Kṛṣṇa as their son (sutekṣaṇam) at the beginning, middle and end (aviratam).” This regard was continual. The particular arrangement for eternally living together is also expressed in the Uttara-gopāla-campu:
 mātur lālanam etya saṁmatim itas tātasya ca bhrātṛbhiḥ sārddhaṁ dhenu-gaṇā ’hvanāya vipinam gatvā caran krīḍatam

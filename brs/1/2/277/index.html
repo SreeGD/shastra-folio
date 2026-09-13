@@ -31,11 +31,13 @@
 <body class="has-sidebar">
 <header class="fc-site-header">
     <button type="button" class="fc-mobile-trigger fc-mobile-trigger-left" data-overlay="left" aria-label="Open settings drawer">⚙</button>
-    <a class="fc-brand" href="../../../../">FolioCorpus<span class="fc-sub">Bhagavad-gītā</span></a>
+<a class="fc-brand" href="../../../../">FolioCorpus<span class="fc-sub">Bhakti-rasāmṛta-sindhu</span></a>
     <nav class="fc-site-nav">
         <a href="../../../../">Home</a>
         <a href="../../../../bg/">Bhagavad-gītā</a>
         <a href="../../../../sb/">Śrīmad-Bhāgavatam</a>
+        <a href="../../../../brs/" title="Bhakti-rasāmṛta-sindhu with Jīva Gosvāmī's and Viśvanātha Cakravartī's commentaries">Bhakti-rasāmṛta-sindhu</a>
+        <a href="../../../../nod/" title="Nectar of Devotion">Nectar of Devotion</a>
         <a href="../../../../search/" title="Search across all integrated works">🔍 Search</a>
         <button type="button" id="fc-random-verse" class="fc-nav-btn" title="Jump to a random verse">🎲 Random</button>
     </nav>
@@ -46,8 +48,8 @@
     <button class="fc-sb-collapse" type="button" data-sb="left" title="Collapse left sidebar" aria-label="Collapse"></button>
 
     <div class="fc-sb-body">
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Reading</div>
+        <details class="fc-sb-section" data-sbsec="reading" open>
+            <summary class="fc-sb-title">Reading</summary>
             <div class="fc-sb-sub">Theme</div>
             <div class="fc-segmented" data-setting="theme">
                 <button type="button" data-val="light">Light</button>
@@ -73,10 +75,10 @@
                 <button type="button" data-val="single">Single</button>
                 <button type="button" data-val="side">Side-by-side</button>
             </div>
-        </div>
+        </details>
 
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Display</div>
+        <details class="fc-sb-section" data-sbsec="display" open>
+            <summary class="fc-sb-title">Display</summary>
             <div class="fc-sb-grid">
                 <label><input type="checkbox" data-section="devanagari" checked> Devanāgarī</label>
                 <label><input type="checkbox" data-section="iast" checked> IAST transliteration</label>
@@ -98,33 +100,10 @@
                 <button type="button" data-action="expand-all">Expand all</button>
                 <button type="button" data-action="collapse-all">Collapse all</button>
             </div>
-        </div>
+        </details>
 
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Find your starting point</div>
-            <div class="fc-persona-links">
-                <a class="fc-persona-link" href="../../../../daily/">🌅 Daily (one value a week)</a>
-                <a class="fc-persona-link" href="../../../../householder/">🏠 Householder (family & work)</a>
-                <a class="fc-persona-link" href="../../../../parenting/">👨‍👩‍👧 Parenting (stories for kids)</a>
-                <a class="fc-persona-link" href="../../../../themes/">📚 All themes</a>
-                <a class="fc-persona-link" href="../../../../values/" style="background:#F0F6F2;border-left-color:#1F4632;">ॐ Vedic Value System ↗</a>
-                <a class="fc-persona-link" href="../../../../vidya/" style="background:#FBF6E4;border-left-color:#C8860B;">📚 Vidyā Karaṇa (kids, multi-lang) ↗</a>
-            </div>
-        </div>
-
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Audience</div>
-            <div class="fc-audience-filter">
-                <label><input type="radio" name="fc-audience" value="all" checked> All levels</label>
-                <label><input type="radio" name="fc-audience" value="primary"> Primary (children)</label>
-                <label><input type="radio" name="fc-audience" value="middle"> Middle (teens)</label>
-                <label><input type="radio" name="fc-audience" value="senior"> Senior (adults)</label>
-                <label><input type="radio" name="fc-audience" value="college"> College / scholar</label>
-            </div>
-        </div>
-
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Tools</div>
+        <details class="fc-sb-section" data-sbsec="tools" open>
+            <summary class="fc-sb-title">Tools</summary>
             <div class="fc-sb-tools">
                 <button type="button" id="fc-presentation-toggle" class="fc-tool-btn"><span>🖥 Presentation</span><kbd class="fc-kbd">F</kbd></button>
                 <button type="button" id="fc-pen-toggle" class="fc-tool-btn"><span>✏️ Pen mode</span><kbd class="fc-kbd">P</kbd></button>
@@ -139,26 +118,10 @@
                 <button type="button" id="fc-clear-highlights" class="fc-tool-btn">🩷 Clear highlights (page)</button>
                 <button type="button" id="fc-notes-modal-open" class="fc-tool-btn">📓 My annotations</button>
             </div>
-        </div>
+        </details>
 
-        <div class="fc-sb-section" id="fc-tts-controls" hidden>
-            <div class="fc-sb-title">
-                Read-aloud
-                <label class="fc-tts-master">
-                    <input type="checkbox" id="fc-tts-enabled" checked>
-                    <span class="fc-tts-master-label">On</span>
-                </label>
-            </div>
-            <div class="fc-tts-inner">
-                <div class="fc-sb-sub">Voice</div>
-                <select id="fc-tts-voice" class="fc-tts-select" aria-label="TTS voice"></select>
-                <div class="fc-sb-sub">Rate <span class="fc-tts-rate-val">1.0×</span></div>
-                <input type="range" id="fc-tts-rate" min="0.5" max="2" step="0.1" value="1" class="fc-tts-rate" aria-label="Reading rate">
-            </div>
-        </div>
-
-        <div class="fc-sb-section" id="fc-progress-section">
-            <div class="fc-sb-title">Progress</div>
+        <details class="fc-sb-section" data-sbsec="progress" id="fc-progress-section" open>
+            <summary class="fc-sb-title">Progress</summary>
             <div class="fc-progress-row">
                 <span class="fc-progress-num" id="fc-progress-num">0</span>
                 <span class="fc-progress-divider">/</span>
@@ -173,29 +136,29 @@
                 <span class="fc-progress-spacer"></span>
                 <button type="button" class="fc-progress-reset" id="fc-progress-reset" title="Reset progress">↺</button>
             </div>
-        </div>
+        </details>
 
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Bookmarks <span class="fc-sb-count" id="fc-bookmarks-count">0</span></div>
+        <details class="fc-sb-section" data-sbsec="bookmarks" open>
+            <summary class="fc-sb-title">Bookmarks <span class="fc-sb-count" id="fc-bookmarks-count">0</span></summary>
             <ul class="fc-bookmark-list" id="fc-bookmarks-list">
                 <li class="fc-sb-empty">No bookmarks yet — click ☆ on any verse.</li>
             </ul>
-        </div>
+        </details>
 
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Notes <span class="fc-sb-count" id="fc-notes-count">0</span></div>
+        <details class="fc-sb-section" data-sbsec="notes" open>
+            <summary class="fc-sb-title">Notes <span class="fc-sb-count" id="fc-notes-count">0</span></summary>
             <ul class="fc-bookmark-list" id="fc-notes-list">
                 <li class="fc-sb-empty">No notes yet — open any verse and write in the 📝 block.</li>
             </ul>
-        </div>
+        </details>
 
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Export</div>
+        <details class="fc-sb-section" data-sbsec="export">
+            <summary class="fc-sb-title">Export</summary>
             <div class="fc-sb-tools">
                 <button type="button" id="fc-export-md" class="fc-tool-btn">📥 Download Markdown</button>
                 <button type="button" id="fc-export-json" class="fc-tool-btn">💾 Download JSON backup</button>
             </div>
-        </div>
+        </details>
     </div>
 </aside>    <main class="fc-container">
 <nav class="fc-breadcrumbs">
@@ -246,6 +209,7 @@
 
     <div class="fc-translation" data-sec="translation">Because fear and hatred are not favorable, they are rejected as modes of bhakti. Affection (sneha) of the Pāṇḍavas, if it means friendliness (sakhya), belongs to vaidhi-bhakti (because the sakhya is predominated by veneration). If sneha means prema or a stage of prema, it still could not be admitted here, as the topic is sādhana-bhakti. In the phrase “bhaktyā vayam” (and we, the sages (Nārada), attained befitting goals by bhakti), bhakti refers to vaidhi-bhakti.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -277,7 +241,7 @@ However, he makes this statement only to express the greatly inferior nature of 
 Sneha is explained as follows: some may claim that the sneha or affection of the Pāṇḍavas should be classed as rāgātmika, since it is filled with friendly feelings of sakhya for the Lord, evident in their dealings with Kṛṣṇa. Nevertheless, because that affection is predominated by awareness of the Lord’s powers, that sneha should be considered predominantly on the path of vaidhi (vaidhi-sādhana leads to prema with awareness of the Lord’s powers.) This sneha is, thus, not suitable for pure rāgānuga-sādhana. If the word sneha is taken to mean general prema, it is impossible to follow such prema, since no particular details are given about actions that are unique to such prema. Thus, it would not be fitting for rāgānuga-sādhana, because of the lack of any unique features to support it. If one proposes that sneha means a particular elevated type of prema (not mixed with awareness of the Lord), then it will end up being classed as sambandha-rūpa (relationships of thirst other than kāma). But that is already mentioned in relation to the Vṛṣṇis (actually the inhabitants of Vraja).
 The bhakti mentioned in verse 275 (bhaktyā vayaṁ vibho) should be accepted as vaidhi in nature. This is because it is the only type of devotion left, after enumerating rāgātmika (kāma and sambandha), vaidhi mixed with sneha (Pāṇḍavas) and rejecting dveṣa and bhaya as bhakti. It is also understood to be vaidhi-bhakti because the devotion of Nārada was characterized by reverential worship of the Lord in his previous life.
 In the first of the two verses quoted (274), five items are mentioned: lust, hatred, fear, affection and bhakti. In the explanation of the author, six items are mentioned (corresponding to items apparently listed in verse 275): lust, hatred, fear, relationship, affection and bhakti. This mention of six items is only in deference to the commentary of Śrīdhara Svāmī on the Bhāgavatam verse. Actually, the meaning of the last line of verse 275 should be, “from sambandha filled with affection, you, Pāṇḍavas, and the Vṛṣṇis achieved the goal.” Thus, there is only one item instead of two for both the parties — the Pāṇḍavas and the Vṛṣṇis.  [Note: Though the Pāṇḍavas’ relation is here classed as sambandha because of their affection, the previous cause of ultimate rejection as part of rāgātmika-bhakti still stands. The Pāṇḍavas had awareness of Kṛṣṇa as the Lord with powers.] Sambandha and sneha would then not be distinguished as separate items. This is according to Vopadeva. Thus, the second verse will have five items as in the first verse. This agrees well with the next verse in the Bhāgavatam, where five types are again mentioned:
-katamo ’pi na venaḥ syāt paṣcānāṁ puruṣaṁ prati
+katamo ’pi na venaḥ syāt pañcānāṁ puruṣaṁ prati
 Any of the five types of persons, but not King Vena (who did not concentrate on the Lord), will attain their objectives in relation to the Lord. SB 7.1.32
 Purusam here refers to the Lord. The meaning is “any of these five persons will be successful in relation to the Lord.” [Note: Thus, what the Bhāgavatam verses have illustrated is two types of rāgātmika-bhakti: kāma-rūpa and sambandha-rūpa.]</p>
             </div>

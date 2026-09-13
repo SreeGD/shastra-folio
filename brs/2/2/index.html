@@ -31,11 +31,13 @@
 <body class="has-sidebar">
 <header class="fc-site-header">
     <button type="button" class="fc-mobile-trigger fc-mobile-trigger-left" data-overlay="left" aria-label="Open settings drawer">⚙</button>
-    <a class="fc-brand" href="../../../">FolioCorpus<span class="fc-sub">Bhagavad-gītā</span></a>
+<a class="fc-brand" href="../../../">FolioCorpus<span class="fc-sub">Bhakti-rasāmṛta-sindhu</span></a>
     <nav class="fc-site-nav">
         <a href="../../../">Home</a>
         <a href="../../../bg/">Bhagavad-gītā</a>
         <a href="../../../sb/">Śrīmad-Bhāgavatam</a>
+        <a href="../../../brs/" title="Bhakti-rasāmṛta-sindhu with Jīva Gosvāmī's and Viśvanātha Cakravartī's commentaries">Bhakti-rasāmṛta-sindhu</a>
+        <a href="../../../nod/" title="Nectar of Devotion">Nectar of Devotion</a>
         <a href="../../../search/" title="Search across all integrated works">🔍 Search</a>
         <button type="button" id="fc-random-verse" class="fc-nav-btn" title="Jump to a random verse">🎲 Random</button>
     </nav>
@@ -46,8 +48,8 @@
     <button class="fc-sb-collapse" type="button" data-sb="left" title="Collapse left sidebar" aria-label="Collapse"></button>
 
     <div class="fc-sb-body">
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Reading</div>
+        <details class="fc-sb-section" data-sbsec="reading" open>
+            <summary class="fc-sb-title">Reading</summary>
             <div class="fc-sb-sub">Theme</div>
             <div class="fc-segmented" data-setting="theme">
                 <button type="button" data-val="light">Light</button>
@@ -73,10 +75,10 @@
                 <button type="button" data-val="single">Single</button>
                 <button type="button" data-val="side">Side-by-side</button>
             </div>
-        </div>
+        </details>
 
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Display</div>
+        <details class="fc-sb-section" data-sbsec="display" open>
+            <summary class="fc-sb-title">Display</summary>
             <div class="fc-sb-grid">
                 <label><input type="checkbox" data-section="devanagari" checked> Devanāgarī</label>
                 <label><input type="checkbox" data-section="iast" checked> IAST transliteration</label>
@@ -98,33 +100,10 @@
                 <button type="button" data-action="expand-all">Expand all</button>
                 <button type="button" data-action="collapse-all">Collapse all</button>
             </div>
-        </div>
+        </details>
 
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Find your starting point</div>
-            <div class="fc-persona-links">
-                <a class="fc-persona-link" href="../../../daily/">🌅 Daily (one value a week)</a>
-                <a class="fc-persona-link" href="../../../householder/">🏠 Householder (family & work)</a>
-                <a class="fc-persona-link" href="../../../parenting/">👨‍👩‍👧 Parenting (stories for kids)</a>
-                <a class="fc-persona-link" href="../../../themes/">📚 All themes</a>
-                <a class="fc-persona-link" href="../../../values/" style="background:#F0F6F2;border-left-color:#1F4632;">ॐ Vedic Value System ↗</a>
-                <a class="fc-persona-link" href="../../../vidya/" style="background:#FBF6E4;border-left-color:#C8860B;">📚 Vidyā Karaṇa (kids, multi-lang) ↗</a>
-            </div>
-        </div>
-
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Audience</div>
-            <div class="fc-audience-filter">
-                <label><input type="radio" name="fc-audience" value="all" checked> All levels</label>
-                <label><input type="radio" name="fc-audience" value="primary"> Primary (children)</label>
-                <label><input type="radio" name="fc-audience" value="middle"> Middle (teens)</label>
-                <label><input type="radio" name="fc-audience" value="senior"> Senior (adults)</label>
-                <label><input type="radio" name="fc-audience" value="college"> College / scholar</label>
-            </div>
-        </div>
-
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Tools</div>
+        <details class="fc-sb-section" data-sbsec="tools" open>
+            <summary class="fc-sb-title">Tools</summary>
             <div class="fc-sb-tools">
                 <button type="button" id="fc-presentation-toggle" class="fc-tool-btn"><span>🖥 Presentation</span><kbd class="fc-kbd">F</kbd></button>
                 <button type="button" id="fc-pen-toggle" class="fc-tool-btn"><span>✏️ Pen mode</span><kbd class="fc-kbd">P</kbd></button>
@@ -139,26 +118,10 @@
                 <button type="button" id="fc-clear-highlights" class="fc-tool-btn">🩷 Clear highlights (page)</button>
                 <button type="button" id="fc-notes-modal-open" class="fc-tool-btn">📓 My annotations</button>
             </div>
-        </div>
+        </details>
 
-        <div class="fc-sb-section" id="fc-tts-controls" hidden>
-            <div class="fc-sb-title">
-                Read-aloud
-                <label class="fc-tts-master">
-                    <input type="checkbox" id="fc-tts-enabled" checked>
-                    <span class="fc-tts-master-label">On</span>
-                </label>
-            </div>
-            <div class="fc-tts-inner">
-                <div class="fc-sb-sub">Voice</div>
-                <select id="fc-tts-voice" class="fc-tts-select" aria-label="TTS voice"></select>
-                <div class="fc-sb-sub">Rate <span class="fc-tts-rate-val">1.0×</span></div>
-                <input type="range" id="fc-tts-rate" min="0.5" max="2" step="0.1" value="1" class="fc-tts-rate" aria-label="Reading rate">
-            </div>
-        </div>
-
-        <div class="fc-sb-section" id="fc-progress-section">
-            <div class="fc-sb-title">Progress</div>
+        <details class="fc-sb-section" data-sbsec="progress" id="fc-progress-section" open>
+            <summary class="fc-sb-title">Progress</summary>
             <div class="fc-progress-row">
                 <span class="fc-progress-num" id="fc-progress-num">0</span>
                 <span class="fc-progress-divider">/</span>
@@ -173,29 +136,29 @@
                 <span class="fc-progress-spacer"></span>
                 <button type="button" class="fc-progress-reset" id="fc-progress-reset" title="Reset progress">↺</button>
             </div>
-        </div>
+        </details>
 
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Bookmarks <span class="fc-sb-count" id="fc-bookmarks-count">0</span></div>
+        <details class="fc-sb-section" data-sbsec="bookmarks" open>
+            <summary class="fc-sb-title">Bookmarks <span class="fc-sb-count" id="fc-bookmarks-count">0</span></summary>
             <ul class="fc-bookmark-list" id="fc-bookmarks-list">
                 <li class="fc-sb-empty">No bookmarks yet — click ☆ on any verse.</li>
             </ul>
-        </div>
+        </details>
 
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Notes <span class="fc-sb-count" id="fc-notes-count">0</span></div>
+        <details class="fc-sb-section" data-sbsec="notes" open>
+            <summary class="fc-sb-title">Notes <span class="fc-sb-count" id="fc-notes-count">0</span></summary>
             <ul class="fc-bookmark-list" id="fc-notes-list">
                 <li class="fc-sb-empty">No notes yet — open any verse and write in the 📝 block.</li>
             </ul>
-        </div>
+        </details>
 
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Export</div>
+        <details class="fc-sb-section" data-sbsec="export">
+            <summary class="fc-sb-title">Export</summary>
             <div class="fc-sb-tools">
                 <button type="button" id="fc-export-md" class="fc-tool-btn">📥 Download Markdown</button>
                 <button type="button" id="fc-export-json" class="fc-tool-btn">💾 Download JSON backup</button>
             </div>
-        </div>
+        </details>
     </div>
 </aside>    <main class="fc-container">
 <nav class="fc-breadcrumbs">
@@ -203,14 +166,14 @@
     <span class="sep">›</span>
     <a href="../../../brs/">Bhakti-rasāmṛta-sindhu</a>
     <span class="sep">›</span>
-    <a href="../../../brs/2/">Section 2</a>
+    <a href="../../../brs/2/">Division 2</a>
     <span class="sep">›</span>
-    <span>Chapter 2</span>
+    <span>Wave 2</span>
 </nav>
 
 <div class="fc-ribbon">
     <div class="fc-ribbon-row">
-        <h1 class="fc-verse-heading">2.2</h1>
+        <h1 class="fc-verse-heading">2.2 · Anubhāva</h1>
         <span class="fc-ribbon-meta">21 verses</span>
         <input type="search" class="fc-search" id="fc-search" placeholder="🔍 Search in this chapter" aria-label="Search verses in this chapter">
         <span class="fc-ribbon-current" id="fc-ribbon-current" aria-live="polite"></span>
@@ -272,6 +235,7 @@
 
 
     <div class="fc-translation" data-sec="translation">Anubhāvas refers to those things which express the bhāva situated within the heart. They are predominantly external transformations, and are thus called udbhāsvara (shining in the body).</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -339,6 +303,7 @@ The bodily symptoms manifested by a devotee in expressing ecstatic love for Kṛ
 
     <div class="fc-translation" data-sec="translation">External transformations known as anubhāvas are actions, such as dancing, rolling on the ground, singing, shouting, stretching the body, bellowing, yawning, breathing heavily, disregarding others, drooling, laughing loudly, whirling around, and hiccups.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -354,6 +319,7 @@ The bodily symptoms manifested by a devotee in expressing ecstatic love for Kṛ
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Verse 2.1.12 has already described anubhāvas with the phrase smitādi: smiling and other items. Thus smiling should be understood to be included in the list in this verse, which is elaborating on the word ādi of that previous verse.</p>
@@ -413,6 +379,7 @@ The bodily symptoms manifested by a devotee in expressing ecstatic love for Kṛ
 
     <div class="fc-translation" data-sec="translation">Anubhāvas are of two types with the suitable names of śīta (meaning “cool,” with lack of bodily movement) and kṣepaṇa (meaning “throwing about,” involving distinct bodily movements). Śīta includes singing, yawning, breathing heavily, disregarding others, drooling and smiling. Kṣepaṇa includes dancing, rolling on the ground, shouting, stretching the body, bellowing, laughing loudly, [Note: The definition of aṭṭa-hāsa (laughing loudly) is given in the commentary on verse 18. It involves bodily movement as well as laughing. It would seem that shouting, bellowing and hiccups would also involve more bodily movement than usual as kṣepaṇa anubhāvas.] whirling around and having hiccups.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -428,6 +395,7 @@ The bodily symptoms manifested by a devotee in expressing ecstatic love for Kṛ
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>The phrase gīta-jṛmbhādyā means singing, yawning and the items immediately following, namely breathing heavily, disregard, and drooling. Smiling from verse 2.1.12 is also included in the śīta anubhāvas.</p>
@@ -499,6 +467,7 @@ The bodily symptoms manifested by a devotee in expressing ecstatic love for Kṛ
 
     <div class="fc-translation" data-sec="translation">Dancing: Seeing the moon-like face of Hari, radiating sweetness as He practiced His flute playing, Lord Śiva began to tremble and then began to dance in the sky along with Ganeśa to the rhythm of his drum.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -515,6 +484,7 @@ While watching the rāsa dance performed by Lord Kṛṣṇa and the gopīs, Lor
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>The word muralī means the sound of the flute. Khuralī means practice. Trikhāṇḍa-śeṣa (Amara-kośa) says abhyāsaḥ khuralī yogya: khuralī means abhyāsaḥ or practice.</p>
@@ -586,6 +556,7 @@ While watching the rāsa dance performed by Lord Kṛṣṇa and the gopīs, Lor
 
     <div class="fc-translation" data-sec="translation">Falling on the ground, from the Third Canto: Please tell me whether Akrūra, the son of Śvaphalka, is doing well. He is a faultless soul surrendered unto the Personality of Godhead. He once lost his mental equilibrium due to his ecstasy of transcendental love and fell down on the dust of a road which was marked with the footprints of Lord Kṛṣṇa. SB 3.1.32</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -632,8 +603,8 @@ In the Third Canto, First Chapter, verse 32, of Śrīmad-Bhāgavatam, Vidura inq
 <div class="cr-pron-line" data-sec="pronunciation">[yathaa vaa –]</div>        <div class="cr-iast-line">navānurāgeṇa tavāvaśāṅgī</div>
 <div class="cr-pron-line" data-sec="pronunciation">[navaanuraagena tavaavashaangee]</div>        <div class="cr-iast-line">vana-srag-āmodam avāpya mattā |</div>
 <div class="cr-pron-line" data-sec="pronunciation">[vana-srag-aamodam avaapya mattaa |]</div>        <div class="cr-iast-line">vrajāṅgane sā kaṭhine luṭhantī</div>
-<div class="cr-pron-line" data-sec="pronunciation">[vrajaangane saa kathine luthantee]</div>        <div class="cr-iast-line">gātraṁ sugātrī vraṇayāṣcakāra ||6||</div>
-<div class="cr-pron-line" data-sec="pronunciation">[gaatram sugaatree vranayaashchakaara ||6||]</div>    </div>
+<div class="cr-pron-line" data-sec="pronunciation">[vrajaangane saa kathine luthantee]</div>        <div class="cr-iast-line">gātraṁ sugātrī vraṇayāñcakāra ||6||</div>
+<div class="cr-pron-line" data-sec="pronunciation">[gaatram sugaatree vranayaanchakaara ||6||]</div>    </div>
 
 
     <details class="cr-blend-details" data-sec="blended">
@@ -652,13 +623,14 @@ In the Third Canto, First Chapter, verse 32, of Śrīmad-Bhāgavatam, Vidura inq
                 <div class="cr-blend-iast-line">vrajāṅgane sā kaṭhine luṭhantī</div>
             </div>
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">gātraṁ sugātrī vraṇayāṣcakāra ||6||</div>
+                <div class="cr-blend-iast-line">gātraṁ sugātrī vraṇayāñcakāra ||6||</div>
             </div>
         </div>
     </details>
 
 
     <div class="fc-translation" data-sec="translation">Another example: O Kṛṣṇa! Because of her new attraction for You, Rādhā is not in control of her limbs. On smelling the fragrance of Your forest garland, becoming intoxicated, she has fallen on the hard ground of Vraja and injured her beautiful body.</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -675,6 +647,7 @@ In the Third Canto, First Chapter, verse 32, of Śrīmad-Bhāgavatam, Vidura inq
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Vraṇayāṣ cakāra is equivalent to vraṇavac cakāra. This follows from the rule vinmator luk: words ending in vin, mat or vat form comparative and superlative degrees by adding iyas and iṣṭa and dropping the vin, mat or vat. (Pāṇini 5.3.65)</p>
@@ -746,6 +719,7 @@ In the Third Canto, First Chapter, verse 32, of Śrīmad-Bhāgavatam, Vidura inq
 
     <div class="fc-translation" data-sec="translation">Singing: Moon of Gokula! Today, Rādhā, whose mind is possessed by the beauty of the śrīrāga (or the zeal of love), is singing a new song about you. Her friends have become like stones, and the stones have melted.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -762,6 +736,7 @@ One gopī informed Kṛṣṇa that when Śrīmatī Rādhārāṇī was singing 
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Rāga here means either the melodic rāgas such as śrī-rāga or simply anurāga, meaning love. Suhṛdām means her friends. Those friends become paralyzed (jaḍatām), and the stones (dṛṣadām) become liquid like water (jalatām). The letters ḍ and l can be used interchangeably. Thus one word can have two meanings.</p>
@@ -832,6 +807,7 @@ One gopī informed Kṛṣṇa that when Śrīmatī Rādhārāṇī was singing 
 
 
     <div class="fc-translation" data-sec="translation">Shouting: Because of the transformations brought about by the chanting of the name of Hari, Nārada began shouting in such a manner that the demons immediately hid themselves, trembling in fear that Narasiṁha had made His appearance.</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -906,6 +882,7 @@ One gopī informed Kṛṣṇa that when Śrīmatī Rādhārāṇī was singing 
 
     <div class="fc-translation" data-sec="translation">Another example: O son of Vraja’s king! Today in Vṛndāvana the beautiful Rādhā, her heart melted by sound of Your flute, was constantly shouting in agitation like a female osprey with a changed voice.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -921,6 +898,7 @@ One gopī informed Kṛṣṇa that when Śrīmatī Rādhārāṇī was singing 
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Taralī-kṛtāntarā is formed from tarala and the verb kṛ. This particular ending called cvi indicates that the subject becomes transformed. In this case the heart turns liquid by the sound of the flute.</p>
@@ -964,8 +942,8 @@ One gopī informed Kṛṣṇa that when Śrīmatī Rādhārāṇī was singing 
 <div class="cr-pron-line" data-sec="pronunciation">[tanu-mochanam, yathaa –]</div>        <div class="cr-iast-line">kṛṣṇa-nāmani mudopavīṇite</div>
 <div class="cr-pron-line" data-sec="pronunciation">[krishna-naamani mudopaveenite]</div>        <div class="cr-iast-line">prīṇite manasi vaiṇiko muniḥ |</div>
 <div class="cr-pron-line" data-sec="pronunciation">[preenite manasi vainiko munih |]</div>        <div class="cr-iast-line">udbhaṭaṁ kim api moṭayan</div>
-<div class="cr-pron-line" data-sec="pronunciation">[udbhatam kim api motayan]</div>        <div class="cr-iast-line">vapus troṭayaty akhila-yajṣa-sūtrakam ||10||</div>
-<div class="cr-pron-line" data-sec="pronunciation">[vapus trotayaty akhila-yajsha-sootrakam ||10||]</div>    </div>
+<div class="cr-pron-line" data-sec="pronunciation">[udbhatam kim api motayan]</div>        <div class="cr-iast-line">vapus troṭayaty akhila-yajña-sūtrakam ||10||</div>
+<div class="cr-pron-line" data-sec="pronunciation">[vapus trotayaty akhila-yajna-sootrakam ||10||]</div>    </div>
 
 
     <details class="cr-blend-details" data-sec="blended">
@@ -984,13 +962,14 @@ One gopī informed Kṛṣṇa that when Śrīmatī Rādhārāṇī was singing 
                 <div class="cr-blend-iast-line">udbhaṭaṁ kim api moṭayan</div>
             </div>
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">vapus troṭayaty akhila-yajṣa-sūtrakam ||10||</div>
+                <div class="cr-blend-iast-line">vapus troṭayaty akhila-yajña-sūtrakam ||10||</div>
             </div>
         </div>
     </details>
 
 
     <div class="fc-translation" data-sec="translation">Stretching the body: Nārada, blissfully singing the names of Kṛṣṇa on his vīnā with a happy mind, stretched his body in a most astonishing way and completely broke his sacred thread.</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -1008,6 +987,7 @@ It is said that sometimes when Nārada, the carrier of the vīṇā, remembers h
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>While singing with bliss (mudā) accompanied by the vīṇā (upavīṇite), Nārada stretched his body violently (udbhaṭam) in an indescribably way (kim api), so that his sacred thread broke completely.</p>
@@ -1079,6 +1059,7 @@ It is said that sometimes when Nārada, the carrier of the vīṇā, remembers h
 
     <div class="fc-translation" data-sec="translation">Bellowing: Hearing the sound of the vīṇā, Śiva, mind excited, bellowed in such a way that it destroyed the demons and gave the highest bliss to the devotees at every moment.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1095,6 +1076,7 @@ It is described that by hearing the vibration of Kṛṣṇa’s flute, Lord Śi
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>He roared in a suitable manner continuously, so that it made the devotees at every moment experience the highest bliss (sadā navam akarot) and it destroyed the associates of the demons (sa-dānavam). Virodhālaṅkāra is used. Sādhu-vṛṇdam akarot sadānavam could also mean “The sound made the devotees become demons.” However, that is a contradiction. By dividing the syllables differently into sadā navam the real meaning appears.</p>
@@ -1166,6 +1148,7 @@ It is described that by hearing the vibration of Kṛṣṇa’s flute, Lord Śi
 
     <div class="fc-translation" data-sec="translation">Yawning: O lotus! [Note: The kumuda blooms at night and the lotus blooms during the day.] How astonishing that in the grove of blossoming water lilies, you have blossomed at the rising of the full moon on the eastern horizon.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1182,6 +1165,7 @@ It is said that when the full moon rises, the lotus petals become expanded. Simi
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>O Rādhā! When the ocean of all arts, Kṛṣṇa, who has appeared to give full bliss to the earth, arrives before you, it is astonishing that your lotus face shows lethargy by yawning.
@@ -1225,8 +1209,8 @@ Vistṛta-kumuda-vana (broad lotus forest) can be analyzed as vistṛta-ku-mud-a
         <div class="cr-iast-line">śvāsa-bhūmā, yathā –</div>
 <div class="cr-pron-line" data-sec="pronunciation">[shvaasa-bhoomaa, yathaa –]</div>        <div class="cr-iast-line">upasthite citra-paṭāmbudāgame</div>
 <div class="cr-pron-line" data-sec="pronunciation">[upasthite chitra-pataambudaagame]</div>        <div class="cr-iast-line">vivṛddha-tṛṣṇā lalitākhya-cātakī |</div>
-<div class="cr-pron-line" data-sec="pronunciation">[vivriddha-trishnaa lalitaakhya-chaatakee |]</div>        <div class="cr-iast-line">niḥśvāsa-jhaṣjhā-marutāpavāhitaṁ</div>
-<div class="cr-pron-line" data-sec="pronunciation">[nihshvaasa-jhashjhaa-marutaapavaahitam]</div>        <div class="cr-iast-line">kṛṣṇāmbudākāram avekṣya cukṣubhe ||13||</div>
+<div class="cr-pron-line" data-sec="pronunciation">[vivriddha-trishnaa lalitaakhya-chaatakee |]</div>        <div class="cr-iast-line">niḥśvāsa-jhañjhā-marutāpavāhitaṁ</div>
+<div class="cr-pron-line" data-sec="pronunciation">[nihshvaasa-jhanjhaa-marutaapavaahitam]</div>        <div class="cr-iast-line">kṛṣṇāmbudākāram avekṣya cukṣubhe ||13||</div>
 <div class="cr-pron-line" data-sec="pronunciation">[krishnaambudaakaaram avekshya chukshubhe ||13||]</div>    </div>
 
 
@@ -1243,7 +1227,7 @@ Vistṛta-kumuda-vana (broad lotus forest) can be analyzed as vistṛta-ku-mud-a
                 <div class="cr-blend-iast-line">vivṛddha-tṛṣṇā lalitākhya-cātakī |</div>
             </div>
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">niḥśvāsa-jhaṣjhā-marutāpavāhitaṁ</div>
+                <div class="cr-blend-iast-line">niḥśvāsa-jhañjhā-marutāpavāhitaṁ</div>
             </div>
             <div class="cr-blend-block">
                 <div class="cr-blend-iast-line">kṛṣṇāmbudākāram avekṣya cukṣubhe ||13||</div>
@@ -1253,6 +1237,7 @@ Vistṛta-kumuda-vana (broad lotus forest) can be analyzed as vistṛta-ku-mud-a
 
 
     <div class="fc-translation" data-sec="translation">Heavy breathing: When the monsoon arrived with colorful clothing, the Cātakī bird named Lalitā became increasingly thirsty. Seeing the form of that black cloud called Kṛṣṇa driven away by the strong breathing of the monsoon wind mixed with rain, she became disturbed.</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -1270,9 +1255,10 @@ As far as breathing heavily is concerned, it is stated, “Lalitā [one of the g
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
-                <p>Ambudāgame refers to the monsoon rains. Trikāṇḍa-śesa says: vātulo vātagulmah syāt caravāyur nidāghajaḥ, jaṣjānilaḥ prāvṛṣijo vāsanto malayānilaḥ: in the hot season there will be strong winds and gales, in the monsoon season there will be rain mixed with wind, and during the spring there will be a fragrant breeze. Because of the strength of her breathing and because of the mixture with tears (wind and rain), Kṛṣṇa disappeared from her sight, because of the disturbance to His cloth.</p>
+                <p>Ambudāgame refers to the monsoon rains. Trikāṇḍa-śesa says: vātulo vātagulmah syāt caravāyur nidāghajaḥ, jañjānilaḥ prāvṛṣijo vāsanto malayānilaḥ: in the hot season there will be strong winds and gales, in the monsoon season there will be rain mixed with wind, and during the spring there will be a fragrant breeze. Because of the strength of her breathing and because of the mixture with tears (wind and rain), Kṛṣṇa disappeared from her sight, because of the disturbance to His cloth.</p>
             </div>
         </div>
     </section>
@@ -1333,6 +1319,7 @@ As far as breathing heavily is concerned, it is stated, “Lalitā [one of the g
 
     <div class="fc-translation" data-sec="translation">Disregard for all others, from the Tenth Canto: Just see the unlimited love these women have developed for Lord Kṛṣṇa, the spiritual master of the entire universe! This love has broken their very bonds of death—their attachment to family life. SB 10.23.41</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1349,6 +1336,7 @@ As far as neglecting the presence of others is concerned, the wives of the brāh
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>This is a statement by the brāhmaṇas performing sacrifice.</p>
@@ -1420,6 +1408,7 @@ As far as neglecting the presence of others is concerned, the wives of the brāh
 
     <div class="fc-translation" data-sec="translation">Another example, from Padyāvalī: Let the big mouths gossip! We will not consider it at all! By tasting the sweet liquor of Hari, we have become joyful and intoxicated. Let us fall on the ground, dance and enjoy.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1435,6 +1424,7 @@ As far as neglecting the presence of others is concerned, the wives of the brāh
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Nirviśāma means “let us enjoy.” An alternative reading which is also suitable is paryaṭāma: let us wander about. Putting all three verbs in the imperative first person is most suitable. The adjective atimattā also agrees with the subject vayam (we).</p>
@@ -1498,6 +1488,7 @@ As far as neglecting the presence of others is concerned, the wives of the brāh
 
     <div class="fc-translation" data-sec="translation">Drooling: I think that Nārada, bitten by the scorpion of prema, is suffering in pain, because he has fallen into a motionless state, and saliva is dripping from his mouth.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1514,6 +1505,7 @@ As an example of the running down of saliva from the mouth, it is stated that so
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Because he is Nārada, his state must be caused by prema, but lying motionless and drooling are the symptoms of scorpion bite.</p>
@@ -1569,6 +1561,7 @@ As an example of the running down of saliva from the mouth, it is stated that so
 
     <div class="fc-translation" data-sec="translation">Laughing loudly: That laughing which arises from disturbance of the heart is called laughing loudly or aṭṭahāsa. This is distinguished from the normal laugh.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1615,8 +1608,8 @@ When a devotee laughs very loudly like a madman, it is done out of an extraordin
 <div class="cr-pron-line" data-sec="pronunciation">[yathaa –]</div>        <div class="cr-iast-line">śaṅke ciraṁ keśava-kiṅkarasya</div>
 <div class="cr-pron-line" data-sec="pronunciation">[shanke chiram keshava-kinkarasya]</div>        <div class="cr-iast-line">cetas taṭe bhakti-latā praphullā |</div>
 <div class="cr-pron-line" data-sec="pronunciation">[chetas tate bhakti-lataa praphullaa |]</div>        <div class="cr-iast-line">yenādhi-tuṇḍa-sthalam aṭṭahāsa-</div>
-<div class="cr-pron-line" data-sec="pronunciation">[yenaadhi-tunda-sthalam attahaasa-]</div>        <div class="cr-iast-line">prasūna-puṣjāś caṭulaṁ skhalanti ||18||</div>
-<div class="cr-pron-line" data-sec="pronunciation">[prasoona-pushjaash chatulam skhalanti ||18||]</div>    </div>
+<div class="cr-pron-line" data-sec="pronunciation">[yenaadhi-tunda-sthalam attahaasa-]</div>        <div class="cr-iast-line">prasūna-puñjāś caṭulaṁ skhalanti ||18||</div>
+<div class="cr-pron-line" data-sec="pronunciation">[prasoona-punjaash chatulam skhalanti ||18||]</div>    </div>
 
 
     <details class="cr-blend-details" data-sec="blended">
@@ -1635,13 +1628,14 @@ When a devotee laughs very loudly like a madman, it is done out of an extraordin
                 <div class="cr-blend-iast-line">yenādhi-tuṇḍa-sthalam aṭṭahāsa-</div>
             </div>
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">prasūna-puṣjāś caṭulaṁ skhalanti ||18||</div>
+                <div class="cr-blend-iast-line">prasūna-puñjāś caṭulaṁ skhalanti ||18||</div>
             </div>
         </div>
     </details>
 
 
     <div class="fc-translation" data-sec="translation">An example: I think that the creeper of devotion in the heart of the servant of Kṛṣṇa has been blossoming for a long time, because a multitude of flowers in the form of his loud laughing is shaking his trembling lips.</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -1658,6 +1652,7 @@ When a devotee laughs very loudly like a madman, it is done out of an extraordin
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>The characteristics of aṭṭa-hāsa are as follows. Utphulla-nāsikā-randhram āloḍita-mukhekṣaṇam, uddhataṁ vikṛtākāraṁ nāṭye ’ṭṭa-hasitaṁ viduḥ: aṭṭa-hāsya consists of rude, loud laughing with flared nostrils and agitated glances while dancing. Though the loud laugh presents itself as ferocious to an opposing party when accompanied by abusive language, it presents itself as pleasing to one’s own party. Thus, it can be depicted as somewhat soft. In this verse, someone of the same party describes the devotee’s loud laughing, which indicates scorn for those who criticize bhakti.</p>
@@ -1728,6 +1723,7 @@ When a devotee laughs very loudly like a madman, it is done out of an extraordin
 
 
     <div class="fc-translation" data-sec="translation">Whirling around: O my friend, dear flute! Kṛṣṇa, on the pretext of blowing you, is certainly producing a gale. Otherwise, how does your sound alone cause the beautiful women of Vraja to whirl around?</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -1803,6 +1799,7 @@ One gopī told her friend, “It appears that Lord Kṛṣṇa, the enemy of the
 
     <div class="fc-translation" data-sec="translation">Hiccups: O daughter! Are you worrying uselessly that something has happened to your dear friend Rādhā? Do not apply any medicine! Give up this loud weeping! O beautiful eyed girl! Today, Rādhā, afflicted by the transformations brought on by love for Kṛṣṇa, is afflicted with hiccups while chanting His name incessantly.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1819,6 +1816,7 @@ Sometimes belching also becomes a symptom of ecstatic love for Kṛṣṇa. Ther
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>This is a statement of Paurṇamāsī to Lalitā. In the Ujjvala-nīlamaṇi she is described as having a sympathetic mood of love. Thus, there is the suggestion that she will find a remedy for Rādhā’s hiccups. Rodam atyuddhatam is the acceptable version.</p>
@@ -1878,6 +1876,7 @@ Sometimes belching also becomes a symptom of ecstatic love for Kṛṣṇa. Ther
 
     <div class="fc-translation" data-sec="translation">Other symptoms such as extreme goose bumps and sweating blood are not described here since they are very rare.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1890,9 +1889,53 @@ Sometimes belching also becomes a symptom of ecstatic love for Kṛṣṇa. Ther
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
             <div class="cr-acarya-name">
+                Viśvanātha Cakravartī Ṭhākura
+                <span class="cr-samp-badge">Gauḍīya</span>
+            </div>
+            <div class="cr-acarya-work">Bhakti-sāra-pradarśinī</div>
+            <div class="cr-acarya-label">Commentary</div>
+            <div class="cr-acarya-purp">
+                <p>These two are actually extreme versions of the sāttvika-bhāvas of pulaka and sveda.
+Thus ends the Second Wave concerning anubhāva in the Southern Section of Bhakti-rasāmṛta-sindhu.
+2.3 The Third Wave
+Concerning Sāttvika-bhāva
+In the Southern Section of the Bhakti-rasāmṛta-sindhu
+Outline of Sāttvika-bhāva
+I.   Definition of Sattva and Sāttvika-bhāva
+II.   Types:
+A.  Snigdha: experienced by devotees, related to rasas
+1.   Primary
+2.   Secondary
+B.  Digdha: experienced by devotees, not directly related to rasa with Kṛṣṇa
+C.  Rukṣa: experienced by persons with raty-ābhāsa
+III.   Cause of the Eight Sāttvika-bhāvas
+IV.   Eight Sāttvika-bhāvas
+A.  Stambha: Paralysis
+B.  Sveda: Perspiration
+C.  Svara-bheda: Choked voice
+D.  Vepathu: Quivering of the body
+E.   Vaivaṇya: Change of complexion
+F.   Aśru: Tears
+G.  Pralaya: Fainting
+V.   Intensity
+A.  Dhūmāyita: smoky: one sāttvika-bhāva, which can be concealed
+B.  Jvalita: luminous: two or three sāttvika-bhāvas at once, concealed with difficulty
+C.  Dīpta: brilliant: three to five sāttvika-bhāvas at once, unconcealed
+D.  Uddīpta: very brilliant: five or more Sāttvika-bhāvas at once
+E.   Sūddīpta: supremely brilliant: intense Uddīpta state in Mahā-bhāva
+VI.   Ābhāsa (false forms) of Sāttvika-bhāva
+A.  Ratyābhāsa-bhava-sāttvikābhāsa: generated by raty-ābhāsa
+B.  Sattvābhāsa-bhava-sāttvikābhāsa: generated by a touch of emotions
+C.  Niḥsattva: generated by practice
+D.  Pratīpa: generated in enemies of Kṛṣṇa</p>
+            </div>
+        </div>
+        <div class="cr-acarya-card gaudiya">
+            <div class="cr-acarya-name">
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Vapur utphullatā refers to extreme goose bumps on the body. Raktodgama refers to blood oozing with the perspiration.</p>

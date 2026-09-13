@@ -31,11 +31,13 @@
 <body class="has-sidebar">
 <header class="fc-site-header">
     <button type="button" class="fc-mobile-trigger fc-mobile-trigger-left" data-overlay="left" aria-label="Open settings drawer">⚙</button>
-    <a class="fc-brand" href="../../../../">FolioCorpus<span class="fc-sub">Bhagavad-gītā</span></a>
+<a class="fc-brand" href="../../../../">FolioCorpus<span class="fc-sub">Bhakti-rasāmṛta-sindhu</span></a>
     <nav class="fc-site-nav">
         <a href="../../../../">Home</a>
         <a href="../../../../bg/">Bhagavad-gītā</a>
         <a href="../../../../sb/">Śrīmad-Bhāgavatam</a>
+        <a href="../../../../brs/" title="Bhakti-rasāmṛta-sindhu with Jīva Gosvāmī's and Viśvanātha Cakravartī's commentaries">Bhakti-rasāmṛta-sindhu</a>
+        <a href="../../../../nod/" title="Nectar of Devotion">Nectar of Devotion</a>
         <a href="../../../../search/" title="Search across all integrated works">🔍 Search</a>
         <button type="button" id="fc-random-verse" class="fc-nav-btn" title="Jump to a random verse">🎲 Random</button>
     </nav>
@@ -46,8 +48,8 @@
     <button class="fc-sb-collapse" type="button" data-sb="left" title="Collapse left sidebar" aria-label="Collapse"></button>
 
     <div class="fc-sb-body">
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Reading</div>
+        <details class="fc-sb-section" data-sbsec="reading" open>
+            <summary class="fc-sb-title">Reading</summary>
             <div class="fc-sb-sub">Theme</div>
             <div class="fc-segmented" data-setting="theme">
                 <button type="button" data-val="light">Light</button>
@@ -73,10 +75,10 @@
                 <button type="button" data-val="single">Single</button>
                 <button type="button" data-val="side">Side-by-side</button>
             </div>
-        </div>
+        </details>
 
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Display</div>
+        <details class="fc-sb-section" data-sbsec="display" open>
+            <summary class="fc-sb-title">Display</summary>
             <div class="fc-sb-grid">
                 <label><input type="checkbox" data-section="devanagari" checked> Devanāgarī</label>
                 <label><input type="checkbox" data-section="iast" checked> IAST transliteration</label>
@@ -98,33 +100,10 @@
                 <button type="button" data-action="expand-all">Expand all</button>
                 <button type="button" data-action="collapse-all">Collapse all</button>
             </div>
-        </div>
+        </details>
 
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Find your starting point</div>
-            <div class="fc-persona-links">
-                <a class="fc-persona-link" href="../../../../daily/">🌅 Daily (one value a week)</a>
-                <a class="fc-persona-link" href="../../../../householder/">🏠 Householder (family & work)</a>
-                <a class="fc-persona-link" href="../../../../parenting/">👨‍👩‍👧 Parenting (stories for kids)</a>
-                <a class="fc-persona-link" href="../../../../themes/">📚 All themes</a>
-                <a class="fc-persona-link" href="../../../../values/" style="background:#F0F6F2;border-left-color:#1F4632;">ॐ Vedic Value System ↗</a>
-                <a class="fc-persona-link" href="../../../../vidya/" style="background:#FBF6E4;border-left-color:#C8860B;">📚 Vidyā Karaṇa (kids, multi-lang) ↗</a>
-            </div>
-        </div>
-
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Audience</div>
-            <div class="fc-audience-filter">
-                <label><input type="radio" name="fc-audience" value="all" checked> All levels</label>
-                <label><input type="radio" name="fc-audience" value="primary"> Primary (children)</label>
-                <label><input type="radio" name="fc-audience" value="middle"> Middle (teens)</label>
-                <label><input type="radio" name="fc-audience" value="senior"> Senior (adults)</label>
-                <label><input type="radio" name="fc-audience" value="college"> College / scholar</label>
-            </div>
-        </div>
-
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Tools</div>
+        <details class="fc-sb-section" data-sbsec="tools" open>
+            <summary class="fc-sb-title">Tools</summary>
             <div class="fc-sb-tools">
                 <button type="button" id="fc-presentation-toggle" class="fc-tool-btn"><span>🖥 Presentation</span><kbd class="fc-kbd">F</kbd></button>
                 <button type="button" id="fc-pen-toggle" class="fc-tool-btn"><span>✏️ Pen mode</span><kbd class="fc-kbd">P</kbd></button>
@@ -139,26 +118,10 @@
                 <button type="button" id="fc-clear-highlights" class="fc-tool-btn">🩷 Clear highlights (page)</button>
                 <button type="button" id="fc-notes-modal-open" class="fc-tool-btn">📓 My annotations</button>
             </div>
-        </div>
+        </details>
 
-        <div class="fc-sb-section" id="fc-tts-controls" hidden>
-            <div class="fc-sb-title">
-                Read-aloud
-                <label class="fc-tts-master">
-                    <input type="checkbox" id="fc-tts-enabled" checked>
-                    <span class="fc-tts-master-label">On</span>
-                </label>
-            </div>
-            <div class="fc-tts-inner">
-                <div class="fc-sb-sub">Voice</div>
-                <select id="fc-tts-voice" class="fc-tts-select" aria-label="TTS voice"></select>
-                <div class="fc-sb-sub">Rate <span class="fc-tts-rate-val">1.0×</span></div>
-                <input type="range" id="fc-tts-rate" min="0.5" max="2" step="0.1" value="1" class="fc-tts-rate" aria-label="Reading rate">
-            </div>
-        </div>
-
-        <div class="fc-sb-section" id="fc-progress-section">
-            <div class="fc-sb-title">Progress</div>
+        <details class="fc-sb-section" data-sbsec="progress" id="fc-progress-section" open>
+            <summary class="fc-sb-title">Progress</summary>
             <div class="fc-progress-row">
                 <span class="fc-progress-num" id="fc-progress-num">0</span>
                 <span class="fc-progress-divider">/</span>
@@ -173,29 +136,29 @@
                 <span class="fc-progress-spacer"></span>
                 <button type="button" class="fc-progress-reset" id="fc-progress-reset" title="Reset progress">↺</button>
             </div>
-        </div>
+        </details>
 
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Bookmarks <span class="fc-sb-count" id="fc-bookmarks-count">0</span></div>
+        <details class="fc-sb-section" data-sbsec="bookmarks" open>
+            <summary class="fc-sb-title">Bookmarks <span class="fc-sb-count" id="fc-bookmarks-count">0</span></summary>
             <ul class="fc-bookmark-list" id="fc-bookmarks-list">
                 <li class="fc-sb-empty">No bookmarks yet — click ☆ on any verse.</li>
             </ul>
-        </div>
+        </details>
 
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Notes <span class="fc-sb-count" id="fc-notes-count">0</span></div>
+        <details class="fc-sb-section" data-sbsec="notes" open>
+            <summary class="fc-sb-title">Notes <span class="fc-sb-count" id="fc-notes-count">0</span></summary>
             <ul class="fc-bookmark-list" id="fc-notes-list">
                 <li class="fc-sb-empty">No notes yet — open any verse and write in the 📝 block.</li>
             </ul>
-        </div>
+        </details>
 
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Export</div>
+        <details class="fc-sb-section" data-sbsec="export">
+            <summary class="fc-sb-title">Export</summary>
             <div class="fc-sb-tools">
                 <button type="button" id="fc-export-md" class="fc-tool-btn">📥 Download Markdown</button>
                 <button type="button" id="fc-export-json" class="fc-tool-btn">💾 Download JSON backup</button>
             </div>
-        </div>
+        </details>
     </div>
 </aside>    <main class="fc-container">
 <nav class="fc-breadcrumbs">
@@ -242,6 +205,7 @@
 
     <div class="fc-translation" data-sec="translation">In the Eleventh Canto it is said: If somehow or other by good fortune one develops faith in hearing and chanting My glories, such a person, being neither very disgusted with nor attached to material life, should achieve perfection through the path of loving devotion to Me. SB 11.20.8</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -254,9 +218,35 @@
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
             <div class="cr-acarya-name">
+                Viśvanātha Cakravartī Ṭhākura
+                <span class="cr-samp-badge">Gauḍīya</span>
+            </div>
+            <div class="cr-acarya-work">Bhakti-sāra-pradarśinī</div>
+            <div class="cr-acarya-label">Commentary</div>
+            <div class="cr-acarya-purp">
+                <p>A person develops faith (jāta-śraddha) in topics about Me by merciful association with devotees (yadrcchayā). That is the meaning of yadrcchayā in this verse, since it is according to the use of the word in the First Canto where it indicates association with a great devotee by that devotee’s mercy:
+tatrābhavad bhagavān vyāsa-putro
+yadṛcchayā gām aṭamāno ’napekṣaḥ
+alakṣya-liṅgo nija-lābha-tuṣṭo
+vṛtaś ca bālair avadhūta-veṣaḥ
+At that moment there appeared, by his own will (yadṛcchayā) the powerful son of Vyāsadeva, who traveled over the earth disinterested and satisfied with himself. He did not manifest any symptoms of belonging to any social order or status of life. He was surrounded by women and children, and he dressed as if others had neglected him. SB 1.19.25
+The following verses show that a person who has faith in topics of the Lord (mat-kathādau jāta-śraddhaḥ) is qualified for bhakti yoga:
+śraddhāmṛta-kathāyāṁ me
+Firm faith in the blissful narration of My pastimes…. SB 11.19.20
+śraddhālur mat-kathāḥ śṛṇvan
+A faithful person who constantly hears such transcendental activities… SB 11.11.23
+Nātisaktaḥ means devoid of extreme attachment to body, house and family. Na nirviṇṇa (not detached) means if the person is completely disgusted with sense objects, he is qualified for jñāna, not bhakti. If he is too attached to sense objects, he is qualified for karma. If the person is devoid of extreme attachment, then that person is qualified for bhakti. Thus, there are three persons qualified by three types of attachment. Disgust with objects is caused by purification of the heart arising from practice of niṣkāma-karma. The cause of too much attachment is beginningless ignorance (avidyā). The cause of being devoid of too much attachment is the unexpected association with exalted devotees alone. These respective causes should be noted. However, there are seen cases of extraordinary qualification. By the unexpected association of the devotee, even a person extremely attached to sense objects (indriyavān) becomes qualified for bhakti.
+ko nu rājann indriyavān mukunda-caraṇāmbujam
+na bhajet sarvato-mṛtyur upāsyam amarottamaiḥ
+My dear King, in the material world the conditioned souls are confronted by death at every step of life. Therefore, who among the conditioned souls involved with senses gratification would not render service to the lotus feet of Lord Mukunda, who is worshippable even for the greatest of liberated souls? SB 11.2.2</p>
+            </div>
+        </div>
+        <div class="cr-acarya-card gaudiya">
+            <div class="cr-acarya-name">
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>The Lord describes this awakening of faith:
@@ -265,7 +255,7 @@ veda duḥkhātmakaṁ kāmān parityāge ’py anīśvaraḥ ||
 tato bhajeta māṁ prītaḥ śraddhālur dṛṭha-niścayaḥ |
 juṣamāṇaś ca tān kāmān duḥkhodarkāṁś ca garhayan ||
 Having awakened faith in the narrations of My glories, being disgusted with all prescribed activities (varṇāśrama), knowing that all sense gratification leads to misery, but still being unable to renounce all sense enjoyment, My devotee should remain happy and worship Me with great faith and conviction. Even though he is sometimes engaged in sense enjoyment, My devotee knows that all sense gratification leads to a miserable result, and he sincerely repents such activities. SB 11.20.27-28
-In the verse (SB 11.20.28) quoted above, the word tataḥ means “starting from this situation, thereafter.” Bhakti is not dependent on anything else, because it possesses its own great power. It is not like jṣāna or other processes, which are dependent on detachment and other things. However, it is dependent on indifference to karma (nirviṇṇaḥ sarva-karmasu) in order to bring about exclusive concentration on the Lord (anyābhilāṣitā-śūnyam). Such an inclination is suitable at this stage of bhakti. However, it is not necessary in the higher stages, such as that of the ātmārāma, when indifference to material goals has already been achieved.</p>
+In the verse (SB 11.20.28) quoted above, the word tataḥ means “starting from this situation, thereafter.” Bhakti is not dependent on anything else, because it possesses its own great power. It is not like jñāna or other processes, which are dependent on detachment and other things. However, it is dependent on indifference to karma (nirviṇṇaḥ sarva-karmasu) in order to bring about exclusive concentration on the Lord (anyābhilāṣitā-śūnyam). Such an inclination is suitable at this stage of bhakti. However, it is not necessary in the higher stages, such as that of the ātmārāma, when indifference to material goals has already been achieved.</p>
             </div>
         </div>
     </section>

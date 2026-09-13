@@ -31,11 +31,13 @@
 <body class="has-sidebar">
 <header class="fc-site-header">
     <button type="button" class="fc-mobile-trigger fc-mobile-trigger-left" data-overlay="left" aria-label="Open settings drawer">⚙</button>
-    <a class="fc-brand" href="../../../">FolioCorpus<span class="fc-sub">Bhagavad-gītā</span></a>
+<a class="fc-brand" href="../../../">FolioCorpus<span class="fc-sub">Bhakti-rasāmṛta-sindhu</span></a>
     <nav class="fc-site-nav">
         <a href="../../../">Home</a>
         <a href="../../../bg/">Bhagavad-gītā</a>
         <a href="../../../sb/">Śrīmad-Bhāgavatam</a>
+        <a href="../../../brs/" title="Bhakti-rasāmṛta-sindhu with Jīva Gosvāmī's and Viśvanātha Cakravartī's commentaries">Bhakti-rasāmṛta-sindhu</a>
+        <a href="../../../nod/" title="Nectar of Devotion">Nectar of Devotion</a>
         <a href="../../../search/" title="Search across all integrated works">🔍 Search</a>
         <button type="button" id="fc-random-verse" class="fc-nav-btn" title="Jump to a random verse">🎲 Random</button>
     </nav>
@@ -46,8 +48,8 @@
     <button class="fc-sb-collapse" type="button" data-sb="left" title="Collapse left sidebar" aria-label="Collapse"></button>
 
     <div class="fc-sb-body">
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Reading</div>
+        <details class="fc-sb-section" data-sbsec="reading" open>
+            <summary class="fc-sb-title">Reading</summary>
             <div class="fc-sb-sub">Theme</div>
             <div class="fc-segmented" data-setting="theme">
                 <button type="button" data-val="light">Light</button>
@@ -73,10 +75,10 @@
                 <button type="button" data-val="single">Single</button>
                 <button type="button" data-val="side">Side-by-side</button>
             </div>
-        </div>
+        </details>
 
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Display</div>
+        <details class="fc-sb-section" data-sbsec="display" open>
+            <summary class="fc-sb-title">Display</summary>
             <div class="fc-sb-grid">
                 <label><input type="checkbox" data-section="devanagari" checked> Devanāgarī</label>
                 <label><input type="checkbox" data-section="iast" checked> IAST transliteration</label>
@@ -98,33 +100,10 @@
                 <button type="button" data-action="expand-all">Expand all</button>
                 <button type="button" data-action="collapse-all">Collapse all</button>
             </div>
-        </div>
+        </details>
 
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Find your starting point</div>
-            <div class="fc-persona-links">
-                <a class="fc-persona-link" href="../../../daily/">🌅 Daily (one value a week)</a>
-                <a class="fc-persona-link" href="../../../householder/">🏠 Householder (family & work)</a>
-                <a class="fc-persona-link" href="../../../parenting/">👨‍👩‍👧 Parenting (stories for kids)</a>
-                <a class="fc-persona-link" href="../../../themes/">📚 All themes</a>
-                <a class="fc-persona-link" href="../../../values/" style="background:#F0F6F2;border-left-color:#1F4632;">ॐ Vedic Value System ↗</a>
-                <a class="fc-persona-link" href="../../../vidya/" style="background:#FBF6E4;border-left-color:#C8860B;">📚 Vidyā Karaṇa (kids, multi-lang) ↗</a>
-            </div>
-        </div>
-
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Audience</div>
-            <div class="fc-audience-filter">
-                <label><input type="radio" name="fc-audience" value="all" checked> All levels</label>
-                <label><input type="radio" name="fc-audience" value="primary"> Primary (children)</label>
-                <label><input type="radio" name="fc-audience" value="middle"> Middle (teens)</label>
-                <label><input type="radio" name="fc-audience" value="senior"> Senior (adults)</label>
-                <label><input type="radio" name="fc-audience" value="college"> College / scholar</label>
-            </div>
-        </div>
-
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Tools</div>
+        <details class="fc-sb-section" data-sbsec="tools" open>
+            <summary class="fc-sb-title">Tools</summary>
             <div class="fc-sb-tools">
                 <button type="button" id="fc-presentation-toggle" class="fc-tool-btn"><span>🖥 Presentation</span><kbd class="fc-kbd">F</kbd></button>
                 <button type="button" id="fc-pen-toggle" class="fc-tool-btn"><span>✏️ Pen mode</span><kbd class="fc-kbd">P</kbd></button>
@@ -139,26 +118,10 @@
                 <button type="button" id="fc-clear-highlights" class="fc-tool-btn">🩷 Clear highlights (page)</button>
                 <button type="button" id="fc-notes-modal-open" class="fc-tool-btn">📓 My annotations</button>
             </div>
-        </div>
+        </details>
 
-        <div class="fc-sb-section" id="fc-tts-controls" hidden>
-            <div class="fc-sb-title">
-                Read-aloud
-                <label class="fc-tts-master">
-                    <input type="checkbox" id="fc-tts-enabled" checked>
-                    <span class="fc-tts-master-label">On</span>
-                </label>
-            </div>
-            <div class="fc-tts-inner">
-                <div class="fc-sb-sub">Voice</div>
-                <select id="fc-tts-voice" class="fc-tts-select" aria-label="TTS voice"></select>
-                <div class="fc-sb-sub">Rate <span class="fc-tts-rate-val">1.0×</span></div>
-                <input type="range" id="fc-tts-rate" min="0.5" max="2" step="0.1" value="1" class="fc-tts-rate" aria-label="Reading rate">
-            </div>
-        </div>
-
-        <div class="fc-sb-section" id="fc-progress-section">
-            <div class="fc-sb-title">Progress</div>
+        <details class="fc-sb-section" data-sbsec="progress" id="fc-progress-section" open>
+            <summary class="fc-sb-title">Progress</summary>
             <div class="fc-progress-row">
                 <span class="fc-progress-num" id="fc-progress-num">0</span>
                 <span class="fc-progress-divider">/</span>
@@ -173,29 +136,29 @@
                 <span class="fc-progress-spacer"></span>
                 <button type="button" class="fc-progress-reset" id="fc-progress-reset" title="Reset progress">↺</button>
             </div>
-        </div>
+        </details>
 
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Bookmarks <span class="fc-sb-count" id="fc-bookmarks-count">0</span></div>
+        <details class="fc-sb-section" data-sbsec="bookmarks" open>
+            <summary class="fc-sb-title">Bookmarks <span class="fc-sb-count" id="fc-bookmarks-count">0</span></summary>
             <ul class="fc-bookmark-list" id="fc-bookmarks-list">
                 <li class="fc-sb-empty">No bookmarks yet — click ☆ on any verse.</li>
             </ul>
-        </div>
+        </details>
 
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Notes <span class="fc-sb-count" id="fc-notes-count">0</span></div>
+        <details class="fc-sb-section" data-sbsec="notes" open>
+            <summary class="fc-sb-title">Notes <span class="fc-sb-count" id="fc-notes-count">0</span></summary>
             <ul class="fc-bookmark-list" id="fc-notes-list">
                 <li class="fc-sb-empty">No notes yet — open any verse and write in the 📝 block.</li>
             </ul>
-        </div>
+        </details>
 
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Export</div>
+        <details class="fc-sb-section" data-sbsec="export">
+            <summary class="fc-sb-title">Export</summary>
             <div class="fc-sb-tools">
                 <button type="button" id="fc-export-md" class="fc-tool-btn">📥 Download Markdown</button>
                 <button type="button" id="fc-export-json" class="fc-tool-btn">💾 Download JSON backup</button>
             </div>
-        </div>
+        </details>
     </div>
 </aside>    <main class="fc-container">
 <nav class="fc-breadcrumbs">
@@ -203,14 +166,14 @@
     <span class="sep">›</span>
     <a href="../../../brs/">Bhakti-rasāmṛta-sindhu</a>
     <span class="sep">›</span>
-    <a href="../../../brs/3/">Section 3</a>
+    <a href="../../../brs/3/">Division 3</a>
     <span class="sep">›</span>
-    <span>Chapter 5</span>
+    <span>Wave 5</span>
 </nav>
 
 <div class="fc-ribbon">
     <div class="fc-ribbon-row">
-        <h1 class="fc-verse-heading">3.5</h1>
+        <h1 class="fc-verse-heading">3.5 · Madhura-rasa</h1>
         <span class="fc-ribbon-meta">37 verses</span>
         <input type="search" class="fc-search" id="fc-search" placeholder="🔍 Search in this chapter" aria-label="Search verses in this chapter">
         <span class="fc-ribbon-current" id="fc-ribbon-current" aria-live="polite"></span>
@@ -289,6 +252,7 @@
 
     <div class="fc-translation" data-sec="translation">When madhura-rati is nourished by suitable vibhāva and other elements in the devotees’ hearts, it is called madhura-bhakti-rasa.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -305,6 +269,7 @@ A pure devotee’s attraction to Kṛṣṇa in conjugal love is called devotion
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>The devotees (satām) here refers to particular devotees whose hearts are touched with attraction for Kṛṣṇa as their lover.</p>
@@ -364,6 +329,7 @@ A pure devotee’s attraction to Kṛṣṇa in conjugal love is called devotion
 
     <div class="fc-translation" data-sec="translation">Though this rasa has many components, it will be described in summary because it is difficult to describe, because it is very confidential, and because it is unsuitable for those who do not have the taste for madhura-rasa--since it appears similar to the rasa of mundane love,</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -379,6 +345,7 @@ A pure devotee’s attraction to Kṛṣṇa in conjugal love is called devotion
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Nivṛttānupayogitvād means “because of lack of qualification of those who are without taste (nivṛtta) for this rasa related to the Lord, caused by their equating it with material love.”</p>
@@ -437,6 +404,7 @@ A pure devotee’s attraction to Kṛṣṇa in conjugal love is called devotion
 
 
     <div class="fc-translation" data-sec="translation">Ālambanas: The ālambanas in this rasa are Kṛṣṇa and His dear, beautiful women.</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -503,6 +471,7 @@ A pure devotee’s attraction to Kṛṣṇa in conjugal love is called devotion
 
     <div class="fc-translation" data-sec="translation">Kṛṣṇa: Kṛṣṇa, who is the abode of abundant beauty, pastimes and skill in the arts which cannot be equaled or surpassed, is considered the ālambana (viṣaya).</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -545,8 +514,8 @@ A pure devotee’s attraction to Kṛṣṇa in conjugal love is called devotion
 
     <div class="cr-iast-block" data-sec="iast">
         <div class="cr-iast-line">yathā śrī-gīta-govinde (1.11) –</div>
-<div class="cr-pron-line" data-sec="pronunciation">[yathaa shree-geeta-govinde (1.11) –]</div>        <div class="cr-iast-line">viśveṣām anuraṣjanena janayann ānandam indīvara-</div>
-<div class="cr-pron-line" data-sec="pronunciation">[vishveshaam anurashjanena janayann aanandam indeevara-]</div>        <div class="cr-iast-line">śreṇī-śyāmala-komalair upanayann aṅgair anaṅgotsavam |</div>
+<div class="cr-pron-line" data-sec="pronunciation">[yathaa shree-geeta-govinde (1.11) –]</div>        <div class="cr-iast-line">viśveṣām anurañjanena janayann ānandam indīvara-</div>
+<div class="cr-pron-line" data-sec="pronunciation">[vishveshaam anuranjanena janayann aanandam indeevara-]</div>        <div class="cr-iast-line">śreṇī-śyāmala-komalair upanayann aṅgair anaṅgotsavam |</div>
 <div class="cr-pron-line" data-sec="pronunciation">[shrenee-shyaamala-komalair upanayann angair anangotsavam |]</div>        <div class="cr-iast-line">svacchandaṁ vraja-sundarībhir abhitaḥ praty-aṅgam āliṅgitaḥ</div>
 <div class="cr-pron-line" data-sec="pronunciation">[svachchandam vraja-sundareebhir abhitah praty-angam aalingitah]</div>        <div class="cr-iast-line">śṛṅgāraḥ sakhi mūrtimān iva madhau mugdho hariḥ krīḍati ||5||</div>
 <div class="cr-pron-line" data-sec="pronunciation">[shringaarah sakhi moortimaan iva madhau mugdho harih kreedati ||5||]</div>    </div>
@@ -559,7 +528,7 @@ A pure devotee’s attraction to Kṛṣṇa in conjugal love is called devotion
                 <div class="cr-blend-iast-line">yathā śrī-gīta-govinde (1.11) –</div>
             </div>
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">viśveṣām anuraṣjanena janayann ānandam indīvara-</div>
+                <div class="cr-blend-iast-line">viśveṣām anurañjanena janayann ānandam indīvara-</div>
             </div>
             <div class="cr-blend-block">
                 <div class="cr-blend-iast-line">śreṇī-śyāmala-komalair upanayann aṅgair anaṅgotsavam |</div>
@@ -575,6 +544,7 @@ A pure devotee’s attraction to Kṛṣṇa in conjugal love is called devotion
 
 
     <div class="fc-translation" data-sec="translation">From Gīta-govinda: O friend! Attractive Kṛṣṇa, who produces bliss in everyone within the universe by inducing their love, who produces the bliss of Cupid in the women by His soft limbs which have the color of a forest of blue lotuses, and whose every limb is embraced spontaneously by the young women of Vraja, sports in the spring season like the incarnation of madhura-rasa.</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -649,6 +619,7 @@ A pure devotee’s attraction to Kṛṣṇa in conjugal love is called devotion
 
     <div class="fc-translation" data-sec="translation">The dear women: I offer my respects to the most astonishing young women, who are endowed with the most excellent, freshest sweetness, whose hearts are mixed with waves of prema, and who adore Kṛṣṇa as their own lover.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -664,6 +635,7 @@ A pure devotee’s attraction to Kṛṣṇa in conjugal love is called devotion
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Antar means their hearts or mental functions. Karambita means mixed. All the elements of their mental functions (antarāṅgāḥ) are mixed with waves of prema.</p>
@@ -718,6 +690,7 @@ A pure devotee’s attraction to Kṛṣṇa in conjugal love is called devotion
 
 
     <div class="fc-translation" data-sec="translation">Among these lovers of Kṛṣṇa, Rādhā, daughter of Vṛṣabhānu, is the chief.</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -792,6 +765,7 @@ A pure devotee’s attraction to Kṛṣṇa in conjugal love is called devotion
 
     <div class="fc-translation" data-sec="translation">Her form: Just look at Rādhā, the abode of sweet nectar, whose blissful eyes steals the beauty of a cakorī bird quivering with excitement, whose face defeats the fame of the full moon, and whose excellent beauty exceeds the luster of pure gold.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -807,6 +781,7 @@ A pure devotee’s attraction to Kṛṣṇa in conjugal love is called devotion
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Mad-cakita-cakorī means a female cakora bird [Note: The cakora or Greek partridge is said to subsist on moonbeams.] who is trembling with excitement. Cakita usually indicates trembling with fear, but in this case, simply indicates the restless nature of her eyes, due to excitement (mada).</p>
@@ -878,6 +853,7 @@ A pure devotee’s attraction to Kṛṣṇa in conjugal love is called devotion
 
     <div class="fc-translation" data-sec="translation">Rādhā’s rati: I derive a hundred times more delight from Rādhā, than from respectful friendship, even when she does not hear my jokes filled with the highest pleasure, and instead, looking skyward, ignores those jokes with clever words which indicate her contempt.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -893,6 +869,7 @@ A pure devotee’s attraction to Kṛṣṇa in conjugal love is called devotion
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Visibly (sphuṭam) the words do not enter her ears, but without Kṛṣṇa’s seeing, those words immediately enter her ears. She raises her eyes upwards (udyan-mukhī), out of lover’s pride. Narmoktau is connected the later phrase lāghavam apy ātanvatī. The meaning is “she does not pay attention to my joking words.” Bhaṅgibhiḥ (by wit or clever, deceptive words) indicates by suggestion that she actually takes the words to heart.</p>
@@ -956,6 +933,7 @@ A pure devotee’s attraction to Kṛṣṇa in conjugal love is called devotion
 
     <div class="fc-translation" data-sec="translation">Kṛṣṇa’s rati, from Gīta-govinda: When Rādhā left the arena of the rasa dance out of pride, Kṛṣṇa gave up the other beautiful women and left the arena, thinking only of Rādhā who was bound up by chains of the highest love.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -971,6 +949,7 @@ A pure devotee’s attraction to Kṛṣṇa in conjugal love is called devotion
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Saṁṣāra-vāsanābaddha-śṛṅkhalām literally means “Rādhā who was bound by chains in the form of impressions of previous lives (saṁsāra).” However, the meaning of saṁsāra in this context is “the real essence.” (Sam indicates samyak, which means true, and sāra means essence).</p>
@@ -1041,6 +1020,7 @@ A pure devotee’s attraction to Kṛṣṇa in conjugal love is called devotion
 
 
 
+
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-5-11" data-note-label="BG 5.11" data-note-chapter="5" data-note-vlabel="11">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 5.11…" rows="4"></textarea>
@@ -1065,8 +1045,8 @@ A pure devotee’s attraction to Kṛṣṇa in conjugal love is called devotion
 
     <div class="cr-iast-block" data-sec="iast">
         <div class="cr-iast-line">yathā padyāvalyām (172) [Note: Credited to Sarva-vidyā-vinoda.] –</div>
-<div class="cr-pron-line" data-sec="pronunciation">[yathaa padyaavalyaam (172) [note: chredited to sarva-vidyaa-vinoda.] –]</div>        <div class="cr-iast-line">guru-jana-gaṣjanam ayaśo</div>
-<div class="cr-pron-line" data-sec="pronunciation">[guru-jana-gashjanam ayasho]</div>        <div class="cr-iast-line">gṛha-pati-caritaṁ ca dāruṇaṁ kim api |</div>
+<div class="cr-pron-line" data-sec="pronunciation">[yathaa padyaavalyaam (172) [note: chredited to sarva-vidyaa-vinoda.] –]</div>        <div class="cr-iast-line">guru-jana-gañjanam ayaśo</div>
+<div class="cr-pron-line" data-sec="pronunciation">[guru-jana-ganjanam ayasho]</div>        <div class="cr-iast-line">gṛha-pati-caritaṁ ca dāruṇaṁ kim api |</div>
 <div class="cr-pron-line" data-sec="pronunciation">[griha-pati-charitam cha daarunam kim api |]</div>        <div class="cr-iast-line">vismārayati samastaṁ</div>
 <div class="cr-pron-line" data-sec="pronunciation">[vismaarayati samastam]</div>        <div class="cr-iast-line">śiva śiva muralī murārāteḥ ||12||</div>
 <div class="cr-pron-line" data-sec="pronunciation">[shiva shiva muralee muraaraateh ||12||]</div>    </div>
@@ -1079,7 +1059,7 @@ A pure devotee’s attraction to Kṛṣṇa in conjugal love is called devotion
                 <div class="cr-blend-iast-line">yathā padyāvalyām (172) [Note: Credited to Sarva-vidyā-vinoda.] –</div>
             </div>
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">guru-jana-gaṣjanam ayaśo</div>
+                <div class="cr-blend-iast-line">guru-jana-gañjanam ayaśo</div>
             </div>
             <div class="cr-blend-block">
                 <div class="cr-blend-iast-line">gṛha-pati-caritaṁ ca dāruṇaṁ kim api |</div>
@@ -1095,6 +1075,7 @@ A pure devotee’s attraction to Kṛṣṇa in conjugal love is called devotion
 
 
     <div class="fc-translation" data-sec="translation">From Padyāvalī: How astonishing! The sound of Kṛṣṇa’s flute makes the gopīs forget the scolding of elders, the infamy from breaking social rules, and the terrifying treatment from their husbands.</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -1156,6 +1137,7 @@ A pure devotee’s attraction to Kṛṣṇa in conjugal love is called devotion
 
 
     <div class="fc-translation" data-sec="translation">Anubhāvas: The anubhāvas of madhura-rasa are such things as glancing from the corner of the eye and smiles.</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -1230,6 +1212,7 @@ A pure devotee’s attraction to Kṛṣṇa in conjugal love is called devotion
 
     <div class="fc-translation" data-sec="translation">An example, from Lalita-mādhava: By drinking the nectar of the Gaṅgā in the form of Rādhā’s sweet smile, as it mixes at the Triveṇī junction with the waves of the Yamunā in the form of the dark tips of Kṛṣṇa’s eyes, [Note: In simple words this means “when Kṛṣṇa glances upon Rādhā’s smile.”] and by extinguishing the rising heat by bathing slightly in the cool water of the satisfied mind, we have surpassed the seven worlds, and now live in the topmost planet.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1245,6 +1228,7 @@ A pure devotee’s attraction to Kṛṣṇa in conjugal love is called devotion
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Apāṅga means “near the corner of the eye.” It can mean the corner of the eye, or near the corner of the eye, or the outer portion of the eye. In the phrase śitāpāṅga, apāṅga has been explained as a place near the outer portion of the eye (netrānta). In this verse, the word kṛṣṇāpāṅga is used, indicating blackness near the edge of the eye at the corner. In the same way, a phrase like nīlendīvara-locana found in the Govinda-stava does not mean “eyes black like a blue lotus,” but rather “eyes whose surrounding area is blackish like the blue lotus.” This blackness is compared to the color of wave-filled Yamunā (taraṅgita-dyumaṇijā [Note: Dyumaṇi, jewel of the sky, means the sun. Dyumaṇi-jā means the daughter of the sun, who is Yamunā.] which is also blackish. In this aspect of blackness, the edges of the corners of the eyes and the Yamunā are similar. Taraṅgita is the past participle formed from the verb taraṅgayate (to become full of waves) with the addition of the suffix “i” and then “ta”.</p>
@@ -1287,8 +1271,8 @@ A pure devotee’s attraction to Kṛṣṇa in conjugal love is called devotion
         <div class="cr-iast-line">atha sāttvikāḥ, yathā padyāvalyām (181) –</div>
 <div class="cr-pron-line" data-sec="pronunciation">[atha saattvikaah, yathaa padyaavalyaam (181) –]</div>        <div class="cr-iast-line">kāmaṁ vapuḥ pulakitaṁ nayane dhṛtāsre</div>
 <div class="cr-pron-line" data-sec="pronunciation">[kaamam vapuh pulakitam nayane dhritaasre]</div>        <div class="cr-iast-line">vācaḥ sa-gadgada-padāḥ sakhi kampi vakṣaḥ |</div>
-<div class="cr-pron-line" data-sec="pronunciation">[vaachah sa-gadgada-padaah sakhi kampi vakshah |]</div>        <div class="cr-iast-line">jṣātaṁ mukunda-muralī-rava-mādhurī te</div>
-<div class="cr-pron-line" data-sec="pronunciation">[jshaatam mukunda-muralee-rava-maadhuree te]</div>        <div class="cr-iast-line">cetaḥ sudhāṁśu-vadane taralīkaroti ||15||</div>
+<div class="cr-pron-line" data-sec="pronunciation">[vaachah sa-gadgada-padaah sakhi kampi vakshah |]</div>        <div class="cr-iast-line">jñātaṁ mukunda-muralī-rava-mādhurī te</div>
+<div class="cr-pron-line" data-sec="pronunciation">[jnaatam mukunda-muralee-rava-maadhuree te]</div>        <div class="cr-iast-line">cetaḥ sudhāṁśu-vadane taralīkaroti ||15||</div>
 <div class="cr-pron-line" data-sec="pronunciation">[chetah sudhaamshu-vadane taraleekaroti ||15||]</div>    </div>
 
 
@@ -1305,7 +1289,7 @@ A pure devotee’s attraction to Kṛṣṇa in conjugal love is called devotion
                 <div class="cr-blend-iast-line">vācaḥ sa-gadgada-padāḥ sakhi kampi vakṣaḥ |</div>
             </div>
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">jṣātaṁ mukunda-muralī-rava-mādhurī te</div>
+                <div class="cr-blend-iast-line">jñātaṁ mukunda-muralī-rava-mādhurī te</div>
             </div>
             <div class="cr-blend-block">
                 <div class="cr-blend-iast-line">cetaḥ sudhāṁśu-vadane taralīkaroti ||15||</div>
@@ -1315,6 +1299,7 @@ A pure devotee’s attraction to Kṛṣṇa in conjugal love is called devotion
 
 
     <div class="fc-translation" data-sec="translation">Sāttvika-bhāvas, from Padyāvalī: O moon-faced friend! Seeing your body with hairs on end, the tears in your eyes, your choked voice and your trembling chest, I can understand that the sound of Kṛṣṇa’s flute has melted your heart.</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -1331,6 +1316,7 @@ A pure devotee’s attraction to Kṛṣṇa in conjugal love is called devotion
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>In this verse, someone is speaking after seeing another person listening to the flute.</p>
@@ -1371,8 +1357,8 @@ A pure devotee’s attraction to Kṛṣṇa in conjugal love is called devotion
 
     <div class="cr-iast-block" data-sec="iast">
         <div class="cr-iast-line">atha vyabhicāriṇaḥ –</div>
-<div class="cr-pron-line" data-sec="pronunciation">[atha vyabhichaarinah –]</div>        <div class="cr-iast-line">ālasyaugrye vinā sarve vijṣeyā vyabhicāriṇaḥ ||16||</div>
-<div class="cr-pron-line" data-sec="pronunciation">[aalasyaugrye vinaa sarve vijsheyaa vyabhichaarinah ||16||]</div>    </div>
+<div class="cr-pron-line" data-sec="pronunciation">[atha vyabhichaarinah –]</div>        <div class="cr-iast-line">ālasyaugrye vinā sarve vijñeyā vyabhicāriṇaḥ ||16||</div>
+<div class="cr-pron-line" data-sec="pronunciation">[aalasyaugrye vinaa sarve vijneyaa vyabhichaarinah ||16||]</div>    </div>
 
 
     <details class="cr-blend-details" data-sec="blended">
@@ -1382,13 +1368,14 @@ A pure devotee’s attraction to Kṛṣṇa in conjugal love is called devotion
                 <div class="cr-blend-iast-line">atha vyabhicāriṇaḥ –</div>
             </div>
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">ālasyaugrye vinā sarve vijṣeyā vyabhicāriṇaḥ ||16||</div>
+                <div class="cr-blend-iast-line">ālasyaugrye vinā sarve vijñeyā vyabhicāriṇaḥ ||16||</div>
             </div>
         </div>
     </details>
 
 
     <div class="fc-translation" data-sec="translation">Vyabhicāri-bhāvas: In madhura-bhakti-rasa, all the vyabhicāri-bhāvas except ālasya (sloth) and augrya (ferocity) manifest.</div>
+
 
 
     <section class="fc-section" data-sec="gaudiya">
@@ -1398,6 +1385,7 @@ A pure devotee’s attraction to Kṛṣṇa in conjugal love is called devotion
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Ālasya does not manifest except after enjoying with Kṛṣṇa. Augrya (ugratā) does not manifest, except when the association with Kṛṣṇa is broken.</p>
@@ -1438,9 +1426,9 @@ A pure devotee’s attraction to Kṛṣṇa in conjugal love is called devotion
 
     <div class="cr-iast-block" data-sec="iast">
         <div class="cr-iast-line">tatra nirvedo, yathā padyāvalyām (221) –</div>
-<div class="cr-pron-line" data-sec="pronunciation">[tatra nirvedo, yathaa padyaavalyaam (221) –]</div>        <div class="cr-iast-line">mā muṣca paṣcaśara paṣca-śarīṁ śarīre</div>
-<div class="cr-pron-line" data-sec="pronunciation">[maa mushcha pashchashara pashcha-shareem shareere]</div>        <div class="cr-iast-line">mā siṣca sāndra-makaranda-rasena vāyo |</div>
-<div class="cr-pron-line" data-sec="pronunciation">[maa sishcha saandra-makaranda-rasena vaayo |]</div>        <div class="cr-iast-line">aṅgāni tat-praṇaya-bhaṅga-vigarhitāni</div>
+<div class="cr-pron-line" data-sec="pronunciation">[tatra nirvedo, yathaa padyaavalyaam (221) –]</div>        <div class="cr-iast-line">mā muñca pañcaśara pañca-śarīṁ śarīre</div>
+<div class="cr-pron-line" data-sec="pronunciation">[maa muncha panchashara pancha-shareem shareere]</div>        <div class="cr-iast-line">mā siñca sāndra-makaranda-rasena vāyo |</div>
+<div class="cr-pron-line" data-sec="pronunciation">[maa sincha saandra-makaranda-rasena vaayo |]</div>        <div class="cr-iast-line">aṅgāni tat-praṇaya-bhaṅga-vigarhitāni</div>
 <div class="cr-pron-line" data-sec="pronunciation">[angaani tat-pranaya-bhanga-vigarhitaani]</div>        <div class="cr-iast-line">nālambituṁ katham api kṣamate’dya jīvaḥ ||17||</div>
 <div class="cr-pron-line" data-sec="pronunciation">[naalambitum katham api kshamate’dya jeevah ||17||]</div>    </div>
 
@@ -1452,10 +1440,10 @@ A pure devotee’s attraction to Kṛṣṇa in conjugal love is called devotion
                 <div class="cr-blend-iast-line">tatra nirvedo, yathā padyāvalyām (221) –</div>
             </div>
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">mā muṣca paṣcaśara paṣca-śarīṁ śarīre</div>
+                <div class="cr-blend-iast-line">mā muñca pañcaśara pañca-śarīṁ śarīre</div>
             </div>
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">mā siṣca sāndra-makaranda-rasena vāyo |</div>
+                <div class="cr-blend-iast-line">mā siñca sāndra-makaranda-rasena vāyo |</div>
             </div>
             <div class="cr-blend-block">
                 <div class="cr-blend-iast-line">aṅgāni tat-praṇaya-bhaṅga-vigarhitāni</div>
@@ -1468,6 +1456,7 @@ A pure devotee’s attraction to Kṛṣṇa in conjugal love is called devotion
 
 
     <div class="fc-translation" data-sec="translation">Nirveda (self-deprecation): O Cupid! Do not shoot my body with your five arrows. O Vāyu! Do not wet my body with the sap of forest flowers. How can my wretched limbs which have caused a break in Kṛṣṇa’s love maintain their life?</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -1542,6 +1531,7 @@ A pure devotee’s attraction to Kṛṣṇa in conjugal love is called devotion
 
     <div class="fc-translation" data-sec="translation">Harṣa (joy), from Dāna-keli-kaumudī: This cheater, standing in the forest on Govardhana Hill, performing pastimes that surpass those of a young, intoxicated elephant, whose bodily effulgence causes attraction for the bee-like eyes of all the women of the earth, and whose complexion surpasses the luster of a blue lotus petal, has destroyed my self-control.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1557,6 +1547,7 @@ A pure devotee’s attraction to Kṛṣṇa in conjugal love is called devotion
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Kuvalaya in first line means the earth, but in the second line it means a blue lotus. Kṛṣṇa’s bodily complexion is here not compared to honey, which the bees (eyes of the gopīs) are made to taste, because the word lehayan cannot mean “causes to taste” in this verse. The line cannot mean that His blue effulgence causes them to taste and drink. The reason is as follows. For verbs, which have the meaning of eating, such as drinking or taking a meal, the subject becomes the object in the causative form. [Note: Pāṇini 1.4.52.] If lehayan refers to drinking (someone makes them drink), then the eyes of the gopīs which are like bees, should be in the accusative case. Since that is not the case (the bees are in the instrumental case), [Note: However some versions of the text have akṣi-bhṛṅgān in the accusative instead of the instrumental, in which case the meaning would be “make the bees taste.”] the word lehayan cannot refer to drinking or tasting. Instead the word lehayan can only refer to causing attraction. “The effulgence causes attraction for the eyes of the gopīs.” Kṣmādhara
@@ -1620,6 +1611,7 @@ The word kitava in the above verse means cheater, but is uttered out of anger ge
 
 
     <div class="fc-translation" data-sec="translation">Sthāyi-bhāva: The Sthāyi-bhāva of madhura-rasa is the previously described madhura-rati. [Note: This was described in 2.5.36.]</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -1694,6 +1686,7 @@ The word kitava in the above verse means cheater, but is uttered out of anger ge
 
     <div class="fc-translation" data-sec="translation">From Padyāvalī: O friend! Who is this person wearing cloth the color of a gold streak on a touchstone, whose face is sweet with dancing eyebrows, whose ears are decorated with aśoka buds, who has brought me under His control by the sound of His flute?</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1709,9 +1702,10 @@ The word kitava in the above verse means cheater, but is uttered out of anger ge
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
-                <p>Valli in bhrū-valli is short for vallī, which means creeper. Thus, bhrū-valli means the graceful creepers of His eyebrows. The usage is found in Māgha-kāvya: nava-nāga-valli-dala-pūga-rasa (plentiful sap from the leaves of the new snake-like creepers) and in Gīta-govinda: mallī-valli-caṣcat-parāga (the quivering pollen on the jasmine creepers.) Instead of bhrū-valli sometimes bhrū-yugma (two eyebrows) is seen. Nikaṣopala-tulya-veṣa means cloth similar to a testing stone [Note: Nikaśa is a testing stone for gold. By rubbing gold on the stone for testing, the stone shows a golden line as a test of real gold.] by its yellow color. Kṛṣṇa’s cloth is compared to the fresh yellow color of this golden stone, though the word “yellow or gold like the lines on the testing stone” is missing in the phrase. It means “cloth with gold lines on it.” Avaśīkaroti means “He has made me so that I have no control over myself.” Or it can also mean “He has made me uncontrollable or independent of others, giving no respect to the opinion of others.” The suffix “ī” is added to avaśa and combined with kṛ to become avaśikaroti, to convey the sense of changing into a condition previously not existing. [Note: Pāṇini 5.4.50] Kaṇkelli means the aśoka plant (which has bright red flowers).</p>
+                <p>Valli in bhrū-valli is short for vallī, which means creeper. Thus, bhrū-valli means the graceful creepers of His eyebrows. The usage is found in Māgha-kāvya: nava-nāga-valli-dala-pūga-rasa (plentiful sap from the leaves of the new snake-like creepers) and in Gīta-govinda: mallī-valli-cañcat-parāga (the quivering pollen on the jasmine creepers.) Instead of bhrū-valli sometimes bhrū-yugma (two eyebrows) is seen. Nikaṣopala-tulya-veṣa means cloth similar to a testing stone [Note: Nikaśa is a testing stone for gold. By rubbing gold on the stone for testing, the stone shows a golden line as a test of real gold.] by its yellow color. Kṛṣṇa’s cloth is compared to the fresh yellow color of this golden stone, though the word “yellow or gold like the lines on the testing stone” is missing in the phrase. It means “cloth with gold lines on it.” Avaśīkaroti means “He has made me so that I have no control over myself.” Or it can also mean “He has made me uncontrollable or independent of others, giving no respect to the opinion of others.” The suffix “ī” is added to avaśa and combined with kṛ to become avaśikaroti, to convey the sense of changing into a condition previously not existing. [Note: Pāṇini 5.4.50] Kaṇkelli means the aśoka plant (which has bright red flowers).</p>
             </div>
         </div>
     </section>
@@ -1768,6 +1762,7 @@ The word kitava in the above verse means cheater, but is uttered out of anger ge
 
     <div class="fc-translation" data-sec="translation">That love of Rādhā and Kṛṣṇa is never at any time or in any circumstance covered by other similar relationships or by different sthāyi-bhāvas.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1783,6 +1778,7 @@ The word kitava in the above verse means cheater, but is uttered out of anger ge
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>The love or rati in this verse refers exclusively to love of Rādhā and Mādhava, and not Kṛṣṇa’s relationship with other dear gopīs in the conjugal mood. The rati of Rādhā and Kṛṣṇa, composed of seeing each other and other pastimes using trickery, is never covered over (vicchidyate) by similar relationships (sajātīya)—Kṛṣṇa’s relationship with other gopīs, or by contrary relationships (vijātīyaiḥ) such as vatsala-sthāyi-bhāva, which desire to compete with this type of rati.</p>
@@ -1823,8 +1819,8 @@ The word kitava in the above verse means cheater, but is uttered out of anger ge
 
     <div class="cr-iast-block" data-sec="iast">
         <div class="cr-iast-line">yathā –</div>
-<div class="cr-pron-line" data-sec="pronunciation">[yathaa –]</div>        <div class="cr-iast-line">ito dūre rājṣī sphurati parito mitra-paṭalī</div>
-<div class="cr-pron-line" data-sec="pronunciation">[ito doore raajshee sphurati parito mitra-patalee]</div>        <div class="cr-iast-line">dṛśor agre candrāvalir upari śailasya danujaḥ |</div>
+<div class="cr-pron-line" data-sec="pronunciation">[yathaa –]</div>        <div class="cr-iast-line">ito dūre rājñī sphurati parito mitra-paṭalī</div>
+<div class="cr-pron-line" data-sec="pronunciation">[ito doore raajnee sphurati parito mitra-patalee]</div>        <div class="cr-iast-line">dṛśor agre candrāvalir upari śailasya danujaḥ |</div>
 <div class="cr-pron-line" data-sec="pronunciation">[drishor agre chandraavalir upari shailasya danujah |]</div>        <div class="cr-iast-line">asavye rādhāyāḥ kusumita-latā saṁvṛta-tanau dṛg-</div>
 <div class="cr-pron-line" data-sec="pronunciation">[asavye raadhaayaah kusumita-lataa samvrita-tanau drig-]</div>        <div class="cr-iast-line">anta-śrīr lolā taḍid iva mukundasya valate ||22||</div>
 <div class="cr-pron-line" data-sec="pronunciation">[anta-shreer lolaa tadid iva mukundasya valate ||22||]</div>    </div>
@@ -1837,7 +1833,7 @@ The word kitava in the above verse means cheater, but is uttered out of anger ge
                 <div class="cr-blend-iast-line">yathā –</div>
             </div>
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">ito dūre rājṣī sphurati parito mitra-paṭalī</div>
+                <div class="cr-blend-iast-line">ito dūre rājñī sphurati parito mitra-paṭalī</div>
             </div>
             <div class="cr-blend-block">
                 <div class="cr-blend-iast-line">dṛśor agre candrāvalir upari śailasya danujaḥ |</div>
@@ -1854,6 +1850,7 @@ The word kitava in the above verse means cheater, but is uttered out of anger ge
 
     <div class="fc-translation" data-sec="translation">An example: At a short distance stands the queen of Vraja, and all around are Kṛṣṇa’s friends. Candrāvalī is standing right in front of Him, and Arisṭāsura is standing at the edge of Vraja on stony soil. But Kṛṣṇa’s restless glance falls only upon the form of Rādhā, covered by flowering creepers.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1869,9 +1866,10 @@ The word kitava in the above verse means cheater, but is uttered out of anger ge
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
-                <p>Rājṣī means the queen of Vraja, Yaśodā. Danuja means Ariṣṭāsura. Śailasya here refers to a collection of stones, not a mountain. Ariṣṭāsura was standing on top of a pile of stones at the entrance to Vraja.</p>
+                <p>Rājñī means the queen of Vraja, Yaśodā. Danuja means Ariṣṭāsura. Śailasya here refers to a collection of stones, not a mountain. Ariṣṭāsura was standing on top of a pile of stones at the entrance to Vraja.</p>
             </div>
         </div>
     </section>
@@ -1909,8 +1907,8 @@ The word kitava in the above verse means cheater, but is uttered out of anger ge
 
     <div class="cr-iast-block" data-sec="iast">
         <div class="cr-iast-line">ghorā khaṇḍita-śaṅkhacūḍam ajiraṁ rundhe śivā tāmasī</div>
-<div class="cr-pron-line" data-sec="pronunciation">[ghoraa khandita-shankhachoodam ajiram rundhe shivaa taamasee]</div>        <div class="cr-iast-line">brahmiṣṭha-śvasanaḥ śama-stuti-kathā prāleyam āsiṣcati |</div>
-<div class="cr-pron-line" data-sec="pronunciation">[brahmishtha-shvasanah shama-stuti-kathaa praaleyam aasishchati |]</div>        <div class="cr-iast-line">agre rāmaḥ sudhā-rucir vijayate kṛṣṇa-pramodocitaṁ</div>
+<div class="cr-pron-line" data-sec="pronunciation">[ghoraa khandita-shankhachoodam ajiram rundhe shivaa taamasee]</div>        <div class="cr-iast-line">brahmiṣṭha-śvasanaḥ śama-stuti-kathā prāleyam āsiñcati |</div>
+<div class="cr-pron-line" data-sec="pronunciation">[brahmishtha-shvasanah shama-stuti-kathaa praaleyam aasinchati |]</div>        <div class="cr-iast-line">agre rāmaḥ sudhā-rucir vijayate kṛṣṇa-pramodocitaṁ</div>
 <div class="cr-pron-line" data-sec="pronunciation">[agre raamah sudhaa-ruchir vijayate krishna-pramodochitam]</div>        <div class="cr-iast-line">rādhāyās tad api praphullam abhajan mlāniṁ na bhāvāmbujam ||23||</div>
 <div class="cr-pron-line" data-sec="pronunciation">[raadhaayaas tad api praphullam abhajan mlaanim na bhaavaambujam ||23||]</div>    </div>
 
@@ -1922,7 +1920,7 @@ The word kitava in the above verse means cheater, but is uttered out of anger ge
                 <div class="cr-blend-iast-line">ghorā khaṇḍita-śaṅkhacūḍam ajiraṁ rundhe śivā tāmasī</div>
             </div>
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">brahmiṣṭha-śvasanaḥ śama-stuti-kathā prāleyam āsiṣcati |</div>
+                <div class="cr-blend-iast-line">brahmiṣṭha-śvasanaḥ śama-stuti-kathā prāleyam āsiñcati |</div>
             </div>
             <div class="cr-blend-block">
                 <div class="cr-blend-iast-line">agre rāmaḥ sudhā-rucir vijayate kṛṣṇa-pramodocitaṁ</div>
@@ -1935,6 +1933,7 @@ The word kitava in the above verse means cheater, but is uttered out of anger ge
 
 
     <div class="fc-translation" data-sec="translation">On one side lay dead Śaṅkhacūḍa, whose body was like an arena for pastimes, surrounded by frightful, ferocious, ignorant jackals. In another place, the wind, like a group of sages situated in brahman realization, recited soothing praises, cool as falling snow. In front stood Balarāma, glowing like the full moon. But the lotus of Rādhā’s love suitable for giving joy to Kṛṣṇa did not fade, but rather sprang into full bloom.</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -1951,6 +1950,7 @@ The word kitava in the above verse means cheater, but is uttered out of anger ge
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Khaṇḍita-śaṅkhacūḍa refers to the Yakṣa whose body was like a pastimes arena (ajiram). Jackals (śivā) filled with the mode of ignorance (tāmasī) surrounded (rundhe) him. However, in terms of the lotus face of Rādhā, śivā can be taken as aśivā (by sandhi rule), meaning inauspicious, and tāmasī can mean night. For the lotus, the night is inauspicious and frightening, since it closes up the lotus flower. The inauspicious, terrifying night (for the lotus) covered the broken demon lying in the arena of pastimes. In both cases, the wind, which was like a group of persons fixed in the peace of brahman realization, chanting peaceful praises, as if showering snow. What is shown here are contrary moods of fear (of the demon), peace (from the wind) and parental affection (Balarāma’s relation to Rādhā). The night, snow and the moon are all unfavorable for the lotus. Now, other lotuses would wither in the presence of night, snow or the moon, but the lotus representing Rādhā’s love for Kṛṣṇa did not wither at all. This is an example of the literary ornament called viśeṣokti. [Note: In viśeṣokti, the effect is not produced in spite of the full cause. In the verse, the causes for the lotus withering are stated, but the lotus does not wither. The causes for Rādhā’s love towards Kṛṣṇa to diminish are stated, but her love does not change.]</p>
@@ -2006,6 +2006,7 @@ The word kitava in the above verse means cheater, but is uttered out of anger ge
 
     <div class="fc-translation" data-sec="translation">Madhura-bhakti-rasa has two types: vipralambha (in separation) and sambhoga (in union).</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2021,6 +2022,7 @@ The word kitava in the above verse means cheater, but is uttered out of anger ge
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Sa, the first word in the sentence, refers to madhura-bhakti-rasa.</p>
@@ -2084,6 +2086,7 @@ The word kitava in the above verse means cheater, but is uttered out of anger ge
 
     <div class="fc-translation" data-sec="translation">The wise describe many types of vipralambha, such as pūrva-rāga, māna and pravāsa.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2145,6 +2148,7 @@ The word kitava in the above verse means cheater, but is uttered out of anger ge
 
     <div class="fc-translation" data-sec="translation">Pūrva-rāga: The love in separation of the two lovers before they ever meet each other is called pūrva-rāga.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2160,6 +2164,7 @@ The word kitava in the above verse means cheater, but is uttered out of anger ge
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>The bhāva of the two lovers (dvayoḥ) who have not previously met is called pūrva-rāga (prior affection). Pūrva-rāga is called bhakti-rasa, but acts as an uddīpana (stimulus) for the lover. The other states should be understood to act in the same way.</p>
@@ -2231,6 +2236,7 @@ The word kitava in the above verse means cheater, but is uttered out of anger ge
 
     <div class="fc-translation" data-sec="translation">An example from Padyāvalī: One day while going to the bank of the Yamunā, I suddenly saw one man with the complexion of a new rain cloud. I do not know what He did by moving His eyes playfully, but since then my heart has become unstable, and I no longer partake of household duties.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2300,6 +2306,7 @@ The word kitava in the above verse means cheater, but is uttered out of anger ge
 
     <div class="fc-translation" data-sec="translation">An example from the Tenth Canto: Just as Rukmiṇī’s mind is fixed on Me, My mind is fixed on her. I can’t even sleep at night. I know that Rukmī, out of envy, has forbidden our marriage. SB 10.53.2</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2315,6 +2322,7 @@ The word kitava in the above verse means cheater, but is uttered out of anger ge
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>The pūrva-rāga of the women of Vraja for Kṛṣṇa has been described elaborately by Śukadeva, who is their mouth-piece, in the chapter starting with the verse ayati te ’dhikaṁ janmanā vrajaḥ (SB 10.31), with such verses as the following:
@@ -2378,6 +2386,7 @@ With the intention of indicating that already so many verses of the gopīs’ p�
 
     <div class="fc-translation" data-sec="translation">Māna, which is described in the example following, is well known, (and thus need not be explained.) [Note: Māna is intense sneha with a show of opposition to the Lord.]</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2422,8 +2431,8 @@ With the intention of indicating that already so many verses of the gopīs’ p�
         <div class="cr-iast-line">yathā śrī-gīta-govinde (2.1) –</div>
 <div class="cr-pron-line" data-sec="pronunciation">[yathaa shree-geeta-govinde (2.1) –]</div>        <div class="cr-iast-line">viharati vane rādhā sādhāraṇa-praṇaye harau</div>
 <div class="cr-pron-line" data-sec="pronunciation">[viharati vane raadhaa saadhaarana-pranaye harau]</div>        <div class="cr-iast-line">vigalita-nijotkarṣād īṛsyā-vaśena gatānyataḥ |</div>
-<div class="cr-pron-line" data-sec="pronunciation">[vigalita-nijotkarshaad eerisyaa-vashena gataanyatah |]</div>        <div class="cr-iast-line">kvacid api latā-kuṣje guṣjan-madhu-vrata-maṇḍalī-</div>
-<div class="cr-pron-line" data-sec="pronunciation">[kvachid api lataa-kushje gushjan-madhu-vrata-mandalee-]</div>        <div class="cr-iast-line">mukhara-nikhare līnā dīnāpy uvāca rahaḥ sakhīm ||30||</div>
+<div class="cr-pron-line" data-sec="pronunciation">[vigalita-nijotkarshaad eerisyaa-vashena gataanyatah |]</div>        <div class="cr-iast-line">kvacid api latā-kuñje guñjan-madhu-vrata-maṇḍalī-</div>
+<div class="cr-pron-line" data-sec="pronunciation">[kvachid api lataa-kunje gunjan-madhu-vrata-mandalee-]</div>        <div class="cr-iast-line">mukhara-nikhare līnā dīnāpy uvāca rahaḥ sakhīm ||30||</div>
 <div class="cr-pron-line" data-sec="pronunciation">[mukhara-nikhare leenaa deenaapy uvaacha rahah sakheem ||30||]</div>    </div>
 
 
@@ -2440,7 +2449,7 @@ With the intention of indicating that already so many verses of the gopīs’ p�
                 <div class="cr-blend-iast-line">vigalita-nijotkarṣād īṛsyā-vaśena gatānyataḥ |</div>
             </div>
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">kvacid api latā-kuṣje guṣjan-madhu-vrata-maṇḍalī-</div>
+                <div class="cr-blend-iast-line">kvacid api latā-kuñje guñjan-madhu-vrata-maṇḍalī-</div>
             </div>
             <div class="cr-blend-block">
                 <div class="cr-blend-iast-line">mukhara-nikhare līnā dīnāpy uvāca rahaḥ sakhīm ||30||</div>
@@ -2450,6 +2459,7 @@ With the intention of indicating that already so many verses of the gopīs’ p�
 
 
     <div class="fc-translation" data-sec="translation">An example from Gīta-govinda: When Kṛṣṇa was sporting with all the gopīs in the forest, treating them all with equal affection, Rādhā left that place in anger because of His slighting her superior position. Later, while hiding in a grove of creepers while bees were buzzing overhead, in a grief-stricken state, she spoke to a friend in private.</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -2466,6 +2476,7 @@ With the intention of indicating that already so many verses of the gopīs’ p�
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>The example of māna should be seen in the first half of the verse.</p>
@@ -2524,6 +2535,7 @@ With the intention of indicating that already so many verses of the gopīs’ p�
 
 
     <div class="fc-translation" data-sec="translation">Pravāsa refers to separation after meeting.</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -2598,6 +2610,7 @@ With the intention of indicating that already so many verses of the gopīs’ p�
 
     <div class="fc-translation" data-sec="translation">An example from Padyāvalī: Since the auspicious day when Kṛṣṇa departed for Mathurā, the lotus-faced Rādhā, putting her left hand on her left cheek, soaked her face with unremitting tears. How could she sleep at all?</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2663,6 +2676,7 @@ With the intention of indicating that already so many verses of the gopīs’ p�
 
     <div class="fc-translation" data-sec="translation">From Prahlāda-saṁhitā, the words of Uddhava: Lord Govinda also, being afflicted by the arrows of Cupid, thinking of you alone day and night, cannot eat or sleep.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2723,6 +2737,7 @@ With the intention of indicating that already so many verses of the gopīs’ p�
 
 
     <div class="fc-translation" data-sec="translation">The enjoyment experienced when the two lovers meet is called sambhoga.</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -2797,6 +2812,7 @@ With the intention of indicating that already so many verses of the gopīs’ p�
 
     <div class="fc-translation" data-sec="translation">An example from Padyāvalī: Kṛṣṇa, with peacock feather on His head, executed the festival of Cupid with Rādhā, who was endowed with the highest attachment for Kṛṣṇa, and who expressed her love with skilful embraces.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2812,6 +2828,7 @@ With the intention of indicating that already so many verses of the gopīs’ p�
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>After this verse describing union, the eternal union (nitya-sthiti) of the gopīs of Vraja and the women of Dvārakā with Kṛṣṇa should be shown simultaneously in verses such as the following (already quoted in commentary on BRS 3.3.128): [Note: In the sections on dāsya, sakhya and vatsala-rasas, after descriptions of ayoga and yoga, sthiti was described. Since the author does not supply sthiti for madhura-rasa, the commentator does. Also anurāga and mahā-bhāva, two more intense levels of love beyond rāga visible in madhura-rasa are not described in this work. They are described in Ujjvala-nīlamaṇi.]
@@ -2855,8 +2872,8 @@ Lord Śrī Kṛṣṇa lives among the cowherd men and the Yādavas and is concl
 
     <div class="cr-iast-block" data-sec="iast">
         <div class="cr-iast-line">śrīmad-bhāgavatādy-arha-śāstra-darśitayā dṛśā |</div>
-<div class="cr-pron-line" data-sec="pronunciation">[shreemad-bhaagavataady-arha-shaastra-darshitayaa drishaa |]</div>        <div class="cr-iast-line">iyam āviṣkṛtā mukhya-paṣca-bhakti-rasā mayā ||36||</div>
-<div class="cr-pron-line" data-sec="pronunciation">[iyam aavishkritaa mukhya-pashcha-bhakti-rasaa mayaa ||36||]</div>    </div>
+<div class="cr-pron-line" data-sec="pronunciation">[shreemad-bhaagavataady-arha-shaastra-darshitayaa drishaa |]</div>        <div class="cr-iast-line">iyam āviṣkṛtā mukhya-pañca-bhakti-rasā mayā ||36||</div>
+<div class="cr-pron-line" data-sec="pronunciation">[iyam aavishkritaa mukhya-pancha-bhakti-rasaa mayaa ||36||]</div>    </div>
 
 
     <details class="cr-blend-details" data-sec="blended">
@@ -2866,13 +2883,14 @@ Lord Śrī Kṛṣṇa lives among the cowherd men and the Yādavas and is concl
                 <div class="cr-blend-iast-line">śrīmad-bhāgavatādy-arha-śāstra-darśitayā dṛśā |</div>
             </div>
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">iyam āviṣkṛtā mukhya-paṣca-bhakti-rasā mayā ||36||</div>
+                <div class="cr-blend-iast-line">iyam āviṣkṛtā mukhya-pañca-bhakti-rasā mayā ||36||</div>
             </div>
         </div>
     </details>
 
 
     <div class="fc-translation" data-sec="translation">I have described the five principle types of bhakti-rasa according to the knowledge given in suitable scriptures such as Bhāgavatam.</div>
+
 
 
 
@@ -2927,6 +2945,7 @@ Lord Śrī Kṛṣṇa lives among the cowherd men and the Yādavas and is concl
 
 
     <div class="fc-translation" data-sec="translation">May the eternal soul who has the beautiful form of a cowherd boy and who spread the bhāvas to Rāma and other forms be pleased with this western section of the ocean of nectar. May Sanātana who nourishes the bhāva of Gopāla Bhaṭṭa and distributes the bhāva of Raghunātha dāsa be pleased with this western section! Thus ends the Fifth Wave, concerning madhura-bhakti-rasa, in the Western Section of the Bhakti-rasāmṛta-sindhu. Here ends the Western Section.</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>

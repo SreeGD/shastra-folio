@@ -25,25 +25,21 @@
     <link rel="icon" href="../../../assets/icons/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="../../../assets/icons/icon.svg">
     <link rel="stylesheet" href="../../../assets/css/site.css">
-    <link rel="alternate" hreflang="te-IN" href="../../../te/bg/6/19/">
-    <link rel="alternate" hreflang="x-default" href="../../../">
     <script>window.FC_TO_ROOT = "../../../";</script>
     <script src="../../../assets/js/toggle.js"></script>
 </head>
 <body class="has-sidebar" data-chapter="6">
 <header class="fc-site-header">
     <button type="button" class="fc-mobile-trigger fc-mobile-trigger-left" data-overlay="left" aria-label="Open settings drawer">⚙</button>
-    <a class="fc-brand" href="../../../">FolioCorpus<span class="fc-sub">Bhagavad-gītā</span></a>
+<a class="fc-brand" href="../../../">FolioCorpus<span class="fc-sub">Bhagavad-gītā</span></a>
     <nav class="fc-site-nav">
         <a href="../../../">Home</a>
         <a href="../../../bg/">Bhagavad-gītā</a>
         <a href="../../../sb/">Śrīmad-Bhāgavatam</a>
+        <a href="../../../brs/" title="Bhakti-rasāmṛta-sindhu with Jīva Gosvāmī's and Viśvanātha Cakravartī's commentaries">Bhakti-rasāmṛta-sindhu</a>
+        <a href="../../../nod/" title="Nectar of Devotion">Nectar of Devotion</a>
         <a href="../../../search/" title="Search across all integrated works">🔍 Search</a>
         <button type="button" id="fc-random-verse" class="fc-nav-btn" title="Jump to a random verse">🎲 Random</button>
-        <span class="fc-lang-switch" aria-label="Script">
-            <a class="active" href="#" title="Devanāgarī edition">EN</a>
-            <a class="" href="../../../te/bg/6/19/" title="Telugu lipi edition">తె</a>
-        </span>
     </nav>
     <button type="button" class="fc-mobile-trigger fc-mobile-trigger-right" data-overlay="right" aria-label="Open chapter index drawer">📚</button>
 </header>
@@ -52,8 +48,8 @@
     <button class="fc-sb-collapse" type="button" data-sb="left" title="Collapse left sidebar" aria-label="Collapse"></button>
 
     <div class="fc-sb-body">
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Reading</div>
+        <details class="fc-sb-section" data-sbsec="reading" open>
+            <summary class="fc-sb-title">Reading</summary>
             <div class="fc-sb-sub">Theme</div>
             <div class="fc-segmented" data-setting="theme">
                 <button type="button" data-val="light">Light</button>
@@ -79,68 +75,106 @@
                 <button type="button" data-val="single">Single</button>
                 <button type="button" data-val="side">Side-by-side</button>
             </div>
-        </div>
+        </details>
 
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Display</div>
-            <div class="fc-sb-grid">
-                <label><input type="checkbox" data-section="devanagari" checked> Devanāgarī</label>
-                <label><input type="checkbox" data-section="iast" checked> IAST transliteration</label>
-                <label><input type="checkbox" data-section="pronunciation"> English reading guide</label>
-                <label><input type="checkbox" data-section="synonyms" checked> Word-for-word</label>
-                <label><input type="checkbox" data-section="blended" checked> Blended reading</label>
-                <label><input type="checkbox" data-section="purport" checked> Purport</label>
-                <label><input type="checkbox" data-section="gaudiya" checked> Gauḍīya Ācāryas</label>
-                <label><input type="checkbox" data-section="classical" checked> Classical Ācāryas</label>
-                <label><input type="checkbox" data-section="personal_guidance" checked> Personal Guidance</label>
-                <label><input type="checkbox" data-section="related" checked> Related values &amp; verses</label>
-                <label><input type="checkbox" data-section="lectures" checked> Related lectures</label>
-                <label><input type="checkbox" data-section="analogy"> Analogy</label>
-                <label><input type="checkbox" data-section="stories-full"> Stories</label>
-                <label><input type="checkbox" data-section="important_words"> Important Words</label>
-                <label><input type="checkbox" data-section="note" checked> My note</label>
-                <label><input type="checkbox" data-section="audio_player" checked> Sanskrit recitation player</label>
-                <label><input type="checkbox" data-section="recitation_slokas" checked> &nbsp; Reading-along view (auto-show on play)</label>
-                <label><input type="checkbox" data-section="quiz" checked> MCQ quizzes (chapter + sub-section)</label>
-                <label class="fc-toggle-master"><input type="checkbox" data-section="gpd_all" checked> <strong>Gauranga Priya additions</strong> (master)</label>
-                <label><input type="checkbox" data-section="chapter_overview" checked> &nbsp; Chapter Overview</label>
-                <label><input type="checkbox" data-section="breakdown" checked> &nbsp; Breakdown of Chapter</label>
-                <label><input type="checkbox" data-section="section_banner" checked> &nbsp; Section banners</label>
-                <label><input type="checkbox" data-section="study" checked> &nbsp; Study Notes (per verse)</label>
-                <label><input type="checkbox" data-section="study_qa" checked> Study Q&amp;A (Book of Life)</label>
-                <label><input type="checkbox" data-section="study_essays" checked> Sciences essays</label>
+        <details class="fc-sb-section" data-sbsec="display" open>
+            <summary class="fc-sb-title">Display</summary>
+            <div class="fc-display-presets" role="group" aria-label="Reader mode presets">
+                <button type="button" class="fc-preset-chip" data-preset="minimal" title="Minimal — just Prabhupāda's verse text and purport; everything else off">Min</button>
+                <button type="button" class="fc-preset-chip" data-preset="standard" title="Standard — the site's default layer mix">Std</button>
+                <button type="button" class="fc-preset-chip" data-preset="scholar" title="Scholar — everything on, including Sanskrit analysis and all commentaries">Schol</button>
+                <button type="button" class="fc-preset-chip" data-preset="custom" disabled title="Custom — auto-selected when your selections don't match a preset">Cust</button>
+            </div>
+            <div class="fc-sb-layers">
+                <details class="fc-layer-panel" data-layer="layer_prabhupada" open>
+                    <summary class="fc-layer-summary" title="Canonical reading — Śrīla Prabhupāda's edition: Devanāgarī, IAST, synonyms, translation, purport.">
+                        <label class="fc-layer-master-label"><input type="checkbox" data-section="layer_prabhupada" checked> <strong>Prabhupāda</strong></label>
+                        <span class="fc-layer-count" data-layer-count="layer_prabhupada"></span>
+                    </summary>
+                    <div class="fc-layer-children">
+                        <label class="fc-layer-child"><input type="checkbox" data-section="devanagari" checked> Devanāgarī</label>
+                        <label class="fc-layer-child"><input type="checkbox" data-section="iast" checked> IAST transliteration</label>
+                        <label class="fc-layer-child"><input type="checkbox" data-section="pronunciation"> English reading guide</label>
+                        <label class="fc-layer-child"><input type="checkbox" data-section="synonyms" checked> Word-for-word</label>
+                        <label class="fc-layer-child"><input type="checkbox" data-section="blended" checked> Blended reading</label>
+                        <label class="fc-layer-child"><input type="checkbox" data-section="purport" checked> Purport</label>
+                    </div>
+                </details>
+
+                <details class="fc-layer-panel" data-layer="layer_gaudiya">
+                    <summary class="fc-layer-summary" title="Sampradāya commentaries — Gauḍīya ācāryas (VCT, BSST, Bhaktivinoda) and classical bhāṣyas (Śaṅkara, Madhusūdana, Rāmānuja).">
+                        <label class="fc-layer-master-label"><input type="checkbox" data-section="layer_gaudiya" checked> <strong>Gauḍīya</strong></label>
+                        <span class="fc-layer-count" data-layer-count="layer_gaudiya"></span>
+                    </summary>
+                    <div class="fc-layer-children">
+                        <label class="fc-layer-child"><input type="checkbox" data-section="gaudiya" checked> Gauḍīya Ācāryas</label>
+                        <label class="fc-layer-child"><input type="checkbox" data-section="classical" checked> Classical Ācāryas</label>
+                    </div>
+                </details>
+
+                <details class="fc-layer-panel" data-layer="layer_recitation_pg">
+                    <summary class="fc-layer-summary" title="Listen and reflect — Sanskrit recitation player, reading-along view, and personal-life guidance for each verse.">
+                        <label class="fc-layer-master-label"><input type="checkbox" data-section="layer_recitation_pg" checked> <strong>Recitation &amp; PG</strong></label>
+                        <span class="fc-layer-count" data-layer-count="layer_recitation_pg"></span>
+                    </summary>
+                    <div class="fc-layer-children">
+                        <label class="fc-layer-child"><input type="checkbox" data-section="audio_player" checked> Sanskrit recitation player</label>
+                        <label class="fc-layer-child"><input type="checkbox" data-section="recitation_slokas" checked> Reading-along view</label>
+                        <label class="fc-layer-child"><input type="checkbox" data-section="personal_guidance" checked> Personal Guidance</label>
+                    </div>
+                </details>
+
+                <details class="fc-layer-panel" data-layer="layer_sanskrit_analysis">
+                    <summary class="fc-layer-summary" title="Scholar layer — sandhi-split (padaccheda), prose order (anvaya), per-word grammar (vyākaraṇa), intended meaning (tātparya), and further notes (vivaraṇa).">
+                        <label class="fc-layer-master-label"><input type="checkbox" data-section="layer_sanskrit_analysis" checked> <strong>Sanskrit Analysis</strong></label>
+                        <span class="fc-layer-count" data-layer-count="layer_sanskrit_analysis"></span>
+                    </summary>
+                    <div class="fc-layer-children">
+                        <label class="fc-layer-child"><input type="checkbox" data-section="classical_analysis" checked> Classical analysis (पदच्छेद, अन्वय…)</label>
+                    </div>
+                </details>
+
+                <details class="fc-layer-panel" data-layer="layer_study_aids">
+                    <summary class="fc-layer-summary" title="Pedagogical apparatus — MCQ quizzes, study Q&amp;A, science essays, and chapter-level study aids by Gauranga Priya Dāsa.">
+                        <label class="fc-layer-master-label"><input type="checkbox" data-section="layer_study_aids" checked> <strong>Study aids</strong></label>
+                        <span class="fc-layer-count" data-layer-count="layer_study_aids"></span>
+                    </summary>
+                    <div class="fc-layer-children">
+                        <label class="fc-layer-child"><input type="checkbox" data-section="quiz" checked> MCQ quizzes</label>
+                        <label class="fc-layer-child"><input type="checkbox" data-section="study_qa" checked> Study Q&amp;A (Book of Life)</label>
+                        <label class="fc-layer-child"><input type="checkbox" data-section="study_essays" checked> Sciences essays</label>
+                        <label class="fc-layer-child fc-layer-child-master"><input type="checkbox" data-section="gpd_all" checked> Gauranga Priya additions</label>
+                        <label class="fc-layer-grandchild"><input type="checkbox" data-section="chapter_overview" checked> Chapter Overview</label>
+                        <label class="fc-layer-grandchild"><input type="checkbox" data-section="breakdown" checked> Breakdown of Chapter</label>
+                        <label class="fc-layer-grandchild"><input type="checkbox" data-section="section_banner" checked> Section banners</label>
+                        <label class="fc-layer-grandchild"><input type="checkbox" data-section="study" checked> Study Notes (per verse)</label>
+                    </div>
+                </details>
+
+                <details class="fc-layer-panel" data-layer="layer_connections">
+                    <summary class="fc-layer-summary" title="FolioCorpus ontology — links to related values, lectures, stories, analogies, and important words across the corpus.">
+                        <label class="fc-layer-master-label"><input type="checkbox" data-section="layer_connections" checked> <strong>Connections</strong></label>
+                        <span class="fc-layer-count" data-layer-count="layer_connections"></span>
+                    </summary>
+                    <div class="fc-layer-children">
+                        <label class="fc-layer-child"><input type="checkbox" data-section="related" checked> Related values &amp; verses</label>
+                        <label class="fc-layer-child"><input type="checkbox" data-section="lectures" checked> Related lectures</label>
+                        <label class="fc-layer-child"><input type="checkbox" data-section="stories-full"> Stories</label>
+                        <label class="fc-layer-child"><input type="checkbox" data-section="analogy"> Analogy</label>
+                        <label class="fc-layer-child"><input type="checkbox" data-section="important_words"> Important Words</label>
+                    </div>
+                </details>
+
             </div>
             <div class="fc-sb-actions">
                 <button type="button" data-action="expand-all">Expand all</button>
                 <button type="button" data-action="collapse-all">Collapse all</button>
+                <button type="button" data-action="reset-display" title="Restore all toggle defaults">Reset</button>
             </div>
-        </div>
+        </details>
 
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Find your starting point</div>
-            <div class="fc-persona-links">
-                <a class="fc-persona-link" href="../../../daily/">🌅 Daily (one value a week)</a>
-                <a class="fc-persona-link" href="../../../householder/">🏠 Householder (family & work)</a>
-                <a class="fc-persona-link" href="../../../parenting/">👨‍👩‍👧 Parenting (stories for kids)</a>
-                <a class="fc-persona-link" href="../../../themes/">📚 All themes</a>
-                <a class="fc-persona-link" href="../../../values/" style="background:#F0F6F2;border-left-color:#1F4632;">ॐ Vedic Value System ↗</a>
-                <a class="fc-persona-link" href="../../../vidya/" style="background:#FBF6E4;border-left-color:#C8860B;">📚 Vidyā Karaṇa (kids, multi-lang) ↗</a>
-            </div>
-        </div>
-
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Audience</div>
-            <div class="fc-audience-filter">
-                <label><input type="radio" name="fc-audience" value="all" checked> All levels</label>
-                <label><input type="radio" name="fc-audience" value="primary"> Primary (children)</label>
-                <label><input type="radio" name="fc-audience" value="middle"> Middle (teens)</label>
-                <label><input type="radio" name="fc-audience" value="senior"> Senior (adults)</label>
-                <label><input type="radio" name="fc-audience" value="college"> College / scholar</label>
-            </div>
-        </div>
-
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Tools</div>
+        <details class="fc-sb-section" data-sbsec="tools" open>
+            <summary class="fc-sb-title">Tools</summary>
             <div class="fc-sb-tools">
                 <button type="button" id="fc-presentation-toggle" class="fc-tool-btn"><span>🖥 Presentation</span><kbd class="fc-kbd">F</kbd></button>
                 <button type="button" id="fc-pen-toggle" class="fc-tool-btn"><span>✏️ Pen mode</span><kbd class="fc-kbd">P</kbd></button>
@@ -155,26 +189,10 @@
                 <button type="button" id="fc-clear-highlights" class="fc-tool-btn">🩷 Clear highlights (page)</button>
                 <button type="button" id="fc-notes-modal-open" class="fc-tool-btn">📓 My annotations</button>
             </div>
-        </div>
+        </details>
 
-        <div class="fc-sb-section" id="fc-tts-controls" hidden>
-            <div class="fc-sb-title">
-                Read-aloud
-                <label class="fc-tts-master">
-                    <input type="checkbox" id="fc-tts-enabled" checked>
-                    <span class="fc-tts-master-label">On</span>
-                </label>
-            </div>
-            <div class="fc-tts-inner">
-                <div class="fc-sb-sub">Voice</div>
-                <select id="fc-tts-voice" class="fc-tts-select" aria-label="TTS voice"></select>
-                <div class="fc-sb-sub">Rate <span class="fc-tts-rate-val">1.0×</span></div>
-                <input type="range" id="fc-tts-rate" min="0.5" max="2" step="0.1" value="1" class="fc-tts-rate" aria-label="Reading rate">
-            </div>
-        </div>
-
-        <div class="fc-sb-section" id="fc-progress-section">
-            <div class="fc-sb-title">Progress</div>
+        <details class="fc-sb-section" data-sbsec="progress" id="fc-progress-section" open>
+            <summary class="fc-sb-title">Progress</summary>
             <div class="fc-progress-row">
                 <span class="fc-progress-num" id="fc-progress-num">0</span>
                 <span class="fc-progress-divider">/</span>
@@ -189,29 +207,29 @@
                 <span class="fc-progress-spacer"></span>
                 <button type="button" class="fc-progress-reset" id="fc-progress-reset" title="Reset progress">↺</button>
             </div>
-        </div>
+        </details>
 
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Bookmarks <span class="fc-sb-count" id="fc-bookmarks-count">0</span></div>
+        <details class="fc-sb-section" data-sbsec="bookmarks" open>
+            <summary class="fc-sb-title">Bookmarks <span class="fc-sb-count" id="fc-bookmarks-count">0</span></summary>
             <ul class="fc-bookmark-list" id="fc-bookmarks-list">
                 <li class="fc-sb-empty">No bookmarks yet — click ☆ on any verse.</li>
             </ul>
-        </div>
+        </details>
 
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Notes <span class="fc-sb-count" id="fc-notes-count">0</span></div>
+        <details class="fc-sb-section" data-sbsec="notes" open>
+            <summary class="fc-sb-title">Notes <span class="fc-sb-count" id="fc-notes-count">0</span></summary>
             <ul class="fc-bookmark-list" id="fc-notes-list">
                 <li class="fc-sb-empty">No notes yet — open any verse and write in the 📝 block.</li>
             </ul>
-        </div>
+        </details>
 
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Export</div>
+        <details class="fc-sb-section" data-sbsec="export">
+            <summary class="fc-sb-title">Export</summary>
             <div class="fc-sb-tools">
                 <button type="button" id="fc-export-md" class="fc-tool-btn">📥 Download Markdown</button>
                 <button type="button" id="fc-export-json" class="fc-tool-btn">💾 Download JSON backup</button>
             </div>
-        </div>
+        </details>
     </div>
 </aside>    <main class="fc-container">
 <nav class="fc-breadcrumbs">
@@ -423,6 +441,128 @@
 
     <div class="fc-translation" data-sec="translation">As a lamp in a windless place does not waver, so the transcendentalist, whose mind is controlled, remains always steady in his meditation on the transcendent Self.</div>
 
+    <section class="fc-section fc-classical-analysis" data-sec="classical_analysis">
+        <div class="fc-section-label">Classical Sanskrit analysis <span class="cr-cl-sa-side">शास्त्रीय विश्लेषण</span></div>
+        <div class="cr-classical-intro">How Sanskrit scholars read this verse — split, rearranged, grammar-tagged. For the plain English distilled meaning, jump to <strong>Plain meaning</strong> below.</div>
+        <div class="cr-classical-note">Auto-generated study layers — original analysis of the public-domain śloka. Review against a published edition for academic work.</div>
+
+        <details class="cr-cl-layer cr-cl-elevated" data-layer="tatparya" open>
+            <summary><strong>Plain meaning</strong> <span class="cr-cl-sa-side">(तात्पर्य · Tātparya)</span></summary>
+            <div class="cr-cl-tatparya">The Gītā&#39;s signature image for the silenced mind: a butter-lamp in a perfectly still room. The flame burns; it does not waver. Stillness here is not extinction — the consciousness is bright, just unflickering.</div>
+        </details>
+
+        <details class="cr-cl-layer cr-cl-elevated" data-layer="vivarana" open>
+            <summary><strong>Further notes</strong> <span class="cr-cl-sa-side">(विवरण · Vivaraṇa)</span></summary>
+            <div class="cr-cl-vivarana">Smṛtā (&#39;is remembered/handed down&#39;) hints this is already a traditional analogy by the time of the Gītā. The lamp simile later runs through Yoga literature (cf. YS-Bhāṣya on 1.41) and Vedānta. Light + stillness together rule out the interpretation that samādhi is a swoon.</div>
+        </details>
+
+        <details class="cr-cl-layer" data-layer="anvaya">
+            <summary><strong>Prose order</strong> <span class="cr-cl-sa-side">(अन्वय · Anvaya)</span></summary>
+            <div class="cr-cl-anvaya-block">
+                <div class="cr-cl-dev">यथा निवात-स्थः दीपः न इङ्गते, सा उपमा यत-चित्तस्य आत्मनः योगं युञ्जतः योगिनः (विषये) स्मृता।</div>
+<div class="cr-cl-iast">yathā nivāta-sthaḥ dīpaḥ na iṅgate, sā upamā yata-cittasya ātmanaḥ yogaṃ yuñjataḥ yoginaḥ (viṣaye) smṛtā|</div>                <div class="cr-cl-gloss">As a lamp placed in a windless spot does not flicker — that simile is held forth for the yogī of restrained thought who yokes himself to the yoga of the Self.</div>
+            </div>
+        </details>
+
+        <details class="cr-cl-layer" data-layer="padaccheda">
+            <summary><strong>Word split</strong> <span class="cr-cl-sa-side">(पदच्छेद · Padaccheda)</span></summary>
+            <div class="cr-cl-padaccheda-block">
+                <div class="cr-cl-dev">यथा दीपः निवात-स्थः न इङ्गते सा उपमा स्मृता । योगिनः यत-चित्तस्य युञ्जतः योगम् आत्मनः ॥</div>
+<div class="cr-cl-iast">yathā dīpaḥ nivāta-sthaḥ na iṅgate sā upamā smṛtā | yoginaḥ yata-cittasya yuñjataḥ yogam ātmanaḥ ||</div>            </div>
+        </details>
+
+        <details class="cr-cl-layer" data-layer="vyakarana">
+            <summary><strong>Grammar</strong> <span class="cr-cl-sa-side">(व्याकरण · Vyākaraṇa)</span></summary>
+            <div class="cr-cl-vyakarana-tablewrap">
+                <table class="cr-cl-vyakarana-table">
+                    <thead><tr>
+                        <th>Sanskrit</th><th>IAST</th><th>Grammar</th><th>Meaning</th>
+                    </tr></thead>
+                    <tbody>
+                        <tr>
+                            <td class="cr-cl-vk-dev">यथा</td>
+                            <td class="cr-cl-vk-iast">yathā</td>
+                            <td class="cr-cl-vk-gram">ind. (indeclinable)</td>
+                            <td class="cr-cl-vk-en">as</td>
+                        </tr>
+                        <tr>
+                            <td class="cr-cl-vk-dev">दीपः</td>
+                            <td class="cr-cl-vk-iast">dīpaḥ</td>
+                            <td class="cr-cl-vk-gram">दीप (m.) nom.sg. (nominative singular)</td>
+                            <td class="cr-cl-vk-en">lamp</td>
+                        </tr>
+                        <tr>
+                            <td class="cr-cl-vk-dev">निवात-स्थः</td>
+                            <td class="cr-cl-vk-iast">nivāta-sthaḥ</td>
+                            <td class="cr-cl-vk-gram">निवात (m.) + स्थ (adj.) nom.sg. (nominative singular)m., tatpuruṣa cpd. (compound)</td>
+                            <td class="cr-cl-vk-en">placed in a windless spot</td>
+                        </tr>
+                        <tr>
+                            <td class="cr-cl-vk-dev">न</td>
+                            <td class="cr-cl-vk-iast">na</td>
+                            <td class="cr-cl-vk-gram">ind. (indeclinable)</td>
+                            <td class="cr-cl-vk-en">not</td>
+                        </tr>
+                        <tr>
+                            <td class="cr-cl-vk-dev">इङ्गते</td>
+                            <td class="cr-cl-vk-iast">iṅgate</td>
+                            <td class="cr-cl-vk-gram">√इङ्ग् pres. (present) 3sg.ātm. (ātmanepada / middle voice)</td>
+                            <td class="cr-cl-vk-en">flickers</td>
+                        </tr>
+                        <tr>
+                            <td class="cr-cl-vk-dev">सा</td>
+                            <td class="cr-cl-vk-iast">sā</td>
+                            <td class="cr-cl-vk-gram">तद् (dem. (demonstrative) pron. (pronoun)) nom.sg. (nominative singular)f.</td>
+                            <td class="cr-cl-vk-en">that</td>
+                        </tr>
+                        <tr>
+                            <td class="cr-cl-vk-dev">उपमा</td>
+                            <td class="cr-cl-vk-iast">upamā</td>
+                            <td class="cr-cl-vk-gram">उपमा (f.) nom.sg. (nominative singular)</td>
+                            <td class="cr-cl-vk-en">simile</td>
+                        </tr>
+                        <tr>
+                            <td class="cr-cl-vk-dev">स्मृता</td>
+                            <td class="cr-cl-vk-iast">smṛtā</td>
+                            <td class="cr-cl-vk-gram">√स्मृ p.p.p. (past passive participle) nom.sg. (nominative singular)f.</td>
+                            <td class="cr-cl-vk-en">is remembered/taught</td>
+                        </tr>
+                        <tr>
+                            <td class="cr-cl-vk-dev">योगिनः</td>
+                            <td class="cr-cl-vk-iast">yoginaḥ</td>
+                            <td class="cr-cl-vk-gram">योगिन् (m.) gen.sg. (genitive singular)</td>
+                            <td class="cr-cl-vk-en">of the yogī</td>
+                        </tr>
+                        <tr>
+                            <td class="cr-cl-vk-dev">यत-चित्तस्य</td>
+                            <td class="cr-cl-vk-iast">yata-cittasya</td>
+                            <td class="cr-cl-vk-gram">यत (p.p.p. (past passive participle)) + चित्त (n.) gen.sg. (genitive singular)m., bahuvrīhi cpd. (compound)</td>
+                            <td class="cr-cl-vk-en">whose thought is restrained</td>
+                        </tr>
+                        <tr>
+                            <td class="cr-cl-vk-dev">युञ्जतः</td>
+                            <td class="cr-cl-vk-iast">yuñjataḥ</td>
+                            <td class="cr-cl-vk-gram">√युज् pres. (present)part. gen.sg. (genitive singular)m.</td>
+                            <td class="cr-cl-vk-en">of one yoking</td>
+                        </tr>
+                        <tr>
+                            <td class="cr-cl-vk-dev">योगम्</td>
+                            <td class="cr-cl-vk-iast">yogam</td>
+                            <td class="cr-cl-vk-gram">योग (m.) acc.sg. (accusative singular)</td>
+                            <td class="cr-cl-vk-en">yoga</td>
+                        </tr>
+                        <tr>
+                            <td class="cr-cl-vk-dev">आत्मनः</td>
+                            <td class="cr-cl-vk-iast">ātmanaḥ</td>
+                            <td class="cr-cl-vk-gram">आत्मन् (m.) gen.sg. (genitive singular)</td>
+                            <td class="cr-cl-vk-en">of the Self</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </details>
+    </section>
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -445,8 +585,8 @@
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>It is considered exactly (yathā) similar (upamā) to a lamp, which does not move (na iṅgate) when in a windless place (nivāta-sthaḥ). The elision of sa with upamā to form sopamā is according to the rule so’ci lope cet pāda-pūraṇam [Note: The normal form would be sa upamā, but according to the rule, it can be sopamā for metrical reasons.] (Aṣṭādhyāyī, Pāṇini 6.1.134) What is the comparison? That lamp is compared to the consciousness of the yogī , devoid of movement.</p>
-                <p>In verse 16 and the verses following, the word yoga referred to being situated in samādhi. Samādhi is of two types: saṁprajṣata and asaṁprajṣata. Saṁprajṣata-samādhi has many types according to differences of savicāra and savitarka. [Note: These are described in Pataṣjali’s Yoga Sūtras. Samprajṣata-samādhi involves meditation on objects. If the objects are gross, it is called savitarka. If the objects are subtle, then it is called savicara. Asamprajṣata-samādhi is meditation with no object at all.]
-What is asaṁprajṣata-samādhi like? Three and a half verses answer. In that state of asaṁprajṣata-samādhi, the consciousness does not touch any objects at all (cittam uparamate), because of complete stoppage (niruddham). As Pataṣjali’s sūtra says: yogaś citta-vṛtti-nirodhaḥ : yoga means stopping the functions of the consciousness. (Yoga Sūtra 1.2) The word yatra (in which state) extends its meaning to verse 23.
+                <p>In verse 16 and the verses following, the word yoga referred to being situated in samādhi. Samādhi is of two types: saṁprajñata and asaṁprajñata. Saṁprajñata-samādhi has many types according to differences of savicāra and savitarka. [Note: These are described in Patañjali’s Yoga Sūtras. Samprajñata-samādhi involves meditation on objects. If the objects are gross, it is called savitarka. If the objects are subtle, then it is called savicara. Asamprajñata-samādhi is meditation with no object at all.]
+What is asaṁprajñata-samādhi like? Three and a half verses answer. In that state of asaṁprajñata-samādhi, the consciousness does not touch any objects at all (cittam uparamate), because of complete stoppage (niruddham). As Patañjali’s sūtra says: yogaś citta-vṛtti-nirodhaḥ : yoga means stopping the functions of the consciousness. (Yoga Sūtra 1.2) The word yatra (in which state) extends its meaning to verse 23.
 In that samādhi, the yogī, seeing the Paramātmā (ātmānam) by his internal organ (ātmanā) which takes the form of Paramātmā, [Note: There seems to be two versions here. In one version, ātmānam means paramātmanam. Thus by the internal organ which takes the form of paramātmtā, the yogī sees Paramātmā. In the other version the yogī sees the ātmā by the internal organ in the form of Paramātmā. Since the functions of mind etc. have stopped, and ātmā is not realized, the Paramātmā must function at this time to give him awareness of his own self and Paramātmā.] is satisfied. In that state of samādhi, he then experiences extreme bliss, which is comprehended by intelligence in the form of the soul (buddhyā), [Note: Since he has realized the soul, it functions with its own intelligence, not material intelligence, which has stopped.] devoid of contact with material senses and sense objects. Then, in that state he does not move from the true state of the ātmā, his true form (tattvataḥ). Having attained that state, he does not consider attaining anything else. In that state, he is separated from all contact with suffering. One should know that state of samādhi as yoga.
 “Though I cannot attain it quickly, certainly I can attain this yoga.” By such certainty (anirviṇṇa cetasā) one should practice. One should not be discouraged, saying, “After such a long time, I have not achieved perfection. What is the use of all this hard work?” One should practice with mind convinced, “What is it to me? Let me attain perfection in this life or in the next.”
 Gauḍapāda has given an example:
@@ -455,7 +595,7 @@ manaso nigrahas tadvad bhaved aparikhedataḥ
 One should gradually control the mind without complaining, though it is like taking drops of water from the ocean to dry it up with a tip of a kuśa.
 There is a story to explain this. The ocean stole with its strong waves the eggs of a bird which were situated on the ocean’s shore. Determined to dry up the ocean, the bird took one drop of water at a time using its beak. The ocean, being emptied of many drops by the bird’s beak, was not at all affected. Though discouraged by Nārada, who happened to come there, the bird again made the promise in front of him. “In this life or the next, I will dry up the ocean.”
 Then merciful Nārada, by the will of the Lord, send Garuḍa to help the bird, saying “The ocean has disrespected you by offending your relative, this small bird.” The ocean, becoming dried up by the wind coming from Garuḍa’s flapping wings, became frightened, and then returned the eggs to the bird.
-Thus one should be convinced that the Lord will bestow His mercy on the resolute person who enthusiastically begins yoga, jṣāna or bhakti with faith in the words of scripture.</p>
+Thus one should be convinced that the Lord will bestow His mercy on the resolute person who enthusiastically begins yoga, jñāna or bhakti with faith in the words of scripture.</p>
             </div>
         </div>
         <div class="cr-acarya-card gaudiya">
@@ -493,9 +633,9 @@ manyate nādhikaṁ tataḥ
 yasmin sthito na duḥkhena
 guruṇāpi vicālyate
 taṁ vidyād duḥkha-saṁyoga-
-viyogaṁ yoga-saṁjṣitam
-yatra—in that state of affairs where; uparamate—cease (because one feels transcendental happiness); cittam—mental activities; niruddham—being restrained from matter; yoga-sevayā—by performance of yoga; yatra—in which; ca—also; eva—certainly; ātmanā—by the pure mind; ātmānam—the Self; paśyan—realizing the position of; ātmani—in the Self; tuṣyati—one becomes satisfied; sukham—happiness; ātyantikam—supreme; yat—which; tat—that; buddhi—by intelligence; grāhyam—accessible; atīndriyam—transcendental; vetti—one knows; yatra—wherein; na—never; ca—also; eva—certainly; ayam—he; sthitaḥ—situated; calati—moves; tattvataḥ—from the truth; yam—that which; labdhvā—by attainment; ca—also; aparam—any other; lābham—gain; manyate—considers; na—never; adhikam—more; tataḥ—than that; yasmin—in which; sthitaḥ—being situated; na—never; duḥkhena—by miseries; guruṇā api—even though very difficult; vicālyate—becomes shaken; tam—that; vidyāt—you must know; duḥkha-saṁyoga—of the miseries of material contact; viyogam—extermination; yoga-saṁjṣitam—called trance in yoga.</p>
-                <p>In three and a half verses [Note: The last line of verse 23 talks about the beginning stage of yoga.] the Lord now describes the qualities of samādhi in terms of its svarūpa and its results (phala). Samādhi is indicated by the word yoga, which has been mentioned starting with verse 16. The repeated use of the word yat refers to taṁ vidyād yoga-saṁjṣitam (know that this is called yoga) in verse 23.
+viyogaṁ yoga-saṁjñitam
+yatra—in that state of affairs where; uparamate—cease (because one feels transcendental happiness); cittam—mental activities; niruddham—being restrained from matter; yoga-sevayā—by performance of yoga; yatra—in which; ca—also; eva—certainly; ātmanā—by the pure mind; ātmānam—the Self; paśyan—realizing the position of; ātmani—in the Self; tuṣyati—one becomes satisfied; sukham—happiness; ātyantikam—supreme; yat—which; tat—that; buddhi—by intelligence; grāhyam—accessible; atīndriyam—transcendental; vetti—one knows; yatra—wherein; na—never; ca—also; eva—certainly; ayam—he; sthitaḥ—situated; calati—moves; tattvataḥ—from the truth; yam—that which; labdhvā—by attainment; ca—also; aparam—any other; lābham—gain; manyate—considers; na—never; adhikam—more; tataḥ—than that; yasmin—in which; sthitaḥ—being situated; na—never; duḥkhena—by miseries; guruṇā api—even though very difficult; vicālyate—becomes shaken; tam—that; vidyāt—you must know; duḥkha-saṁyoga—of the miseries of material contact; viyogam—extermination; yoga-saṁjñitam—called trance in yoga.</p>
+                <p>In three and a half verses [Note: The last line of verse 23 talks about the beginning stage of yoga.] the Lord now describes the qualities of samādhi in terms of its svarūpa and its results (phala). Samādhi is indicated by the word yoga, which has been mentioned starting with verse 16. The repeated use of the word yat refers to taṁ vidyād yoga-saṁjñitam (know that this is called yoga) in verse 23.
 By the practice of yoga (yoga sevayā), the consciousness, ceasing any other function (niruddha cittam), enjoys great bliss (uparamate). In that state, seeing ātmā (ātmānam) by the purified mind (ātmanā), he is satisfied in that ātmā. He is not satisfied with sense objects, seeing the material body with his contaminated mind. Here, yoga or samādhī is shown by the desirable result (bliss) which is attained (phāla) and by its essence (svarūpa)—complete cessation of internal functions in relation to material sense objects (citta vṛtti nirodha).
 In that state of samādhi, he experiences (vetti) that perfect state of brahman which is everlasting (ātyantikam) bliss, a bliss comprehended by the intelligence of the ātmā (buddhi grāhyam), devoid of relation with the senses and sense objects (atīndriyam). Therefore, situated in that way, he does not deviate from the svarūpa of the ātmā (tattvataḥ) at all.
 Having attained that yoga (samādhi), he does not think that anything else additionally needs to be attained. Situated in that yoga he is not disturbed by great causes of grief—such as separation from a son endowed with good qualities.

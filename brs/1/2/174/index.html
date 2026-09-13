@@ -31,11 +31,13 @@
 <body class="has-sidebar">
 <header class="fc-site-header">
     <button type="button" class="fc-mobile-trigger fc-mobile-trigger-left" data-overlay="left" aria-label="Open settings drawer">⚙</button>
-    <a class="fc-brand" href="../../../../">FolioCorpus<span class="fc-sub">Bhagavad-gītā</span></a>
+<a class="fc-brand" href="../../../../">FolioCorpus<span class="fc-sub">Bhakti-rasāmṛta-sindhu</span></a>
     <nav class="fc-site-nav">
         <a href="../../../../">Home</a>
         <a href="../../../../bg/">Bhagavad-gītā</a>
         <a href="../../../../sb/">Śrīmad-Bhāgavatam</a>
+        <a href="../../../../brs/" title="Bhakti-rasāmṛta-sindhu with Jīva Gosvāmī's and Viśvanātha Cakravartī's commentaries">Bhakti-rasāmṛta-sindhu</a>
+        <a href="../../../../nod/" title="Nectar of Devotion">Nectar of Devotion</a>
         <a href="../../../../search/" title="Search across all integrated works">🔍 Search</a>
         <button type="button" id="fc-random-verse" class="fc-nav-btn" title="Jump to a random verse">🎲 Random</button>
     </nav>
@@ -46,8 +48,8 @@
     <button class="fc-sb-collapse" type="button" data-sb="left" title="Collapse left sidebar" aria-label="Collapse"></button>
 
     <div class="fc-sb-body">
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Reading</div>
+        <details class="fc-sb-section" data-sbsec="reading" open>
+            <summary class="fc-sb-title">Reading</summary>
             <div class="fc-sb-sub">Theme</div>
             <div class="fc-segmented" data-setting="theme">
                 <button type="button" data-val="light">Light</button>
@@ -73,10 +75,10 @@
                 <button type="button" data-val="single">Single</button>
                 <button type="button" data-val="side">Side-by-side</button>
             </div>
-        </div>
+        </details>
 
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Display</div>
+        <details class="fc-sb-section" data-sbsec="display" open>
+            <summary class="fc-sb-title">Display</summary>
             <div class="fc-sb-grid">
                 <label><input type="checkbox" data-section="devanagari" checked> Devanāgarī</label>
                 <label><input type="checkbox" data-section="iast" checked> IAST transliteration</label>
@@ -98,33 +100,10 @@
                 <button type="button" data-action="expand-all">Expand all</button>
                 <button type="button" data-action="collapse-all">Collapse all</button>
             </div>
-        </div>
+        </details>
 
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Find your starting point</div>
-            <div class="fc-persona-links">
-                <a class="fc-persona-link" href="../../../../daily/">🌅 Daily (one value a week)</a>
-                <a class="fc-persona-link" href="../../../../householder/">🏠 Householder (family & work)</a>
-                <a class="fc-persona-link" href="../../../../parenting/">👨‍👩‍👧 Parenting (stories for kids)</a>
-                <a class="fc-persona-link" href="../../../../themes/">📚 All themes</a>
-                <a class="fc-persona-link" href="../../../../values/" style="background:#F0F6F2;border-left-color:#1F4632;">ॐ Vedic Value System ↗</a>
-                <a class="fc-persona-link" href="../../../../vidya/" style="background:#FBF6E4;border-left-color:#C8860B;">📚 Vidyā Karaṇa (kids, multi-lang) ↗</a>
-            </div>
-        </div>
-
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Audience</div>
-            <div class="fc-audience-filter">
-                <label><input type="radio" name="fc-audience" value="all" checked> All levels</label>
-                <label><input type="radio" name="fc-audience" value="primary"> Primary (children)</label>
-                <label><input type="radio" name="fc-audience" value="middle"> Middle (teens)</label>
-                <label><input type="radio" name="fc-audience" value="senior"> Senior (adults)</label>
-                <label><input type="radio" name="fc-audience" value="college"> College / scholar</label>
-            </div>
-        </div>
-
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Tools</div>
+        <details class="fc-sb-section" data-sbsec="tools" open>
+            <summary class="fc-sb-title">Tools</summary>
             <div class="fc-sb-tools">
                 <button type="button" id="fc-presentation-toggle" class="fc-tool-btn"><span>🖥 Presentation</span><kbd class="fc-kbd">F</kbd></button>
                 <button type="button" id="fc-pen-toggle" class="fc-tool-btn"><span>✏️ Pen mode</span><kbd class="fc-kbd">P</kbd></button>
@@ -139,26 +118,10 @@
                 <button type="button" id="fc-clear-highlights" class="fc-tool-btn">🩷 Clear highlights (page)</button>
                 <button type="button" id="fc-notes-modal-open" class="fc-tool-btn">📓 My annotations</button>
             </div>
-        </div>
+        </details>
 
-        <div class="fc-sb-section" id="fc-tts-controls" hidden>
-            <div class="fc-sb-title">
-                Read-aloud
-                <label class="fc-tts-master">
-                    <input type="checkbox" id="fc-tts-enabled" checked>
-                    <span class="fc-tts-master-label">On</span>
-                </label>
-            </div>
-            <div class="fc-tts-inner">
-                <div class="fc-sb-sub">Voice</div>
-                <select id="fc-tts-voice" class="fc-tts-select" aria-label="TTS voice"></select>
-                <div class="fc-sb-sub">Rate <span class="fc-tts-rate-val">1.0×</span></div>
-                <input type="range" id="fc-tts-rate" min="0.5" max="2" step="0.1" value="1" class="fc-tts-rate" aria-label="Reading rate">
-            </div>
-        </div>
-
-        <div class="fc-sb-section" id="fc-progress-section">
-            <div class="fc-sb-title">Progress</div>
+        <details class="fc-sb-section" data-sbsec="progress" id="fc-progress-section" open>
+            <summary class="fc-sb-title">Progress</summary>
             <div class="fc-progress-row">
                 <span class="fc-progress-num" id="fc-progress-num">0</span>
                 <span class="fc-progress-divider">/</span>
@@ -173,29 +136,29 @@
                 <span class="fc-progress-spacer"></span>
                 <button type="button" class="fc-progress-reset" id="fc-progress-reset" title="Reset progress">↺</button>
             </div>
-        </div>
+        </details>
 
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Bookmarks <span class="fc-sb-count" id="fc-bookmarks-count">0</span></div>
+        <details class="fc-sb-section" data-sbsec="bookmarks" open>
+            <summary class="fc-sb-title">Bookmarks <span class="fc-sb-count" id="fc-bookmarks-count">0</span></summary>
             <ul class="fc-bookmark-list" id="fc-bookmarks-list">
                 <li class="fc-sb-empty">No bookmarks yet — click ☆ on any verse.</li>
             </ul>
-        </div>
+        </details>
 
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Notes <span class="fc-sb-count" id="fc-notes-count">0</span></div>
+        <details class="fc-sb-section" data-sbsec="notes" open>
+            <summary class="fc-sb-title">Notes <span class="fc-sb-count" id="fc-notes-count">0</span></summary>
             <ul class="fc-bookmark-list" id="fc-notes-list">
                 <li class="fc-sb-empty">No notes yet — open any verse and write in the 📝 block.</li>
             </ul>
-        </div>
+        </details>
 
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Export</div>
+        <details class="fc-sb-section" data-sbsec="export">
+            <summary class="fc-sb-title">Export</summary>
             <div class="fc-sb-tools">
                 <button type="button" id="fc-export-md" class="fc-tool-btn">📥 Download Markdown</button>
                 <button type="button" id="fc-export-json" class="fc-tool-btn">💾 Download JSON backup</button>
             </div>
-        </div>
+        </details>
     </div>
 </aside>    <main class="fc-container">
 <nav class="fc-breadcrumbs">
@@ -220,8 +183,8 @@
     <div class="cr-iast-block" data-sec="iast">
         <div class="cr-iast-line">44. atha tat-kṛpekṣaṇaṁ, yathā daśame (10.14.8)—</div>
 <div class="cr-pron-line" data-sec="pronunciation">[44. atha tat-kripekshanam, yathaa dashame (10.14.8)—]</div>        <div class="cr-iast-line">tat te ’nukampāṁ su-samīkṣamāṇo</div>
-<div class="cr-pron-line" data-sec="pronunciation">[tat te ’nukampaam su-sameekshamaano]</div>        <div class="cr-iast-line">bhuṣjāna evātma-kṛtaṁ vipākam |</div>
-<div class="cr-pron-line" data-sec="pronunciation">[bhushjaana evaatma-kritam vipaakam |]</div>        <div class="cr-iast-line">hṛd-vāg-vapurbhir vidadhan namas te</div>
+<div class="cr-pron-line" data-sec="pronunciation">[tat te ’nukampaam su-sameekshamaano]</div>        <div class="cr-iast-line">bhuñjāna evātma-kṛtaṁ vipākam |</div>
+<div class="cr-pron-line" data-sec="pronunciation">[bhunjaana evaatma-kritam vipaakam |]</div>        <div class="cr-iast-line">hṛd-vāg-vapurbhir vidadhan namas te</div>
 <div class="cr-pron-line" data-sec="pronunciation">[hrid-vaag-vapurbhir vidadhan namas te]</div>        <div class="cr-iast-line">jīveta yo mukti-pade sa dāya-bhāk ||174||</div>
 <div class="cr-pron-line" data-sec="pronunciation">[jeeveta yo mukti-pade sa daaya-bhaak ||174||]</div>    </div>
 
@@ -236,7 +199,7 @@
                 <div class="cr-blend-iast-line">tat te ’nukampāṁ su-samīkṣamāṇo</div>
             </div>
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">bhuṣjāna evātma-kṛtaṁ vipākam |</div>
+                <div class="cr-blend-iast-line">bhuñjāna evātma-kṛtaṁ vipākam |</div>
             </div>
             <div class="cr-blend-block">
                 <div class="cr-blend-iast-line">hṛd-vāg-vapurbhir vidadhan namas te</div>
@@ -249,6 +212,7 @@
 
 
     <div class="fc-translation" data-sec="translation">Expecting the Lord’s mercy (verse 87), from the Tenth Canto: My dear Lord, one who earnestly waits for You to bestow Your causeless mercy upon him, all the while patiently suffering the reactions of his past misdeeds and offering You respectful obeisances with his heart, words and body, is surely eligible for You, the shelter of liberation, for that is his rightful claim. SB 10.14.8</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -264,9 +228,33 @@ This statement of Śrīmad-Bhāgavatam should be the guide of all devotees. A de
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
             <div class="cr-acarya-name">
+                Viśvanātha Cakravartī Ṭhākura
+                <span class="cr-samp-badge">Gauḍīya</span>
+            </div>
+            <div class="cr-acarya-work">Bhakti-sāra-pradarśinī</div>
+            <div class="cr-acarya-label">Commentary</div>
+            <div class="cr-acarya-purp">
+                <p>Understanding the meaning of this topic, having given up all other practices and performing only bhakti, one will attain You. However, in what manner should a person do this? In expectation of such a question, this verse is quoted. Tat here means “therefore”, indicating that because of the glories of the Lord mentioned in the previous Bhāgavatam verse (SB 10.14.7), the devotee acts in this way. Ātma-kṛtam vipākam means happiness and suffering that occur during performance of bhakti.
+dharmasya hy āpavargyasya nārtho ’rthāyopakalpate
+nārthasya dharmaikāntasya kāmo lābhāya hi smṛtaḥ
+All occupational engagements are certainly meant for ultimate liberation. They should never be performed for material gain. Furthermore, according to sages, one who is engaged in the ultimate occupational service should never use material gain to cultivate sense gratification. SB 1.2.9
+A secondary, unsought result of bhakti is happiness. The results of aparādhas are suffering. Experiencing both of these results from his bhakti (ātma-kṛtam vipākam), the devotee sees this (susamīkṣamānaḥ) clearly (su for suṣṭhu) and accurately (sam for samyak) as Your mercy. He knows that the happiness and distress that he is experiencing stems from the Lord’s mercy alone. It is just like a father who sometimes makes his son drink milk, and sometimes, bitter juice made from nimba leaves. “I do not know, but the Lord, like a father, knows what is good and bad for me, and thus sometimes He embraces and kisses me and sometimes slaps me. I, His devotee, have no power at all over karma and time. He, alone, by his mercy makes me experience happiness and distress and makes me serve Him.” The devotee considers his situation in this way, in the manner of King Pṛthu:
+tvan-māyayāddhā jana īśa khaṇḍito
+yad anyad āśāsta ṛtātmano ’budhaḥ
+yathā cared bāla-hitaṁ pitā svayaṁ
+tathā tvam evārhasi naḥ samīhitum
+My Lord, due to Your illusory energy, all living beings in this material world have forgotten their real constitutional position, and out of ignorance they are always desirous of material happiness in the form of society, friendship and love. Therefore, please do not ask me to take some material benefits from You, but as a father, not waiting for the son’s demand, does everything for the benefit of the son, please bestow upon me whatever You think is best for me. SB 4.20.31
+Revealing himself daily to the Lord, offering respects with mind, words and body, passing his life while not being unduly tormented, the devotee becomes the rightful claimant of mukti, or liberation from saṁsāra (secondary effect), and pada or service (primary effect) at the Lord’s lotus feet (dvandva compound considered as one unit mukti-pade). As remaining alive is the cause of a good son receiving his inheritance, so the devotee remaining alive in this world with steadiness on the path of bhakti is the cause of his receiving freedom from saṁsāra and service to the Lord. In a similar manner, it is said:
+dṛtaya iva śvasanty asu-bhṛto yadi te ’nuvidhā
+Only if they become Your faithful followers are those who breathe actually alive, otherwise their breathing is like that of a bellows. SB 10.87.17</p>
+            </div>
+        </div>
+        <div class="cr-acarya-card gaudiya">
+            <div class="cr-acarya-name">
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>In this verse two different sādhanas—expecting the glance of mercy and offering obeisances—are mentioned together to glorify their exalted positions. They should be both understood to have great results. Mukti-pade means the Lord, the shelter (tenth topic of discussion in Bhāgavatam) of liberation (the ninth topic). [Note: atra sargo visargaś ca sthānaṁ poṣaṇam ūtayaḥ/ manvantareśānukathā nirodho muktir āśrayaḥ SB 2.10.1] Such a person becomes the rightful claimant of the Lord, who is the shelter of liberation. The Lord exists as the property to be apportioned to the devotee.</p>

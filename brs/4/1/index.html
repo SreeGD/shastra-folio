@@ -31,11 +31,13 @@
 <body class="has-sidebar">
 <header class="fc-site-header">
     <button type="button" class="fc-mobile-trigger fc-mobile-trigger-left" data-overlay="left" aria-label="Open settings drawer">⚙</button>
-    <a class="fc-brand" href="../../../">FolioCorpus<span class="fc-sub">Bhagavad-gītā</span></a>
+<a class="fc-brand" href="../../../">FolioCorpus<span class="fc-sub">Bhakti-rasāmṛta-sindhu</span></a>
     <nav class="fc-site-nav">
         <a href="../../../">Home</a>
         <a href="../../../bg/">Bhagavad-gītā</a>
         <a href="../../../sb/">Śrīmad-Bhāgavatam</a>
+        <a href="../../../brs/" title="Bhakti-rasāmṛta-sindhu with Jīva Gosvāmī's and Viśvanātha Cakravartī's commentaries">Bhakti-rasāmṛta-sindhu</a>
+        <a href="../../../nod/" title="Nectar of Devotion">Nectar of Devotion</a>
         <a href="../../../search/" title="Search across all integrated works">🔍 Search</a>
         <button type="button" id="fc-random-verse" class="fc-nav-btn" title="Jump to a random verse">🎲 Random</button>
     </nav>
@@ -46,8 +48,8 @@
     <button class="fc-sb-collapse" type="button" data-sb="left" title="Collapse left sidebar" aria-label="Collapse"></button>
 
     <div class="fc-sb-body">
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Reading</div>
+        <details class="fc-sb-section" data-sbsec="reading" open>
+            <summary class="fc-sb-title">Reading</summary>
             <div class="fc-sb-sub">Theme</div>
             <div class="fc-segmented" data-setting="theme">
                 <button type="button" data-val="light">Light</button>
@@ -73,10 +75,10 @@
                 <button type="button" data-val="single">Single</button>
                 <button type="button" data-val="side">Side-by-side</button>
             </div>
-        </div>
+        </details>
 
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Display</div>
+        <details class="fc-sb-section" data-sbsec="display" open>
+            <summary class="fc-sb-title">Display</summary>
             <div class="fc-sb-grid">
                 <label><input type="checkbox" data-section="devanagari" checked> Devanāgarī</label>
                 <label><input type="checkbox" data-section="iast" checked> IAST transliteration</label>
@@ -98,33 +100,10 @@
                 <button type="button" data-action="expand-all">Expand all</button>
                 <button type="button" data-action="collapse-all">Collapse all</button>
             </div>
-        </div>
+        </details>
 
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Find your starting point</div>
-            <div class="fc-persona-links">
-                <a class="fc-persona-link" href="../../../daily/">🌅 Daily (one value a week)</a>
-                <a class="fc-persona-link" href="../../../householder/">🏠 Householder (family & work)</a>
-                <a class="fc-persona-link" href="../../../parenting/">👨‍👩‍👧 Parenting (stories for kids)</a>
-                <a class="fc-persona-link" href="../../../themes/">📚 All themes</a>
-                <a class="fc-persona-link" href="../../../values/" style="background:#F0F6F2;border-left-color:#1F4632;">ॐ Vedic Value System ↗</a>
-                <a class="fc-persona-link" href="../../../vidya/" style="background:#FBF6E4;border-left-color:#C8860B;">📚 Vidyā Karaṇa (kids, multi-lang) ↗</a>
-            </div>
-        </div>
-
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Audience</div>
-            <div class="fc-audience-filter">
-                <label><input type="radio" name="fc-audience" value="all" checked> All levels</label>
-                <label><input type="radio" name="fc-audience" value="primary"> Primary (children)</label>
-                <label><input type="radio" name="fc-audience" value="middle"> Middle (teens)</label>
-                <label><input type="radio" name="fc-audience" value="senior"> Senior (adults)</label>
-                <label><input type="radio" name="fc-audience" value="college"> College / scholar</label>
-            </div>
-        </div>
-
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Tools</div>
+        <details class="fc-sb-section" data-sbsec="tools" open>
+            <summary class="fc-sb-title">Tools</summary>
             <div class="fc-sb-tools">
                 <button type="button" id="fc-presentation-toggle" class="fc-tool-btn"><span>🖥 Presentation</span><kbd class="fc-kbd">F</kbd></button>
                 <button type="button" id="fc-pen-toggle" class="fc-tool-btn"><span>✏️ Pen mode</span><kbd class="fc-kbd">P</kbd></button>
@@ -139,26 +118,10 @@
                 <button type="button" id="fc-clear-highlights" class="fc-tool-btn">🩷 Clear highlights (page)</button>
                 <button type="button" id="fc-notes-modal-open" class="fc-tool-btn">📓 My annotations</button>
             </div>
-        </div>
+        </details>
 
-        <div class="fc-sb-section" id="fc-tts-controls" hidden>
-            <div class="fc-sb-title">
-                Read-aloud
-                <label class="fc-tts-master">
-                    <input type="checkbox" id="fc-tts-enabled" checked>
-                    <span class="fc-tts-master-label">On</span>
-                </label>
-            </div>
-            <div class="fc-tts-inner">
-                <div class="fc-sb-sub">Voice</div>
-                <select id="fc-tts-voice" class="fc-tts-select" aria-label="TTS voice"></select>
-                <div class="fc-sb-sub">Rate <span class="fc-tts-rate-val">1.0×</span></div>
-                <input type="range" id="fc-tts-rate" min="0.5" max="2" step="0.1" value="1" class="fc-tts-rate" aria-label="Reading rate">
-            </div>
-        </div>
-
-        <div class="fc-sb-section" id="fc-progress-section">
-            <div class="fc-sb-title">Progress</div>
+        <details class="fc-sb-section" data-sbsec="progress" id="fc-progress-section" open>
+            <summary class="fc-sb-title">Progress</summary>
             <div class="fc-progress-row">
                 <span class="fc-progress-num" id="fc-progress-num">0</span>
                 <span class="fc-progress-divider">/</span>
@@ -173,29 +136,29 @@
                 <span class="fc-progress-spacer"></span>
                 <button type="button" class="fc-progress-reset" id="fc-progress-reset" title="Reset progress">↺</button>
             </div>
-        </div>
+        </details>
 
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Bookmarks <span class="fc-sb-count" id="fc-bookmarks-count">0</span></div>
+        <details class="fc-sb-section" data-sbsec="bookmarks" open>
+            <summary class="fc-sb-title">Bookmarks <span class="fc-sb-count" id="fc-bookmarks-count">0</span></summary>
             <ul class="fc-bookmark-list" id="fc-bookmarks-list">
                 <li class="fc-sb-empty">No bookmarks yet — click ☆ on any verse.</li>
             </ul>
-        </div>
+        </details>
 
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Notes <span class="fc-sb-count" id="fc-notes-count">0</span></div>
+        <details class="fc-sb-section" data-sbsec="notes" open>
+            <summary class="fc-sb-title">Notes <span class="fc-sb-count" id="fc-notes-count">0</span></summary>
             <ul class="fc-bookmark-list" id="fc-notes-list">
                 <li class="fc-sb-empty">No notes yet — open any verse and write in the 📝 block.</li>
             </ul>
-        </div>
+        </details>
 
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Export</div>
+        <details class="fc-sb-section" data-sbsec="export">
+            <summary class="fc-sb-title">Export</summary>
             <div class="fc-sb-tools">
                 <button type="button" id="fc-export-md" class="fc-tool-btn">📥 Download Markdown</button>
                 <button type="button" id="fc-export-json" class="fc-tool-btn">💾 Download JSON backup</button>
             </div>
-        </div>
+        </details>
     </div>
 </aside>    <main class="fc-container">
 <nav class="fc-breadcrumbs">
@@ -203,14 +166,14 @@
     <span class="sep">›</span>
     <a href="../../../brs/">Bhakti-rasāmṛta-sindhu</a>
     <span class="sep">›</span>
-    <a href="../../../brs/4/">Section 4</a>
+    <a href="../../../brs/4/">Division 4</a>
     <span class="sep">›</span>
-    <span>Chapter 1</span>
+    <span>Wave 1</span>
 </nav>
 
 <div class="fc-ribbon">
     <div class="fc-ribbon-row">
-        <h1 class="fc-verse-heading">4.1</h1>
+        <h1 class="fc-verse-heading">4.1 · Hāsya-rasa</h1>
         <span class="fc-ribbon-meta">30 verses</span>
         <input type="search" class="fc-search" id="fc-search" placeholder="🔍 Search in this chapter" aria-label="Search verses in this chapter">
         <span class="fc-ribbon-current" id="fc-ribbon-current" aria-live="polite"></span>
@@ -293,6 +256,7 @@
 
 
 
+
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-1-1" data-note-label="BG 1.1" data-note-chapter="1" data-note-vlabel="1">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 1.1…" rows="4"></textarea>
@@ -347,6 +311,7 @@
 
 
     <div class="fc-translation" data-sec="translation">In the fourth division of the sweet ocean of rasa, called the northern section, the seven secondary rasas, as well as mutually friendly and antagonistic rasas and, as well, rasābhāsa will be discussed in nine waves (chapters). Previously it was said that these secondary rasas do not have a fixed ālambana (unlike the primary rasas) and appear occasionally in any of the persons with the primary rasas. The seven secondary rasas will be described in order starting with hāsya.</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -422,6 +387,7 @@ In the fourth division of Bhakti-rasāmṛta-sindhu, Śrīla Rūpa Gosvāmī has
 
     <div class="fc-translation" data-sec="translation">In the fourth division of the sweet ocean of rasa, called the northern section, the seven secondary rasas, as well as mutually friendly and antagonistic rasas and, as well, rasābhāsa will be discussed in nine waves (chapters). Previously it was said that these secondary rasas do not have a fixed ālambana (unlike the primary rasas) and appear occasionally in any of the persons with the primary rasas. The seven secondary rasas will be described in order starting with hāsya.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -496,6 +462,7 @@ In the fourth division of Bhakti-rasāmṛta-sindhu, Śrīla Rūpa Gosvāmī has
 
     <div class="fc-translation" data-sec="translation">In the fourth division of the sweet ocean of rasa, called the northern section, the seven secondary rasas, as well as mutually friendly and antagonistic rasas and, as well, rasābhāsa will be discussed in nine waves (chapters). Previously it was said that these secondary rasas do not have a fixed ālambana (unlike the primary rasas) and appear occasionally in any of the persons with the primary rasas. The seven secondary rasas will be described in order starting with hāsya.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -538,8 +505,8 @@ In the fourth division of Bhakti-rasāmṛta-sindhu, Śrīla Rūpa Gosvāmī has
     </header>
 
     <div class="cr-iast-block" data-sec="iast">
-        <div class="cr-iast-line">bhaktānāṁ paṣcadhoktānām eṣāṁ madhyata eva hi |</div>
-<div class="cr-pron-line" data-sec="pronunciation">[bhaktaanaam pashchadhoktaanaam eshaam madhyata eva hi |]</div>        <div class="cr-iast-line">kvāpy ekaḥ kvāpy anekaś ca gauṇeṣv ālambano mataḥ ||5||</div>
+        <div class="cr-iast-line">bhaktānāṁ pañcadhoktānām eṣāṁ madhyata eva hi |</div>
+<div class="cr-pron-line" data-sec="pronunciation">[bhaktaanaam panchadhoktaanaam eshaam madhyata eva hi |]</div>        <div class="cr-iast-line">kvāpy ekaḥ kvāpy anekaś ca gauṇeṣv ālambano mataḥ ||5||</div>
 <div class="cr-pron-line" data-sec="pronunciation">[kvaapy ekah kvaapy anekash cha gauneshv aalambano matah ||5||]</div>    </div>
 
 
@@ -547,7 +514,7 @@ In the fourth division of Bhakti-rasāmṛta-sindhu, Śrīla Rūpa Gosvāmī has
         <summary>Blended reading (Sanskrit + English inline)</summary>
         <div class="cr-blend-grid">
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">bhaktānāṁ paṣcadhoktānām eṣāṁ madhyata eva hi |</div>
+                <div class="cr-blend-iast-line">bhaktānāṁ pañcadhoktānām eṣāṁ madhyata eva hi |</div>
             </div>
             <div class="cr-blend-block">
                 <div class="cr-blend-iast-line">kvāpy ekaḥ kvāpy anekaś ca gauṇeṣv ālambano mataḥ ||5||</div>
@@ -559,6 +526,7 @@ In the fourth division of Bhakti-rasāmṛta-sindhu, Śrīla Rūpa Gosvāmī has
     <div class="fc-translation" data-sec="translation">These secondary rasas appear only within the five types of persons possessing the five types of sthāyi-bhāva. Sometimes (in a particular situation) one among these five types of persons may experience a particular secondary rasa, and at other times all of these types may experience a particular secondary rasa.</div>
 
 
+
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -566,6 +534,7 @@ In the fourth division of Bhakti-rasāmṛta-sindhu, Śrīla Rūpa Gosvāmī has
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Some people may argue that, as in the case of the primary rasas like śānta or dāsya, the secondary rasas like hāsya or adbhūta should also have particular persons as their shelter, because one sees fixed humor (hāsya) in the clown or steady bravery (vīra) in the leader of an army. The present verse answers this argument. These secondary rasas appear only among the five types of persons who are the shelter of the five primary ratis. The meaning is as follows. Kṛṣṇa as the viṣaya of the primary ratis and His corresponding devotees as the āśrayas of the primary ratis are the ālambanas for accomplishing the manifestation of rasas in all cases (including secondary rasas). However, the scriptures concerning material rasa claim that hāsya and the other secondary ratis, which actually attain the status of rati only by their relation to the primary ratis, attain the status of full sthāyi-bhāvas. Thus, according to those scriptures, the secondary rasas such as fear attain specific ālambanas, in persons such as demons. However, the author has previously quoted ancient authorities for the definition of vibhāva:
@@ -644,6 +613,7 @@ In this definition, in all cases, the locative case (yatra “in relation to who
 
 
 
+
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-1-6" data-note-label="BG 1.6" data-note-chapter="1" data-note-vlabel="6">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 1.6…" rows="4"></textarea>
@@ -691,6 +661,7 @@ In this definition, in all cases, the locative case (yatra “in relation to who
 
     <div class="fc-translation" data-sec="translation">In hāsya-rasa, Kṛṣṇa and persons performing humorous actions directed to Kṛṣṇa are the ālambana. The wise say that the elders and the chief young children are usually the āśrayas of hāsya-rasa. In special circumstances, the chief personalities become the āśraya of this rasa.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -706,6 +677,7 @@ In this definition, in all cases, the locative case (yatra “in relation to who
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Kṛṣṇa is the ālambana of hāsya-rasa only in the sense of being the viṣaya of the parārtha-rati (the principle rati such as sakhya which recedes when hāsya becomes prominent) and by being the cause of laughter that becomes manifest. Persons performing actions connected to Kṛṣṇa which induce laughter are also the ālambana for hāsya-rasa in the sense of their being the āśraya of that hāsya-rati and being the particular cause of that laughter. The old persons and chief young children are said to be the āśrayas of hāsya-rasa (tad-āśrayāḥ) by the wise.
@@ -778,6 +750,7 @@ However, there is no direct viṣaya of hāsya-rasa, because hāsya has the form
 
     <div class="fc-translation" data-sec="translation">Kṛṣṇa as ālambana: “O mother! I will not go towards the frightful, old withered person! He will craftily put Me in his begging bag.” When Nārada saw baby Kṛṣṇa with frightened eyes say this, though he tried to suppress his laughter, he could not do so. [Note: Thus the whole event is the subject of Nārada’s laughter, not Kṛṣṇa alone, but the laughter centers on Kṛṣṇa, and He is the cause. In that sense He is the viṣaya.]</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -840,6 +813,7 @@ However, there is no direct viṣaya of hāsya-rasa, because hāsya has the form
     <div class="fc-translation" data-sec="translation">A person whose action (of laughter) is directed towards Kṛṣṇa is called tad-anvayī (person related to Kṛṣṇa). [Note: This means the person experiencing the humor or the person laughing.]</div>
 
 
+
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -847,6 +821,7 @@ However, there is no direct viṣaya of hāsya-rasa, because hāsya has the form
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Yad ceṣṭā kṛṣṇa-viṣayā means “a person whose actions are directed towards Kṛṣṇa.”</p>
@@ -918,6 +893,7 @@ However, there is no direct viṣaya of hāsya-rasa, because hāsya has the form
 
     <div class="fc-translation" data-sec="translation">Devotee as ālambana: “Open Your mouth. I will give you some yogurt mixed with sugar.” Hearing the words of the old woman, when Kṛṣṇa opened His tender lips, she put a fresh flower in His mouth. Tasting the bitterness, He puckered His mouth. The young cowherd boys laughed loudly. [Note: The cowherd boys experience hāsya-rasa concerning Kṛṣṇa.]</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -933,6 +909,7 @@ However, there is no direct viṣaya of hāsya-rasa, because hāsya has the form
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Phāṇita is type of sugar. Dadhi-phāṇitam is sugar mixed with yogurt. With the mention of komalauṣṭhe, tender lips, it is understood that Kṛṣṇa was a small child.</p>
@@ -1004,6 +981,7 @@ However, there is no direct viṣaya of hāsya-rasa, because hāsya has the form
 
     <div class="fc-translation" data-sec="translation">Another example: O master of the sages! When I asked you to look at the hand of my dark-complexioned child, and to tell me if He will be the lord of a million cows and have a long life, why did you suddenly hide your laughing face completely with your beautiful cloth? [Note: The sage laughed at Nanda Mahārāja’s questions about Kṛṣṇa.]</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1047,8 +1025,8 @@ However, there is no direct viṣaya of hāsya-rasa, because hāsya has the form
     <div class="cr-iast-block" data-sec="iast">
         <div class="cr-iast-line">uddīpanā hares tādṛg-vāg-veṣa-caritādayaḥ |</div>
 <div class="cr-pron-line" data-sec="pronunciation">[uddeepanaa hares taadrig-vaag-vesha-charitaadayah |]</div>        <div class="cr-iast-line">anubhāvās tu nāsauṣṭha-gaṇḍa-niṣpandanādayaḥ ||12||</div>
-<div class="cr-pron-line" data-sec="pronunciation">[anubhaavaas tu naasaushtha-ganda-nishpandanaadayah ||12||]</div>        <div class="cr-iast-line">harṣālasyāvahitthādyā vijṣeyā vyabhicāriṇaḥ |</div>
-<div class="cr-pron-line" data-sec="pronunciation">[harshaalasyaavahitthaadyaa vijsheyaa vyabhichaarinah |]</div>        <div class="cr-iast-line">sā hāsa-ratir evātra sthāyi-bhāvatayoditā ||13||</div>
+<div class="cr-pron-line" data-sec="pronunciation">[anubhaavaas tu naasaushtha-ganda-nishpandanaadayah ||12||]</div>        <div class="cr-iast-line">harṣālasyāvahitthādyā vijñeyā vyabhicāriṇaḥ |</div>
+<div class="cr-pron-line" data-sec="pronunciation">[harshaalasyaavahitthaadyaa vijneyaa vyabhichaarinah |]</div>        <div class="cr-iast-line">sā hāsa-ratir evātra sthāyi-bhāvatayoditā ||13||</div>
 <div class="cr-pron-line" data-sec="pronunciation">[saa haasa-ratir evaatra sthaayi-bhaavatayoditaa ||13||]</div>    </div>
 
 
@@ -1062,7 +1040,7 @@ However, there is no direct viṣaya of hāsya-rasa, because hāsya has the form
                 <div class="cr-blend-iast-line">anubhāvās tu nāsauṣṭha-gaṇḍa-niṣpandanādayaḥ ||12||</div>
             </div>
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">harṣālasyāvahitthādyā vijṣeyā vyabhicāriṇaḥ |</div>
+                <div class="cr-blend-iast-line">harṣālasyāvahitthādyā vijñeyā vyabhicāriṇaḥ |</div>
             </div>
             <div class="cr-blend-block">
                 <div class="cr-blend-iast-line">sā hāsa-ratir evātra sthāyi-bhāvatayoditā ||13||</div>
@@ -1072,6 +1050,7 @@ However, there is no direct viṣaya of hāsya-rasa, because hāsya has the form
 
 
     <div class="fc-translation" data-sec="translation">The uddīpanas for hāsya-rasa are the humorous words, clothing and behavior of Kṛṣṇa. The anubhāvas are quivering of the nose, lips and cheeks. The vyabhicāri-bhāvas are harṣa (jubilation), ālasya (sloth), and avahitthā (concealing oneself). The sthāyi-bhāva is hāsa-rati.</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -1088,6 +1067,7 @@ However, there is no direct viṣaya of hāsya-rasa, because hāsya has the form
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>The verse mentions only the words, dress and behavior of Kṛṣṇa, but the words and gestures of persons connected to Him (which are a cause of laughter) are also included.</p>
@@ -1129,8 +1109,8 @@ However, there is no direct viṣaya of hāsya-rasa, because hāsya has the form
     <div class="cr-iast-block" data-sec="iast">
         <div class="cr-iast-line">uddīpanā hares tādṛg-vāg-veṣa-caritādayaḥ |</div>
 <div class="cr-pron-line" data-sec="pronunciation">[uddeepanaa hares taadrig-vaag-vesha-charitaadayah |]</div>        <div class="cr-iast-line">anubhāvās tu nāsauṣṭha-gaṇḍa-niṣpandanādayaḥ ||12||</div>
-<div class="cr-pron-line" data-sec="pronunciation">[anubhaavaas tu naasaushtha-ganda-nishpandanaadayah ||12||]</div>        <div class="cr-iast-line">harṣālasyāvahitthādyā vijṣeyā vyabhicāriṇaḥ |</div>
-<div class="cr-pron-line" data-sec="pronunciation">[harshaalasyaavahitthaadyaa vijsheyaa vyabhichaarinah |]</div>        <div class="cr-iast-line">sā hāsa-ratir evātra sthāyi-bhāvatayoditā ||13||</div>
+<div class="cr-pron-line" data-sec="pronunciation">[anubhaavaas tu naasaushtha-ganda-nishpandanaadayah ||12||]</div>        <div class="cr-iast-line">harṣālasyāvahitthādyā vijñeyā vyabhicāriṇaḥ |</div>
+<div class="cr-pron-line" data-sec="pronunciation">[harshaalasyaavahitthaadyaa vijneyaa vyabhichaarinah |]</div>        <div class="cr-iast-line">sā hāsa-ratir evātra sthāyi-bhāvatayoditā ||13||</div>
 <div class="cr-pron-line" data-sec="pronunciation">[saa haasa-ratir evaatra sthaayi-bhaavatayoditaa ||13||]</div>    </div>
 
 
@@ -1144,7 +1124,7 @@ However, there is no direct viṣaya of hāsya-rasa, because hāsya has the form
                 <div class="cr-blend-iast-line">anubhāvās tu nāsauṣṭha-gaṇḍa-niṣpandanādayaḥ ||12||</div>
             </div>
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">harṣālasyāvahitthādyā vijṣeyā vyabhicāriṇaḥ |</div>
+                <div class="cr-blend-iast-line">harṣālasyāvahitthādyā vijñeyā vyabhicāriṇaḥ |</div>
             </div>
             <div class="cr-blend-block">
                 <div class="cr-blend-iast-line">sā hāsa-ratir evātra sthāyi-bhāvatayoditā ||13||</div>
@@ -1154,6 +1134,7 @@ However, there is no direct viṣaya of hāsya-rasa, because hāsya has the form
 
 
     <div class="fc-translation" data-sec="translation">The uddīpanas for hāsya-rasa are the humorous words, clothing and behavior of Kṛṣṇa. The anubhāvas are quivering of the nose, lips and cheeks. The vyabhicāri-bhāvas are harṣa (jubilation), ālasya (sloth), and avahitthā (concealing oneself). The sthāyi-bhāva is hāsa-rati.</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -1229,6 +1210,7 @@ However, there is no direct viṣaya of hāsya-rasa, because hāsya has the form
 
     <div class="fc-translation" data-sec="translation">There are six types of hāsya-rati: smita, hasita, vihasa, avahasita, apahasita, and atihasita. The first two appear in superiors (such as sages or confidential friends), the second two appear in persons of medium status (messengers or servants) and the third two appear in those of lowest status (such as children).</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1271,8 +1253,8 @@ However, there is no direct viṣaya of hāsya-rasa, because hāsya has the form
 
     <div class="cr-iast-block" data-sec="iast">
         <div class="cr-iast-line">vibhāvanādi-vaicitryād uttamasyāpi kutracit |</div>
-<div class="cr-pron-line" data-sec="pronunciation">[vibhaavanaadi-vaichitryaad uttamasyaapi kutrachit |]</div>        <div class="cr-iast-line">bhaved vihasitādyaṁ ca bhāvajṣair iti bhaṇyate ||15||</div>
-<div class="cr-pron-line" data-sec="pronunciation">[bhaved vihasitaadyam cha bhaavajshair iti bhanyate ||15||]</div>    </div>
+<div class="cr-pron-line" data-sec="pronunciation">[vibhaavanaadi-vaichitryaad uttamasyaapi kutrachit |]</div>        <div class="cr-iast-line">bhaved vihasitādyaṁ ca bhāvajñair iti bhaṇyate ||15||</div>
+<div class="cr-pron-line" data-sec="pronunciation">[bhaved vihasitaadyam cha bhaavajnair iti bhanyate ||15||]</div>    </div>
 
 
     <details class="cr-blend-details" data-sec="blended">
@@ -1282,13 +1264,14 @@ However, there is no direct viṣaya of hāsya-rasa, because hāsya has the form
                 <div class="cr-blend-iast-line">vibhāvanādi-vaicitryād uttamasyāpi kutracit |</div>
             </div>
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">bhaved vihasitādyaṁ ca bhāvajṣair iti bhaṇyate ||15||</div>
+                <div class="cr-blend-iast-line">bhaved vihasitādyaṁ ca bhāvajñair iti bhaṇyate ||15||</div>
             </div>
         </div>
     </details>
 
 
     <div class="fc-translation" data-sec="translation">The wise say that when there are special attractions in the vibhāva and other elements, the lower types of hāsya such as vihasa appear in the superior person as well.</div>
+
 
 
 
@@ -1343,6 +1326,7 @@ However, there is no direct viṣaya of hāsya-rasa, because hāsya has the form
 
 
     <div class="fc-translation" data-sec="translation">When the teeth are not seen and the eyes and cheeks become joyful it is called smita (slight smile).</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -1417,6 +1401,7 @@ However, there is no direct viṣaya of hāsya-rasa, because hāsya has the form
 
     <div class="fc-translation" data-sec="translation">An example: “O strong brother! Because I stole some yogurt, the wicked old lady is chasing Me to tie Me up. Where can I go? Please protect Me quickly!” Saying these words to His elder brother with choked voice, Kṛṣṇa fled in fear. Seeing this, the faces of the sages in the sky blossomed.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1432,6 +1417,7 @@ However, there is no direct viṣaya of hāsya-rasa, because hāsya has the form
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Subala means very strong. This is an address to His elder brother, Balarāma, who was somewhat stronger, rather than to His friend called Subala, who was the same age. Kāndiśīke means “fleeing in fear.” Dravati kāndiśīke means “He fled away in fear very quickly.”</p>
@@ -1490,6 +1476,7 @@ However, there is no direct viṣaya of hāsya-rasa, because hāsya has the form
 
 
     <div class="fc-translation" data-sec="translation">When teeth are slightly visible, it is called hasita (smile).</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -1564,6 +1551,7 @@ However, there is no direct viṣaya of hāsya-rasa, because hāsya has the form
 
     <div class="fc-translation" data-sec="translation">An example: “O mother! I am your son Abhimanyu. Kṛṣṇa is coming here wearing my clothing.” Believing Kṛṣṇa’s words, Jaṭilā, her eyes red with anger, began shouting and driving her real son from the yard, as he tried to say “Mother! Mother!” The lips of Rādhā’s friends became gleaming white with the luster of their teeth.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1579,6 +1567,7 @@ However, there is no direct viṣaya of hāsya-rasa, because hāsya has the form
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>These are the words of Kṛṣṇa, to Jaṭilā, the mother of Abhimanyu. Abhimanyu took himself to be Rādhā’s husband. Kṛṣṇa came to the house in Abhimanyu’s dress when He saw that Abhimanyu was still far away. Abhimanyu did not see that Kṛṣṇa was dressed in his clothing. Niṣkāsite means “Abhimanyu was driven away from the house.” He went away because he feared that she may be crazy, and went to get some friends.</p>
@@ -1637,6 +1626,7 @@ However, there is no direct viṣaya of hāsya-rasa, because hāsya has the form
 
 
     <div class="fc-translation" data-sec="translation">When laughing sounds are heard and the teeth are visible it is called vihasita (audible laughing).</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -1711,6 +1701,7 @@ However, there is no direct viṣaya of hāsya-rasa, because hāsya has the form
 
     <div class="fc-translation" data-sec="translation">An example: “My friends! Steal the thick yogurt. Why are you uselessly showing fear in this house? Jaṭilā is sleeping with loud breathing.” When Kṛṣṇa said this, the old lady, only pretending to be sleeping, laughed audibly, showing her worn teeth.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1726,6 +1717,7 @@ However, there is no direct viṣaya of hāsya-rasa, because hāsya has the form
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Her pretending to be asleep is evident from the description of her smiling and laughing. Suptayāpy etayā (same meaning) is also seen instead of suptayā vṛddhayā.</p>
@@ -1766,8 +1758,8 @@ However, there is no direct viṣaya of hāsya-rasa, because hāsya has the form
 
     <div class="cr-iast-block" data-sec="iast">
         <div class="cr-iast-line">avahasitam –</div>
-<div class="cr-pron-line" data-sec="pronunciation">[avahasitam –]</div>        <div class="cr-iast-line">tac cāvahasitaṁ phulla-nāsaṁ kuṣcita-locanam ||22||</div>
-<div class="cr-pron-line" data-sec="pronunciation">[tach chaavahasitam phulla-naasam kushchita-lochanam ||22||]</div>    </div>
+<div class="cr-pron-line" data-sec="pronunciation">[avahasitam –]</div>        <div class="cr-iast-line">tac cāvahasitaṁ phulla-nāsaṁ kuñcita-locanam ||22||</div>
+<div class="cr-pron-line" data-sec="pronunciation">[tach chaavahasitam phulla-naasam kunchita-lochanam ||22||]</div>    </div>
 
 
     <details class="cr-blend-details" data-sec="blended">
@@ -1777,13 +1769,14 @@ However, there is no direct viṣaya of hāsya-rasa, because hāsya has the form
                 <div class="cr-blend-iast-line">avahasitam –</div>
             </div>
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">tac cāvahasitaṁ phulla-nāsaṁ kuṣcita-locanam ||22||</div>
+                <div class="cr-blend-iast-line">tac cāvahasitaṁ phulla-nāsaṁ kuñcita-locanam ||22||</div>
             </div>
         </div>
     </details>
 
 
     <div class="fc-translation" data-sec="translation">When the nose swells and eyes squint, it is called avahasita (intense laughter).</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -1858,6 +1851,7 @@ However, there is no direct viṣaya of hāsya-rasa, because hāsya has the form
 
     <div class="fc-translation" data-sec="translation">An example: “O son! How have Your two eyes become tainted with strong colors early in the morning? Why are you wearing Baladeva’s blue cloth?” Hearing these words of Yaśodā, servants standing there could not suppress their laughter. Their eyes squinted and their noses swelled.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1873,6 +1867,7 @@ However, there is no direct viṣaya of hāsya-rasa, because hāsya has the form
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>These are the words of Yaśodā. However, sometimes instead of putra (son) the word mitra (friend) is seen. In that case these would be the words of a friend.</p>
@@ -1931,6 +1926,7 @@ However, there is no direct viṣaya of hāsya-rasa, because hāsya has the form
 
 
     <div class="fc-translation" data-sec="translation">Laughter with tears in the eyes and shaking shoulders is called apahasita (uncontrollable laughter).</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -2005,6 +2001,7 @@ However, there is no direct viṣaya of hāsya-rasa, because hāsya has the form
 
     <div class="fc-translation" data-sec="translation">An example: Seeing the effulgent child of Vraja Kṛṣṇa, who makes the devatās dance, dancing to the verses of an old lady, Nārada, with tears in his eyes and shaking shoulders, began to dance in an extraordinary fashion, and turned all the clouds white with his flashing white teeth.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2065,6 +2062,7 @@ However, there is no direct viṣaya of hāsya-rasa, because hāsya has the form
 
 
     <div class="fc-translation" data-sec="translation">Laughter combined with clapping the hands and bending the body is called atihasita (extreme laughter).</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -2139,6 +2137,7 @@ However, there is no direct viṣaya of hāsya-rasa, because hāsya has the form
 
     <div class="fc-translation" data-sec="translation">An example: “Old lady! Your skin is all wrinkled. You look like a monkey! The king of the monkeys (with wrinkled faces) has sent me to arrange for your marriage to a suitable groom.” Hearing this, the old woman said, “By all these wrinkles, I have lost my intelligence. Thus, I will not accept anyone except you as a groom, since you are the destroyer of demons (and the destroyer of wrinkles).” Hearing Mukharā’s words, all the young boys began to clap their hands and laugh loudly.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2154,6 +2153,7 @@ However, there is no direct viṣaya of hāsya-rasa, because hāsya has the form
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Vali means “folds of skin.” Vale-mukha means a monkey. Sādhayati means “he has sent Me for accomplishing your marriage.” Because of the sense of a double causative with the use of the infinitive, the verb sādhayati means “he has sent me get you married.” Bali refers to the strong demons like Tṛṇāvarta and Pūtanā. Bali–dhvaṁsana refers to Kṛṣṇa, the destroyer of those demons. Ābhir vipluta-dhīḥ means “My intelligence has been eclipsed (vipluta) by old age (those wrinkles).”</p>
@@ -2212,6 +2212,7 @@ However, there is no direct viṣaya of hāsya-rasa, because hāsya has the form
 
 
     <div class="fc-translation" data-sec="translation">If the person instigating hāsya is not directly discernable, that person can be understood by the similarity of the vibhāva and the other elements with other cases.</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -2286,6 +2287,7 @@ However, there is no direct viṣaya of hāsya-rasa, because hāsya has the form
 
     <div class="fc-translation" data-sec="translation">O Kuṭilā (sister of Abhimanyu)! Your breasts are long like beans! Your nostrils are like those of a female frog! Your eyes are like old turtles. Your lips are like coals. Your stomach is like a drum. Who is there in this world more beautiful than you? By the strength of your good works, only you, among all the beautiful women of Vraja, have withstood the attraction of the flute.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2301,6 +2303,7 @@ However, there is no direct viṣaya of hāsya-rasa, because hāsya has the form
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Duli means a small female turtle.</p>
@@ -2341,8 +2344,8 @@ However, there is no direct viṣaya of hāsya-rasa, because hāsya has the form
 
     <div class="cr-iast-block" data-sec="iast">
         <div class="cr-iast-line">eṣa hāsya-rasas tatra kaiśikī-vṛtti-vistṛtau |</div>
-<div class="cr-pron-line" data-sec="pronunciation">[esha haasya-rasas tatra kaishikee-vritti-vistritau |]</div>        <div class="cr-iast-line">śṛṅgārādi-rasodbhedo bahudhaiva prapaṣcitaḥ ||30||</div>
-<div class="cr-pron-line" data-sec="pronunciation">[shringaaraadi-rasodbhedo bahudhaiva prapashchitah ||30||]</div>    </div>
+<div class="cr-pron-line" data-sec="pronunciation">[esha haasya-rasas tatra kaishikee-vritti-vistritau |]</div>        <div class="cr-iast-line">śṛṅgārādi-rasodbhedo bahudhaiva prapañcitaḥ ||30||</div>
+<div class="cr-pron-line" data-sec="pronunciation">[shringaaraadi-rasodbhedo bahudhaiva prapanchitah ||30||]</div>    </div>
 
 
     <details class="cr-blend-details" data-sec="blended">
@@ -2352,13 +2355,14 @@ However, there is no direct viṣaya of hāsya-rasa, because hāsya has the form
                 <div class="cr-blend-iast-line">eṣa hāsya-rasas tatra kaiśikī-vṛtti-vistṛtau |</div>
             </div>
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">śṛṅgārādi-rasodbhedo bahudhaiva prapaṣcitaḥ ||30||</div>
+                <div class="cr-blend-iast-line">śṛṅgārādi-rasodbhedo bahudhaiva prapañcitaḥ ||30||</div>
             </div>
         </div>
     </details>
 
 
     <div class="fc-translation" data-sec="translation">This hāsya-rasa, which manifests in madhura and other rasas, has been described in detail with many forms in the works of Bharata Muni and the work Nātāka-candrikā, [Note: This is Rūpa Govāmī’s work.] in the section dealing with kaiśikī vṛtti (dramatic form suitable for love).</div>
+
 
 
     <section class="fc-section" data-sec="gaudiya">
@@ -2368,6 +2372,7 @@ However, there is no direct viṣaya of hāsya-rasa, because hāsya has the form
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>The word tatra (there) in the verse indicates in the works of Bharata Muni and others, and Rūpa Gosvāmī’s work Nāṭaka-candrikā.

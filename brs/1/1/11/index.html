@@ -31,11 +31,13 @@
 <body class="has-sidebar">
 <header class="fc-site-header">
     <button type="button" class="fc-mobile-trigger fc-mobile-trigger-left" data-overlay="left" aria-label="Open settings drawer">⚙</button>
-    <a class="fc-brand" href="../../../../">FolioCorpus<span class="fc-sub">Bhagavad-gītā</span></a>
+<a class="fc-brand" href="../../../../">FolioCorpus<span class="fc-sub">Bhakti-rasāmṛta-sindhu</span></a>
     <nav class="fc-site-nav">
         <a href="../../../../">Home</a>
         <a href="../../../../bg/">Bhagavad-gītā</a>
         <a href="../../../../sb/">Śrīmad-Bhāgavatam</a>
+        <a href="../../../../brs/" title="Bhakti-rasāmṛta-sindhu with Jīva Gosvāmī's and Viśvanātha Cakravartī's commentaries">Bhakti-rasāmṛta-sindhu</a>
+        <a href="../../../../nod/" title="Nectar of Devotion">Nectar of Devotion</a>
         <a href="../../../../search/" title="Search across all integrated works">🔍 Search</a>
         <button type="button" id="fc-random-verse" class="fc-nav-btn" title="Jump to a random verse">🎲 Random</button>
     </nav>
@@ -46,8 +48,8 @@
     <button class="fc-sb-collapse" type="button" data-sb="left" title="Collapse left sidebar" aria-label="Collapse"></button>
 
     <div class="fc-sb-body">
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Reading</div>
+        <details class="fc-sb-section" data-sbsec="reading" open>
+            <summary class="fc-sb-title">Reading</summary>
             <div class="fc-sb-sub">Theme</div>
             <div class="fc-segmented" data-setting="theme">
                 <button type="button" data-val="light">Light</button>
@@ -73,10 +75,10 @@
                 <button type="button" data-val="single">Single</button>
                 <button type="button" data-val="side">Side-by-side</button>
             </div>
-        </div>
+        </details>
 
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Display</div>
+        <details class="fc-sb-section" data-sbsec="display" open>
+            <summary class="fc-sb-title">Display</summary>
             <div class="fc-sb-grid">
                 <label><input type="checkbox" data-section="devanagari" checked> Devanāgarī</label>
                 <label><input type="checkbox" data-section="iast" checked> IAST transliteration</label>
@@ -98,33 +100,10 @@
                 <button type="button" data-action="expand-all">Expand all</button>
                 <button type="button" data-action="collapse-all">Collapse all</button>
             </div>
-        </div>
+        </details>
 
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Find your starting point</div>
-            <div class="fc-persona-links">
-                <a class="fc-persona-link" href="../../../../daily/">🌅 Daily (one value a week)</a>
-                <a class="fc-persona-link" href="../../../../householder/">🏠 Householder (family & work)</a>
-                <a class="fc-persona-link" href="../../../../parenting/">👨‍👩‍👧 Parenting (stories for kids)</a>
-                <a class="fc-persona-link" href="../../../../themes/">📚 All themes</a>
-                <a class="fc-persona-link" href="../../../../values/" style="background:#F0F6F2;border-left-color:#1F4632;">ॐ Vedic Value System ↗</a>
-                <a class="fc-persona-link" href="../../../../vidya/" style="background:#FBF6E4;border-left-color:#C8860B;">📚 Vidyā Karaṇa (kids, multi-lang) ↗</a>
-            </div>
-        </div>
-
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Audience</div>
-            <div class="fc-audience-filter">
-                <label><input type="radio" name="fc-audience" value="all" checked> All levels</label>
-                <label><input type="radio" name="fc-audience" value="primary"> Primary (children)</label>
-                <label><input type="radio" name="fc-audience" value="middle"> Middle (teens)</label>
-                <label><input type="radio" name="fc-audience" value="senior"> Senior (adults)</label>
-                <label><input type="radio" name="fc-audience" value="college"> College / scholar</label>
-            </div>
-        </div>
-
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Tools</div>
+        <details class="fc-sb-section" data-sbsec="tools" open>
+            <summary class="fc-sb-title">Tools</summary>
             <div class="fc-sb-tools">
                 <button type="button" id="fc-presentation-toggle" class="fc-tool-btn"><span>🖥 Presentation</span><kbd class="fc-kbd">F</kbd></button>
                 <button type="button" id="fc-pen-toggle" class="fc-tool-btn"><span>✏️ Pen mode</span><kbd class="fc-kbd">P</kbd></button>
@@ -139,26 +118,10 @@
                 <button type="button" id="fc-clear-highlights" class="fc-tool-btn">🩷 Clear highlights (page)</button>
                 <button type="button" id="fc-notes-modal-open" class="fc-tool-btn">📓 My annotations</button>
             </div>
-        </div>
+        </details>
 
-        <div class="fc-sb-section" id="fc-tts-controls" hidden>
-            <div class="fc-sb-title">
-                Read-aloud
-                <label class="fc-tts-master">
-                    <input type="checkbox" id="fc-tts-enabled" checked>
-                    <span class="fc-tts-master-label">On</span>
-                </label>
-            </div>
-            <div class="fc-tts-inner">
-                <div class="fc-sb-sub">Voice</div>
-                <select id="fc-tts-voice" class="fc-tts-select" aria-label="TTS voice"></select>
-                <div class="fc-sb-sub">Rate <span class="fc-tts-rate-val">1.0×</span></div>
-                <input type="range" id="fc-tts-rate" min="0.5" max="2" step="0.1" value="1" class="fc-tts-rate" aria-label="Reading rate">
-            </div>
-        </div>
-
-        <div class="fc-sb-section" id="fc-progress-section">
-            <div class="fc-sb-title">Progress</div>
+        <details class="fc-sb-section" data-sbsec="progress" id="fc-progress-section" open>
+            <summary class="fc-sb-title">Progress</summary>
             <div class="fc-progress-row">
                 <span class="fc-progress-num" id="fc-progress-num">0</span>
                 <span class="fc-progress-divider">/</span>
@@ -173,29 +136,29 @@
                 <span class="fc-progress-spacer"></span>
                 <button type="button" class="fc-progress-reset" id="fc-progress-reset" title="Reset progress">↺</button>
             </div>
-        </div>
+        </details>
 
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Bookmarks <span class="fc-sb-count" id="fc-bookmarks-count">0</span></div>
+        <details class="fc-sb-section" data-sbsec="bookmarks" open>
+            <summary class="fc-sb-title">Bookmarks <span class="fc-sb-count" id="fc-bookmarks-count">0</span></summary>
             <ul class="fc-bookmark-list" id="fc-bookmarks-list">
                 <li class="fc-sb-empty">No bookmarks yet — click ☆ on any verse.</li>
             </ul>
-        </div>
+        </details>
 
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Notes <span class="fc-sb-count" id="fc-notes-count">0</span></div>
+        <details class="fc-sb-section" data-sbsec="notes" open>
+            <summary class="fc-sb-title">Notes <span class="fc-sb-count" id="fc-notes-count">0</span></summary>
             <ul class="fc-bookmark-list" id="fc-notes-list">
                 <li class="fc-sb-empty">No notes yet — open any verse and write in the 📝 block.</li>
             </ul>
-        </div>
+        </details>
 
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Export</div>
+        <details class="fc-sb-section" data-sbsec="export">
+            <summary class="fc-sb-title">Export</summary>
             <div class="fc-sb-tools">
                 <button type="button" id="fc-export-md" class="fc-tool-btn">📥 Download Markdown</button>
                 <button type="button" id="fc-export-json" class="fc-tool-btn">💾 Download JSON backup</button>
             </div>
-        </div>
+        </details>
     </div>
 </aside>    <main class="fc-container">
 <nav class="fc-breadcrumbs">
@@ -219,8 +182,8 @@
 
     <div class="cr-iast-block" data-sec="iast">
         <div class="cr-iast-line">anyābhilāṣitā-śūnyaṁ</div>
-<div class="cr-pron-line" data-sec="pronunciation">[anyaabhilaashitaa-shoonyam]</div>        <div class="cr-iast-line">jṣāna-karmādy-anāvṛtam |</div>
-<div class="cr-pron-line" data-sec="pronunciation">[jshaana-karmaady-anaavritam |]</div>        <div class="cr-iast-line">ānukūlyena kṛṣṇānu-</div>
+<div class="cr-pron-line" data-sec="pronunciation">[anyaabhilaashitaa-shoonyam]</div>        <div class="cr-iast-line">jñāna-karmādy-anāvṛtam |</div>
+<div class="cr-pron-line" data-sec="pronunciation">[jnaana-karmaady-anaavritam |]</div>        <div class="cr-iast-line">ānukūlyena kṛṣṇānu-</div>
 <div class="cr-pron-line" data-sec="pronunciation">[aanukoolyena krishnaanu-]</div>        <div class="cr-iast-line">śīlanaṁ bhaktir uttamā ||11||</div>
 <div class="cr-pron-line" data-sec="pronunciation">[sheelanam bhaktir uttamaa ||11||]</div>    </div>
 
@@ -232,7 +195,7 @@
                 <div class="cr-blend-iast-line">anyābhilāṣitā-śūnyaṁ</div>
             </div>
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">jṣāna-karmādy-anāvṛtam |</div>
+                <div class="cr-blend-iast-line">jñāna-karmādy-anāvṛtam |</div>
             </div>
             <div class="cr-blend-block">
                 <div class="cr-blend-iast-line">ānukūlyena kṛṣṇānu-</div>
@@ -244,7 +207,8 @@
     </details>
 
 
-    <div class="fc-translation" data-sec="translation">The highest bhakti is defined as continuous service or emotions directed towards Kṛṣṇa, His expansion forms or others related to Him, with a pleasing attitude towards Kṛṣṇa. It should be devoid of desires other than the desire to please the Lord, and unobstructed by impersonal jṣāna, the materialistic rituals of karma or other unfavorable acts.</div>
+    <div class="fc-translation" data-sec="translation">The highest bhakti is defined as continuous service or emotions directed towards Kṛṣṇa, His expansion forms or others related to Him, with a pleasing attitude towards Kṛṣṇa. It should be devoid of desires other than the desire to please the Lord, and unobstructed by impersonal jñāna, the materialistic rituals of karma or other unfavorable acts.</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -260,7 +224,7 @@ The impersonalists sometimes misunderstand devotional service in such a way that
 This is the summary understanding of what Kṛṣṇa consciousness is. Without this understanding one is sure to misunderstand why the devotees are interested in the Battlefield of Kurukṣetra. One who is interested in Kṛṣṇa becomes interested in His different pastimes and activities.
 The definition of a pure devotee, as given by Rūpa Gosvāmī in Bhakti-rasāmṛta-sindhu, can be summarized thus: his service is favorable and is always in relation to Kṛṣṇa. In order to keep the purity of such Kṛṣṇa conscious activities, one must be freed from all material desires and philosophical speculation. Any desire except for the service of the Lord is called material desire. And “philosophical speculation” refers to the sort of speculation which ultimately arrives at a conclusion of voidism or impersonalism. This conclusion is useless for a Kṛṣṇa conscious person. Only rarely by philosophical speculation can one reach the conclusion of worshiping Vāsudeva, Kṛṣṇa. This is confirmed in the Bhagavad-gītā itself. The ultimate end of philosophical speculation, then, must be Kṛṣṇa, with the understanding that Kṛṣṇa is everything, the cause of all causes, and that one should therefore surrender unto Him. If this ultimate goal is reached, then philosophical advancement is favorable, but if the conclusion of philosophical speculation is voidism or impersonalism, that is not bhakti.
 Karma, or fruitive activities, are sometimes understood to be ritualistic activities. There are many persons who are very much attracted by the ritualistic activities described in the Vedas. But if one becomes attracted simply to ritualistic activities without understanding Kṛṣṇa, his activities are unfavorable to Kṛṣṇa consciousness. Actually, Kṛṣṇa consciousness can be based simply on hearing, chanting, remembering, etc. Described in the Śrīmad-Bhāgavatam are nine different processes, besides which everything done is unfavorable to Kṛṣṇa consciousness. Thus, one should always be guarding against falldowns.
-Śrīla Rūpa Gosvāmī has also mentioned in this definition of bhakti the word jṣāna-karmādi. This karmādi (fruitive work) consists of activities which are unable to help one attain to pure devotional service. Many forms of so-called renunciation are also not favorable to Kṛṣṇa conscious devotional service.</p>
+Śrīla Rūpa Gosvāmī has also mentioned in this definition of bhakti the word jñāna-karmādi. This karmādi (fruitive work) consists of activities which are unable to help one attain to pure devotional service. Many forms of so-called renunciation are also not favorable to Kṛṣṇa conscious devotional service.</p>
         </div>
         <div class="cr-purport-attrib">— A.C. Bhaktivedanta Swami Prabhupāda</div>
     </section>
@@ -269,9 +233,43 @@ Karma, or fruitive activities, are sometimes understood to be ritualistic activi
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
             <div class="cr-acarya-name">
+                Viśvanātha Cakravartī Ṭhākura
+                <span class="cr-samp-badge">Gauḍīya</span>
+            </div>
+            <div class="cr-acarya-work">Bhakti-sāra-pradarśinī</div>
+            <div class="cr-acarya-label">Commentary</div>
+            <div class="cr-acarya-purp">
+                <p>……… [Note: The full commentaries of Jīva Gosvāmī are given, and those parts of Viśvanātha’s commentaries which are different. In many cases, the commentary is the same, and in others, a few words are added as explanation of Jīva’s commentary.]
+The active sense of the root śīl (pravṛttyātmaka) is active cultivation involving the body, mind and words. Nivṛttyātmaka means that which is different from active. The inactive sense of the root śīl takes the form of cultivation which uses emotions of joy and sorrow in the mind (prīti-viṣādātmaka). It also takes the form of the sthāyi- bhāva on the levels of bhāva and prema, which will be explained later. What is indicated by the words sevā-nāmāparādhānām udbhavābhāva kāritā (1.2.81) is a negative form of cultivation (abhāva-rūpa), avoidance of offense to the name and the deity.
+………
+The definition of ānukūlya as “pleasing for Kṛṣṇa” is both too extensive and too limiting. For instance, the action (anuśīlanam) of a demon attacking Kṛṣṇa is the rasa of fighting (yuddha-vīra-rasa) derived from utsāha-rati from Kṛṣṇa’s perspective. It is pleasing for Him, since He takes pleasure in fighting with them. Yuddha-vīra-rasa is expressed in the following verse:
+patiṁ prayāntaṁ subalasya putrī
+pati-vratā cānujagāma sādhvī
+himālayaṁ nyasta-daṇḍa-praharṣaṁ
+manasvinām iva sat samprahāraḥ
+The gentle and chaste Gāndhārī, who was the daughter of King Subala of Kandahar [or Gāndhāra], followed her husband, seeing that he was going to the Himalaya Mountains, which are the delight of those who have accepted the staff of the renounced order like fighters who have accepted a good lashing from the enemy. SB 1.13.30
+Again, an illustration of the definition being too limited (if ānukūlya means “pleasing to Kṛṣṇa”) is given. When Yaśodā left Kṛṣṇa and went to take the milk off the fire, Kṛṣṇa was not pleased. (Thus Yaśodā would be excluded from the definition of bhakti.) The following example is given:
+sañjāta-kopaḥ sphuritāruṇādharaṁ
+sandaśya dadbhir dadhi-mantha-bhājanam
+bhittvā mṛṣāśrur dṛṣad-aśmanā raho
+jaghāsa haiyaṅgavam antaraṁ gataḥ
+Being very angry and biting His reddish lips with His teeth, Kṛṣṇa, with false tears in His eyes, broke the container of yogurt with a piece of stone. Then He entered a room and began to eat the freshly churned butter in a solitary place. SB 10.9.6
+In order to prevent the definition from being too extensive (the first case) and too limiting (the second case), the definition of ānukūlya should be explained as “devoid of hostility on the part of the performer”. This will exclude the demons, because they have hostility, in the form of hatred for Kṛṣṇa. This definition will also not exclude Yaśodā, because she is devoid of hostility to Kṛṣṇa.
+“Therefore, let bhakti be defined in terms of ānukūlya, a friendly attitude directed to Kṛṣṇa. The word anuśīlanam which is modified by ānukūlya is thus unnecessary, because bhakti can be defined merely as a favorable attitude to Kṛṣṇa.” This objection is rejected, since even a pot is devoid of hostility to Kṛṣṇa, and is, therefore, pleasing to Him, but cannot be described as having bhakti. Therefore, the word anuśīlanam is also necessary.
+In order to define the highest bhakti (uttama-bhakti), two further descriptive phrases are added. What type of anuśīlanam is this? It should be devoid of desires for obtaining results other than bhakti.
+smarantaḥ smārayantaś ca mitho ’ghaugha-haraṁ harim
+bhaktyā sañjātayā bhaktyā bibhraty utpulakāṁ tanum
+The devotee, who remembers, and induces others to remember, the Lord, who takes away heaps of sin, develops symptoms like hairs standing on end by bhakti, which has sprung from bhakti. SB 11.3.31
+Bhakti which aims at achieving bhakti is proper, and bhakti which aims at achieving other goals is improper. In the verse, the phrase anyābhilāṣa-śūnyam has not been used. Instead, the phrase anyābhilāṣitā-sūnyam has been chosen. This means “devoid of other desires which are as deep-rooted as one’s nature.” In death threatening situations, a devotee may say, “O Lord! Please save me, Your devotee, now from this danger.” Because it is a sudden, temporary desire, it is not harmful to his bhakti. That is because this desire arises beyond his control, opposite of his devotional nature. That desire is not his nature.
+How is anuśīlanam further described? It is not covered by jñāna or karma or other items. Jñānam means inquiry about the undifferentiated brahman, not inquiry about the worshipable Lord, for knowledge of the Lord is necessary for bhakti. Karma refers to the daily and periodic duties enjoined by the smṛti scriptures, not to the services offered to the Lord, for devotional activities are anuśīlanam. The word ādi indicates engaging in sacrifices, renunciation, yoga, sāṅkhya and other such items. These items should not cover anuśīlanam. The word śūnya (devoid) is not used in the second descriptive phrase, as it was in the first, namely, anyābhilāṣitā-śūnyam. The intention of using anāvṛtam instead of śūnya is to forbid only those types of jñāna and karma, which conceal bhakti. Performing nitya-karmas (daily duties) with faith, out of fear of sin if one does not perform them, under the authority of rules, is a covering on bhakti. As well, performing them with faith that they will produce bhakti is a covering on bhakti. However, a great devotee is not excluded from pure bhakti by performing śrāddhas to the pitas, if it is done without faith in their absolute nature, just to teach the common people. [Note: He is similar to the pariniṣṭhita devotee mentioned by Baladeva in his commentary on the Gītā called Gītā-bhūṣaṇa.]</p>
+            </div>
+        </div>
+        <div class="cr-acarya-card gaudiya">
+            <div class="cr-acarya-name">
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Anuśīlanam
@@ -288,9 +286,9 @@ There may be another objection. We could just say “Perform favorable bhakti”
 That is true. However, by omitting the words anuśīlanam, there will be no clear indication of the different shades of meaning inherent in the root śīl (active and non-active) and consequently no indication of the different modes of bhakti (ceṣṭā-rūpa and bhāva-rūpa anuśīlanam). The word anuśīlanam is specifically supplied in the definition in order to comprehend the full sense of the root. Furthermore, in order to define bhakti completely, the prefix anu is added to śīlanam (service) to indicate that the service should be continuous (anu). [Note: Anu means “repeatedly” as well as “following after.”]
 Ānukūlyena kṛṣṇānuśīlanam, continuous service or emotions directed towards Kṛṣṇa, His expansion forms or others related to Him, with a pleasing attitude towards Kṛṣṇa, [Note: This phrase is somewhat ambiguous since it can mean, “having an attitude to please Kṛṣṇa” or “something which is pleasing to Kṛṣṇa.” Therefore, Viśvanātha in his commentary says that it must only mean “having an attitude to please Kṛṣṇa.”] is the essential characteristic (svarūpa-lakṣaṇa) of bhakti.
 Anyābhilaṣitā-śūnyam
-To define the concept of uttama, two modifying phrases are added as secondary characteristics (taṭaṣṭha-lakṣaṇa): anyābhilāṣitā-śūnyam (it should be devoid of other desires) and jṣāna-karmādy-anāvṛtam (it should not be covered by jṣāna, karma or other items.) The use of the word anya (other) in anyābhilaṣitā-śūnyam indicates that bhakti should have only one desire (to serve the Lord since bhakti is not devoid of desire), and no other desire.
-Jṣāna-karmādy-anāvṛtam
-Jṣāna (knowledge) in the second phrase refers to inquiry concerning the impersonal brahman with no qualities. This should be rejected, but inquiry concerning the worshipable form of the Lord should not be rejected, for that knowledge is necessary in bhakti. The word karma in the verse refers to daily and periodic duties enjoined in the smṛtis, and not the actions of serving the Lord, for serving the Lord is the very definition of anuśīlanam or service. The word ādi refers to such practices as renunciation (vairāgya), yoga, and sāṅkhya. These, as well as impersonal jṣāna and smṛti actions, are obstructions to pure bhakti.
+To define the concept of uttama, two modifying phrases are added as secondary characteristics (taṭaṣṭha-lakṣaṇa): anyābhilāṣitā-śūnyam (it should be devoid of other desires) and jñāna-karmādy-anāvṛtam (it should not be covered by jñāna, karma or other items.) The use of the word anya (other) in anyābhilaṣitā-śūnyam indicates that bhakti should have only one desire (to serve the Lord since bhakti is not devoid of desire), and no other desire.
+Jñāna-karmādy-anāvṛtam
+Jñāna (knowledge) in the second phrase refers to inquiry concerning the impersonal brahman with no qualities. This should be rejected, but inquiry concerning the worshipable form of the Lord should not be rejected, for that knowledge is necessary in bhakti. The word karma in the verse refers to daily and periodic duties enjoined in the smṛtis, and not the actions of serving the Lord, for serving the Lord is the very definition of anuśīlanam or service. The word ādi refers to such practices as renunciation (vairāgya), yoga, and sāṅkhya. These, as well as impersonal jñāna and smṛti actions, are obstructions to pure bhakti.
 Someone may propose that since the definition mentions kṛṣṇānuśīlanam, bhakti also should be defined using the word kṛṣṇa-bhakti. In response to this, it may be said that the definition uses the word bhakti rather than the word kṛṣṇa-bhakti because in the devotional scriptures the word bhakti alone is commonly used (though it refers to bhakti for Kṛṣṇa or Viṣṇu). This is shown in the next statement.</p>
             </div>
         </div>

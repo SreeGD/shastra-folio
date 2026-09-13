@@ -31,11 +31,13 @@
 <body class="has-sidebar">
 <header class="fc-site-header">
     <button type="button" class="fc-mobile-trigger fc-mobile-trigger-left" data-overlay="left" aria-label="Open settings drawer">⚙</button>
-    <a class="fc-brand" href="../../../">FolioCorpus<span class="fc-sub">Bhagavad-gītā</span></a>
+<a class="fc-brand" href="../../../">FolioCorpus<span class="fc-sub">Bhakti-rasāmṛta-sindhu</span></a>
     <nav class="fc-site-nav">
         <a href="../../../">Home</a>
         <a href="../../../bg/">Bhagavad-gītā</a>
         <a href="../../../sb/">Śrīmad-Bhāgavatam</a>
+        <a href="../../../brs/" title="Bhakti-rasāmṛta-sindhu with Jīva Gosvāmī's and Viśvanātha Cakravartī's commentaries">Bhakti-rasāmṛta-sindhu</a>
+        <a href="../../../nod/" title="Nectar of Devotion">Nectar of Devotion</a>
         <a href="../../../search/" title="Search across all integrated works">🔍 Search</a>
         <button type="button" id="fc-random-verse" class="fc-nav-btn" title="Jump to a random verse">🎲 Random</button>
     </nav>
@@ -46,8 +48,8 @@
     <button class="fc-sb-collapse" type="button" data-sb="left" title="Collapse left sidebar" aria-label="Collapse"></button>
 
     <div class="fc-sb-body">
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Reading</div>
+        <details class="fc-sb-section" data-sbsec="reading" open>
+            <summary class="fc-sb-title">Reading</summary>
             <div class="fc-sb-sub">Theme</div>
             <div class="fc-segmented" data-setting="theme">
                 <button type="button" data-val="light">Light</button>
@@ -73,10 +75,10 @@
                 <button type="button" data-val="single">Single</button>
                 <button type="button" data-val="side">Side-by-side</button>
             </div>
-        </div>
+        </details>
 
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Display</div>
+        <details class="fc-sb-section" data-sbsec="display" open>
+            <summary class="fc-sb-title">Display</summary>
             <div class="fc-sb-grid">
                 <label><input type="checkbox" data-section="devanagari" checked> Devanāgarī</label>
                 <label><input type="checkbox" data-section="iast" checked> IAST transliteration</label>
@@ -98,33 +100,10 @@
                 <button type="button" data-action="expand-all">Expand all</button>
                 <button type="button" data-action="collapse-all">Collapse all</button>
             </div>
-        </div>
+        </details>
 
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Find your starting point</div>
-            <div class="fc-persona-links">
-                <a class="fc-persona-link" href="../../../daily/">🌅 Daily (one value a week)</a>
-                <a class="fc-persona-link" href="../../../householder/">🏠 Householder (family & work)</a>
-                <a class="fc-persona-link" href="../../../parenting/">👨‍👩‍👧 Parenting (stories for kids)</a>
-                <a class="fc-persona-link" href="../../../themes/">📚 All themes</a>
-                <a class="fc-persona-link" href="../../../values/" style="background:#F0F6F2;border-left-color:#1F4632;">ॐ Vedic Value System ↗</a>
-                <a class="fc-persona-link" href="../../../vidya/" style="background:#FBF6E4;border-left-color:#C8860B;">📚 Vidyā Karaṇa (kids, multi-lang) ↗</a>
-            </div>
-        </div>
-
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Audience</div>
-            <div class="fc-audience-filter">
-                <label><input type="radio" name="fc-audience" value="all" checked> All levels</label>
-                <label><input type="radio" name="fc-audience" value="primary"> Primary (children)</label>
-                <label><input type="radio" name="fc-audience" value="middle"> Middle (teens)</label>
-                <label><input type="radio" name="fc-audience" value="senior"> Senior (adults)</label>
-                <label><input type="radio" name="fc-audience" value="college"> College / scholar</label>
-            </div>
-        </div>
-
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Tools</div>
+        <details class="fc-sb-section" data-sbsec="tools" open>
+            <summary class="fc-sb-title">Tools</summary>
             <div class="fc-sb-tools">
                 <button type="button" id="fc-presentation-toggle" class="fc-tool-btn"><span>🖥 Presentation</span><kbd class="fc-kbd">F</kbd></button>
                 <button type="button" id="fc-pen-toggle" class="fc-tool-btn"><span>✏️ Pen mode</span><kbd class="fc-kbd">P</kbd></button>
@@ -139,26 +118,10 @@
                 <button type="button" id="fc-clear-highlights" class="fc-tool-btn">🩷 Clear highlights (page)</button>
                 <button type="button" id="fc-notes-modal-open" class="fc-tool-btn">📓 My annotations</button>
             </div>
-        </div>
+        </details>
 
-        <div class="fc-sb-section" id="fc-tts-controls" hidden>
-            <div class="fc-sb-title">
-                Read-aloud
-                <label class="fc-tts-master">
-                    <input type="checkbox" id="fc-tts-enabled" checked>
-                    <span class="fc-tts-master-label">On</span>
-                </label>
-            </div>
-            <div class="fc-tts-inner">
-                <div class="fc-sb-sub">Voice</div>
-                <select id="fc-tts-voice" class="fc-tts-select" aria-label="TTS voice"></select>
-                <div class="fc-sb-sub">Rate <span class="fc-tts-rate-val">1.0×</span></div>
-                <input type="range" id="fc-tts-rate" min="0.5" max="2" step="0.1" value="1" class="fc-tts-rate" aria-label="Reading rate">
-            </div>
-        </div>
-
-        <div class="fc-sb-section" id="fc-progress-section">
-            <div class="fc-sb-title">Progress</div>
+        <details class="fc-sb-section" data-sbsec="progress" id="fc-progress-section" open>
+            <summary class="fc-sb-title">Progress</summary>
             <div class="fc-progress-row">
                 <span class="fc-progress-num" id="fc-progress-num">0</span>
                 <span class="fc-progress-divider">/</span>
@@ -173,29 +136,29 @@
                 <span class="fc-progress-spacer"></span>
                 <button type="button" class="fc-progress-reset" id="fc-progress-reset" title="Reset progress">↺</button>
             </div>
-        </div>
+        </details>
 
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Bookmarks <span class="fc-sb-count" id="fc-bookmarks-count">0</span></div>
+        <details class="fc-sb-section" data-sbsec="bookmarks" open>
+            <summary class="fc-sb-title">Bookmarks <span class="fc-sb-count" id="fc-bookmarks-count">0</span></summary>
             <ul class="fc-bookmark-list" id="fc-bookmarks-list">
                 <li class="fc-sb-empty">No bookmarks yet — click ☆ on any verse.</li>
             </ul>
-        </div>
+        </details>
 
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Notes <span class="fc-sb-count" id="fc-notes-count">0</span></div>
+        <details class="fc-sb-section" data-sbsec="notes" open>
+            <summary class="fc-sb-title">Notes <span class="fc-sb-count" id="fc-notes-count">0</span></summary>
             <ul class="fc-bookmark-list" id="fc-notes-list">
                 <li class="fc-sb-empty">No notes yet — open any verse and write in the 📝 block.</li>
             </ul>
-        </div>
+        </details>
 
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Export</div>
+        <details class="fc-sb-section" data-sbsec="export">
+            <summary class="fc-sb-title">Export</summary>
             <div class="fc-sb-tools">
                 <button type="button" id="fc-export-md" class="fc-tool-btn">📥 Download Markdown</button>
                 <button type="button" id="fc-export-json" class="fc-tool-btn">💾 Download JSON backup</button>
             </div>
-        </div>
+        </details>
     </div>
 </aside>    <main class="fc-container">
 <nav class="fc-breadcrumbs">
@@ -203,14 +166,14 @@
     <span class="sep">›</span>
     <a href="../../../brs/">Bhakti-rasāmṛta-sindhu</a>
     <span class="sep">›</span>
-    <a href="../../../brs/3/">Section 3</a>
+    <a href="../../../brs/3/">Division 3</a>
     <span class="sep">›</span>
-    <span>Chapter 3</span>
+    <span>Wave 3</span>
 </nav>
 
 <div class="fc-ribbon">
     <div class="fc-ribbon-row">
-        <h1 class="fc-verse-heading">3.3</h1>
+        <h1 class="fc-verse-heading">3.3 · Preyo-rasa (sakhya)</h1>
         <span class="fc-ribbon-meta">136 verses</span>
         <input type="search" class="fc-search" id="fc-search" placeholder="🔍 Search in this chapter" aria-label="Search verses in this chapter">
         <span class="fc-ribbon-current" id="fc-ribbon-current" aria-live="polite"></span>
@@ -388,6 +351,7 @@
 
     <div class="fc-translation" data-sec="translation">When the sthāyi-bhāva of sakhya-rati is nourished by suitable vibhāvas and the other elements in the devotee, it is known as preyo-bhakti-rasa (or sakhya-rasa).</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -450,6 +414,7 @@ When a devotee is permanently situated in devotional service, and by different s
 
     <div class="fc-translation" data-sec="translation">The Lord and His friends of the same age are the ālambanas.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -511,6 +476,7 @@ When a devotee is permanently situated in devotional service, and by different s
 
     <div class="fc-translation" data-sec="translation">The Lord: The two-armed and four-armed forms of the Lord as previously described in prīti-bhakti-rasa are the forms of the Lord as ālambana.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -553,8 +519,8 @@ When a devotee is permanently situated in devotional service, and by different s
 
     <div class="cr-iast-block" data-sec="iast">
         <div class="cr-iast-line">tatra vraje, yathā –</div>
-<div class="cr-pron-line" data-sec="pronunciation">[tatra vraje, yathaa –]</div>        <div class="cr-iast-line">mahendra-maṇi-maṣjula-dyutir amanda-kunda-smitaḥ</div>
-<div class="cr-pron-line" data-sec="pronunciation">[mahendra-mani-mashjula-dyutir amanda-kunda-smitah]</div>        <div class="cr-iast-line">sphurat-puraṭa-ketakī-kusuma-ramya-paṭṭāmbaraḥ |</div>
+<div class="cr-pron-line" data-sec="pronunciation">[tatra vraje, yathaa –]</div>        <div class="cr-iast-line">mahendra-maṇi-mañjula-dyutir amanda-kunda-smitaḥ</div>
+<div class="cr-pron-line" data-sec="pronunciation">[mahendra-mani-manjula-dyutir amanda-kunda-smitah]</div>        <div class="cr-iast-line">sphurat-puraṭa-ketakī-kusuma-ramya-paṭṭāmbaraḥ |</div>
 <div class="cr-pron-line" data-sec="pronunciation">[sphurat-purata-ketakee-kusuma-ramya-pattaambarah |]</div>        <div class="cr-iast-line">srag-ullasad-uraḥ-sthalaḥ kvaṇita-veṇur atrāvrajan</div>
 <div class="cr-pron-line" data-sec="pronunciation">[srag-ullasad-urah-sthalah kvanita-venur atraavrajan]</div>        <div class="cr-iast-line">vrajād aghaharo haraty ahaha naḥ sakhīnāṁ manaḥ ||4||</div>
 <div class="cr-pron-line" data-sec="pronunciation">[vrajaad aghaharo haraty ahaha nah sakheenaam manah ||4||]</div>    </div>
@@ -567,7 +533,7 @@ When a devotee is permanently situated in devotional service, and by different s
                 <div class="cr-blend-iast-line">tatra vraje, yathā –</div>
             </div>
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">mahendra-maṇi-maṣjula-dyutir amanda-kunda-smitaḥ</div>
+                <div class="cr-blend-iast-line">mahendra-maṇi-mañjula-dyutir amanda-kunda-smitaḥ</div>
             </div>
             <div class="cr-blend-block">
                 <div class="cr-blend-iast-line">sphurat-puraṭa-ketakī-kusuma-ramya-paṭṭāmbaraḥ |</div>
@@ -583,6 +549,7 @@ When a devotee is permanently situated in devotional service, and by different s
 
 
     <div class="fc-translation" data-sec="translation">The form in Vraja: As the slayer of Agha returns from the cow pens, with his complexion like a delicate blue sapphire, His brilliant white smile like a kunda flower, His cloth yellow like the golden ketakī flower, forest garland shining on His chest, He steals the minds of us cowherd friends.</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -626,8 +593,8 @@ When a devotee is permanently situated in devotional service, and by different s
 
     <div class="cr-iast-block" data-sec="iast">
         <div class="cr-iast-line">anyatra, yathā –</div>
-<div class="cr-pron-line" data-sec="pronunciation">[anyatra, yathaa –]</div>        <div class="cr-iast-line">caṣcat-kaustubha-kaumudī-samudayaṁ kaumodakī-cakrayoḥ</div>
-<div class="cr-pron-line" data-sec="pronunciation">[chashchat-kaustubha-kaumudee-samudayam kaumodakee-chakrayoh]</div>        <div class="cr-iast-line">sakhyenojjvalitais tathā jalajayor āḍhyaṁ caturbhir bhujaiḥ |</div>
+<div class="cr-pron-line" data-sec="pronunciation">[anyatra, yathaa –]</div>        <div class="cr-iast-line">cañcat-kaustubha-kaumudī-samudayaṁ kaumodakī-cakrayoḥ</div>
+<div class="cr-pron-line" data-sec="pronunciation">[chanchat-kaustubha-kaumudee-samudayam kaumodakee-chakrayoh]</div>        <div class="cr-iast-line">sakhyenojjvalitais tathā jalajayor āḍhyaṁ caturbhir bhujaiḥ |</div>
 <div class="cr-pron-line" data-sec="pronunciation">[sakhyenojjvalitais tathaa jalajayor aadhyam chaturbhir bhujaih |]</div>        <div class="cr-iast-line">dṛṣṭvā hāri-harin-maṇi-dyuti-haraṁ śauriṁ hiraṇyāmbaraṁ</div>
 <div class="cr-pron-line" data-sec="pronunciation">[drishtvaa haari-harin-mani-dyuti-haram shaurim hiranyaambaram]</div>        <div class="cr-iast-line">jagmuḥ pāṇḍu-sutāḥ pramoda-sudhayā naivātma-sambhāvanām ||5||</div>
 <div class="cr-pron-line" data-sec="pronunciation">[jagmuh paandu-sutaah pramoda-sudhayaa naivaatma-sambhaavanaam ||5||]</div>    </div>
@@ -640,7 +607,7 @@ When a devotee is permanently situated in devotional service, and by different s
                 <div class="cr-blend-iast-line">anyatra, yathā –</div>
             </div>
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">caṣcat-kaustubha-kaumudī-samudayaṁ kaumodakī-cakrayoḥ</div>
+                <div class="cr-blend-iast-line">cañcat-kaustubha-kaumudī-samudayaṁ kaumodakī-cakrayoḥ</div>
             </div>
             <div class="cr-blend-block">
                 <div class="cr-blend-iast-line">sakhyenojjvalitais tathā jalajayor āḍhyaṁ caturbhir bhujaiḥ |</div>
@@ -657,6 +624,7 @@ When a devotee is permanently situated in devotional service, and by different s
 
     <div class="fc-translation" data-sec="translation">In other places: Seeing Kṛṣṇa in a yellow cloth, with complexion defeating the effulgence of a beautiful emerald, with Kaustubha jewel flashing rays of moonlight, holding the club, cakra, lotus and conch in His four hands, the Pāṇḍavas forgot themselves in the sweet experience of bliss.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -672,9 +640,10 @@ When a devotee is permanently situated in devotional service, and by different s
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
-                <p>These are the words of Dāruka. Kṛṣṇa had on his chest Kaustubha jewel giving (caṣcat) off moonlight rays (kaumudī). Ātma-sambhāva means “awareness of one’s identity.” This is a general description of the Pāṇḍavas’ bhakti because from the description in verse 12 of this chapter, it is understood that Yudhiṣṭhira and others also had vatsala and dāsya affection. That is because in the suhṛt and sakha types of sakhya-rasa, traces of vatsala and dāsya are present. This will be explained in verse 22: vātsalya-gandhi-sakhyās tu kiṣcit te vayasādhikāḥ: in these suhṛts there is sakhya with a tinge of vātsalya. And verse 30 explains that the younger friends show a tinge of prīti-rasa (dāsya): kaniṣṭha-kalpāḥ sakhyena saṁbaddhāḥ prīti-gandhinā. Though the vibhāva in this verse is the four-armed form, there is still sakhya or friendly love, because that form does not seem unusual to the Pāṇḍavas from their constantly seeing it. Thus, in the Gītā, Arjuna says:
+                <p>These are the words of Dāruka. Kṛṣṇa had on his chest Kaustubha jewel giving (cañcat) off moonlight rays (kaumudī). Ātma-sambhāva means “awareness of one’s identity.” This is a general description of the Pāṇḍavas’ bhakti because from the description in verse 12 of this chapter, it is understood that Yudhiṣṭhira and others also had vatsala and dāsya affection. That is because in the suhṛt and sakha types of sakhya-rasa, traces of vatsala and dāsya are present. This will be explained in verse 22: vātsalya-gandhi-sakhyās tu kiñcit te vayasādhikāḥ: in these suhṛts there is sakhya with a tinge of vātsalya. And verse 30 explains that the younger friends show a tinge of prīti-rasa (dāsya): kaniṣṭha-kalpāḥ sakhyena saṁbaddhāḥ prīti-gandhinā. Though the vibhāva in this verse is the four-armed form, there is still sakhya or friendly love, because that form does not seem unusual to the Pāṇḍavas from their constantly seeing it. Thus, in the Gītā, Arjuna says:
 kirīṭinaṁ gadinaṁ cakra-hastam icchāmi tvāṁ draṣṭum ahaṁ tathaiva
 tenaiva rūpeṇa catur-bhujena sahasra-bāho bhava viśva-mūrte
 I wish to see You wearing a crown, holding a club and cakra. O thousand-armed one, form of the universe! Appear with that four-armed form.  BG 11.46
@@ -751,6 +720,7 @@ The friends will be described in verse 8 as having similar form, cloth and quali
 
     <div class="fc-translation" data-sec="translation">The qualities of the Lord in preyo-bhakti-rasa are: dressing attractively, possessing all good qualities, being best of the strong, being knowledgeable of many languages, being talkative, fully knowledgeable of all branches of learning, quick-witted, skillful, merciful, most courageous, learned in arts, intelligent, tolerant, attractive to all people, prosperous, jovial, and the most prominent among all persons.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -824,6 +794,7 @@ The friends will be described in verse 8 as having similar form, cloth and quali
 
     <div class="fc-translation" data-sec="translation">The qualities of the Lord in preyo-bhakti-rasa are: dressing attractively, possessing all good qualities, being best of the strong, being knowledgeable of many languages, being talkative, fully knowledgeable of all branches of learning, quick-witted, skillful, merciful, most courageous, learned in arts, intelligent, tolerant, attractive to all people, prosperous, jovial, and the most prominent among all persons.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -889,6 +860,7 @@ The friends will be described in verse 8 as having similar form, cloth and quali
 
     <div class="fc-translation" data-sec="translation">His friends (āśraya): Those whose form, qualities and dress are similar to Kṛṣṇa’s, who are not restricted like the dāsas because they are endowed with deep trust and familiarity (viśrambha) in relation to the Lord, are known as vayasya or friends.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -904,6 +876,7 @@ The friends will be described in verse 8 as having similar form, cloth and quali
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Samyag-ayantritāḥ means that, unlike the dāsas, they are devoid of restrictions in their feelings. This is because they have viśrambha, familiarity with the Lord. Viśrambha will be explained in verse 106 as intensely deep trust in and familiarity with the Lord, with no restriction.</p>
@@ -945,8 +918,8 @@ The friends will be described in verse 8 as having similar form, cloth and quali
     <div class="cr-iast-block" data-sec="iast">
         <div class="cr-iast-line">yathā –</div>
 <div class="cr-pron-line" data-sec="pronunciation">[yathaa –]</div>        <div class="cr-iast-line">sāmyena bhīti-vidhureṇa vidhīyamāna-</div>
-<div class="cr-pron-line" data-sec="pronunciation">[saamyena bheeti-vidhurena vidheeyamaana-]</div>        <div class="cr-iast-line">bhakti-prapaṣcam anudaṣcad-anugraheṇa |</div>
-<div class="cr-pron-line" data-sec="pronunciation">[bhakti-prapashcham anudashchad-anugrahena |]</div>        <div class="cr-iast-line">viśrambha-sāra-nikuramba-karambitena</div>
+<div class="cr-pron-line" data-sec="pronunciation">[saamyena bheeti-vidhurena vidheeyamaana-]</div>        <div class="cr-iast-line">bhakti-prapañcam anudañcad-anugraheṇa |</div>
+<div class="cr-pron-line" data-sec="pronunciation">[bhakti-prapancham anudanchad-anugrahena |]</div>        <div class="cr-iast-line">viśrambha-sāra-nikuramba-karambitena</div>
 <div class="cr-pron-line" data-sec="pronunciation">[vishrambha-saara-nikuramba-karambitena]</div>        <div class="cr-iast-line">vandetarām aghaharasya vayasya-vṛndam ||9||</div>
 <div class="cr-pron-line" data-sec="pronunciation">[vandetaraam aghaharasya vayasya-vrindam ||9||]</div>    </div>
 
@@ -961,7 +934,7 @@ The friends will be described in verse 8 as having similar form, cloth and quali
                 <div class="cr-blend-iast-line">sāmyena bhīti-vidhureṇa vidhīyamāna-</div>
             </div>
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">bhakti-prapaṣcam anudaṣcad-anugraheṇa |</div>
+                <div class="cr-blend-iast-line">bhakti-prapañcam anudañcad-anugraheṇa |</div>
             </div>
             <div class="cr-blend-block">
                 <div class="cr-blend-iast-line">viśrambha-sāra-nikuramba-karambitena</div>
@@ -974,6 +947,7 @@ The friends will be described in verse 8 as having similar form, cloth and quali
 
 
     <div class="fc-translation" data-sec="translation">This is expressed in the following verse: I offer my respects to the friends of Kṛṣṇa, who serve Him, with deep trust, without restriction, without fear, while thinking that He is their equal.</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -1031,6 +1005,7 @@ The friends will be described in verse 8 as having similar form, cloth and quali
 
 
     <div class="fc-translation" data-sec="translation">There are two types of friends: those in the city and those in Vraja.</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -1096,6 +1071,7 @@ The friends will be described in verse 8 as having similar form, cloth and quali
 
 
     <div class="fc-translation" data-sec="translation">Arjuna, Bhīmasena, Draupadī, Śrīdāma brāhmaṇa [Note: This is another name of Sudāma brāhmaṇa.] are some of the friends in the city.</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -1170,6 +1146,7 @@ The friends will be described in verse 8 as having similar form, cloth and quali
 
     <div class="fc-translation" data-sec="translation">Their friendship: When Kṛṣṇa arrived in Indraprastha, Yudhiṣṭhira, with unsteady mind, immediately smelled his head. [Note: This is a sign of affection of a father for his son.] Bhīma and Arjuna, with hairs standing on end, embraced His iron arms. Nakula and Sahadeva fell at His lotus feet with tears in their eyes. In this way, the Pāṇḍavas, with hearts agitated with joy, impeded Kṛṣṇa’s entry into the city.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1185,6 +1162,7 @@ The friends will be described in verse 8 as having similar form, cloth and quali
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>In this verse Bhīma and Arjuna should be understood as the examples of sakhya-rasa. Śrīdāma brāhmaṇa and Draupadī are also included in this group. Śliṣṭau (they were embraced) actually stands for śliṣṭavantau (they embraced), according to the rule gaty arthākarmaka śliṣa: the suffix ta is employed to denote the agent as well as the act and the object after verbs implying motion, after intransitive roots and after the verbs śliṣ (to embrace). (Pāṇini 3.4.72) The iron arms and the lotus feet should be understood to belong to Kṛṣṇa, not to Bhīma, Arjuna or their two younger brothers. They are part of the viṣaya, object of love, according to the context.</p>
@@ -1239,6 +1217,7 @@ The friends will be described in verse 8 as having similar form, cloth and quali
 
 
     <div class="fc-translation" data-sec="translation">Among the friends in the city, the Pāṇḍava Arjuna is the best.</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -1313,6 +1292,7 @@ The friends will be described in verse 8 as having similar form, cloth and quali
 
     <div class="fc-translation" data-sec="translation">Arjuna’s form: Arjuna, with Gāṇḍiva bow in hand, with thighs like elephant trunks, with the complexion of a blue lotus, and with reddish eyes, looked splendid as he mounted the jewel-studded chariot with Kṛṣṇa, holder of the cakra.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1386,6 +1366,7 @@ The friends will be described in verse 8 as having similar form, cloth and quali
 
     <div class="fc-translation" data-sec="translation">Arjuna’s friendship: Arjuna, with smiling face, looked splendid as he sat on the same large seat as Kṛṣṇa, placing his head on His bosom in affection without fear, expertly joking in original ways.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1455,6 +1436,7 @@ The friends will be described in verse 8 as having similar form, cloth and quali
 
     <div class="fc-translation" data-sec="translation">The friends in Vraja: The friends in Vraja suffer from not seeing Kṛṣṇa even for a moment. They play with Him at all times and their very life depends on Kṛṣṇa. For this reason, they are considered the chief among all the friends.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1470,6 +1452,7 @@ The friends will be described in verse 8 as having similar form, cloth and quali
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>The following Bhāgavatam verses illustrate their love:
@@ -1547,6 +1530,7 @@ When Balarāma and the other boys saw that Kṛṣṇa had been devoured by the 
 
     <div class="fc-translation" data-sec="translation">Their forms: The cowherd friends of Kṛṣṇa are the same age as Kṛṣṇa, with similar qualities, activities, clothing and beauty. They are equipped with pleasing flutes, horns and vallakī leaves, [Note: The list of instruments is rather unclear. Vallakī can mean a vīṇa, but also a type of plant. Dala means leaf. Viṣāṇa means a horn, especially made of animal horns. These can be taken separately as vīṇa, leaves, horns and flutes or together as horns made of vallakī leaves and flutes, or vallakī leaves, horns and flutes. The latter seems preferable, since horns (buffalo) are described elsewhere as the uddīpana for Kṛṣṇa. Patra which means the same as dala are also described elsewhere as an instrument being carried by the cowherd boys. Perhaps they use the leaves as small whistles.] and have complexions of dark blue, gold, crystal and ruby. Always filled with love for Kṛṣṇa, may they protect you!</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1562,6 +1546,7 @@ When Balarāma and the other boys saw that Kṛṣṇa had been devoured by the 
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>The cowherd friends carry with them flutes, horns and vallakī leaves (made into flutes), which are all auspicious, making the inauspicious most auspicious (priyaṅkaraṇa). Other versions of the verse are not acceptable.</p>
@@ -1633,6 +1618,7 @@ When Balarāma and the other boys saw that Kṛṣṇa had been devoured by the 
 
     <div class="fc-translation" data-sec="translation">Their friendship: You have spent seven nights standing constantly without sleep holding up Govardhana. You must be very tired. O my friend Kṛṣṇa, throw the mountain into Śrīdāma’s hand. [Note: This Śrīdāma is the elder brother of Rādhā, distinct from Śrīdāma brāhmaṇa.] Our minds are very disturbed seeing you in this condition. Or at least place mountain in Your right hand. Then we will be able to massage Your left hand.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1648,6 +1634,7 @@ When Balarāma and the other boys saw that Kṛṣṇa had been devoured by the 
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>These are the cowherd boyfriends speaking to Kṛṣṇa. On seeing the display of the Lord’s powers, they became instead absorbed in the considerations mentioned in this verse. This verse indicates samatva-bhāvanā-maya-sneha: sneha generated by the thought of the Lord as an equal. The next example shows sneha generated by playing together. That is the difference.</p>
@@ -1691,8 +1678,8 @@ When Balarāma and the other boys saw that Kṛṣṇa had been devoured by the 
 <div class="cr-pron-line" data-sec="pronunciation">[yathaa vaa shree-dashame–]</div>        <div class="cr-iast-line">itthaṁ satāṁ brahma-sukhānubhūtyā</div>
 <div class="cr-pron-line" data-sec="pronunciation">[ittham sataam brahma-sukhaanubhootyaa]</div>        <div class="cr-iast-line">dāsyaṁ gatānāṁ para-daivatena |</div>
 <div class="cr-pron-line" data-sec="pronunciation">[daasyam gataanaam para-daivatena |]</div>        <div class="cr-iast-line">māyāśritānāṁ nara-dārakeṇa</div>
-<div class="cr-pron-line" data-sec="pronunciation">[maayaashritaanaam nara-daarakena]</div>        <div class="cr-iast-line">sārddhaṁ vijahruḥ kṛta-puṇya-puṣjāḥ ||19||</div>
-<div class="cr-pron-line" data-sec="pronunciation">[saarddham vijahruh krita-punya-pushjaah ||19||]</div>    </div>
+<div class="cr-pron-line" data-sec="pronunciation">[maayaashritaanaam nara-daarakena]</div>        <div class="cr-iast-line">sārddhaṁ vijahruḥ kṛta-puṇya-puñjāḥ ||19||</div>
+<div class="cr-pron-line" data-sec="pronunciation">[saarddham vijahruh krita-punya-punjaah ||19||]</div>    </div>
 
 
     <details class="cr-blend-details" data-sec="blended">
@@ -1711,13 +1698,14 @@ When Balarāma and the other boys saw that Kṛṣṇa had been devoured by the 
                 <div class="cr-blend-iast-line">māyāśritānāṁ nara-dārakeṇa</div>
             </div>
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">sārddhaṁ vijahruḥ kṛta-puṇya-puṣjāḥ ||19||</div>
+                <div class="cr-blend-iast-line">sārddhaṁ vijahruḥ kṛta-puṇya-puñjāḥ ||19||</div>
             </div>
         </div>
     </details>
 
 
     <div class="fc-translation" data-sec="translation">Another example, from the Tenth Canto: Here is the Supreme Person, who is considered the impersonal Brahman by great sages, a most worshipable form by the dāsya-bhaktas, and the son of a human being by ordinary men. Now these boys, who have performed many, many pleasing activities in their past lives, are playing with that Supreme Personality of Godhead in the form of a cowherd boy. SB 10.12.11</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -1734,12 +1722,13 @@ When Balarāma and the other boys saw that Kṛṣṇa had been devoured by the 
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
-                <p>Satām means “of those who have realized the highest form of existence,” or by proximity to the word brahma, the word sat describes brahman. Thus, satām indicates “those who have realized brahman.” In either case satām refer to the jṣānīs. Anubhūti means a self-revealing object (perception or consciousness), opposite of dull matter. This consciousness itself is happiness, since this is the shelter of an attributeless prema, produced through realization of ātmā. That consciousness is also called brahman, meaning “the greatest,” since it is the ultimate essence of everything. This is the explanation of the phrase brahma-sukhānubhūti. The jṣānīs realize the Lord as a self-revealing object which is happiness and is called brahman, the greatest (brahma-sukhānubhūtyā).
-Those who possess dāsya-bhakti (dāsyaṁ gatānām) realize the Lord as a form which is supremely worshipable (para-daivatena), filled with all powers. The Lord is realized in this form in order that people see His greatness. To show that both these types of realization are very rare, the verse then says that those who have fallen under the control of material illusion (māyāśritānām) see the Lord only as a human child, because they lack both jṣāna and bhakti.
+                <p>Satām means “of those who have realized the highest form of existence,” or by proximity to the word brahma, the word sat describes brahman. Thus, satām indicates “those who have realized brahman.” In either case satām refer to the jñānīs. Anubhūti means a self-revealing object (perception or consciousness), opposite of dull matter. This consciousness itself is happiness, since this is the shelter of an attributeless prema, produced through realization of ātmā. That consciousness is also called brahman, meaning “the greatest,” since it is the ultimate essence of everything. This is the explanation of the phrase brahma-sukhānubhūti. The jñānīs realize the Lord as a self-revealing object which is happiness and is called brahman, the greatest (brahma-sukhānubhūtyā).
+Those who possess dāsya-bhakti (dāsyaṁ gatānām) realize the Lord as a form which is supremely worshipable (para-daivatena), filled with all powers. The Lord is realized in this form in order that people see His greatness. To show that both these types of realization are very rare, the verse then says that those who have fallen under the control of material illusion (māyāśritānām) see the Lord only as a human child, because they lack both jñāna and bhakti.
 taṁ brahma paramaṁ sākṣād bhagavantam adhokṣajam
-manuṣya-dṛṣṭyā duṣprajṣā martyātmāno na menire
+manuṣya-dṛṣṭyā duṣprajñā martyātmāno na menire
 The brāhmaṇas failed to recognize that He is the Supreme Absolute Truth, the directly manifest Personality of Godhead, whom the material senses cannot ordinarily perceive. Thus, bewildered by their false identification with the mortal body, they did not show Him proper respect. SB 10.23.11
 But the cowherd boys played with the Lord (sārddham). He awarded them His association, being controlled by His own prema for them. Though He appeared in a human form, that form surpassed in sweetness the sweetness of all other forms. The cowherd boys played with that form of the Lord. Therefore, those boys must have done piles of pious actions in previous lives. This is the meaning from the common, material point of view. But actually, they performed piles of pleasing (puṇya) actions which caused the highest mercy of the Lord. Amara-kośa says puṇyas tu cāru: puṇya means pleasing. If one is particularly inquisitive one can consult Vaiṣṇava-toṣaṇī commentary on this verse.</p>
             </div>
@@ -1810,6 +1799,7 @@ But the cowherd boys played with the Lord (sārddham). He awarded them His assoc
 
     <div class="fc-translation" data-sec="translation">Kṛṣṇa’s friendship with the boys: O brother! O respected one! On seeing all My friends quickly enter the stomach of the Agha demon, hot tears began flowing from My eyes, and My cheeks became thin. Being despondent, for some time My mind became vacant.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1871,6 +1861,7 @@ But the cowherd boys played with the Lord (sārddham). He awarded them His assoc
 
     <div class="fc-translation" data-sec="translation">There are four types of friends in Gokula: suhṛt, sakha, priya-sakha and priya-narma-sakha.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -1913,8 +1904,8 @@ But the cowherd boys played with the Lord (sārddham). He awarded them His assoc
 
     <div class="cr-iast-block" data-sec="iast">
         <div class="cr-iast-line">tatra suhṛdaḥ –</div>
-<div class="cr-pron-line" data-sec="pronunciation">[tatra suhridah –]</div>        <div class="cr-iast-line">vātsalya-gandhi-sakhyāṁ tu kiṣcit te vayasādhikāḥ |</div>
-<div class="cr-pron-line" data-sec="pronunciation">[vaatsalya-gandhi-sakhyaam tu kishchit te vayasaadhikaah |]</div>        <div class="cr-iast-line">sāyudhās tasya duṣṭebhyaḥ sadā rakṣā-parāyaṇāḥ ||22||</div>
+<div class="cr-pron-line" data-sec="pronunciation">[tatra suhridah –]</div>        <div class="cr-iast-line">vātsalya-gandhi-sakhyāṁ tu kiñcit te vayasādhikāḥ |</div>
+<div class="cr-pron-line" data-sec="pronunciation">[vaatsalya-gandhi-sakhyaam tu kinchit te vayasaadhikaah |]</div>        <div class="cr-iast-line">sāyudhās tasya duṣṭebhyaḥ sadā rakṣā-parāyaṇāḥ ||22||</div>
 <div class="cr-pron-line" data-sec="pronunciation">[saayudhaas tasya dushtebhyah sadaa rakshaa-paraayanaah ||22||]</div>    </div>
 
 
@@ -1925,7 +1916,7 @@ But the cowherd boys played with the Lord (sārddham). He awarded them His assoc
                 <div class="cr-blend-iast-line">tatra suhṛdaḥ –</div>
             </div>
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">vātsalya-gandhi-sakhyāṁ tu kiṣcit te vayasādhikāḥ |</div>
+                <div class="cr-blend-iast-line">vātsalya-gandhi-sakhyāṁ tu kiñcit te vayasādhikāḥ |</div>
             </div>
             <div class="cr-blend-block">
                 <div class="cr-blend-iast-line">sāyudhās tasya duṣṭebhyaḥ sadā rakṣā-parāyaṇāḥ ||22||</div>
@@ -1935,6 +1926,7 @@ But the cowherd boys played with the Lord (sārddham). He awarded them His assoc
 
 
     <div class="fc-translation" data-sec="translation">The suhṛts have friendship mixed with a tinge of vatsala. They are slightly older than Kṛṣṇa, and, carrying weapons, they are always ready to protect Kṛṣṇa from demons.</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -2000,6 +1992,7 @@ But the cowherd boys played with the Lord (sārddham). He awarded them His assoc
 
 
     <div class="fc-translation" data-sec="translation">Subhadra, Maṇḍalībhadra, Bhadravardhana, Gobhaṭa, Yakṣa, Indrabhaṭa, Bhadrāṅga, Vīrabhadra, Mahāguṇa, Vijaya and Balabhadra are some of the suhṛts.</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -2074,6 +2067,7 @@ But the cowherd boys played with the Lord (sārddham). He awarded them His assoc
 
     <div class="fc-translation" data-sec="translation">Their friendship: O Maṇḍalībhadra! Why are you running around swinging that sword? O respectable Balarāma! Don’t take up that heavy club. Vijaya! Do not uselessly become agitated. Bhadravardhana! Do not throw your strength around. What is approaching Govardhana and making a roaring sound is not the powerful demon Ariṣṭāsura with a bull shape, but only a cloud.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2130,6 +2124,7 @@ But the cowherd boys played with the Lord (sārddham). He awarded them His assoc
 
 
     <div class="fc-translation" data-sec="translation">Among the suhṛts, Maṇḍalībhadra and Balarāma are the best.</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -2196,6 +2191,7 @@ But the cowherd boys played with the Lord (sārddham). He awarded them His assoc
 
     <div class="fc-translation" data-sec="translation">The form of Maṇḍalībhadra: Maṇḍalībhadra appears with pink cloth decorating his shining limbs, club in hand, peacock feather on his head, with the shining black complexion of a bee.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2211,6 +2207,7 @@ But the cowherd boys played with the Lord (sārddham). He awarded them His assoc
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Pāṭala means a combination of red and white. His limbs shine with that pink cloth.</p>
@@ -2282,6 +2279,7 @@ But the cowherd boys played with the Lord (sārddham). He awarded them His assoc
 
     <div class="fc-translation" data-sec="translation">The friendship of Maṇḍalībhadra: Our friend Kṛṣṇa has become very tired because of wandering around playing in the forest for a long time. Now, He should sleep comfortably in His house in Vraja at night. I will gently massage His head. Subala! You should massage His legs while speaking in His ear.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2325,8 +2323,8 @@ But the cowherd boys played with the Lord (sārddham). He awarded them His assoc
     <div class="cr-iast-block" data-sec="iast">
         <div class="cr-iast-line">baladevasya rūpaṁ, yathā –</div>
 <div class="cr-pron-line" data-sec="pronunciation">[baladevasya roopam, yathaa –]</div>        <div class="cr-iast-line">gaṇḍāntaḥ-sphurad-eka-kuṇḍalam ali-cchannāvataṁsotpalaṁ</div>
-<div class="cr-pron-line" data-sec="pronunciation">[gandaantah-sphurad-eka-kundalam ali-chchannaavatamsotpalam]</div>        <div class="cr-iast-line">kastūrī-kṛta-citrakaṁ pṛthu-hṛdi bhrājiṣṇu guṣjā-srajam |</div>
-<div class="cr-pron-line" data-sec="pronunciation">[kastooree-krita-chitrakam prithu-hridi bhraajishnu gushjaa-srajam |]</div>        <div class="cr-iast-line">taṁ vīraṁ śarad-ambuda-dyuti-bharaṁ saṁvīta-kālāmbaraṁ</div>
+<div class="cr-pron-line" data-sec="pronunciation">[gandaantah-sphurad-eka-kundalam ali-chchannaavatamsotpalam]</div>        <div class="cr-iast-line">kastūrī-kṛta-citrakaṁ pṛthu-hṛdi bhrājiṣṇu guñjā-srajam |</div>
+<div class="cr-pron-line" data-sec="pronunciation">[kastooree-krita-chitrakam prithu-hridi bhraajishnu gunjaa-srajam |]</div>        <div class="cr-iast-line">taṁ vīraṁ śarad-ambuda-dyuti-bharaṁ saṁvīta-kālāmbaraṁ</div>
 <div class="cr-pron-line" data-sec="pronunciation">[tam veeram sharad-ambuda-dyuti-bharam samveeta-kaalaambaram]</div>        <div class="cr-iast-line">gambhīra-svanitaṁ pralamba-bhujam ālambe pralamba-dviṣam ||28||</div>
 <div class="cr-pron-line" data-sec="pronunciation">[gambheera-svanitam pralamba-bhujam aalambe pralamba-dvisham ||28||]</div>    </div>
 
@@ -2341,7 +2339,7 @@ But the cowherd boys played with the Lord (sārddham). He awarded them His assoc
                 <div class="cr-blend-iast-line">gaṇḍāntaḥ-sphurad-eka-kuṇḍalam ali-cchannāvataṁsotpalaṁ</div>
             </div>
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">kastūrī-kṛta-citrakaṁ pṛthu-hṛdi bhrājiṣṇu guṣjā-srajam |</div>
+                <div class="cr-blend-iast-line">kastūrī-kṛta-citrakaṁ pṛthu-hṛdi bhrājiṣṇu guñjā-srajam |</div>
             </div>
             <div class="cr-blend-block">
                 <div class="cr-blend-iast-line">taṁ vīraṁ śarad-ambuda-dyuti-bharaṁ saṁvīta-kālāmbaraṁ</div>
@@ -2353,12 +2351,13 @@ But the cowherd boys played with the Lord (sārddham). He awarded them His assoc
     </details>
 
 
-    <div class="fc-translation" data-sec="translation">The form of Balarāma: I take shelter of Baladeva, enemy of Pralamba. On the edge of His cheek dangles one earring. The lotuses decorating His ears are covered with bees. His tilaka is made of musk. On His broad chest shines a guṣja berry necklace. His complexion is as white as an autumn cloud. His cloth is blue, His voice is deep, and His arms hang down to His knees.</div>
+    <div class="fc-translation" data-sec="translation">The form of Balarāma: I take shelter of Baladeva, enemy of Pralamba. On the edge of His cheek dangles one earring. The lotuses decorating His ears are covered with bees. His tilaka is made of musk. On His broad chest shines a guñja berry necklace. His complexion is as white as an autumn cloud. His cloth is blue, His voice is deep, and His arms hang down to His knees.</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
-            <p>One devotee described the personal beauty of Baladeva as follows “Let me take shelter of the lotus feet of Balarāma, whose beauty is enhanced by the earrings touching His cheeks. His face is decorated with tilaka made from kastūrī [musk], and His broad chest is decorated with a garland of guṣjā [small conchshells]. His complexion is as white as an autumn cloud, He wears garments of blue color, and His voice is very grave. His arms are very long, touching His thighs, and He has shown His great strength by killing the Pralamba demon. Let me take shelter of this chivalrous Balarāma.” [Note: Balarāma and Baladeva are different names for the same expansion of Kṛṣṇa. He is Kṛṣṇa’s elder brother.]</p>
+            <p>One devotee described the personal beauty of Baladeva as follows “Let me take shelter of the lotus feet of Balarāma, whose beauty is enhanced by the earrings touching His cheeks. His face is decorated with tilaka made from kastūrī [musk], and His broad chest is decorated with a garland of guñjā [small conchshells]. His complexion is as white as an autumn cloud, He wears garments of blue color, and His voice is very grave. His arms are very long, touching His thighs, and He has shown His great strength by killing the Pralamba demon. Let me take shelter of this chivalrous Balarāma.” [Note: Balarāma and Baladeva are different names for the same expansion of Kṛṣṇa. He is Kṛṣṇa’s elder brother.]</p>
         </div>
         <div class="cr-purport-attrib">— A.C. Bhaktivedanta Swami Prabhupāda</div>
     </section>
@@ -2370,9 +2369,10 @@ But the cowherd boys played with the Lord (sārddham). He awarded them His assoc
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
-                <p>Citrakam is tilaka. The second line is kastūrī-kṛta-citrakaṁ pṛthu-hṛdi bhrājiṣṇu guṣjā-srajam. This is the correct version.</p>
+                <p>Citrakam is tilaka. The second line is kastūrī-kṛta-citrakaṁ pṛthu-hṛdi bhrājiṣṇu guñjā-srajam. This is the correct version.</p>
             </div>
         </div>
     </section>
@@ -2441,6 +2441,7 @@ But the cowherd boys played with the Lord (sārddham). He awarded them His assoc
 
     <div class="fc-translation" data-sec="translation">Baladeva’s friendship: Today is My birth tithi. Therefore, My affectionate mother has kept Me at home in order to bathe Me. Subala! Tell Kṛṣṇa that I said that He should by no means go to Kāliya’s lake today.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2456,6 +2457,7 @@ But the cowherd boys played with the Lord (sārddham). He awarded them His assoc
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>This is not the yearly birthday, but a monthly day when the moon enters His birth constellation, because on His actual birthday, which would be a big celebration, Kṛṣṇa would not go out. It should be understood that the message could not be delivered quickly by Subala, who delayed going. Otherwise, as on previous days, Kṛṣṇa would not have disobeyed Balarāma’s instructions on this day and gone to Kāliya’s lake.</p>
@@ -2527,6 +2529,7 @@ But the cowherd boys played with the Lord (sārddham). He awarded them His assoc
 
     <div class="fc-translation" data-sec="translation">The sakhas: Friends who are slightly younger than Kṛṣṇa, who have a touch of dāsya in relationship with Kṛṣṇa are called sakhas. They are very attached to the happiness derived from serving Kṛṣṇa. Among them are Viśāla, Vṛṣabha, Ojasvī, Devaprastha, Varūthapa, Maranda, Kusumāpīḍa, Maṇibandha, and Karandhama.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2542,6 +2545,7 @@ But the cowherd boys played with the Lord (sārddham). He awarded them His assoc
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Viśāla-vṛṣabhaurjasvi is the version in the Gauḍiya edition. The Kāśi edition has vṛṣāla-vṛṣa-tesasvī.</p>
@@ -2612,6 +2616,7 @@ But the cowherd boys played with the Lord (sārddham). He awarded them His assoc
 
 
     <div class="fc-translation" data-sec="translation">The sakhas: Friends who are slightly younger than Kṛṣṇa, who have a touch of dāsya in relationship with Kṛṣṇa are called sakhas. They are very attached to the happiness derived from serving Kṛṣṇa. Among them are Viśāla, Vṛṣabha, Ojasvī, Devaprastha, Varūthapa, Maranda, Kusumāpīḍa, Maṇibandha, and Karandhama.</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -2699,6 +2704,7 @@ But the cowherd boys played with the Lord (sārddham). He awarded them His assoc
 
     <div class="fc-translation" data-sec="translation">Their friendship: Today our friend has become very tired from intense combat. Viśāla! Fan Him with a lotus leaf. Varūthapa, tidy up His hair! Vṛṣabha, massage his limbs without unnecessary talk!</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2755,6 +2761,7 @@ But the cowherd boys played with the Lord (sārddham). He awarded them His assoc
 
 
     <div class="fc-translation" data-sec="translation">Among the sakhas, Devaprastha is known as the best.</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -2829,6 +2836,7 @@ But the cowherd boys played with the Lord (sārddham). He awarded them His assoc
 
     <div class="fc-translation" data-sec="translation">Devaprastha’s form: With a ball in his hand, with light yellow cloth, top-knot tied with a cord, and red complexion, strong Devaprastha, romping around like the king of the elephants, walks by Kṛṣṇa’s side.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2902,6 +2910,7 @@ But the cowherd boys played with the Lord (sārddham). He awarded them His assoc
 
     <div class="fc-translation" data-sec="translation">Devaprastha’s friendship: O beautiful young woman! In a mountain cave, Kṛṣṇa lay down and rested His head in the broad arms of Śrīdāma, with Dāma’s left hand covering His chest. Expert Devaprastha gave pleasure to his beloved Kṛṣṇa by massaging His feet in affection.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -2917,6 +2926,7 @@ But the cowherd boys played with the Lord (sārddham). He awarded them His assoc
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Out of affection, Dāma placed his left hand on Kṛṣṇa’s chest (savya kareṇa ruddha-hṛdayam). In the compound ruddha-hṛdaya the modifying word ruddha (covered) maintains its original passive participle function with the instrumental phrase savya-kareṇa. This follows the grammatical rule samastasyāsamastena nityāpekṣeṇa saṅgati: A word inside a compound can be considered connected with a word outside the compound if their meanings are unavoidably connected by a semantic expectation. (Harināmāmṛta-vyākaraṇa 6.104)</p>
@@ -2988,6 +2998,7 @@ But the cowherd boys played with the Lord (sārddham). He awarded them His assoc
 
     <div class="fc-translation" data-sec="translation">Priya-sakhas: Those who are the same age as Kṛṣṇa, with only pure sakhya, are called priya-sakhas. Śrīdāma, Sudāma, Dāma, Vasudāma, Kiṅkiṇi, Stokakrṣṇa, Aṁśu, Bhadrasena, Vilāsī, Puṇḍarīka, Viṭaṅka and Kalabiṇka are priya-sakhas.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3003,6 +3014,7 @@ But the cowherd boys played with the Lord (sārddham). He awarded them His assoc
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Though mentioned here to be priya-sakhas, Dāma, Sudāma, Vasudāma and Kiṅkiṇī should be understood to be priya-narma-sakhas. They enter all intimate places because they are the very heart and soul of Kṛṣṇa. In the Gautamīya-tantra, they are mentioned as the first āvaraṇa (first circle of associates), in the worship of the Lord. “One should worship Dāma, Sudāma, Vasudāma and Kiṅkiṇī with sandalwood and flowers. They are known as the very heart of Kṛṣṇa. They are worshipped as non-different from Kṛṣṇa. They are worshipped just as Kṛṣṇa is worshipped.”</p>
@@ -3073,6 +3085,7 @@ But the cowherd boys played with the Lord (sārddham). He awarded them His assoc
 
 
     <div class="fc-translation" data-sec="translation">Priya-sakhas: Those who are the same age as Kṛṣṇa, with only pure sakhya, are called priya-sakhas. Śrīdāma, Sudāma, Dāma, Vasudāma, Kiṅkiṇi, Stokakrṣṇa, Aṁśu, Bhadrasena, Vilāsī, Puṇḍarīka, Viṭaṅka and Kalabiṇka are priya-sakhas.</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -3148,6 +3161,7 @@ But the cowherd boys played with the Lord (sārddham). He awarded them His assoc
 
     <div class="fc-translation" data-sec="translation">The priya-sakhas give pleasure to Kṛṣṇa by hand to hand combat, stick fighting and other sports.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3221,6 +3235,7 @@ But the cowherd boys played with the Lord (sārddham). He awarded them His assoc
 
     <div class="fc-translation" data-sec="translation">Their friendship: One priya-sakha jokes using puns in a choked voice. Another embraces Kṛṣṇa with arms full of goose bumps. Another sneaks up behind Kṛṣṇa and covers His eyes with his quick hand. O thin-waisted woman! In this way, the priya-sakhas give pleasure to Your friend Kṛṣṇa.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3278,6 +3293,7 @@ Sometimes a confidential friend would come before Kṛṣṇa and embrace Him wi
 
 
     <div class="fc-translation" data-sec="translation">Among the priya-sakhas, Śrīdāma is the chief.</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -3352,6 +3368,7 @@ Sometimes a confidential friend would come before Kṛṣṇa and embrace Him wi
 
     <div class="fc-translation" data-sec="translation">Śrīdāma’s form: I worship Śrīdāma, with yellow-greenish cloth and dark blue complexion, holding a horn in his hand, wearing a copper colored turban and a flower garland. Out of friendship, he competes with Kṛṣṇa.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3367,6 +3384,7 @@ Sometimes a confidential friend would come before Kṛṣṇa and embrace Him wi
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Verse 2.5.59, in describing utsāha-rati, shows Śrīdāma in competitive spirit (baddha-spardham). Since friendship becomes hidden when competitive spirit appears, that is described in a separate place.</p>
@@ -3438,6 +3456,7 @@ Sometimes a confidential friend would come before Kṛṣṇa and embrace Him wi
 
     <div class="fc-translation" data-sec="translation">His friendship: You are so cruel! Why did you suddenly leave us at the bank of the Yamunā and go away? We are very fortunate to have seen You. Now, please us by giving us a strong embrace. Not seeing You for even a short time, the cows, ourselves, the cowsheds, and Your gopīs all fall into the worst misfortune.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3453,6 +3472,7 @@ Sometimes a confidential friend would come before Kṛṣṇa and embrace Him wi
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Without Kṛṣṇa, what happens to the cows (kā dhenavaḥ)? The cows no longer are cows. We are not ourselves. The cowsheds are no longer cowsheds. The gopīs are no longer gopīs. That is because (iti) everything becomes opposite, falling into the greatest misfortune, by not seeing You.</p>
@@ -3519,6 +3539,7 @@ Sometimes a confidential friend would come before Kṛṣṇa and embrace Him wi
 
 
     <div class="fc-translation" data-sec="translation">The priya-narma-sakhas are superior to the suhṛts, sakhas and priya-sakhas, and possess a very special bhāva. They engage in the most confidential pastimes. Subala, Arjuna, Gandharva, Vasanta and Ujjvala are priya-narma-sakhas.</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -3593,6 +3614,7 @@ Sometimes a confidential friend would come before Kṛṣṇa and embrace Him wi
 
     <div class="fc-translation" data-sec="translation">Their friendship: O thin-waisted woman! Subala is whispering information about Rādhā’s in Kṛṣṇa’s ear. Ujjvala is handing Śyāmā’s love letter to the lotus hand of Kṛṣṇa in a solitary place. Catura is offering betel nut given by Pālī into Kṛṣṇa’s mouth. Kokila is putting a garland sent by Tārā over Kṛṣṇa’s head. In this way, the priya-narma-sakhas serve Kṛṣṇa.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3608,6 +3630,7 @@ Sometimes a confidential friend would come before Kṛṣṇa and embrace Him wi
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>The special bhāva mentioned in the previous verse is the desire to give pleasure to Kṛṣṇa by helping His girlfriends. This verse describes that service. This is a conversation between two women go-betweens.</p>
@@ -3662,6 +3685,7 @@ Sometimes a confidential friend would come before Kṛṣṇa and embrace Him wi
 
 
     <div class="fc-translation" data-sec="translation">Among the priya-narma-sakhas, Subala and Ujjvala are the chief.</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -3728,6 +3752,7 @@ Sometimes a confidential friend would come before Kṛṣṇa and embrace Him wi
 
     <div class="fc-translation" data-sec="translation">Subala’s form: I offer my respects to Subala, with a complexion that conquers gold, who wears a pearl necklace and green cloth, whose eyes are like blue lotuses, and who gives joy to his friends by his conduct.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3773,8 +3798,8 @@ Sometimes a confidential friend would come before Kṛṣṇa and embrace Him wi
 <div class="cr-pron-line" data-sec="pronunciation">[asya sakhyam, yathaa –]</div>        <div class="cr-iast-line">vayasya-goṣṭhyām akhileṅgiteṣu</div>
 <div class="cr-pron-line" data-sec="pronunciation">[vayasya-goshthyaam akhilengiteshu]</div>        <div class="cr-iast-line">viśāradāyām api mādhavasya |</div>
 <div class="cr-pron-line" data-sec="pronunciation">[vishaaradaayaam api maadhavasya |]</div>        <div class="cr-iast-line">anyair durūhā subalena sārdhaṁ</div>
-<div class="cr-pron-line" data-sec="pronunciation">[anyair duroohaa subalena saardham]</div>        <div class="cr-iast-line">saṁjṣā-mayī kāpi babhūva vārtā ||47||</div>
-<div class="cr-pron-line" data-sec="pronunciation">[samjshaa-mayee kaapi babhoova vaartaa ||47||]</div>    </div>
+<div class="cr-pron-line" data-sec="pronunciation">[anyair duroohaa subalena saardham]</div>        <div class="cr-iast-line">saṁjñā-mayī kāpi babhūva vārtā ||47||</div>
+<div class="cr-pron-line" data-sec="pronunciation">[samjnaa-mayee kaapi babhoova vaartaa ||47||]</div>    </div>
 
 
     <details class="cr-blend-details" data-sec="blended">
@@ -3793,13 +3818,14 @@ Sometimes a confidential friend would come before Kṛṣṇa and embrace Him wi
                 <div class="cr-blend-iast-line">anyair durūhā subalena sārdhaṁ</div>
             </div>
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">saṁjṣā-mayī kāpi babhūva vārtā ||47||</div>
+                <div class="cr-blend-iast-line">saṁjñā-mayī kāpi babhūva vārtā ||47||</div>
             </div>
         </div>
     </details>
 
 
     <div class="fc-translation" data-sec="translation">Subala’s friendship: Mādhava discussed with Subala topics full of allusions difficult to understand by others in the assembly skilful at interpreting gestures.</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -3816,9 +3842,10 @@ Sometimes a confidential friend would come before Kṛṣṇa and embrace Him wi
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
-                <p>According to Amara-kośa the word saṁjṣā means consciousness, name, and indication using the hands: saṁjṣā syāc cetanā nāma hastādyaiś cārtha-sucana.</p>
+                <p>According to Amara-kośa the word saṁjñā means consciousness, name, and indication using the hands: saṁjñā syāc cetanā nāma hastādyaiś cārtha-sucana.</p>
             </div>
         </div>
     </section>
@@ -3886,6 +3913,7 @@ Sometimes a confidential friend would come before Kṛṣṇa and embrace Him wi
 
 
     <div class="fc-translation" data-sec="translation">The form of Ujjvala: I worship Ujjvala, dear to the Lord, with his orange cloth, restless eyes, complexion dark blue like Kṛṣṇa’s. He is decorated with spring flowers and wears a jewel necklace.</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -3960,6 +3988,7 @@ Sometimes a confidential friend would come before Kṛṣṇa and embrace Him wi
 
     <div class="fc-translation" data-sec="translation">Ujjvala’s friendship: O friend! Kṛṣṇa’s messenger Ujjvala is approaching. How will I protect my honor? Is there any chaste, shy respectable woman here who would remain without desiring the best of cowherd boys, when Ujjvala is nears?</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -3975,6 +4004,7 @@ Sometimes a confidential friend would come before Kṛṣṇa and embrace Him wi
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Śaktāsmi mānam avituṁ katham is one sentence. Ujjvalo ’yaṁ dūtaḥ sameti is another sentence. The rest is another sentence. Though they respect the rules, since they are respectable, shy, and fearful, among all of the women, who will not have intense love (vṛṣasyati) for the best cowherd boy, Kṛṣṇa? All certainly desire Him.</p>
@@ -4029,6 +4059,7 @@ Sometimes a confidential friend would come before Kṛṣṇa and embrace Him wi
 
 
     <div class="fc-translation" data-sec="translation">Ujjvala particularly always has a longing for joking.</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -4103,6 +4134,7 @@ Sometimes a confidential friend would come before Kṛṣṇa and embrace Him wi
 
     <div class="fc-translation" data-sec="translation">O killer of Agha! You are an incomparable ocean of sweet rasa, and like the high tide, You transgress all the boundaries of morality. The young women of this world are rivers filled with waves of love. Whatever path they take, they end up meeting You.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -4118,6 +4150,7 @@ Sometimes a confidential friend would come before Kṛṣṇa and embrace Him wi
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Vardhitānalpa-velaḥ means that the ocean has risen to high tide with its water. Referring to Kṛṣṇa, it means He has broken all the moral codes of the gopīs. Amara-kośa says velā syat tira nīrayoḥ: velā means shore or water.</p>
@@ -4172,6 +4205,7 @@ Sometimes a confidential friend would come before Kṛṣṇa and embrace Him wi
 
 
     <div class="fc-translation" data-sec="translation">Among all the friends, some are famous in the scriptures and some are famous through local stories.</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -4254,6 +4288,7 @@ Sometimes a confidential friend would come before Kṛṣṇa and embrace Him wi
 
     <div class="fc-translation" data-sec="translation">There are three types of friends: nitya-priya (nitya-siddha), devatā (previously) and sādhana-siddha. Some, steady and acting like advisors, worship Kṛṣṇa. Others have a fickle nature and make Kṛṣṇa laugh in the manner of jesters. Others, with meek nature, make Him happy by their serious behavior. Others astonish Him by crooked behavior. Other confident friends argue with Him. Some peaceful, fortunate boys please Him with truthful, pleasing words.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -4269,6 +4304,7 @@ Sometimes a confidential friend would come before Kṛṣṇa and embrace Him wi
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Sādhaka here means sādhana-siddha (since those performing sādhana could not directly associate with the Lord.) The suracaras (those who were previously devatās) are also sādhana-siddha, but they have been considered separately to show their different origin.
@@ -4348,6 +4384,7 @@ Vismāyayanti is the original version. Because the agent (subject) is not the di
 
 
     <div class="fc-translation" data-sec="translation">There are three types of friends: nitya-priya (nitya-siddha), devatā (previously) and sādhana-siddha. Some, steady and acting like advisors, worship Kṛṣṇa. Others have a fickle nature and make Kṛṣṇa laugh in the manner of jesters. Others, with meek nature, make Him happy by their serious behavior. Others astonish Him by crooked behavior. Other confident friends argue with Him. Some peaceful, fortunate boys please Him with truthful, pleasing words.</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -4444,6 +4481,7 @@ Vismāyayanti is the original version. Because the agent (subject) is not the di
 
     <div class="fc-translation" data-sec="translation">There are three types of friends: nitya-priya (nitya-siddha), devatā (previously) and sādhana-siddha. Some, steady and acting like advisors, worship Kṛṣṇa. Others have a fickle nature and make Kṛṣṇa laugh in the manner of jesters. Others, with meek nature, make Him happy by their serious behavior. Others astonish Him by crooked behavior. Other confident friends argue with Him. Some peaceful, fortunate boys please Him with truthful, pleasing words.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -4519,6 +4557,7 @@ Vismāyayanti is the original version. Because the agent (subject) is not the di
 
     <div class="fc-translation" data-sec="translation">By possessing various natures, the sweet friends increase the wonder and pleasure of pure friendship with Kṛṣṇa.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -4588,6 +4627,7 @@ Vismāyayanti is the original version. Because the agent (subject) is not the di
 
     <div class="fc-translation" data-sec="translation">The uddīpanas for preyo-rasa are the Lord’s age, form, horn, flute, conch, sports, joking, heroism, His intimate devotees, and imitating the actions of kings and devatās.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -4654,6 +4694,7 @@ Kṛṣṇa’s age, His beauty, His bugle, His flute, His conchshell and His pl
 
     <div class="fc-translation" data-sec="translation">According to the wise, Kṛṣṇa has three ages: kaumāra, paugaṇḍa and kaiśora. [Note: In 2.1.309 it is described that kaumāra age lasts till the fifth year, paugaṇḍa till the tenth year, and kaiśora till the fifteenth year. From the sixteenth year is yauvana. However in the case of Kṛṣṇa the ages appear earlier than usual.] Kṛṣṇa is visible in kaumāra and paugaṇḍa ages only in Gokula, but He is visible in kaiśora age in Gokula, Mathurā and Dvārakā. [Note: Kṛṣṇa does not advance to yauvana even after leaving Vṛndāvana.]</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -4715,6 +4756,7 @@ Kṛṣṇa’s age, His beauty, His bugle, His flute, His conchshell and His pl
 
     <div class="fc-translation" data-sec="translation">Kaumāra age is suitable for vatsala-rasa. Therefore, it will be described here only briefly.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -4760,8 +4802,8 @@ Kṛṣṇa’s age, His beauty, His bugle, His flute, His conchshell and His pl
 <div class="cr-pron-line" data-sec="pronunciation">[yathaa shree-dashame –]</div>        <div class="cr-iast-line">bibhrad veṇuṁ jaṭhara-paṭayoḥ śṛṅga-vetre ca kakṣe</div>
 <div class="cr-pron-line" data-sec="pronunciation">[bibhrad venum jathara-patayoh shringa-vetre cha kakshe]</div>        <div class="cr-iast-line">vāme pāṇau masṛṇa-kavalaṁ tat-phalāny aṅgulīṣu |</div>
 <div class="cr-pron-line" data-sec="pronunciation">[vaame paanau masrina-kavalam tat-phalaany anguleeshu |]</div>        <div class="cr-iast-line">tiṣṭhan madhye sva-parisuhṛdo hāsayan narmabhiḥ svaiḥ</div>
-<div class="cr-pron-line" data-sec="pronunciation">[tishthan madhye sva-parisuhrido haasayan narmabhih svaih]</div>        <div class="cr-iast-line">svarge loke miṣati bubhuje yajṣa-bhug bāla-keliḥ ||60||</div>
-<div class="cr-pron-line" data-sec="pronunciation">[svarge loke mishati bubhuje yajsha-bhug baala-kelih ||60||]</div>    </div>
+<div class="cr-pron-line" data-sec="pronunciation">[tishthan madhye sva-parisuhrido haasayan narmabhih svaih]</div>        <div class="cr-iast-line">svarge loke miṣati bubhuje yajña-bhug bāla-keliḥ ||60||</div>
+<div class="cr-pron-line" data-sec="pronunciation">[svarge loke mishati bubhuje yajna-bhug baala-kelih ||60||]</div>    </div>
 
 
     <details class="cr-blend-details" data-sec="blended">
@@ -4780,13 +4822,14 @@ Kṛṣṇa’s age, His beauty, His bugle, His flute, His conchshell and His pl
                 <div class="cr-blend-iast-line">tiṣṭhan madhye sva-parisuhṛdo hāsayan narmabhiḥ svaiḥ</div>
             </div>
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">svarge loke miṣati bubhuje yajṣa-bhug bāla-keliḥ ||60||</div>
+                <div class="cr-blend-iast-line">svarge loke miṣati bubhuje yajña-bhug bāla-keliḥ ||60||</div>
             </div>
         </div>
     </details>
 
 
-    <div class="fc-translation" data-sec="translation">From the Tenth Canto: Kṛṣṇa is yajṣa-bhuk—that is, He eats only offerings of yajṣa—but to exhibit His childhood pastimes, He now sat with His flute tucked between His waist and His tight cloth on His right side and with His horn bugle and cow-driving stick on His left. Holding in His left hand a very nice preparation of yogurt and rice, he held a small portion in His right hand ready to eat it. He sat like the whorl of a lotus flower, looking forward toward all His friends, personally joking with them and creating jubilant laughter among them as He ate. At that time, the denizens of heaven were watching, struck with wonder at how the Personality of Godhead, who eats only in yajṣa, was now eating with His friends in the forest. [Note: The kaumāra ages lasts till the fifth year. Then paugaṇḍa age starts. (BRS 2.1.309) According to Bhāgavatam 13.37, the killing of Aghāsura and the bewilderment of Brahmā took place before Kṛṣṇa entered paugaṇḍa, but was reported by the cowherd boys one year later when Kṛṣṇa had reached the paugaṇḍa age. However it should also be considered that Kṛṣṇa covered those ages quicker than normal. Thus Viśvanātha’s commentary on Bhāgavatam 10.45.3 says: At the age of three years and four months, Kṛṣṇa displayed the qualities of a five year old. During this kaumāra age, Kṛṣṇa stayed in Mahāvana. From that time till the age of six years and eight months, during His paugaṇḍa age, He stayed in Vṛndāvana. From six years and eight months until His tenth year He experienced kaiśora age while living in Nandīśvara. In the seventh month of the tenth year during the month of Caitra on the kṛṣṇa-trayodaśī, He went to Mathurā and on the caturdaśī he killed Kaṁsa. Therefore the tenth year was the end of His kaiśora age, but thereafter He remained at the same age.] SB 10.13.11</div>
+    <div class="fc-translation" data-sec="translation">From the Tenth Canto: Kṛṣṇa is yajña-bhuk—that is, He eats only offerings of yajña—but to exhibit His childhood pastimes, He now sat with His flute tucked between His waist and His tight cloth on His right side and with His horn bugle and cow-driving stick on His left. Holding in His left hand a very nice preparation of yogurt and rice, he held a small portion in His right hand ready to eat it. He sat like the whorl of a lotus flower, looking forward toward all His friends, personally joking with them and creating jubilant laughter among them as He ate. At that time, the denizens of heaven were watching, struck with wonder at how the Personality of Godhead, who eats only in yajña, was now eating with His friends in the forest. [Note: The kaumāra ages lasts till the fifth year. Then paugaṇḍa age starts. (BRS 2.1.309) According to Bhāgavatam 13.37, the killing of Aghāsura and the bewilderment of Brahmā took place before Kṛṣṇa entered paugaṇḍa, but was reported by the cowherd boys one year later when Kṛṣṇa had reached the paugaṇḍa age. However it should also be considered that Kṛṣṇa covered those ages quicker than normal. Thus Viśvanātha’s commentary on Bhāgavatam 10.45.3 says: At the age of three years and four months, Kṛṣṇa displayed the qualities of a five year old. During this kaumāra age, Kṛṣṇa stayed in Mahāvana. From that time till the age of six years and eight months, during His paugaṇḍa age, He stayed in Vṛndāvana. From six years and eight months until His tenth year He experienced kaiśora age while living in Nandīśvara. In the seventh month of the tenth year during the month of Caitra on the kṛṣṇa-trayodaśī, He went to Mathurā and on the caturdaśī he killed Kaṁsa. Therefore the tenth year was the end of His kaiśora age, but thereafter He remained at the same age.] SB 10.13.11</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -4803,6 +4846,7 @@ Kṛṣṇa’s age, His beauty, His bugle, His flute, His conchshell and His pl
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>The meaning is this. He carried his flute between His cloth and His waist. On His left hip, He carried a horn and stick. In His left hand, He held a ball of rice mixed with thick yogurt, without a plate. He held in the fingers of His right hand that portion that He was about to taste. He held it with pleasure in such a way that His fingers would not touch His mouth while eating. He made His friends who surrounded Him laugh with unusual, joking words. While the inhabitants of Svargaloka were looking on in astonishment, the enjoyer of sacrifice, the Supreme Lord, was playing as a small child. This was the cause of their astonishment. He who is the enjoyer of sacrifices, whom they could see with their eyes, was now enjoying the food, frolicking as a small child (bāla).</p>
@@ -4861,6 +4905,7 @@ Kṛṣṇa’s age, His beauty, His bugle, His flute, His conchshell and His pl
 
 
     <div class="fc-translation" data-sec="translation">Paugaṇḍa age has three divisions: beginning, middle and end.</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -4926,6 +4971,7 @@ Kṛṣṇa’s age, His beauty, His bugle, His flute, His conchshell and His pl
 
 
     <div class="fc-translation" data-sec="translation">In the first part of paugaṇḍa age, His lips are very red, His waist is thin, and three lines appear on His throat like a conch.</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -5000,6 +5046,7 @@ Kṛṣṇa’s age, His beauty, His bugle, His flute, His conchshell and His pl
 
     <div class="fc-translation" data-sec="translation">O Kṛṣṇa! Your abdomen has the beauty of an aśvattha leaf. O lotus eyed one! Your throat is beautified by three lines like a conch. O moon on earth! Your lips conquer the red effulgence of fresh rubies. What can be said? This new, indescribably beauty is giving bliss to the eyes of Your friends.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -5015,6 +5062,7 @@ Kṛṣṇa’s age, His beauty, His bugle, His flute, His conchshell and His pl
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>These are the words of some singers from another locality who previously had come, and now have returned, seeing Kṛṣṇa at an older age. Aruddhe means “it conquers.” Kambuvat means “like a conch” according to the rule tena tulyaṁ kriyā ced vatiḥ: vat added to a word means “equal to that.” (Pāṇini 5.1.115) This means His neck became like a conch with three lines. Kuruvinda means ruby. Sā kāpi means “it is impossible to describe.”</p>
@@ -5073,6 +5121,7 @@ Kṛṣṇa’s age, His beauty, His bugle, His flute, His conchshell and His pl
 
 
     <div class="fc-translation" data-sec="translation">In the beginning of the paugaṇḍa age, there are varieties of flower ornaments on Kṛṣṇa, marking on His body made of minerals, and yellow silk cloth.</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -5135,6 +5184,7 @@ Kṛṣṇa’s age, His beauty, His bugle, His flute, His conchshell and His pl
 
     <div class="fc-translation" data-sec="translation">The activities of this age are herding the calves in all the forests, learning hand to hand combat, playing games and dancing.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -5178,8 +5228,8 @@ Kṛṣṇa’s age, His beauty, His bugle, His flute, His conchshell and His pl
     <div class="cr-iast-block" data-sec="iast">
         <div class="cr-iast-line">yathā –</div>
 <div class="cr-pron-line" data-sec="pronunciation">[yathaa –]</div>        <div class="cr-iast-line">vṛndāraṇye samastāt surabhiṇi surabhī-vṛnda-rakṣā-vihārī</div>
-<div class="cr-pron-line" data-sec="pronunciation">[vrindaaranye samastaat surabhini surabhee-vrinda-rakshaa-vihaaree]</div>        <div class="cr-iast-line">guṣjāhārī śikhaṇḍa-prakaṭita-mukuṭaḥ pīta-paṭṭāmbara-śrīḥ |</div>
-<div class="cr-pron-line" data-sec="pronunciation">[gushjaahaaree shikhanda-prakatita-mukutah peeta-pattaambara-shreeh |]</div>        <div class="cr-iast-line">karṇābhyāṁ karṇikāre dadhad alam urasā phulla-mallīka-mālyaṁ</div>
+<div class="cr-pron-line" data-sec="pronunciation">[vrindaaranye samastaat surabhini surabhee-vrinda-rakshaa-vihaaree]</div>        <div class="cr-iast-line">guñjāhārī śikhaṇḍa-prakaṭita-mukuṭaḥ pīta-paṭṭāmbara-śrīḥ |</div>
+<div class="cr-pron-line" data-sec="pronunciation">[gunjaahaaree shikhanda-prakatita-mukutah peeta-pattaambara-shreeh |]</div>        <div class="cr-iast-line">karṇābhyāṁ karṇikāre dadhad alam urasā phulla-mallīka-mālyaṁ</div>
 <div class="cr-pron-line" data-sec="pronunciation">[karnaabhyaam karnikaare dadhad alam urasaa phulla-malleeka-maalyam]</div>        <div class="cr-iast-line">nṛtyan dor-yuddha-raṅge naṭavad iha sakhīn nandayaty eṣa kṛṣṇaḥ ||66||</div>
 <div class="cr-pron-line" data-sec="pronunciation">[nrityan dor-yuddha-range natavad iha sakheen nandayaty esha krishnah ||66||]</div>    </div>
 
@@ -5194,7 +5244,7 @@ Kṛṣṇa’s age, His beauty, His bugle, His flute, His conchshell and His pl
                 <div class="cr-blend-iast-line">vṛndāraṇye samastāt surabhiṇi surabhī-vṛnda-rakṣā-vihārī</div>
             </div>
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">guṣjāhārī śikhaṇḍa-prakaṭita-mukuṭaḥ pīta-paṭṭāmbara-śrīḥ |</div>
+                <div class="cr-blend-iast-line">guñjāhārī śikhaṇḍa-prakaṭita-mukuṭaḥ pīta-paṭṭāmbara-śrīḥ |</div>
             </div>
             <div class="cr-blend-block">
                 <div class="cr-blend-iast-line">karṇābhyāṁ karṇikāre dadhad alam urasā phulla-mallīka-mālyaṁ</div>
@@ -5206,7 +5256,8 @@ Kṛṣṇa’s age, His beauty, His bugle, His flute, His conchshell and His pl
     </details>
 
 
-    <div class="fc-translation" data-sec="translation">Kṛṣṇa wore a guṣja berry necklace, a crown of peacock feathers, karṇika flowers in His ears, a jasmine garland on His chest, and yellow silk cloth. Absorbed in the pastime of protecting the cows of glorious Vṛndāvana, dancing like an actor in the combat arena, He gave bliss to His friends.</div>
+    <div class="fc-translation" data-sec="translation">Kṛṣṇa wore a guñja berry necklace, a crown of peacock feathers, karṇika flowers in His ears, a jasmine garland on His chest, and yellow silk cloth. Absorbed in the pastime of protecting the cows of glorious Vṛndāvana, dancing like an actor in the combat arena, He gave bliss to His friends.</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -5223,6 +5274,7 @@ Kṛṣṇa’s age, His beauty, His bugle, His flute, His conchshell and His pl
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>He wore a garland of blossoming jasmine on His chest. Mallīka meaning “jasmine” is the correct form given by Ujjvala Datta in his work on the uṇādi-sūtras. Mallī is actually an incorrect form of the word. The usage is found in Amara-kośa: tṛṇa-śūṇyam mallikā. However, there are examples like dara-vidalita mallī, sphuran mallī-halliśaka, milan-mandākinī mallī-dama etc. accepted by poets. A shortened ending on the word however is never seen. Other versions of the text are rejected.</p>
@@ -5285,6 +5337,7 @@ Kṛṣṇa’s age, His beauty, His bugle, His flute, His conchshell and His pl
 
 
     <div class="fc-translation" data-sec="translation">In the middle of the paugaṇḍa age, the tip of His nose becomes raised, His cheeks become round and His sides and other bodily parts become graceful.</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -5359,6 +5412,7 @@ Kṛṣṇa’s age, His beauty, His bugle, His flute, His conchshell and His pl
 
     <div class="fc-translation" data-sec="translation">The beauty of His nose derides the sesame flower, His cheeks crush the pride of a mirror made of fresh jewels, and His smooth thorax became raised. Kṛṣṇa gave happiness to His friends by this beauty.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -5423,6 +5477,7 @@ Kṛṣṇa’s age, His beauty, His bugle, His flute, His conchshell and His pl
 
 
     <div class="fc-translation" data-sec="translation">The decorations of the middle paugaṇḍa age are a turban tied with silk cords shining like lightning and a black staff four and half feet long with a golden tip. The activities of the middle paugaṇḍa age are playing in Bhāṇḍira forest and climbing Govardhana.</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -5497,6 +5552,7 @@ Kṛṣṇa’s age, His beauty, His bugle, His flute, His conchshell and His pl
 
     <div class="fc-translation" data-sec="translation">O friend! Look, in that direction. Mukunda, shining brightly with a clump of flower buds on His head, wearing a turban bound by a golden cloth cord, holding a black staff four and a half feet long, capped at both ends with gold, is giving bliss to His friends.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -5512,6 +5568,7 @@ Kṛṣṇa’s age, His beauty, His bugle, His flute, His conchshell and His pl
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Caṭula-camarī-cāru-cūḍojjvala-śrīḥ means He has shining beauty caused by the beautiful clump of quivering buds, placed not too high, enclosing the edges of the fine, brightly colored turban. The turban is made beautiful by the cords of golden silk, which partly encircles the turban.</p>
@@ -5572,6 +5629,7 @@ Kṛṣṇa’s age, His beauty, His bugle, His flute, His conchshell and His pl
     <div class="fc-translation" data-sec="translation">In the middle of the paugaṇḍa age the Lord, engaged in playing, seems to partake of the first part of kaiśora age because of having an astonishing form caused by His sweetness.</div>
 
 
+
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -5579,6 +5637,7 @@ Kṛṣṇa’s age, His beauty, His bugle, His flute, His conchshell and His pl
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>He has a form which astonishes everyone by its sweetness—by the attractiveness of color, firmness etc. (mādhuryādbhuta-rūpatvāt). Because of that form, He seems to partake of the first part of kaiśora age. Just as other young princes, being endowed with all good qualities, appear older than they actually are, Kṛṣṇa, being filled with completely remarkable qualities, partakes of the first part of kaiśora, even when He is still at the middle paugaṇḍa age.</p>
@@ -5642,6 +5701,7 @@ Kṛṣṇa’s age, His beauty, His bugle, His flute, His conchshell and His pl
 
     <div class="fc-translation" data-sec="translation">At the end of the paugaṇḍa age, Kṛṣṇa has a long braid extending to His waist, locks of hair falling playfully, and strong shoulders.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -5657,6 +5717,7 @@ Kṛṣṇa’s age, His beauty, His bugle, His flute, His conchshell and His pl
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>He is effulgent with creepers of hair locks falling here and there (līlālaka-latā-dyuti).</p>
@@ -5698,8 +5759,8 @@ Kṛṣṇa’s age, His beauty, His bugle, His flute, His conchshell and His pl
     <div class="cr-iast-block" data-sec="iast">
         <div class="cr-iast-line">yathā –</div>
 <div class="cr-pron-line" data-sec="pronunciation">[yathaa –]</div>        <div class="cr-iast-line">agre līlālaka-latikayālaṅkṛtaṁ bibhrad-āsyaṁ</div>
-<div class="cr-pron-line" data-sec="pronunciation">[agre leelaalaka-latikayaalankritam bibhrad-aasyam]</div>        <div class="cr-iast-line">caṣcad-veṇī-śikhara-śikhayā cumbita-śreṇi-bimbaḥ |</div>
-<div class="cr-pron-line" data-sec="pronunciation">[chashchad-venee-shikhara-shikhayaa chumbita-shreni-bimbah |]</div>        <div class="cr-iast-line">uttuṅgāṁsa-cchavir aghaharo raṅgam aṅga-śriyaiva</div>
+<div class="cr-pron-line" data-sec="pronunciation">[agre leelaalaka-latikayaalankritam bibhrad-aasyam]</div>        <div class="cr-iast-line">cañcad-veṇī-śikhara-śikhayā cumbita-śreṇi-bimbaḥ |</div>
+<div class="cr-pron-line" data-sec="pronunciation">[chanchad-venee-shikhara-shikhayaa chumbita-shreni-bimbah |]</div>        <div class="cr-iast-line">uttuṅgāṁsa-cchavir aghaharo raṅgam aṅga-śriyaiva</div>
 <div class="cr-pron-line" data-sec="pronunciation">[uttungaamsa-chchavir aghaharo rangam anga-shriyaiva]</div>        <div class="cr-iast-line">nyasyann eva priya-savayasāṁ gokulān nirjihīte ||73||</div>
 <div class="cr-pron-line" data-sec="pronunciation">[nyasyann eva priya-savayasaam gokulaan nirjiheete ||73||]</div>    </div>
 
@@ -5714,7 +5775,7 @@ Kṛṣṇa’s age, His beauty, His bugle, His flute, His conchshell and His pl
                 <div class="cr-blend-iast-line">agre līlālaka-latikayālaṅkṛtaṁ bibhrad-āsyaṁ</div>
             </div>
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">caṣcad-veṇī-śikhara-śikhayā cumbita-śreṇi-bimbaḥ |</div>
+                <div class="cr-blend-iast-line">cañcad-veṇī-śikhara-śikhayā cumbita-śreṇi-bimbaḥ |</div>
             </div>
             <div class="cr-blend-block">
                 <div class="cr-blend-iast-line">uttuṅgāṁsa-cchavir aghaharo raṅgam aṅga-śriyaiva</div>
@@ -5727,6 +5788,7 @@ Kṛṣṇa’s age, His beauty, His bugle, His flute, His conchshell and His pl
 
 
     <div class="fc-translation" data-sec="translation">With His locks of hair falling playfully over His face, with His braid at the back reaching His hips, and with His full shoulders, the killer Agha departs from Gokula, giving pleasure to His friends by His physical beauty.</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -5788,6 +5850,7 @@ Kṛṣṇa’s age, His beauty, His bugle, His flute, His conchshell and His pl
 
 
     <div class="fc-translation" data-sec="translation">The ornaments of the late paugaṇḍa age are His tilted turban, the play lotus in His hand, and tilaka on His forehead made of saffron.</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -5862,6 +5925,7 @@ Kṛṣṇa’s age, His beauty, His bugle, His flute, His conchshell and His pl
 
     <div class="fc-translation" data-sec="translation">O Keśava! Your attractive clothing—the tilted turban, the play lotus in Your hand, the golden tilaka on the forehead, and the dot of musk—are making me, courageous Subala, completely dizzy! How much more this will affect the naturally soft gopīs!</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -5877,6 +5941,7 @@ Kṛṣṇa’s age, His beauty, His bugle, His flute, His conchshell and His pl
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Instead of gaura-śrīr urdhva-tilakaḥ (beautiful reddish tilaka) there is another version bhāle kuṁkuma-divyad-urdhva-tilakaḥ (on His forehead shining tilaka made of kuṁkuma).</p>
@@ -5936,6 +6001,7 @@ Kṛṣṇa’s age, His beauty, His bugle, His flute, His conchshell and His pl
 
     <div class="fc-translation" data-sec="translation">The activities of the late paugaṇḍa age are word play, enjoying intimate conversations with narma-sakhas, and praising the forms of the young girls of Gokula in front of His friends.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -5980,9 +6046,9 @@ Kṛṣṇa’s age, His beauty, His bugle, His flute, His conchshell and His pl
         <div class="cr-iast-line">yathā –</div>
 <div class="cr-pron-line" data-sec="pronunciation">[yathaa –]</div>        <div class="cr-iast-line">dhūrtas tvaṁ yad avaiṣi hṛd-gatam ataḥ karṇe tava vyāhare</div>
 <div class="cr-pron-line" data-sec="pronunciation">[dhoortas tvam yad avaishi hrid-gatam atah karne tava vyaahare]</div>        <div class="cr-iast-line">keyaṁ mohanatā-samṛddhir adhunā godhuk-kumārī-gaṇe |</div>
-<div class="cr-pron-line" data-sec="pronunciation">[keyam mohanataa-samriddhir adhunaa godhuk-kumaaree-gane |]</div>        <div class="cr-iast-line">atrāpi dyuti-ratna-rohaṇa-bhuvo bālāḥ sakhe paṣca-ṣāḥ</div>
-<div class="cr-pron-line" data-sec="pronunciation">[atraapi dyuti-ratna-rohana-bhuvo baalaah sakhe pashcha-shaah]</div>        <div class="cr-iast-line">paṣceṣur jagatāṁ jaye nija-dhurāṁ yatrārpayan mādyati ||77||</div>
-<div class="cr-pron-line" data-sec="pronunciation">[pashcheshur jagataam jaye nija-dhuraam yatraarpayan maadyati ||77||]</div>    </div>
+<div class="cr-pron-line" data-sec="pronunciation">[keyam mohanataa-samriddhir adhunaa godhuk-kumaaree-gane |]</div>        <div class="cr-iast-line">atrāpi dyuti-ratna-rohaṇa-bhuvo bālāḥ sakhe pañca-ṣāḥ</div>
+<div class="cr-pron-line" data-sec="pronunciation">[atraapi dyuti-ratna-rohana-bhuvo baalaah sakhe pancha-shaah]</div>        <div class="cr-iast-line">pañceṣur jagatāṁ jaye nija-dhurāṁ yatrārpayan mādyati ||77||</div>
+<div class="cr-pron-line" data-sec="pronunciation">[pancheshur jagataam jaye nija-dhuraam yatraarpayan maadyati ||77||]</div>    </div>
 
 
     <details class="cr-blend-details" data-sec="blended">
@@ -5998,16 +6064,17 @@ Kṛṣṇa’s age, His beauty, His bugle, His flute, His conchshell and His pl
                 <div class="cr-blend-iast-line">keyaṁ mohanatā-samṛddhir adhunā godhuk-kumārī-gaṇe |</div>
             </div>
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">atrāpi dyuti-ratna-rohaṇa-bhuvo bālāḥ sakhe paṣca-ṣāḥ</div>
+                <div class="cr-blend-iast-line">atrāpi dyuti-ratna-rohaṇa-bhuvo bālāḥ sakhe pañca-ṣāḥ</div>
             </div>
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">paṣceṣur jagatāṁ jaye nija-dhurāṁ yatrārpayan mādyati ||77||</div>
+                <div class="cr-blend-iast-line">pañceṣur jagatāṁ jaye nija-dhurāṁ yatrārpayan mādyati ||77||</div>
             </div>
         </div>
     </details>
 
 
     <div class="fc-translation" data-sec="translation">Kṛṣṇa! You are crafty, because You have understood what is in my heart. Therefore, I am saying in Your ear, that the young gopīs are now showing increased power of bewildering. Among them, five or six young girls have become most attractive. O friend! It seems that Cupid has become mad with bliss, giving them his own duty of conquering the world.</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -6070,6 +6137,7 @@ Kṛṣṇa’s age, His beauty, His bugle, His flute, His conchshell and His pl
 
     <div class="fc-translation" data-sec="translation">The kaiśora age was previously described (starting with 2.1.313) and thus here only it will be described in brief.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -6112,8 +6180,8 @@ Kṛṣṇa’s age, His beauty, His bugle, His flute, His conchshell and His pl
 
     <div class="cr-iast-block" data-sec="iast">
         <div class="cr-iast-line">yathā –</div>
-<div class="cr-pron-line" data-sec="pronunciation">[yathaa –]</div>        <div class="cr-iast-line">paśyotsikta-balī-trayī-vara-late vāsas taḍin-maṣjule</div>
-<div class="cr-pron-line" data-sec="pronunciation">[pashyotsikta-balee-trayee-vara-late vaasas tadin-mashjule]</div>        <div class="cr-iast-line">pronmīlad-vana-mālikā-parimala-stome tamāla-tviṣi |</div>
+<div class="cr-pron-line" data-sec="pronunciation">[yathaa –]</div>        <div class="cr-iast-line">paśyotsikta-balī-trayī-vara-late vāsas taḍin-mañjule</div>
+<div class="cr-pron-line" data-sec="pronunciation">[pashyotsikta-balee-trayee-vara-late vaasas tadin-manjule]</div>        <div class="cr-iast-line">pronmīlad-vana-mālikā-parimala-stome tamāla-tviṣi |</div>
 <div class="cr-pron-line" data-sec="pronunciation">[pronmeelad-vana-maalikaa-parimala-stome tamaala-tvishi |]</div>        <div class="cr-iast-line">ukṣaty ambaka-cātakān smita-rasair dāmodarāmbhodhare</div>
 <div class="cr-pron-line" data-sec="pronunciation">[ukshaty ambaka-chaatakaan smita-rasair daamodaraambhodhare]</div>        <div class="cr-iast-line">śrīdāmā ramaṇīya-roma-kalikākīrṇāṅga-śākhī babhau ||79||</div>
 <div class="cr-pron-line" data-sec="pronunciation">[shreedaamaa ramaneeya-roma-kalikaakeernaanga-shaakhee babhau ||79||]</div>    </div>
@@ -6126,7 +6194,7 @@ Kṛṣṇa’s age, His beauty, His bugle, His flute, His conchshell and His pl
                 <div class="cr-blend-iast-line">yathā –</div>
             </div>
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">paśyotsikta-balī-trayī-vara-late vāsas taḍin-maṣjule</div>
+                <div class="cr-blend-iast-line">paśyotsikta-balī-trayī-vara-late vāsas taḍin-mañjule</div>
             </div>
             <div class="cr-blend-block">
                 <div class="cr-blend-iast-line">pronmīlad-vana-mālikā-parimala-stome tamāla-tviṣi |</div>
@@ -6144,6 +6212,7 @@ Kṛṣṇa’s age, His beauty, His bugle, His flute, His conchshell and His pl
     <div class="fc-translation" data-sec="translation">See! The best of creepers with three prominent folds, clothed in attractive lightning, replete with the fragrance of blossoming forest flowers, with the radiance of the black tamāla tree, the cloud in the form of Dāmodara, quenches with full delight the devotees’ eyes, which are like cātaka birds seeing immanent rain. And consequently, Śrīdāma remains standing like a tree whose branches are erupting with pleasing bristles.</div>
 
 
+
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -6151,6 +6220,7 @@ Kṛṣṇa’s age, His beauty, His bugle, His flute, His conchshell and His pl
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>The phrases utsikta-balī-trayī-vara-late and pronmīlad-vana-mālikā-parimala-stome, when applied to describing Dāmodara, should be taken in the locative case (in apposition to dāmodarāmbhodare). For describing the cloud, they should be taken in the instrumental case (accompanying the cloud). Thus, the first meaning is as follows: Dāmodara is the best of graceful forms with three prominent lines on His abdomen, whose cloth is like charming lightning, who is a heap of fragrance of blossoming garlands, and whose complexion is like that of a tamāla tree, and who sprinkles the eager eyes, like cātaka birds eager for rain drops, with full delight. In the presence of Kṛṣṇa, Śrīdāma stands with the hairs on his arms attractively standing on end.
@@ -6194,8 +6264,8 @@ Or this verse can be taken as a description of Śrīdāma and Kṛṣṇa embrac
 
     <div class="cr-iast-block" data-sec="iast">
         <div class="cr-iast-line">prāyaḥ kiśora evāyaṁ sarva-bhakteṣu bhāsate |</div>
-<div class="cr-pron-line" data-sec="pronunciation">[praayah kishora evaayam sarva-bhakteshu bhaasate |]</div>        <div class="cr-iast-line">tena yauvana-śobhāsya neha kācit prapaṣcitā ||80||</div>
-<div class="cr-pron-line" data-sec="pronunciation">[tena yauvana-shobhaasya neha kaachit prapashchitaa ||80||]</div>    </div>
+<div class="cr-pron-line" data-sec="pronunciation">[praayah kishora evaayam sarva-bhakteshu bhaasate |]</div>        <div class="cr-iast-line">tena yauvana-śobhāsya neha kācit prapañcitā ||80||</div>
+<div class="cr-pron-line" data-sec="pronunciation">[tena yauvana-shobhaasya neha kaachit prapanchitaa ||80||]</div>    </div>
 
 
     <details class="cr-blend-details" data-sec="blended">
@@ -6205,13 +6275,14 @@ Or this verse can be taken as a description of Śrīdāma and Kṛṣṇa embrac
                 <div class="cr-blend-iast-line">prāyaḥ kiśora evāyaṁ sarva-bhakteṣu bhāsate |</div>
             </div>
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">tena yauvana-śobhāsya neha kācit prapaṣcitā ||80||</div>
+                <div class="cr-blend-iast-line">tena yauvana-śobhāsya neha kācit prapañcitā ||80||</div>
             </div>
         </div>
     </details>
 
 
     <div class="fc-translation" data-sec="translation">Kṛṣṇa of kaiśora age is most attractive for all the devotees. Thus, the beauty of yauvana age does not appear in Kṛṣṇa, and is not described here at all.</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -6228,6 +6299,7 @@ Or this verse can be taken as a description of Śrīdāma and Kṛṣṇa embrac
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>This form of Kṛṣṇa (ayam) during kaiśora period, being yauvana mixed with the previous age (up to sixteen years), is most pleasurable to all the devotees. The form of Kṛṣṇa during kaumāra and paugaṇḍa ages are also pleasurable, but to less degrees (paugaṇḍa) and to lesser degrees (kaumāra). [Note: The kaumāra age is especially attractive to the vātsalya-bhaktas, and sakhya relationships only appear at the very end of the period. Paugaṇḍa age is most attractive to the sakhya-bhaktas, but dāsya and vatsala relationships are also present. The kaiśora age is especially attractive to the madhura-bhaktas, but is also attractive to the dāsya-bhaktas, sakhya-bhaktas, and vatsala-bhaktas.] Because of this (tena) the beauty of the pure yauvana age, beyond the kaiśora age, does not appear in Kṛṣṇa (na iha), since it is just a shadow of the other ages. Thus, is not described even a little (kācit).</p>
@@ -6291,6 +6363,7 @@ Or this verse can be taken as a description of Śrīdāma and Kṛṣṇa embrac
 
     <div class="fc-translation" data-sec="translation">The form of Kṛṣṇa as uddīpana: O lotus eyed Kṛṣṇa! Intelligent boy! What is the use of decorating Your body with ornaments? Your body pleases us friends with its own luster.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -6306,6 +6379,7 @@ Or this verse can be taken as a description of Śrīdāma and Kṛṣṇa embrac
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Alaṅkāram alaṅkṛtvā means “What is the use of decorating Your body with ornaments.”</p>
@@ -6377,6 +6451,7 @@ Or this verse can be taken as a description of Śrīdāma and Kṛṣṇa embrac
 
     <div class="fc-translation" data-sec="translation">The horn as uddīpana: When the horn sounded loudly from the steps of the roof-top pavilion in the summer season in Vraja, all the cowherd boys woke up with hairs standing on end.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -6392,6 +6467,7 @@ Or this verse can be taken as a description of Śrīdāma and Kṛṣṇa embrac
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>The pavilion on the roof of Kṛṣṇa’s house served as a sleeping place during the summer in Vraja. Māgha-kāvya says yasyām asevanta namad valīkāḥ samaṁ vadhūbhir vaḍabhīr yuvānaḥ: the young men used the roof-top pavilion made of bending thatch with the women 3.53</p>
@@ -6463,6 +6539,7 @@ Or this verse can be taken as a description of Śrīdāma and Kṛṣṇa embrac
 
     <div class="fc-translation" data-sec="translation">The flute as uddīpana: O friends! Do not go the bank of the Yamunā to search for Kṛṣṇa out of despair, for the messenger in the form of the flute sound from the top of Govardhana is telling us about Him and is giving us pleasure.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -6505,9 +6582,9 @@ Or this verse can be taken as a description of Śrīdāma and Kṛṣṇa embrac
 
     <div class="cr-iast-block" data-sec="iast">
         <div class="cr-iast-line">śaṅkho, yathā –</div>
-<div class="cr-pron-line" data-sec="pronunciation">[shankho, yathaa –]</div>        <div class="cr-iast-line">pāṣcālī-patayaḥ śrutvā pāṣcajanyasya nisvanam |</div>
-<div class="cr-pron-line" data-sec="pronunciation">[paashchaalee-patayah shrutvaa paashchajanyasya nisvanam |]</div>        <div class="cr-iast-line">paṣcāsya paśya muditāḥ paṣcāsya-pratimāṁ yayuḥ ||84||</div>
-<div class="cr-pron-line" data-sec="pronunciation">[pashchaasya pashya muditaah pashchaasya-pratimaam yayuh ||84||]</div>    </div>
+<div class="cr-pron-line" data-sec="pronunciation">[shankho, yathaa –]</div>        <div class="cr-iast-line">pāñcālī-patayaḥ śrutvā pāñcajanyasya nisvanam |</div>
+<div class="cr-pron-line" data-sec="pronunciation">[paanchaalee-patayah shrutvaa paanchajanyasya nisvanam |]</div>        <div class="cr-iast-line">pañcāsya paśya muditāḥ pañcāsya-pratimāṁ yayuḥ ||84||</div>
+<div class="cr-pron-line" data-sec="pronunciation">[panchaasya pashya muditaah panchaasya-pratimaam yayuh ||84||]</div>    </div>
 
 
     <details class="cr-blend-details" data-sec="blended">
@@ -6517,21 +6594,22 @@ Or this verse can be taken as a description of Śrīdāma and Kṛṣṇa embrac
                 <div class="cr-blend-iast-line">śaṅkho, yathā –</div>
             </div>
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">pāṣcālī-patayaḥ śrutvā pāṣcajanyasya nisvanam |</div>
+                <div class="cr-blend-iast-line">pāñcālī-patayaḥ śrutvā pāñcajanyasya nisvanam |</div>
             </div>
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">paṣcāsya paśya muditāḥ paṣcāsya-pratimāṁ yayuḥ ||84||</div>
+                <div class="cr-blend-iast-line">pañcāsya paśya muditāḥ pañcāsya-pratimāṁ yayuḥ ||84||</div>
             </div>
         </div>
     </details>
 
 
-    <div class="fc-translation" data-sec="translation">The conch as uddīpana: Look, the five Pāṇḍavas, hearing the sound of the Pāṣcajanya conch, became white like Śiva in great joy.</div>
+    <div class="fc-translation" data-sec="translation">The conch as uddīpana: Look, the five Pāṇḍavas, hearing the sound of the Pāñcajanya conch, became white like Śiva in great joy.</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
-            <p>Pārvatī, the wife of Lord Śiva, told her husband, “My dear Paṣcamukha [five-faced], just look at the Pāṇḍavas! After hearing the sound of Kṛṣṇa’s conchshell, known as Pāṣcajanya, they have regained their strength and are just like lions.”</p>
+            <p>Pārvatī, the wife of Lord Śiva, told her husband, “My dear Pañcamukha [five-faced], just look at the Pāṇḍavas! After hearing the sound of Kṛṣṇa’s conchshell, known as Pāñcajanya, they have regained their strength and are just like lions.”</p>
         </div>
         <div class="cr-purport-attrib">— A.C. Bhaktivedanta Swami Prabhupāda</div>
     </section>
@@ -6600,6 +6678,7 @@ Or this verse can be taken as a description of Śrīdāma and Kṛṣṇa embrac
 
 
     <div class="fc-translation" data-sec="translation">Diversions as uddīpana: Dear friend! When Kṛṣṇa put on Rādhā’s clothing, and appeared with bright pink cloth, golden limbs smeared with kuṁkuma, hair bound up beautifully, and earrings, Subala was astonished and smiled.</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -6678,6 +6757,7 @@ Or this verse can be taken as a description of Śrīdāma and Kṛṣṇa embrac
 
     <div class="fc-translation" data-sec="translation">Pleasing Kṛṣṇa by hand to hand combat, playing ball and dice, riding on each other’s shoulders, stick fighting, sleeping and sitting with Kṛṣṇa on a bed, seat or swing, telling pleasing jokes, playing in the water, and singing and dancing with Kṛṣṇa are the activities (anubhāvas) common to all types of friends.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -6693,6 +6773,7 @@ Or this verse can be taken as a description of Śrīdāma and Kṛṣṇa embrac
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Yugmatve means together with Kṛṣṇa. These are the common anubhāvas of all types of friends (sarva-sādhāraṇāḥ kriyāḥ).</p>
@@ -6767,6 +6848,7 @@ Or this verse can be taken as a description of Śrīdāma and Kṛṣṇa embrac
 
 
     <div class="fc-translation" data-sec="translation">Pleasing Kṛṣṇa by hand to hand combat, playing ball and dice, riding on each other’s shoulders, stick fighting, sleeping and sitting with Kṛṣṇa on a bed, seat or swing, telling pleasing jokes, playing in the water, and singing and dancing with Kṛṣṇa are the activities (anubhāvas) common to all types of friends.</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -6858,6 +6940,7 @@ Or this verse can be taken as a description of Śrīdāma and Kṛṣṇa embrac
 
     <div class="fc-translation" data-sec="translation">Pleasing Kṛṣṇa by hand to hand combat, playing ball and dice, riding on each other’s shoulders, stick fighting, sleeping and sitting with Kṛṣṇa on a bed, seat or swing, telling pleasing jokes, playing in the water, and singing and dancing with Kṛṣṇa are the activities (anubhāvas) common to all types of friends.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -6944,6 +7027,7 @@ Or this verse can be taken as a description of Śrīdāma and Kṛṣṇa embrac
 
     <div class="fc-translation" data-sec="translation">Pleasing Kṛṣṇa by combat: Killer of Agha! Thinking that You are victorious, with arms itching for battle, You wander amongst Your friends praising Your prowess. But tell me, seeing the action of my thick arms, having given up Your eagerness to fight, can You remain standing there with weak limbs?</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -6959,6 +7043,7 @@ Or this verse can be taken as a description of Śrīdāma and Kṛṣṇa embrac
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Jita-kāśi (literally clenched fist) means “conveying victory” according to Kṣīrasvāmī. In this context, it means “thinking Himself victorious.”</p>
@@ -7018,6 +7103,7 @@ Or this verse can be taken as a description of Śrīdāma and Kṛṣṇa embrac
 
     <div class="fc-translation" data-sec="translation">The activities of the suhṛts (those friends older than Kṛṣṇa) are giving advice on what should be done or not done, engaging in beneficial acts, and being eager to perform all types of service.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -7033,6 +7119,7 @@ Or this verse can be taken as a description of Śrīdāma and Kṛṣṇa embrac
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Yuktāyuktādi-kathanam means talking about what is suitable and what is not suitable, or pointing out what should be done and what should not be done.</p>
@@ -7092,6 +7179,7 @@ Or this verse can be taken as a description of Śrīdāma and Kṛṣṇa embrac
 
     <div class="fc-translation" data-sec="translation">Putting tāmbula in Kṛṣṇa’s mouth, applying His tilaka, smearing sandalwood on His body, and painting designs on His face are the activities of the sakhas (those friends younger than Kṛṣṇa).</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -7107,6 +7195,7 @@ Or this verse can be taken as a description of Śrīdāma and Kṛṣṇa embrac
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Sthāsaka means smearing the body with ointments like sandalwood.</p>
@@ -7170,6 +7259,7 @@ Or this verse can be taken as a description of Śrīdāma and Kṛṣṇa embrac
 
     <div class="fc-translation" data-sec="translation">Defeating Kṛṣṇa in battle, pulling His cloth, stealing flowers and other things from His hand, being decorated by Kṛṣṇa, and hand to hand combat are the activities of the priya-sakhas (those friends of equal age as Kṛṣṇa).</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -7185,6 +7275,7 @@ Or this verse can be taken as a description of Śrīdāma and Kṛṣṇa embrac
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Hastāhasti means combat involving pulling back and forth using the hands.</p>
@@ -7252,6 +7343,7 @@ Or this verse can be taken as a description of Śrīdāma and Kṛṣṇa embrac
 
     <div class="fc-translation" data-sec="translation">Carrying messages among the young women of Vraja, encouraging the gopīs’ love for Kṛṣṇa, taking Kṛṣṇa’s side when the gopīs are present and Kṛṣṇa is not present, showing skill at siding with the chief gopīs when Kṛṣṇa is present but the gopīs are not, and arguing intensely by whispering in each other’s ears, are the activities of the priya-narma-sakhas.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -7267,6 +7359,7 @@ Or this verse can be taken as a description of Śrīdāma and Kṛṣṇa embrac
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Praṇaya-gāmitā means “being sympathetic to their love.” When Kṛṣṇa engages in various pastimes with the gopīs, the priya-narma-sakhas side with Kṛṣṇa when the gopīs are present and Kṛṣṇa is not. When the gopīs are not present however, and Kṛṣṇa is present, they are skilful in siding with the gopīs heading the various groups. It should be understood that if both Kṛṣṇa and the gopīs are present, they take Kṛṣṇa’s side. Karṇākarṇi was explained in 2.1.333 as “engaging as if in battle whispering to each other, when disagreement takes place.”</p>
@@ -7334,6 +7427,7 @@ Or this verse can be taken as a description of Śrīdāma and Kṛṣṇa embrac
 
     <div class="fc-translation" data-sec="translation">Carrying messages among the young women of Vraja, encouraging the gopīs’ love for Kṛṣṇa, taking Kṛṣṇa’s side when the gopīs are present and Kṛṣṇa is not present, showing skill at siding with the chief gopīs when Kṛṣṇa is present but the gopīs are not, and arguing intensely by whispering in each other’s ears, are the activities of the priya-narma-sakhas.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -7392,8 +7486,8 @@ Or this verse can be taken as a description of Śrīdāma and Kṛṣṇa embrac
 <div class="cr-pron-line" data-sec="pronunciation">[vanya-ratnaalankaarair maadhavasya prasaadhanam |]</div>        <div class="cr-iast-line">puras tauryatrikaṁ tasya gavāṁ sambhālana-kriyāḥ ||95||</div>
 <div class="cr-pron-line" data-sec="pronunciation">[puras tauryatrikam tasya gavaam sambhaalana-kriyaah ||95||]</div>        <div class="cr-iast-line">aṅga-saṁvāhanaṁ mālya-gumphanaṁ bījanādayaḥ |</div>
 <div class="cr-pron-line" data-sec="pronunciation">[anga-samvaahanam maalya-gumphanam beejanaadayah |]</div>        <div class="cr-iast-line">etāḥ sādhāraṇā dāsair vayasyānāṁ kriyā matāḥ |</div>
-<div class="cr-pron-line" data-sec="pronunciation">[etaah saadhaaranaa daasair vayasyaanaam kriyaa mataah |]</div>        <div class="cr-iast-line">pūrvokteṣv aparāś cātra jṣeyā dhīrair yathocitam ||96||</div>
-<div class="cr-pron-line" data-sec="pronunciation">[poorvokteshv aparaash chaatra jsheyaa dheerair yathochitam ||96||]</div>    </div>
+<div class="cr-pron-line" data-sec="pronunciation">[etaah saadhaaranaa daasair vayasyaanaam kriyaa mataah |]</div>        <div class="cr-iast-line">pūrvokteṣv aparāś cātra jñeyā dhīrair yathocitam ||96||</div>
+<div class="cr-pron-line" data-sec="pronunciation">[poorvokteshv aparaash chaatra jneyaa dheerair yathochitam ||96||]</div>    </div>
 
 
     <details class="cr-blend-details" data-sec="blended">
@@ -7412,13 +7506,14 @@ Or this verse can be taken as a description of Śrīdāma and Kṛṣṇa embrac
                 <div class="cr-blend-iast-line">etāḥ sādhāraṇā dāsair vayasyānāṁ kriyā matāḥ |</div>
             </div>
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">pūrvokteṣv aparāś cātra jṣeyā dhīrair yathocitam ||96||</div>
+                <div class="cr-blend-iast-line">pūrvokteṣv aparāś cātra jñeyā dhīrair yathocitam ||96||</div>
             </div>
         </div>
     </details>
 
 
     <div class="fc-translation" data-sec="translation">Decorating Kṛṣṇa with forest flowers and jewel ornaments, singing and dancing in front of Kṛṣṇa, caring for the cows, massaging His body, fanning Him as well as other activities are activities that the friends share in common with the dāsas. Among all the anubhāvas (activities) mentioned previously, some which are suitable, though not mentioned here, are also accepted as the anubhāvas of the friends by the wise.</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -7465,8 +7560,8 @@ Or this verse can be taken as a description of Śrīdāma and Kṛṣṇa embrac
 <div class="cr-pron-line" data-sec="pronunciation">[vanya-ratnaalankaarair maadhavasya prasaadhanam |]</div>        <div class="cr-iast-line">puras tauryatrikaṁ tasya gavāṁ sambhālana-kriyāḥ ||95||</div>
 <div class="cr-pron-line" data-sec="pronunciation">[puras tauryatrikam tasya gavaam sambhaalana-kriyaah ||95||]</div>        <div class="cr-iast-line">aṅga-saṁvāhanaṁ mālya-gumphanaṁ bījanādayaḥ |</div>
 <div class="cr-pron-line" data-sec="pronunciation">[anga-samvaahanam maalya-gumphanam beejanaadayah |]</div>        <div class="cr-iast-line">etāḥ sādhāraṇā dāsair vayasyānāṁ kriyā matāḥ |</div>
-<div class="cr-pron-line" data-sec="pronunciation">[etaah saadhaaranaa daasair vayasyaanaam kriyaa mataah |]</div>        <div class="cr-iast-line">pūrvokteṣv aparāś cātra jṣeyā dhīrair yathocitam ||96||</div>
-<div class="cr-pron-line" data-sec="pronunciation">[poorvokteshv aparaash chaatra jsheyaa dheerair yathochitam ||96||]</div>    </div>
+<div class="cr-pron-line" data-sec="pronunciation">[etaah saadhaaranaa daasair vayasyaanaam kriyaa mataah |]</div>        <div class="cr-iast-line">pūrvokteṣv aparāś cātra jñeyā dhīrair yathocitam ||96||</div>
+<div class="cr-pron-line" data-sec="pronunciation">[poorvokteshv aparaash chaatra jneyaa dheerair yathochitam ||96||]</div>    </div>
 
 
     <details class="cr-blend-details" data-sec="blended">
@@ -7485,13 +7580,14 @@ Or this verse can be taken as a description of Śrīdāma and Kṛṣṇa embrac
                 <div class="cr-blend-iast-line">etāḥ sādhāraṇā dāsair vayasyānāṁ kriyā matāḥ |</div>
             </div>
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">pūrvokteṣv aparāś cātra jṣeyā dhīrair yathocitam ||96||</div>
+                <div class="cr-blend-iast-line">pūrvokteṣv aparāś cātra jñeyā dhīrair yathocitam ||96||</div>
             </div>
         </div>
     </details>
 
 
     <div class="fc-translation" data-sec="translation">Decorating Kṛṣṇa with forest flowers and jewel ornaments, singing and dancing in front of Kṛṣṇa, caring for the cows, massaging His body, fanning Him as well as other activities are activities that the friends share in common with the dāsas. Among all the anubhāvas (activities) mentioned previously, some which are suitable, though not mentioned here, are also accepted as the anubhāvas of the friends by the wise.</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -7566,6 +7662,7 @@ Or this verse can be taken as a description of Śrīdāma and Kṛṣṇa embrac
 
     <div class="fc-translation" data-sec="translation">Sāttvika-bhāvas, paralysis: When Kṛṣṇa emerged from the water after conquering Kāliya, Śrīdāma wanted to embrace Him immediately, but his thick arms became paralyzed and he was unable to lift them.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -7639,6 +7736,7 @@ Or this verse can be taken as a description of Śrīdāma and Kṛṣṇa embrac
 
     <div class="fc-translation" data-sec="translation">Perspiration: When the cloud called Mukunda appeared during the period when the moon entered Svāti constellation, made pleasant sounds (of rumbling or from the flute), and rained blissful showers of joyful pastimes, the oyster in the form of Śrīdāma (giver of wealth) began to produce pearls as perspiration.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -7680,8 +7778,8 @@ Or this verse can be taken as a description of Śrīdāma and Kṛṣṇa embrac
     </header>
 
     <div class="cr-iast-block" data-sec="iast">
-        <div class="cr-iast-line">romāṣco, yathā dāna-keli-kaumudyām (37) –</div>
-<div class="cr-pron-line" data-sec="pronunciation">[romaashcho, yathaa daana-keli-kaumudyaam (37) –]</div>        <div class="cr-iast-line">api guru-puras tvām utsaṅge nidhāya visaṅkaṭe</div>
+        <div class="cr-iast-line">romāñco, yathā dāna-keli-kaumudyām (37) –</div>
+<div class="cr-pron-line" data-sec="pronunciation">[romaancho, yathaa daana-keli-kaumudyaam (37) –]</div>        <div class="cr-iast-line">api guru-puras tvām utsaṅge nidhāya visaṅkaṭe</div>
 <div class="cr-pron-line" data-sec="pronunciation">[api guru-puras tvaam utsange nidhaaya visankate]</div>        <div class="cr-iast-line">vipula-pulakollāsaṁ svarā pariṣvajate hariḥ |</div>
 <div class="cr-pron-line" data-sec="pronunciation">[vipula-pulakollaasam svaraa parishvajate harih |]</div>        <div class="cr-iast-line">praṇayati tava skandhe cāsau bhujaṁ bhujagopamaṁ</div>
 <div class="cr-pron-line" data-sec="pronunciation">[pranayati tava skandhe chaasau bhujam bhujagopamam]</div>        <div class="cr-iast-line">kva subala purā siddha-kṣetre cakartha kiyat-tapaḥ ||99||</div>
@@ -7692,7 +7790,7 @@ Or this verse can be taken as a description of Śrīdāma and Kṛṣṇa embrac
         <summary>Blended reading (Sanskrit + English inline)</summary>
         <div class="cr-blend-grid">
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">romāṣco, yathā dāna-keli-kaumudyām (37) –</div>
+                <div class="cr-blend-iast-line">romāñco, yathā dāna-keli-kaumudyām (37) –</div>
             </div>
             <div class="cr-blend-block">
                 <div class="cr-blend-iast-line">api guru-puras tvām utsaṅge nidhāya visaṅkaṭe</div>
@@ -7712,6 +7810,7 @@ Or this verse can be taken as a description of Śrīdāma and Kṛṣṇa embrac
 
     <div class="fc-translation" data-sec="translation">Hair standing on end, from Dāna-keli-kaumudī: O Subala! You are fortunate because in the presence of the elders you embrace Kṛṣṇa freely, spreading out your arms with hairs standing on end, and Kṛṣṇa places His arm on your shoulder. Tell me at which pure holy place did you perform innumerable austerities? In the presence of elders Kṛṣṇa puts you on his lap embraces you freely with his snake-like arms.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -7727,6 +7826,7 @@ Or this verse can be taken as a description of Śrīdāma and Kṛṣṇa embrac
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>These are Rādhā’s mental words of regret. “Elders” refers to persons like Śrīrāma (Balarāma). (Viśvanātha Cakravartī adds Śrī Nanda as an elder.)</p>
@@ -7798,6 +7898,7 @@ Or this verse can be taken as a description of Śrīdāma and Kṛṣṇa embrac
 
     <div class="fc-translation" data-sec="translation">Trembling, change of color, choking of the voice, fainting: When Kṛṣṇa entered into Kāliya’s lake, the friends became afflicted with trembling. They lost their color and from some time could not speak properly. They fell on the ground and became unconscious.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -7813,6 +7914,7 @@ Or this verse can be taken as a description of Śrīdāma and Kṛṣṇa embrac
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>This verse illustrates four sāttvika-bhāvas: trembling, change of color, choking of the voice and fainting. The order of the bhāvas in the verse is not according to the order originally given in verse 2.3.16. For some time (kṣaṇāt) their voices were choked up; then they fell on the ground; and then they stopped moving. Suṣuptim here means that they stopped movement rather than sleeping.</p>
@@ -7884,6 +7986,7 @@ Or this verse can be taken as a description of Śrīdāma and Kṛṣṇa embrac
 
     <div class="fc-translation" data-sec="translation">Tears: Seeing the forest fire spread around through the cotton from dry reeds, Kṛṣṇa’s friends, not considering their own bodies, surrounded Kṛṣṇa on all sides, appearing to extinguish the fire with the tears from their eyes.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -7899,6 +8002,7 @@ Or this verse can be taken as a description of Śrīdāma and Kṛṣṇa embrac
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Iṣīka-tulaiḥ means by the cotton-like material found on the reeds. Iṣṭakeṣikāmālānāṁ cita tūla bhāriṣu: a short vowel substitutes for a long vowel for īṣṭakā before cita, for īṣīkā before tūla and for mālā before bhāriṣu. Pāṇini 6.3.65) Thus īṣīkā-tūla becomes iṣīka-tūla. The friends made a line (vithiḥ) around the Lord. According to the present context the word ābhīra (cowherds) means His young friends. It is improper to think that they shed tears out of fear. Rather, they experienced grief at the danger to Kṛṣṇa, and thus began shedding tears.</p>
@@ -7940,8 +8044,8 @@ Or this verse can be taken as a description of Śrīdāma and Kṛṣṇa embrac
     <div class="cr-iast-block" data-sec="iast">
         <div class="cr-iast-line">atha vyabhicāriṇaḥ –</div>
 <div class="cr-pron-line" data-sec="pronunciation">[atha vyabhichaarinah –]</div>        <div class="cr-iast-line">augryaṁ trāsaṁ tathālasyaṁ varjayitvākhilāḥ pare |</div>
-<div class="cr-pron-line" data-sec="pronunciation">[augryam traasam tathaalasyam varjayitvaakhilaah pare |]</div>        <div class="cr-iast-line">rase preyasi bhāva-jṣaiḥ kathitā vyabhicāriṇaḥ ||102||</div>
-<div class="cr-pron-line" data-sec="pronunciation">[rase preyasi bhaava-jshaih kathitaa vyabhichaarinah ||102||]</div>        <div class="cr-iast-line">tatrāyoge madaṁ harṣaṁ garvaṁ nidrāṁ dhṛtiṁ vinā |</div>
+<div class="cr-pron-line" data-sec="pronunciation">[augryam traasam tathaalasyam varjayitvaakhilaah pare |]</div>        <div class="cr-iast-line">rase preyasi bhāva-jñaiḥ kathitā vyabhicāriṇaḥ ||102||</div>
+<div class="cr-pron-line" data-sec="pronunciation">[rase preyasi bhaava-jnaih kathitaa vyabhichaarinah ||102||]</div>        <div class="cr-iast-line">tatrāyoge madaṁ harṣaṁ garvaṁ nidrāṁ dhṛtiṁ vinā |</div>
 <div class="cr-pron-line" data-sec="pronunciation">[tatraayoge madam harsham garvam nidraam dhritim vinaa |]</div>        <div class="cr-iast-line">yoge mṛtiṁ klamaṁ vyādhiṁ vināpasmṛti-dīnate ||103||</div>
 <div class="cr-pron-line" data-sec="pronunciation">[yoge mritim klamam vyaadhim vinaapasmriti-deenate ||103||]</div>    </div>
 
@@ -7956,7 +8060,7 @@ Or this verse can be taken as a description of Śrīdāma and Kṛṣṇa embrac
                 <div class="cr-blend-iast-line">augryaṁ trāsaṁ tathālasyaṁ varjayitvākhilāḥ pare |</div>
             </div>
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">rase preyasi bhāva-jṣaiḥ kathitā vyabhicāriṇaḥ ||102||</div>
+                <div class="cr-blend-iast-line">rase preyasi bhāva-jñaiḥ kathitā vyabhicāriṇaḥ ||102||</div>
             </div>
             <div class="cr-blend-block">
                 <div class="cr-blend-iast-line">tatrāyoge madaṁ harṣaṁ garvaṁ nidrāṁ dhṛtiṁ vinā |</div>
@@ -7971,6 +8075,7 @@ Or this verse can be taken as a description of Śrīdāma and Kṛṣṇa embrac
     <div class="fc-translation" data-sec="translation">Those knowledgeable of bhāva say that all the vyabhicāri-bhāvas except augrya, trāsa and ālasya are present in preyo-rasa. However, in separation from Kṛṣṇa, mada, harṣa, garva, nidrā and dhṛti do not appear. In union with Kṛṣṇa, mṛti, klama (glāni), vyādhi, apasmṛti and dīnatā (dainyam) do not appear.</div>
 
 
+
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -7978,6 +8083,7 @@ Or this verse can be taken as a description of Śrīdāma and Kṛṣṇa embrac
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Augratā (augrya) directed to Kṛṣṇa, and trāsa caused by Kṛṣṇa are absent (since the friends are always friendly towards Him and never terrified of Him). Ālasya is absent unless favorable for serving Kṛṣṇa. This does not apply to those types of ālaysa etc. which are appearances only.</p>
@@ -8019,8 +8125,8 @@ Or this verse can be taken as a description of Śrīdāma and Kṛṣṇa embrac
     <div class="cr-iast-block" data-sec="iast">
         <div class="cr-iast-line">atha vyabhicāriṇaḥ –</div>
 <div class="cr-pron-line" data-sec="pronunciation">[atha vyabhichaarinah –]</div>        <div class="cr-iast-line">augryaṁ trāsaṁ tathālasyaṁ varjayitvākhilāḥ pare |</div>
-<div class="cr-pron-line" data-sec="pronunciation">[augryam traasam tathaalasyam varjayitvaakhilaah pare |]</div>        <div class="cr-iast-line">rase preyasi bhāva-jṣaiḥ kathitā vyabhicāriṇaḥ ||102||</div>
-<div class="cr-pron-line" data-sec="pronunciation">[rase preyasi bhaava-jshaih kathitaa vyabhichaarinah ||102||]</div>        <div class="cr-iast-line">tatrāyoge madaṁ harṣaṁ garvaṁ nidrāṁ dhṛtiṁ vinā |</div>
+<div class="cr-pron-line" data-sec="pronunciation">[augryam traasam tathaalasyam varjayitvaakhilaah pare |]</div>        <div class="cr-iast-line">rase preyasi bhāva-jñaiḥ kathitā vyabhicāriṇaḥ ||102||</div>
+<div class="cr-pron-line" data-sec="pronunciation">[rase preyasi bhaava-jnaih kathitaa vyabhichaarinah ||102||]</div>        <div class="cr-iast-line">tatrāyoge madaṁ harṣaṁ garvaṁ nidrāṁ dhṛtiṁ vinā |</div>
 <div class="cr-pron-line" data-sec="pronunciation">[tatraayoge madam harsham garvam nidraam dhritim vinaa |]</div>        <div class="cr-iast-line">yoge mṛtiṁ klamaṁ vyādhiṁ vināpasmṛti-dīnate ||103||</div>
 <div class="cr-pron-line" data-sec="pronunciation">[yoge mritim klamam vyaadhim vinaapasmriti-deenate ||103||]</div>    </div>
 
@@ -8035,7 +8141,7 @@ Or this verse can be taken as a description of Śrīdāma and Kṛṣṇa embrac
                 <div class="cr-blend-iast-line">augryaṁ trāsaṁ tathālasyaṁ varjayitvākhilāḥ pare |</div>
             </div>
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">rase preyasi bhāva-jṣaiḥ kathitā vyabhicāriṇaḥ ||102||</div>
+                <div class="cr-blend-iast-line">rase preyasi bhāva-jñaiḥ kathitā vyabhicāriṇaḥ ||102||</div>
             </div>
             <div class="cr-blend-block">
                 <div class="cr-blend-iast-line">tatrāyoge madaṁ harṣaṁ garvaṁ nidrāṁ dhṛtiṁ vinā |</div>
@@ -8048,6 +8154,7 @@ Or this verse can be taken as a description of Śrīdāma and Kṛṣṇa embrac
 
 
     <div class="fc-translation" data-sec="translation">Those knowledgeable of bhāva say that all the vyabhicāri-bhāvas except augrya, trāsa and ālasya are present in preyo-rasa. However, in separation from Kṛṣṇa, mada, harṣa, garva, nidrā and dhṛti do not appear. In union with Kṛṣṇa, mṛti, klama (glāni), vyādhi, apasmṛti and dīnatā (dainyam) do not appear.</div>
+
 
 
     <section class="fc-section" data-sec="gaudiya">
@@ -8129,6 +8236,7 @@ Or this verse can be taken as a description of Śrīdāma and Kṛṣṇa embrac
     <div class="fc-translation" data-sec="translation">Joy: When Kṛṣṇa returned to His friends after driving out Kāliya, they lost control of their bodies in great joy. They could not stand on their feet and their words became incoherent.</div>
 
 
+
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -8136,6 +8244,7 @@ Or this verse can be taken as a description of Śrīdāma and Kṛṣṇa embrac
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Skhalat-pada in reference to speaking means that they could not properly distinguish the proper endings to phrases. Vivaśāṅga in relation to words means that they could not distinguish proper endings on words. Otherwise, it means stumbling on their feet and powerless limbs.</p>
@@ -8199,6 +8308,7 @@ Or this verse can be taken as a description of Śrīdāma and Kṛṣṇa embrac
 
     <div class="fc-translation" data-sec="translation">Sthāyi-bhāva: When there is a rati (attraction) based on mutual trust between two friends as equals without respect, it is called sakhya-rati. This becomes the sthāyi-bhāva of sakhya-rasa.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -8242,8 +8352,8 @@ Or this verse can be taken as a description of Śrīdāma and Kṛṣṇa embrac
     <div class="cr-iast-block" data-sec="iast">
         <div class="cr-iast-line">viśrambho gāḍha-viśvāsa-viśeṣaḥ yantraṇojjhitaḥ |</div>
 <div class="cr-pron-line" data-sec="pronunciation">[vishrambho gaadha-vishvaasa-visheshah yantranojjhitah |]</div>        <div class="cr-iast-line">eṣā sakhya-ratir vṛddhiṁ gacchantī praṇayaḥ kramāt |</div>
-<div class="cr-pron-line" data-sec="pronunciation">[eshaa sakhya-ratir vriddhim gachchantee pranayah kramaat |]</div>        <div class="cr-iast-line">premā snehas tathā rāga iti paṣca-bhidoditā ||106||</div>
-<div class="cr-pron-line" data-sec="pronunciation">[premaa snehas tathaa raaga iti pashcha-bhidoditaa ||106||]</div>    </div>
+<div class="cr-pron-line" data-sec="pronunciation">[eshaa sakhya-ratir vriddhim gachchantee pranayah kramaat |]</div>        <div class="cr-iast-line">premā snehas tathā rāga iti pañca-bhidoditā ||106||</div>
+<div class="cr-pron-line" data-sec="pronunciation">[premaa snehas tathaa raaga iti pancha-bhidoditaa ||106||]</div>    </div>
 
 
     <details class="cr-blend-details" data-sec="blended">
@@ -8256,13 +8366,14 @@ Or this verse can be taken as a description of Śrīdāma and Kṛṣṇa embrac
                 <div class="cr-blend-iast-line">eṣā sakhya-ratir vṛddhiṁ gacchantī praṇayaḥ kramāt |</div>
             </div>
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">premā snehas tathā rāga iti paṣca-bhidoditā ||106||</div>
+                <div class="cr-blend-iast-line">premā snehas tathā rāga iti pañca-bhidoditā ||106||</div>
             </div>
         </div>
     </details>
 
 
     <div class="fc-translation" data-sec="translation">Deep, familiar trust without restriction is called viśrambha (confidence). This viśrambha or sakhya-rati increases gradually through praṇaya, prema, sneha and rāga. Thus, sakhya-rati has five types. [Note: The examples of rati, praṇaya, prema, sneha and rāga are given in that order in the verses from 107-113. The definition of praṇaya given in verse 108 says that praṇaya is that type of sakhya-rati where respect does not appear at all, even when there are opportunities to give respect. Therefore praṇaya would appear only in the Vraja gopas in a continuous manner, and would appear occasionally in other friends such as the Pāṇḍavas. It does not appear at all in dāsya-bhaktas. ]</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -8279,6 +8390,7 @@ Or this verse can be taken as a description of Śrīdāma and Kṛṣṇa embrac
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Gāḍha-viṣvāsa-viśesāḥ means (special deep faith) a feeling of non-difference between two persons in all ways. And there should be no restrictions. Then it is called viśrambha.</p>
@@ -8341,6 +8453,7 @@ Or this verse can be taken as a description of Śrīdāma and Kṛṣṇa embrac
 
 
     <div class="fc-translation" data-sec="translation">Sakhya-rati: O Akrūra, son of Gāndinī! You should tell Mukunda, ’’Possessor of the mark of Garuḍa! When will Arjuna be able to embrace You?’’</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -8407,6 +8520,7 @@ Or this verse can be taken as a description of Śrīdāma and Kṛṣṇa embrac
 
     <div class="fc-translation" data-sec="translation">When sakhya rati is completely free of any touch of respect, though there are clear opportunities to show respect, it is called praṇaya.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -8422,6 +8536,7 @@ Or this verse can be taken as a description of Śrīdāma and Kṛṣṇa embrac
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>The definitions for prema, sneha and rāga are the same as those given previously. The qualities of praṇaya are here discussed. [Note: In madhura-rasa the order of development is madhura-rati, prema, sneha, māna, praṇaya, rāga, anurāga and mahā-bhāva. (Ujjvala Nīlamaṇi 14.59).]</p>
@@ -8492,6 +8607,7 @@ Or this verse can be taken as a description of Śrīdāma and Kṛṣṇa embrac
 
 
     <div class="fc-translation" data-sec="translation">Though the devatās headed by Śiva began praising Kṛṣṇa announcing His supreme position as the Lord, Arjuna, Kṛṣṇa’s friend in Vraja, [Note: This Arjuna in Vraja is mentioned as a priya-narma-sakha in BRS 3.3.43. It is also possible that it is referring to Pāṇḍava Arjuna.] just put his arm with hairs standing on end upon Kṛṣṇa’s shoulder and wiped the dust from His peacock feather.</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -8566,6 +8682,7 @@ Or this verse can be taken as a description of Śrīdāma and Kṛṣṇa embrac
 
     <div class="fc-translation" data-sec="translation">O Mukunda! Though You, the Supreme Lord, have appeared as the friend of the Pāṇḍavas, they met with so many calamities such as losing the kingdom, living in the forest, and acting as servants in someone else’s house. However, their sweet friendship for You doubled in spite of this. [Note: The definition of prema is that rati becomes so firm that there is no danger of it disappearing. BRS 3.2.81]</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -8581,6 +8698,7 @@ Or this verse can be taken as a description of Śrīdāma and Kṛṣṇa embrac
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>These are the words of Nārada at the time the Pāṇḍavas were living incognito. Iyam amaṇgalā bhavatu (let that calamitous situation be) is in the imperative, expressing farewell to let one do as one pleases (forget about that situation). That is because that misfortune did not reduce the friendship that the Pāṇḍavas had with the Supreme Lord, but rather (parantu) it increased their relation of sakhya with Him. “Their love for You was not produced by Your helping them, but by experiencing Your profusion of wonderful qualities unequalled in anyone else. Their appreciation of Your qualities destroyed their experience of suffering (which You did not prevent), and increased their prema for You.” Using the perfect tense for vavṛdhe (it increased) indicates that it was an established fact, thus showing that their prema was very firm. “Though He was not visible during these calamities, they could directly experience those qualities. For myself (Nārada) however, I can only indirectly infer the Lord by recalling His qualities.”</p>
@@ -8621,8 +8739,8 @@ Or this verse can be taken as a description of Śrīdāma and Kṛṣṇa embrac
 
     <div class="cr-iast-block" data-sec="iast">
         <div class="cr-iast-line">sneho, yathā śrī-daśame –</div>
-<div class="cr-pron-line" data-sec="pronunciation">[sneho, yathaa shree-dashame –]</div>        <div class="cr-iast-line">anye tad-anurūpāṇi manojṣāni mahātmanaḥ |</div>
-<div class="cr-pron-line" data-sec="pronunciation">[anye tad-anuroopaani manojshaani mahaatmanah |]</div>        <div class="cr-iast-line">gāyanti sma mahārāja sneha-klinna-dhiyaḥ śanaiḥ ||111||</div>
+<div class="cr-pron-line" data-sec="pronunciation">[sneho, yathaa shree-dashame –]</div>        <div class="cr-iast-line">anye tad-anurūpāṇi manojñāni mahātmanaḥ |</div>
+<div class="cr-pron-line" data-sec="pronunciation">[anye tad-anuroopaani manojnaani mahaatmanah |]</div>        <div class="cr-iast-line">gāyanti sma mahārāja sneha-klinna-dhiyaḥ śanaiḥ ||111||</div>
 <div class="cr-pron-line" data-sec="pronunciation">[gaayanti sma mahaaraaja sneha-klinna-dhiyah shanaih ||111||]</div>    </div>
 
 
@@ -8633,7 +8751,7 @@ Or this verse can be taken as a description of Śrīdāma and Kṛṣṇa embrac
                 <div class="cr-blend-iast-line">sneho, yathā śrī-daśame –</div>
             </div>
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">anye tad-anurūpāṇi manojṣāni mahātmanaḥ |</div>
+                <div class="cr-blend-iast-line">anye tad-anurūpāṇi manojñāni mahātmanaḥ |</div>
             </div>
             <div class="cr-blend-block">
                 <div class="cr-blend-iast-line">gāyanti sma mahārāja sneha-klinna-dhiyaḥ śanaiḥ ||111||</div>
@@ -8643,6 +8761,7 @@ Or this verse can be taken as a description of Śrīdāma and Kṛṣṇa embrac
 
 
     <div class="fc-translation" data-sec="translation">Sneha, from the Tenth Canto: My dear King, other boys would sing enchanting songs appropriate to the occasion, and their hearts would melt out of love for the Lord. [Note: The definition of sneha is that the heart melts. BRS 3.2.84] SB 10.15.18</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -8718,6 +8837,7 @@ Or this verse can be taken as a description of Śrīdāma and Kṛṣṇa embrac
     <div class="fc-translation" data-sec="translation">When the black cloud (Kṛṣṇa) sprinkled a rain of pastimes, all the mountains (cowherd friends) crumbling because of getting wet, colored with various mineral dyes, in disheveled array (breathing heavily), revealed something astonishing. The river Sarasvatī, in charge of words, got blocked up the throat (valley) of the friend (mountains), and streams of water, which were previously not visible, began to continuously flow (from their eyes).</div>
 
 
+
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -8725,6 +8845,7 @@ Or this verse can be taken as a description of Śrīdāma and Kṛṣṇa embrac
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>When the black rain cloud showers playful streams of water (līlārasam) something astonishing happened on the group of mountains (gotreṣu) which were like friends, whose sides were covered with bright minerals like gaurika, which were slipping down (skhalad) because of the wetness, and which were increasing in size (ucchvasiteṣu) because of the trees growing up in the rain. At the base of the mountain, a river which used to flow became blocked up, and where there was no visible river, water began to flow constantly (sadā nīra). Sadā nīra can also refer to a river also called Karatoyā.
@@ -8797,6 +8918,7 @@ The other meaning is as follows. When Kṛṣṇa (kṛṣṇa-mudire) manifeste
 
     <div class="fc-translation" data-sec="translation">When the cruel Aśvatthāmā showered invincible arrows at Kṛṣṇa, Arjuna jumped forward and received the arrows on his chest. Those arrows gave pleasure to Arjuna like a shower of flowers. [Note: The definition of rāga is that one’s own distress turns to happiness by a slight relationship with Kṛṣṇa, and the devotee will give his life for the Lord. BRS 3.2.87]</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -8812,6 +8934,7 @@ The other meaning is as follows. When Kṛṣṇa (kṛṣṇa-mudire) manifeste
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Vyakāri means “he dispersed.”</p>
@@ -8883,6 +9006,7 @@ The other meaning is as follows. When Kṛṣṇa (kṛṣṇa-mudire) manifeste
 
     <div class="fc-translation" data-sec="translation">Another example of rāga: When Vṛṣabha, Kṛṣṇa’s friend, arrived at noon to pick flowers for making garlands for Kṛṣṇa by wandering all over the forest, the hot rays of the summer sun in Vṛṣabha zodiac sign (Taurus) were like the cool rays of the moon for him.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -8926,8 +9050,8 @@ The other meaning is as follows. When Kṛṣṇa (kṛṣṇa-mudire) manifeste
     <div class="cr-iast-block" data-sec="iast">
         <div class="cr-iast-line">atha ayoge utkaṇṭhitaṁ, yathā –</div>
 <div class="cr-pron-line" data-sec="pronunciation">[atha ayoge utkanthitam, yathaa –]</div>        <div class="cr-iast-line">dhanur-vedam adhīyāno madhyamas tvayi pāṇḍavaḥ |</div>
-<div class="cr-pron-line" data-sec="pronunciation">[dhanur-vedam adheeyaano madhyamas tvayi paandavah |]</div>        <div class="cr-iast-line">bāṣpa-saṅkīrṇayā kṛṣṇaḥ girāśleṣaṁ vyajijṣapat ||115||</div>
-<div class="cr-pron-line" data-sec="pronunciation">[baashpa-sankeernayaa krishnah giraashlesham vyajijshapat ||115||]</div>    </div>
+<div class="cr-pron-line" data-sec="pronunciation">[dhanur-vedam adheeyaano madhyamas tvayi paandavah |]</div>        <div class="cr-iast-line">bāṣpa-saṅkīrṇayā kṛṣṇaḥ girāśleṣaṁ vyajijñapat ||115||</div>
+<div class="cr-pron-line" data-sec="pronunciation">[baashpa-sankeernayaa krishnah giraashlesham vyajijnapat ||115||]</div>    </div>
 
 
     <details class="cr-blend-details" data-sec="blended">
@@ -8940,13 +9064,14 @@ The other meaning is as follows. When Kṛṣṇa (kṛṣṇa-mudire) manifeste
                 <div class="cr-blend-iast-line">dhanur-vedam adhīyāno madhyamas tvayi pāṇḍavaḥ |</div>
             </div>
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">bāṣpa-saṅkīrṇayā kṛṣṇaḥ girāśleṣaṁ vyajijṣapat ||115||</div>
+                <div class="cr-blend-iast-line">bāṣpa-saṅkīrṇayā kṛṣṇaḥ girāśleṣaṁ vyajijñapat ||115||</div>
             </div>
         </div>
     </details>
 
 
     <div class="fc-translation" data-sec="translation">Utkaṇṭhitam (separation, not having met Kṛṣṇa before) O Kṛṣṇa! The middle Pāṇḍava, Arjuna, while studying the military arts, embraced You by means of words mixed with his tears. [Note: This would be at the time before first meeting Kṛṣṇa.]</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -9021,6 +9146,7 @@ The other meaning is as follows. When Kṛṣṇa (kṛṣṇa-mudire) manifeste
 
     <div class="fc-translation" data-sec="translation">Viyoga (separation after meeting): You protected us, your friends, from the fire of digestion of Aghāsura, from the poison of Kāliya and from the appetite of the forest fire. But how will You protect us despairing friends from the attack of the fever of separation—which is far more ferocious than these three dangers?</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -9089,6 +9215,7 @@ The other meaning is as follows. When Kṛṣṇa (kṛṣṇa-mudire) manifeste
 
 
 
+
     <details class="fc-note-block" data-sec="note" data-note-verse="bg-3-117" data-note-label="BG 3.117" data-note-chapter="3" data-note-vlabel="117">
         <summary><span class="fc-note-icon">📝</span> <span class="fc-note-summary-label">My note</span> <span class="fc-note-indicator" aria-hidden="true"></span></summary>
         <textarea class="fc-note-textarea" placeholder="Write a note about BG 3.117…" rows="4"></textarea>
@@ -9143,6 +9270,7 @@ The other meaning is as follows. When Kṛṣṇa (kṛṣṇa-mudire) manifeste
 
 
     <div class="fc-translation" data-sec="translation">Heat in the body: O enemy of Kaṁsa! The strong heat generated by separation from You is most amazing, because it causes even more intense heat in a very cool place. It has multiplied its heat in the waters of the cool Yamunā River, and is burning Your friends headed by Subala. [Note: The friends, in remembering Kṛṣṇa, are like cool storehouses. However, separation causes them to become even hotter with pain than others.]</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -9217,6 +9345,7 @@ The other meaning is as follows. When Kṛṣṇa (kṛṣṇa-mudire) manifeste
 
     <div class="fc-translation" data-sec="translation">Thinness: O enemy of the demons! When You went to Mathurā to liberate Kaṁsa, the four elements, earth, water, fire and ether in the cowherd boys became meager due to their intense sorrow. Only the air element passing through their nostrils became strong.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -9232,6 +9361,7 @@ The other meaning is as follows. When Kṛṣṇa (kṛṣṇa-mudire) manifeste
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>The four elements (catūrṇāṁ bhūtānām) are earth, water, fire and ether. They are understood to have become thin (tanimā). The thinness of ether is understood because the openings of the body become very small as the body becomes thin.</p>
@@ -9302,6 +9432,7 @@ The other meaning is as follows. When Kṛṣṇa (kṛṣṇa-mudire) manifeste
 
 
     <div class="fc-translation" data-sec="translation">Insomnia: O king of the Yadus! Seeing the tears in the lotus eyes of Your friend Varūthapa, the bees of sleep have given up those lotus eyes out of disgust.</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -9376,6 +9507,7 @@ The other meaning is as follows. When Kṛṣṇa (kṛṣṇa-mudire) manifeste
 
     <div class="fc-translation" data-sec="translation">Vacant mind: Since the son of the king of Vraja, my dear friend, left Vṛndāvana, my fickle mind, without support, has become so light that it rises and falls like a piece of cotton, spins around constantly and cannot find a point of concentration.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -9448,6 +9580,7 @@ The other meaning is as follows. When Kṛṣṇa (kṛṣṇa-mudire) manifeste
 
 
     <div class="fc-translation" data-sec="translation">Detachment: O best of the Yadus! In separation from You, Your friends are no longer interested in their occupation of herding the cows. They make millions of attempts to forget about singing and dancing. What more can I say? They do not desire to remain alive.</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -9522,6 +9655,7 @@ The other meaning is as follows. When Kṛṣṇa (kṛṣṇa-mudire) manifeste
 
     <div class="fc-translation" data-sec="translation">Dullness: O Mukunda! Your friends appear like trees on the top of a mountain. As the trees have no leaves, they have no clothing. As the tree has no beauty, they have no luster. As the tree is silent without birds, they are silent. As the tree is without fruit, they are without actions. They are thin, with worn, rough limbs.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -9587,6 +9721,7 @@ The other meaning is as follows. When Kṛṣṇa (kṛṣṇa-mudire) manifeste
 
     <div class="fc-translation" data-sec="translation">Sickness: Hero of the Yadus! Suffering from heat of the fever in separation from You, all Your young cowherd friends have been lying on the bank of the Yamunā with limp limbs for many days.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -9602,6 +9737,7 @@ The other meaning is as follows. When Kṛṣṇa (kṛṣṇa-mudire) manifeste
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Separation is the fever or illness (viraha-jvara). Burning with the heat (saṁjvareṇa) of that sickness of separation, their bodies have become limp, without energy (viślatha-gātra).</p>
@@ -9672,6 +9808,7 @@ The other meaning is as follows. When Kṛṣṇa (kṛṣṇa-mudire) manifeste
 
 
     <div class="fc-translation" data-sec="translation">Insanity: Lord of Mathurā! Unable to think of You because of the confusion caused by separation, the cowherd boys have now forgotten how to conduct themselves in this world. Sometimes they fall on the ground. Sometimes they lie down, sometimes they laugh, sometimes they run, and sometimes they weep.</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -9746,6 +9883,7 @@ The other meaning is as follows. When Kṛṣṇa (kṛṣṇa-mudire) manifeste
 
     <div class="fc-translation" data-sec="translation">Fainting: The Lord of the Madhus, having attained a kingdom at sweet Mathurā, now enjoys Himself and gives bliss to the world. But crying and fainting repeatedly, Gokula has become completely confused.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -9761,6 +9899,7 @@ The other meaning is as follows. When Kṛṣṇa (kṛṣṇa-mudire) manifeste
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>This is a message given by one cowherd boy living in Vraja to Kṛṣṇa when He was residing in Mathurā. Ruditāndhe (darkness after crying) implies continuous state of fainting after crying. The word Gokula actually indicates the speaker, a cowherd boyfriend of Kṛṣṇa. (This is an example of fainting in separation for those in sakhya-rasa). Ākulatā means “By again and again crying and fainting, I have become completely bewildered.”</p>
@@ -9832,6 +9971,7 @@ The other meaning is as follows. When Kṛṣṇa (kṛṣṇa-mudire) manifeste
 
     <div class="fc-translation" data-sec="translation">Death-like state: O enemy of Kaṁsa! Worn out with the pain arising from the waves of fever of separation, the cowherd boys have fallen down on the plateau of Govardhana and are breathing only slightly. Just as people lament with tears in their eyes when they see that acquaintances have fallen into difficulty, today, the deer lament for them, soaking their motionless bodies with their profuse tears.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -9893,6 +10033,7 @@ The other meaning is as follows. When Kṛṣṇa (kṛṣṇa-mudire) manifeste
 
     <div class="fc-translation" data-sec="translation">The separation which has been described here is in accordance with the pastimes of the Lord when He appears on earth. However, the inhabitants of Vraja are never separated from Kṛṣṇa (in His eternal pastimes.)</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -9905,9 +10046,56 @@ The other meaning is as follows. When Kṛṣṇa (kṛṣṇa-mudire) manifeste
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
             <div class="cr-acarya-name">
+                Viśvanātha Cakravartī Ṭhākura
+                <span class="cr-samp-badge">Gauḍīya</span>
+            </div>
+            <div class="cr-acarya-work">Bhakti-sāra-pradarśinī</div>
+            <div class="cr-acarya-label">Commentary</div>
+            <div class="cr-acarya-purp">
+                <p>States of separation such as pūrva-rāga (before meeting for first time in madhura-rasa) or when Kṛṣṇa is out herding the cows--leaving for a short time only--are relished by the sādhakas, the siddhas, the eternal associates, the gopīs and Kṛṣṇa, because there always remains the relationship of āśraya and viṣaya ālambanas. But when Kṛṣṇa departs for Mathurā and stays away for a very long time, the pain of separation is intolerable. That is explained in this verse. The pain of separation when Kṛṣṇa goes to Mathurā which has been described (prokteyam) belongs to the prakaṭa-līlā. In the aprakaṭa-līlā, separation from Kṛṣṇa by His going to Mathurā does not exist for the inhabitants of Vraja at all. This is proved by a statement from the Skanda Purāṇa, the next verse in the text. It is also said:
+kṛṣṇo ’nyo yadu-sambhūto yaḥ purṇaḥ so ’sty ataḥ paraḥ
+vṛndāvanaṁ paritjajya sa kvacin naiva gacchati
+Kṛṣṇa, who is complete in Himself, is different from Kṛṣṇa of the Yadu dynasty. Kṛṣṇa never leaves Vṛndāvana to go elsewhere. Laghu-bhāgavatāmṛta 461
+One should not come to the following conclusion however. “There are two types of pastimes: prakaṭa and aprakaṭa. The prakaṭa pastimes are those which are visible to the people of this world. They are occasional and temporary. The aprakaṭa pastimes are those which are not visible to this world. They exist eternally in Vṛndāvana and other places.”
+This cannot be said. If one attributes a temporary nature to the prakaṭa pastimes described by Śrī Śukadeva, Parāśara, Vyāsa and others in the Bhāgavatam, Viṣṇu Purāṇa, Hari-vamśa, Padma Purāṇa and other scriptures, one can as well logically attribute a temporary nature to the aprakaṭa pastimes described by the same authors, who are recent beings. By claiming the temporary nature of all pastimes after showing the aprakaṭa pastimes to be temporary by equating them with the temporary prakaṭa pastimes, all pastimes end up as mere material actions.
+If the pastimes such as being born are shown to the people of this world out of mercy, they are called prakaṭa pastimes and if those pastimes are concealed from the world’s view, they are called aprakṛta. Thus, in essence, there is no difference between the prakaṭa and aprakaṭa pastimes. Thus, it is stated:
+anādim eva janmādi-līlām eṣa tathādbhutām
+hetunā kenacit kṛṣṇaḥ prāduskuryāt kadācana
+The extraordinary pastimes such as birth of the Lord are without beginning. Kṛṣṇa never deteriorates at all by any cause. Laghu-bhāgavatāmṛta 387
+Thus, the scriptures have shown that the prakaṭa pastimes are eternal. This will now be explained. Like the Lord who is one but has infinite forms, Vraja also has infinite forms but in this world people see only the pastimes appearing in one manifestation of Vraja. They do not see the pastimes in the other manifestations of Vraja. The pastimes of birth, kaumāra, paugaṇḍa and kaiśora ages and the departure to Mathurā of Kṛṣṇa situated in that manifestation appear in millions of universes one after the other, and are seen by the people of one universe at a particular time, but those pastimes are not seen all the time in all the universes. It is just like the rising of the sun situated in a particular position in the zodiac, morning, noon and afternoon. These are all seen in different parts of India, but are not seen everywhere at the same time. There is difference however. The rising of the sun, morning, noon and afternoon are not real (only apparent) and not eternal (though repetitive). But Kṛṣṇa’s pastimes in Vraja are real and eternal as testified by the scriptures. That is the difference. Just as there is always a rising of the sun, morning, noon and afternoon at some place, Kṛṣṇa always has a birth, childhood, killing of demons and a departure for Mathurā in some universe. Thus, the prakaṭa pastimes are eternal. Just as the sun is perceived in all conditions in all places over a period of twenty-four hours, the pastimes of Kṛṣṇa will be perceived in all the different universes during the day of Brahmā in a scheduled manner. The prakṛta pastimes which are seen by people are actually the aprakṛta pastimes, but appearing to be dependent on time and space. As Uddhava says:
+kṛṣṇa-dyumaṇi nimloce gīrṇeṣv ajagareṇa ha
+kiṁ nu naḥ kuśalaṁ brūyāṁ gata-śrīṣu gṛheṣv aham
+My dear Vidura, the sun of the world, Lord Kṛṣṇa, has set, and our house has now been swallowed by the great snake of time. What can I say to you about our welfare? SB 3.2.7
+This applies also to the pastimes in Mathurā and Dvārakā. The pastimes taking place in the multitude of manifestations of Vraja are not seen by the people of the world. These manifestations are unlimited, and are not connected with each other. This is understood from the following statement:
+kṛṣṇa-bālyādi-līlābhir bhūṣitāni samantataḥ
+śaila-goṣṭha-vanādīnāṁ santi rūpāṇi anekaśaḥ
+At present, however, the many hills, forests, villages and other places in Vṛndāvana that had been decorated with Lord Kṛṣṇa&#39;s childhood and other pastimes still wonderfully remain. Laghu-bhāgavatāmṛta 513
+In all these manifestations, the awareness of the Lord’s associates also remains separate, because the multitude of manifestations remains separate. In those manifestations Kṛṣṇa separately has pastimes of birth, bālya, paugaṇḍa and kaiśora ages. Sometimes these manifestations appear in sequence one after the other and sometimes they appear together. In any case, the appearances are certain. But in the aprakaṭa manifestation, the pastimes of departing for Mathurā does not take place, because Kṛṣṇa and His devotees always remain performing pastimes in the aprakaṭa manifestations of Mathurā.
+It is also stated:
+tatra prakaṭa-līlāyām eva syātaṁ gamāgamau
+gokule mathurāyāṁ ca dvāravatyāṁ ca śārṅgiṇāh
+In His prakaṭa pastimes, Lord Kṛṣṇa will go from Gokula to Mathurā to Dvārakā, and then He will return. Laghu-bhāgavatāmṛta 439
+From Vraja, Kṛṣṇa goes to Mathurā, and then Dvārakā, and then returns from Dvārakā to Vraja after killing Dantavakra. This will happen in the prakaṭa pastimes and not in the aprakaṭa pastimes. This can also be understood to mean that in Vraja itself there will be going to the forest from the village and returning from Mahāvana to Vṛndāvana.
+One should not say however that the aprakaṭa pastimes are superior to the prakaṭa pastimes, since there is no pain of separation by Kṛṣṇa’s going to Mathurā in the aprakaṭa pastimes, because the pain of separation is a manifestation of transformations that take place in mahā-bhāva, the highest form of bliss, expressed in song of the bee, which is a lamentation in transcendental insanity. Uddhava, seeing the supreme form of the gopīs’ love, became astonished at superiority of the gopīs’ love to the love of Lakṣmī.
+āsām aho caraṇa-reṇu-juṣām ahaṁ syāṁ vṛndāvane kim api gulma-latauṣadhīnām
+yā dustyajaṁ sva-janam ārya-pathaṁ ca hitvā bhejur mukunda-padavīṁ śrutibhir vimṛgyām
+The gopīs of Vṛndāvana have given up the association of their husbands, sons and other family members, who are very difficult to give up, and they have forsaken the path of chastity to take shelter of the lotus feet of Mukunda, Kṛṣṇa, which one should search for by Vedic knowledge. Oh, let me be fortunate enough to be one of the bushes, creepers or herbs in Vṛndāvana, because the gopīs trample them and bless them with the dust of their lotus feet. SB 10.47.61
+nāyaṁ śriyo ’ṅga u nitānta-rateḥ prasādaḥ svar-yoṣitāṁ nalina-gandha-rucāṁ kuto ’nyāḥ
+rāsotsave ’sya bhuja-daṇḍa-gṛhīta-kaṇṭha-labdhāśiṣāṁ ya udagād vraja-vallabhīnām
+When Lord Śrī Kṛṣṇa was dancing with the gopīs in the rāsa-līlā, the gopīs were embraced by the arms of the Lord. This transcendental favor was never bestowed upon the goddess of fortune or other consorts in the spiritual world. Indeed, never was such a thing even imagined by the most beautiful girls in the heavenly planets, whose bodily luster and aroma resemble the lotus flower. And what to speak of worldly women who are very beautiful according to material estimation? SB 10.47.60
+One should also not consider that separation is inferior to meeting with Kṛṣṇa, because even in separation the two lovers possessing sthāyi-bhāvas with rati, prema, sneha and higher levels of attachment, by memory alone, stimulated by the vibhāvas, become filled with unlimited pleasure of enjoying each other through direct contact, with embraces, kissing and contact with mind, eye and body.
+saṅgama-viraha-vikalpe varam iha viraho na saṅgamān tasya
+ekaḥ sa eva saṅge tri-bhuvanam api tan-mayaṁ virahe
+Separation from Kṛṣṇa is better than meeting Him. When I meet Him, there is only one Kṛṣṇa, but when I am separated from Him the three worlds become filled with Kṛṣṇas. Padyāvalī 240
+One should not say that when an appearance of the Lord through remembrance or through actual presence ends there is sorrow due to the intolerable pain of separation. This pain is another form of bliss, because its nature is purely spiritual, caused by the hladinī and samvit śaktis. The author explains how this pain is actually a form of knowledge in the Ujjvala-nīlamaṇi. One should also understand that there are degrees of intensity in the separation and meeting in dāsya, sakhya and vatsala relationships.</p>
+            </div>
+        </div>
+        <div class="cr-acarya-card gaudiya">
+            <div class="cr-acarya-name">
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Spaṣṭa-līlā means the pastimes on earth (prakaṭa-līlā). The condition of separation occurs during the pastimes on earth, but there is no separation from Kṛṣṇa at all for the inhabitants of Vraja with the aspaṣṭa-līlā, the pastimes in the spiritual world. That meaning should be supplied in the last line. There are two types of pastimes: prakaṭa and aprakaṭa. Prakaṭa-līlā means pastimes visible to people of this world. These are occasional appearances. Aprakaṭa-līlās are those pastimes which cannot be seen by people of this world. These are eternal, and take place in Vṛndāvana and other places. These eternal pastimes are glorified in the Skanda Purāṇa, Āgama scriptures, the Gopāla-tāpanī Upaniṣad and Bhāgavatam:
@@ -9976,6 +10164,7 @@ Thus, when the verse says that that there is no separation at all for the inhabi
 
     <div class="fc-translation" data-sec="translation">This is stated in the Skanda Purāṇa, Mathurā-khaṇḍa: Kṛṣṇa, along with Balarāma, surrounded by the boys of Vraja, plays eternally in Vṛndāvana with the cows and calves.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -10042,6 +10231,7 @@ Thus, when the verse says that that there is no separation at all for the inhabi
     <div class="fc-translation" data-sec="translation">Siddhi (meeting Kṛṣṇa for the first time): Arjuna, seeing Kṛṣṇa in the house of the potter in Drupada’s town, became motionless like a picture, and thus revealed himself as a true friend.</div>
 
 
+
     <section class="fc-section" data-sec="gaudiya">
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
@@ -10049,6 +10239,7 @@ Thus, when the verse says that that there is no separation at all for the inhabi
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Pāṇḍava here refers to Arjuna, since he is the chief among the Pāṇḍavas in sakhya-rasa. Cakri refers to the potter’s house in Drupada’s town, where the Pāṇḍavas were staying during Draupadī’s svayaṁvara ceremony. This is understood from the story in Mahābhārata. [Note: Ādi Parvā, 193.] Arjuna became motionless, just like a figure in a picture (citrākāram). Mitrākāram means that this showed that he was qualified to be a friend of Kṛṣṇa.</p>
@@ -10120,6 +10311,7 @@ Thus, when the verse says that that there is no separation at all for the inhabi
 
     <div class="fc-translation" data-sec="translation">Tuṣṭi (meeting Kṛṣṇa after some separation), from the Tenth Canto: Then Bhīma, his eyes brimming with tears, laughed with joy as he embraced his maternal cousin, Kṛṣṇa. Arjuna and the twins—Nakula and Sahadeva—also joyfully embraced their dear most friend, the infallible Lord, and they cried profusely. SB 10.71.27</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -10165,8 +10357,8 @@ Thus, when the verse says that that there is no separation at all for the inhabi
 <div class="cr-pron-line" data-sec="pronunciation">[yathaa vaa –]</div>        <div class="cr-iast-line">kurujāṅgale harim avekṣya puraḥ</div>
 <div class="cr-pron-line" data-sec="pronunciation">[kurujaangale harim avekshya purah]</div>        <div class="cr-iast-line">priya-saṅgamaṁ vraja-suhṛn-nikarāḥ |</div>
 <div class="cr-pron-line" data-sec="pronunciation">[priya-sangamam vraja-suhrin-nikaraah |]</div>        <div class="cr-iast-line">bhuja-maṇḍalena maṇi-kuṇḍalinaḥ</div>
-<div class="cr-pron-line" data-sec="pronunciation">[bhuja-mandalena mani-kundalinah]</div>        <div class="cr-iast-line">pulakāṣcitena pariṣaṣvajire ||132||</div>
-<div class="cr-pron-line" data-sec="pronunciation">[pulakaashchitena parishashvajire ||132||]</div>    </div>
+<div class="cr-pron-line" data-sec="pronunciation">[bhuja-mandalena mani-kundalinah]</div>        <div class="cr-iast-line">pulakāñcitena pariṣaṣvajire ||132||</div>
+<div class="cr-pron-line" data-sec="pronunciation">[pulakaanchitena parishashvajire ||132||]</div>    </div>
 
 
     <details class="cr-blend-details" data-sec="blended">
@@ -10185,13 +10377,14 @@ Thus, when the verse says that that there is no separation at all for the inhabi
                 <div class="cr-blend-iast-line">bhuja-maṇḍalena maṇi-kuṇḍalinaḥ</div>
             </div>
             <div class="cr-blend-block">
-                <div class="cr-blend-iast-line">pulakāṣcitena pariṣaṣvajire ||132||</div>
+                <div class="cr-blend-iast-line">pulakāñcitena pariṣaṣvajire ||132||</div>
             </div>
         </div>
     </details>
 
 
     <div class="fc-translation" data-sec="translation">Another example: His friends from Vraja, who had longed to see Him for so long, seeing Kṛṣṇa at Kurukṣetra, embraced Him with all their arms erupting in goose bumps.</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -10208,6 +10401,7 @@ Thus, when the verse says that that there is no separation at all for the inhabi
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>This verse described meeting the group from Vraja after a long separation (tuṣṭi) during the pastimes on earth. Kurujāṅgala means Kurukṣetra. Priya-saṅgamaṁ harim means “the Lord whose association (saṅgamam) was desired (priya) by them.”</p>
@@ -10279,6 +10473,7 @@ Thus, when the verse says that that there is no separation at all for the inhabi
 
     <div class="fc-translation" data-sec="translation">Sthiti (permanent association), from the Tenth Canto: Yogīs may undergo severe austerities and penances for many births by practicing yama, niyama, āsana and prāṇāyāma, none of which are easily performed. Yet in due course of time, when these yogīs attain the perfection of controlling the mind, they will still be unable to taste even a particle of dust from the lotus feet of the Supreme Personality of Godhead. What then can we describe about the great fortune of the inhabitants of Vrajabhūmi, these cowherd boys, with whom the Supreme Personality of Godhead personally lives permanently and who see the Lord face to face? SB 10.12.12</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -10294,10 +10489,11 @@ Thus, when the verse says that that there is no separation at all for the inhabi
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>The yogīs have gained control of their minds (dhṛtātma) by practice of aṣṭāṅga-yoga, causing much suffering (kṛcchrataḥ) for many lifetimes, but they cannot attain the dust from the Lord’s feet. It is impossible to attain even the dust of the Lord’s feet by such a controlled mind. What past pious actions can be ascribed to the inhabitants of Vraja, for whom the Lord Himself, Kṛṣṇa (sa eva)-- not any of His expansions--by His own choice (svayam), spontaneously, not by any other cause---becomes continually the object of their eyes (yad dṛg-viṣayaḥ sthitaḥ)? No pious actions at all can be ascribed for this! That exalted position of continually seeing the Lord was natural for them. What then can be said of Kṛṣṇa’s friends previously described, who actually played with the Lord (not just seeing Him continually)? The past participle sthita (situated) is used with the sense of the present tense as in the case of śīlita and other words (Pāṇini 3.2.188). [Note: The past participle affix “ta” as in sthita denotes the present tense (though usually it indicates past tense) after roots meaning inclination, understanding, respect, and after other roots also.] (Thus He is eternally situated as the object of their eyes.) The following is another example of sthita used with the present sense.
-yac ca kiṣcij jagaty asmin dṛśyate śrūyate ’pi vā
+yac ca kiñcij jagaty asmin dṛśyate śrūyate ’pi vā
 antar-bahiś ca tat sarvaṁ vyāpya nārāyaṇah sthitaḥ
 Nārāyaṇa is situated inside and outside, pervading everything that can be seen or heard in this universe.</p>
             </div>
@@ -10355,6 +10551,7 @@ Nārāyaṇa is situated inside and outside, pervading everything that can be se
 
 
     <div class="fc-translation" data-sec="translation">This preyo-rasa or sakhya-rasa, in which Kṛṣṇa and the devotee partake of the sweetness of one type of love, nourishes astonishing bliss in the heart</div>
+
 
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
@@ -10418,6 +10615,7 @@ This particular type of ecstatic love shared between Kṛṣṇa and His confide
 
     <div class="fc-translation" data-sec="translation">In prīti-rasa (dāsya rasa) and vātsalya-rasa, Kṛṣṇa’s and the devotee’s love are of different types. [Note: In prīti-rasa the devotee is servant and Kṛṣṇa is the master. In vatsala-rasa Kṛṣṇa is a child and the devotee is a parent.]</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -10480,6 +10678,7 @@ This particular type of ecstatic love shared between Kṛṣṇa and His confide
 
     <div class="fc-translation" data-sec="translation">For this reason, those devotees devoted to sakhya-rasa understand that this sakhya-rasa is the best among all rasas.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -10496,6 +10695,7 @@ This particular type of ecstatic love shared between Kṛṣṇa and His confide
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>This verse is linked to the previous two verses, the previous verses being the cause of this final statement.

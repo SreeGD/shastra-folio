@@ -31,11 +31,13 @@
 <body class="has-sidebar">
 <header class="fc-site-header">
     <button type="button" class="fc-mobile-trigger fc-mobile-trigger-left" data-overlay="left" aria-label="Open settings drawer">⚙</button>
-    <a class="fc-brand" href="../../../../">FolioCorpus<span class="fc-sub">Bhagavad-gītā</span></a>
+<a class="fc-brand" href="../../../../">FolioCorpus<span class="fc-sub">Bhakti-rasāmṛta-sindhu</span></a>
     <nav class="fc-site-nav">
         <a href="../../../../">Home</a>
         <a href="../../../../bg/">Bhagavad-gītā</a>
         <a href="../../../../sb/">Śrīmad-Bhāgavatam</a>
+        <a href="../../../../brs/" title="Bhakti-rasāmṛta-sindhu with Jīva Gosvāmī's and Viśvanātha Cakravartī's commentaries">Bhakti-rasāmṛta-sindhu</a>
+        <a href="../../../../nod/" title="Nectar of Devotion">Nectar of Devotion</a>
         <a href="../../../../search/" title="Search across all integrated works">🔍 Search</a>
         <button type="button" id="fc-random-verse" class="fc-nav-btn" title="Jump to a random verse">🎲 Random</button>
     </nav>
@@ -46,8 +48,8 @@
     <button class="fc-sb-collapse" type="button" data-sb="left" title="Collapse left sidebar" aria-label="Collapse"></button>
 
     <div class="fc-sb-body">
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Reading</div>
+        <details class="fc-sb-section" data-sbsec="reading" open>
+            <summary class="fc-sb-title">Reading</summary>
             <div class="fc-sb-sub">Theme</div>
             <div class="fc-segmented" data-setting="theme">
                 <button type="button" data-val="light">Light</button>
@@ -73,10 +75,10 @@
                 <button type="button" data-val="single">Single</button>
                 <button type="button" data-val="side">Side-by-side</button>
             </div>
-        </div>
+        </details>
 
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Display</div>
+        <details class="fc-sb-section" data-sbsec="display" open>
+            <summary class="fc-sb-title">Display</summary>
             <div class="fc-sb-grid">
                 <label><input type="checkbox" data-section="devanagari" checked> Devanāgarī</label>
                 <label><input type="checkbox" data-section="iast" checked> IAST transliteration</label>
@@ -98,33 +100,10 @@
                 <button type="button" data-action="expand-all">Expand all</button>
                 <button type="button" data-action="collapse-all">Collapse all</button>
             </div>
-        </div>
+        </details>
 
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Find your starting point</div>
-            <div class="fc-persona-links">
-                <a class="fc-persona-link" href="../../../../daily/">🌅 Daily (one value a week)</a>
-                <a class="fc-persona-link" href="../../../../householder/">🏠 Householder (family & work)</a>
-                <a class="fc-persona-link" href="../../../../parenting/">👨‍👩‍👧 Parenting (stories for kids)</a>
-                <a class="fc-persona-link" href="../../../../themes/">📚 All themes</a>
-                <a class="fc-persona-link" href="../../../../values/" style="background:#F0F6F2;border-left-color:#1F4632;">ॐ Vedic Value System ↗</a>
-                <a class="fc-persona-link" href="../../../../vidya/" style="background:#FBF6E4;border-left-color:#C8860B;">📚 Vidyā Karaṇa (kids, multi-lang) ↗</a>
-            </div>
-        </div>
-
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Audience</div>
-            <div class="fc-audience-filter">
-                <label><input type="radio" name="fc-audience" value="all" checked> All levels</label>
-                <label><input type="radio" name="fc-audience" value="primary"> Primary (children)</label>
-                <label><input type="radio" name="fc-audience" value="middle"> Middle (teens)</label>
-                <label><input type="radio" name="fc-audience" value="senior"> Senior (adults)</label>
-                <label><input type="radio" name="fc-audience" value="college"> College / scholar</label>
-            </div>
-        </div>
-
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Tools</div>
+        <details class="fc-sb-section" data-sbsec="tools" open>
+            <summary class="fc-sb-title">Tools</summary>
             <div class="fc-sb-tools">
                 <button type="button" id="fc-presentation-toggle" class="fc-tool-btn"><span>🖥 Presentation</span><kbd class="fc-kbd">F</kbd></button>
                 <button type="button" id="fc-pen-toggle" class="fc-tool-btn"><span>✏️ Pen mode</span><kbd class="fc-kbd">P</kbd></button>
@@ -139,26 +118,10 @@
                 <button type="button" id="fc-clear-highlights" class="fc-tool-btn">🩷 Clear highlights (page)</button>
                 <button type="button" id="fc-notes-modal-open" class="fc-tool-btn">📓 My annotations</button>
             </div>
-        </div>
+        </details>
 
-        <div class="fc-sb-section" id="fc-tts-controls" hidden>
-            <div class="fc-sb-title">
-                Read-aloud
-                <label class="fc-tts-master">
-                    <input type="checkbox" id="fc-tts-enabled" checked>
-                    <span class="fc-tts-master-label">On</span>
-                </label>
-            </div>
-            <div class="fc-tts-inner">
-                <div class="fc-sb-sub">Voice</div>
-                <select id="fc-tts-voice" class="fc-tts-select" aria-label="TTS voice"></select>
-                <div class="fc-sb-sub">Rate <span class="fc-tts-rate-val">1.0×</span></div>
-                <input type="range" id="fc-tts-rate" min="0.5" max="2" step="0.1" value="1" class="fc-tts-rate" aria-label="Reading rate">
-            </div>
-        </div>
-
-        <div class="fc-sb-section" id="fc-progress-section">
-            <div class="fc-sb-title">Progress</div>
+        <details class="fc-sb-section" data-sbsec="progress" id="fc-progress-section" open>
+            <summary class="fc-sb-title">Progress</summary>
             <div class="fc-progress-row">
                 <span class="fc-progress-num" id="fc-progress-num">0</span>
                 <span class="fc-progress-divider">/</span>
@@ -173,29 +136,29 @@
                 <span class="fc-progress-spacer"></span>
                 <button type="button" class="fc-progress-reset" id="fc-progress-reset" title="Reset progress">↺</button>
             </div>
-        </div>
+        </details>
 
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Bookmarks <span class="fc-sb-count" id="fc-bookmarks-count">0</span></div>
+        <details class="fc-sb-section" data-sbsec="bookmarks" open>
+            <summary class="fc-sb-title">Bookmarks <span class="fc-sb-count" id="fc-bookmarks-count">0</span></summary>
             <ul class="fc-bookmark-list" id="fc-bookmarks-list">
                 <li class="fc-sb-empty">No bookmarks yet — click ☆ on any verse.</li>
             </ul>
-        </div>
+        </details>
 
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Notes <span class="fc-sb-count" id="fc-notes-count">0</span></div>
+        <details class="fc-sb-section" data-sbsec="notes" open>
+            <summary class="fc-sb-title">Notes <span class="fc-sb-count" id="fc-notes-count">0</span></summary>
             <ul class="fc-bookmark-list" id="fc-notes-list">
                 <li class="fc-sb-empty">No notes yet — open any verse and write in the 📝 block.</li>
             </ul>
-        </div>
+        </details>
 
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Export</div>
+        <details class="fc-sb-section" data-sbsec="export">
+            <summary class="fc-sb-title">Export</summary>
             <div class="fc-sb-tools">
                 <button type="button" id="fc-export-md" class="fc-tool-btn">📥 Download Markdown</button>
                 <button type="button" id="fc-export-json" class="fc-tool-btn">💾 Download JSON backup</button>
             </div>
-        </div>
+        </details>
     </div>
 </aside>    <main class="fc-container">
 <nav class="fc-breadcrumbs">
@@ -238,6 +201,7 @@
 
     <div class="fc-translation" data-sec="translation">The separation which has been described here is in accordance with the pastimes of the Lord when He appears on earth. However, the inhabitants of Vraja are never separated from Kṛṣṇa (in His eternal pastimes.)</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -250,9 +214,56 @@
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
             <div class="cr-acarya-name">
+                Viśvanātha Cakravartī Ṭhākura
+                <span class="cr-samp-badge">Gauḍīya</span>
+            </div>
+            <div class="cr-acarya-work">Bhakti-sāra-pradarśinī</div>
+            <div class="cr-acarya-label">Commentary</div>
+            <div class="cr-acarya-purp">
+                <p>States of separation such as pūrva-rāga (before meeting for first time in madhura-rasa) or when Kṛṣṇa is out herding the cows--leaving for a short time only--are relished by the sādhakas, the siddhas, the eternal associates, the gopīs and Kṛṣṇa, because there always remains the relationship of āśraya and viṣaya ālambanas. But when Kṛṣṇa departs for Mathurā and stays away for a very long time, the pain of separation is intolerable. That is explained in this verse. The pain of separation when Kṛṣṇa goes to Mathurā which has been described (prokteyam) belongs to the prakaṭa-līlā. In the aprakaṭa-līlā, separation from Kṛṣṇa by His going to Mathurā does not exist for the inhabitants of Vraja at all. This is proved by a statement from the Skanda Purāṇa, the next verse in the text. It is also said:
+kṛṣṇo ’nyo yadu-sambhūto yaḥ purṇaḥ so ’sty ataḥ paraḥ
+vṛndāvanaṁ paritjajya sa kvacin naiva gacchati
+Kṛṣṇa, who is complete in Himself, is different from Kṛṣṇa of the Yadu dynasty. Kṛṣṇa never leaves Vṛndāvana to go elsewhere. Laghu-bhāgavatāmṛta 461
+One should not come to the following conclusion however. “There are two types of pastimes: prakaṭa and aprakaṭa. The prakaṭa pastimes are those which are visible to the people of this world. They are occasional and temporary. The aprakaṭa pastimes are those which are not visible to this world. They exist eternally in Vṛndāvana and other places.”
+This cannot be said. If one attributes a temporary nature to the prakaṭa pastimes described by Śrī Śukadeva, Parāśara, Vyāsa and others in the Bhāgavatam, Viṣṇu Purāṇa, Hari-vamśa, Padma Purāṇa and other scriptures, one can as well logically attribute a temporary nature to the aprakaṭa pastimes described by the same authors, who are recent beings. By claiming the temporary nature of all pastimes after showing the aprakaṭa pastimes to be temporary by equating them with the temporary prakaṭa pastimes, all pastimes end up as mere material actions.
+If the pastimes such as being born are shown to the people of this world out of mercy, they are called prakaṭa pastimes and if those pastimes are concealed from the world’s view, they are called aprakṛta. Thus, in essence, there is no difference between the prakaṭa and aprakaṭa pastimes. Thus, it is stated:
+anādim eva janmādi-līlām eṣa tathādbhutām
+hetunā kenacit kṛṣṇaḥ prāduskuryāt kadācana
+The extraordinary pastimes such as birth of the Lord are without beginning. Kṛṣṇa never deteriorates at all by any cause. Laghu-bhāgavatāmṛta 387
+Thus, the scriptures have shown that the prakaṭa pastimes are eternal. This will now be explained. Like the Lord who is one but has infinite forms, Vraja also has infinite forms but in this world people see only the pastimes appearing in one manifestation of Vraja. They do not see the pastimes in the other manifestations of Vraja. The pastimes of birth, kaumāra, paugaṇḍa and kaiśora ages and the departure to Mathurā of Kṛṣṇa situated in that manifestation appear in millions of universes one after the other, and are seen by the people of one universe at a particular time, but those pastimes are not seen all the time in all the universes. It is just like the rising of the sun situated in a particular position in the zodiac, morning, noon and afternoon. These are all seen in different parts of India, but are not seen everywhere at the same time. There is difference however. The rising of the sun, morning, noon and afternoon are not real (only apparent) and not eternal (though repetitive). But Kṛṣṇa’s pastimes in Vraja are real and eternal as testified by the scriptures. That is the difference. Just as there is always a rising of the sun, morning, noon and afternoon at some place, Kṛṣṇa always has a birth, childhood, killing of demons and a departure for Mathurā in some universe. Thus, the prakaṭa pastimes are eternal. Just as the sun is perceived in all conditions in all places over a period of twenty-four hours, the pastimes of Kṛṣṇa will be perceived in all the different universes during the day of Brahmā in a scheduled manner. The prakṛta pastimes which are seen by people are actually the aprakṛta pastimes, but appearing to be dependent on time and space. As Uddhava says:
+kṛṣṇa-dyumaṇi nimloce gīrṇeṣv ajagareṇa ha
+kiṁ nu naḥ kuśalaṁ brūyāṁ gata-śrīṣu gṛheṣv aham
+My dear Vidura, the sun of the world, Lord Kṛṣṇa, has set, and our house has now been swallowed by the great snake of time. What can I say to you about our welfare? SB 3.2.7
+This applies also to the pastimes in Mathurā and Dvārakā. The pastimes taking place in the multitude of manifestations of Vraja are not seen by the people of the world. These manifestations are unlimited, and are not connected with each other. This is understood from the following statement:
+kṛṣṇa-bālyādi-līlābhir bhūṣitāni samantataḥ
+śaila-goṣṭha-vanādīnāṁ santi rūpāṇi anekaśaḥ
+At present, however, the many hills, forests, villages and other places in Vṛndāvana that had been decorated with Lord Kṛṣṇa&#39;s childhood and other pastimes still wonderfully remain. Laghu-bhāgavatāmṛta 513
+In all these manifestations, the awareness of the Lord’s associates also remains separate, because the multitude of manifestations remains separate. In those manifestations Kṛṣṇa separately has pastimes of birth, bālya, paugaṇḍa and kaiśora ages. Sometimes these manifestations appear in sequence one after the other and sometimes they appear together. In any case, the appearances are certain. But in the aprakaṭa manifestation, the pastimes of departing for Mathurā does not take place, because Kṛṣṇa and His devotees always remain performing pastimes in the aprakaṭa manifestations of Mathurā.
+It is also stated:
+tatra prakaṭa-līlāyām eva syātaṁ gamāgamau
+gokule mathurāyāṁ ca dvāravatyāṁ ca śārṅgiṇāh
+In His prakaṭa pastimes, Lord Kṛṣṇa will go from Gokula to Mathurā to Dvārakā, and then He will return. Laghu-bhāgavatāmṛta 439
+From Vraja, Kṛṣṇa goes to Mathurā, and then Dvārakā, and then returns from Dvārakā to Vraja after killing Dantavakra. This will happen in the prakaṭa pastimes and not in the aprakaṭa pastimes. This can also be understood to mean that in Vraja itself there will be going to the forest from the village and returning from Mahāvana to Vṛndāvana.
+One should not say however that the aprakaṭa pastimes are superior to the prakaṭa pastimes, since there is no pain of separation by Kṛṣṇa’s going to Mathurā in the aprakaṭa pastimes, because the pain of separation is a manifestation of transformations that take place in mahā-bhāva, the highest form of bliss, expressed in song of the bee, which is a lamentation in transcendental insanity. Uddhava, seeing the supreme form of the gopīs’ love, became astonished at superiority of the gopīs’ love to the love of Lakṣmī.
+āsām aho caraṇa-reṇu-juṣām ahaṁ syāṁ vṛndāvane kim api gulma-latauṣadhīnām
+yā dustyajaṁ sva-janam ārya-pathaṁ ca hitvā bhejur mukunda-padavīṁ śrutibhir vimṛgyām
+The gopīs of Vṛndāvana have given up the association of their husbands, sons and other family members, who are very difficult to give up, and they have forsaken the path of chastity to take shelter of the lotus feet of Mukunda, Kṛṣṇa, which one should search for by Vedic knowledge. Oh, let me be fortunate enough to be one of the bushes, creepers or herbs in Vṛndāvana, because the gopīs trample them and bless them with the dust of their lotus feet. SB 10.47.61
+nāyaṁ śriyo ’ṅga u nitānta-rateḥ prasādaḥ svar-yoṣitāṁ nalina-gandha-rucāṁ kuto ’nyāḥ
+rāsotsave ’sya bhuja-daṇḍa-gṛhīta-kaṇṭha-labdhāśiṣāṁ ya udagād vraja-vallabhīnām
+When Lord Śrī Kṛṣṇa was dancing with the gopīs in the rāsa-līlā, the gopīs were embraced by the arms of the Lord. This transcendental favor was never bestowed upon the goddess of fortune or other consorts in the spiritual world. Indeed, never was such a thing even imagined by the most beautiful girls in the heavenly planets, whose bodily luster and aroma resemble the lotus flower. And what to speak of worldly women who are very beautiful according to material estimation? SB 10.47.60
+One should also not consider that separation is inferior to meeting with Kṛṣṇa, because even in separation the two lovers possessing sthāyi-bhāvas with rati, prema, sneha and higher levels of attachment, by memory alone, stimulated by the vibhāvas, become filled with unlimited pleasure of enjoying each other through direct contact, with embraces, kissing and contact with mind, eye and body.
+saṅgama-viraha-vikalpe varam iha viraho na saṅgamān tasya
+ekaḥ sa eva saṅge tri-bhuvanam api tan-mayaṁ virahe
+Separation from Kṛṣṇa is better than meeting Him. When I meet Him, there is only one Kṛṣṇa, but when I am separated from Him the three worlds become filled with Kṛṣṇas. Padyāvalī 240
+One should not say that when an appearance of the Lord through remembrance or through actual presence ends there is sorrow due to the intolerable pain of separation. This pain is another form of bliss, because its nature is purely spiritual, caused by the hladinī and samvit śaktis. The author explains how this pain is actually a form of knowledge in the Ujjvala-nīlamaṇi. One should also understand that there are degrees of intensity in the separation and meeting in dāsya, sakhya and vatsala relationships.</p>
+            </div>
+        </div>
+        <div class="cr-acarya-card gaudiya">
+            <div class="cr-acarya-name">
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
                 <p>Spaṣṭa-līlā means the pastimes on earth (prakaṭa-līlā). The condition of separation occurs during the pastimes on earth, but there is no separation from Kṛṣṇa at all for the inhabitants of Vraja with the aspaṣṭa-līlā, the pastimes in the spiritual world. That meaning should be supplied in the last line. There are two types of pastimes: prakaṭa and aprakaṭa. Prakaṭa-līlā means pastimes visible to people of this world. These are occasional appearances. Aprakaṭa-līlās are those pastimes which cannot be seen by people of this world. These are eternal, and take place in Vṛndāvana and other places. These eternal pastimes are glorified in the Skanda Purāṇa, Āgama scriptures, the Gopāla-tāpanī Upaniṣad and Bhāgavatam:

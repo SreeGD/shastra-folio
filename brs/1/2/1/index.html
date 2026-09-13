@@ -31,11 +31,13 @@
 <body class="has-sidebar">
 <header class="fc-site-header">
     <button type="button" class="fc-mobile-trigger fc-mobile-trigger-left" data-overlay="left" aria-label="Open settings drawer">⚙</button>
-    <a class="fc-brand" href="../../../../">FolioCorpus<span class="fc-sub">Bhagavad-gītā</span></a>
+<a class="fc-brand" href="../../../../">FolioCorpus<span class="fc-sub">Bhakti-rasāmṛta-sindhu</span></a>
     <nav class="fc-site-nav">
         <a href="../../../../">Home</a>
         <a href="../../../../bg/">Bhagavad-gītā</a>
         <a href="../../../../sb/">Śrīmad-Bhāgavatam</a>
+        <a href="../../../../brs/" title="Bhakti-rasāmṛta-sindhu with Jīva Gosvāmī's and Viśvanātha Cakravartī's commentaries">Bhakti-rasāmṛta-sindhu</a>
+        <a href="../../../../nod/" title="Nectar of Devotion">Nectar of Devotion</a>
         <a href="../../../../search/" title="Search across all integrated works">🔍 Search</a>
         <button type="button" id="fc-random-verse" class="fc-nav-btn" title="Jump to a random verse">🎲 Random</button>
     </nav>
@@ -46,8 +48,8 @@
     <button class="fc-sb-collapse" type="button" data-sb="left" title="Collapse left sidebar" aria-label="Collapse"></button>
 
     <div class="fc-sb-body">
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Reading</div>
+        <details class="fc-sb-section" data-sbsec="reading" open>
+            <summary class="fc-sb-title">Reading</summary>
             <div class="fc-sb-sub">Theme</div>
             <div class="fc-segmented" data-setting="theme">
                 <button type="button" data-val="light">Light</button>
@@ -73,10 +75,10 @@
                 <button type="button" data-val="single">Single</button>
                 <button type="button" data-val="side">Side-by-side</button>
             </div>
-        </div>
+        </details>
 
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Display</div>
+        <details class="fc-sb-section" data-sbsec="display" open>
+            <summary class="fc-sb-title">Display</summary>
             <div class="fc-sb-grid">
                 <label><input type="checkbox" data-section="devanagari" checked> Devanāgarī</label>
                 <label><input type="checkbox" data-section="iast" checked> IAST transliteration</label>
@@ -98,33 +100,10 @@
                 <button type="button" data-action="expand-all">Expand all</button>
                 <button type="button" data-action="collapse-all">Collapse all</button>
             </div>
-        </div>
+        </details>
 
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Find your starting point</div>
-            <div class="fc-persona-links">
-                <a class="fc-persona-link" href="../../../../daily/">🌅 Daily (one value a week)</a>
-                <a class="fc-persona-link" href="../../../../householder/">🏠 Householder (family & work)</a>
-                <a class="fc-persona-link" href="../../../../parenting/">👨‍👩‍👧 Parenting (stories for kids)</a>
-                <a class="fc-persona-link" href="../../../../themes/">📚 All themes</a>
-                <a class="fc-persona-link" href="../../../../values/" style="background:#F0F6F2;border-left-color:#1F4632;">ॐ Vedic Value System ↗</a>
-                <a class="fc-persona-link" href="../../../../vidya/" style="background:#FBF6E4;border-left-color:#C8860B;">📚 Vidyā Karaṇa (kids, multi-lang) ↗</a>
-            </div>
-        </div>
-
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Audience</div>
-            <div class="fc-audience-filter">
-                <label><input type="radio" name="fc-audience" value="all" checked> All levels</label>
-                <label><input type="radio" name="fc-audience" value="primary"> Primary (children)</label>
-                <label><input type="radio" name="fc-audience" value="middle"> Middle (teens)</label>
-                <label><input type="radio" name="fc-audience" value="senior"> Senior (adults)</label>
-                <label><input type="radio" name="fc-audience" value="college"> College / scholar</label>
-            </div>
-        </div>
-
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Tools</div>
+        <details class="fc-sb-section" data-sbsec="tools" open>
+            <summary class="fc-sb-title">Tools</summary>
             <div class="fc-sb-tools">
                 <button type="button" id="fc-presentation-toggle" class="fc-tool-btn"><span>🖥 Presentation</span><kbd class="fc-kbd">F</kbd></button>
                 <button type="button" id="fc-pen-toggle" class="fc-tool-btn"><span>✏️ Pen mode</span><kbd class="fc-kbd">P</kbd></button>
@@ -139,26 +118,10 @@
                 <button type="button" id="fc-clear-highlights" class="fc-tool-btn">🩷 Clear highlights (page)</button>
                 <button type="button" id="fc-notes-modal-open" class="fc-tool-btn">📓 My annotations</button>
             </div>
-        </div>
+        </details>
 
-        <div class="fc-sb-section" id="fc-tts-controls" hidden>
-            <div class="fc-sb-title">
-                Read-aloud
-                <label class="fc-tts-master">
-                    <input type="checkbox" id="fc-tts-enabled" checked>
-                    <span class="fc-tts-master-label">On</span>
-                </label>
-            </div>
-            <div class="fc-tts-inner">
-                <div class="fc-sb-sub">Voice</div>
-                <select id="fc-tts-voice" class="fc-tts-select" aria-label="TTS voice"></select>
-                <div class="fc-sb-sub">Rate <span class="fc-tts-rate-val">1.0×</span></div>
-                <input type="range" id="fc-tts-rate" min="0.5" max="2" step="0.1" value="1" class="fc-tts-rate" aria-label="Reading rate">
-            </div>
-        </div>
-
-        <div class="fc-sb-section" id="fc-progress-section">
-            <div class="fc-sb-title">Progress</div>
+        <details class="fc-sb-section" data-sbsec="progress" id="fc-progress-section" open>
+            <summary class="fc-sb-title">Progress</summary>
             <div class="fc-progress-row">
                 <span class="fc-progress-num" id="fc-progress-num">0</span>
                 <span class="fc-progress-divider">/</span>
@@ -173,29 +136,29 @@
                 <span class="fc-progress-spacer"></span>
                 <button type="button" class="fc-progress-reset" id="fc-progress-reset" title="Reset progress">↺</button>
             </div>
-        </div>
+        </details>
 
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Bookmarks <span class="fc-sb-count" id="fc-bookmarks-count">0</span></div>
+        <details class="fc-sb-section" data-sbsec="bookmarks" open>
+            <summary class="fc-sb-title">Bookmarks <span class="fc-sb-count" id="fc-bookmarks-count">0</span></summary>
             <ul class="fc-bookmark-list" id="fc-bookmarks-list">
                 <li class="fc-sb-empty">No bookmarks yet — click ☆ on any verse.</li>
             </ul>
-        </div>
+        </details>
 
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Notes <span class="fc-sb-count" id="fc-notes-count">0</span></div>
+        <details class="fc-sb-section" data-sbsec="notes" open>
+            <summary class="fc-sb-title">Notes <span class="fc-sb-count" id="fc-notes-count">0</span></summary>
             <ul class="fc-bookmark-list" id="fc-notes-list">
                 <li class="fc-sb-empty">No notes yet — open any verse and write in the 📝 block.</li>
             </ul>
-        </div>
+        </details>
 
-        <div class="fc-sb-section">
-            <div class="fc-sb-title">Export</div>
+        <details class="fc-sb-section" data-sbsec="export">
+            <summary class="fc-sb-title">Export</summary>
             <div class="fc-sb-tools">
                 <button type="button" id="fc-export-md" class="fc-tool-btn">📥 Download Markdown</button>
                 <button type="button" id="fc-export-json" class="fc-tool-btn">💾 Download JSON backup</button>
             </div>
-        </div>
+        </details>
     </div>
 </aside>    <main class="fc-container">
 <nav class="fc-breadcrumbs">
@@ -234,6 +197,7 @@
 
     <div class="fc-translation" data-sec="translation">There are three types of bhakti: sādhana, bhāva and prema.</div>
 
+
     <section class="fc-section" data-sec="purport">
         <div class="fc-section-label">Purport</div>
         <div class="cr-purport-body">
@@ -246,12 +210,33 @@
         <div class="fc-section-label">Gauḍīya Ācāryas</div>
         <div class="cr-acarya-card gaudiya">
             <div class="cr-acarya-name">
+                Viśvanātha Cakravartī Ṭhākura
+                <span class="cr-samp-badge">Gauḍīya</span>
+            </div>
+            <div class="cr-acarya-work">Bhakti-sāra-pradarśinī</div>
+            <div class="cr-acarya-label">Commentary</div>
+            <div class="cr-acarya-purp">
+                <p>……… [Note: The full commentaries of Jīva Gosvāmī are given, and those parts of Viśvanātha’s commentaries which are different. In many cases, the commentary is the same, and in others, a few words are added as explanation of Jīva’s commentary.]
+“Let there be only two types of bhakti: sādhana and sādya. Bhāva should be included in sādhya-bhakti. Why is it necessary to have three types?” The answer is as follows. Later it will be said:
+utpanna-ratayaḥ samyaṅ nairvighnyam anupāgatāḥ |
+kṛṣṇa-sākṣāt-kṛtau yogyāḥ sādhakāḥ parikīrtitāḥ ||
+Those are called practitioners (sādhaka) who have developed rati for Kṛṣṇa and are qualified to see Kṛṣṇa directly, but who have not completely extinguished the anarthas. BRS 2.1.276
+In spite of the fact that bhāva or rati has appeared (utpanna-ratayaḥ), the obstacles have not completely dissipated. Such persons are therefore classed as sādhakas. “Not having extinguished all obstacles (samyaṅ-nairvighnyam anupāgatāḥ)” means that there still remains a trace of some serious aparādha, because the effects of aparādha are very strong and long-lasting. In this condition, with even a trace of aparādha that generates suffering, sādhya-bhakti cannot appear. The qualities of the siddha-bhakta, who has sādhya-bhakti, are described as follows in the same section:
+avijñātākhila-kleśāḥ sadā kṛṣṇāśrita-kriyāḥ |
+siddhāḥ syuḥ santata-prema-saukhyāsvāda-parāyaṇāḥ
+Those who experience no suffering at all, who perform all actions while taking shelter of Kṛṣṇa and who always taste the happiness of continuous prema, are known as the perfected devotees. BRS 2.1.280
+Therefore, bhāva-bhakti cannot be included in sādhya-bhakti. However, by no means can it be included in sādhana-bhakti, because in this section, which defines sādhana-bhakti, the goal of sādhana-bhakti is described as bhāva-bhakti. Therefore, it cannot be included in sādhana-bhakti, since the goal of bhāva-bhakti is not to produce bhāva. Thus, it should be considered proper to classify bhakti into three types, not two.</p>
+            </div>
+        </div>
+        <div class="cr-acarya-card gaudiya">
+            <div class="cr-acarya-name">
                 Jīva Gosvāmī
                 <span class="cr-samp-badge">Gauḍīya</span>
             </div>
+            <div class="cr-acarya-work">Durgama-saṅgamanī</div>
             <div class="cr-acarya-label">Commentary</div>
             <div class="cr-acarya-purp">
-                <p>That uttama-bhakti is now considered with three divisions, for clear understanding, though actually it should be understood that there are only two divisions: sādhana and sādhya. [Note: Bhāva cannot be considered within sādhana since it contains a direct realization of the Lord, which is the goal of sādhana. Thus, it should be classed as sādhya. Thus, there are only two broad classifications, sādhana and sādhya. However, bhāva should be distinguished from prema, sneha and other more intense forms of bhakti, because there still exist impurities in bhāva, and rasa does not manifest fully in bhāva. Therefore, bhāva is placed in a separate category from prema, even though they may both be considered sādhya.] In this chapter, the characteristics and types of sādhana-bhakti will be explained. The second type, sādhya-bhakti, called (hārda-rūpā) [Note: The word hṛdaya means heart and soul. It is used instead of ātmā to indicate the emotional aspect of the soul.] is that bhakti in which the influence of the heart---the emotions of the ātmā---becomes prominent. The word bhakti is used to describe this type also. This terminology is used in Bhāgavatam: bhaktyā saṣjātayā bhaktyā bibhraty utpulakāṁ tanum: they possess bodies agitated by ecstasy caused by (sādhya) bhakti produced from (sādhana) bhakti. (SB 11.3.31) Sādhya-rūpa or hārda-rūpa-bhakti has five types: bhāva, prema, praṇaya, sneha and rāga. In Ujjvala-nīla-maṇi, three more types are mentioned: māna, anurāga and mahā-bhāva. Thus, there are eight types of sādhya-bhakti. Thus, the two types mentioned, namely, bhāva and prema, are only representative of the eight types. The other types are not mentioned in this categorization of bhakti into three types because at the end of the fourth wave of the eastern section, dealing with prema-bhakti, it will be said:
+                <p>That uttama-bhakti is now considered with three divisions, for clear understanding, though actually it should be understood that there are only two divisions: sādhana and sādhya. [Note: Bhāva cannot be considered within sādhana since it contains a direct realization of the Lord, which is the goal of sādhana. Thus, it should be classed as sādhya. Thus, there are only two broad classifications, sādhana and sādhya. However, bhāva should be distinguished from prema, sneha and other more intense forms of bhakti, because there still exist impurities in bhāva, and rasa does not manifest fully in bhāva. Therefore, bhāva is placed in a separate category from prema, even though they may both be considered sādhya.] In this chapter, the characteristics and types of sādhana-bhakti will be explained. The second type, sādhya-bhakti, called (hārda-rūpā) [Note: The word hṛdaya means heart and soul. It is used instead of ātmā to indicate the emotional aspect of the soul.] is that bhakti in which the influence of the heart---the emotions of the ātmā---becomes prominent. The word bhakti is used to describe this type also. This terminology is used in Bhāgavatam: bhaktyā sañjātayā bhaktyā bibhraty utpulakāṁ tanum: they possess bodies agitated by ecstasy caused by (sādhya) bhakti produced from (sādhana) bhakti. (SB 11.3.31) Sādhya-rūpa or hārda-rūpa-bhakti has five types: bhāva, prema, praṇaya, sneha and rāga. In Ujjvala-nīla-maṇi, three more types are mentioned: māna, anurāga and mahā-bhāva. Thus, there are eight types of sādhya-bhakti. Thus, the two types mentioned, namely, bhāva and prema, are only representative of the eight types. The other types are not mentioned in this categorization of bhakti into three types because at the end of the fourth wave of the eastern section, dealing with prema-bhakti, it will be said:
 premṇa eva vilāsatvād vairalyaṁ sādhakeṣv api |
 atra snehādayo bhedā vivicya na hi śaṁsitāḥ ||
 There is rarity of prema among those who have practiced sādhana-bhakti, because of its playful nature. Thus, sneha and the other types of sādhya-bhakti have not been not analyzed or discussed at this point. BRS 1.4.19</p>
